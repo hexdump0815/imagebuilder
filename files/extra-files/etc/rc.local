@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+# flash based storage does not need scheduling
+if [ -d /sys/block/mmcblk0 ] || [ -d /sys/block/mmcblk1 ] || [ -d /sys/block/mmcblk2 ]; then
+  for i in /sys/block/mmcblk?/queue/scheduler; do
+    echo none > $i
+  done
+fi
+if [ -d /sys/block/sda ] || [ -d /sys/block/sdb ] || [ -d /sys/block/sdc ]; then
+  for i in /sys/block/sd?/queue/scheduler; do
+    echo none > $i
+  done
+fi

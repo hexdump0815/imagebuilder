@@ -1,0 +1,3 @@
+LABEL=bootpart /boot ext4 defaults,noatime,nodiratime,errors=remount-ro 0 2
+LABEL=rootpart / ext4 defaults,noatime,nodiratime,errors=remount-ro 0 1
+LABEL=swappart none swap sw 0 0

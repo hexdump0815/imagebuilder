@@ -1,0 +1,4 @@
+deb http://ports.ubuntu.com/ubuntu-ports/ bionic-security restricted multiverse main universe
+deb http://ports.ubuntu.com/ubuntu-ports/ bionic-updates restricted multiverse main universe
+deb http://ports.ubuntu.com/ubuntu-ports/ bionic-backports restricted multiverse main universe
+deb http://ports.ubuntu.com/ubuntu-ports/ bionic main universe restricted multiverse
