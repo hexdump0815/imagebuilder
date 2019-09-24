@@ -49,10 +49,10 @@ more coming soon ...
 # system specific information
 
 * odroid u3, u3+ and x2
-..* for the odroid x2 the file extlinux/extlinux.conf in the first partition needs to be edited - see the comments in the file
-..* the display resolution is set to 1024x768 by default in the same file and can be changed there if needed
-..* a fixed ether mac address is set in the same file and can be changed if multiple such devices are running in the same network or omitted to get a new random ethernet mac address on each boot
-..* enabling the mali driver at least for me sometimes results in unstable booting (hanging or mali not detected properly), rebooting (same symptoms), other times it works just fine, unplugging theboard from power for a few minutes usually helps - without the mali driver enabled the problems go away
+  * for the odroid x2 the file extlinux/extlinux.conf in the first partition needs to be edited - see the comments in the file
+  * the display resolution is set to 1024x768 by default in the same file and can be changed there if needed
+  * a fixed ether mac address is set in the same file and can be changed if multiple such devices are running in the same network or omitted to get a new random ethernet mac address on each boot
+  * enabling the mali driver at least for me sometimes results in unstable booting (hanging or mali not detected properly), rebooting (same symptoms), other times it works just fine, unplugging theboard from power for a few minutes usually helps - without the mali driver enabled the problems go away
 
 # plans
 
