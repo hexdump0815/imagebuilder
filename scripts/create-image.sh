@@ -100,9 +100,11 @@ fi
 if [ -f files/mbr-partitions-${1}-${2}.txt ]; then
   fdisk /dev/loop0 < files/mbr-partitions-${1}-${2}.txt
 elif [ -f files/gpt-partitions-${1}-${2}.txt ]; then
-  gdisk /dev/loop0 < files/gpt-partitions-${1}-${2}.txt
+  fdisk /dev/loop0 < files/gpt-partitions-${1}-${2}.txt
 fi
 
+# this is to make sure we really use the new partition table and have all partitions around
+partprobe /dev/loop0
 losetup -d /dev/loop0
 losetup --partscan /dev/loop0 ${IMAGE_DIR}/${1}-${2}-${3}.img
 
