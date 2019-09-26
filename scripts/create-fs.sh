@@ -115,6 +115,13 @@ mv -f ${BUILD_ROOT}/tmp/fsck.org ${BUILD_ROOT}/usr/share/initramfs-tools/hooks/f
 
 cd ${WORKDIR}
 
+# post install script per system
+if [ -x ${WORKDIR}/files/postinstall-${1}-${2}-${3}.sh ]; then
+  ${WORKDIR}/files/postinstall-${1}-${2}-${3}.sh
+fi
+
+cd ${WORKDIR}
+
 umount ${BUILD_ROOT}/proc ${BUILD_ROOT}/sys ${BUILD_ROOT}/dev/pts ${BUILD_ROOT}/dev
 
 echo ""

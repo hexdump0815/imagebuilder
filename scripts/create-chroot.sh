@@ -1,11 +1,14 @@
 #!/bin/bash -x
 
+# do not ask anything
+export DEBIAN_FRONTEND=noninteractive
+
 apt-get update
 apt-get -y upgrade
 if [ "$1" = "ubuntu" ]; then 
-  LANG=C apt-get -y install locales vim openssh-server sudo net-tools ifupdown iputils-ping kmod less u-boot-tools usbutils dosfstools mesa-utils mesa-utils-extra console-data xubuntu-desktop linux-firmware libreoffice
+  LANG=C apt-get -yq install locales vim openssh-server sudo net-tools ifupdown iputils-ping kmod less u-boot-tools usbutils dosfstools mesa-utils mesa-utils-extra console-data xubuntu-desktop linux-firmware libreoffice
 elif [ "$1" = "debian" ]; then 
-  LANG=C apt-get -y install locales vim openssh-server sudo net-tools ifupdown iputils-ping kmod less u-boot-tools usbutils dosfstools mesa-utils mesa-utils-extra console-data task-xfce-desktop firmware-linux-free firmware-linux firmware-linux-nonfree pulseaudio pavucontrol
+  LANG=C apt-get -yq install locales vim openssh-server sudo net-tools ifupdown iputils-ping kmod less u-boot-tools usbutils dosfstools mesa-utils mesa-utils-extra console-data task-xfce-desktop firmware-linux-free firmware-linux firmware-linux-nonfree pulseaudio pavucontrol
 fi
 
 systemctl enable ssh
