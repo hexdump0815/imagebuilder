@@ -5,6 +5,7 @@ echo "resizing root filesystem"
 echo ""
 
 ROOTDEVICE=$(mount | grep 'on / type' | awk '{print $1}' | sed 's,^/dev/,,g')
+ROOTPARTUUID=$(blkid | grep "/dev/$ROOTDEVICE" | awk '{print $5}' | sed 's,",,g' | awk -F= '{print $2}')
 
 ROOTDEVICEBASE=$(echo $ROOTDEVICE | grep "mmcblk" | sed 's,p.*,,g')
 ROOTDEVICEPARTNUMBER=$(echo $ROOTDEVICE | sed 's,mmcblk.p,,g')
@@ -21,9 +22,11 @@ if [ "$ROOTDEVICEBASE" = "" ]; then
   exit 1
 fi
 
-ROOTPARTITIONSTART=$(sfdisk -d /dev/$ROOTDEVICEBASE | grep $ROOTDEVICE | awk '{print $4}' | sed 's/,//g')
+PARTITIONTYPE=$(fdisk -l /dev/${ROOTDEVICEBASE} | grep "Disklabel type" | awk -F: '{print $2}' | sed 's,^ ,,g')
 
-fdisk /dev/$ROOTDEVICEBASE << EOF
+if [ "$PARTITIONTYPE" = "dos" ]; then
+  ROOTPARTITIONSTART=$(sfdisk -d /dev/$ROOTDEVICEBASE | grep $ROOTDEVICE | awk '{print $4}' | sed 's/,//g')
+  fdisk /dev/$ROOTDEVICEBASE << EOF
 d
 $ROOTDEVICEPARTNUMBER
 n
@@ -35,5 +38,24 @@ p
 w
 
 EOF
+elif [ "$PARTITIONTYPE" = "gpt" ]; then
+  ROOTPARTITIONSTART=$(sfdisk -d /dev/$ROOTDEVICEBASE | grep $ROOTDEVICE | awk '{print $4}' | sed 's/,//g')
+  fdisk /dev/$ROOTDEVICEBASE << EOF
+d
+$ROOTDEVICEPARTNUMBER
+n
+$ROOTDEVICEPARTNUMBER
+$ROOTPARTITIONSTART
+
+x
+u
+$ROOTDEVICEPARTNUMBER
+$ROOTPARTUUID
+r
+p
+w
+
+EOF
+fi
 
 resize2fs /dev/$ROOTDEVICE
