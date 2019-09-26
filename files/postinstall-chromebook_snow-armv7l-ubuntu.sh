@@ -1,4 +1,5 @@
 #!/bin/bash
 
-echo "# required for working pulseaudio on snow" >> /etc/pulse/deafult.pa
-echo "load-module module-alsa-sink device=sysdefault
+echo "" >> etc/pulse/default.pa
+echo "# required for working pulseaudio on snow" >> etc/pulse/default.pa
+echo "load-module module-alsa-sink device=sysdefault" >> etc/pulse/default.pa

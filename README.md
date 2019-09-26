@@ -35,6 +35,7 @@ some commands to set the keyboardmapping in an x terminal:
 * ...
 * onscreen keyboard: apt-get install matchbox-keyboard ; matchbox-keyboard
       alternatively: apt-get install onboard ; onboard
+* for console: loadkeys us (etc. like above)
 
 to use all the space on your sd card, please run the following command as root after the first boot: "/root/extend-rootfs.sh"
 
