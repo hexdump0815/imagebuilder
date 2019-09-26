@@ -5,6 +5,7 @@ if [ "$#" != "3" ]; then
   echo "usage: $0 system armversion ubuntu/debian"
   echo ""
   echo "possible system options:"
+  echo "- chromebook_snow (armv7l)"
   echo "- odroid_u3 (armv7l)"
   echo ""
   echo "possible armversion options:"

@@ -5,6 +5,7 @@ if [ "$#" != "3" ]; then
   echo "usage: $0 system armversion ubuntu/debian"
   echo ""
   echo "possible system options:"
+  echo "- chromebook_snow (armv7l)"
   echo "- odroid_u3 (armv7l)"
   echo ""
   echo "possible armversion options:"
@@ -82,6 +83,14 @@ losetup /dev/loop0 ${IMAGE_DIR}/${1}-${2}-${3}.img
 
 if [ -f ${WORKDIR}/boot/boot-${1}-${2}.dd ]; then
   dd if=${WORKDIR}/boot/boot-${1}-${2}.dd of=/dev/loop0
+fi
+
+# for the chromebook snow an initial partition table is already in the boot.dd which needs to be fixed up now
+if [ "$1" = "chromebook_snow" ]; then
+  # fix
+  sgdisk -C -e -G /dev/loop0
+  # verify
+  sgdisk -v /dev/loop0
 fi
 
 # old way ...
