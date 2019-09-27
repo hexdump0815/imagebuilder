@@ -113,7 +113,7 @@ sed -i 's,fsck_types=.*,fsck_types="vfat ext4",g' ${BUILD_ROOT}/usr/share/initra
 chroot ${BUILD_ROOT} update-initramfs -c -k ${KERNEL_VERSION}
 mv -f ${BUILD_ROOT}/tmp/fsck.org ${BUILD_ROOT}/usr/share/initramfs-tools/hooks/fsck
 
-cd ${WORKDIR}
+cd ${BUILD_ROOT}
 
 # post install script per system
 if [ -x ${WORKDIR}/files/postinstall-${1}-${2}-${3}.sh ]; then
