@@ -49,7 +49,7 @@ more coming soon ...
 
 # system specific information
 
-* odroid u2 (untested), u3, u3+, x (planned) and x2 (untested)
+* odroid u2 (untested), u3, u3+, x (coming with v5.4.3, untested) and x2 (untested)
   * for the odroid x2 the file extlinux/extlinux.conf in the first partition needs to be edited - see the comments in the file
   * for the odroid x the file extlinux/extlinux.conf in the first partition needs to be edited - see the comments in the file (planned)
   * the display resolution is set to 1024x768 by default in the same file and can be changed there if needed
@@ -65,11 +65,11 @@ more coming soon ...
 
 # plans
 
-* add support for bootable sd card images for the odroid u2, u3, u3+, x (planned) and x2 [done]
-* add support for bootable sd card images for the samsung snow chromebook
+* add support for bootable sd card images for the odroid u2, u3, u3+, x (coming with v5.4.3) and x2 [done]
+* add support for bootable sd card images for the samsung snow chromebook [done]
 * add support for bootable sd card images for the orbsmart s92 / beelink r89 tv boxes (and similar devices)
-* add support for bootable sd card images for allwinner h6 tv boxes
-* add support for bootable sd card images for allwinner h3 tv boxes
+* add support for bootable sd card images for allwinner h6 tv boxes (maybe not required as armbian images start to appear for them)
+* add support for bootable sd card images for allwinner h3 tv boxes (maybe this is not worth the effort - lets see)
 * add support for bootable sd card images for the raspberry-pi 3 running in and on 64bit mainline
 * add support for bootable sd card images for amlogic s905x/w tv boxes with a 64bit mainline kernel and a 32bit userland for a lower memory footprint (to run very comfortably on systems with 2gb of ram)
 * ...
