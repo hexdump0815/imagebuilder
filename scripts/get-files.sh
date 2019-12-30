@@ -17,8 +17,8 @@ cd `dirname $0`/..
 chromebook_snow_release_version="5.4.3-stb-cbe%2B"
 chromebook_snow_tree_tag="v5.4.3"
 
-odroid_u3_release_version="5.4.3-stb-exy%2B"
-odroid_u3_tree_tag="v5.4.3"
+odroid_u3_release_version="5.4.5-stb-exy%2B"
+odroid_u3_tree_tag="v5.4.5"
 
 if [ "$1" = "all" ] || [ "$1" = "chromebook_snow" ]; then
   rm -f boot/kernel-chromebook_snow-armv7l.tar.gz
