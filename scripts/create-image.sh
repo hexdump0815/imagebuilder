@@ -15,8 +15,8 @@ if [ "$#" != "3" ]; then
   exit 1
 fi
 
-export BUILD_ROOT=/local/imagebuilder-root
-export IMAGE_DIR=/local/imagebuilder-diskimage
+export BUILD_ROOT=/compile/local/imagebuilder-root
+export IMAGE_DIR=/compile/local/imagebuilder-diskimage
 export MOUNT_POINT=/mnt
 
 cd `dirname $0`/..

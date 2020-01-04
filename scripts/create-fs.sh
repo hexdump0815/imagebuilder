@@ -15,7 +15,7 @@ if [ "$#" != "3" ]; then
   exit 1
 fi
 
-export BUILD_ROOT=/local/imagebuilder-root
+export BUILD_ROOT=/compile/local/imagebuilder-root
 
 cd `dirname $0`/..
 export WORKDIR=`pwd`
