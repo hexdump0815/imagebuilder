@@ -1,0 +1,6 @@
+# you can set uboot variables here if required - the extlinux dir has to move to menu then
+
+# call sysboot to use the boot options defined in /boot/menu/extlinux.conf
+sysboot mmc 0 fat 0x2000000 /menu/extlinux.conf
+
+# activate via: mkimage -A arm64 -T script -O linux -d boot.txt boot.scr

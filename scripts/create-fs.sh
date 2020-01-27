@@ -8,6 +8,8 @@ if [ "$#" != "3" ]; then
   echo "- chromebook_snow (armv7l)"
   echo "- odroid_u3 (armv7l)"
   echo "- orbsmart_s92_beelink_r89 (armv7l)"
+  echo "- raspberry_pi (armv7l)"
+  echo "- raspberry_pi (aarch64)"
   echo ""
   echo "possible armversion options:"
   echo "- armv7l (32bit) userland"
