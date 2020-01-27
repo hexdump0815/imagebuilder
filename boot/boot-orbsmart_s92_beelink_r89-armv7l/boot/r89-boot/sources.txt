@@ -1,0 +1,33 @@
+to rebuild the tool binaries here from source if needed:
+
+mkkrnlimg: make - in rk-tools
+rkcrc: cc -o rkcrc rkcrc.c - in rkutils
+resource_tool: make - in u-boot-rockchip/tools/resource_tool
+
+git repos:
+
+origin	https://github.com/goodybag/rk-tools.git (fetch)
+On branch master
+
+origin	https://github.com/T-Firefly/rkutils.git (fetch)
+On branch master
+
+origin	https://github.com/linux-rockchip/u-boot-rockchip.git (fetch)
+On branch u-boot-rk3288
+
+patch for u-boot-rockchip.git:
+
+diff --git a/tools/resource_tool/Makefile b/tools/resource_tool/Makefile
+index 45b54f8b85..19978af721 100644
+--- a/tools/resource_tool/Makefile
++++ b/tools/resource_tool/Makefile
+@@ -6,7 +6,8 @@ HEADERS = resource_tool.h common.h
+ SOURCES = resource_tool.c common.c
+ OBJS    = $(SOURCES:.c=.o)
+ 
+-CFLAGS  = -fshort-wchar -m32 -ffunction-sections -Os
++#CFLAGS  = -fshort-wchar -m32 -ffunction-sections -Os
++CFLAGS  = -fshort-wchar -ffunction-sections -Os
+ LDFLAGS = -Wl,--gc-sections -static
+ 
+ SOURCES += tests.c

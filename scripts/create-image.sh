@@ -131,6 +131,13 @@ if [ -f ${MOUNT_POINT}/boot/menu/extlinux.conf ]; then
   sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
 fi
 
+# for the orbsmart s92 / beelink r89 the boot loader has to be written in a special way to the disk
+if [ "$1" = "orbsmart_s92_beelink_r89" ]; then
+  export KERNEL_VERSION=`ls ${MOUNT_POINT}/boot/*Image-* | sed 's,.*Image-,,g' | sort -u`
+  ${WORKDIR}/scripts/orbsmart_s92_beelink_r89-prepare-boot.sh ${KERNEL_VERSION}
+  ${WORKDIR}/scripts/orbsmart_s92_beelink_r89-create-boot.sh
+fi
+
 umount ${MOUNT_POINT}/boot 
 umount ${MOUNT_POINT}
 

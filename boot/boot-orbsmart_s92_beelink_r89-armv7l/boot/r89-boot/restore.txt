@@ -1,0 +1,3 @@
+to restore an r89-boot backup use the following dd command
+
+zcat /boot/r89-boot-gz.dd-version | dd of=/dev/yourdisk seek=64

@@ -1,0 +1,36 @@
+IMPORTANT:
+- the partition table has to be gpt (not mbr)
+- the partition table needs to be created on the medium before it is made bootable
+- the first partition has to start at 262144 (or later)
+- no debugging kernels or big initrd files as at some point they would overwrite the first partition
+- sample fdisk partition table:
+--- snip ---
+Disk /dev/sdb: 14.9 GiB, 16021192704 bytes, 31291392 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: EA7DB81D-C8A9-C14A-B377-6E67F9136D63
+
+Device       Start      End  Sectors  Size Type
+/dev/sdb1   262144  1310719  1048576  512M Linux filesystem
+/dev/sdb2  1310720  5505023  4194304    2G Linux swap
+/dev/sdb3  5505024 31291358 25786335 12.3G Linux filesystem
+--- snip ---
+
+- seems to work with an mbr patition table too
+- first i created and saved a gpt table (fdisk g option) - not sure if this is really required
+- then i created an mbr partition table (fdisk o option) 
+--- snip ---
+Disk /dev/mmcblk0: 29.8 GiB, 32026656768 bytes, 62552064 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x0d8b7918
+
+Device         Boot   Start      End  Sectors  Size Id Type
+/dev/mmcblk0p1       262144  1310719  1048576  512M 83 Linux
+/dev/mmcblk0p2      1310720  5505023  4194304    2G 82 Linux swap / Solaris
+/dev/mmcblk0p3      5505024 62552063 57047040 27.2G 83 Linux
+--- snip ---

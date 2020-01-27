@@ -4,7 +4,7 @@
 
 if [ "$#" != "1" ]; then
   echo ""
-  echo "usage: $0 chromebook_snow|odroid_u3|all"
+  echo "usage: $0 chromebook_snow|odroid_u3|orbsmart_s92_beelink_r89|all"
   echo ""
   echo "examples: $0 odroid_u3"
   echo "          $0 all"
@@ -19,6 +19,9 @@ chromebook_snow_tree_tag="v5.4.3"
 
 odroid_u3_release_version="5.4.5-stb-exy%2B"
 odroid_u3_tree_tag="v5.4.5"
+
+orbsmart_s92_beelink_r89_release_version="5.4.14-stb-av8%2B"
+orbsmart_s92_beelink_r89_tree_tag="v5.4.14"
 
 if [ "$1" = "all" ] || [ "$1" = "chromebook_snow" ]; then
   rm -f boot/kernel-chromebook_snow-armv7l.tar.gz
@@ -56,4 +59,25 @@ if [ "$1" = "all" ] || [ "$1" = "odroid_u3" ]; then
   wget -nv https://github.com/hexdump0815/linux-mainline-and-mali-on-odroid-u3/raw/${odroid_u3_tree_tag}/misc.exy/opt-mali-exynos4412.tar.gz -O files/opengl-odroid_u3-armv7l.tar.gz
   rm -f files/opengl-fbdev-odroid_u3-armv7l.tar.gz
   wget -nv https://github.com/hexdump0815/linux-mainline-and-mali-on-odroid-u3/raw/${odroid_u3_tree_tag}/misc.exy/opt-mali-exynos4412-fbdev.tar.gz -O files/opengl-fbdev-odroid_u3-armv7l.tar.gz
+fi
+
+if [ "$1" = "all" ] || [ "$1" = "orbsmart_s92_beelink_r89" ]; then
+  rm -f boot/kernel-orbsmart_s92_beelink_r89-armv7l.tar.gz
+  wget -nv https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${orbsmart_s92_beelink_r89_release_version}/${orbsmart_s92_beelink_r89_release_version}.tar.gz -O boot/kernel-orbsmart_s92_beelink_r89-armv7l.tar.gz
+#  rm -f boot/boot-orbsmart_s92_beelink_r89-armv7l.dd
+#  wget -nv https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${orbsmart_s92_beelink_r89_tree_tag}/misc.av7/u-boot/boot-orbsmart_s92_beelink_r89-armv7l.dd -O boot/boot-orbsmart_s92_beelink_r89-armv7l.dd
+  rm -f files/gl4es-armv7l-debian.tar.gz
+  wget -nv https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${orbsmart_s92_beelink_r89_tree_tag}/misc/gl4es-armv7l-debian.tar.gz -O files/gl4es-armv7l-debian.tar.gz
+  rm -f files/gl4es-armv7l-ubuntu.tar.gz
+  wget -nv https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${orbsmart_s92_beelink_r89_tree_tag}/misc/gl4es-armv7l-ubuntu.tar.gz -O files/gl4es-armv7l-ubuntu.tar.gz
+  rm -f files/xorg-armsoc-armv7l-debian.tar.gz
+  wget -nv https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${orbsmart_s92_beelink_r89_tree_tag}/misc/xorg-armsoc-armv7l-debian.tar.gz -O files/xorg-armsoc-armv7l-debian.tar.gz
+  rm -f files/xorg-armsoc-armv7l-ubuntu.tar.gz
+  wget -nv https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${orbsmart_s92_beelink_r89_tree_tag}/misc/xorg-armsoc-armv7l-ubuntu.tar.gz -O files/xorg-armsoc-armv7l-ubuntu.tar.gz
+  rm -f files/opengl-orbsmart_s92_beelink_r89-armv7l.tar.gz
+  wget -nv https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${orbsmart_s92_beelink_r89_tree_tag}/misc/opt-mali-rk3288.tar.gz -O files/opengl-orbsmart_s92_beelink_r89-armv7l.tar.gz
+  rm -f files/opengl-fbdev-orbsmart_s92_beelink_r89-armv7l.tar.gz
+  wget -nv https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${orbsmart_s92_beelink_r89_tree_tag}/misc/opt-mali-rk3288-fbdev.tar.gz -O files/opengl-fbdev-orbsmart_s92_beelink_r89-armv7l.tar.gz
+  rm -f files/opengl-wayland-orbsmart_s92_beelink_r89-armv7l.tar.gz
+  wget -nv https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${orbsmart_s92_beelink_r89_tree_tag}/misc/opt-mali-rk3288-wayland.tar.gz -O files/opengl-wayland-orbsmart_s92_beelink_r89-armv7l.tar.gz
 fi
