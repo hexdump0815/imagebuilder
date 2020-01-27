@@ -7,6 +7,7 @@ if [ "$#" != "3" ]; then
   echo "possible system options:"
   echo "- chromebook_snow (armv7l)"
   echo "- odroid_u3 (armv7l)"
+  echo "- orbsmart_s92_beelink_r89 (armv7l)"
   echo ""
   echo "possible armversion options:"
   echo "- armv7l (32bit) userland"
@@ -19,6 +20,13 @@ export BUILD_ROOT=/compile/local/imagebuilder-root
 
 cd `dirname $0`/..
 export WORKDIR=`pwd`
+
+if [ -d ${BUILD_ROOT} ]; then
+  echo ""
+  echo "BUILD_ROOT ${BUILD_ROOT} alresdy exists - giving up for safety reasons ..."
+  echo ""
+  exit 1
+fi
 
 mkdir -p ${BUILD_ROOT}
 cd ${BUILD_ROOT}

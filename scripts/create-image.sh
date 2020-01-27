@@ -7,6 +7,7 @@ if [ "$#" != "3" ]; then
   echo "possible system options:"
   echo "- chromebook_snow (armv7l)"
   echo "- odroid_u3 (armv7l)"
+  echo "- orbsmart_s92_beelink_r89 (armv7l)"
   echo ""
   echo "possible armversion options:"
   echo "- armv7l (32bit) userland"
@@ -73,6 +74,13 @@ else
 fi
 
 mkdir -p ${IMAGE_DIR}
+
+if [ -f ${IMAGE_DIR}/${1}-${2}-${3}.img ]; then
+  echo ""
+  echo "image file ${IMAGE_DIR}/${1}-${2}-${3}.img alresdy exists - giving up for safety reasons ..."
+  echo ""
+  exit 1
+fi
 
 # we use less than the marketing capacity of the sd card as it is usually lower in reality
 # 7g for an 8g card and 14g for a 16g card - it can easily be extended to full size later
