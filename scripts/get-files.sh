@@ -14,11 +14,11 @@ fi
 
 cd `dirname $0`/..
 
-chromebook_snow_release_version="5.4.3-stb-cbe%2B"
-chromebook_snow_tree_tag="v5.4.3"
+chromebook_snow_release_version="5.4.14-stb-cbe%2B"
+chromebook_snow_tree_tag="v5.4.14"
 
-odroid_u3_release_version="5.4.5-stb-exy%2B"
-odroid_u3_tree_tag="v5.4.5"
+odroid_u3_release_version="5.4.14-stb-exy%2B"
+odroid_u3_tree_tag="v5.4.14"
 
 orbsmart_s92_beelink_r89_release_version="5.4.14-stb-av7%2B"
 orbsmart_s92_beelink_r89_tree_tag="v5.4.14"
