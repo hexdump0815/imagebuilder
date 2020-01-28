@@ -1,0 +1,2 @@
+# initialize bluetooth firmware
+btattach -B /dev/ttyS0 -P bcm -S 1500000 &

@@ -11,7 +11,7 @@ PWR_HLD: 0,0,A,0,1
 #KERNEL_IMG: 0x62008000
 #FDT_NAME: rk-kernel.dtb
 #RECOVER_KEY: 1,1,0,20,0
-# s92
-CMDLINE:console=ttyS1,115200n8 console=tty0 loglevel=8 root=/dev/mmcblk1p3 ro rootwait gpt fsck.fix=yes fsck.repair=yes net.ifnames=0 ipv6.disable=1 systemd.gpt_auto=0 stmmac.macaddr=1a:8d:a0:49:96:16 noresume initrd=0x62000000,0x00800000 mtdparts=rk29xxnand:0x00008000@0x00002000(resource),0x00008000@0x0000A000(kernel),0x00010000@0x00012000(boot)
-# s92dev
-#CMDLINE:console=ttyS1,115200n8 console=tty0 loglevel=8 root=/dev/sda3 ro rootwait gpt fsck.fix=yes fsck.repair=yes net.ifnames=0 ipv6.disable=1 systemd.gpt_auto=0 stmmac.macaddr=1a:8d:a0:49:96:16 noresume initrd=0x62000000,0x00800000 mtdparts=rk29xxnand:0x00008000@0x00002000(resource),0x00008000@0x0000A000(kernel),0x00010000@0x00012000(boot)
+# mbr partition table
+CMDLINE:console=ttyS1,115200n8 console=tty0 loglevel=8 root=/dev/mmcblk0p3 ro rootwait fsck.fix=yes fsck.repair=yes net.ifnames=0 ipv6.disable=1 systemd.gpt_auto=0 stmmac.macaddr=1a:8d:a0:49:96:16 noresume initrd=0x62000000,0x00800000 mtdparts=rk29xxnand:0x00008000@0x00002000(resource),0x00008000@0x0000A000(kernel),0x00010000@0x00012000(boot)
+# this should be used for gpt partition tables with the gpt option for the case of a corrupted primary gpt table
+#CMDLINE:console=ttyS1,115200n8 console=tty0 loglevel=8 gpt root=/dev/mmcblk0p3 ro rootwait fsck.fix=yes fsck.repair=yes net.ifnames=0 ipv6.disable=1 systemd.gpt_auto=0 stmmac.macaddr=1a:8d:a0:49:96:16 noresume initrd=0x62000000,0x00800000 mtdparts=rk29xxnand:0x00008000@0x00002000(resource),0x00008000@0x0000A000(kernel),0x00010000@0x00012000(boot)
