@@ -8,8 +8,11 @@ if [ "$#" != "3" ]; then
   echo "- chromebook_snow (armv7l)"
   echo "- odroid_u3 (armv7l)"
   echo "- orbsmart_s92_beelink_r89 (armv7l)"
-  echo "- raspberry_pi (armv7l)"
-  echo "- raspberry_pi (aarch64)"
+  echo "- raspberry_pi_2 (armv7l)"
+  echo "- raspberry_pi_3 (armv7l)"
+  echo "- raspberry_pi_4 (armv7l)"
+  echo "- raspberry_pi_3 (aarch64)"
+  echo "- raspberry_pi_4 (aarch64)"
   echo ""
   echo "possible armversion options:"
   echo "- armv7l (32bit) userland"
@@ -119,7 +122,7 @@ losetup -d /dev/loop0
 losetup --partscan /dev/loop0 ${IMAGE_DIR}/${1}-${2}-${3}.img
 
 if [ "$BOOTFS" = "fat" ]; then
-  mkfs -t fat -F32 -n bootpart /dev/loop0p$BOOTPART
+  mkfs.vfat -F32 -n BOOTPART /dev/loop0p$BOOTPART
 elif [ "$BOOTFS" = "ext4" ]; then
   mkfs -t ext4 -O ^has_journal -m 0 -L bootpart /dev/loop0p$BOOTPART
 fi
