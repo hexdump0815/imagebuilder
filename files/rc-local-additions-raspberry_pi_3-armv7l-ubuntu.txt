@@ -1,2 +1,2 @@
 # initialize bluetooth firmware - https://wiki.gentoo.org/wiki/Raspberry_Pi_3_64_bit_Install#Install_WiFi_firmware
-btattach -B /dev/ttyAMA0 -P bcm -S 3000000 &
+#btattach -B /dev/ttyAMA0 -P bcm -S 3000000 &
