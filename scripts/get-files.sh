@@ -4,7 +4,15 @@
 
 if [ "$#" != "1" ]; then
   echo ""
-  echo "usage: $0 chromebook_snow|odroid_u3|orbsmart_s92_beelink_r89|raspberry_pi_3_32|raspberry_pi_3_64|all"
+  echo "usage: $0 system"
+  echo "system can be: chromebook_snow"
+  echo "               odroid_u3"
+  echo "               orbsmart_s92_beelink_r89"
+  echo "               raspberry_pi_3_32"
+  echo "               raspberry_pi_3_64"
+  echo "               amlogic_s905_w_x_tv_box_32"
+  echo "               amlogic_s905_w_x_tv_box"
+  echo "               all"
   echo ""
   echo "examples: $0 odroid_u3"
   echo "          $0 all"
@@ -28,6 +36,12 @@ raspberry_pi_3_32_tree_tag="v5.4.14"
 
 raspberry_pi_3_64_release_version="5.4.14-stb-av8%2B"
 raspberry_pi_3_64_tree_tag="v5.4.14"
+
+raspberry_pi_4_64_release_version="5.4.13-rpi-64b%2B"
+raspberry_pi_4_64_tree_tag="v5.4.13"
+
+amlogic_s905_w_x_tv_box_release_version="5.4.14-stb-av8%2B"
+amlogic_s905_w_x_tv_box_tree_tag="v5.4.14"
 
 if [ "$1" = "all" ] || [ "$1" = "chromebook_snow" ]; then
   rm -f boot/kernel-chromebook_snow-armv7l.tar.gz
@@ -106,4 +120,53 @@ if [ "$1" = "all" ] || [ "$1" = "raspberry_pi_3_64" ]; then
 #  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${raspberry_pi_3_64_tree_tag}/misc/gl4es-aarch64-ubuntu.tar.gz -O files/gl4es-aarch64-ubuntu.tar.gz
 #  rm -f files/opengl-raspberry_pi-aarch64.tar.gz
 #  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${raspberry_pi_3_64_tree_tag}/misc/opt-mesa-raspberry-pi-aarch64.tar.gz -O files/opengl-raspberry_pi-aarch64.tar.gz
+fi
+
+if [ "$1" = "all" ] || [ "$1" = "raspberry_pi_4_64" ]; then
+  rm -f boot/kernel-raspberry_pi_4-aarch64.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-raspberry-pi-4-64bit-kernel/releases/download/${raspberry_pi_4_64_release_version}/${raspberry_pi_4_64_release_version}.tar.gz -O boot/kernel-raspberry_pi_4-aarch64.tar.gz
+#  rm -f files/gl4es-aarch64-debian.tar.gz
+#  wget -v https://github.com/hexdump0815/linux-mainline-raspberry-pi-4-64bit-kernel/raw/${raspberry_pi_4_64_tree_tag}/misc/gl4es-aarch64-debian.tar.gz -O files/gl4es-aarch64-debian.tar.gz
+#  rm -f files/gl4es-aarch64-ubuntu.tar.gz
+#  wget -v https://github.com/hexdump0815/linux-mainline-raspberry-pi-4-64bit-kernel/raw/${raspberry_pi_4_64_tree_tag}/misc/gl4es-aarch64-ubuntu.tar.gz -O files/gl4es-aarch64-ubuntu.tar.gz
+#  rm -f files/opengl-raspberry_pi-aarch64.tar.gz
+#  wget -v https://github.com/hexdump0815/linux-mainline-raspberry-pi-4-64bit-kernel/raw/${raspberry_pi_4_64_tree_tag}/misc/opt-mesa-raspberry-pi-aarch64.tar.gz -O files/opengl-raspberry_pi-aarch64.tar.gz
+fi
+
+if [ "$1" = "all" ] || [ "$1" = "amlogic_s905_w_x_tv_box_32" ]; then
+  rm -f boot/kernel-amlogic_s905_w_x_tv_box_32-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${amlogic_s905_w_x_tv_box_release_version}/${amlogic_s905_w_x_tv_box_release_version}.tar.gz -O boot/kernel-amlogic_s905_w_x_tv_box-armv7l.tar.gz
+  rm -f files/gl4es-armv7l-debian.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_s905_w_x_tv_box_tree_tag}/misc/gl4es-armv7l-debian.tar.gz -O files/gl4es-armv7l-debian.tar.gz
+  rm -f files/gl4es-armv7l-ubuntu.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_s905_w_x_tv_box_tree_tag}/misc/gl4es-armv7l-ubuntu.tar.gz -O files/gl4es-armv7l-ubuntu.tar.gz
+  rm -f files/xorg-armsoc-armv7l-debian.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_s905_w_x_tv_box_tree_tag}/misc/xorg-armsoc-armv7l-debian.tar.gz -O files/xorg-armsoc-armv7l-debian.tar.gz
+  rm -f files/xorg-armsoc-armv7l-ubuntu.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_s905_w_x_tv_box_tree_tag}/misc/xorg-armsoc-armv7l-ubuntu.tar.gz -O files/xorg-armsoc-armv7l-ubuntu.tar.gz
+  rm -f files/opengl-amlogic_s905_w_x_tv_box-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_s905_w_x_tv_box_tree_tag}/misc/opt-mali-s905-32.tar.gz -O files/opengl-amlogic_s905_w_x_tv_box-armv7l.tar.gz
+  rm -f files/opengl-fbdev-amlogic_s905_w_x_tv_box-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_s905_w_x_tv_box_tree_tag}/misc/opt-mali-s905-fbdev-32.tar.gz -O files/opengl-fbdev-amlogic_s905_w_x_tv_box-armv7l.tar.gz
+  rm -f files/opengl-wayland-amlogic_s905_w_x_tv_box-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_s905_w_x_tv_box_tree_tag}/misc/opt-mali-s905-wayland-32.tar.gz -O files/opengl-wayland-amlogic_s905_w_x_tv_box-armv7l.tar.gz
+fi
+
+if [ "$1" = "all" ] || [ "$1" = "amlogic_s905_w_x_tv_box" ]; then
+  rm -f boot/kernel-amlogic_s905_w_x_tv_box_32-aarch64.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${amlogic_s905_w_x_tv_box_release_version}/${amlogic_s905_w_x_tv_box_release_version}.tar.gz -O boot/kernel-amlogic_s905_w_x_tv_box-aarch64.tar.gz
+  rm -f files/gl4es-aarch64-debian.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_s905_w_x_tv_box_tree_tag}/misc/gl4es-aarch64-debian.tar.gz -O files/gl4es-aarch64-debian.tar.gz
+  rm -f files/gl4es-aarch64-ubuntu.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_s905_w_x_tv_box_tree_tag}/misc/gl4es-aarch64-ubuntu.tar.gz -O files/gl4es-aarch64-ubuntu.tar.gz
+  rm -f files/xorg-armsoc-aarch64-debian.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_s905_w_x_tv_box_tree_tag}/misc/xorg-armsoc-aarch64-debian.tar.gz -O files/xorg-armsoc-aarch64-debian.tar.gz
+  rm -f files/xorg-armsoc-aarch64-ubuntu.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_s905_w_x_tv_box_tree_tag}/misc/xorg-armsoc-aarch64-ubuntu.tar.gz -O files/xorg-armsoc-aarch64-ubuntu.tar.gz
+  rm -f files/opengl-amlogic_s905_w_x_tv_box-aarch64.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_s905_w_x_tv_box_tree_tag}/misc/opt-mali-s905.tar.gz -O files/opengl-amlogic_s905_w_x_tv_box-aarch64.tar.gz
+  rm -f files/opengl-fbdev-amlogic_s905_w_x_tv_box-aarch64.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_s905_w_x_tv_box_tree_tag}/misc/opt-mali-s905-fbdev.tar.gz -O files/opengl-fbdev-amlogic_s905_w_x_tv_box-aarch64.tar.gz
+  rm -f files/opengl-wayland-amlogic_s905_w_x_tv_box-aarch64.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_s905_w_x_tv_box_tree_tag}/misc/opt-mali-s905-wayland.tar.gz -O files/opengl-wayland-amlogic_s905_w_x_tv_box-aarch64.tar.gz
 fi

@@ -1,0 +1,32 @@
+[HDMI:0]
+# HDMI output mode will be used, even if no HDMI monitor is detected
+hdmi_force_hotplug=1
+
+# passthrough of DTS/AC3 even when this is not reported as supported
+#hdmi_force_edid_audio=1
+
+# in case DVI or HDMI is not discovered properly: 1=DVI mode no audio / 2 HDMI mode with audio
+#hdmi_drive=2
+
+# activate if there is a black area at the border of the screen
+#disable_overscan=1
+
+# VGA RAM size minimum 16MB (for instance without xorg)
+# max 944MB, more than 512MB do not make any sense
+gpu_mem=256
+
+# enable DRM VC4 V3D driver on top of the dispmanx display stack
+dtoverlay=vc4-fkms-v3d
+max_framebuffers=2
+
+# required for 64bit
+#armstub=armstub8-gic.bin
+armstub=armstub7.bin
+#enable_gic=1
+#arm_64bit=1
+
+# comment out to disable wifi
+#dtoverlay=disable-wifi
+
+# activate audio
+dtparam=audio=on
