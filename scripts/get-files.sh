@@ -136,6 +136,8 @@ fi
 if [ "$1" = "all" ] || [ "$1" = "amlogic_s905_w_x_tv_box_32" ]; then
   rm -f boot/kernel-amlogic_s905_w_x_tv_box_32-armv7l.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${amlogic_s905_w_x_tv_box_release_version}/${amlogic_s905_w_x_tv_box_release_version}.tar.gz -O boot/kernel-amlogic_s905_w_x_tv_box-armv7l.tar.gz
+  rm -f boot/kernel-mali-amlogic_s905_w_x_tv_box_32-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${amlogic_s905_w_x_tv_box_release_version}/${amlogic_s905_w_x_tv_box_release_version}-mali-s905.tar.gz -O boot/kernel-mali-amlogic_s905_w_x_tv_box-armv7l.tar.gz
   rm -f files/gl4es-armv7l-debian.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_s905_w_x_tv_box_tree_tag}/misc/gl4es-armv7l-debian.tar.gz -O files/gl4es-armv7l-debian.tar.gz
   rm -f files/gl4es-armv7l-ubuntu.tar.gz
@@ -155,6 +157,8 @@ fi
 if [ "$1" = "all" ] || [ "$1" = "amlogic_s905_w_x_tv_box" ]; then
   rm -f boot/kernel-amlogic_s905_w_x_tv_box_32-aarch64.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${amlogic_s905_w_x_tv_box_release_version}/${amlogic_s905_w_x_tv_box_release_version}.tar.gz -O boot/kernel-amlogic_s905_w_x_tv_box-aarch64.tar.gz
+  rm -f boot/kernel-mali-amlogic_s905_w_x_tv_box_32-aarch64.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${amlogic_s905_w_x_tv_box_release_version}/${amlogic_s905_w_x_tv_box_release_version}-mali-s905.tar.gz -O boot/kernel-mali-amlogic_s905_w_x_tv_box-aarch64.tar.gz
   rm -f files/gl4es-aarch64-debian.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_s905_w_x_tv_box_tree_tag}/misc/gl4es-aarch64-debian.tar.gz -O files/gl4es-aarch64-debian.tar.gz
   rm -f files/gl4es-aarch64-ubuntu.tar.gz
