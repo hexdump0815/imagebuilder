@@ -29,26 +29,26 @@ cd `dirname $0`/..
 export WORKDIR=`pwd`
 
 # check that everything is there and set
-if [ ! -f files/mbr-partitions-${1}-${2}.txt ] && [ ! -f files/gpt-partitions-${1}-${2}.txt ]; then
+if [ ! -f files/systems/${1}/mbr-partitions-${1}-${2}.txt ] && [ ! -f files/systems/${1}/gpt-partitions-${1}-${2}.txt ]; then
   echo ""
-  echo "files/mbr-partitions-${1}-${2}.txt or files/gpt-partitions-${1}-${2}.txt does not exist - giving up"
+  echo "files/systems/${1}/mbr-partitions-${1}-${2}.txt or files/systems/${1}/gpt-partitions-${1}-${2}.txt does not exist - giving up"
   echo ""
   exit 1
 fi
-if [ ! -f files/partition-mapping-${1}-${2}.txt ]; then
+if [ ! -f files/systems/${1}/partition-mapping-${1}-${2}.txt ]; then
   echo ""
-  echo "files/partition-mapping-${1}-${2}.txt does not exist - giving up"
+  echo "files/systems/${1}/partition-mapping-${1}-${2}.txt does not exist - giving up"
   echo ""
   exit 1
 else
   # get partition mapping info
-  . files/partition-mapping-${1}-${2}.txt
+  . files/systems/${1}/partition-mapping-${1}-${2}.txt
   # check that all required variables are set
   if [ "$BOOTFS" != "" ]; then
     echo "BOOTFS=$BOOTFS"
   else
     echo ""
-    echo "BOOTFS is not set in files/partition-mapping-${1}-${2}.txt - giving up"
+    echo "BOOTFS is not set in files/systems/${1}/partition-mapping-${1}-${2}.txt - giving up"
     echo ""
     exit
   fi
@@ -56,7 +56,7 @@ else
     echo "BOOTPART=$BOOTPART"
   else
     echo ""
-    echo "BOOTPART is not set in files/partition-mapping-${1}-${2}.txt - giving up"
+    echo "BOOTPART is not set in files/systems/${1}/partition-mapping-${1}-${2}.txt - giving up"
     echo ""
     exit
   fi
@@ -64,7 +64,7 @@ else
     echo "ROOTPART=$ROOTPART"
   else
     echo ""
-    echo "ROOTPART is not set in files/partition-mapping-${1}-${2}.txt - giving up"
+    echo "ROOTPART is not set in files/systems/${1}/partition-mapping-${1}-${2}.txt - giving up"
     echo ""
     exit
   fi
@@ -72,7 +72,7 @@ else
     echo "SWAPPART=$SWAPPART"
   else
     echo ""
-    echo "SWAPPART is not set in files/partition-mapping-${1}-${2}.txt - giving up"
+    echo "SWAPPART is not set in files/systems/${1}/partition-mapping-${1}-${2}.txt - giving up"
     echo ""
     exit
   fi
@@ -108,12 +108,12 @@ fi
 
 # old way ...
 # input file created with sfdisk -d ...
-# sfdisk ${IMAGE_DIR}/${1}-${2}-${3}.img < files/dos-partitions-${1}-${2}.txt
+# sfdisk ${IMAGE_DIR}/${1}-${2}-${3}.img < files/systems/${1}/mbr-partitions-${1}-${2}.txt
 # new way - inspired by https://github.com/jeromebrunet/libretech-image-builder/blob/libretech-cc-xenial-4.13/linux-image.sh
-if [ -f files/mbr-partitions-${1}-${2}.txt ]; then
-  fdisk /dev/loop0 < files/mbr-partitions-${1}-${2}.txt
-elif [ -f files/gpt-partitions-${1}-${2}.txt ]; then
-  fdisk /dev/loop0 < files/gpt-partitions-${1}-${2}.txt
+if [ -f files/systems/${1}/mbr-partitions-${1}-${2}.txt ]; then
+  fdisk /dev/loop0 < files/systems/${1}/mbr-partitions-${1}-${2}.txt
+elif [ -f files/systems/${1}/gpt-partitions-${1}-${2}.txt ]; then
+  fdisk /dev/loop0 < files/systems/${1}/gpt-partitions-${1}-${2}.txt
 fi
 
 # this is to make sure we really use the new partition table and have all partitions around

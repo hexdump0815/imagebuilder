@@ -74,11 +74,11 @@ fi
 if [ -d ${WORKDIR}/files/extra-files-${3} ]; then
   ( cd ${WORKDIR}/files/extra-files-${3} ; tar cf - . ) | tar xf -
 fi
-if [ -d ${WORKDIR}/files/extra-files-${1}-${2} ]; then
-  ( cd ${WORKDIR}/files/extra-files-${1}-${2} ; tar cf - . ) | tar xf -
+if [ -d ${WORKDIR}/files/systems/${1}/extra-files-${1}-${2} ]; then
+  ( cd ${WORKDIR}/files/systems/${1}/extra-files-${1}-${2} ; tar cf - . ) | tar xf -
 fi
-if [ -d ${WORKDIR}/files/extra-files-${1}-${2}-${3} ]; then
-  ( cd ${WORKDIR}/files/extra-files-${1}-${2}-${3} ; tar cf - . ) | tar xf -
+if [ -d ${WORKDIR}/files/systems/${1}/extra-files-${1}-${2}-${3} ]; then
+  ( cd ${WORKDIR}/files/systems/${1}/extra-files-${1}-${2}-${3} ; tar cf - . ) | tar xf -
 fi
 if [ -f ${WORKDIR}/downloads/opengl-${1}-${2}.tar.gz ]; then
   tar --numeric-owner -xzf ${WORKDIR}/downloads/opengl-${1}-${2}.tar.gz
@@ -98,11 +98,11 @@ fi
 if [ -f ${WORKDIR}/downloads/gl4es-${2}-${3}.tar.gz ]; then
   tar --numeric-owner -xzf ${WORKDIR}/downloads/gl4es-${2}-${3}.tar.gz
 fi
-if [ -f ${WORKDIR}/files/rc-local-additions-${1}-${2}-${3}.txt ]; then
+if [ -f ${WORKDIR}/files/systems/${1}/rc-local-additions-${1}-${2}-${3}.txt ]; then
   echo "" >> etc/rc.local
   echo "# additions for ${1}-${2}-${3}" >> etc/rc.local
   echo "" >> etc/rc.local
-  cat ${WORKDIR}/files/rc-local-additions-${1}-${2}-${3}.txt >> etc/rc.local
+  cat ${WORKDIR}/files/systems/${1}/rc-local-additions-${1}-${2}-${3}.txt >> etc/rc.local
 fi
 echo "" >> etc/rc.local
 echo "exit 0" >> etc/rc.local
@@ -132,8 +132,8 @@ mv -f ${BUILD_ROOT}/tmp/fsck.org ${BUILD_ROOT}/usr/share/initramfs-tools/hooks/f
 cd ${BUILD_ROOT}
 
 # post install script per system
-if [ -x ${WORKDIR}/files/postinstall-${1}-${2}-${3}.sh ]; then
-  ${WORKDIR}/files/postinstall-${1}-${2}-${3}.sh
+if [ -x ${WORKDIR}/files/systems/${1}/postinstall-${1}-${2}-${3}.sh ]; then
+  ${WORKDIR}/files/systems/${1}/postinstall-${1}-${2}-${3}.sh
 fi
 
 cd ${WORKDIR}
