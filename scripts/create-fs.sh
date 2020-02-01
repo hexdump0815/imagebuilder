@@ -80,20 +80,23 @@ fi
 if [ -d ${WORKDIR}/files/extra-files-${1}-${2}-${3} ]; then
   ( cd ${WORKDIR}/files/extra-files-${1}-${2}-${3} ; tar cf - . ) | tar xf -
 fi
-if [ -f ${WORKDIR}/files/opengl-${1}-${2}.tar.gz ]; then
-  tar --numeric-owner -xzf ${WORKDIR}/files/opengl-${1}-${2}.tar.gz
+if [ -f ${WORKDIR}/downloads/opengl-${1}-${2}.tar.gz ]; then
+  tar --numeric-owner -xzf ${WORKDIR}/downloads/opengl-${1}-${2}.tar.gz
 fi
-if [ -f ${WORKDIR}/files/opengl-fbdev-${1}-${2}.tar.gz ]; then
-  tar --numeric-owner -xzf ${WORKDIR}/files/opengl-fbdev-${1}-${2}.tar.gz
+if [ -f ${WORKDIR}/downloads/opengl-fbdev-${1}-${2}.tar.gz ]; then
+  tar --numeric-owner -xzf ${WORKDIR}/downloads/opengl-fbdev-${1}-${2}.tar.gz
 fi
-if [ -f ${WORKDIR}/files/opengl-wayland-${1}-${2}.tar.gz ]; then
-  tar --numeric-owner -xzf ${WORKDIR}/files/opengl-wayland-${1}-${2}.tar.gz
+if [ -f ${WORKDIR}/downloads/opengl-wayland-${1}-${2}.tar.gz ]; then
+  tar --numeric-owner -xzf ${WORKDIR}/downloads/opengl-wayland-${1}-${2}.tar.gz
 fi
-if [ -f ${WORKDIR}/files/xorg-armsoc-${2}-${3}.tar.gz ]; then
-  tar --numeric-owner -xzf ${WORKDIR}/files/xorg-armsoc-${2}-${3}.tar.gz
+if [ -f ${WORKDIR}/downloads/opengl-rpi-${2}-${3}.tar.gz ]; then
+  tar --numeric-owner -xzf ${WORKDIR}/downloads/opengl-rpi-${2}-${3}.tar.gz
 fi
-if [ -f ${WORKDIR}/files/gl4es-${2}-${3}.tar.gz ]; then
-  tar --numeric-owner -xzf ${WORKDIR}/files/gl4es-${2}-${3}.tar.gz
+if [ -f ${WORKDIR}/downloads/xorg-armsoc-${2}-${3}.tar.gz ]; then
+  tar --numeric-owner -xzf ${WORKDIR}/downloads/xorg-armsoc-${2}-${3}.tar.gz
+fi
+if [ -f ${WORKDIR}/downloads/gl4es-${2}-${3}.tar.gz ]; then
+  tar --numeric-owner -xzf ${WORKDIR}/downloads/gl4es-${2}-${3}.tar.gz
 fi
 if [ -f ${WORKDIR}/files/rc-local-additions-${1}-${2}-${3}.txt ]; then
   echo "" >> etc/rc.local
