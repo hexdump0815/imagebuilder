@@ -3,5 +3,5 @@ enable_uart=1
 boot_delay=1
 gpu_mem=16
 dwc_otg.speed=1
-disable_splash=1
+#disable_splash=1
 avoid_warnings=2

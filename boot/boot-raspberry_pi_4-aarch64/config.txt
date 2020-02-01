@@ -1,31 +1,72 @@
-[HDMI:0]
-# HDMI output mode will be used, even if no HDMI monitor is detected
-hdmi_force_hotplug=1
+# Get more options/information on http://elinux.org/RPiconfig
+# or on https://www.raspberrypi.org/documentation/configuration/config-txt.md
+#
+# !!!!! This file will get overwritten by updates. Please use !!!!!
+# !!!!! extraconfig.txt if you want to set additional         !!!!!
+# !!!!! configuration options or add dt overlays.             !!!!!
 
-# passthrough of DTS/AC3 even when this is not reported as supported
-#hdmi_force_edid_audio=1
+# Our kernels are located on a Linux partition. Chainload U-Boot to load them.
+kernel=u-boot.bin
 
-# in case DVI or HDMI is not discovered properly: 1=DVI mode no audio / 2 HDMI mode with audio
-#hdmi_drive=2
+# Use 32 MB for GPU for all RPis (Min 16 - Max 192 MB)
+# We don't need that much memory reserved for it, because we drive most hardware
+# from Linux, not the VPU OS
+gpu_mem=32
 
-# activate if there is a black area at the border of the screen
-#disable_overscan=1
+# Turbo mode: 0 = enable dynamic freq/voltage - 1 = always max
+force_turbo=0
+# Start in turbo mode for 30 seconds or until cpufreq sets a frequency
+initial_turbo=30
 
-# VGA RAM size minimum 16MB (for instance without xorg)
-# max 944MB, more than 512MB do not make any sense
-gpu_mem=256
+# DO NOT overvoltage manually to not void warranty!
+over_voltage=0
 
-# enable DRM VC4 V3D driver on top of the dispmanx display stack
-dtoverlay=vc4-fkms-v3d
-max_framebuffers=2
+# Fix mini UART input frequency, and setup/enable up the UART.
+enable_uart=1
 
-# required for 64bit
-armstub=armstub8-gic.bin
-enable_gic=1
-arm_64bit=1
+# Disable warning overlays as they don't work well together with linux's graphical output
+avoid_warnings=1
 
-# comment out to disable wifi
-#dtoverlay=disable-wifi
+# This overlay fixes divergences between the RPi device tree and what
+# upstream provides
+dtoverlay=upstream
 
-# activate audio
-dtparam=audio=on
+# overscan is only needed on old TV sets and if analog gear is in the chain (e.g. DPI)
+disable_overscan=1
+
+[pi1]
+
+# Max ARM freq (default 700 MHz)
+arm_freq=840
+
+# Max core (GPU) freq (default 250 MHz)
+core_freq=375
+
+# SDRAM freq (default 400)
+sdram_freq=400
+
+[pi3]
+
+# These are not applied automatically? Needed to use respective upstream drivers.
+dtoverlay=vc4-kms-v3d
+dtoverlay=dwc2
+
+[pi4]
+
+# This is temporarly needed while we solve bsc#1158406
+gpu_mem=64
+
+dtoverlay=disable-vc4
+dtoverlay=rpi4-cma
+dtoverlay=rpi4-pcie-ib-size-fix
+dtoverlay=rpi4-genet
+dtoverlay=rpi4-thermal
+
+[all]
+
+# Allow u-boot to set arm_control
+include ubootconfig.txt
+
+# Allow user overrides of config options
+include extraconfig.txt
+
