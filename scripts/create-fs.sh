@@ -60,9 +60,9 @@ cp /etc/resolv.conf ${BUILD_ROOT}/etc/resolv.conf
 chroot ${BUILD_ROOT} /create-chroot.sh ${3}
 
 cd ${BUILD_ROOT}/
-tar --numeric-owner -xzf ${WORKDIR}/boot/kernel-${1}-${2}.tar.gz
-if [ -f ${WORKDIR}/boot/kernel-mali-${1}-${2}.tar.gz ]; then
-  tar --numeric-owner -xzf ${WORKDIR}/boot/kernel-mali-${1}-${2}.tar.gz
+tar --numeric-owner -xzf ${WORKDIR}/downloads/kernel-${1}-${2}.tar.gz
+if [ -f ${WORKDIR}/downloads/kernel-mali-${1}-${2}.tar.gz ]; then
+  tar --numeric-owner -xzf ${WORKDIR}/downloads/kernel-mali-${1}-${2}.tar.gz
 fi
 cp -r ${WORKDIR}/boot/boot-${1}-${2}/* boot
 
