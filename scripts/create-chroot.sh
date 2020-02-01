@@ -3,12 +3,14 @@
 # do not ask anything
 export DEBIAN_FRONTEND=noninteractive
 
+export LANG=C
+
 apt-get update
-apt-get -y upgrade
+apt-get -yq upgrade
 if [ "$1" = "ubuntu" ]; then 
-  LANG=C apt-get -yq install locales vim openssh-server sudo net-tools ifupdown iputils-ping kmod less u-boot-tools usbutils dosfstools mesa-utils mesa-utils-extra console-data xubuntu-desktop linux-firmware libreoffice
+  apt-get -yq install locales vim openssh-server sudo net-tools ifupdown iputils-ping kmod less u-boot-tools usbutils dosfstools mesa-utils mesa-utils-extra console-data xubuntu-desktop linux-firmware libreoffice
 elif [ "$1" = "debian" ]; then 
-  LANG=C apt-get -yq install locales vim openssh-server sudo net-tools ifupdown iputils-ping kmod less u-boot-tools usbutils dosfstools mesa-utils mesa-utils-extra console-data task-xfce-desktop xserver-xorg-input-synaptics blueman firmware-linux-free firmware-linux firmware-linux-nonfree firmware-brcm80211 firmware-samsung firmware-libertas pulseaudio pavucontrol
+  apt-get -yq install locales vim openssh-server sudo net-tools ifupdown iputils-ping kmod less u-boot-tools usbutils dosfstools mesa-utils mesa-utils-extra console-data task-xfce-desktop xserver-xorg-input-synaptics blueman firmware-linux-free firmware-linux firmware-linux-nonfree firmware-brcm80211 firmware-samsung firmware-libertas pulseaudio pavucontrol
 fi
 
 systemctl enable ssh
@@ -27,7 +29,7 @@ sed -i 's,# en_US ISO-8859-1,en_US ISO-8859-1,g;s,# en_US.UTF-8 UTF-8,en_US.UTF-
 locale-gen
 
 # remove dmidecode (only on ubuntu) as it crashes on some arm devices on boot
-apt-get -y remove dmidecode
+apt-get -yq remove dmidecode
 
-apt-get -y auto-remove
+apt-get -yq auto-remove
 apt-get clean
