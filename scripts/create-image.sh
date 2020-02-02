@@ -25,7 +25,7 @@ fi
 
 export BUILD_ROOT=/compile/local/imagebuilder-root
 export IMAGE_DIR=/compile/local/imagebuilder-diskimage
-export MOUNT_POINT=/mnt
+export MOUNT_POINT=/tmp/imagebuilder-mnt
 
 cd `dirname $0`/..
 export WORKDIR=`pwd`
@@ -81,6 +81,7 @@ else
 fi
 
 mkdir -p ${IMAGE_DIR}
+mkdir -p ${MOUNT_POINT}
 
 if [ -f ${IMAGE_DIR}/${1}-${2}-${3}.img ]; then
   echo ""
@@ -157,6 +158,8 @@ umount ${MOUNT_POINT}/boot
 umount ${MOUNT_POINT}
 
 losetup -d /dev/loop0
+
+rmdir ${MOUNT_POINT}
 
 echo ""
 echo "the image is now ready at ${IMAGE_DIR}/${1}-${2}-${3}.img"
