@@ -9,6 +9,7 @@ if [ "$#" != "3" ]; then
   echo "- chromebook_veyron (armv7l) (not yet implemented)"
   echo "- odroid_u3 (armv7l)"
   echo "- orbsmart_s92_beelink_r89 (armv7l)"
+  echo "- tinkerboard (armv7l)"
   echo "- raspberry_pi (armv7l)"
   echo "- raspberry_pi (aarch64)"
   echo "- raspberry_pi_4 (armv7l) (not yet implemented)"

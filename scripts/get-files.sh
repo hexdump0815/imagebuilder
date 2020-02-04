@@ -11,6 +11,7 @@ if [ "$#" != "2" ]; then
   echo "               chromebook veyron armv7l) (not implemented yet)"
   echo "               odroid_u3 (armv7l)"
   echo "               orbsmart_s92_beelink_r89 (armv7l)"
+  echo "               tinkerboard (armv7l)"
   echo "               raspberry_pi (armv7l)"
   echo "               raspberry_pi (aarch64)"
   echo "               raspberry_pi_4 (armv7l) (not implemented yet)"
@@ -49,6 +50,10 @@ odroid_u3_tree_tag="master"
 orbsmart_s92_beelink_r89_release_version="5.4.14-stb-av7%2B"
 #orbsmart_s92_beelink_r89_tree_tag="v5.4.14"
 orbsmart_s92_beelink_r89_tree_tag="master"
+
+tinkerboard_release_version="5.4.14-stb-av7%2B"
+#tinkerboard_tree_tag="v5.4.14"
+tinkerboard_tree_tag="master"
 
 raspberry_pi_armv7l_release_version="5.4.14-stb-av7%2B"
 #raspberry_pi_armv7l_tree_tag="v5.4.14"
@@ -107,6 +112,8 @@ fi
 if ([ "$1" = "all" ] || [ "$1" = "orbsmart_s92_beelink_r89" ]) && [ "$2" = "armv7l" ]; then
   rm -f downloads/kernel-orbsmart_s92_beelink_r89-armv7l.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${orbsmart_s92_beelink_r89_release_version}/${orbsmart_s92_beelink_r89_release_version}.tar.gz -O downloads/kernel-orbsmart_s92_beelink_r89-armv7l.tar.gz
+  rm -f downloads/kernel-mali-orbsmart_s92_beelink_r89-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${orbsmart_s92_beelink_r89_release_version}/${orbsmart_s92_beelink_r89_release_version}-mali-rk3288.tar.gz -O downloads/kernel-mali-orbsmart_s92_beelink_r89-armv7l.tar.gz
   rm -f downloads/gl4es-armv7l-debian.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${orbsmart_s92_beelink_r89_tree_tag}/misc/gl4es-armv7l-debian.tar.gz -O downloads/gl4es-armv7l-debian.tar.gz
   rm -f downloads/gl4es-armv7l-ubuntu.tar.gz
@@ -121,6 +128,27 @@ if ([ "$1" = "all" ] || [ "$1" = "orbsmart_s92_beelink_r89" ]) && [ "$2" = "armv
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${orbsmart_s92_beelink_r89_tree_tag}/misc/opt-mali-rk3288-fbdev-armv7l.tar.gz -O downloads/opengl-fbdev-orbsmart_s92_beelink_r89-armv7l.tar.gz
   rm -f downloads/opengl-wayland-orbsmart_s92_beelink_r89-armv7l.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${orbsmart_s92_beelink_r89_tree_tag}/misc/opt-mali-rk3288-wayland-armv7l.tar.gz -O downloads/opengl-wayland-orbsmart_s92_beelink_r89-armv7l.tar.gz
+fi
+
+if ([ "$1" = "all" ] || [ "$1" = "tinkerboard" ]) && [ "$2" = "armv7l" ]; then
+  rm -f downloads/kernel-tinkerboard-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${tinkerboard_release_version}/${tinkerboard_release_version}.tar.gz -O downloads/kernel-tinkerboard-armv7l.tar.gz
+  rm -f downloads/kernel-mali-tinkerboard-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${tinkerboard_release_version}/${tinkerboard_release_version}-mali-rk3288.tar.gz -O downloads/kernel-mali-tinkerboard-armv7l.tar.gz
+  rm -f downloads/gl4es-armv7l-debian.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${tinkerboard_tree_tag}/misc/gl4es-armv7l-debian.tar.gz -O downloads/gl4es-armv7l-debian.tar.gz
+  rm -f downloads/gl4es-armv7l-ubuntu.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${tinkerboard_tree_tag}/misc/gl4es-armv7l-ubuntu.tar.gz -O downloads/gl4es-armv7l-ubuntu.tar.gz
+  rm -f downloads/xorg-armsoc-armv7l-debian.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${tinkerboard_tree_tag}/misc/xorg-armsoc-armv7l-debian.tar.gz -O downloads/xorg-armsoc-armv7l-debian.tar.gz
+  rm -f downloads/xorg-armsoc-armv7l-ubuntu.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${tinkerboard_tree_tag}/misc/xorg-armsoc-armv7l-ubuntu.tar.gz -O downloads/xorg-armsoc-armv7l-ubuntu.tar.gz
+  rm -f downloads/opengl-tinkerboard-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${tinkerboard_tree_tag}/misc/opt-mali-rk3288-armv7l.tar.gz -O downloads/opengl-tinkerboard-armv7l.tar.gz
+  rm -f downloads/opengl-fbdev-tinkerboard-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${tinkerboard_tree_tag}/misc/opt-mali-rk3288-fbdev-armv7l.tar.gz -O downloads/opengl-fbdev-tinkerboard-armv7l.tar.gz
+  rm -f downloads/opengl-wayland-tinkerboard-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${tinkerboard_tree_tag}/misc/opt-mali-rk3288-wayland-armv7l.tar.gz -O downloads/opengl-wayland-tinkerboard-armv7l.tar.gz
 fi
 
 if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi" ]) && [ "$2" = "armv7l" ]; then
