@@ -99,22 +99,19 @@ dd if=/dev/zero of=${IMAGE_DIR}/${1}-${2}-${3}.img bs=1024k count=1 seek=$((7*10
 
 losetup /dev/loop0 ${IMAGE_DIR}/${1}-${2}-${3}.img
 
-if [ -f ${WORKDIR}/boot/boot-${1}-${2}.dd ]; then
-  dd if=${WORKDIR}/boot/boot-${1}-${2}.dd of=/dev/loop0
+if [ -f ${WORKDIR}/downloads/boot-${1}-${2}.dd ]; then
+  dd if=${WORKDIR}/downloads/boot-${1}-${2}.dd of=/dev/loop0
 fi
 
-# for the chromebook snow an initial partition table is already in the boot.dd which needs to be fixed up now
-if [ "$1" = "chromebook_snow" ]; then
+# for the arm chromebooks an initial partition table is already in the boot.dd which needs to be fixed up now
+if [ "$1" = "chromebook_snow" ] || [ "$1" = "chromebook_veyron" ]; then
   # fix
   sgdisk -C -e -G /dev/loop0
   # verify
   sgdisk -v /dev/loop0
 fi
 
-# old way ...
-# input file created with sfdisk -d ...
-# sfdisk ${IMAGE_DIR}/${1}-${2}-${3}.img < files/systems/${1}/mbr-partitions-${1}-${2}.txt
-# new way - inspired by https://github.com/jeromebrunet/libretech-image-builder/blob/libretech-cc-xenial-4.13/linux-image.sh
+# inspired by https://github.com/jeromebrunet/libretech-image-builder/blob/libretech-cc-xenial-4.13/linux-image.sh
 if [ -f files/systems/${1}/mbr-partitions-${1}-${2}.txt ]; then
   fdisk /dev/loop0 < files/systems/${1}/mbr-partitions-${1}-${2}.txt
 elif [ -f files/systems/${1}/gpt-partitions-${1}-${2}.txt ]; then
