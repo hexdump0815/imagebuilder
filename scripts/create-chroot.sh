@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 # do not ask anything
 export DEBIAN_FRONTEND=noninteractive
