@@ -168,7 +168,7 @@ if ([ "$1" = "all" ] || [ "$1" = "amlogic_gx" ]) && [ "$2" = "armv7l" ]; then
   rm -f downloads/kernel-mali-amlogic_gx_armv7l-armv7l.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${amlogic_gx_release_version}/${amlogic_gx_release_version}-mali-s905.tar.gz -O downloads/kernel-mali-amlogic_gx-armv7l.tar.gz
   rm -f downloads/boot-amlogic_gx-armv7l.dd
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_gx_tree_tag}/misc/u-boot/boot-odroid_c2-aarch64.dd -O downloads/boot-amlogic_gx-armv7l.dd
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_gx_tree_tag}/misc.av8/u-boot/boot-odroid_c2-aarch64.dd -O downloads/boot-amlogic_gx-armv7l.dd
   rm -f downloads/gl4es-armv7l-debian.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_gx_tree_tag}/misc/gl4es-armv7l-debian.tar.gz -O downloads/gl4es-armv7l-debian.tar.gz
   rm -f downloads/gl4es-armv7l-ubuntu.tar.gz
@@ -189,7 +189,7 @@ if ([ "$1" = "all" ] || [ "$1" = "amlogic_gx" ]) && [ "$2" = "aarch64" ]; then
   rm -f downloads/kernel-mali-amlogic_gx_armv7l-aarch64.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${amlogic_gx_release_version}/${amlogic_gx_release_version}-mali-s905.tar.gz -O downloads/kernel-mali-amlogic_gx-aarch64.tar.gz
   rm -f downloads/boot-amlogic_gx-aarch64.dd
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_gx_tree_tag}/misc/u-boot/boot-odroid_c2-aarch64.dd -O downloads/boot-amlogic_gx-aarch64.dd
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_gx_tree_tag}/misc.av8/u-boot/boot-odroid_c2-aarch64.dd -O downloads/boot-amlogic_gx-aarch64.dd
   rm -f downloads/gl4es-aarch64-debian.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_gx_tree_tag}/misc/gl4es-aarch64-debian.tar.gz -O downloads/gl4es-aarch64-debian.tar.gz
   rm -f downloads/gl4es-aarch64-ubuntu.tar.gz
