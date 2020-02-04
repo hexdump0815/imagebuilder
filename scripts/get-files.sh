@@ -123,7 +123,7 @@ if ([ "$1" = "all" ] || [ "$1" = "orbsmart_s92_beelink_r89" ]) && [ "$2" = "armv
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${orbsmart_s92_beelink_r89_tree_tag}/misc/opt-mali-rk3288-wayland-armv7l.tar.gz -O downloads/opengl-wayland-orbsmart_s92_beelink_r89-armv7l.tar.gz
 fi
 
-if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi-armv7l" ]) && [ "$2" = "armv7l" ]; then
+if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi" ]) && [ "$2" = "armv7l" ]; then
   rm -f downloads/kernel-raspberry_pi-armv7l.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${raspberry_pi_armv7l_release_version}/${raspberry_pi_armv7l_release_version}.tar.gz -O downloads/kernel-raspberry_pi-armv7l.tar.gz
   rm -f downloads/gl4es-armv7l-debian.tar.gz
@@ -136,7 +136,7 @@ if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi-armv7l" ]) && [ "$2" = "armv7l" ]
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${raspberry_pi_armv7l_tree_tag}/misc/opt-mesa-rpi-armv7l-ubuntu.tar.gz -O downloads/opengl-rpi-armv7l-ubuntu.tar.gz
 fi
 
-if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi-aarch64" ]) && [ "$2" = "aarch64" ]; then
+if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi" ]) && [ "$2" = "aarch64" ]; then
   rm -f downloads/kernel-raspberry_pi-aarch64.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${raspberry_pi_aarch64_release_version}/${raspberry_pi_aarch64_release_version}.tar.gz -O downloads/kernel-raspberry_pi-aarch64.tar.gz
   rm -f downloads/gl4es-aarch64-debian.tar.gz
@@ -149,7 +149,7 @@ if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi-aarch64" ]) && [ "$2" = "aarch64"
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${raspberry_pi_aarch64_tree_tag}/misc/opt-mesa-rpi-aarch64-ubuntu.tar.gz -O downloads/opengl-rpi-aarch64-ubuntu.tar.gz
 fi
 
-if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi_4-aarch64" ]) && [ "$2" = "aarch64" ]; then
+if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi_4" ]) && [ "$2" = "aarch64" ]; then
   rm -f downloads/kernel-raspberry_pi_4-aarch64.tar.gz
   wget -v https://github.com/hexdump0815/linux-raspberry-pi-4-kernel/releases/download/${raspberry_pi_4_aarch64_release_version}/${raspberry_pi_4_aarch64_release_version}.tar.gz -O downloads/kernel-raspberry_pi_4-aarch64.tar.gz
   rm -f downloads/gl4es-aarch64-debian.tar.gz
@@ -162,7 +162,7 @@ if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi_4-aarch64" ]) && [ "$2" = "aarch6
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${raspberry_pi_aarch64_tree_tag}/misc/opt-mesa-rpi-aarch64-ubuntu.tar.gz -O downloads/opengl-rpi-aarch64-ubuntu.tar.gz
 fi
 
-if ([ "$1" = "all" ] || [ "$1" = "amlogic_gx-armv7l" ]) && [ "$2" = "armv7l" ]; then
+if ([ "$1" = "all" ] || [ "$1" = "amlogic_gx" ]) && [ "$2" = "armv7l" ]; then
   rm -f downloads/kernel-amlogic_gx_armv7l-armv7l.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${amlogic_gx_release_version}/${amlogic_gx_release_version}.tar.gz -O downloads/kernel-amlogic_gx-armv7l.tar.gz
   rm -f downloads/kernel-mali-amlogic_gx_armv7l-armv7l.tar.gz
@@ -183,7 +183,7 @@ if ([ "$1" = "all" ] || [ "$1" = "amlogic_gx-armv7l" ]) && [ "$2" = "armv7l" ]; 
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_gx_tree_tag}/misc/opt-mali-s905-wayland-armv7l.tar.gz -O downloads/opengl-wayland-amlogic_gx-armv7l.tar.gz
 fi
 
-if ([ "$1" = "all" ] || [ "$1" = "amlogic_gx-aarch64" ]) && [ "$2" = "aarch64" ]; then
+if ([ "$1" = "all" ] || [ "$1" = "amlogic_gx" ]) && [ "$2" = "aarch64" ]; then
   rm -f downloads/kernel-amlogic_gx_armv7l-aarch64.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${amlogic_gx_release_version}/${amlogic_gx_release_version}.tar.gz -O downloads/kernel-amlogic_gx-aarch64.tar.gz
   rm -f downloads/kernel-mali-amlogic_gx_armv7l-aarch64.tar.gz
