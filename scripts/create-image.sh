@@ -130,7 +130,7 @@ elif [ "$BOOTFS" = "ext4" ]; then
   mkfs -t ext4 -O ^has_journal -m 0 -L bootpart /dev/loop0p$BOOTPART
 fi
 mkswap -L swappart /dev/loop0p$SWAPPART
-mkfs -t ext4 -O ^has_journal -L rootpart /dev/loop0p$ROOTPART
+mkfs -t ext4 -O ^has_journal -m 2 -L rootpart /dev/loop0p$ROOTPART
 
 mount /dev/loop0p$ROOTPART ${MOUNT_POINT}
 mkdir ${MOUNT_POINT}/boot
