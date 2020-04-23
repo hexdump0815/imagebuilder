@@ -135,6 +135,8 @@ if ([ "$1" = "all" ] || [ "$1" = "tinkerboard" ]) && [ "$2" = "armv7l" ]; then
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${tinkerboard_release_version}/${tinkerboard_release_version}.tar.gz -O downloads/kernel-tinkerboard-armv7l.tar.gz
   rm -f downloads/kernel-mali-tinkerboard-armv7l.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${tinkerboard_release_version}/${tinkerboard_release_version}-mali-rk3288.tar.gz -O downloads/kernel-mali-tinkerboard-armv7l.tar.gz
+  rm -f downloads/boot-tinkerboard-armv7l.dd
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${tinkerboard_tree_tag}/misc.av7/u-boot/boot-tinkerboard-armv7l.dd -O downloads/boot-tinkerboard-armv7l.dd
   rm -f downloads/gl4es-armv7l-debian.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${tinkerboard_tree_tag}/misc/gl4es-armv7l-debian.tar.gz -O downloads/gl4es-armv7l-debian.tar.gz
   rm -f downloads/gl4es-armv7l-ubuntu.tar.gz
