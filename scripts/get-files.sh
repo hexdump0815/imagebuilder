@@ -41,35 +41,35 @@ set -e
 
 chromebook_snow_release_version="5.4.14-stb-cbe%2B"
 #chromebook_snow_tree_tag="v5.4.14"
-chromebook_snow_tree_tag="master"
+chromebook_snow_tree_tag="c2e1cc0f145a64dfeec87ed6e60a97ce605535c0"
 
 odroid_u3_release_version="5.4.14-stb-exy%2B"
 #odroid_u3_tree_tag="v5.4.14"
-odroid_u3_tree_tag="master"
+odroid_u3_tree_tag="c2e1cc0f145a64dfeec87ed6e60a97ce605535c0"
 
 orbsmart_s92_beelink_r89_release_version="5.4.14-stb-av7%2B"
 #orbsmart_s92_beelink_r89_tree_tag="v5.4.14"
-orbsmart_s92_beelink_r89_tree_tag="master"
+orbsmart_s92_beelink_r89_tree_tag="c2e1cc0f145a64dfeec87ed6e60a97ce605535c0"
 
 tinkerboard_release_version="5.4.14-stb-av7%2B"
 #tinkerboard_tree_tag="v5.4.14"
-tinkerboard_tree_tag="master"
+tinkerboard_tree_tag="c2e1cc0f145a64dfeec87ed6e60a97ce605535c0"
 
 raspberry_pi_armv7l_release_version="5.4.14-stb-av7%2B"
 #raspberry_pi_armv7l_tree_tag="v5.4.14"
-raspberry_pi_armv7l_tree_tag="master"
+raspberry_pi_armv7l_tree_tag="c2e1cc0f145a64dfeec87ed6e60a97ce605535c0"
 
 raspberry_pi_aarch64_release_version="5.4.14-stb-av8%2B"
 #raspberry_pi_aarch64_tree_tag="v5.4.14"
-raspberry_pi_aarch64_tree_tag="master"
+raspberry_pi_aarch64_tree_tag="c2e1cc0f145a64dfeec87ed6e60a97ce605535c0"
 
 raspberry_pi_4_aarch64_release_version="5.4.13-rpi-64b%2B"
 #raspberry_pi_4_aarch64_tree_tag="v5.4.13"
-raspberry_pi_4_aarch64_tree_tag="master"
+raspberry_pi_4_aarch64_tree_tag="d2fc980d27675e5de457a26cc65cb611012a4353"
 
 amlogic_gx_release_version="5.4.14-stb-av8%2B"
 #amlogic_gx_tree_tag="v5.4.14"
-amlogic_gx_tree_tag="master"
+amlogic_gx_tree_tag="c2e1cc0f145a64dfeec87ed6e60a97ce605535c0"
 
 if ([ "$1" = "all" ] || [ "$1" = "chromebook_snow" ]) && [ "$2" = "armv7l" ]; then
   rm -f downloads/kernel-chromebook_snow-armv7l.tar.gz
