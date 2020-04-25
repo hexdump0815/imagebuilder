@@ -136,7 +136,7 @@ mount /dev/loop0p$ROOTPART ${MOUNT_POINT}
 mkdir ${MOUNT_POINT}/boot
 mount /dev/loop0p$BOOTPART ${MOUNT_POINT}/boot
 
-rsync -a ${BUILD_ROOT}/ ${MOUNT_POINT}
+rsync -axADHSX --no-inc-recursive ${BUILD_ROOT}/ ${MOUNT_POINT}
 
 ROOT_PARTUUID=$(blkid | grep "/dev/loop0p$ROOTPART" | awk '{print $5}' | sed 's,",,g')
 
