@@ -1,72 +1,95 @@
-# Get more options/information on http://elinux.org/RPiconfig
-# or on https://www.raspberrypi.org/documentation/configuration/config-txt.md
-#
-# !!!!! This file will get overwritten by updates. Please use !!!!!
-# !!!!! extraconfig.txt if you want to set additional         !!!!!
-# !!!!! configuration options or add dt overlays.             !!!!!
+# For more options and information see
+# http://www.raspberrypi.org/documentation/configuration/config-txt.md
+# Some settings may impact device functionality. See link above for details
 
-# Our kernels are located on a Linux partition. Chainload U-Boot to load them.
-kernel=u-boot.bin
+# uncomment if you get no picture on HDMI for a default "safe" mode
+#hdmi_safe=1
 
-# Use 32 MB for GPU for all RPis (Min 16 - Max 192 MB)
-# We don't need that much memory reserved for it, because we drive most hardware
-# from Linux, not the VPU OS
-gpu_mem=32
-
-# Turbo mode: 0 = enable dynamic freq/voltage - 1 = always max
-force_turbo=0
-# Start in turbo mode for 30 seconds or until cpufreq sets a frequency
-initial_turbo=30
-
-# DO NOT overvoltage manually to not void warranty!
-over_voltage=0
-
-# Fix mini UART input frequency, and setup/enable up the UART.
-enable_uart=1
-
-# Disable warning overlays as they don't work well together with linux's graphical output
-avoid_warnings=1
-
-# This overlay fixes divergences between the RPi device tree and what
-# upstream provides
-dtoverlay=upstream
-
-# overscan is only needed on old TV sets and if analog gear is in the chain (e.g. DPI)
+# uncomment this if your display has a black border of unused pixels visible
+# and your display can output without overscan
 disable_overscan=1
 
-[pi1]
+# uncomment the following to adjust overscan. Use positive numbers if console
+# goes off screen, and negative if there is too much border
+#overscan_left=24
+#overscan_right=24
+#overscan_top=24
+#overscan_bottom=24
 
-# Max ARM freq (default 700 MHz)
-arm_freq=840
+# uncomment to force a console size. By default it will be display's size minus
+# overscan.
+#framebuffer_width=1280
+#framebuffer_height=720
 
-# Max core (GPU) freq (default 250 MHz)
-core_freq=375
+# uncomment if hdmi display is not detected and composite is being output
+#hdmi_force_hotplug=1
 
-# SDRAM freq (default 400)
-sdram_freq=400
+# uncomment to force a specific HDMI mode (this will force VGA)
+#hdmi_group=1
+#hdmi_mode=1
+
+# uncomment to force a HDMI mode rather than DVI. This can make audio work in
+# DMT (computer monitor) modes
+#hdmi_drive=2
+
+# uncomment to increase signal to HDMI, if you have interference, blanking, or
+# no display
+#config_hdmi_boost=5
+
+# uncomment for composite PAL
+#sdtv_mode=2
+
+# Uncomment some or all of these to enable the optional hardware interfaces
+#dtparam=i2c_arm=on
+#dtparam=i2s=on
+# We allow SPI by default to allow use of flashrom 'out of the box'
+# feel free to comment out the below, should you require the GPIO pins
+# it uses
+# was uncommented in original config.txt
+#dtparam=spi=on
+
+# Additional overlays and parameters are documented /boot/overlays/README
+
+# Enable audio (loads snd_bcm2835)
+# was uncommented in original config.txt
+#dtparam=audio=on
+
+# uncomment to assume display supports all audio formats
+#hdmi_force_edid_audio=1
+
+# retain fake kms mode for now, as it plays nicely with
+# window manager compositing and is upstream's choice for
+# Buster; CMA implicitly handled now
+# was uncommented in original config.txt
+#dtoverlay=vc4-fkms-v3d
+
+# now the camera and v4l2 m2m codecs are usable for 64-bit systems
+# a modest amount of gpu_mem *is* advised; see e.g.
+# https://www.raspberrypi.org/forums/viewtopic.php?p=1436162#p1436162
+# was uncommented in original config.txt
+#gpu_mem=128
+
+# enable camera interface (v4l2); requires >=4.19 kernel
+# was uncommented in original config.txt
+#tart_x=1
+
+# force 64-bit mode, new way
+arm_64bit=1
 
 [pi3]
-
-# These are not applied automatically? Needed to use respective upstream drivers.
-dtoverlay=vc4-kms-v3d
-dtoverlay=dwc2
+# specific configuration for RPi3 models
+# improve output quality from built-in headphone jack
+audio_pwm_mode=2
 
 [pi4]
-
-# This is temporarly needed while we solve bsc#1158406
-gpu_mem=64
-
-dtoverlay=disable-vc4
-dtoverlay=rpi4-cma
-dtoverlay=rpi4-pcie-ib-size-fix
-dtoverlay=rpi4-genet
-dtoverlay=rpi4-thermal
-
+# specific configuration for RPi4 models
+max_framebuffers=2
+# differentiate from Pi3 64-bit kernels
+# (kernel8.img, by default)
+#kernel=kernel8-p4.img
+kernel=u-boot.bin
+# settings for HDMI1 port use a :1 suffix, for example:
+#hdmi_group:1=1
+#hdmi_mode:1=1
+disable_overscan:1=1
 [all]
-
-# Allow u-boot to set arm_control
-include ubootconfig.txt
-
-# Allow user overrides of config options
-include extraconfig.txt
-
