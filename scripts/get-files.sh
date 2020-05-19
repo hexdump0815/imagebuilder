@@ -68,11 +68,11 @@ raspberry_pi_aarch64_release_version="5.4.14-stb-av8%2B"
 raspberry_pi_aarch64_generic_tree_tag=${generic_tree_tag}
 raspberry_pi_aarch64_mesa_release_version="20.0.6"
 
-raspberry_pi_4_armv7l_release_version="5.6.7-rpi-64b%2B"
+raspberry_pi_4_armv7l_release_version="5.6.10-rpi-64b%2B"
 raspberry_pi_4_armv7l_generic_tree_tag=${generic_tree_tag}
 raspberry_pi_4_armv7l_mesa_release_version="20.0.6"
 
-raspberry_pi_4_aarch64_release_version="5.6.7-rpi-64b%2B"
+raspberry_pi_4_aarch64_release_version="5.6.10-rpi-64b%2B"
 raspberry_pi_4_aarch64_generic_tree_tag=${generic_tree_tag}
 raspberry_pi_4_aarch64_mesa_release_version="20.0.6"
 
@@ -208,10 +208,10 @@ if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi" ]) && [ "$2" = "armv7l" ]; then
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${raspberry_pi_armv7l_generic_tree_tag}/misc/gl4es-armv7l-debian.tar.gz -O downloads/gl4es-armv7l-debian.tar.gz
   rm -f downloads/gl4es-armv7l-ubuntu.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${raspberry_pi_armv7l_generic_tree_tag}/misc/gl4es-armv7l-ubuntu.tar.gz -O downloads/gl4es-armv7l-ubuntu.tar.gz
-  rm -f downloads/opengl-rpi-armv7l-debian.tar.gz
-  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${raspberry_pi_armv7l_mesa_release_version}/opt-mesa-armv7l-debian.tar.gz -O downloads/opengl-rpi-armv7l-debian.tar.gz
-  rm -f downloads/opengl-rpi-armv7l-ubuntu.tar.gz
-  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${raspberry_pi_armv7l_mesa_release_version}/opt-mesa-armv7l-ubuntu.tar.gz -O downloads/opengl-rpi-armv7l-ubuntu.tar.gz
+  rm -f downloads/opengl-mesa-armv7l-debian.tar.gz
+  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${raspberry_pi_armv7l_mesa_release_version}/opt-mesa-armv7l-debian.tar.gz -O downloads/opengl-mesa-armv7l-debian.tar.gz
+  rm -f downloads/opengl-mesa-armv7l-ubuntu.tar.gz
+  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${raspberry_pi_armv7l_mesa_release_version}/opt-mesa-armv7l-ubuntu.tar.gz -O downloads/opengl-mesa-armv7l-ubuntu.tar.gz
 fi
 
 if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi" ]) && [ "$2" = "aarch64" ]; then
@@ -221,10 +221,10 @@ if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi" ]) && [ "$2" = "aarch64" ]; then
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${raspberry_pi_aarch64_generic_tree_tag}/misc/gl4es-aarch64-debian.tar.gz -O downloads/gl4es-aarch64-debian.tar.gz
   rm -f downloads/gl4es-aarch64-ubuntu.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${raspberry_pi_aarch64_generic_tree_tag}/misc/gl4es-aarch64-ubuntu.tar.gz -O downloads/gl4es-aarch64-ubuntu.tar.gz
-  rm -f downloads/opengl-rpi-aarch64-debian.tar.gz
-  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${raspberry_pi_aarch64_mesa_release_version}/opt-mesa-aarch64-debian.tar.gz -O downloads/opengl-rpi-aarch64-debian.tar.gz
-  rm -f downloads/opengl-rpi-aarch64-ubuntu.tar.gz
-  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${raspberry_pi_aarch64_mesa_release_version}/opt-mesa-aarch64-ubuntu.tar.gz -O downloads/opengl-rpi-aarch64-ubuntu.tar.gz
+  rm -f downloads/opengl-mesa-aarch64-debian.tar.gz
+  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${raspberry_pi_aarch64_mesa_release_version}/opt-mesa-aarch64-debian.tar.gz -O downloads/opengl-mesa-aarch64-debian.tar.gz
+  rm -f downloads/opengl-mesa-aarch64-ubuntu.tar.gz
+  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${raspberry_pi_aarch64_mesa_release_version}/opt-mesa-aarch64-ubuntu.tar.gz -O downloads/opengl-mesa-aarch64-ubuntu.tar.gz
 fi
 
 if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi_4" ]) && [ "$2" = "armv7l" ]; then
@@ -234,10 +234,10 @@ if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi_4" ]) && [ "$2" = "armv7l" ]; the
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${raspberry_pi_4_armv7l_generic_tree_tag}/misc/gl4es-armv7l-debian.tar.gz -O downloads/gl4es-armv7l-debian.tar.gz
   rm -f downloads/gl4es-armv7l-ubuntu.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${raspberry_pi_4_armv7l_generic_tree_tag}/misc/gl4es-armv7l-ubuntu.tar.gz -O downloads/gl4es-armv7l-ubuntu.tar.gz
-  rm -f downloads/opengl-rpi-armv7l-debian.tar.gz
-  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${raspberry_pi_4_armv7l_mesa_release_version}/opt-mesa-armv7l-debian.tar.gz -O downloads/opengl-rpi-armv7l-debian.tar.gz
-  rm -f downloads/opengl-rpi-armv7l-ubuntu.tar.gz
-  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${raspberry_pi_4_armv7l_mesa_release_version}/opt-mesa-armv7l-ubuntu.tar.gz -O downloads/opengl-rpi-armv7l-ubuntu.tar.gz
+  rm -f downloads/opengl-mesa-armv7l-debian.tar.gz
+  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${raspberry_pi_4_armv7l_mesa_release_version}/opt-mesa-armv7l-debian.tar.gz -O downloads/opengl-mesa-armv7l-debian.tar.gz
+  rm -f downloads/opengl-mesa-armv7l-ubuntu.tar.gz
+  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${raspberry_pi_4_armv7l_mesa_release_version}/opt-mesa-armv7l-ubuntu.tar.gz -O downloads/opengl-mesa-armv7l-ubuntu.tar.gz
 fi
 
 if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi_4" ]) && [ "$2" = "aarch64" ]; then
@@ -247,10 +247,10 @@ if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi_4" ]) && [ "$2" = "aarch64" ]; th
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${raspberry_pi_4_aarch64_generic_tree_tag}/misc/gl4es-aarch64-debian.tar.gz -O downloads/gl4es-aarch64-debian.tar.gz
   rm -f downloads/gl4es-aarch64-ubuntu.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${raspberry_pi_4_aarch64_generic_tree_tag}/misc/gl4es-aarch64-ubuntu.tar.gz -O downloads/gl4es-aarch64-ubuntu.tar.gz
-  rm -f downloads/opengl-rpi-aarch64-debian.tar.gz
-  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${raspberry_pi_4_aarch64_mesa_release_version}/opt-mesa-aarch64-debian.tar.gz -O downloads/opengl-rpi-aarch64-debian.tar.gz
-  rm -f downloads/opengl-rpi-aarch64-ubuntu.tar.gz
-  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${raspberry_pi_4_aarch64_mesa_release_version}/opt-mesa-aarch64-ubuntu.tar.gz -O downloads/opengl-rpi-aarch64-ubuntu.tar.gz
+  rm -f downloads/opengl-mesa-aarch64-debian.tar.gz
+  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${raspberry_pi_4_aarch64_mesa_release_version}/opt-mesa-aarch64-debian.tar.gz -O downloads/opengl-mesa-aarch64-debian.tar.gz
+  rm -f downloads/opengl-mesa-aarch64-ubuntu.tar.gz
+  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${raspberry_pi_4_aarch64_mesa_release_version}/opt-mesa-aarch64-ubuntu.tar.gz -O downloads/opengl-mesa-aarch64-ubuntu.tar.gz
 fi
 
 if ([ "$1" = "all" ] || [ "$1" = "amlogic_gx" ]) && [ "$2" = "armv7l" ]; then

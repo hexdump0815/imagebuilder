@@ -95,8 +95,8 @@ fi
 if [ -f ${WORKDIR}/downloads/opengl-wayland-${1}-${2}.tar.gz ]; then
   tar --numeric-owner -xzf ${WORKDIR}/downloads/opengl-wayland-${1}-${2}.tar.gz
 fi
-if [ -f ${WORKDIR}/downloads/opengl-rpi-${2}-${3}.tar.gz ]; then
-  tar --numeric-owner -xzf ${WORKDIR}/downloads/opengl-rpi-${2}-${3}.tar.gz
+if [ -f ${WORKDIR}/downloads/opengl-mesa-${2}-${3}.tar.gz ]; then
+  tar --numeric-owner -xzf ${WORKDIR}/downloads/opengl-mesa-${2}-${3}.tar.gz
 fi
 if [ -f ${WORKDIR}/downloads/xorg-armsoc-${2}-${3}.tar.gz ]; then
   tar --numeric-owner -xzf ${WORKDIR}/downloads/xorg-armsoc-${2}-${3}.tar.gz
