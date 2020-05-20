@@ -10,7 +10,7 @@ apt-get -yq upgrade
 if [ "$1" = "ubuntu" ]; then 
   apt-get -yq install locales vim openssh-server sudo net-tools ifupdown iputils-ping kmod less rsync u-boot-tools usbutils dosfstools mesa-utils mesa-utils-extra console-data xubuntu-desktop linux-firmware libreoffice lvm2 cryptsetup-bin libllvm6.0
 elif [ "$1" = "debian" ]; then 
-  apt-get -yq install locales vim openssh-server sudo net-tools ifupdown iputils-ping kmod less rsync u-boot-tools usbutils dosfstools mesa-utils mesa-utils-extra console-data task-xfce-desktop xserver-xorg-input-synaptics blueman firmware-linux-free firmware-linux firmware-linux-nonfree firmware-brcm80211 firmware-samsung firmware-libertas pulseaudio pavucontrol lvm2 cryptsetup-bin libllvm6.0
+  apt-get -yq install locales vim openssh-server sudo net-tools ifupdown iputils-ping kmod less rsync u-boot-tools usbutils dosfstools mesa-utils mesa-utils-extra console-data task-xfce-desktop xserver-xorg-input-synaptics blueman firmware-linux-free firmware-linux firmware-linux-nonfree firmware-brcm80211 firmware-samsung firmware-libertas pulseaudio pavucontrol lvm2 cryptsetup-bin libllvm7
 fi
 
 systemctl enable ssh
