@@ -1,0 +1,19 @@
+dd to chromeos disk
+fix partition table: sgdisk -C -e -G /dev/xyz
+verify partition table: sgdisk -v /dev/xyz
+add other partitions with fdisk - example:
+
+Disk /dev/mmcblk0: 14.7 GiB, 15758000128 bytes, 30777344 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: EF9EE97E-1492-45EF-A5D7-BC3AE38769D2
+
+Device           Start      End  Sectors  Size Type
+/dev/mmcblk0p1    8192    40959    32768   16M ChromeOS kernel
+/dev/mmcblk0p2 5283840 30777310 25493471 12.2G Linux filesystem
+/dev/mmcblk0p3   40960  1089535  1048576  512M Linux filesystem
+/dev/mmcblk0p4 1089536  5283839  4194304    2G Linux swap
+
+Partition table entries are not in disk order.

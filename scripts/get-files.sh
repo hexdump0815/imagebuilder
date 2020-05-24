@@ -43,13 +43,17 @@ set -e
 generic_tree_tag="9051dfe1f2198e2ed41c322359ee8324043d55a9"
 
 chromebook_snow_release_version="5.4.14-stb-cbe%2B"
+chromebook_snow_uboot_version="v2020.04-cbe"
 chromebook_snow_generic_tree_tag=${generic_tree_tag}
 
-chromebook_veyron_release_version="5.4.14-stb-cbr%2B"
+chromebook_veyron_release_version="5.4.31-stb-cbr%2B"
+chromebook_veyron_uboot_version="v2020.04-cbr"
 chromebook_veyron_generic_tree_tag=${generic_tree_tag}
 
-chromebook_nyanbig_release_version="5.4.35-ntg-cbt+%2B"
+chromebook_nyanbig_release_version="5.4.35-ntg-cbt%2B"
+chromebook_nyanbig_uboot_version="v2018.11-cbt"
 chromebook_nyanbig_generic_tree_tag=${generic_tree_tag}
+chromebook_nyanbig_mesa_release_version="20.0.6"
 
 odroid_u3_release_version="5.4.14-stb-exy%2B"
 odroid_u3_generic_tree_tag=${generic_tree_tag}
@@ -83,7 +87,9 @@ if ([ "$1" = "all" ] || [ "$1" = "chromebook_snow" ]) && [ "$2" = "armv7l" ]; th
   rm -f downloads/kernel-chromebook_snow-armv7l.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${chromebook_snow_release_version}/${chromebook_snow_release_version}.tar.gz -O downloads/kernel-chromebook_snow-armv7l.tar.gz
   rm -f downloads/boot-chromebook_snow-armv7l.dd
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${chromebook_snow_generic_tree_tag}/misc.cbe/boot/boot-chromebook_snow-armv7l.dd -O downloads/boot-chromebook_snow-armv7l.dd
+  # we assemble the bootblocks from a prepared chromebook partition table and the proper u-boot kpart image
+  cp files/chromebook-boot/cb.dd-single-part downloads/boot-chromebook_snow-armv7l.dd
+  wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_snow_uboot_version}/uboot.kpart.cbe.gz -O - | gunzip -c >> downloads/boot-chromebook_snow-armv7l.dd
   rm -f downloads/gl4es-armv7l-debian.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${chromebook_snow_generic_tree_tag}/misc/gl4es-armv7l-debian.tar.gz -O downloads/gl4es-armv7l-debian.tar.gz
   rm -f downloads/gl4es-armv7l-ubuntu.tar.gz
@@ -102,7 +108,9 @@ if ([ "$1" = "all" ] || [ "$1" = "chromebook_veyron" ]) && [ "$2" = "armv7l" ]; 
   rm -f downloads/kernel-chromebook_veyron-armv7l.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${chromebook_veyron_release_version}/${chromebook_veyron_release_version}.tar.gz -O downloads/kernel-chromebook_veyron-armv7l.tar.gz
   rm -f downloads/boot-chromebook_veyron-armv7l.dd
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${chromebook_veyron_generic_tree_tag}/misc.cbr/boot/boot-chromebook_veyron-armv7l.dd -O downloads/boot-chromebook_veyron-armv7l.dd
+  # we assemble the bootblocks from a prepared chromebook partition table and the proper u-boot kpart image
+  cp files/chromebook-boot/cb.dd-single-part downloads/boot-chromebook_veyron-armv7l.dd
+  wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_veyron_uboot_version}/uboot.kpart.cbr.gz -O - | gunzip -c >> downloads/boot-chromebook_veyron-armv7l.dd
   rm -f downloads/gl4es-armv7l-debian.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${chromebook_veyron_generic_tree_tag}/misc/gl4es-armv7l-debian.tar.gz -O downloads/gl4es-armv7l-debian.tar.gz
   rm -f downloads/gl4es-armv7l-ubuntu.tar.gz
@@ -114,7 +122,7 @@ if ([ "$1" = "all" ] || [ "$1" = "chromebook_veyron" ]) && [ "$2" = "armv7l" ]; 
   rm -f downloads/opengl-chromebook_veyron-armv7l.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${chromebook_veyron_generic_tree_tag}/misc/opt-mali-rk3288-armv7l.tar.gz -O downloads/opengl-chromebook_veyron-armv7l.tar.gz
   rm -f downloads/opengl-fbdev-chromebook_veyron-armv7l.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${chromebook_veyron_generic_tree_tag}/misc/opt-mali-rk3288-fbdev-r5p0-armv7l.tar.gz -O downloads/opengl-fbdev-chromebook_veyron-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${chromebook_veyron_generic_tree_tag}/misc/opt-mali-rk3288-fbdev-armv7l.tar.gz -O downloads/opengl-fbdev-chromebook_veyron-armv7l.tar.gz
   rm -f downloads/opengl-wayland-chromebook_veyron-armv7l.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${chromebook_veyron_generic_tree_tag}/misc/opt-mali-rk3288-wayland-armv7l.tar.gz -O downloads/opengl-wayland-chromebook_veyron-armv7l.tar.gz
 fi
@@ -123,19 +131,17 @@ if ([ "$1" = "all" ] || [ "$1" = "chromebook_nyanbig" ]) && [ "$2" = "armv7l" ];
   rm -f downloads/kernel-chromebook_nyanbig-armv7l.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-tegra-k1-kernel/releases/download/${chromebook_nyanbig_release_version}/${chromebook_nyanbig_release_version}.tar.gz -O downloads/kernel-chromebook_nyanbig-armv7l.tar.gz
   rm -f downloads/boot-chromebook_nyanbig-armv7l.dd
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${chromebook_nyanbig_generic_tree_tag}/misc.cbt/boot/boot-chromebook_nyanbig-armv7l.dd -O downloads/boot-chromebook_nyanbig-armv7l.dd
+  # we assemble the bootblocks from a prepared chromebook partition table and the proper u-boot kpart image
+  cp files/chromebook-boot/cb.dd-single-part downloads/boot-chromebook_nyanbig-armv7l.dd
+  wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_nyanbig_uboot_version}/uboot.kpart.cbt.gz -O - | gunzip -c >> downloads/boot-chromebook_nyanbig-armv7l.dd
   rm -f downloads/gl4es-armv7l-debian.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${chromebook_nyanbig_generic_tree_tag}/misc/gl4es-armv7l-debian.tar.gz -O downloads/gl4es-armv7l-debian.tar.gz
   rm -f downloads/gl4es-armv7l-ubuntu.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${chromebook_nyanbig_generic_tree_tag}/misc/gl4es-armv7l-ubuntu.tar.gz -O downloads/gl4es-armv7l-ubuntu.tar.gz
-  rm -f downloads/xorg-armsoc-armv7l-debian.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${chromebook_nyanbig_generic_tree_tag}/misc/xorg-armsoc-armv7l-debian.tar.gz -O downloads/xorg-armsoc-armv7l-debian.tar.gz
-  rm -f downloads/xorg-armsoc-armv7l-ubuntu.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${chromebook_nyanbig_generic_tree_tag}/misc/xorg-armsoc-armv7l-ubuntu.tar.gz -O downloads/xorg-armsoc-armv7l-ubuntu.tar.gz
-  rm -f downloads/opengl-chromebook_nyanbig-armv7l-debian.tar.gz
-  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${raspberry_pi_aarch64_mesa_release_version}/opt-mesa-armv7l-debian.tar.gz -O downloads/opengl-chromebook_nyanbig-armv7l-debian.tar.gz
-  rm -f downloads/opengl-chromebook_nyanbig-armv7l-ubuntu.tar.gz
-  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${raspberry_pi_aarch64_mesa_release_version}/opt-mesa-armv7l-ubuntu.tar.gz -O downloads/opengl-chromebook_nyanbig-armv7l-ubuntu.tar.gz
+  rm -f downloads/opengl-mesa-armv7l-debian.tar.gz
+  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${chromebook_nyanbig_mesa_release_version}/opt-mesa-armv7l-debian.tar.gz -O downloads/opengl-mesa-armv7l-debian.tar.gz
+  rm -f downloads/opengl-mesa-armv7l-ubuntu.tar.gz
+  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${chromebook_nyanbig_mesa_release_version}/opt-mesa-armv7l-ubuntu.tar.gz -O downloads/opengl-mesa-armv7l-ubuntu.tar.gz
 fi
 
 if ([ "$1" = "all" ] || [ "$1" = "odroid_u3" ]) && [ "$2" = "armv7l" ]; then

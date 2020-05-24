@@ -1,0 +1,30 @@
+IMPORTANT: do all the below on your own risk, it might damage your chromebook - for me it worked perfectly fine the three times i did it
+
+this will give you
+- a niceer bootup screen (no longer the white chromeos one)
+- a shorter delay until the boot starts (2sec and no more beep instead of 30sec and an annying beep)
+- booting from usb will always be allowed (otherwise the chromebook might forget this when the batery gets empty)
+
+- first remove the flash write protect screw (it is a sticker actually on the samsung snow chromebook inside of the notebook - see https://www.ifixit.com/Teardown/Samsung+Chromebook+Series+3+Teardown/12225)
+- login into developer mode - see https://archlinuxarm.org/platforms/armv7/samsung/samsung-chromebook
+- on cmdline:
+shell
+sudo su
+- go somewhere, where a "touch testfile" does not give an error, because the dir is read-only - the users homedir is an option
+flashrom --wp-disable
+flashrom --wp-status
+- the meaning of the flags set below:
+# GBB_FLAG_DEV_SCREEN_SHORT_DELAY     0x00000001
+# GBB_FLAG_FORCE_DEV_SWITCH_ON        0x00000008
+# GBB_FLAG_FORCE_DEV_BOOT_USB         0x00000010
+/usr/share/vboot/bin/set_gbb_flags.sh 0x19
+- read flash to file
+flashrom -r bios.bin
+- empty boot bitmap
+touch nothing
+- write boot bitmap to flash file
+gbb_utility -s --bmpfv=nothing bios.bin
+- write back flash
+flashrom -w bios.bin
+flashrom --wp-enable
+- put the flash write protect screw/sticker back
