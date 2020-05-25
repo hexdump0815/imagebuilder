@@ -1,0 +1,17 @@
+the primary gpt table of the emmc seems to be corrupted by design on rockchip chromebooks, thus we have to write to the backup gpt table - the following assumes the default 16gb emmc with 30777344 blocks
+
+reading:
+dd if=/dev/mmcblk0 of=secondary-gpt.dd bs=512 skip=30777310 count=34
+skip: disk number of sectors - 34
+
+writing:
+dd of=/dev/mmcblk0 if=secondary-gpt.dd bs=512 seek=30777310 count=34
+seek: disk number of sectors - 34
+
+the number 34 is according to the picture in https://en.wikipedia.org/wiki/GUID_Partition_Table
+
+afterwards:
+dd if=/boot/uboot.kpart.cbr of=/dev/mmcblk2p1
+mkfs -t ext4 -O ^has_journal -L boot -m 0 /dev/mmcblk2p2
+mkswap -L swap /dev/mmcblk2p3
+mkfs -t ext4 -O ^has_journal -L root /dev/mmcblk2p4

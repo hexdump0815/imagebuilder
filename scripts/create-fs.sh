@@ -127,6 +127,11 @@ if [ -f ${BUILD_ROOT}/etc/default/numlockx ]; then
   sed -i 's,^NUMLOCK=auto,NUMLOCK=off,g' ${BUILD_ROOT}/etc/default/numlockx
 fi
 
+# for the arm chromebooks add some useful files to the boot partition
+if [ "$1" = "chromebook_snow" ] || [ "$1" = "chromebook_veyron" ] || [ "$1" = "chromebook_nyanbig" ]; then
+  cp -r ${WORKDIR}/files/chromebook-boot ${BUILD_ROOT}/boot
+fi
+
 export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/*Image-* | sed 's,.*Image-,,g' | sort -u`
 
 # hack to get the fsck binaries in properly even in our chroot env

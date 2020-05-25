@@ -47,7 +47,7 @@ chromebook_snow_uboot_version="v2020.04-cbe"
 chromebook_snow_generic_tree_tag=${generic_tree_tag}
 
 chromebook_veyron_release_version="5.4.31-stb-cbr%2B"
-chromebook_veyron_uboot_version="v2020.04-cbr"
+chromebook_veyron_uboot_version="v2017.09-cbr"
 chromebook_veyron_generic_tree_tag=${generic_tree_tag}
 
 chromebook_nyanbig_release_version="5.4.35-ntg-cbt%2B"
