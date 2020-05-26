@@ -57,19 +57,23 @@ more coming soon ...
   * enabling the mali driver at least for me sometimes results in unstable booting (hanging or mali not detected properly), rebooting (same symptoms), other times it works just fine, unplugging theboard from power for a few minutes usually helps - without the mali driver enabled the problems go away
   * see https://github.com/hexdump0815/linux-mainline-and-mali-on-odroid-u3 for some more information
 
+* orbsmart s92 / beelink r89 tv boxes
+  * info coming soon ...
+
+* amlogic s905/s905x/s905w tv boxes (with 64bit kernel plus 64bit or 32bit userland)
+  * info coming soon ...
+
 * samsung snow chromebook rev4 and rev5 (XE303C12)
   * for the rev5 samsung snow chromebook the file extlinux/extlinux.conf in the second partition needs to be edited (otherwise audio will not work properly) - see the comments in the file
   * the mali driver seems to work, load and unload quite reliable
   * some good information on how to enable developer mode (required) and how to boot the chromebook from the sd card can be found here: https://archlinuxarm.org/platforms/armv7/samsung/samsung-chromebook
   * see https://github.com/hexdump0815/linux-mainline-and-mali-on-samsung-snow-chromebook for some more information
 
-# plans
+* rockchip based veyron chromebooks (medion s2013, medion s2015, acer c201 and some others)
+  * info coming soon ...
 
-* add support for bootable sd card images for the odroid u2, u3, u3+, x (coming with v5.4.3) and x2 [done]
-* add support for bootable sd card images for the samsung snow chromebook [done]
-* add support for bootable sd card images for the orbsmart s92 / beelink r89 tv boxes (and similar devices)
-* add support for bootable sd card images for allwinner h6 tv boxes (maybe not required as armbian images start to appear for them)
-* add support for bootable sd card images for allwinner h3 tv boxes (maybe this is not worth the effort - lets see)
-* add support for bootable sd card images for the raspberry-pi 3 running in and on 64bit mainline
-* add support for bootable sd card images for amlogic s905x/w tv boxes with a 64bit mainline kernel and a 32bit userland for a lower memory footprint (to run very comfortably on systems with 2gb of ram)
-* ...
+* tegra based nyan big chromebook (acer cb5 311)
+  * info coming soon ...
+
+* raspberrypi 3 and 4 64bit images
+  * info coming soon ...
