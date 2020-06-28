@@ -1,5 +1,5 @@
 based on the gentoo-on-rpi-64bit boot as based on that i finally got 64bit, u-boot and working vc4/v3d working
--> https://github.com/sakaki-/gentoo-on-rpi-64bit ... /boot firmware files are taken from the respberry os 64bit beta
+-> https://github.com/sakaki-/gentoo-on-rpi-64bit
 
 some notes:
 - it looks like the the *.dtb files in /boot directly are needed for the startup loader
