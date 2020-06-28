@@ -19,6 +19,8 @@ if [ "$#" != "2" ]; then
   echo "               raspberry_pi_4 (aarch64)"
   echo "               amlogic_gx (armv7l) (using a 64bit kernel)"
   echo "               amlogic_gx (aarch64)"
+  echo "               allwinner_h6 (armv7l) (using a 64bit kernel)"
+  echo "               allwinner_h6 (aarch64)"
   echo "               all (all)"
   echo ""
   echo "possible arch options:"
@@ -82,6 +84,10 @@ raspberry_pi_4_aarch64_mesa_release_version="20.0.6"
 
 amlogic_gx_release_version="5.4.14-stb-av8%2B"
 amlogic_gx_generic_tree_tag=${generic_tree_tag}
+
+allwinner_h6_release_version="5.6.13-stb-ah6%2B"
+allwinner_h6_generic_tree_tag=${generic_tree_tag}
+allwinner_h6_uboot_version="20200628-01"
 
 if ([ "$1" = "all" ] || [ "$1" = "chromebook_snow" ]) && [ "$2" = "armv7l" ]; then
   rm -f downloads/kernel-chromebook_snow-armv7l.tar.gz
@@ -301,4 +307,38 @@ if ([ "$1" = "all" ] || [ "$1" = "amlogic_gx" ]) && [ "$2" = "aarch64" ]; then
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_gx_generic_tree_tag}/misc/opt-mali-s905-fbdev-aarch64.tar.gz -O downloads/opengl-fbdev-amlogic_gx-aarch64.tar.gz
   rm -f downloads/opengl-wayland-amlogic_gx-aarch64.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_gx_generic_tree_tag}/misc/opt-mali-s905-wayland-aarch64.tar.gz -O downloads/opengl-wayland-amlogic_gx-aarch64.tar.gz
+fi
+
+if ([ "$1" = "all" ] || [ "$1" = "allwinner_h6" ]) && [ "$2" = "aarch64" ]; then
+  rm -f downloads/kernel-allwinner_h6_armv7l-aarch64.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h6-kernel/releases/download/${allwinner_h6_release_version}/${allwinner_h6_release_version}.tar.gz -O downloads/kernel-allwinner_h6-aarch64.tar.gz
+  rm -f downloads/kernel-mali-allwinner_h6_armv7l-aarch64.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h6-kernel/releases/download/${allwinner_h6_release_version}/${allwinner_h6_release_version}-mali-s905.tar.gz -O downloads/kernel-mali-allwinner_h6-aarch64.tar.gz
+  rm -f downloads/boot-allwinner_h6-aarch64.dd
+  wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${allwinner_h6_uboot_version}/boot-allwinner_h6-aarch64.dd.gz -O - | gunzip -c >> downloads/boot-allwinner_h6-aarch64.dd
+  rm -f downloads/gl4es-aarch64-debian.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h6-kernel/raw/${allwinner_h6_generic_tree_tag}/misc/gl4es-aarch64-debian.tar.gz -O downloads/gl4es-aarch64-debian.tar.gz
+  rm -f downloads/gl4es-aarch64-ubuntu.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h6-kernel/raw/${allwinner_h6_generic_tree_tag}/misc/gl4es-aarch64-ubuntu.tar.gz -O downloads/gl4es-aarch64-ubuntu.tar.gz
+  rm -f downloads/opengl-fbdev-allwinner_h6-aarch64.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h6-kernel/raw/${allwinner_h6_generic_tree_tag}/misc/opt-mali-s905-fbdev-aarch64.tar.gz -O downloads/opengl-fbdev-allwinner_h6-aarch64.tar.gz
+  rm -f downloads/opengl-wayland-allwinner_h6-aarch64.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h6-kernel/raw/${allwinner_h6_generic_tree_tag}/misc/opt-mali-s905-wayland-aarch64.tar.gz -O downloads/opengl-wayland-allwinner_h6-aarch64.tar.gz
+fi
+
+if ([ "$1" = "all" ] || [ "$1" = "allwinner_h6" ]) && [ "$2" = "armv7l" ]; then
+  rm -f downloads/kernel-allwinner_h6_armv7l-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h6-kernel/releases/download/${allwinner_h6_release_version}/${allwinner_h6_release_version}.tar.gz -O downloads/kernel-allwinner_h6-armv7l.tar.gz
+  rm -f downloads/kernel-mali-allwinner_h6_armv7l-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h6-kernel/releases/download/${allwinner_h6_release_version}/${allwinner_h6_release_version}-mali-s905.tar.gz -O downloads/kernel-mali-allwinner_h6-armv7l.tar.gz
+  rm -f downloads/boot-allwinner_h6-armv7l.dd
+  wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${allwinner_h6_uboot_version}/boot-allwinner_h6-armv7l.dd.gz -O - | gunzip -c >> downloads/boot-allwinner_h6-armv7l.dd
+  rm -f downloads/gl4es-armv7l-debian.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h6-kernel/raw/${allwinner_h6_generic_tree_tag}/misc/gl4es-armv7l-debian.tar.gz -O downloads/gl4es-armv7l-debian.tar.gz
+  rm -f downloads/gl4es-armv7l-ubuntu.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h6-kernel/raw/${allwinner_h6_generic_tree_tag}/misc/gl4es-armv7l-ubuntu.tar.gz -O downloads/gl4es-armv7l-ubuntu.tar.gz
+  rm -f downloads/opengl-fbdev-allwinner_h6-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h6-kernel/raw/${allwinner_h6_generic_tree_tag}/misc/opt-mali-s905-fbdev-armv7l.tar.gz -O downloads/opengl-fbdev-allwinner_h6-armv7l.tar.gz
+  rm -f downloads/opengl-wayland-allwinner_h6-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h6-kernel/raw/${allwinner_h6_generic_tree_tag}/misc/opt-mali-s905-wayland-armv7l.tar.gz -O downloads/opengl-wayland-allwinner_h6-armv7l.tar.gz
 fi

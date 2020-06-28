@@ -17,6 +17,8 @@ if [ "$#" != "3" ]; then
   echo "- raspberry_pi_4 (aarch64)"
   echo "- amlogic_gx (armv7l) (using a 64bit kernel)"
   echo "- amlogic_gx (aarch64)"
+  echo "- allwinner_h6 (armv7l) (using a 64bit kernel)"
+  echo "- allwinner_h6 (aarch64)"
   echo ""
   echo "possible arch options:"
   echo "- armv7l (32bit) userland"
