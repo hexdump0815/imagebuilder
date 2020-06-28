@@ -24,7 +24,7 @@ if [ "$#" != "3" ]; then
   echo "- armv7l (32bit) userland"
   echo "- aarch64 (64bit) userland"
   echo ""
-  echo "example: $0 odroid_u3 armv7l"
+  echo "example: $0 odroid_u3 armv7l ubuntu"
   echo ""
   exit 1
 fi
