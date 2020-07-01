@@ -428,7 +428,7 @@ if ([ "$1" = "all" ] || [ "$1" = "rockchip_rk33xx" ]) && [ "$2" = "aarch64" ]; t
   rm -f downloads/xorg-armsoc-aarch64-ubuntu.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${rockchip_rk33xx_generic_tree_tag}/misc/xorg-armsoc-aarch64-ubuntu.tar.gz -O downloads/xorg-armsoc-aarch64-ubuntu.tar.gz
   rm -f downloads/opengl-rockchip_rk33xx-aarch64.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc//opt-mali-rk3328-aarch64.tar.gz -O downloads/opengl-fbdev-rockchip_rk33xx-aarch64.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc//opt-mali-rk3328-aarch64.tar.gz -O downloads/opengl-rockchip_rk33xx-aarch64.tar.gz
   rm -f downloads/opengl-fbdev-rockchip_rk33xx-aarch64.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc//opt-mali-rk3328-fbdev-aarch64.tar.gz -O downloads/opengl-fbdev-rockchip_rk33xx-aarch64.tar.gz
   rm -f downloads/opengl-wayland-rockchip_rk33xx-aarch64.tar.gz
