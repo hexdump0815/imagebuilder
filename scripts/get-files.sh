@@ -22,6 +22,8 @@ if [ "$#" != "2" ]; then
   echo "               amlogic_gx (aarch64)"
   echo "               allwinner_h6 (armv7l) (using a 64bit kernel)"
   echo "               allwinner_h6 (aarch64)"
+  echo "               rockchip_rk33xx (armv7l) (using a 64bit kernel)"
+  echo "               rockchip_rk33xx (aarch64)"
   echo "               all (all)"
   echo ""
   echo "possible arch options:"
@@ -94,6 +96,9 @@ allwinner_h6_release_version="5.6.13-stb-ah6%2B"
 allwinner_h6_generic_tree_tag=${generic_tree_tag}
 allwinner_h6_mali_tree_tag="master"
 allwinner_h6_uboot_version="20200628-01"
+
+rockchip_rk33xx_release_version="5.6.13-stb-rkc%2B"
+rockchip_rk33xx_tree_tag="master"
 
 if ([ "$1" = "all" ] || [ "$1" = "chromebook_snow" ]) && [ "$2" = "armv7l" ]; then
   rm -f downloads/kernel-chromebook_snow-armv7l.tar.gz
@@ -368,4 +373,64 @@ if ([ "$1" = "all" ] || [ "$1" = "allwinner_h6" ]) && [ "$2" = "armv7l" ]; then
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h6-kernel/raw/${allwinner_h6_mali_tree_tag}/misc.ah6//opt-mali-h6-fbdev-armv7l.tar.gz -O downloads/opengl-fbdev-allwinner_h6-armv7l.tar.gz
   rm -f downloads/opengl-wayland-allwinner_h6-armv7l.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h6-kernel/raw/${allwinner_h6_mali_tree_tag}/misc.ah6//opt-mali-h6-wayland-armv7l.tar.gz -O downloads/opengl-wayland-allwinner_h6-armv7l.tar.gz
+fi
+
+if ([ "$1" = "all" ] || [ "$1" = "rockchip_rk33xx" ]) && [ "$2" = "armv7l" ]; then
+  rm -f downloads/kernel-rockchip_rk33xx-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/releases/download/${rockchip_rk33xx_release_version}/${rockchip_rk33xx_release_version}.tar.gz -O downloads/kernel-rockchip_rk33xx-armv7l.tar.gz
+  rm -f downloads/kernel-mali-rockchip_rk33xx-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/releases/download/${rockchip_rk33xx_release_version}/${rockchip_rk33xx_release_version}-mali-rk3328.tar.gz -O downloads/kernel-mali-rockchip_rk33xx-armv7l.tar.gz
+  rm -f downloads/kernel-mali-b-rockchip_rk33xx-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/releases/download/${rockchip_rk33xx_release_version}/${rockchip_rk33xx_release_version}-mali-rk3399.tar.gz -O downloads/kernel-mali-b-rockchip_rk33xx-armv7l.tar.gz
+  rm -f downloads/boot-rockchip_rk33xx-armv7l.dd
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc/u-boot/boot-rk3328_tv_box-aarch64.dd -O downloads/boot-rockchip_rk33xx-armv7l.dd
+  rm -f downloads/gl4es-armv7l-debian.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${rockchip_rk33xx_tree_tag}/misc/gl4es-armv7l-debian.tar.gz -O downloads/gl4es-armv7l-debian.tar.gz
+  rm -f downloads/gl4es-armv7l-ubuntu.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${rockchip_rk33xx_tree_tag}/misc/gl4es-armv7l-ubuntu.tar.gz -O downloads/gl4es-armv7l-ubuntu.tar.gz
+  rm -f downloads/opengl-rockchip_rk33xx-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc//opt-mali-rk3328-armv7l.tar.gz -O downloads/opengl-rockchip_rk33xx-armv7l.tar.gz
+  rm -f downloads/opengl-fbdev-rockchip_rk33xx-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc//opt-mali-rk3328-fbdev-armv7l.tar.gz -O downloads/opengl-fbdev-rockchip_rk33xx-armv7l.tar.gz
+  rm -f downloads/opengl-wayland-rockchip_rk33xx-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc//opt-mali-rk3328-wayland-armv7l.tar.gz -O downloads/opengl-wayland-rockchip_rk33xx-armv7l.tar.gz
+  rm -f downloads/opengl-b-rockchip_rk33xx-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc//opt-mali-rk3399-armv7l.tar.gz -O downloads/opengl-b-rockchip_rk33xx-armv7l.tar.gz
+  rm -f downloads/opengl-fbdev-b-rockchip_rk33xx-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc//opt-mali-rk3399-fbdev-armv7l.tar.gz -O downloads/opengl-fbdev-b-rockchip_rk33xx-armv7l.tar.gz
+  rm -f downloads/opengl-wayland-b-rockchip_rk33xx-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc//opt-mali-rk3399-wayland-armv7l.tar.gz -O downloads/opengl-wayland-b-rockchip_rk33xx-armv7l.tar.gz
+  # the amlogic fbdev mali blob works on rk3328 too in gl4es LIBGL_FB=3 mode while the rk3328 one does not
+  rm -f downloads/opengl-fbdev-alt-rockchip_rk33xx-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_gx_generic_tree_tag}/misc/opt-mali-s905-fbdev-armv7l.tar.gz -O downloads/opengl-fbdev-alt-rockchip_rk33xx-armv7l.tar.gz
+fi
+
+if ([ "$1" = "all" ] || [ "$1" = "rockchip_rk33xx" ]) && [ "$2" = "aarch64" ]; then
+  rm -f downloads/kernel-rockchip_rk33xx-aarch64.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/releases/download/${rockchip_rk33xx_release_version}/${rockchip_rk33xx_release_version}.tar.gz -O downloads/kernel-rockchip_rk33xx-aarch64.tar.gz
+  rm -f downloads/kernel-mali-rockchip_rk33xx-aarch64.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/releases/download/${rockchip_rk33xx_release_version}/${rockchip_rk33xx_release_version}-mali-rk3328.tar.gz -O downloads/kernel-mali-rockchip_rk33xx-aarch64.tar.gz
+  rm -f downloads/kernel-mali-b-rockchip_rk33xx-aarch64.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/releases/download/${rockchip_rk33xx_release_version}/${rockchip_rk33xx_release_version}-mali-rk3399.tar.gz -O downloads/kernel-mali-b-alt-rockchip_rk33xx-aarch64.tar.gz
+  rm -f downloads/boot-rockchip_rk33xx-aarch64.dd
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc/u-boot/boot-rk3328_tv_box-aarch64.dd -O downloads/boot-rockchip_rk33xx-aarch64.dd
+  rm -f downloads/gl4es-aarch64-debian.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${rockchip_rk33xx_tree_tag}/misc/gl4es-aarch64-debian.tar.gz -O downloads/gl4es-aarch64-debian.tar.gz
+  rm -f downloads/gl4es-aarch64-ubuntu.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${rockchip_rk33xx_tree_tag}/misc/gl4es-aarch64-ubuntu.tar.gz -O downloads/gl4es-aarch64-ubuntu.tar.gz
+  rm -f downloads/opengl-rockchip_rk33xx-aarch64.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc//opt-mali-rk3328-aarch64.tar.gz -O downloads/opengl-fbdev-rockchip_rk33xx-aarch64.tar.gz
+  rm -f downloads/opengl-fbdev-rockchip_rk33xx-aarch64.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc//opt-mali-rk3328-fbdev-aarch64.tar.gz -O downloads/opengl-fbdev-rockchip_rk33xx-aarch64.tar.gz
+  rm -f downloads/opengl-wayland-rockchip_rk33xx-aarch64.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc//opt-mali-rk3328-wayland-aarch64.tar.gz -O downloads/opengl-wayland-rockchip_rk33xx-aarch64.tar.gz
+  rm -f downloads/opengl-b-rockchip_rk33xx-aarch64.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc//opt-mali-rk3399-aarch64.tar.gz -O downloads/opengl-b-rockchip_rk33xx-aarch64.tar.gz
+  rm -f downloads/opengl-fbdev-b-rockchip_rk33xx-aarch64.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc//opt-mali-rk3399-fbdev-aarch64.tar.gz -O downloads/opengl-fbdev-b-rockchip_rk33xx-aarch64.tar.gz
+  rm -f downloads/opengl-wayland-b-rockchip_rk33xx-aarch64.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc//opt-mali-rk3399-wayland-aarch64.tar.gz -O downloads/opengl-wayland-b-rockchip_rk33xx-aarch64.tar.gz
+  # the amlogic fbdev mali blob works on rk3328 too in gl4es LIBGL_FB=3 mode while the rk3328 one does not
+  rm -f downloads/opengl-fbdev-alt-rockchip_rk33xx-aarch64.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_gx_generic_tree_tag}/misc/opt-mali-s905-fbdev-aarch64.tar.gz -O downloads/opengl-fbdev-alt-rockchip_rk33xx-aarch64.tar.gz
 fi

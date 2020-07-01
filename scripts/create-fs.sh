@@ -20,6 +20,8 @@ if [ "$#" != "3" ]; then
   echo "- amlogic_gx (aarch64)"
   echo "- allwinner_h6 (armv7l) (using a 64bit kernel)"
   echo "- allwinner_h6 (aarch64)"
+  echo "- rockchip_rk33xx (armv7l) (using a 64bit kernel)"
+  echo "- rockchip_rk33xx (aarch64)"
   echo ""
   echo "possible arch options:"
   echo "- armv7l (32bit) userland"
@@ -73,6 +75,9 @@ tar --numeric-owner -xzf ${WORKDIR}/downloads/kernel-${1}-${2}.tar.gz
 if [ -f ${WORKDIR}/downloads/kernel-mali-${1}-${2}.tar.gz ]; then
   tar --numeric-owner -xzf ${WORKDIR}/downloads/kernel-mali-${1}-${2}.tar.gz
 fi
+if [ -f ${WORKDIR}/downloads/kernel-mali-b-${1}-${2}.tar.gz ]; then
+  tar --numeric-owner -xzf ${WORKDIR}/downloads/kernel-mali-b-${1}-${2}.tar.gz
+fi
 cp -r ${WORKDIR}/boot/boot-${1}-${2}/* boot
 
 rm -f create-chroot.sh
@@ -92,11 +97,29 @@ fi
 if [ -f ${WORKDIR}/downloads/opengl-${1}-${2}.tar.gz ]; then
   tar --numeric-owner -xzf ${WORKDIR}/downloads/opengl-${1}-${2}.tar.gz
 fi
+if [ -f ${WORKDIR}/downloads/opengl-b-${1}-${2}.tar.gz ]; then
+  tar --numeric-owner -xzf ${WORKDIR}/downloads/opengl-b-${1}-${2}.tar.gz
+fi
+if [ -f ${WORKDIR}/downloads/opengl-alt-${1}-${2}.tar.gz ]; then
+  tar --numeric-owner -xzf ${WORKDIR}/downloads/opengl-alt-${1}-${2}.tar.gz
+fi
 if [ -f ${WORKDIR}/downloads/opengl-fbdev-${1}-${2}.tar.gz ]; then
   tar --numeric-owner -xzf ${WORKDIR}/downloads/opengl-fbdev-${1}-${2}.tar.gz
 fi
+if [ -f ${WORKDIR}/downloads/opengl-fbdev-b-${1}-${2}.tar.gz ]; then
+  tar --numeric-owner -xzf ${WORKDIR}/downloads/opengl-fbdev-b-${1}-${2}.tar.gz
+fi
+if [ -f ${WORKDIR}/downloads/opengl-fbdev-alt-${1}-${2}.tar.gz ]; then
+  tar --numeric-owner -xzf ${WORKDIR}/downloads/opengl-fbdev-alt-${1}-${2}.tar.gz
+fi
 if [ -f ${WORKDIR}/downloads/opengl-wayland-${1}-${2}.tar.gz ]; then
   tar --numeric-owner -xzf ${WORKDIR}/downloads/opengl-wayland-${1}-${2}.tar.gz
+fi
+if [ -f ${WORKDIR}/downloads/opengl-wayland-b-${1}-${2}.tar.gz ]; then
+  tar --numeric-owner -xzf ${WORKDIR}/downloads/opengl-wayland-b-${1}-${2}.tar.gz
+fi
+if [ -f ${WORKDIR}/downloads/opengl-wayland-alt-${1}-${2}.tar.gz ]; then
+  tar --numeric-owner -xzf ${WORKDIR}/downloads/opengl-wayland-alt-${1}-${2}.tar.gz
 fi
 if [ -f ${WORKDIR}/downloads/opengl-mesa-${2}-${3}.tar.gz ]; then
   tar --numeric-owner -xzf ${WORKDIR}/downloads/opengl-mesa-${2}-${3}.tar.gz
