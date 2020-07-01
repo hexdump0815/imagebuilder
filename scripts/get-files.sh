@@ -11,6 +11,7 @@ if [ "$#" != "2" ]; then
   echo "               chromebook_veyron (armv7l)"
   echo "               chromebook_nyanbig (armv7l)"
   echo "               odroid_u3 (armv7l)"
+  echo "               odroid_xu4 (armv7l)"
   echo "               orbsmart_s92_beelink_r89 (armv7l)"
   echo "               tinkerboard (armv7l)"
   echo "               raspberry_pi (armv7l)"
@@ -59,6 +60,10 @@ chromebook_nyanbig_mesa_release_version="20.0.6"
 
 odroid_u3_release_version="5.4.14-stb-exy%2B"
 odroid_u3_generic_tree_tag=${generic_tree_tag}
+
+odroid_xu4_release_version="5.4.35-stb-e54%2B"
+odroid_xu4_generic_tree_tag=${generic_tree_tag}
+odroid_xu4_mali_tree_tag="master"
 
 orbsmart_s92_beelink_r89_release_version="5.4.14-stb-av7%2B"
 orbsmart_s92_beelink_r89_generic_tree_tag=${generic_tree_tag}
@@ -168,6 +173,27 @@ if ([ "$1" = "all" ] || [ "$1" = "odroid_u3" ]) && [ "$2" = "armv7l" ]; then
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${odroid_u3_generic_tree_tag}/misc/opt-mali-exynos4412-armv7l.tar.gz -O downloads/opengl-odroid_u3-armv7l.tar.gz
   rm -f downloads/opengl-fbdev-odroid_u3-armv7l.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${odroid_u3_generic_tree_tag}/misc/opt-mali-exynos4412-fbdev-armv7l.tar.gz -O downloads/opengl-fbdev-odroid_u3-armv7l.tar.gz
+fi
+
+if ([ "$1" = "all" ] || [ "$1" = "odroid_xu4" ]) && [ "$2" = "armv7l" ]; then
+  rm -f downloads/kernel-odroid_xu4-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-exynos5422-kernel/releases/download/${odroid_xu4_release_version}/${odroid_xu4_release_version}.tar.gz -O downloads/kernel-odroid_xu4-armv7l.tar.gz
+#  rm -f downloads/boot-odroid_xu4-armv7l.dd
+#  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-exynos5422-kernel/raw/${odroid_xu4_generic_tree_tag}/misc.e54/u-boot/boot-odroid_xu4-armv7l.dd -O downloads/boot-odroid_xu4-armv7l.dd
+  rm -f downloads/gl4es-armv7l-debian.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${odroid_xu4_generic_tree_tag}/misc/gl4es-armv7l-debian.tar.gz -O downloads/gl4es-armv7l-debian.tar.gz
+  rm -f downloads/gl4es-armv7l-ubuntu.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${odroid_xu4_generic_tree_tag}/misc/gl4es-armv7l-ubuntu.tar.gz -O downloads/gl4es-armv7l-ubuntu.tar.gz
+  rm -f downloads/xorg-armsoc-armv7l-debian.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${odroid_xu4_generic_tree_tag}/misc/xorg-armsoc-armv7l-debian.tar.gz -O downloads/xorg-armsoc-armv7l-debian.tar.gz
+  rm -f downloads/xorg-armsoc-armv7l-ubuntu.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${odroid_xu4_generic_tree_tag}/misc/xorg-armsoc-armv7l-ubuntu.tar.gz -O downloads/xorg-armsoc-armv7l-ubuntu.tar.gz
+#  rm -f downloads/opengl-odroid_xu4-armv7l.tar.gz
+#  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-exynos5422-kernel/raw/${odroid_xu4_generic_tree_tag}/misc.e54/opt-mali-exynos5422-armv7l.tar.gz -O downloads/opengl-odroid_xu4-armv7l.tar.gz
+#  rm -f downloads/opengl-fbdev-odroid_xu4-armv7l.tar.gz
+#  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-exynos5422-kernel/raw/${odroid_xu4_generic_tree_tag}/misc.e54/opt-mali-exynos5422-fbdev-armv7l.tar.gz -O downloads/opengl-fbdev-odroid_xu4-armv7l.tar.gz
+#  rm -f downloads/opengl-wayland-odroid_xu4-armv7l.tar.gz
+#  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-exynos5422-kernel/raw/${odroid_xu4_generic_tree_tag}/misc.e54/opt-mali-exynos5422-wayland-armv7l.tar.gz -O downloads/opengl-wayland-odroid_xu4-armv7l.tar.gz
 fi
 
 if ([ "$1" = "all" ] || [ "$1" = "orbsmart_s92_beelink_r89" ]) && [ "$2" = "armv7l" ]; then
