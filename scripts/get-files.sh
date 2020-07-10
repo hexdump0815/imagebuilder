@@ -81,11 +81,11 @@ raspberry_pi_aarch64_release_version="5.4.14-stb-av8%2B"
 raspberry_pi_aarch64_generic_tree_tag=${generic_tree_tag}
 raspberry_pi_aarch64_mesa_release_version="20.0.6"
 
-raspberry_pi_4_armv7l_release_version="5.4.49-rpi-64b%2B"
+raspberry_pi_4_armv7l_release_version="5.7.7-rpi-64b%2B"
 raspberry_pi_4_armv7l_generic_tree_tag=${generic_tree_tag}
 raspberry_pi_4_armv7l_mesa_release_version="20.0.6"
 
-raspberry_pi_4_aarch64_release_version="5.4.49-rpi-64b%2B"
+raspberry_pi_4_aarch64_release_version="5.7.7-rpi-64b%2B"
 raspberry_pi_4_aarch64_generic_tree_tag=${generic_tree_tag}
 raspberry_pi_4_aarch64_mesa_release_version="20.0.6"
 
