@@ -95,7 +95,7 @@ amlogic_gx_generic_tree_tag=${generic_tree_tag}
 allwinner_h6_release_version="5.6.13-stb-ah6%2B"
 allwinner_h6_generic_tree_tag=${generic_tree_tag}
 allwinner_h6_tree_tag="master"
-allwinner_h6_uboot_version="20200628-01"
+allwinner_h6_uboot_version="200718-01"
 
 rockchip_rk33xx_release_version="5.6.13-stb-rkc%2B"
 rockchip_rk33xx_generic_tree_tag=${generic_tree_tag}
