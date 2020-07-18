@@ -10,6 +10,7 @@ if [ "$#" != "2" ]; then
   echo "               chromebook_snow (armv7l)"
   echo "               chromebook_veyron (armv7l)"
   echo "               chromebook_nyanbig (armv7l)"
+  echo "               allwinner_h3 (armv7l)"
   echo "               odroid_u3 (armv7l)"
   echo "               odroid_xu4 (armv7l)"
   echo "               orbsmart_s92_beelink_r89 (armv7l)"
@@ -59,6 +60,11 @@ chromebook_nyanbig_release_version="5.4.35-ntg-cbt%2B"
 chromebook_nyanbig_uboot_version="v2018.11-cbt"
 chromebook_nyanbig_generic_tree_tag=${generic_tree_tag}
 chromebook_nyanbig_mesa_release_version="20.0.6"
+
+allwinner_h3_release_version="5.6.13-stb-ah3%2B"
+allwinner_h3_generic_tree_tag=${generic_tree_tag}
+allwinner_h3_tree_tag="master"
+allwinner_h3_uboot_version="200718-01"
 
 odroid_u3_release_version="5.4.14-stb-exy%2B"
 odroid_u3_generic_tree_tag=${generic_tree_tag}
@@ -162,6 +168,25 @@ if ([ "$1" = "all" ] || [ "$1" = "chromebook_nyanbig" ]) && [ "$2" = "armv7l" ];
   wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${chromebook_nyanbig_mesa_release_version}/opt-mesa-armv7l-debian.tar.gz -O downloads/opengl-mesa-armv7l-debian.tar.gz
   rm -f downloads/opengl-mesa-armv7l-ubuntu.tar.gz
   wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${chromebook_nyanbig_mesa_release_version}/opt-mesa-armv7l-ubuntu.tar.gz -O downloads/opengl-mesa-armv7l-ubuntu.tar.gz
+fi
+
+if ([ "$1" = "all" ] || [ "$1" = "allwinner_h3" ]) && [ "$2" = "armv7l" ]; then
+  rm -f downloads/kernel-allwinner_h3-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h6-kernel/releases/download/${allwinner_h3_release_version}/${allwinner_h3_release_version}.tar.gz -O downloads/kernel-allwinner_h3-armv7l.tar.gz
+  rm -f downloads/kernel-mali-allwinner_h3-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h6-kernel/releases/download/${allwinner_h3_release_version}/${allwinner_h3_release_version}-mali-h3.tar.gz -O downloads/kernel-mali-allwinner_h3-armv7l.tar.gz
+  rm -f downloads/boot-allwinner_h3-armv7l.dd
+  wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${allwinner_h3_uboot_version}/r39-boot.dd.gz -O - | gunzip -c >> downloads/boot-allwinner_h3-armv7l.dd
+  rm -f downloads/gl4es-armv7l-debian.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${allwinner_h3_generic_tree_tag}/misc/gl4es-armv7l-debian.tar.gz -O downloads/gl4es-armv7l-debian.tar.gz
+  rm -f downloads/gl4es-armv7l-ubuntu.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${allwinner_h3_generic_tree_tag}/misc/gl4es-armv7l-ubuntu.tar.gz -O downloads/gl4es-armv7l-ubuntu.tar.gz
+  rm -f downloads/opengl-allwinner_h3-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h3-kernel/raw/${allwinner_h3_tree_tag}/misc.ah3//opt-mali-sunxi-armv7l.tar.gz -O downloads/opengl-allwinner_h3-armv7l.tar.gz
+  rm -f downloads/opengl-fbdev-allwinner_h3-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h3-kernel/raw/${allwinner_h3_tree_tag}/misc.ah3//opt-mali-sunxi-fbdev-armv7l.tar.gz -O downloads/opengl-fbdev-allwinner_h3-armv7l.tar.gz
+  rm -f downloads/opengl-wayland-allwinner_h3-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h3-kernel/raw/${allwinner_h3_tree_tag}/misc.ah3//opt-mali-sunxi-wayland-armv7l.tar.gz -O downloads/opengl-wayland-allwinner_h3-armv7l.tar.gz
 fi
 
 if ([ "$1" = "all" ] || [ "$1" = "odroid_u3" ]) && [ "$2" = "armv7l" ]; then
