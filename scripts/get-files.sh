@@ -61,7 +61,7 @@ chromebook_nyanbig_uboot_version="v2018.11-cbt"
 chromebook_nyanbig_generic_tree_tag=${generic_tree_tag}
 chromebook_nyanbig_mesa_release_version="20.0.6"
 
-allwinner_h3_release_version="5.6.13-stb-ah3%2B"
+allwinner_h3_release_version="5.4.20-stb-ah3%2B"
 allwinner_h3_generic_tree_tag=${generic_tree_tag}
 allwinner_h3_tree_tag="master"
 allwinner_h3_uboot_version="200718-01"
