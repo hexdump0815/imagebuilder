@@ -66,7 +66,7 @@ allwinner_h3_generic_tree_tag=${generic_tree_tag}
 allwinner_h3_tree_tag="master"
 allwinner_h3_uboot_version="200718-01"
 
-odroid_u3_release_version="5.4.14-stb-exy%2B"
+odroid_u3_release_version="5.4.20-stb-exy%2B"
 odroid_u3_generic_tree_tag=${generic_tree_tag}
 odroid_u3_uboot_version="200718-01"
 
