@@ -16,7 +16,7 @@ if [ -d /sys/block/mmcblk0 ] || [ -d /sys/block/mmcblk1 ] || [ -d /sys/block/mmc
   for i in /sys/block/mmcblk?/queue/scheduler; do
     # older and newer kernel differ here: old noop, new none
     grep -q none $i
-    if [ "$?" == "0" ]; then
+    if [ "$?" = "0" ]; then
       echo none > $i
     else
       echo noop > $i
@@ -27,7 +27,7 @@ if [ -d /sys/block/sda ] || [ -d /sys/block/sdb ] || [ -d /sys/block/sdc ]; then
   for i in /sys/block/sd?/queue/scheduler; do
     # older and newer kernel differ here: old noop, new none
     grep -q none $i
-    if [ "$?" == "0" ]; then
+    if [ "$?" = "0" ]; then
       echo none > $i
     else
       echo noop > $i
