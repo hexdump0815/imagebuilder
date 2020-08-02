@@ -55,12 +55,16 @@ elif [ "$2" = "aarch64" ]; then
   BOOTSTRAP_ARCH=arm64
 fi
 if [ "$3" = "ubuntu" ]; then 
-  LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} bionic ${BUILD_ROOT} http://ports.ubuntu.com/
+  LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} focal ${BUILD_ROOT} http://ports.ubuntu.com/
 elif [ "$3" = "debian" ]; then 
   LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} buster ${BUILD_ROOT} http://deb.debian.org/debian/
 fi
 
 cp ${WORKDIR}/files/${3}-sources.list ${BUILD_ROOT}/etc/apt/sources.list
+# debian sources required for non snap chromium
+if [ "${3}" = "ubuntu" ]; then
+  cp ${WORKDIR}/files/debian-sources.list ${BUILD_ROOT}/etc/apt/debian-sources.list
+fi
 cp ${WORKDIR}/scripts/create-chroot.sh ${BUILD_ROOT}
 
 mount -o bind /dev ${BUILD_ROOT}/dev
@@ -153,6 +157,9 @@ if [ -f ${BUILD_ROOT}/etc/NetworkManager/NetworkManager.conf ]; then
 fi
 if [ -f ${BUILD_ROOT}/etc/default/numlockx ]; then
   sed -i 's,^NUMLOCK=auto,NUMLOCK=off,g' ${BUILD_ROOT}/etc/default/numlockx
+fi
+if [ -f ${BUILD_ROOT}/etc/default/apport ]; then
+  sed -i 's,^enabled=1,enabled=0,g' ${BUILD_ROOT}/etc/default/apport
 fi
 
 # for the arm chromebooks add some useful files to the boot partition

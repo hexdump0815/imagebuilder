@@ -85,9 +85,8 @@ else
     echo "SWAPPART=$SWAPPART"
   else
     echo ""
-    echo "SWAPPART is not set in files/systems/${1}/partition-mapping-${1}-${2}.txt - giving up"
+    echo "INFO: SWAPPART is not set in files/systems/${1}/partition-mapping-${1}-${2}.txt - this is ok"
     echo ""
-    exit
   fi
 fi
 
@@ -101,10 +100,8 @@ if [ -f ${IMAGE_DIR}/${1}-${2}-${3}.img ]; then
   exit 1
 fi
 
-# we use less than the marketing capacity of the sd card as it is usually lower in reality
-# 7g for an 8g card and 14g for a 16g card - it can easily be extended to full size later
-dd if=/dev/zero of=${IMAGE_DIR}/${1}-${2}-${3}.img bs=1024k count=1 seek=$((7*1024)) status=progress
-#dd if=/dev/zero of=${IMAGE_DIR}/${1}-${2}-${3}.img bs=1024k count=1 seek=$((14*1024)) status=progress
+# we use less than the marketing capacity of the sd card as it is usually lower in reality - 5631+1 = 5.5gb
+dd if=/dev/zero of=${IMAGE_DIR}/${1}-${2}-${3}.img bs=1024k count=1 seek=5631 status=progress
 
 losetup /dev/loop0 ${IMAGE_DIR}/${1}-${2}-${3}.img
 
@@ -137,14 +134,23 @@ if [ "$BOOTFS" = "fat" ]; then
 elif [ "$BOOTFS" = "ext4" ]; then
   mkfs -t ext4 -O ^has_journal -m 0 -L bootpart /dev/loop0p$BOOTPART
 fi
-mkswap -L swappart /dev/loop0p$SWAPPART
-mkfs -t ext4 -O ^has_journal -m 2 -L rootpart /dev/loop0p$ROOTPART
 
+mkfs -t ext4 -O ^has_journal -m 2 -L rootpart /dev/loop0p$ROOTPART
 mount /dev/loop0p$ROOTPART ${MOUNT_POINT}
 mkdir ${MOUNT_POINT}/boot
 mount /dev/loop0p$BOOTPART ${MOUNT_POINT}/boot
 
 rsync -axADHSX --no-inc-recursive ${BUILD_ROOT}/ ${MOUNT_POINT}
+
+if [ "$SWAPPART" != "" ]; then
+  mkswap -L swappart /dev/loop0p$SWAPPART
+else
+  mkdir ${MOUNT_POINT}/swap
+  dd if=/dev/zero of=${MOUNT_POINT}/swap/file.0 bs=1024k count=1 seek=511 status=progress
+  chmod 600 ${MOUNT_POINT}/swap/file.0
+  mkswap -L swapfile.0 ${MOUNT_POINT}/swap/file.0
+  sed -i 's,LABEL=swappart,/swap/file.0,g' ${MOUNT_POINT}/etc/fstab
+fi
 
 ROOT_PARTUUID=$(blkid | grep "/dev/loop0p$ROOTPART" | awk '{print $5}' | sed 's,",,g')
 
