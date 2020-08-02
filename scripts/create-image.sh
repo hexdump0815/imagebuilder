@@ -146,7 +146,7 @@ if [ "$SWAPPART" != "" ]; then
   mkswap -L swappart /dev/loop0p$SWAPPART
 else
   mkdir ${MOUNT_POINT}/swap
-  dd if=/dev/zero of=${MOUNT_POINT}/swap/file.0 bs=1024k count=1 seek=511 status=progress
+  dd if=/dev/zero of=${MOUNT_POINT}/swap/file.0 bs=1024k count=512 status=progress
   chmod 600 ${MOUNT_POINT}/swap/file.0
   mkswap -L swapfile.0 ${MOUNT_POINT}/swap/file.0
   sed -i 's,LABEL=swappart,/swap/file.0,g' ${MOUNT_POINT}/etc/fstab
