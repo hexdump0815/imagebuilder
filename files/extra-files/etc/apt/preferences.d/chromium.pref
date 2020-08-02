@@ -1,15 +1,18 @@
 # workaround for chromium by downloading it from debian
 # taken from https://github.com/armbian/build/commit/faac55292115a1ababc3b4249552384d9568d38f
-
-# Note: 2 blank lines are required between entries
+# note: 2 blank lines are required between entries
 Package: *
 Pin: release a=${release}
 Pin-Priority: 500
+
+
 Package: *
-Pin: origin "${DEBIAN_MIRROR//\/debian}"
+Pin: origin "http://deb.debian.org/debian/"
 Pin-Priority: 300
+
+
 # Pattern includes 'chromium', 'chromium-browser' and similarly
 # named dependencies:
 Package: chromium*
-Pin: origin "${DEBIAN_MIRROR//\/debian}"
+Pin: origin "http://deb.debian.org/debian/"
 Pin-Priority: 700

@@ -63,7 +63,7 @@ fi
 cp ${WORKDIR}/files/${3}-sources.list ${BUILD_ROOT}/etc/apt/sources.list
 # debian sources required for non snap chromium
 if [ "${3}" = "ubuntu" ]; then
-  cp ${WORKDIR}/files/debian-sources.list ${BUILD_ROOT}/etc/apt/debian-sources.list
+  cp ${WORKDIR}/files/debian-sources.list ${BUILD_ROOT}/etc/apt/sources.list.d/debian-sources.list
 fi
 cp ${WORKDIR}/scripts/create-chroot.sh ${BUILD_ROOT}
 
