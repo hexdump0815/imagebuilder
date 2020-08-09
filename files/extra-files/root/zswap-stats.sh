@@ -10,17 +10,19 @@ ZPOOL=$(cat /sys/module/zswap/parameters/zpool)
 PAGE_SIZE=$(getconf PAGE_SIZE)
 STORED_PAGES=$(cat /sys/kernel/debug/zswap/stored_pages)
 POOL_TOTAL_SIZE=$(cat /sys/kernel/debug/zswap/pool_total_size)
-POOL_SIZE=$(numfmt --to=iec-i $POOL_TOTAL_SIZE)
+REAL_SIZE=$(echo "scale = 0; $(LANG=c free -b | grep Mem | awk '{print $2}')" | bc -l)
 
 if [ "$POOL_TOTAL_SIZE" = "0" ]
 then
         DECOMPRESSED_SIZE="N/A"
         RATIO="N/A"
         WRITTEN_SIZE="N/A"
+	VIRT_SIZE="N/A"
 else
-        DECOMPRESSED_SIZE=$(echo "$STORED_PAGES * $PAGE_SIZE" | bc | numfmt --to=iec-i)
+        DECOMPRESSED_SIZE=$(echo "$STORED_PAGES * $PAGE_SIZE" | bc )
         RATIO=$(echo "scale=3; $STORED_PAGES * $PAGE_SIZE / $POOL_TOTAL_SIZE" | bc -l)
-	WRITTEN_SIZE=$(echo "scale = 0; ($(LANG=c free -b |grep Swap |awk '{print $3}') - $(cat /sys/kernel/debug/zswap/stored_pages) * $(getconf PAGESIZE)) / 1024 / 1024" | bc -l)Mi
+	WRITTEN_SIZE=$(echo "scale = 0; ($(LANG=c free -b | grep Swap | awk '{print $3}') - $(cat /sys/kernel/debug/zswap/stored_pages) * $(getconf PAGESIZE))" | bc -l)
+	VIRT_SIZE=$(echo "scale = 0; $REAL_SIZE - $POOL_TOTAL_SIZE + $DECOMPRESSED_SIZE" | bc -l)
 fi
 
 echo "Zswap enabled:            $ENABLED"
@@ -29,10 +31,12 @@ echo "Zpool:                    $ZPOOL"
 echo
 echo "Page size:                $PAGE_SIZE"
 echo "Stored pages:             $STORED_PAGES"
-echo "Pool size:                $POOL_SIZE"
-echo "Decompressed size:        $DECOMPRESSED_SIZE"
-echo "Written to storage size:  $WRITTEN_SIZE"
+echo "Pool size:                $(numfmt --to=iec-i $POOL_TOTAL_SIZE)"
+echo "Decompressed size:        $(numfmt --to=iec-i $DECOMPRESSED_SIZE)"
+echo "Written to storage size:  $(numfmt --to=iec-i $WRITTEN_SIZE)"
 echo "Page compression ratio:   $RATIO"
+echo "Total real mem size:      $(numfmt --to=iec-i $REAL_SIZE)"
+echo "Total virtual mem size:   $(numfmt --to=iec-i $VIRT_SIZE)"
 
 if [ "$1" = "-v" ]
 then
