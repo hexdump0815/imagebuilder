@@ -34,3 +34,10 @@ if [ -d /sys/block/sda ] || [ -d /sys/block/sdb ] || [ -d /sys/block/sdc ]; then
     fi
   done
 fi
+
+# do some low memory optimization
+echo zstd > /sys/module/zswap/parameters/compressor 
+echo z3fold > /sys/module/zswap/parameters/zpool
+# default is 20% and above compressed pages get pushed out to real swap
+#echo 25 > /sys/module/zswap/parameters/max_pool_percent 
+echo 1 > /sys/module/zswap/parameters/enabled
