@@ -1,4 +1,4 @@
-deb http://deb.debian.org/debian/ stable main contrib non-free
-deb http://deb.debian.org/debian/ stable-updates main contrib non-free
-deb http://deb.debian.org/debian-security stable/updates main
-deb http://deb.debian.org/debian/ buster-backports main
+deb http://deb.debian.org/debian/ DEBIANVERSION main contrib non-free
+deb http://deb.debian.org/debian/ DEBIANVERSION-updates main contrib non-free
+deb http://deb.debian.org/debian-security DEBIANVERSION/updates main
+deb http://deb.debian.org/debian/ DEBIANVERSION-backports main

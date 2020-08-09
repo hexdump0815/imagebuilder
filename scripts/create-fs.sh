@@ -46,6 +46,16 @@ if [ -d ${BUILD_ROOT} ]; then
   exit 1
 fi
 
+# set defaults for the values coming from imagebuilder.conf otherwise
+USERNAME=linux
+UBUNTUVERSION=focal
+DEBIANVERSION=buster
+
+# get the imagebuilder config
+if [ -f ${WORKDIR}/scripts/imagebuilder.conf ]; then
+  . ${WORKDIR}/scripts/imagebuilder.conf
+fi
+
 mkdir -p ${BUILD_ROOT}
 cd ${BUILD_ROOT}
 
@@ -55,12 +65,15 @@ elif [ "$2" = "aarch64" ]; then
   BOOTSTRAP_ARCH=arm64
 fi
 if [ "$3" = "ubuntu" ]; then 
-  LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} focal ${BUILD_ROOT} http://ports.ubuntu.com/
+  LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} ${UBUNTUVERSION} ${BUILD_ROOT} http://ports.ubuntu.com/
 elif [ "$3" = "debian" ]; then 
-  LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} buster ${BUILD_ROOT} http://deb.debian.org/debian/
+  LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} ${DEBIANVERSION} ${BUILD_ROOT} http://deb.debian.org/debian/
 fi
 
 cp ${WORKDIR}/files/${3}-sources.list ${BUILD_ROOT}/etc/apt/sources.list
+# parse in the proper ubuntu/debian version
+sed -i "s,UBUNTUVERSION,${UBUNTUVERSION},g" ${BUILD_ROOT}/etc/apt/sources.list
+sed -i "s,DEBIANVERSION,${DEBIANVERSION},g" ${BUILD_ROOT}/etc/apt/sources.list
 cp ${WORKDIR}/scripts/create-chroot.sh ${BUILD_ROOT}
 
 mount -o bind /dev ${BUILD_ROOT}/dev
@@ -70,7 +83,7 @@ mount -t proc /proc ${BUILD_ROOT}/proc
 cp /proc/mounts ${BUILD_ROOT}/etc/mtab  
 cp /etc/resolv.conf ${BUILD_ROOT}/etc/resolv.conf 
 
-chroot ${BUILD_ROOT} /create-chroot.sh ${3}
+chroot ${BUILD_ROOT} /create-chroot.sh ${3} ${USERNAME}
 
 cd ${BUILD_ROOT}/
 tar --numeric-owner -xzf ${WORKDIR}/downloads/kernel-${1}-${2}.tar.gz

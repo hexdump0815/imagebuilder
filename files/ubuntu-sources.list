@@ -1,4 +1,4 @@
-deb http://ports.ubuntu.com/ubuntu-ports/ focal-security restricted multiverse main universe
-deb http://ports.ubuntu.com/ubuntu-ports/ focal-updates restricted multiverse main universe
-deb http://ports.ubuntu.com/ubuntu-ports/ focal-backports restricted multiverse main universe
-deb http://ports.ubuntu.com/ubuntu-ports/ focal main universe restricted multiverse
+deb http://ports.ubuntu.com/ubuntu-ports/ UBUNTUVERSION-security restricted multiverse main universe
+deb http://ports.ubuntu.com/ubuntu-ports/ UBUNTUVERSION-updates restricted multiverse main universe
+deb http://ports.ubuntu.com/ubuntu-ports/ UBUNTUVERSION-backports restricted multiverse main universe
+deb http://ports.ubuntu.com/ubuntu-ports/ UBUNTUVERSION main universe restricted multiverse
