@@ -20,7 +20,7 @@ then
 else
         DECOMPRESSED_SIZE=$(echo "$STORED_PAGES * $PAGE_SIZE" | bc | numfmt --to=iec-i)
         RATIO=$(echo "scale=3; $STORED_PAGES * $PAGE_SIZE / $POOL_TOTAL_SIZE" | bc -l)
-	WRITTEN_SIZE=$(echo "scale = 0; ($(LANG=c free -b |grep Swap |awk '{print $3}') - $(cat /sys/kernel/debug/zswap/stored_pages) * $(getconf PAGESIZE)) / 1024 / 1024" | bc -l)
+	WRITTEN_SIZE=$(echo "scale = 0; ($(LANG=c free -b |grep Swap |awk '{print $3}') - $(cat /sys/kernel/debug/zswap/stored_pages) * $(getconf PAGESIZE)) / 1024 / 1024" | bc -l)Mi
 fi
 
 echo "Zswap enabled:            $ENABLED"
@@ -31,7 +31,7 @@ echo "Page size:                $PAGE_SIZE"
 echo "Stored pages:             $STORED_PAGES"
 echo "Pool size:                $POOL_SIZE"
 echo "Decompressed size:        $DECOMPRESSED_SIZE"
-echo "Written to storage size:  ${WRITTEN_SIZE}Mi"
+echo "Written to storage size:  $WRITTEN_SIZE"
 echo "Page compression ratio:   $RATIO"
 
 if [ "$1" = "-v" ]
