@@ -30,6 +30,7 @@ useradd -c ${2} -d /home/${2} -m -p '$6$sEhhlter$njAiCsaYr7lveaAQCmsABlrGbrVip/l
 usermod -a -G sudo ${2}
 usermod -a -G audio ${2}
 usermod -a -G video ${2}
+usermod -a -G render ${2}
 
 # setup locale info for en-us
 sed -i 's,# en_US ISO-8859-1,en_US ISO-8859-1,g;s,# en_US.UTF-8 UTF-8,en_US.UTF-8 UTF-8,g' /etc/locale.gen
