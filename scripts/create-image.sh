@@ -9,6 +9,7 @@ if [ "$#" != "3" ]; then
   echo "- chromebook_veyron (armv7l)"
   echo "- chromebook_nyanbig (armv7l)"
   echo "- allwinner_h6 (armv7l)"
+  echo "- amlogic_m8 (armv7l)"
   echo "- odroid_u3 (armv7l)"
   echo "- odroid_xu4 (armv7l)"
   echo "- orbsmart_s92_beelink_r89 (armv7l)"
@@ -160,6 +161,11 @@ if [ "$1" = "orbsmart_s92_beelink_r89" ]; then
   export KERNEL_VERSION=`ls ${MOUNT_POINT}/boot/*Image-* | sed 's,.*Image-,,g' | sort -u`
   ${WORKDIR}/scripts/orbsmart_s92_beelink_r89-prepare-boot.sh ${KERNEL_VERSION}
   ${WORKDIR}/scripts/orbsmart_s92_beelink_r89-create-boot.sh
+fi
+
+# for the amlogic m8x we will have to shorten the kernel and initrd filenames due to a 23 char limit
+if [ "$1" = "amlogic_m8" ]; then
+  ${MOUNT_POINT}/boot/shorten-filenames.sh
 fi
 
 umount ${MOUNT_POINT}/boot 
