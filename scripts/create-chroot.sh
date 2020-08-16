@@ -36,8 +36,8 @@ usermod -a -G render ${2}
 sed -i 's,# en_US ISO-8859-1,en_US ISO-8859-1,g;s,# en_US.UTF-8 UTF-8,en_US.UTF-8 UTF-8,g' /etc/locale.gen
 locale-gen
 
-# remove dmidecode (only on ubuntu) as it crashes on some arm devices on boot
-apt-get -yq remove dmidecode
+# remove snapd and dmidecode (only on ubuntu) as it crashes on some arm devices on boot
+apt-get -yq remove snapd dmidecode
 
 apt-get -yq auto-remove
 apt-get clean
