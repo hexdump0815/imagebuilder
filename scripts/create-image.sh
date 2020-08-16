@@ -155,6 +155,9 @@ fi
 if [ -f ${MOUNT_POINT}/boot/menu/extlinux.conf ]; then
   sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
 fi
+if [ -f ${MOUNT_POINT}/boot/uEnv.ini ]; then
+  sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/uEnv.ini
+fi
 
 # for the orbsmart s92 / beelink r89 the boot loader has to be written in a special way to the disk
 if [ "$1" = "orbsmart_s92_beelink_r89" ]; then
