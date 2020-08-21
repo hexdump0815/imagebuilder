@@ -71,9 +71,9 @@ allwinner_h3_uboot_version="200718-01"
 amlogic_m8_release_version="5.6.15-stb-m8x%2B"
 amlogic_m8_generic_tree_tag=${generic_tree_tag}
 
-odroid_u3_release_version="5.4.20-stb-exy%2B"
+odroid_u3_release_version="5.4.58-stb-exy%2B"
 odroid_u3_generic_tree_tag=${generic_tree_tag}
-odroid_u3_uboot_version="200718-01"
+odroid_u3_uboot_version="200821-01"
 
 odroid_xu4_release_version="5.4.35-stb-e54%2B"
 odroid_xu4_generic_tree_tag=${generic_tree_tag}
