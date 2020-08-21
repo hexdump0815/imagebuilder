@@ -11,6 +11,7 @@ if [ "$#" != "2" ]; then
   echo "               chromebook_veyron (armv7l)"
   echo "               chromebook_nyanbig (armv7l)"
   echo "               allwinner_h3 (armv7l)"
+  echo "               amlogic_m8 (armv7l)"
   echo "               odroid_u3 (armv7l)"
   echo "               odroid_xu4 (armv7l)"
   echo "               orbsmart_s92_beelink_r89 (armv7l)"
@@ -66,6 +67,9 @@ allwinner_h3_release_version="5.6.13-stb-ah3%2B"
 allwinner_h3_generic_tree_tag=${generic_tree_tag}
 allwinner_h3_tree_tag="master"
 allwinner_h3_uboot_version="200718-01"
+
+amlogic_m8_release_version="5.6.15-stb-m8x%2B"
+amlogic_m8_generic_tree_tag=${generic_tree_tag}
 
 odroid_u3_release_version="5.4.20-stb-exy%2B"
 odroid_u3_generic_tree_tag=${generic_tree_tag}
@@ -211,6 +215,11 @@ if ([ "$1" = "all" ] || [ "$1" = "odroid_u3" ]) && [ "$2" = "armv7l" ]; then
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${odroid_u3_generic_tree_tag}/misc/opt-mali-exynos4412-armv7l.tar.gz -O downloads/opengl-odroid_u3-armv7l.tar.gz
   rm -f downloads/opengl-fbdev-odroid_u3-armv7l.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${odroid_u3_generic_tree_tag}/misc/opt-mali-exynos4412-fbdev-armv7l.tar.gz -O downloads/opengl-fbdev-odroid_u3-armv7l.tar.gz
+fi
+
+if ([ "$1" = "all" ] || [ "$1" = "amlogic_m8" ]) && [ "$2" = "armv7l" ]; then
+  rm -f downloads/kernel-amlogic_m8-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-amlogic-kernel/releases/download/${amlogic_m8_release_version}/${amlogic_m8_release_version}.tar.gz -O downloads/kernel-amlogic_m8-armv7l.tar.gz
 fi
 
 if ([ "$1" = "all" ] || [ "$1" = "odroid_xu4" ]) && [ "$2" = "armv7l" ]; then

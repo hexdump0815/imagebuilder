@@ -41,3 +41,9 @@ apt-get -yq remove snapd dmidecode
 
 apt-get -yq auto-remove
 apt-get clean
+
+# hack to detect m8x via /boot/uEnv.ini to disable lightdm for it
+# as it does not yet have a working hdmi output and lighdm would fail
+if [ -f /boot/uEnv.ini ]; then
+  systemctl disable lightdm
+fi

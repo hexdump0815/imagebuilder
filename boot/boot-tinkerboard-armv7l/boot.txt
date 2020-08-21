@@ -1,6 +1,6 @@
 # you can set uboot variables here if required - the extlinux dir has to move to menu then
 # for instance a fixed eth mac address
-#setenv ethaddr 11:22:33:44:55:66
+#setenv ethaddr be-76-cd-88-a1-5a
 
 # call sysboot to use the boot options defined in /boot/menu/extlinux.conf
 sysboot mmc 1 fat 0x1000000 /menu/extlinux.conf
