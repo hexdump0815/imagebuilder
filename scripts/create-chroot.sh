@@ -23,6 +23,7 @@ useradd -c linux -d /home/linux -m -p '$6$sEhhlter$njAiCsaYr7lveaAQCmsABlrGbrVip
 usermod -a -G sudo linux
 usermod -a -G audio linux
 usermod -a -G video linux
+usermod -a -G render linux
 
 # setup locale info for en-us
 sed -i 's,# en_US ISO-8859-1,en_US ISO-8859-1,g;s,# en_US.UTF-8 UTF-8,en_US.UTF-8 UTF-8,g' /etc/locale.gen
