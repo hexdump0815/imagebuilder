@@ -40,6 +40,10 @@ w
 EOF
 elif [ "$PARTITIONTYPE" = "gpt" ]; then
   ROOTPARTITIONSTART=$(sfdisk -d /dev/$ROOTDEVICEBASE | grep $ROOTDEVICE | awk '{print $4}' | sed 's/,//g')
+  # fix gpt partition table
+  sgdisk -C -e -G /dev/$ROOTDEVICEBASE
+  # verify it
+  sgdisk -v /dev/$ROOTDEVICEBASE
   fdisk /dev/$ROOTDEVICEBASE << EOF
 d
 $ROOTDEVICEPARTNUMBER
