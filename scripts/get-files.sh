@@ -61,7 +61,7 @@ chromebook_veyron_generic_tree_tag=${generic_tree_tag}
 chromebook_nyanbig_release_version="5.4.35-ntg-cbt%2B"
 chromebook_nyanbig_uboot_version="v2018.11-cbt"
 chromebook_nyanbig_generic_tree_tag=${generic_tree_tag}
-chromebook_nyanbig_mesa_release_version="20.1.0"
+chromebook_nyanbig_mesa_release_version="20.0.6"
 
 allwinner_h3_release_version="5.6.13-stb-ah3%2B"
 allwinner_h3_generic_tree_tag=${generic_tree_tag}
@@ -92,19 +92,19 @@ tinkerboard_generic_tree_tag=${generic_tree_tag}
 
 raspberry_pi_armv7l_release_version="5.4.58-stb-av7%2B"
 raspberry_pi_armv7l_generic_tree_tag=${generic_tree_tag}
-raspberry_pi_armv7l_mesa_release_version="20.1.0"
+raspberry_pi_armv7l_mesa_release_version="20.0.6"
 
 raspberry_pi_aarch64_release_version="5.4.58-stb-av8%2B"
 raspberry_pi_aarch64_generic_tree_tag=${generic_tree_tag}
-raspberry_pi_aarch64_mesa_release_version="20.1.0"
+raspberry_pi_aarch64_mesa_release_version="20.0.6"
 
 raspberry_pi_4_armv7l_release_version="5.8.2-rpi-64b%2B"
 raspberry_pi_4_armv7l_generic_tree_tag=${generic_tree_tag}
-raspberry_pi_4_armv7l_mesa_release_version="20.1.0"
+raspberry_pi_4_armv7l_mesa_release_version="20.0.6"
 
 raspberry_pi_4_aarch64_release_version="5.8.2-rpi-64b%2B"
 raspberry_pi_4_aarch64_generic_tree_tag=${generic_tree_tag}
-raspberry_pi_4_aarch64_mesa_release_version="20.1.0"
+raspberry_pi_4_aarch64_mesa_release_version="20.0.6"
 
 amlogic_gx_release_version="5.4.58-stb-av8%2B"
 amlogic_gx_generic_tree_tag=${generic_tree_tag}
