@@ -50,11 +50,11 @@ set -e
 
 generic_tree_tag="9051dfe1f2198e2ed41c322359ee8324043d55a9"
 
-chromebook_snow_release_version="5.4.14-stb-cbe%2B"
+chromebook_snow_release_version="5.4.58-stb-cbe%2B"
 chromebook_snow_uboot_version="v2020.04-cbe"
 chromebook_snow_generic_tree_tag=${generic_tree_tag}
 
-chromebook_veyron_release_version="5.4.31-stb-cbr%2B"
+chromebook_veyron_release_version="5.4.58-stb-cbr%2B"
 chromebook_veyron_uboot_version="v2017.09-cbr"
 chromebook_veyron_generic_tree_tag=${generic_tree_tag}
 
@@ -75,38 +75,38 @@ odroid_u3_release_version="5.4.58-stb-exy%2B"
 odroid_u3_generic_tree_tag=${generic_tree_tag}
 odroid_u3_uboot_version="200821-01"
 
-odroid_xu4_release_version="5.4.35-stb-e54%2B"
+odroid_xu4_release_version="5.4.58-stb-e54%2B"
 odroid_xu4_generic_tree_tag=${generic_tree_tag}
 odroid_xu4_mali_tree_tag="master"
 odroid_xu4_uboot_version="200718-01"
 
-orbsmart_s92_beelink_r89_release_version="5.4.14-stb-av7%2B"
+orbsmart_s92_beelink_r89_release_version="5.4.58-stb-av7%2B"
 orbsmart_s92_beelink_r89_generic_tree_tag=${generic_tree_tag}
 
 rockchip_rk322x_release_version="4.4.194-rkc-322"
 rockchip_rk322x_generic_tree_tag=${generic_tree_tag}
 rockchip_rk322x_tree_tag="master"
 
-tinkerboard_release_version="5.4.14-stb-av7%2B"
+tinkerboard_release_version="5.4.58-stb-av7%2B"
 tinkerboard_generic_tree_tag=${generic_tree_tag}
 
-raspberry_pi_armv7l_release_version="5.4.14-stb-av7%2B"
+raspberry_pi_armv7l_release_version="5.4.58-stb-av7%2B"
 raspberry_pi_armv7l_generic_tree_tag=${generic_tree_tag}
 raspberry_pi_armv7l_mesa_release_version="20.0.6"
 
-raspberry_pi_aarch64_release_version="5.4.14-stb-av8%2B"
+raspberry_pi_aarch64_release_version="5.4.58-stb-av8%2B"
 raspberry_pi_aarch64_generic_tree_tag=${generic_tree_tag}
 raspberry_pi_aarch64_mesa_release_version="20.0.6"
 
-raspberry_pi_4_armv7l_release_version="5.7.7-rpi-64b%2B"
+raspberry_pi_4_armv7l_release_version="5.8.2-rpi-64b%2B"
 raspberry_pi_4_armv7l_generic_tree_tag=${generic_tree_tag}
 raspberry_pi_4_armv7l_mesa_release_version="20.0.6"
 
-raspberry_pi_4_aarch64_release_version="5.7.7-rpi-64b%2B"
+raspberry_pi_4_aarch64_release_version="5.8.2-rpi-64b%2B"
 raspberry_pi_4_aarch64_generic_tree_tag=${generic_tree_tag}
 raspberry_pi_4_aarch64_mesa_release_version="20.0.6"
 
-amlogic_gx_release_version="5.4.14-stb-av8%2B"
+amlogic_gx_release_version="5.4.58-stb-av8%2B"
 amlogic_gx_generic_tree_tag=${generic_tree_tag}
 
 allwinner_h6_release_version="5.6.13-stb-ah6%2B"
