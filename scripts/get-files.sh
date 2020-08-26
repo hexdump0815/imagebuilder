@@ -48,7 +48,7 @@ mkdir downloads
 # exit on errors
 set -e
 
-generic_tree_tag="9051dfe1f2198e2ed41c322359ee8324043d55a9"
+generic_tree_tag="159a54b4e55cde9f5c19d98496fa5dacd1f13f95"
 
 chromebook_snow_release_version="5.4.58-stb-cbe%2B"
 chromebook_snow_uboot_version="v2020.04-cbe"
