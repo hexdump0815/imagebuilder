@@ -42,6 +42,6 @@ echo z3fold > /sys/module/zswap/parameters/zpool
 # for compression, more is the other way around, depends on actual hw
 # with 10 there is no big win on memory, but only compressed pages
 # are written to the swap sapce and thus io to emmc/sd is reduced
-# after some real world testing it looks 25 is a quite useable value
-echo 25 > /sys/module/zswap/parameters/max_pool_percent 
+# after some real world testing it looks like 35 is a useable value
+echo 35 > /sys/module/zswap/parameters/max_pool_percent 
 echo 1 > /sys/module/zswap/parameters/enabled
