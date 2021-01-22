@@ -147,7 +147,10 @@ if [ "$SWAPPART" != "" ]; then
   mkswap -L swappart /dev/loop0p$SWAPPART
 else
   mkdir ${MOUNT_POINT}/swap
-  dd if=/dev/zero of=${MOUNT_POINT}/swap/file.0 bs=1024k count=512 status=progress
+  truncate -s 0 ${MOUNT_POINT}/swap/file.0
+  # for btrfs - coming soon ...
+  # btrfs property set ${MOUNT_POINT}/swap/file.0 compression none
+  fallocate -l 512M ${MOUNT_POINT}/swap/file.0
   chmod 600 ${MOUNT_POINT}/swap/file.0
   mkswap -L swapfile.0 ${MOUNT_POINT}/swap/file.0
   sed -i 's,LABEL=swappart,/swap/file.0,g' ${MOUNT_POINT}/etc/fstab
