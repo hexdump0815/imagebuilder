@@ -1,0 +1,17 @@
+#
+# from: https://archlinuxarm.org/forum/viewtopic.php?f=49&t=12185&start=230#p64180
+# goes to: /etc/systemd/system/resume_user_script.service
+# the User parameter needs to be adjusted to the username
+#
+
+[Unit]
+Description=Run resume_user_script
+After=suspend.target
+
+[Service]
+ExecStart=xrandr --output eDP-1 --off; xrandr --output eDP-1 --auto;
+User=linux
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=suspend.target
