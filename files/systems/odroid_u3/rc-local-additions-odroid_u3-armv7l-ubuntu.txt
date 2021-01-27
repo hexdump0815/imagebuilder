@@ -1,2 +1,0 @@
-# uncomment this to get rid of the blinking blue led
-#echo none > /sys/class/leds/led1:heart/trigger

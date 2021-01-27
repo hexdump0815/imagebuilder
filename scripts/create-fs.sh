@@ -2,7 +2,7 @@
 
 if [ "$#" != "3" ]; then
   echo ""
-  echo "usage: $0 system arch ubuntu/debian"
+  echo "usage: $0 system arch release"
   echo ""
   echo "possible system options:"
   echo "- chromebook_snow (armv7l)"
@@ -15,22 +15,22 @@ if [ "$#" != "3" ]; then
   echo "- orbsmart_s92_beelink_r89 (armv7l)"
   echo "- rockchip_rk322x (armv7l)"
   echo "- tinkerboard (armv7l)"
-  echo "- raspberry_pi (armv7l)"
-  echo "- raspberry_pi (aarch64)"
-  echo "- raspberry_pi_4 (armv7l) (using a 64bit kernel)"
+  echo "- raspberry_pi_2 (armv7l)"
+  echo "- raspberry_pi_3 (aarch64)"
   echo "- raspberry_pi_4 (aarch64)"
-  echo "- amlogic_gx (armv7l) (using a 64bit kernel)"
   echo "- amlogic_gx (aarch64)"
-  echo "- allwinner_h6 (armv7l) (using a 64bit kernel)"
   echo "- allwinner_h6 (aarch64)"
-  echo "- rockchip_rk33xx (armv7l) (using a 64bit kernel)"
   echo "- rockchip_rk33xx (aarch64)"
   echo ""
   echo "possible arch options:"
-  echo "- armv7l (32bit) userland"
-  echo "- aarch64 (64bit) userland"
+  echo "- armv7l (32bit)"
+  echo "- aarch64 (64bit)"
   echo ""
-  echo "example: $0 odroid_u3 armv7l ubuntu"
+  echo "possible release options:"
+  echo "- focal (ubuntu)"
+  echo "- buster (debian)"
+  echo ""
+  echo "example: $0 odroid_u3 armv7l focal"
   echo ""
   exit 1
 fi
@@ -49,8 +49,6 @@ fi
 
 # set defaults for the values coming from imagebuilder.conf otherwise
 USERNAME=linux
-UBUNTUVERSION=focal
-DEBIANVERSION=buster
 
 # get the imagebuilder config
 if [ -f ${WORKDIR}/scripts/imagebuilder.conf ]; then
@@ -65,16 +63,16 @@ if [ "$2" = "armv7l" ]; then
 elif [ "$2" = "aarch64" ]; then 
   BOOTSTRAP_ARCH=arm64
 fi
-if [ "$3" = "ubuntu" ]; then 
+if [ "$3" = "focal" ]; then 
   LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} ${UBUNTUVERSION} ${BUILD_ROOT} http://ports.ubuntu.com/
-elif [ "$3" = "debian" ]; then 
+elif [ "$3" = "buster" ]; then 
   LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} ${DEBIANVERSION} ${BUILD_ROOT} http://deb.debian.org/debian/
 fi
 
 cp ${WORKDIR}/files/${3}-sources.list ${BUILD_ROOT}/etc/apt/sources.list
 # parse in the proper ubuntu/debian version
-sed -i "s,UBUNTUVERSION,${UBUNTUVERSION},g" ${BUILD_ROOT}/etc/apt/sources.list
-sed -i "s,DEBIANVERSION,${DEBIANVERSION},g" ${BUILD_ROOT}/etc/apt/sources.list
+sed -i "s,UBUNTUVERSION,${3},g" ${BUILD_ROOT}/etc/apt/sources.list
+sed -i "s,DEBIANVERSION,${3},g" ${BUILD_ROOT}/etc/apt/sources.list
 cp ${WORKDIR}/scripts/create-chroot.sh ${BUILD_ROOT}
 
 mount -o bind /dev ${BUILD_ROOT}/dev
@@ -94,21 +92,32 @@ fi
 if [ -f ${WORKDIR}/downloads/kernel-mali-b-${1}-${2}.tar.gz ]; then
   tar --numeric-owner -xzf ${WORKDIR}/downloads/kernel-mali-b-${1}-${2}.tar.gz
 fi
-cp -r ${WORKDIR}/boot/boot-${1}-${2}/* boot
+cp -r ${WORKDIR}/boot/boot-${1}/* boot
 
 rm -f create-chroot.sh
-( cd ${WORKDIR}/files/extra-files ; tar cf - . ) | tar xf -
+if [ -d ${WORKDIR}/files/extra-files ]; then
+  ( cd ${WORKDIR}/files/extra-files ; tar cf - . ) | tar xf -
+fi
 if [ -d ${WORKDIR}/files/extra-files-${2} ]; then
   ( cd ${WORKDIR}/files/extra-files-${2} ; tar cf - . ) | tar xf -
 fi
 if [ -d ${WORKDIR}/files/extra-files-${3} ]; then
   ( cd ${WORKDIR}/files/extra-files-${3} ; tar cf - . ) | tar xf -
 fi
-if [ -d ${WORKDIR}/files/systems/${1}/extra-files-${1}-${2} ]; then
-  ( cd ${WORKDIR}/files/systems/${1}/extra-files-${1}-${2} ; tar cf - . ) | tar xf -
+if [ -d ${WORKDIR}/files/extra-files-${2}-${3} ]; then
+  ( cd ${WORKDIR}/files/extra-files-${2}-${3} ; tar cf - . ) | tar xf -
 fi
-if [ -d ${WORKDIR}/files/systems/${1}/extra-files-${1}-${2}-${3} ]; then
-  ( cd ${WORKDIR}/files/systems/${1}/extra-files-${1}-${2}-${3} ; tar cf - . ) | tar xf -
+if [ -d ${WORKDIR}/files/systems/${1}/extra-files ]; then
+  ( cd ${WORKDIR}/files/systems/${1}/extra-files ; tar cf - . ) | tar xf -
+fi
+if [ -d ${WORKDIR}/files/systems/${1}/extra-files-${2} ]; then
+  ( cd ${WORKDIR}/files/systems/${1}/extra-files-${2} ; tar cf - . ) | tar xf -
+fi
+if [ -d ${WORKDIR}/files/systems/${1}/extra-files-${3} ]; then
+  ( cd ${WORKDIR}/files/systems/${1}/extra-files-${3} ; tar cf - . ) | tar xf -
+fi
+if [ -d ${WORKDIR}/files/systems/${1}/extra-files-${2}-${3} ]; then
+  ( cd ${WORKDIR}/files/systems/${1}/extra-files-${2}-${3} ; tar cf - . ) | tar xf -
 fi
 if [ -f ${WORKDIR}/downloads/opengl-${1}-${2}.tar.gz ]; then
   tar --numeric-owner -xzf ${WORKDIR}/downloads/opengl-${1}-${2}.tar.gz
@@ -146,11 +155,17 @@ fi
 if [ -f ${WORKDIR}/downloads/gl4es-${2}-${3}.tar.gz ]; then
   tar --numeric-owner -xzf ${WORKDIR}/downloads/gl4es-${2}-${3}.tar.gz
 fi
-if [ -f ${WORKDIR}/files/systems/${1}/rc-local-additions-${1}-${2}-${3}.txt ]; then
+if [ -f ${WORKDIR}/files/systems/${1}/rc-local-additions.txt ]; then
   echo "" >> etc/rc.local
-  echo "# additions for ${1}-${2}-${3}" >> etc/rc.local
+  echo "# additions for ${1}" >> etc/rc.local
   echo "" >> etc/rc.local
-  cat ${WORKDIR}/files/systems/${1}/rc-local-additions-${1}-${2}-${3}.txt >> etc/rc.local
+  cat ${WORKDIR}/files/systems/${1}/rc-local-additions.txt >> etc/rc.local
+fi
+if [ -f ${WORKDIR}/files/systems/${1}/rc-local-additions-${3}.txt ]; then
+  echo "" >> etc/rc.local
+  echo "# additions for ${1} ${3}" >> etc/rc.local
+  echo "" >> etc/rc.local
+  cat ${WORKDIR}/files/systems/${1}/rc-local-additions-${3}.txt >> etc/rc.local
 fi
 echo "" >> etc/rc.local
 echo "exit 0" >> etc/rc.local
@@ -188,8 +203,11 @@ mv -f ${BUILD_ROOT}/tmp/fsck.org ${BUILD_ROOT}/usr/share/initramfs-tools/hooks/f
 cd ${BUILD_ROOT}
 
 # post install script per system
-if [ -x ${WORKDIR}/files/systems/${1}/postinstall-${1}-${2}-${3}.sh ]; then
-  ${WORKDIR}/files/systems/${1}/postinstall-${1}-${2}-${3}.sh
+if [ -x ${WORKDIR}/files/systems/${1}/postinstall.sh ]; then
+  ${WORKDIR}/files/systems/${1}/postinstall.sh
+fi
+if [ -x ${WORKDIR}/files/systems/${1}/postinstall-${3}.sh ]; then
+  ${WORKDIR}/files/systems/${1}/postinstall-${3}.sh
 fi
 
 chroot ${BUILD_ROOT} ldconfig
