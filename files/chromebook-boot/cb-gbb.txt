@@ -27,4 +27,13 @@ gbb_utility -s --bmpfv=nothing bios.bin
 - write back flash
 flashrom -w bios.bin
 flashrom --wp-enable
+- in case you get an error for that command speaking about --wp-range which seems to happen on newer chromeos versions
+  then please do the following (see: https://chromium.googlesource.com/chromiumos/docs/+/master/write_protection.md#Enabling-write-protect)
+fmap_decode bios.bin
+- not down the range for WP_RO - usually it is 0x00000000 to 0x00200000 but better double check
+- then rerun the failed command as (with the range noted down above)
+flashrom --wp-enable --wp-range 0x00000000 0x00200000
+- double check that the write protect is enabled again
+flashrom --wp-status
+- if everything is good you can shutdown your system now
 - put the flash write protect screw/sticker back
