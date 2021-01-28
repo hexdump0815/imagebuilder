@@ -59,8 +59,10 @@ w
 EOF
 fi
 
+partprobe /dev/$ROOTDEVICE
+
 if [ "$ROOTFSTYPE" = "btrfs" ]; then
-  btrfs filesystem resize max /dev/$ROOTDEVICE
+  btrfs filesystem resize max /
 else
   resize2fs /dev/$ROOTDEVICE
 fi
