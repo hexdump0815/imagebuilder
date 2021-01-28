@@ -18,6 +18,14 @@ while true; do
     echo -n "temp: "
     cat /sys/class/hwmon/hwmon0/temp1_input
   fi
+  if [ -f /sys/class/hwmon/hwmon1/temp1_input ]; then
+    echo -n "temp: "
+    cat /sys/class/hwmon/hwmon1/temp1_input
+  fi
+  if [ -f /sys/class/hwmon/hwmon2/temp1_input ]; then
+    echo -n "temp: "
+    cat /sys/class/hwmon/hwmon2/temp1_input
+  fi
   if [ -f /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq ]; then
     echo "cpu frequencies:" 
     cat /sys/devices/system/cpu/cpu?/cpufreq/scaling_cur_freq 
