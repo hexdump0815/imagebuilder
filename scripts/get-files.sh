@@ -67,7 +67,7 @@ allwinner_h3_uboot_version="200718-01"
 amlogic_m8_release_version="5.6.19-stb-m8x%2B"
 amlogic_m8_generic_tree_tag=${generic_tree_tag}
 
-odroid_u3_release_version="5.4.58-stb-exy%2B"
+odroid_u3_release_version="5.10.3-stb-exy%2B"
 odroid_u3_generic_tree_tag=${generic_tree_tag}
 odroid_u3_uboot_version="200821-01"
 
@@ -98,7 +98,7 @@ raspberry_pi_4_release_version="5.8.2-rpi-64b%2B"
 raspberry_pi_4_generic_tree_tag=${generic_tree_tag}
 raspberry_pi_4_mesa_release_version="20.1.6"
 
-amlogic_gx_release_version="5.4.58-stb-av8%2B"
+amlogic_gx_release_version="5.10.1-stb-av8%2B"
 amlogic_gx_generic_tree_tag=${generic_tree_tag}
 
 allwinner_h6_release_version="5.6.13-stb-ah6%2B"
