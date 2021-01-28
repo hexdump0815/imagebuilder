@@ -194,29 +194,6 @@ else
   sed -i 's,LABEL=swappart,/swap/file.0,g' ${MOUNT_POINT}/etc/fstab
 fi
 
-if [ "$PARTUUID_ROOT" = "YES" ]; then
-  ROOT_PARTUUID=$(blkid | grep "/dev/loop0p$ROOTPART" | awk '{print $5}' | sed 's,",,g')
-  if [ -f ${MOUNT_POINT}/boot/extlinux/extlinux.conf ]; then
-    sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
-  fi
-  if [ -f ${MOUNT_POINT}/boot/menu/extlinux.conf ]; then
-    sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
-  fi
-  if [ -f ${MOUNT_POINT}/boot/uEnv.ini ]; then
-    sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/uEnv.ini
-  fi
-else
-  if [ -f ${MOUNT_POINT}/boot/extlinux/extlinux.conf ]; then
-    sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
-  fi
-  if [ -f ${MOUNT_POINT}/boot/menu/extlinux.conf ]; then
-    sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
-  fi
-  if [ -f ${MOUNT_POINT}/boot/uEnv.ini ]; then
-    sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/uEnv.ini
-  fi
-fi
-
 # create a customized fstab file
 FSTAB_EXT4_BOOT="LABEL=bootpart /boot ext4 defaults,noatime,nodiratime,errors=remount-ro 0 2"
 FSTAB_VFAT_BOOT="LABEL=BOOTPART /boot vfat defaults,rw,owner,flush,umask=000 0 0"
@@ -241,9 +218,38 @@ else
   echo $FSTAB_SWAP_PART >> ${MOUNT_POINT}/etc/fstab
 fi
 
+export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/*Image-* | sed 's,.*Image-,,g' | sort -u`
+if [ "$PARTUUID_ROOT" = "YES" ]; then
+  ROOT_PARTUUID=$(blkid | grep "/dev/loop0p$ROOTPART" | awk '{print $5}' | sed 's,",,g')
+  if [ -f ${MOUNT_POINT}/boot/extlinux/extlinux.conf ]; then
+    sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
+    sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
+  fi
+  if [ -f ${MOUNT_POINT}/boot/menu/extlinux.conf ]; then
+    sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
+    sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
+  fi
+  if [ -f ${MOUNT_POINT}/boot/uEnv.ini ]; then
+    sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/uEnv.ini
+    sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/uEnv.ini
+  fi
+else
+  if [ -f ${MOUNT_POINT}/boot/extlinux/extlinux.conf ]; then
+    sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
+    sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
+  fi
+  if [ -f ${MOUNT_POINT}/boot/menu/extlinux.conf ]; then
+    sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
+    sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
+  fi
+  if [ -f ${MOUNT_POINT}/boot/uEnv.ini ]; then
+    sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/uEnv.ini
+    sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/uEnv.ini
+  fi
+fi
+
 # for the orbsmart s92 / beelink r89 the boot loader has to be written in a special way to the disk
 if [ "$1" = "orbsmart_s92_beelink_r89" ]; then
-  export KERNEL_VERSION=`ls ${MOUNT_POINT}/boot/*Image-* | sed 's,.*Image-,,g' | sort -u`
   ${WORKDIR}/scripts/orbsmart_s92_beelink_r89-prepare-boot.sh ${KERNEL_VERSION}
   ${WORKDIR}/scripts/orbsmart_s92_beelink_r89-create-boot.sh
 fi
