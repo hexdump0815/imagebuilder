@@ -106,9 +106,10 @@ allwinner_h6_generic_tree_tag=${generic_tree_tag}
 allwinner_h6_tree_tag="master"
 allwinner_h6_uboot_version="200718-01"
 
-rockchip_rk33xx_release_version="5.6.13-stb-rkc%2B"
+rockchip_rk33xx_release_version="5.10.1-stb-rkc%2B"
 rockchip_rk33xx_generic_tree_tag=${generic_tree_tag}
 rockchip_rk33xx_tree_tag="master"
+rockchip_rk33xx_uboot_version="201115-01"
 
 if ([ "$1" = "all" ] || [ "$1" = "chromebook_snow" ]) && [ "$2" = "armv7l" ]; then
   rm -f downloads/kernel-chromebook_snow-armv7l.tar.gz
@@ -300,7 +301,7 @@ if ([ "$1" = "all" ] || [ "$1" = "tinkerboard" ]) && [ "$2" = "armv7l" ]; then
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${tinkerboard_generic_tree_tag}/misc/opt-mali-rk3288-wayland-armv7l.tar.gz -O downloads/opengl-wayland-tinkerboard-armv7l.tar.gz
 fi
 
-if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi" ]) && [ "$2" = "armv7l" ]; then
+if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi_2" ]) && [ "$2" = "armv7l" ]; then
   rm -f downloads/kernel-raspberry_pi-armv7l.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${raspberry_pi_2_release_version}/${raspberry_pi_2_release_version}.tar.gz -O downloads/kernel-raspberry_pi-armv7l.tar.gz
   rm -f downloads/gl4es-armv7l-buster.tar.gz
@@ -313,7 +314,7 @@ if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi" ]) && [ "$2" = "armv7l" ]; then
   wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${raspberry_pi_2_mesa_release_version}/opt-mesa-armv7l-ubuntu.tar.gz -O downloads/opengl-mesa-armv7l-focal.tar.gz
 fi
 
-if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi" ]) && [ "$2" = "aarch64" ]; then
+if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi_3" ]) && [ "$2" = "aarch64" ]; then
   rm -f downloads/kernel-raspberry_pi-aarch64.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${raspberry_pi_3_release_version}/${raspberry_pi_3_release_version}.tar.gz -O downloads/kernel-raspberry_pi-aarch64.tar.gz
   rm -f downloads/gl4es-aarch64-buster.tar.gz
@@ -339,27 +340,6 @@ if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi_4" ]) && [ "$2" = "aarch64" ]; th
   wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${raspberry_pi_4_mesa_release_version}/opt-mesa-aarch64-ubuntu.tar.gz -O downloads/opengl-mesa-aarch64-focal.tar.gz
 fi
 
-if ([ "$1" = "all" ] || [ "$1" = "amlogic_gx" ]) && [ "$2" = "armv7l" ]; then
-  rm -f downloads/kernel-amlogic_gx-armv7l.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${amlogic_gx_release_version}/${amlogic_gx_release_version}.tar.gz -O downloads/kernel-amlogic_gx-armv7l.tar.gz
-  rm -f downloads/kernel-mali-amlogic_gx-armv7l.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${amlogic_gx_release_version}/${amlogic_gx_release_version}-mali-s905.tar.gz -O downloads/kernel-mali-amlogic_gx-armv7l.tar.gz
-  rm -f downloads/boot-amlogic_gx-armv7l.dd
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_gx_generic_tree_tag}/misc.av8/u-boot/boot-odroid_c2-aarch64.dd -O downloads/boot-amlogic_gx-armv7l.dd
-  rm -f downloads/gl4es-armv7l-buster.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_gx_generic_tree_tag}/misc/gl4es-armv7l-debian.tar.gz -O downloads/gl4es-armv7l-buster.tar.gz
-  rm -f downloads/gl4es-armv7l-focal.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_gx_generic_tree_tag}/misc/gl4es-armv7l-ubuntu.tar.gz -O downloads/gl4es-armv7l-focal.tar.gz
-  rm -f downloads/xorg-armsoc-armv7l-buster.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_gx_generic_tree_tag}/misc/xorg-armsoc-armv7l-debian.tar.gz -O downloads/xorg-armsoc-armv7l-buster.tar.gz
-  rm -f downloads/xorg-armsoc-armv7l-focal.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_gx_generic_tree_tag}/misc/xorg-armsoc-armv7l-ubuntu.tar.gz -O downloads/xorg-armsoc-armv7l-focal.tar.gz
-  rm -f downloads/opengl-fbdev-amlogic_gx-armv7l.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_gx_generic_tree_tag}/misc/opt-mali-s905-fbdev-armv7l.tar.gz -O downloads/opengl-fbdev-amlogic_gx-armv7l.tar.gz
-  rm -f downloads/opengl-wayland-amlogic_gx-armv7l.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_gx_generic_tree_tag}/misc/opt-mali-s905-wayland-armv7l.tar.gz -O downloads/opengl-wayland-amlogic_gx-armv7l.tar.gz
-fi
-
 if ([ "$1" = "all" ] || [ "$1" = "amlogic_gx" ]) && [ "$2" = "aarch64" ]; then
   rm -f downloads/kernel-amlogic_gx-aarch64.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${amlogic_gx_release_version}/${amlogic_gx_release_version}.tar.gz -O downloads/kernel-amlogic_gx-aarch64.tar.gz
@@ -383,23 +363,6 @@ if ([ "$1" = "all" ] || [ "$1" = "amlogic_gx" ]) && [ "$2" = "aarch64" ]; then
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_gx_generic_tree_tag}/misc/opt-mali-s905-wayland-aarch64.tar.gz -O downloads/opengl-wayland-amlogic_gx-aarch64.tar.gz
 fi
 
-if ([ "$1" = "all" ] || [ "$1" = "allwinner_h6" ]) && [ "$2" = "armv7l" ]; then
-  rm -f downloads/kernel-allwinner_h6-armv7l.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h6-kernel/releases/download/${allwinner_h6_release_version}/${allwinner_h6_release_version}.tar.gz -O downloads/kernel-allwinner_h6-armv7l.tar.gz
-  rm -f downloads/kernel-mali-allwinner_h6-armv7l.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h6-kernel/releases/download/${allwinner_h6_release_version}/${allwinner_h6_release_version}-mali-h6.tar.gz -O downloads/kernel-mali-allwinner_h6-armv7l.tar.gz
-  rm -f downloads/boot-allwinner_h6-armv7l.dd
-  wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${allwinner_h6_uboot_version}/boot-allwinner_h6-aarch64.dd.gz -O - | gunzip -c >> downloads/boot-allwinner_h6-armv7l.dd
-  rm -f downloads/gl4es-armv7l-buster.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${allwinner_h6_generic_tree_tag}/misc/gl4es-armv7l-debian.tar.gz -O downloads/gl4es-armv7l-buster.tar.gz
-  rm -f downloads/gl4es-armv7l-focal.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${allwinner_h6_generic_tree_tag}/misc/gl4es-armv7l-ubuntu.tar.gz -O downloads/gl4es-armv7l-focal.tar.gz
-  rm -f downloads/opengl-fbdev-allwinner_h6-armv7l.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h6-kernel/raw/${allwinner_h6_tree_tag}/misc.ah6//opt-mali-h6-fbdev-armv7l.tar.gz -O downloads/opengl-fbdev-allwinner_h6-armv7l.tar.gz
-  rm -f downloads/opengl-wayland-allwinner_h6-armv7l.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h6-kernel/raw/${allwinner_h6_tree_tag}/misc.ah6//opt-mali-h6-wayland-armv7l.tar.gz -O downloads/opengl-wayland-allwinner_h6-armv7l.tar.gz
-fi
-
 if ([ "$1" = "all" ] || [ "$1" = "allwinner_h6" ]) && [ "$2" = "aarch64" ]; then
   rm -f downloads/kernel-allwinner_h6-aarch64.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h6-kernel/releases/download/${allwinner_h6_release_version}/${allwinner_h6_release_version}.tar.gz -O downloads/kernel-allwinner_h6-aarch64.tar.gz
@@ -417,40 +380,6 @@ if ([ "$1" = "all" ] || [ "$1" = "allwinner_h6" ]) && [ "$2" = "aarch64" ]; then
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h3-h6-kernel/raw/${allwinner_h6_tree_tag}/misc.ah6//opt-mali-h6-wayland-aarch64.tar.gz -O downloads/opengl-wayland-allwinner_h6-aarch64.tar.gz
 fi
 
-if ([ "$1" = "all" ] || [ "$1" = "rockchip_rk33xx" ]) && [ "$2" = "armv7l" ]; then
-  rm -f downloads/kernel-rockchip_rk33xx-armv7l.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/releases/download/${rockchip_rk33xx_release_version}/${rockchip_rk33xx_release_version}.tar.gz -O downloads/kernel-rockchip_rk33xx-armv7l.tar.gz
-  rm -f downloads/kernel-mali-rockchip_rk33xx-armv7l.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/releases/download/${rockchip_rk33xx_release_version}/${rockchip_rk33xx_release_version}-mali-rk3328.tar.gz -O downloads/kernel-mali-rockchip_rk33xx-armv7l.tar.gz
-  rm -f downloads/kernel-mali-b-rockchip_rk33xx-armv7l.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/releases/download/${rockchip_rk33xx_release_version}/${rockchip_rk33xx_release_version}-mali-rk3399.tar.gz -O downloads/kernel-mali-b-rockchip_rk33xx-armv7l.tar.gz
-  rm -f downloads/boot-rockchip_rk33xx-armv7l.dd
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc/u-boot/boot-rk3328_tv_box-aarch64.dd -O downloads/boot-rockchip_rk33xx-armv7l.dd
-  rm -f downloads/gl4es-armv7l-buster.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${rockchip_rk33xx_generic_tree_tag}/misc/gl4es-armv7l-debian.tar.gz -O downloads/gl4es-armv7l-buster.tar.gz
-  rm -f downloads/gl4es-armv7l-focal.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${rockchip_rk33xx_generic_tree_tag}/misc/gl4es-armv7l-ubuntu.tar.gz -O downloads/gl4es-armv7l-focal.tar.gz
-  rm -f downloads/xorg-armsoc-armv7l-buster.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${rockchip_rk33xx_generic_tree_tag}/misc/xorg-armsoc-armv7l-debian.tar.gz -O downloads/xorg-armsoc-armv7l-buster.tar.gz
-  rm -f downloads/xorg-armsoc-armv7l-focal.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${rockchip_rk33xx_generic_tree_tag}/misc/xorg-armsoc-armv7l-ubuntu.tar.gz -O downloads/xorg-armsoc-armv7l-focal.tar.gz
-  rm -f downloads/opengl-rockchip_rk33xx-armv7l.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc//opt-mali-rk3328-armv7l.tar.gz -O downloads/opengl-rockchip_rk33xx-armv7l.tar.gz
-  rm -f downloads/opengl-fbdev-rockchip_rk33xx-armv7l.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc//opt-mali-rk3328-fbdev-armv7l.tar.gz -O downloads/opengl-fbdev-rockchip_rk33xx-armv7l.tar.gz
-  rm -f downloads/opengl-wayland-rockchip_rk33xx-armv7l.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc/opt-mali-rk3328-wayland-armv7l.tar.gz -O downloads/opengl-wayland-rockchip_rk33xx-armv7l.tar.gz
-  rm -f downloads/opengl-b-rockchip_rk33xx-armv7l.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc/opt-mali-rk3399-armv7l.tar.gz -O downloads/opengl-b-rockchip_rk33xx-armv7l.tar.gz
-  rm -f downloads/opengl-fbdev-b-rockchip_rk33xx-armv7l.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc/opt-mali-rk3399-fbdev-armv7l.tar.gz -O downloads/opengl-fbdev-b-rockchip_rk33xx-armv7l.tar.gz
-  rm -f downloads/opengl-wayland-b-rockchip_rk33xx-armv7l.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc/opt-mali-rk3399-wayland-armv7l.tar.gz -O downloads/opengl-wayland-b-rockchip_rk33xx-armv7l.tar.gz
-  # the amlogic fbdev mali blob works on rk3328 too in gl4es LIBGL_FB=3 mode while the rk3328 one does not
-  rm -f downloads/opengl-fbdev-alt-rockchip_rk33xx-armv7l.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_gx_generic_tree_tag}/misc/opt-mali-s905-fbdev-armv7l.tar.gz -O downloads/opengl-fbdev-alt-rockchip_rk33xx-armv7l.tar.gz
-fi
-
 if ([ "$1" = "all" ] || [ "$1" = "rockchip_rk33xx" ]) && [ "$2" = "aarch64" ]; then
   rm -f downloads/kernel-rockchip_rk33xx-aarch64.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/releases/download/${rockchip_rk33xx_release_version}/${rockchip_rk33xx_release_version}.tar.gz -O downloads/kernel-rockchip_rk33xx-aarch64.tar.gz
@@ -459,7 +388,7 @@ if ([ "$1" = "all" ] || [ "$1" = "rockchip_rk33xx" ]) && [ "$2" = "aarch64" ]; t
   rm -f downloads/kernel-mali-b-rockchip_rk33xx-aarch64.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/releases/download/${rockchip_rk33xx_release_version}/${rockchip_rk33xx_release_version}-mali-rk3399.tar.gz -O downloads/kernel-mali-b-alt-rockchip_rk33xx-aarch64.tar.gz
   rm -f downloads/boot-rockchip_rk33xx-aarch64.dd
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/raw/${rockchip_rk33xx_tree_tag}/misc.rkc/u-boot/boot-rk3328_tv_box-aarch64.dd -O downloads/boot-rockchip_rk33xx-aarch64.dd
+  wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${rockchip_rk33xx_uboot_version}/boot-rk3328-ddrbin-spl-aarch64.dd.gz -O - | gunzip -c >> downloads/boot-rockchip_rk33xx-aarch64.dd
   rm -f downloads/gl4es-aarch64-buster.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${rockchip_rk33xx_generic_tree_tag}/misc/gl4es-aarch64-debian.tar.gz -O downloads/gl4es-aarch64-buster.tar.gz
   rm -f downloads/gl4es-aarch64-focal.tar.gz

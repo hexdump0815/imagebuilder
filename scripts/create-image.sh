@@ -66,6 +66,22 @@ else
     echo ""
     exit
   fi
+  if [ "$ROOTFS" != "" ]; then
+    echo "ROOTFS=$ROOTFS"
+  else
+    echo ""
+    echo "ROOTFS is not set in files/systems/${1}/partition-mapping.txt - giving up"
+    echo ""
+    exit
+  fi
+  if [ "$ROOTFS" = "btrfs" ]; then
+    if [ ! -x /bin/mkfs.btrfs ]; then
+      echo ""
+      echo "/bin/mkfs.btrfs is not available - please install the btrfs-progs package"
+      echo ""
+      exit 1
+    fi
+  fi
   if [ "$BOOTPART" != "" ]; then
     echo "BOOTPART=$BOOTPART"
   else
@@ -101,9 +117,13 @@ if [ -f ${IMAGE_DIR}/${1}-${2}-${3}.img ]; then
   exit 1
 fi
 
-# TODO: maybe replace with truncate and fallocate - see swap file below
-# we use less than the marketing capacity of the sd card as it is usually lower in reality - 5631+1 = 5.5gb
-dd if=/dev/zero of=${IMAGE_DIR}/${1}-${2}-${3}.img bs=1024k count=1 seek=5631 status=progress
+# we use less than the marketing capacity of the sd card as it is usually lower in reality 4.5/5.5gb
+truncate -s 0 ${IMAGE_DIR}/${1}-${2}-${3}.img
+if [ "$ROOTFS" = "btrfs" ]; then
+  fallocate -l 4.5G ${IMAGE_DIR}/${1}-${2}-${3}.img
+else
+  fallocate -l 5.5G ${IMAGE_DIR}/${1}-${2}-${3}.img
+fi
 
 losetup /dev/loop0 ${IMAGE_DIR}/${1}-${2}-${3}.img
 
@@ -137,37 +157,88 @@ elif [ "$BOOTFS" = "ext4" ]; then
   mkfs -t ext4 -O ^has_journal -m 0 -L bootpart /dev/loop0p$BOOTPART
 fi
 
-mkfs -t ext4 -O ^has_journal -m 2 -L rootpart /dev/loop0p$ROOTPART
-mount /dev/loop0p$ROOTPART ${MOUNT_POINT}
+if [ "$ROOTFS" = "btrfs" ]; then
+  mkfs -t btrfs -L rootpart /dev/loop0p$ROOTPART
+  mount -o compress-force=zstd,noatime,nodiratime /dev/loop0p$ROOTPART ${MOUNT_POINT}
+else
+  mkfs -t ext4 -O ^has_journal -m 2 -L rootpart /dev/loop0p$ROOTPART
+  mount /dev/loop0p$ROOTPART ${MOUNT_POINT}
+fi
 mkdir ${MOUNT_POINT}/boot
 mount /dev/loop0p$BOOTPART ${MOUNT_POINT}/boot
 
+echo "copying over the root fs to the target image - this may take a while ..."
+date
 rsync -axADHSX --no-inc-recursive ${BUILD_ROOT}/ ${MOUNT_POINT}
+date
+echo "done"
 
 if [ "$SWAPPART" != "" ]; then
   mkswap -L swappart /dev/loop0p$SWAPPART
 else
-  mkdir ${MOUNT_POINT}/swap
+  if [ "$ROOTFS" = "btrfs" ]; then
+    btrfs subvolume create ${MOUNT_POINT}/swap
+    chmod 755 ${MOUNT_POINT}/swap
+    chattr -R +C ${MOUNT_POINT}/swap
+    btrfs property set ${MOUNT_POINT}/swap compression none
+  else
+    mkdir ${MOUNT_POINT}/swap
+  fi
   truncate -s 0 ${MOUNT_POINT}/swap/file.0
-  # for btrfs - coming soon ...
-  # btrfs property set ${MOUNT_POINT}/swap/file.0 compression none
+  if [ "$ROOTFS" = "btrfs" ]; then
+    btrfs property set ${MOUNT_POINT}/swap/file.0 compression none
+  fi
   fallocate -l 512M ${MOUNT_POINT}/swap/file.0
   chmod 600 ${MOUNT_POINT}/swap/file.0
   mkswap -L swapfile.0 ${MOUNT_POINT}/swap/file.0
   sed -i 's,LABEL=swappart,/swap/file.0,g' ${MOUNT_POINT}/etc/fstab
 fi
 
-# TODO: maybe replace with LABEL?
-ROOT_PARTUUID=$(blkid | grep "/dev/loop0p$ROOTPART" | awk '{print $5}' | sed 's,",,g')
+if [ "$PARTUUID_ROOT" = "YES" ]; then
+  ROOT_PARTUUID=$(blkid | grep "/dev/loop0p$ROOTPART" | awk '{print $5}' | sed 's,",,g')
+  if [ -f ${MOUNT_POINT}/boot/extlinux/extlinux.conf ]; then
+    sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
+  fi
+  if [ -f ${MOUNT_POINT}/boot/menu/extlinux.conf ]; then
+    sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
+  fi
+  if [ -f ${MOUNT_POINT}/boot/uEnv.ini ]; then
+    sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/uEnv.ini
+  fi
+else
+  if [ -f ${MOUNT_POINT}/boot/extlinux/extlinux.conf ]; then
+    sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
+  fi
+  if [ -f ${MOUNT_POINT}/boot/menu/extlinux.conf ]; then
+    sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
+  fi
+  if [ -f ${MOUNT_POINT}/boot/uEnv.ini ]; then
+    sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/uEnv.ini
+  fi
+fi
 
-if [ -f ${MOUNT_POINT}/boot/extlinux/extlinux.conf ]; then
-  sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
+# create a customized fstab file
+FSTAB_EXT4_BOOT="LABEL=bootpart /boot ext4 defaults,noatime,nodiratime,errors=remount-ro 0 2"
+FSTAB_VFAT_BOOT="LABEL=BOOTPART /boot vfat defaults,rw,owner,flush,umask=000 0 0"
+FSTAB_BTRFS_ROOT="LABEL=rootpart / btrfs defaults,ssd,compress-force=zstd,noatime,nodiratime 0 1"
+FSTAB_EXT4_ROOT="LABEL=rootpart / ext4 defaults,noatime,nodiratime,errors=remount-ro 0 1"
+FSTAB_SWAP_FILE="/swap/file.0 none swap sw 0 0"
+FSTAB_SWAP_PART="LABEL=swappart none swap sw 0 0"
+
+if [ "$BOOTFS" = "ext4" ]; then
+  echo $FSTAB_EXT4_BOOT > ${MOUNT_POINT}/etc/fstab
+else
+  echo $FSTAB_VFAT_BOOT > ${MOUNT_POINT}/etc/fstab
 fi
-if [ -f ${MOUNT_POINT}/boot/menu/extlinux.conf ]; then
-  sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
+if [ "$ROOTFS" = "btrfs" ]; then
+  echo $FSTAB_BTRFS_ROOT >> ${MOUNT_POINT}/etc/fstab
+else
+  echo $FSTAB_EXT4_ROOT >> ${MOUNT_POINT}/etc/fstab
 fi
-if [ -f ${MOUNT_POINT}/boot/uEnv.ini ]; then
-  sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/uEnv.ini
+if [ "$SWAPPART" = "" ]; then
+  echo $FSTAB_SWAP_FILE >> ${MOUNT_POINT}/etc/fstab
+else
+  echo $FSTAB_SWAP_PART >> ${MOUNT_POINT}/etc/fstab
 fi
 
 # for the orbsmart s92 / beelink r89 the boot loader has to be written in a special way to the disk
@@ -182,6 +253,7 @@ if [ "$1" = "amlogic_m8" ]; then
   ${MOUNT_POINT}/boot/shorten-filenames.sh
 fi
 
+df -h ${MOUNT_POINT} ${MOUNT_POINT}/boot
 umount ${MOUNT_POINT}/boot 
 umount ${MOUNT_POINT}
 

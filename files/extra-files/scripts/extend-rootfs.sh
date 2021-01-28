@@ -5,6 +5,7 @@ echo "resizing root filesystem"
 echo ""
 
 ROOTDEVICE=$(mount | grep 'on / type' | awk '{print $1}' | sed 's,^/dev/,,g')
+ROOTFSTYPE=$(mount | grep 'on / type' | awk '{print $5}')
 ROOTPARTUUID=$(blkid | grep "/dev/$ROOTDEVICE" | awk '{print $5}' | sed 's,",,g' | awk -F= '{print $2}')
 
 ROOTDEVICEBASE=$(echo $ROOTDEVICE | grep "mmcblk" | sed 's,p.*,,g')
@@ -58,4 +59,8 @@ w
 EOF
 fi
 
-resize2fs /dev/$ROOTDEVICE
+if [ "$ROOTFSTYPE" = "btrfs" ]; then
+  btrfs filesystem resize max /dev/$ROOTDEVICE
+else
+  resize2fs /dev/$ROOTDEVICE
+fi
