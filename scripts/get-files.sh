@@ -4,7 +4,7 @@
 
 if [ "$#" != "2" ]; then
   echo ""
-  echo "usage: $0 system arch"
+  echo "usage: $0 system arch release"
   echo ""
   echo "possible system options:"
   echo "               chromebook_snow (armv7l)"
@@ -30,8 +30,12 @@ if [ "$#" != "2" ]; then
   echo "- aarch64 (64bit)"
   echo "- all (32bit and 64bit)"
   echo ""
-  echo "examples: $0 odroid_u3 armv7l"
-  echo "          $0 all all"
+  echo "possible release options:"
+  echo "- focal (ubuntu)"
+  echo "- buster (debian) (not yet supported)"
+  echo ""
+  echo "examples: $0 odroid_u3 armv7l focal"
+  echo "          $0 all all all"
   echo ""
   exit 1
 fi
@@ -44,72 +48,8 @@ mkdir downloads
 # exit on errors
 set -e
 
-generic_tree_tag="9051dfe1f2198e2ed41c322359ee8324043d55a9"
-
-chromebook_snow_release_version="5.4.58-stb-cbe%2B"
-chromebook_snow_uboot_version="v2020.04-cbe"
-chromebook_snow_generic_tree_tag=${generic_tree_tag}
-
-chromebook_veyron_release_version="5.4.58-stb-cbr%2B"
-chromebook_veyron_uboot_version="v2017.09-cbr"
-chromebook_veyron_generic_tree_tag=${generic_tree_tag}
-
-chromebook_nyan_release_version="5.4.35-ntg-cbt%2B"
-chromebook_nyan_uboot_version="v2018.11-cbt"
-chromebook_nyan_generic_tree_tag=${generic_tree_tag}
-chromebook_nyan_mesa_release_version="20.1.6"
-
-allwinner_h3_release_version="5.6.13-stb-ah3%2B"
-allwinner_h3_generic_tree_tag=${generic_tree_tag}
-allwinner_h3_tree_tag="master"
-allwinner_h3_uboot_version="200718-01"
-
-amlogic_m8_release_version="5.6.19-stb-m8x%2B"
-amlogic_m8_generic_tree_tag=${generic_tree_tag}
-
-odroid_u3_release_version="5.10.3-stb-exy%2B"
-odroid_u3_generic_tree_tag=${generic_tree_tag}
-odroid_u3_uboot_version="200821-01"
-
-odroid_xu4_release_version="5.4.58-stb-e54%2B"
-odroid_xu4_generic_tree_tag=${generic_tree_tag}
-odroid_xu4_mali_tree_tag="master"
-odroid_xu4_uboot_version="200718-01"
-
-orbsmart_s92_beelink_r89_release_version="5.4.58-stb-av7%2B"
-orbsmart_s92_beelink_r89_generic_tree_tag=${generic_tree_tag}
-
-rockchip_rk322x_release_version="4.4.194-rkc-322"
-rockchip_rk322x_generic_tree_tag=${generic_tree_tag}
-rockchip_rk322x_tree_tag="master"
-
-tinkerboard_release_version="5.4.58-stb-av7%2B"
-tinkerboard_generic_tree_tag=${generic_tree_tag}
-
-raspberry_pi_2_release_version="5.4.58-stb-av7%2B"
-raspberry_pi_2_generic_tree_tag=${generic_tree_tag}
-raspberry_pi_2_mesa_release_version="20.1.6"
-
-raspberry_pi_3_release_version="5.4.58-stb-av8%2B"
-raspberry_pi_3_generic_tree_tag=${generic_tree_tag}
-raspberry_pi_3_mesa_release_version="20.1.6"
-
-raspberry_pi_4_release_version="5.8.2-rpi-64b%2B"
-raspberry_pi_4_generic_tree_tag=${generic_tree_tag}
-raspberry_pi_4_mesa_release_version="20.1.6"
-
-amlogic_gx_release_version="5.10.1-stb-av8%2B"
-amlogic_gx_generic_tree_tag=${generic_tree_tag}
-
-allwinner_h6_release_version="5.6.13-stb-ah6%2B"
-allwinner_h6_generic_tree_tag=${generic_tree_tag}
-allwinner_h6_tree_tag="master"
-allwinner_h6_uboot_version="200718-01"
-
-rockchip_rk33xx_release_version="5.10.1-stb-rkc%2B"
-rockchip_rk33xx_generic_tree_tag=${generic_tree_tag}
-rockchip_rk33xx_tree_tag="master"
-rockchip_rk33xx_uboot_version="201115-01"
+# get version information for below
+. versions.conf
 
 if ([ "$1" = "all" ] || [ "$1" = "chromebook_snow" ]) && [ "$2" = "armv7l" ]; then
   rm -f downloads/kernel-chromebook_snow-armv7l.tar.gz
