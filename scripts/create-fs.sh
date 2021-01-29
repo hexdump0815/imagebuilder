@@ -28,7 +28,7 @@ if [ "$#" != "3" ]; then
   echo ""
   echo "possible release options:"
   echo "- focal (ubuntu)"
-  echo "- buster (debian) (not yet supported)"
+  echo "- bullseye (debian) (not yet supported)"
   echo ""
   echo "example: $0 odroid_u3 armv7l focal"
   echo ""
@@ -70,7 +70,7 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
   fi
   if [ "$3" = "focal" ]; then
     LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} ${3} ${BUILD_ROOT_CACHE} http://ports.ubuntu.com/
-  elif [ "$3" = "buster" ]; then
+  elif [ "$3" = "bullseye" ]; then
     LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} ${3} ${BUILD_ROOT_CACHE} http://deb.debian.org/debian/
   fi
 
