@@ -7,10 +7,7 @@ export LANG=C
 
 systemctl enable ssh
 systemctl disable fstrim.timer
-# # in case you want to disable automatic updates, just uncomment the next three lines
-# #systemctl disable apt-daily
-# #systemctl disable apt-daily-upgrade
-# #systemctl disable unattended-upgrades.service
+
 # in case you want to enable automatic updates, just comment out the next three lines
 systemctl disable apt-daily
 systemctl disable apt-daily-upgrade

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # taken from https://gist.github.com/phizev/31185a30e7d4984724f1fbbf9c2afe19
 # written size via https://askubuntu.com/questions/1021058/why-swap-is-touched-when-zswap-is-enabled-and-zswap-pool-is-not-full
