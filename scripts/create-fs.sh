@@ -57,6 +57,9 @@ if [ -f ${WORKDIR}/scripts/imagebuilder.conf ]; then
 fi
 
 if [ ! -d ${BUILD_ROOT_CACHE} ]; then
+  echo ""
+  echo "root fs cache for ${2} ${3} does not exist, so creating one"
+  echo ""
   mkdir -p ${BUILD_ROOT_CACHE}
   cd ${BUILD_ROOT_CACHE}
 
@@ -87,6 +90,10 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
   chroot ${BUILD_ROOT_CACHE} /create-chroot-stage-01.sh ${3} ${USERNAME}
 
   umount ${BUILD_ROOT_CACHE}/proc ${BUILD_ROOT_CACHE}/sys ${BUILD_ROOT_CACHE}/dev/pts ${BUILD_ROOT_CACHE}/dev
+else
+  echo ""
+  echo "root fs cache for ${2} ${3} exists, so using it"
+  echo ""
 fi
 
 echo "copying over the root cache to the target root - this may take a while ..."
@@ -219,6 +226,10 @@ chroot ${BUILD_ROOT} update-initramfs -c -k ${KERNEL_VERSION}
 mv -f ${BUILD_ROOT}/tmp/fsck.org ${BUILD_ROOT}/usr/share/initramfs-tools/hooks/fsck
 
 cd ${BUILD_ROOT}
+
+# remove the generated ssh keys so that fresh ones are generated on
+# first boot for each installed image
+rm -f etc/ssh/*key*
 
 # post install script per system
 if [ -x ${WORKDIR}/files/systems/${1}/postinstall.sh ]; then
