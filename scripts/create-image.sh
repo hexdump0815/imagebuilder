@@ -159,8 +159,8 @@ elif [ "$BOOTFS" = "ext4" ]; then
 fi
 
 if [ "$ROOTFS" = "btrfs" ]; then
-  mkfs -t btrfs -L rootpart /dev/loop0p$ROOTPART
-  mount -o compress-force=zstd,noatime,nodiratime /dev/loop0p$ROOTPART ${MOUNT_POINT}
+  mkfs -t btrfs -m single -L rootpart /dev/loop0p$ROOTPART
+  mount -o ssd,compress-force=zstd,noatime,nodiratime /dev/loop0p$ROOTPART ${MOUNT_POINT}
 else
   mkfs -t ext4 -O ^has_journal -m 2 -L rootpart /dev/loop0p$ROOTPART
   mount /dev/loop0p$ROOTPART ${MOUNT_POINT}
