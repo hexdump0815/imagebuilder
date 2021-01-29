@@ -7,7 +7,7 @@ if [ "$#" != "3" ]; then
   echo "possible system options:"
   echo "- chromebook_snow (armv7l) (not yet supported)"
   echo "- chromebook_veyron (armv7l) (not yet supported)"
-  echo "- chromebook_nyanbig (armv7l) (not yet supported)"
+  echo "- chromebook_nyan (armv7l) (not yet supported)"
   echo "- allwinner_h3 (armv7l) (not yet supported)"
   echo "- amlogic_m8 (armv7l) (not yet supported)"
   echo "- odroid_u3 (armv7l)"
@@ -213,7 +213,7 @@ if [ -f ${BUILD_ROOT}/etc/default/apport ]; then
 fi
 
 # for the arm chromebooks add some useful files to the boot partition
-if [ "$1" = "chromebook_snow" ] || [ "$1" = "chromebook_veyron" ] || [ "$1" = "chromebook_nyanbig" ]; then
+if [ "$1" = "chromebook_snow" ] || [ "$1" = "chromebook_veyron" ] || [ "$1" = "chromebook_nyan" ]; then
   cp -r ${WORKDIR}/files/chromebook-boot ${BUILD_ROOT}/boot
 fi
 

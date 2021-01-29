@@ -7,7 +7,7 @@ if [ "$#" != "3" ]; then
   echo "possible system options:"
   echo "- chromebook_snow (armv7l)"
   echo "- chromebook_veyron (armv7l)"
-  echo "- chromebook_nyanbig (armv7l)"
+  echo "- chromebook_nyan (armv7l)"
   echo "- allwinner_h6 (armv7l)"
   echo "- amlogic_m8 (armv7l)"
   echo "- odroid_u3 (armv7l)"
@@ -133,7 +133,7 @@ if [ -f ${WORKDIR}/downloads/boot-${1}-${2}.dd ]; then
 fi
 
 # for the arm chromebooks an initial partition table is already in the boot.dd which needs to be fixed up now
-if [ "$1" = "chromebook_snow" ] || [ "$1" = "chromebook_veyron" ] || [ "$1" = "chromebook_nyanbig" ]; then
+if [ "$1" = "chromebook_snow" ] || [ "$1" = "chromebook_veyron" ] || [ "$1" = "chromebook_nyan" ]; then
   # fix
   sgdisk -C -e -G /dev/loop0
   # verify

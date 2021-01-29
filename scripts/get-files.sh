@@ -9,7 +9,7 @@ if [ "$#" != "2" ]; then
   echo "possible system options:"
   echo "               chromebook_snow (armv7l)"
   echo "               chromebook_veyron (armv7l)"
-  echo "               chromebook_nyanbig (armv7l)"
+  echo "               chromebook_nyan (armv7l)"
   echo "               allwinner_h3 (armv7l)"
   echo "               amlogic_m8 (armv7l)"
   echo "               odroid_u3 (armv7l)"
@@ -54,10 +54,10 @@ chromebook_veyron_release_version="5.4.58-stb-cbr%2B"
 chromebook_veyron_uboot_version="v2017.09-cbr"
 chromebook_veyron_generic_tree_tag=${generic_tree_tag}
 
-chromebook_nyanbig_release_version="5.4.35-ntg-cbt%2B"
-chromebook_nyanbig_uboot_version="v2018.11-cbt"
-chromebook_nyanbig_generic_tree_tag=${generic_tree_tag}
-chromebook_nyanbig_mesa_release_version="20.1.6"
+chromebook_nyan_release_version="5.4.35-ntg-cbt%2B"
+chromebook_nyan_uboot_version="v2018.11-cbt"
+chromebook_nyan_generic_tree_tag=${generic_tree_tag}
+chromebook_nyan_mesa_release_version="20.1.6"
 
 allwinner_h3_release_version="5.6.13-stb-ah3%2B"
 allwinner_h3_generic_tree_tag=${generic_tree_tag}
@@ -155,21 +155,21 @@ if ([ "$1" = "all" ] || [ "$1" = "chromebook_veyron" ]) && [ "$2" = "armv7l" ]; 
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${chromebook_veyron_generic_tree_tag}/misc/opt-mali-rk3288-wayland-armv7l.tar.gz -O downloads/opengl-wayland-chromebook_veyron-armv7l.tar.gz
 fi
 
-if ([ "$1" = "all" ] || [ "$1" = "chromebook_nyanbig" ]) && [ "$2" = "armv7l" ]; then
-  rm -f downloads/kernel-chromebook_nyanbig-armv7l.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-tegra-k1-kernel/releases/download/${chromebook_nyanbig_release_version}/${chromebook_nyanbig_release_version}.tar.gz -O downloads/kernel-chromebook_nyanbig-armv7l.tar.gz
-  rm -f downloads/boot-chromebook_nyanbig-armv7l.dd
+if ([ "$1" = "all" ] || [ "$1" = "chromebook_nyan" ]) && [ "$2" = "armv7l" ]; then
+  rm -f downloads/kernel-chromebook_nyan-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-tegra-k1-kernel/releases/download/${chromebook_nyan_release_version}/${chromebook_nyan_release_version}.tar.gz -O downloads/kernel-chromebook_nyan-armv7l.tar.gz
+  rm -f downloads/boot-chromebook_nyan-armv7l.dd
   # we assemble the bootblocks from a prepared chromebook partition table and the proper u-boot kpart image
-  cp files/chromebook-boot/cb.dd-single-part downloads/boot-chromebook_nyanbig-armv7l.dd
-  wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_nyanbig_uboot_version}/uboot.kpart.cbt.gz -O - | gunzip -c >> downloads/boot-chromebook_nyanbig-armv7l.dd
+  cp files/chromebook-boot/cb.dd-single-part downloads/boot-chromebook_nyan-armv7l.dd
+  wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_nyan_uboot_version}/uboot.kpart.cbt.gz -O - | gunzip -c >> downloads/boot-chromebook_nyan-armv7l.dd
   rm -f downloads/gl4es-armv7l-buster.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${chromebook_nyanbig_generic_tree_tag}/misc/gl4es-armv7l-debian.tar.gz -O downloads/gl4es-armv7l-buster.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${chromebook_nyan_generic_tree_tag}/misc/gl4es-armv7l-debian.tar.gz -O downloads/gl4es-armv7l-buster.tar.gz
   rm -f downloads/gl4es-armv7l-focal.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${chromebook_nyanbig_generic_tree_tag}/misc/gl4es-armv7l-ubuntu.tar.gz -O downloads/gl4es-armv7l-focal.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${chromebook_nyan_generic_tree_tag}/misc/gl4es-armv7l-ubuntu.tar.gz -O downloads/gl4es-armv7l-focal.tar.gz
   rm -f downloads/opengl-mesa-armv7l-buster.tar.gz
-  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${chromebook_nyanbig_mesa_release_version}/opt-mesa-armv7l-debian.tar.gz -O downloads/opengl-mesa-armv7l-buster.tar.gz
+  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${chromebook_nyan_mesa_release_version}/opt-mesa-armv7l-debian.tar.gz -O downloads/opengl-mesa-armv7l-buster.tar.gz
   rm -f downloads/opengl-mesa-armv7l-focal.tar.gz
-  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${chromebook_nyanbig_mesa_release_version}/opt-mesa-armv7l-ubuntu.tar.gz -O downloads/opengl-mesa-armv7l-focal.tar.gz
+  wget -v https://github.com/hexdump0815/mesa-etc-build/releases/download/${chromebook_nyan_mesa_release_version}/opt-mesa-armv7l-ubuntu.tar.gz -O downloads/opengl-mesa-armv7l-focal.tar.gz
 fi
 
 if ([ "$1" = "all" ] || [ "$1" = "allwinner_h3" ]) && [ "$2" = "armv7l" ]; then
