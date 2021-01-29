@@ -10,11 +10,13 @@ systemctl disable fstrim.timer
 systemctl disable fwupd.service
 systemctl disable fwupd-refresh.service
 
-# in case you want to enable automatic updates, just comment out the next three lines
-systemctl disable apt-daily
-systemctl disable apt-daily-upgrade
+# in case you want to enable automatic updates, just comment out the next lines
+#systemctl disable apt-daily
+#systemctl disable apt-daily-upgrade
 systemctl disable apt-daily-upgrade.timer
 systemctl disable unattended-upgrades.service
+sed -i 's,Update-Package-Lists "1",Update-Package-Lists "0",g' /etc/apt/apt.conf.d/10periodic
+sed -i 's,Update-Package-Lists "1",Update-Package-Lists "0",g;s,Unattended-Upgrade "1",Unattended-Upgrade "0",g' /etc/apt/apt.conf.d/20auto-upgrades
 
 useradd -c ${2} -d /home/${2} -m -p '$6$sEhhlter$njAiCsaYr7lveaAQCmsABlrGbrVip/lcBUlY2M9DUHfaUh0zSLfcJ4mN0BDqH7bg/2BITbp7BK3qPf8zR.3Ad0' -s /bin/bash ${2}
 usermod -a -G sudo ${2}
