@@ -174,12 +174,6 @@ fi
 if [ -f ${WORKDIR}/downloads/opengl-mesa-${2}-${3}.tar.gz ]; then
   tar --numeric-owner -xhzf ${WORKDIR}/downloads/opengl-mesa-${2}-${3}.tar.gz
 fi
-if [ -f ${WORKDIR}/downloads/xorg-armsoc-${2}-${3}.tar.gz ]; then
-  tar --numeric-owner -xhzf ${WORKDIR}/downloads/xorg-armsoc-${2}-${3}.tar.gz
-fi
-if [ -f ${WORKDIR}/downloads/gl4es-${2}-${3}.tar.gz ]; then
-  tar --numeric-owner -xhzf ${WORKDIR}/downloads/gl4es-${2}-${3}.tar.gz
-fi
 if [ -f ${WORKDIR}/files/systems/${1}/rc-local-additions.txt ]; then
   echo "" >> etc/rc.local
   echo "# additions for ${1}" >> etc/rc.local
