@@ -65,7 +65,6 @@ chromebook_nyanbig_mesa_release_version="20.1.6"
 
 allwinner_h3_release_version="5.6.13-stb-ah3%2B"
 allwinner_h3_generic_tree_tag=${generic_tree_tag}
-allwinner_h3_tree_tag="master"
 allwinner_h3_uboot_version="200718-01"
 
 amlogic_m8_release_version="5.6.19-stb-m8x%2B"
@@ -77,7 +76,7 @@ odroid_u3_uboot_version="200821-01"
 
 odroid_xu4_release_version="5.4.58-stb-e54%2B"
 odroid_xu4_generic_tree_tag=${generic_tree_tag}
-odroid_xu4_mali_tree_tag="master"
+odroid_xu4_mali_tree_tag="4b25cd43f7aa853f35b17033b713d46e785c11cd"
 odroid_xu4_uboot_version="200718-01"
 
 orbsmart_s92_beelink_r89_release_version="5.4.58-stb-av7%2B"
@@ -85,7 +84,7 @@ orbsmart_s92_beelink_r89_generic_tree_tag=${generic_tree_tag}
 
 rockchip_rk322x_release_version="4.4.194-rkc-322"
 rockchip_rk322x_generic_tree_tag=${generic_tree_tag}
-rockchip_rk322x_tree_tag="master"
+rockchip_rk322x_tree_tag="e8c89a16da9860c600e49772db3b7f01331624b9"
 
 tinkerboard_release_version="5.4.58-stb-av7%2B"
 tinkerboard_generic_tree_tag=${generic_tree_tag}
@@ -111,12 +110,12 @@ amlogic_gx_generic_tree_tag=${generic_tree_tag}
 
 allwinner_h6_release_version="5.6.13-stb-ah6%2B"
 allwinner_h6_generic_tree_tag=${generic_tree_tag}
-allwinner_h6_tree_tag="master"
+allwinner_h6_tree_tag="79e45cbdf1bdcbaf0867243c65c99a43990b7bc2"
 allwinner_h6_uboot_version="200718-01"
 
 rockchip_rk33xx_release_version="5.6.13-stb-rkc%2B"
 rockchip_rk33xx_generic_tree_tag=${generic_tree_tag}
-rockchip_rk33xx_tree_tag="master"
+rockchip_rk33xx_tree_tag="6ae92d42b8513626fee96e6b7728666915c85fd5"
 
 if ([ "$1" = "all" ] || [ "$1" = "chromebook_snow" ]) && [ "$2" = "armv7l" ]; then
   rm -f downloads/kernel-chromebook_snow-armv7l.tar.gz
