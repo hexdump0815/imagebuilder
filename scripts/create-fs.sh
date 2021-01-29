@@ -111,12 +111,12 @@ chroot ${BUILD_ROOT} /create-chroot-stage-02.sh ${3} ${USERNAME}
 
 cd ${BUILD_ROOT}/
 tar --numeric-owner -xhzf ${WORKDIR}/downloads/kernel-${1}-${2}.tar.gz
-if [ -f ${WORKDIR}/downloads/kernel-mali-${1}-${2}.tar.gz ]; then
-  tar --numeric-owner -xhzf ${WORKDIR}/downloads/kernel-mali-${1}-${2}.tar.gz
-fi
-if [ -f ${WORKDIR}/downloads/kernel-mali-b-${1}-${2}.tar.gz ]; then
-  tar --numeric-owner -xhzf ${WORKDIR}/downloads/kernel-mali-b-${1}-${2}.tar.gz
-fi
+#if [ -f ${WORKDIR}/downloads/kernel-mali-${1}-${2}.tar.gz ]; then
+#  tar --numeric-owner -xhzf ${WORKDIR}/downloads/kernel-mali-${1}-${2}.tar.gz
+#fi
+#if [ -f ${WORKDIR}/downloads/kernel-mali-b-${1}-${2}.tar.gz ]; then
+#  tar --numeric-owner -xhzf ${WORKDIR}/downloads/kernel-mali-b-${1}-${2}.tar.gz
+#fi
 cp -r ${WORKDIR}/boot/boot-${1}/* boot
 
 rm -f create-chroot-stage-0?.sh
@@ -143,36 +143,6 @@ if [ -d ${WORKDIR}/files/systems/${1}/extra-files-${3} ]; then
 fi
 if [ -d ${WORKDIR}/files/systems/${1}/extra-files-${2}-${3} ]; then
   ( cd ${WORKDIR}/files/systems/${1}/extra-files-${2}-${3} ; tar cf - . ) | tar xhf -
-fi
-if [ -f ${WORKDIR}/downloads/opengl-${1}-${2}.tar.gz ]; then
-  tar --numeric-owner -xhzf ${WORKDIR}/downloads/opengl-${1}-${2}.tar.gz
-fi
-if [ -f ${WORKDIR}/downloads/opengl-b-${1}-${2}.tar.gz ]; then
-  tar --numeric-owner -xhzf ${WORKDIR}/downloads/opengl-b-${1}-${2}.tar.gz
-fi
-if [ -f ${WORKDIR}/downloads/opengl-alt-${1}-${2}.tar.gz ]; then
-  tar --numeric-owner -xhzf ${WORKDIR}/downloads/opengl-alt-${1}-${2}.tar.gz
-fi
-if [ -f ${WORKDIR}/downloads/opengl-fbdev-${1}-${2}.tar.gz ]; then
-  tar --numeric-owner -xhzf ${WORKDIR}/downloads/opengl-fbdev-${1}-${2}.tar.gz
-fi
-if [ -f ${WORKDIR}/downloads/opengl-fbdev-b-${1}-${2}.tar.gz ]; then
-  tar --numeric-owner -xhzf ${WORKDIR}/downloads/opengl-fbdev-b-${1}-${2}.tar.gz
-fi
-if [ -f ${WORKDIR}/downloads/opengl-fbdev-alt-${1}-${2}.tar.gz ]; then
-  tar --numeric-owner -xhzf ${WORKDIR}/downloads/opengl-fbdev-alt-${1}-${2}.tar.gz
-fi
-if [ -f ${WORKDIR}/downloads/opengl-wayland-${1}-${2}.tar.gz ]; then
-  tar --numeric-owner -xhzf ${WORKDIR}/downloads/opengl-wayland-${1}-${2}.tar.gz
-fi
-if [ -f ${WORKDIR}/downloads/opengl-wayland-b-${1}-${2}.tar.gz ]; then
-  tar --numeric-owner -xhzf ${WORKDIR}/downloads/opengl-wayland-b-${1}-${2}.tar.gz
-fi
-if [ -f ${WORKDIR}/downloads/opengl-wayland-alt-${1}-${2}.tar.gz ]; then
-  tar --numeric-owner -xhzf ${WORKDIR}/downloads/opengl-wayland-alt-${1}-${2}.tar.gz
-fi
-if [ -f ${WORKDIR}/downloads/opengl-mesa-${2}-${3}.tar.gz ]; then
-  tar --numeric-owner -xhzf ${WORKDIR}/downloads/opengl-mesa-${2}-${3}.tar.gz
 fi
 if [ -f ${WORKDIR}/files/systems/${1}/rc-local-additions.txt ]; then
   echo "" >> etc/rc.local
