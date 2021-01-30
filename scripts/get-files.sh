@@ -2,7 +2,7 @@
 #
 # please run this script to fetch some large files from various github releases before starting to build images
 
-if [ "$#" != "2" ]; then
+if [ "$#" != "3" ]; then
   echo ""
   echo "usage: $0 system arch release"
   echo ""
