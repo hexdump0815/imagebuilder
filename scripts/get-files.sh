@@ -67,7 +67,7 @@ if ([ "$1" = "all" ] || [ "$1" = "chromebook_veyron" ]) && [ "$2" = "armv7l" ]; 
   rm -f downloads/boot-chromebook_veyron-armv7l.dd
   # we assemble the bootblocks from a prepared chromebook partition table and the proper u-boot kpart image
   cp files/chromebook-boot/cb.dd-single-part downloads/boot-chromebook_veyron-armv7l.dd
-  wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_veyron_uboot_version}/uboot.kpart.cbr-jerry.gz -O - | gunzip -c >> downloads/boot-chromebook_veyron-armv7l.dd
+  wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_veyron_uboot_version}/uboot.kpart.cbr.gz -O - | gunzip -c >> downloads/boot-chromebook_veyron-armv7l.dd
 fi
 
 if ([ "$1" = "all" ] || [ "$1" = "chromebook_nyan" ]) && [ "$2" = "armv7l" ]; then
