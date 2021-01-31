@@ -45,6 +45,3 @@ echo z3fold > /sys/module/zswap/parameters/zpool
 # after some real world testing it looks like 35 is a useable value too
 echo 20 > /sys/module/zswap/parameters/max_pool_percent
 echo 1 > /sys/module/zswap/parameters/enabled
-
-# create fresh ssh keys on first boot
-test -f /etc/ssh/ssh_host_dsa_key || dpkg-reconfigure openssh-server

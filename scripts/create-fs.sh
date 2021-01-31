@@ -194,6 +194,9 @@ cd ${BUILD_ROOT}
 # remove the generated ssh keys so that fresh ones are generated on
 # first boot for each installed image
 rm -f etc/ssh/*key*
+# activate the one shot service to recreate them on first boot
+mkdir -p etc/systemd/system/multi-user.target.wants
+( cd etc/systemd/system/multi-user.target.wants ;  ln -s ../regenerate-ssh-host-keys.service . )
 
 # post install script per system
 if [ -x ${WORKDIR}/files/systems/${1}/postinstall.sh ]; then
