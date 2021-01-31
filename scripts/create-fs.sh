@@ -49,7 +49,7 @@ if [ -d ${BUILD_ROOT} ]; then
 fi
 
 # set defaults for the values coming from imagebuilder.conf otherwise
-USERNAME=linux
+DEFAULT_USERNAME=linux
 
 # get the imagebuilder config
 if [ -f ${WORKDIR}/scripts/imagebuilder.conf ]; then
@@ -87,7 +87,7 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
   cp /proc/mounts ${BUILD_ROOT_CACHE}/etc/mtab
   cp /etc/resolv.conf ${BUILD_ROOT_CACHE}/etc/resolv.conf
 
-  chroot ${BUILD_ROOT_CACHE} /create-chroot-stage-01.sh ${3} ${USERNAME}
+  chroot ${BUILD_ROOT_CACHE} /create-chroot-stage-01.sh ${3} ${DEFAULT_USERNAME}
 
   umount ${BUILD_ROOT_CACHE}/proc ${BUILD_ROOT_CACHE}/sys ${BUILD_ROOT_CACHE}/dev/pts ${BUILD_ROOT_CACHE}/dev
 else
@@ -107,7 +107,7 @@ mount -o bind /dev/pts ${BUILD_ROOT}/dev/pts
 mount -t sysfs /sys ${BUILD_ROOT}/sys
 mount -t proc /proc ${BUILD_ROOT}/proc
 
-chroot ${BUILD_ROOT} /create-chroot-stage-02.sh ${3} ${USERNAME}
+chroot ${BUILD_ROOT} /create-chroot-stage-02.sh ${3} ${DEFAULT_USERNAME}
 
 cd ${BUILD_ROOT}/
 tar --numeric-owner -xhzf ${WORKDIR}/downloads/kernel-${1}-${2}.tar.gz
@@ -197,6 +197,9 @@ rm -f etc/ssh/*key*
 # activate the one shot service to recreate them on first boot
 mkdir -p etc/systemd/system/multi-user.target.wants
 ( cd etc/systemd/system/multi-user.target.wants ;  ln -s ../regenerate-ssh-host-keys.service . )
+
+# if a different default user name was set, parse it into the rename user script
+sed -i "s,DEFAULT_USERNAME=linux,DEFAULT_USERNAME=${DEFAULT_USERNAME},g" scripts/rename-default-user.sh
 
 # post install script per system
 if [ -x ${WORKDIR}/files/systems/${1}/postinstall.sh ]; then

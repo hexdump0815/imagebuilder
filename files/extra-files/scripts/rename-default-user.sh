@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DEFAULT_USERNAME=linux
+
 if [ "$#" != "1" ]; then
   echo ""
   echo "usage: $0 <new-username>"
@@ -10,5 +12,12 @@ if [ "$#" != "1" ]; then
   exit 1
 fi
 
+if [ ! -d /home/linux ]; then
+  echo ""
+  echo "looks like this user does not exist (no /home/${DEFAULT_USERNAME}) - so nothing to do"
+  echo ""
+  exit 1
+fi
+
 groupadd ${1}
-usermod -d /home/linux -m -g linux -l linux ${1}
+usermod -d /home/${DEFAULT_USERNAME} -m -g ${DEFAULT_USERNAME} -l ${DEFAULT_USERNAME} ${1}
