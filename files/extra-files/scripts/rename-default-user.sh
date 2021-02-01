@@ -19,5 +19,5 @@ if [ ! -d /home/linux ]; then
   exit 1
 fi
 
-groupadd ${1}
-usermod -d /home/${DEFAULT_USERNAME} -m -g ${DEFAULT_USERNAME} -l ${DEFAULT_USERNAME} ${1}
+groupmod -n ${1} ${DEFAULT_USERNAME}
+usermod -d /home/${1} -m -g ${1} -l ${1} ${DEFAULT_USERNAME}
