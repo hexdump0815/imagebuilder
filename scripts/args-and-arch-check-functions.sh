@@ -1,4 +1,4 @@
-# this file is supposed to be sourced by other shell scripts
+# this file is supposed to be sourced by the get-files, create-fs and create-image shell scripts
 
 if [ "$#" != "3" ]; then
   echo ""
@@ -37,7 +37,7 @@ fi
 
 if [ $(uname -m) != ${2} ]; then
   echo ""
-  echo "the target arch (${2}) is not the same arch this system is running on ($(uname -m)) - giving up"
+  echo "the target arch ${2} is not the same arch this system is running on: $(uname -m) - giving up"
   echo ""
   exit 1
 fi
