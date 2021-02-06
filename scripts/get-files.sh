@@ -14,9 +14,9 @@ if [ "$#" != "3" ]; then
   echo "               amlogic_m8 (armv7l) (not yet supported)"
   echo "               odroid_u3 (armv7l)"
   echo "               odroid_xu4 (armv7l) (not yet supported)"
-  echo "               orbsmart_s92_beelink_r89 (armv7l) (not yet supported)"
   echo "               rockchip_rk322x (armv7l) (not yet supported)"
-  echo "               tinkerboard (armv7l) (not yet supported)"
+  echo "               rockchip_rk3288 (armv7l) (not yet supported)"
+  echo "               orbsmart_s92_beelink_r89 (armv7l) (not yet supported)"
   echo "               raspberry_pi_2 (armv7l) (not yet supported)"
   echo "               raspberry_pi_3 (aarch64) (not yet supported)"
   echo "               raspberry_pi_4 (aarch64) (not yet supported)"
@@ -121,13 +121,13 @@ if ([ "$1" = "all" ] || [ "$1" = "rockchip_rk322x" ]) && [ "$2" = "armv7l" ]; th
   wget -v https://github.com/hexdump0815/linux-rockchip-rk322x-kernel/raw/${rockchip_rk322x_tree_tag}/misc.322/u-boot/boot-rockchip_rk3229_r39_4k-armv7l.dd -O downloads/boot-rockchip_rk322x-armv7l.dd
 fi
 
-if ([ "$1" = "all" ] || [ "$1" = "tinkerboard" ]) && [ "$2" = "armv7l" ]; then
-  rm -f downloads/kernel-tinkerboard-armv7l.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${tinkerboard_release_version}/${tinkerboard_release_version}.tar.gz -O downloads/kernel-tinkerboard-armv7l.tar.gz
-#  rm -f downloads/kernel-mali-tinkerboard-armv7l.tar.gz
-#  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${tinkerboard_release_version}/${tinkerboard_release_version}-mali-rk3288.tar.gz -O downloads/kernel-mali-tinkerboard-armv7l.tar.gz
-  rm -f downloads/boot-tinkerboard-armv7l.dd
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${tinkerboard_generic_tree_tag}/misc.av7/u-boot/boot-tinkerboard-armv7l.dd -O downloads/boot-tinkerboard-armv7l.dd
+if ([ "$1" = "all" ] || [ "$1" = "rockchip_rk3288" ]) && [ "$2" = "armv7l" ]; then
+  rm -f downloads/kernel-rockchip_rk3288-armv7l.tar.gz
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${rockchip_rk3288_release_version}/${rockchip_rk3288_release_version}.tar.gz -O downloads/kernel-rockchip_rk3288-armv7l.tar.gz
+#  rm -f downloads/kernel-mali-rockchip_rk3288-armv7l.tar.gz
+#  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${rockchip_rk3288_release_version}/${rockchip_rk3288_release_version}-mali-rk3288.tar.gz -O downloads/kernel-mali-rockchip_rk3288-armv7l.tar.gz
+  rm -f downloads/boot-rockchip_rk3288-armv7l.dd
+  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${rockchip_rk3288_generic_tree_tag}/misc.av7/u-boot/boot-tinkerboard-armv7l.dd -O downloads/boot-rockchip_rk3288-armv7l.dd
 fi
 
 if ([ "$1" = "all" ] || [ "$1" = "raspberry_pi_2" ]) && [ "$2" = "armv7l" ]; then
