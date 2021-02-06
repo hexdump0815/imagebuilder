@@ -7,6 +7,7 @@ export WORKDIR=`pwd`
 
 export BUILD_ROOT=/compile/local/imagebuilder-root
 export BUILD_ROOT_CACHE=/compile/local/imagebuilder-${2}-${3}-cache
+export DOWNLOAD_DIR=/compile/local/imagebuilder-download
 
 if [ -d ${BUILD_ROOT} ]; then
   echo ""
@@ -77,12 +78,12 @@ mount -t proc /proc ${BUILD_ROOT}/proc
 chroot ${BUILD_ROOT} /create-chroot-stage-02.sh ${3} ${DEFAULT_USERNAME}
 
 cd ${BUILD_ROOT}/
-tar --numeric-owner -xhzf ${WORKDIR}/downloads/kernel-${1}-${2}.tar.gz
-#if [ -f ${WORKDIR}/downloads/kernel-mali-${1}-${2}.tar.gz ]; then
-#  tar --numeric-owner -xhzf ${WORKDIR}/downloads/kernel-mali-${1}-${2}.tar.gz
+tar --numeric-owner -xhzf ${DOWNLOAD_DIR}/kernel-${1}-${2}.tar.gz
+#if [ -f ${DOWNLOAD_DIR}/kernel-mali-${1}-${2}.tar.gz ]; then
+#  tar --numeric-owner -xhzf ${DOWNLOAD_DIR}/kernel-mali-${1}-${2}.tar.gz
 #fi
-#if [ -f ${WORKDIR}/downloads/kernel-mali-b-${1}-${2}.tar.gz ]; then
-#  tar --numeric-owner -xhzf ${WORKDIR}/downloads/kernel-mali-b-${1}-${2}.tar.gz
+#if [ -f ${DOWNLOAD_DIR}/kernel-mali-b-${1}-${2}.tar.gz ]; then
+#  tar --numeric-owner -xhzf ${DOWNLOAD_DIR}/kernel-mali-b-${1}-${2}.tar.gz
 #fi
 
 rm -f create-chroot-stage-0?.sh

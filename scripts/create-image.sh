@@ -6,6 +6,7 @@ export WORKDIR=`pwd`
 . scripts/args-and-arch-check-functions.sh
 
 export BUILD_ROOT=/compile/local/imagebuilder-root
+export DOWNLOAD_DIR=/compile/local/imagebuilder-download
 export IMAGE_DIR=/compile/local/imagebuilder-diskimage
 export MOUNT_POINT=/tmp/imagebuilder-mnt
 
@@ -95,8 +96,8 @@ fi
 
 losetup /dev/loop0 ${IMAGE_DIR}/${1}-${2}-${3}.img
 
-if [ -f ${WORKDIR}/downloads/boot-${1}-${2}.dd ]; then
-  dd if=${WORKDIR}/downloads/boot-${1}-${2}.dd of=/dev/loop0
+if [ -f ${DOWNLOAD_DIR}/boot-${1}-${2}.dd ]; then
+  dd if=${DOWNLOAD_DIR}/boot-${1}-${2}.dd of=/dev/loop0
 fi
 
 # for the arm chromebooks an initial partition table is already in the boot.dd which needs to be fixed up now

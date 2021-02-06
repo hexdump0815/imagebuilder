@@ -5,15 +5,38 @@ export WORKDIR=`pwd`
 
 . scripts/args-and-arch-check-functions.sh
 
-export DOWNLOAD_DIR=/compile/local/imagebuilder-downloads
+export DOWNLOAD_DIR=/compile/local/imagebuilder-download
+
+# check if the given arch matches the supported arch for the selected system
+if [ ${2} != $(cat systems/$1/arch.txt) ]; then
+  echo ""
+  echo "the target arch ${2} is not supported for the selected system (supported is: $(cat systems/$1/arch.txt)) - giving up"
+  echo ""
+  exit 1
+fi
 
 if [ -d ${DOWNLOAD_DIR} ]; then
   echo ""
-  read -p "DOWNLOAD_DIR ${DOWNLOAD_DIR} already exists - do you want to reuse it (y/n)? " -n 1 -r
-  if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-    exit 0
-  fi
+  echo "selected: ${1} - ${2} - ${3}"
   echo ""
+  CURRENT_SYSTEM=$(cat ${DOWNLOAD_DIR}/system.txt)
+  CURRENT_ARCH=$(cat ${DOWNLOAD_DIR}/arch.txt)
+  CURRENT_RELEASE=$(cat ${DOWNLOAD_DIR}/release.txt)
+  echo "existing DOWNLOAD_DIR ${DOWNLOAD_DIR} is for: ${CURRENT_SYSTEM} - ${CURRENT_ARCH} - ${CURRENT_RELEASE}"
+  echo ""
+  if [ "${1}" = ${CURRENT_SYSTEM} ] && \
+     [ "${2}" = ${CURRENT_ARCH} ] && \
+     [ "${3}" = ${CURRENT_RELEASE} ]; then
+    echo "both are matching!"
+    echo "reusing the existing DOWNLOAD_DIR ${DOWNLOAD_DIR}"
+    echo ""
+    exit 0
+  else
+    echo "both are not matching!"
+    echo "please delete the DOWNLOAD_DIR ${DOWNLOAD_DIR} first to be able to create a new different one"
+    echo ""
+    exit 1
+  fi
 fi
 
 # create downloads dir
@@ -25,13 +48,10 @@ set -e
 # get version information for below
 . scripts/versions.conf
 
-# check if the given arch matches the supported arch for the selected system
-if [ ${2} != $(cat systems/$1/arch.txt) ]; then
-  echo ""
-  echo "the target arch ${2} is not supported for the selected system (supported is: $(cat systems/$1/arch.txt)) - giving up"
-  echo ""
-  exit 1
-fi
+# note down selected system, arch and release in the download dir
+echo ${1} > ${DOWNLOAD_DIR}/system.txt
+echo ${2} > ${DOWNLOAD_DIR}/arch.txt
+echo ${3} > ${DOWNLOAD_DIR}/release.txt
 
 # run the get-files.sh script for the selected system
 . systems/$1/get-files.sh
