@@ -10,7 +10,7 @@ export BUILD_ROOT_CACHE=/compile/local/imagebuilder-${2}-${3}-cache
 
 if [ -d ${BUILD_ROOT} ]; then
   echo ""
-  echo "BUILD_ROOT ${BUILD_ROOT} alresdy exists - giving up for safety reasons ..."
+  echo "BUILD_ROOT ${BUILD_ROOT} already exists - giving up for safety reasons ..."
   echo ""
   exit 1
 fi
