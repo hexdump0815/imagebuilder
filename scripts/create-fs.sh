@@ -132,29 +132,29 @@ fi
 if [ -d ${WORKDIR}/files/extra-files-${2}-${3} ]; then
   ( cd ${WORKDIR}/files/extra-files-${2}-${3} ; tar cf - . ) | tar xhf -
 fi
-if [ -d ${WORKDIR}/files/systems/${1}/extra-files ]; then
-  ( cd ${WORKDIR}/files/systems/${1}/extra-files ; tar cf - . ) | tar xhf -
+if [ -d ${WORKDIR}/systems/${1}/extra-files ]; then
+  ( cd ${WORKDIR}/systems/${1}/extra-files ; tar cf - . ) | tar xhf -
 fi
-if [ -d ${WORKDIR}/files/systems/${1}/extra-files-${2} ]; then
-  ( cd ${WORKDIR}/files/systems/${1}/extra-files-${2} ; tar cf - . ) | tar xhf -
+if [ -d ${WORKDIR}/systems/${1}/extra-files-${2} ]; then
+  ( cd ${WORKDIR}/systems/${1}/extra-files-${2} ; tar cf - . ) | tar xhf -
 fi
-if [ -d ${WORKDIR}/files/systems/${1}/extra-files-${3} ]; then
-  ( cd ${WORKDIR}/files/systems/${1}/extra-files-${3} ; tar cf - . ) | tar xhf -
+if [ -d ${WORKDIR}/systems/${1}/extra-files-${3} ]; then
+  ( cd ${WORKDIR}/systems/${1}/extra-files-${3} ; tar cf - . ) | tar xhf -
 fi
-if [ -d ${WORKDIR}/files/systems/${1}/extra-files-${2}-${3} ]; then
-  ( cd ${WORKDIR}/files/systems/${1}/extra-files-${2}-${3} ; tar cf - . ) | tar xhf -
+if [ -d ${WORKDIR}/systems/${1}/extra-files-${2}-${3} ]; then
+  ( cd ${WORKDIR}/systems/${1}/extra-files-${2}-${3} ; tar cf - . ) | tar xhf -
 fi
-if [ -f ${WORKDIR}/files/systems/${1}/rc-local-additions.txt ]; then
+if [ -f ${WORKDIR}/systems/${1}/rc-local-additions.txt ]; then
   echo "" >> etc/rc.local
   echo "# additions for ${1}" >> etc/rc.local
   echo "" >> etc/rc.local
-  cat ${WORKDIR}/files/systems/${1}/rc-local-additions.txt >> etc/rc.local
+  cat ${WORKDIR}/systems/${1}/rc-local-additions.txt >> etc/rc.local
 fi
-if [ -f ${WORKDIR}/files/systems/${1}/rc-local-additions-${3}.txt ]; then
+if [ -f ${WORKDIR}/systems/${1}/rc-local-additions-${3}.txt ]; then
   echo "" >> etc/rc.local
   echo "# additions for ${1} ${3}" >> etc/rc.local
   echo "" >> etc/rc.local
-  cat ${WORKDIR}/files/systems/${1}/rc-local-additions-${3}.txt >> etc/rc.local
+  cat ${WORKDIR}/systems/${1}/rc-local-additions-${3}.txt >> etc/rc.local
 fi
 echo "" >> etc/rc.local
 echo "exit 0" >> etc/rc.local
@@ -202,11 +202,11 @@ mkdir -p etc/systemd/system/multi-user.target.wants
 sed -i "s,DEFAULT_USERNAME=linux,DEFAULT_USERNAME=${DEFAULT_USERNAME},g" scripts/rename-default-user.sh
 
 # post install script per system
-if [ -x ${WORKDIR}/files/systems/${1}/postinstall.sh ]; then
-  ${WORKDIR}/files/systems/${1}/postinstall.sh
+if [ -x ${WORKDIR}/systems/${1}/postinstall.sh ]; then
+  ${WORKDIR}/systems/${1}/postinstall.sh
 fi
-if [ -x ${WORKDIR}/files/systems/${1}/postinstall-${3}.sh ]; then
-  ${WORKDIR}/files/systems/${1}/postinstall-${3}.sh
+if [ -x ${WORKDIR}/systems/${1}/postinstall-${3}.sh ]; then
+  ${WORKDIR}/systems/${1}/postinstall-${3}.sh
 fi
 
 chroot ${BUILD_ROOT} ldconfig
