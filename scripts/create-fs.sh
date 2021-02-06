@@ -61,14 +61,15 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
 else
   echo ""
   echo "root fs cache for ${2} ${3} exists, so using it"
-  echo ""
 fi
 
+echo ""
 echo "copying over the root cache to the target root - this may take a while ..."
 date
 rsync -axADHSX --no-inc-recursive ${BUILD_ROOT_CACHE}/ ${BUILD_ROOT}
 date
 echo "done"
+echo ""
 
 mount -o bind /dev ${BUILD_ROOT}/dev
 mount -o bind /dev/pts ${BUILD_ROOT}/dev/pts
