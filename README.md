@@ -1,3 +1,5 @@
+IMPORTANT: this branch is experimental and work in progress, so it is most probably not working!
+
 # introduction
 
 this is a simple framework for building bootable sd card images for various (currently arm based) small computer like devices. it is supposed to run natively, i.e. if you want to build an image for a 32bit arm system you should run it on a 32bit arm system and so on. i started it when i wanted to easily and reproducably build bootable sd card images for some arm devices for which there are no such images with recent distributions and linux kernels available or do not exist at all. i'm aware of the armbian (https://www.armbian.com/) framework, which has a similar goals and is much more advanced, but i wanted something simpler so that i can easier adjust it for prototyping and i wanted to build everything natively as i do not really have any string intel machine for cross compiling. if anyone with amrbian knowledge and a proper build environment is interested to port over the patches etc. for the few yet armbian unsupported systems over to armbian that would be more than welcome.
