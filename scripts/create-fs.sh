@@ -86,6 +86,10 @@ tar --numeric-owner -xhzf ${DOWNLOAD_DIR}/kernel-${1}-${2}.tar.gz
 #if [ -f ${DOWNLOAD_DIR}/kernel-mali-b-${1}-${2}.tar.gz ]; then
 #  tar --numeric-owner -xhzf ${DOWNLOAD_DIR}/kernel-mali-b-${1}-${2}.tar.gz
 #fi
+if [ -d ${DOWNLOAD_DIR}/boot-extra-${1} ]; then
+  mkdir -p boot/extra
+  cp -r ${DOWNLOAD_DIR}/boot-extra-${1}/* boot/extra
+fi
 
 rm -f create-chroot-stage-0?.sh
 if [ -d ${WORKDIR}/files/extra-files ]; then
