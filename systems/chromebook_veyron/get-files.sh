@@ -13,6 +13,6 @@ cp files/chromebook-boot/cb.dd-single-part ${DOWNLOAD_DIR}/boot-chromebook_veyro
 wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_veyron_jerry_uboot_version}/uboot.kpart.cbr.gz -O - | gunzip -c >> ${DOWNLOAD_DIR}/boot-chromebook_veyron-armv7l.dd
 
 # get different u-boot versions for different veyron versions to have them around
-mkdir -p ${DOWNLOAD_DIR}/boot-extra
-wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_veyron_jerry_uboot_version}/uboot.kpart.cbr.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra/uboot.kpart.cbr-jerry
-wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_veyron_speedy_uboot_version}/uboot.kpart.cbr-speedy.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra/uboot.kpart.cbr-speedy
+mkdir -p ${DOWNLOAD_DIR}/boot-extra-${1}
+wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_veyron_jerry_uboot_version}/uboot.kpart.cbr.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/uboot.kpart.cbr-jerry
+wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_veyron_speedy_uboot_version}/uboot.kpart.cbr-speedy.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/uboot.kpart.cbr-speedy
