@@ -49,7 +49,7 @@ more coming soon ...
 
 # system specific information
 
-* odroid u2 (untested), u3, u3+, x (untested) and x2 (untested)
+* odroid u2 (untested), u3, u3+, x (untested) and x2
   * for the odroid x2 the file extlinux/extlinux.conf in the first partition needs to be edited - see the comments in the file
   * for the odroid x the file extlinux/extlinux.conf in the first partition needs to be edited - see the comments in the file
   * the display resolution is set to 1024x768 by default in the same file and can be changed there if needed
