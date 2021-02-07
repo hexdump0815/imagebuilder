@@ -4,7 +4,7 @@ rockchip_rk33xx_release_version="5.10.1-stb-rkc%2B"
 rockchip_rk33xx_uboot_rk3318_ddrbin_legacy_atf_version="210131-01"
 rockchip_rk33xx_uboot_rk3328_ddrbin_legacy_atf_version="210131-01"
 rockchip_rk33xx_uboot_ddrbin_spl_version="210131-01"
-rockchip_rk33xx_uboot_ddrbin_666mmhz_spl_version="210131-01"
+rockchip_rk33xx_uboot_ddrbin_666mhz_spl_version="210131-01"
 rockchip_rk33xx_uboot_tpl_spl_version="210131-01"
 
 rm -f ${DOWNLOAD_DIR}/kernel-rockchip_rk33xx-aarch64.tar.gz
@@ -21,7 +21,7 @@ wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${rockchip_
 # get different u-boot versions for different amlogic versions to have them around
 mkdir -p ${DOWNLOAD_DIR}/boot-extra
 cp ${DOWNLOAD_DIR}/boot-rockchip_rk33xx-aarch64.dd ${DOWNLOAD_DIR}/boot-extra/boot-rk3318-ddrbin-legacy-atf-aarch64.dd
-wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${rockchip_rk33xx_uboot_rk3328_ddrbin_legacy_atf_version}/boot-rk3328-ddrbin-legacy-atf-aarch64.dd.gz -O - | gunzip -c >> ${DOWNLOAD_DIR}/boot-rk3328-ddrbin-legacy-atf-aarch64.dd
-wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${rockchip_rk33xx_uboot_ddrbin_spl_version}/boot-rk3328-ddrbin-spl-aarch64.dd.gz -O - | gunzip -c >> ${DOWNLOAD_DIR}/boot-rk3328-ddrbin-spl-aarch64.dd
-wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${rockchip_rk33xx_uboot_ddrbin_666mhz_spl_version}/boot-rk3328-ddrbin-666mhz-spl-aarch64.dd.gz -O - | gunzip -c >> ${DOWNLOAD_DIR}/boot-rk3328-ddrbin-666mhz-spl-aarch64.dd
-wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${rockchip_rk33xx_uboot_tpl_spl_version}/boot-rk3328-tpl-spl-aarch64.dd.gz -O - | gunzip -c >> ${DOWNLOAD_DIR}/boot-rk3328-tpl-spl-aarch64.dd
+wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${rockchip_rk33xx_uboot_rk3328_ddrbin_legacy_atf_version}/boot-rk3328-ddrbin-legacy-atf-aarch64.dd.gz -O - | gunzip -c >> ${DOWNLOAD_DIR}/boot-extra/boot-rk3328-ddrbin-legacy-atf-aarch64.dd
+wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${rockchip_rk33xx_uboot_ddrbin_spl_version}/boot-rk3328-ddrbin-spl-aarch64.dd.gz -O - | gunzip -c >> ${DOWNLOAD_DIR}/boot-extra/boot-rk3328-ddrbin-spl-aarch64.dd
+wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${rockchip_rk33xx_uboot_ddrbin_666mhz_spl_version}/boot-rk3328-ddrbin-666mhz-spl-aarch64.dd.gz -O - | gunzip -c >> ${DOWNLOAD_DIR}/boot-extra/boot-rk3328-ddrbin-666mhz-spl-aarch64.dd
+wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${rockchip_rk33xx_uboot_tpl_spl_version}/boot-rk3328-tpl-spl-aarch64.dd.gz -O - | gunzip -c >> ${DOWNLOAD_DIR}/boot-extra/boot-rk3328-tpl-spl-aarch64.dd

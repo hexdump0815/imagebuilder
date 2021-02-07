@@ -23,7 +23,7 @@ wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-ke
 
 # get different u-boot versions for different amlogic versions to have them around
 mkdir -p ${DOWNLOAD_DIR}/boot-extra
-cp ${DOWNLOAD_DIR}/boot-amlogic_gx-aarch64.dd ${DOWNLOAD_DIR}/boot-extra/boot-amlogic_gx-aarch64-odroid-c2.dd
+cp ${DOWNLOAD_DIR}/boot-amlogic_gx-aarch64.dd ${DOWNLOAD_DIR}/boot-extra/boot-amlogic_gxb-aarch64-odroid-c2.dd
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_gxb_uboot_version}/boot-amlogic_gxb_atf-aarch64.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra/boot-amlogic_gxb_atf-aarch64-tv-box.dd
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_gxb_uboot_version}/gxb-u-boot.bin.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra/gxb-tv-box-u-boot.bin
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_gxb_serial_uboot_version}/boot-amlogic_gxb_atf-aarch64-serial.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra/boot-amlogic_gxb_atf-aarch64-tv-box-serial.dd
@@ -32,13 +32,13 @@ wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_g
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_gxl_uboot_version}/gxl-u-boot.bin.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra/gxl-tv-box-u-boot.bin
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_gxl_serial_uboot_version}/boot-amlogic_gxl_atf-aarch64-a95x-r2-serial.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra/boot-amlogic_gxl_atf-aarch64-tv-box-serial.dd
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_gxl_serial_uboot_version}/gxl-u-boot.bin-serial.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra/gxl-serial-tv-box-u-boot.bin
-wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_gxm_uboot_version}/boot-amlogic_gxm_atf-aarch64-nexbox-a1.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra/boot-amlogic_gxm_atf-aarch64-tv-box.dd
+wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_gxm_uboot_version}/boot-amlogic_gxm-aarch64-nexbox-a1.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra/boot-amlogic_gxm-aarch64-tv-box.dd
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_gxm_uboot_version}/gxm-u-boot.bin.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra/gxm-tv-box-u-boot.bin
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_g12a_uboot_version}/boot-amlogic_g12a_atf-aarch64-x96-max.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra/boot-amlogic_g12a_atf-aarch64-tv-box.dd
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_g12a_uboot_version}/g12a-u-boot.bin.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra/g12a-tv-box-u-boot.bin
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_g12a_serial_uboot_version}/boot-amlogic_g12a_atf-aarch64-x96-max-serial.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra/boot-amlogic_g12a_atf-aarch64-tv-box-serial.dd
-wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_g12a_uboot_serial_version}/g12a-serial-u-boot.bin.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra/g12a-serial-tv-box-u-boot.bin
-wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_sm1_uboot_version}/boot-amlogic_sm1_atf-aarch64-x96-air.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra/boot-amlogic_sm1_atf-aarch64-tv-box.dd
+wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_g12a_serial_uboot_version}/g12a-serial-u-boot.bin.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra/g12a-serial-tv-box-u-boot.bin
+wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_sm1_uboot_version}/boot-amlogic_sm1-aarch64-x96-air.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra/boot-amlogic_sm1-aarch64-tv-box.dd
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_sm1_uboot_version}/sm1-u-boot.bin.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra/sm1-tv-box-u-boot.bin
-wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_sm1_serial_uboot_version}/boot-amlogic_sm1_atf-aarch64-x96-air-serial.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra/boot-amlogic_sm1_atf-aarch64-tv-box-serial.dd
-wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_sm1_uboot_serial_version}/sm1-serial-u-boot.bin.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra/sm1-serial-tv-box-u-boot.bin
+wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_sm1_serial_uboot_version}/boot-amlogic_sm1-aarch64-x96-air-serial.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra/boot-amlogic_sm1-aarch64-tv-box-serial.dd
+wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_sm1_serial_uboot_version}/sm1-serial-u-boot.bin.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra/sm1-serial-tv-box-u-boot.bin
