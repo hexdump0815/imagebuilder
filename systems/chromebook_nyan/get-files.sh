@@ -1,7 +1,11 @@
 # this file is supposed to be sourced by the get-files shell script
 
+chromebook_nyan_release_version="5.4.84-stb-cbt%2B"
+chromebook_nyan_uboot_version="v2018.11-cbt"
+
 rm -f ${DOWNLOAD_DIR}/kernel-chromebook_nyan-armv7l.tar.gz
 wget -v https://github.com/hexdump0815/linux-mainline-tegra-k1-kernel/releases/download/${chromebook_nyan_release_version}/${chromebook_nyan_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-chromebook_nyan-armv7l.tar.gz
+
 rm -f ${DOWNLOAD_DIR}/boot-chromebook_nyan-armv7l.dd
 # we assemble the bootblocks from a prepared chromebook partition table and the proper u-boot kpart image
 cp files/chromebook-boot/cb.dd-single-part ${DOWNLOAD_DIR}/boot-chromebook_nyan-armv7l.dd
