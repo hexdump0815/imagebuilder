@@ -59,7 +59,7 @@ if [ -d ${OFFLINE_DIR} ]; then
   echo ""
   echo "offline dir detected - just taking the files from there"
   echo ""
-  cp -v ${OFFLINE_DIR}/*${1}* ${DOWNLOAD_DIR}
+  cp -rv ${OFFLINE_DIR}/*${1}* ${DOWNLOAD_DIR}
 else
   # run the get-files.sh script for the selected system
   echo ""

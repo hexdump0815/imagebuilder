@@ -3,17 +3,31 @@
 cd `dirname $0`/..
 export WORKDIR=`pwd`
 
-. scripts/args-and-arch-check-functions.sh
-
-export OFFLINE_DIR=/compile/local/imagebuilder-offline
-
-# check if the given arch matches the supported arch for the selected system
-if [ ${2} != $(cat systems/$1/arch.txt) ]; then
+if [ "$#" != "2" ]; then
   echo ""
-  echo "the target arch ${2} is not supported for the selected system (supported is: $(cat systems/$1/arch.txt)) - giving up"
+  echo "usage: $0 arch release"
+  echo ""
+  echo "possible arch options:"
+  echo "- armv7l - 32bit"
+  echo "- aarch64 - 64bit"
+  echo ""
+  echo "possible release options:"
+  echo "- focal - ubuntu"
+  echo "- bullseye - debian (not yet supported)"
+  echo ""
+  echo "example: $0 armv7l focal"
   echo ""
   exit 1
 fi
+
+if [ $(uname -m) != ${1} ]; then
+  echo ""
+  echo "the target arch ${1} is not the same arch this system is running on: $(uname -m) - giving up"
+  echo ""
+  exit 1
+fi
+
+export OFFLINE_DIR=/compile/local/imagebuilder-offline
 
 if [ -d ${OFFLINE_DIR} ]; then
   echo ""
@@ -33,11 +47,13 @@ set -e
 
 # run the get-files.sh script for all systems
 for i in $(ls systems); do
-  echo ""
-  echo "- getting files for $i:" 
-  echo ""
-  # set DOWNLOAD_DIR to OFFLINE_DIR
-  export DOWNLOAD_DIR=${OFFLINE_DIR}
-  . systems/$i/get-files.sh
-  echo ""
+  if [ $(cat systems/${i}/arch.txt) = ${1} ]; then
+    echo ""
+    echo "- getting files for $i:" 
+    echo ""
+    # set DOWNLOAD_DIR to OFFLINE_DIR
+    export DOWNLOAD_DIR=${OFFLINE_DIR}
+    . systems/${i}/get-files.sh ${i} ${1} ${2}
+    echo ""
+  fi
 done
