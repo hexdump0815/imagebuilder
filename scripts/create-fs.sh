@@ -11,7 +11,25 @@ export DOWNLOAD_DIR=/compile/local/imagebuilder-download
 
 if [ -d ${BUILD_ROOT} ]; then
   echo ""
-  echo "BUILD_ROOT ${BUILD_ROOT} already exists - giving up for safety reasons ..."
+  echo "build root ${BUILD_ROOT} already exists - giving up for safety reasons ..."
+  echo ""
+  exit 1
+fi
+
+if [ ! -d ${DOWNLOAD_DIR} ]; then
+  echo ""
+  echo "download dir ${DOWNLOAD_DIR} does not exists - please run get-files.sh first ..."
+  echo ""
+  exit 1
+fi
+
+if [ ${1} != $(cat ${DOWNLOAD_DIR}/system.txt) ] || \
+   [ ${2} != $(cat ${DOWNLOAD_DIR}/arch.txt) ] || \
+   [ ${3} != $(cat ${DOWNLOAD_DIR}/release.txt) ]; then
+  echo ""
+  echo "system, arch and release given on the cmdline (${1} ${2} ${3})"
+  echo "does not match the ones of the download folder ${DOWNLOAD_DIR}"
+  echo "($(cat ${DOWNLOAD_DIR}/system.txt) $(cat ${DOWNLOAD_DIR}/arch.txt) $(cat ${DOWNLOAD_DIR}/release.txt)) - please fix the download dir first - giving up"
   echo ""
   exit 1
 fi

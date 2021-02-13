@@ -27,7 +27,7 @@ export OFFLINE_DIR=/compile/local/imagebuilder-offline
 
 if [ -d ${OFFLINE_DIR} ]; then
   echo ""
-  echo "please delete the OFFLINE_DIR ${OFFLINE_DIR} first to be able to create a fresh one"
+  echo "please delete the offline dir ${OFFLINE_DIR} first to be able to create a fresh one"
   echo ""
   exit 1
 fi

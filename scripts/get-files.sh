@@ -23,7 +23,7 @@ if [ -d ${DOWNLOAD_DIR} ]; then
   CURRENT_SYSTEM=$(cat ${DOWNLOAD_DIR}/system.txt)
   CURRENT_ARCH=$(cat ${DOWNLOAD_DIR}/arch.txt)
   CURRENT_RELEASE=$(cat ${DOWNLOAD_DIR}/release.txt)
-  echo "existing DOWNLOAD_DIR ${DOWNLOAD_DIR} is for: ${CURRENT_SYSTEM} - ${CURRENT_ARCH} - ${CURRENT_RELEASE}"
+  echo "existing download dir ${DOWNLOAD_DIR} is for: ${CURRENT_SYSTEM} - ${CURRENT_ARCH} - ${CURRENT_RELEASE}"
   echo ""
   if [ "${1}" = ${CURRENT_SYSTEM} ] && \
      [ "${2}" = ${CURRENT_ARCH} ] && \
