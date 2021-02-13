@@ -3,7 +3,7 @@
 cd `dirname $0`/..
 export WORKDIR=`pwd`
 
-if [ "$#" != "2" ]; then
+if [ "$#" != "1" ]; then
   echo ""
   echo "usage: $0 arch release"
   echo ""
@@ -11,11 +11,7 @@ if [ "$#" != "2" ]; then
   echo "- armv7l - 32bit"
   echo "- aarch64 - 64bit"
   echo ""
-  echo "possible release options:"
-  echo "- focal - ubuntu"
-  echo "- bullseye - debian (not yet supported)"
-  echo ""
-  echo "example: $0 armv7l focal"
+  echo "example: $0 armv7l"
   echo ""
   exit 1
 fi
@@ -53,7 +49,7 @@ for i in $(ls systems); do
     echo ""
     # set DOWNLOAD_DIR to OFFLINE_DIR
     export DOWNLOAD_DIR=${OFFLINE_DIR}
-    . systems/${i}/get-files.sh ${i} ${1} ${2}
+    . systems/${i}/get-files.sh ${i} ${1}
     echo ""
   fi
 done
