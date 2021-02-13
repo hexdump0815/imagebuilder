@@ -25,13 +25,11 @@ if [ -f ${WORKDIR}/scripts/imagebuilder.conf ]; then
 fi
 
 if [ ! -d ${BUILD_ROOT_CACHE} ]; then
-  echo ""
-  echo "root fs cache for ${2} ${3} does not exist, so creating one"
-  echo ""
   ${WORKDIR}/scripts/create-fs-cache.sh ${2} ${3}
 else
   echo ""
   echo "root fs cache for ${2} ${3} exists, so using it"
+  echo ""
 fi
 
 echo ""
