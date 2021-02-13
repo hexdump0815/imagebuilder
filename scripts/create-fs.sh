@@ -28,7 +28,7 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
   echo ""
   echo "root fs cache for ${2} ${3} does not exist, so creating one"
   echo ""
-  ${WORKDIR}/scripts/create-fs-cache.sh ${1} ${2} ${3}
+  ${WORKDIR}/scripts/create-fs-cache.sh ${2} ${3}
 else
   echo ""
   echo "root fs cache for ${2} ${3} exists, so using it"
