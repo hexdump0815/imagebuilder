@@ -6,6 +6,7 @@ export WORKDIR=`pwd`
 . scripts/args-and-arch-check-functions.sh
 
 export DOWNLOAD_DIR=/compile/local/imagebuilder-download
+export OFFLINE_DIR=/compile/local/imagebuilder-offline
 
 # check if the given arch matches the supported arch for the selected system
 if [ ${2} != $(cat systems/$1/arch.txt) ]; then
@@ -53,5 +54,16 @@ echo ${1} > ${DOWNLOAD_DIR}/system.txt
 echo ${2} > ${DOWNLOAD_DIR}/arch.txt
 echo ${3} > ${DOWNLOAD_DIR}/release.txt
 
-# run the get-files.sh script for the selected system
-. systems/$1/get-files.sh
+if [ -d ${OFFLINE_DIR} ]; then
+  # if an offline dir exists just copy the files for the selected system from there instead of downloading them
+  echo ""
+  echo "offline dir detected - just taking the files from there"
+  echo ""
+  cp -v ${OFFLINE_DIR}/*${1}* ${DOWNLOAD_DIR}
+else
+  # run the get-files.sh script for the selected system
+  echo ""
+  echo "no offline dir detected - downloading the files required"
+  echo ""
+  . systems/$1/get-files.sh
+fi
