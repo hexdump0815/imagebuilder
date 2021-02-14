@@ -66,19 +66,16 @@ mount -t proc /proc ${BUILD_ROOT}/proc
 chroot ${BUILD_ROOT} /create-chroot-stage-02.sh ${3} ${DEFAULT_USERNAME}
 
 cd ${BUILD_ROOT}/
+
 tar --numeric-owner -xhzf ${DOWNLOAD_DIR}/kernel-${1}-${2}.tar.gz
-#if [ -f ${DOWNLOAD_DIR}/kernel-mali-${1}-${2}.tar.gz ]; then
-#  tar --numeric-owner -xhzf ${DOWNLOAD_DIR}/kernel-mali-${1}-${2}.tar.gz
-#fi
-#if [ -f ${DOWNLOAD_DIR}/kernel-mali-b-${1}-${2}.tar.gz ]; then
-#  tar --numeric-owner -xhzf ${DOWNLOAD_DIR}/kernel-mali-b-${1}-${2}.tar.gz
-#fi
+
 if [ -d ${DOWNLOAD_DIR}/boot-extra-${1} ]; then
   mkdir -p boot/extra
   cp -r ${DOWNLOAD_DIR}/boot-extra-${1}/* boot/extra
 fi
 
 rm -f create-chroot-stage-0?.sh
+
 if [ -d ${WORKDIR}/files/extra-files ]; then
   ( cd ${WORKDIR}/files/extra-files ; tar cf - . ) | tar xhf -
 fi
@@ -103,6 +100,7 @@ fi
 if [ -d ${WORKDIR}/systems/${1}/extra-files-${2}-${3} ]; then
   ( cd ${WORKDIR}/systems/${1}/extra-files-${2}-${3} ; tar cf - . ) | tar xhf -
 fi
+
 if [ -f ${WORKDIR}/systems/${1}/rc-local-additions.txt ]; then
   echo "" >> etc/rc.local
   echo "# additions for ${1}" >> etc/rc.local
@@ -119,36 +117,26 @@ echo "" >> etc/rc.local
 echo "exit 0" >> etc/rc.local
 
 # adjust some config files if they exist
-if [ -f ${BUILD_ROOT}/etc/modules-load.d/cups-filters.conf ]; then
-  sed -i 's,^lp,#lp,g' ${BUILD_ROOT}/etc/modules-load.d/cups-filters.conf
-  sed -i 's,^ppdev,#ppdev,g' ${BUILD_ROOT}/etc/modules-load.d/cups-filters.conf
-  sed -i 's,^parport_pc,#parport_pc,g' ${BUILD_ROOT}/etc/modules-load.d/cups-filters.conf
+if [ -f etc/modules-load.d/cups-filters.conf ]; then
+  sed -i 's,^lp,#lp,g' etc/modules-load.d/cups-filters.conf
+  sed -i 's,^ppdev,#ppdev,g' etc/modules-load.d/cups-filters.conf
+  sed -i 's,^parport_pc,#parport_pc,g' etc/modules-load.d/cups-filters.conf
 fi
-if [ -f ${BUILD_ROOT}/etc/NetworkManager/NetworkManager.conf ]; then
-  sed -i 's,^managed=false,managed=true,g' ${BUILD_ROOT}/etc/NetworkManager/NetworkManager.conf
-  touch ${BUILD_ROOT}/etc/NetworkManager/conf.d/10-globally-managed-devices.conf
+if [ -f etc/NetworkManager/NetworkManager.conf ]; then
+  sed -i 's,^managed=false,managed=true,g' etc/NetworkManager/NetworkManager.conf
+  touch etc/NetworkManager/conf.d/10-globally-managed-devices.conf
 fi
-if [ -f ${BUILD_ROOT}/etc/default/numlockx ]; then
-  sed -i 's,^NUMLOCK=auto,NUMLOCK=off,g' ${BUILD_ROOT}/etc/default/numlockx
+if [ -f etc/default/numlockx ]; then
+  sed -i 's,^NUMLOCK=auto,NUMLOCK=off,g' etc/default/numlockx
 fi
-if [ -f ${BUILD_ROOT}/etc/default/apport ]; then
-  sed -i 's,^enabled=1,enabled=0,g' ${BUILD_ROOT}/etc/default/apport
+if [ -f etc/default/apport ]; then
+  sed -i 's,^enabled=1,enabled=0,g' etc/default/apport
 fi
 
 # for the arm chromebooks add some useful files to the boot partition
 if [ "$1" = "chromebook_snow" ] || [ "$1" = "chromebook_veyron" ] || [ "$1" = "chromebook_nyan" ]; then
-  cp -r ${WORKDIR}/files/chromebook-boot ${BUILD_ROOT}/boot
+  cp -r ${WORKDIR}/files/chromebook-boot boot
 fi
-
-export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/*Image-* | sed 's,.*Image-,,g' | sort -u`
-
-# hack to get the fsck binaries in properly even in our chroot env
-cp -f ${BUILD_ROOT}/usr/share/initramfs-tools/hooks/fsck ${BUILD_ROOT}/tmp/fsck.org
-sed -i 's,fsck_types=.*,fsck_types="vfat ext4",g' ${BUILD_ROOT}/usr/share/initramfs-tools/hooks/fsck
-chroot ${BUILD_ROOT} update-initramfs -c -k ${KERNEL_VERSION}
-mv -f ${BUILD_ROOT}/tmp/fsck.org ${BUILD_ROOT}/usr/share/initramfs-tools/hooks/fsck
-
-cd ${BUILD_ROOT}
 
 # remove the generated ssh keys so that fresh ones are generated on
 # first boot for each installed image
@@ -169,6 +157,14 @@ if [ -x ${WORKDIR}/systems/${1}/postinstall-${3}.sh ]; then
 fi
 
 chroot ${BUILD_ROOT} ldconfig
+
+export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/*Image-* | sed 's,.*Image-,,g' | sort -u`
+
+# hack to get the fsck binaries in properly even in our chroot env
+cp -f usr/share/initramfs-tools/hooks/fsck tmp/fsck.org
+sed -i 's,fsck_types=.*,fsck_types="vfat ext4",g' usr/share/initramfs-tools/hooks/fsck
+chroot ${BUILD_ROOT} update-initramfs -c -k ${KERNEL_VERSION}
+mv -f tmp/fsck.org usr/share/initramfs-tools/hooks/fsck
 
 cd ${WORKDIR}
 
