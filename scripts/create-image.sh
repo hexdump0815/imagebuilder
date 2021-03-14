@@ -96,16 +96,36 @@ fi
 
 losetup /dev/loop0 ${IMAGE_DIR}/${1}-${2}-${3}.img
 
-if [ -f ${DOWNLOAD_DIR}/boot-${1}-${2}.dd ]; then
-  dd if=${DOWNLOAD_DIR}/boot-${1}-${2}.dd of=/dev/loop0
-fi
+# the arm chromebooks have some special boot partition setup
+if [ "$1" = "chromebook_snow" ] || [ "$1" = "chromebook_veyron" ] || \
+   [ "$1" = "chromebook_nyan" ] || [ "$1" = "chromebook_elm" ] || [ "$1" = "chromebook_kukui" ]; then
 
-# for the arm chromebooks an initial partition table is already in the boot.dd which needs to be fixed up now
-if [ "$1" = "chromebook_snow" ] || [ "$1" = "chromebook_veyron" ] || [ "$1" = "chromebook_nyan" ]; then
-  # fix
+  # the fllowing part is based on
+  # https://github.com/eballetbo/chromebooks/blob/master/chromebook-setup.sh
+  # https://github.com/Maccraft123/Cadmium/blob/master/fs/install-to-emmc-begin
+
+  # clear the partition table and reread it via partprobe
+  sgdisk -Z /dev/loop0
+  partprobe /dev/loop0
+
+  # create a fresh partition table and reread it via partprobe
   sgdisk -C -e -G /dev/loop0
-  # verify
-  sgdisk -v /dev/loop0
+  partprobe /dev/loop0
+
+  # create the chomeos partition structure and reread it via partprobe
+  cgpt create /dev/loop0
+  partprobe /dev/loop0
+
+  # create two boot partitions and set them as bootable
+  # two to have a second one to play around just in case - it just costs 32m
+  cgpt add -i 1 -t kernel -b 8192 -s 65536 -l KernelA -S 1 -T 2 -P 10 /dev/loop0
+  cgpt add -i 2 -t kernel -b 73728 -s 65536 -l KernelB -S 0 -T 2 -P 5 /dev/loop0
+
+# for all others the boot block is simply written to the beginning of the disk image
+else
+  if [ -f ${DOWNLOAD_DIR}/boot-${1}-${2}.dd ]; then
+    dd if=${DOWNLOAD_DIR}/boot-${1}-${2}.dd of=/dev/loop0
+  fi
 fi
 
 # inspired by https://github.com/jeromebrunet/libretech-image-builder/blob/libretech-cc-xenial-4.13/linux-image.sh
