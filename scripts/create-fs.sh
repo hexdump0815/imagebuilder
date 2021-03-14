@@ -148,6 +148,9 @@ mkdir -p etc/systemd/system/multi-user.target.wants
 # if a different default user name was set, parse it into the rename user script
 sed -i "s,DEFAULT_USERNAME=linux,DEFAULT_USERNAME=${DEFAULT_USERNAME},g" scripts/rename-default-user.sh
 
+# create an empty xorg.conf.d dir where the xorg config files can go to
+mkdir -p ${BUILD_ROOT}/etc/X11/xorg.conf.d
+
 # post install script per system
 if [ -x ${WORKDIR}/systems/${1}/postinstall.sh ]; then
   ${WORKDIR}/systems/${1}/postinstall.sh
