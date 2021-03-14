@@ -140,6 +140,12 @@ partprobe /dev/loop0
 losetup -d /dev/loop0
 losetup --partscan /dev/loop0 ${IMAGE_DIR}/${1}-${2}-${3}.img
 
+# for chromebooks write the kernel to the first kernel partition
+if [ "$1" = "chromebook_snow" ] || [ "$1" = "chromebook_veyron" ] || \
+   [ "$1" = "chromebook_nyan" ] || [ "$1" = "chromebook_elm" ] || [ "$1" = "chromebook_kukui" ]; then
+  dd if=${DOWNLOAD_DIR}/boot-${1}-${2}.dd of=/dev/loop0p1 status=progress
+fi
+
 if [ "$BOOTFS" = "fat" ]; then
   mkfs.vfat -F32 -n BOOTPART /dev/loop0p$BOOTPART
 elif [ "$BOOTFS" = "ext4" ]; then
