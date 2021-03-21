@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-chromebook_snow_release_version="5.10.3-stb-cbe%2B"
+chromebook_snow_release_version="5.10.25-stb-cbe%2B"
 chromebook_snow_uboot_version="v2018.11-cbe"
 
 rm -f ${DOWNLOAD_DIR}/kernel-chromebook_snow-armv7l.tar.gz
