@@ -1,2 +1,9 @@
 # enable light supend mode, i.e. only cpu is put into sleep, everything else stays alive
 echo s2idle > /sys/power/mem_sleep
+
+# lower the max cpu frequency as thermal throttling does not work yet and it will
+# overheat and shut down at some point otherwise - with this value it seems to run well
+echo 1734000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+
+# increase the gpu frequency - not done yet
+#echo 06 > /sys/kernel/debug/dri/129/pstate
