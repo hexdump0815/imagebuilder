@@ -80,7 +80,7 @@ mkdir -p ${MOUNT_POINT}
 
 if [ -f ${IMAGE_DIR}/${1}-${2}-${3}.img ]; then
   echo ""
-  echo "image file ${IMAGE_DIR}/${1}-${2}-${3}.img alresdy exists - giving up for safety reasons ..."
+  echo "image file ${IMAGE_DIR}/${1}-${2}-${3}.img already exists - giving up for safety reasons ..."
   echo ""
   exit 1
 fi
