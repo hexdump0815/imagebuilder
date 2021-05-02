@@ -11,8 +11,9 @@ systemctl disable fwupd.service
 systemctl disable fwupd-refresh.service
 
 # in case you want to enable automatic updates, just comment out the next lines
-#systemctl disable apt-daily
-#systemctl disable apt-daily-upgrade
+# TODO: not sure if the first two are still required
+systemctl disable apt-daily
+systemctl disable apt-daily-upgrade
 systemctl disable apt-daily-upgrade.timer
 systemctl disable unattended-upgrades.service
 sed -i 's,Update-Package-Lists "1",Update-Package-Lists "0",g' /etc/apt/apt.conf.d/10periodic

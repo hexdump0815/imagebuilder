@@ -23,12 +23,12 @@ if [ ! -d ${DOWNLOAD_DIR} ]; then
   exit 1
 fi
 
-if [ ${1} != $(cat ${DOWNLOAD_DIR}/system.txt) ] || \
-   [ ${2} != $(cat ${DOWNLOAD_DIR}/arch.txt) ] || \
-   [ ${3} != $(cat ${DOWNLOAD_DIR}/release.txt) ]; then
+if [ "${1}" != "$(cat ${DOWNLOAD_DIR}/system.txt)" ] || \
+   [ "${2}" != "$(cat ${DOWNLOAD_DIR}/arch.txt)" ] || \
+   [ "${3}" != "$(cat ${DOWNLOAD_DIR}/release.txt)" ]; then
   echo ""
   echo "system, arch and release given on the cmdline (${1} ${2} ${3})"
-  echo "does not match the ones of the download folder ${DOWNLOAD_DIR}"
+  echo "do not match the ones of the download folder ${DOWNLOAD_DIR}"
   echo "($(cat ${DOWNLOAD_DIR}/system.txt) $(cat ${DOWNLOAD_DIR}/arch.txt) $(cat ${DOWNLOAD_DIR}/release.txt)) - please fix the download dir first - giving up"
   echo ""
   exit 1
@@ -67,14 +67,14 @@ chroot ${BUILD_ROOT} /create-chroot-stage-02.sh ${3} ${DEFAULT_USERNAME}
 
 cd ${BUILD_ROOT}/
 
+rm -f create-chroot-stage-0?.sh
+
 tar --numeric-owner -xhzf ${DOWNLOAD_DIR}/kernel-${1}-${2}.tar.gz
 
 if [ -d ${DOWNLOAD_DIR}/boot-extra-${1} ]; then
   mkdir -p boot/extra
   cp -r ${DOWNLOAD_DIR}/boot-extra-${1}/* boot/extra
 fi
-
-rm -f create-chroot-stage-0?.sh
 
 if [ -d ${WORKDIR}/files/extra-files ]; then
   ( cd ${WORKDIR}/files/extra-files ; tar cf - . ) | tar xhf -
@@ -133,8 +133,11 @@ if [ -f etc/default/apport ]; then
   sed -i 's,^enabled=1,enabled=0,g' etc/default/apport
 fi
 
+# TODO: the chromebook-boot dir should be cleaned up in the future
 # for the arm chromebooks add some useful files to the boot partition
-if [ "$1" = "chromebook_snow" ] || [ "$1" = "chromebook_veyron" ] || [ "$1" = "chromebook_nyan" ]; then
+if [ "$1" = "chromebook_snow" ] || [ "$1" = "chromebook_veyron" ] || \
+	[ "$1" = "chromebook_nyan" ] || [ "$1" = "chromebook_elm" ] || \
+	[ "$1" = "chromebook_kukui" ] ; then
   cp -r ${WORKDIR}/files/chromebook-boot boot
 fi
 

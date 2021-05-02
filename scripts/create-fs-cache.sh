@@ -47,14 +47,21 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
   fi
   if [ "${2}" = "focal" ]; then
     LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} ${2} ${BUILD_ROOT_CACHE} http://ports.ubuntu.com/
+    cp ${WORKDIR}/files/focal-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
+    # parse in the proper ubuntu version
+    sed -i "s,UBUNTUVERSION,focal,g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
   elif [ "${2}" = "bullseye" ]; then
     LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} ${2} ${BUILD_ROOT_CACHE} http://deb.debian.org/debian/
+    cp ${WORKDIR}/files/bullseye-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
+    # parse in the proper debian version
+    sed -i "s,DEBIANVERSION,bullseye,g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
+  elif [ "${2}" = "sonaremin" ]; then
+    LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} focal ${BUILD_ROOT_CACHE} http://ports.ubuntu.com/
+    cp ${WORKDIR}/files/focal-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
+    # parse in the proper ubuntu version
+    sed -i "s,UBUNTUVERSION,focal,g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
   fi
 
-  cp ${WORKDIR}/files/${2}-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
-  # parse in the proper ubuntu/debian version
-  sed -i "s,UBUNTUVERSION,${2},g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
-  sed -i "s,DEBIANVERSION,${2},g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
   cp ${WORKDIR}/scripts/create-chroot-stage-0?.sh ${BUILD_ROOT_CACHE}
 
   mount -o bind /dev ${BUILD_ROOT_CACHE}/dev
