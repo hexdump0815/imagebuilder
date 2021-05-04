@@ -1,7 +1,7 @@
 # this file is supposed to be sourced by the get-files shell script
 
 odroid_xu4_release_version="5.4.58-stb-e54%2B"
-#odroid_xu4_release_version="5.10.3-stb-e54%2B"
+#odroid_xu4_release_version="5.10.25-stb-e54%2B"
 odroid_xu4_uboot_version="200718-01"
 
 rm -f ${DOWNLOAD_DIR}/kernel-odroid_xu4-armv7l.tar.gz

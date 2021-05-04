@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-allwinner_h3_release_version="5.10.3-stb-av7%2B"
+allwinner_h3_release_version="5.10.25-stb-av7%2B"
 allwinner_h3_uboot_version="200718-01"
 
 rm -f ${DOWNLOAD_DIR}/kernel-allwinner_h3-armv7l.tar.gz

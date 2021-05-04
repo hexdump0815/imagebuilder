@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-rockchip_rk3288_release_version="5.10.3-stb-av7%2B"
+rockchip_rk3288_release_version="5.10.25-stb-av7%2B"
 rockchip_rk3288_generic_tree_tag=${generic_tree_tag}
 
 rm -f ${DOWNLOAD_DIR}/kernel-rockchip_rk3288-armv7l.tar.gz

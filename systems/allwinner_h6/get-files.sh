@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script  
 
-allwinner_h6_release_version="5.10.1-stb-ah6%2B"
+allwinner_h6_release_version="5.10.25-stb-ah6%2B"
 allwinner_h6_uboot_version="200718-01"
 
 rm -f ${DOWNLOAD_DIR}/kernel-allwinner_h6-aarch64.tar.gz
