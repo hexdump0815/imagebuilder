@@ -76,6 +76,19 @@ if [ -d ${DOWNLOAD_DIR}/boot-extra-${1} ]; then
   cp -r ${DOWNLOAD_DIR}/boot-extra-${1}/* boot/extra
 fi
 
+if [ -f ${DOWNLOAD_DIR}/opengl-${1}-${2}.tar.gz ]; then
+  tar --numeric-owner -xzf ${DOWNLOAD_DIR}/opengl-${1}-${2}.tar.gz
+fi
+if [ -f ${DOWNLOAD_DIR}/opengl-fbdev-${1}-${2}.tar.gz ]; then
+  tar --numeric-owner -xzf ${DOWNLOAD_DIR}/opengl-fbdev-${1}-${2}.tar.gz
+fi
+if [ -f ${DOWNLOAD_DIR}/opengl-wayland-${1}-${2}.tar.gz ]; then
+  tar --numeric-owner -xzf ${DOWNLOAD_DIR}/opengl-wayland-${1}-${2}.tar.gz
+fi
+if [ -f ${DOWNLOAD_DIR}/gl4es-${2}-${3}.tar.gz ]; then
+  tar --numeric-owner -xzf ${DOWNLOAD_DIR}/gl4es-${2}-${3}.tar.gz
+fi
+
 if [ -d ${WORKDIR}/files/extra-files ]; then
   ( cd ${WORKDIR}/files/extra-files ; tar cf - . ) | tar xhf -
 fi
