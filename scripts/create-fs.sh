@@ -76,7 +76,15 @@ if [ -d ${DOWNLOAD_DIR}/boot-extra-${1} ]; then
   cp -r ${DOWNLOAD_DIR}/boot-extra-${1}/* boot/extra
 fi
 
+# install the self built fresher mesa version
 tar --numeric-owner -xzf ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
+
+# some systems need a fresher xorg server
+if [ -f ${DOWNLOAD_DIR}/opt-xserver-${3}-${2}.tar.gz ]; then
+  tar --numeric-owner -xzf ${DOWNLOAD_DIR}/opt-xserver-${3}-${2}.tar.gz
+  # TODO: more stuff needed here - see:
+  # https://github.com/hexdump0815/mesa-etc-build/blob/master/misc-build.txt#L33-L68
+fi
 
 if [ -f ${DOWNLOAD_DIR}/opengl-${1}-${2}.tar.gz ]; then
   tar --numeric-owner -xzf ${DOWNLOAD_DIR}/opengl-${1}-${2}.tar.gz
