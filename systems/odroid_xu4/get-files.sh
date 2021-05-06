@@ -1,5 +1,7 @@
 # this file is supposed to be sourced by the get-files shell script
 
+# lets stick to the odroid v5.4 kernel for now as some apps like vcvrack
+# have a cpu usage of about 20% less at otherwise identical conditions
 odroid_xu4_release_version="5.4.58-stb-e54%2B"
 #odroid_xu4_release_version="5.10.25-stb-e54%2B"
 odroid_xu4_uboot_version="200718-01"
