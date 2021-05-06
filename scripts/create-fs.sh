@@ -70,6 +70,9 @@ cd ${BUILD_ROOT}/
 rm -f create-chroot-stage-0?.sh
 
 tar --numeric-owner -xhzf ${DOWNLOAD_DIR}/kernel-${1}-${2}.tar.gz
+if [ -f ${DOWNLOAD_DIR}/kernel-mali-${1}-${2}.tar.gz ]; then
+  tar --numeric-owner -xhzf ${DOWNLOAD_DIR}/kernel-mali-${1}-${2}.tar.gz
+fi
 
 if [ -d ${DOWNLOAD_DIR}/boot-extra-${1} ]; then
   mkdir -p boot/extra

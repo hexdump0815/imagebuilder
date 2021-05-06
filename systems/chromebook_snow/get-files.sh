@@ -8,6 +8,9 @@ gl4es_focal_armv7l_version="9051dfe1f2198e2ed41c322359ee8324043d55a9"
 rm -f ${DOWNLOAD_DIR}/kernel-chromebook_snow-armv7l.tar.gz
 wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${chromebook_snow_release_version}/${chromebook_snow_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-chromebook_snow-armv7l.tar.gz
 
+rm -f ${DOWNLOAD_DIR}/kernel-mali-chromebook_snow-armv7l.tar.gz
+wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${chromebook_snow_release_version}/${chromebook_snow_release_version}-mali-exynos5250.tar.gz -O ${DOWNLOAD_DIR}/kernel-mali-chromebook_snow-armv7l.tar.gz
+
 rm -f ${DOWNLOAD_DIR}/boot-chromebook_snow-armv7l.dd
 wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_snow_uboot_version}/uboot.kpart.cbe-snow.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-chromebook_snow-armv7l.dd
 
