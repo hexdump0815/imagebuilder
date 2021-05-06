@@ -76,6 +76,8 @@ if [ -d ${DOWNLOAD_DIR}/boot-extra-${1} ]; then
   cp -r ${DOWNLOAD_DIR}/boot-extra-${1}/* boot/extra
 fi
 
+tar --numeric-owner -xzf ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
+
 if [ -f ${DOWNLOAD_DIR}/opengl-${1}-${2}.tar.gz ]; then
   tar --numeric-owner -xzf ${DOWNLOAD_DIR}/opengl-${1}-${2}.tar.gz
 fi
@@ -173,6 +175,19 @@ if [ -x ${WORKDIR}/systems/${1}/postinstall.sh ]; then
 fi
 if [ -x ${WORKDIR}/systems/${1}/postinstall-${3}.sh ]; then
   ${WORKDIR}/systems/${1}/postinstall-${3}.sh
+fi
+
+# add support for self built fresher mesa
+if [ "${2}" = "armv7l" ]; then
+  echo "LD_LIBRARY_PATH=/opt/mesa/lib/arm-linux-gnueabihf/dri" > etc/environment.d/50-opt-mesa.conf
+  echo "LIBGL_DRIVERS_PATH=/opt/mesa/lib/arm-linux-gnueabihf/dri" >> etc/environment.d/50-opt-mesa.conf
+  echo "GBM_DRIVERS_PATH=/opt/mesa/lib/arm-linux-gnueabihf/dri" >> etc/environment.d/50-opt-mesa.conf
+  echo "/opt/mesa/lib/arm-linux-gnueabihf" > etc/ld.so.conf.d/aaa-mesa.conf
+elif [ "${2}" = "aarch64" ]; then
+  echo "LD_LIBRARY_PATH=/opt/mesa/lib/aarch64-linux-gnu/dri" > etc/environment.d/50-opt-mesa.conf
+  echo "LIBGL_DRIVERS_PATH=/opt/mesa/lib/aarch64-linux-gnu/dri" >> etc/environment.d/50-opt-mesa.conf
+  echo "GBM_DRIVERS_PATH=/opt/mesa/lib/aarch64-linux-gnu/dri" >> etc/environment.d/50-opt-mesa.conf
+  echo "/opt/mesa/lib/aarch64-linux-gnu" > etc/ld.so.conf.d/aaa-mesa.conf
 fi
 
 chroot ${BUILD_ROOT} ldconfig

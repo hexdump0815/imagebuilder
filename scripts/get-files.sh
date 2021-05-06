@@ -66,4 +66,6 @@ else
   echo "no offline dir detected - downloading the files required"
   echo ""
   . systems/$1/get-files.sh
+  # get the self built fresher mesa
+  wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
 fi
