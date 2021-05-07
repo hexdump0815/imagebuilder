@@ -163,7 +163,7 @@ fi
 # for the arm chromebooks add some useful files to the boot partition
 if [ "$1" = "chromebook_snow" ] || [ "$1" = "chromebook_veyron" ] || \
 	[ "$1" = "chromebook_nyan" ] || [ "$1" = "chromebook_elm" ] || \
-	[ "$1" = "chromebook_kukui" ] ; then
+	[ "$1" = "chromebook_kukui" ] || [ "$1" = "chromebook_peach" ]; then
   cp -r ${WORKDIR}/files/chromebook-boot boot
 fi
 
