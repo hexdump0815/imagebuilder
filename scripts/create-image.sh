@@ -86,12 +86,11 @@ if [ -f ${IMAGE_DIR}/${1}-${2}-${3}.img ]; then
 fi
 
 # we use less than the marketing capacity of the sd card as it is usually lower in reality 3.5/5.5gb
-truncate -s 0 ${IMAGE_DIR}/${1}-${2}-${3}.img
 # the compressed btrfs root needs less space on disk
 if [ "$ROOTFS" = "btrfs" ]; then
-  fallocate -l 3.5G ${IMAGE_DIR}/${1}-${2}-${3}.img
+  truncate -s 3584M ${IMAGE_DIR}/${1}-${2}-${3}.img
 else
-  fallocate -l 5.5G ${IMAGE_DIR}/${1}-${2}-${3}.img
+  truncate -s 5632M ${IMAGE_DIR}/${1}-${2}-${3}.img
 fi
 
 losetup /dev/loop0 ${IMAGE_DIR}/${1}-${2}-${3}.img
