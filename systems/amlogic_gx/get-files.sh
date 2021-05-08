@@ -22,6 +22,7 @@ rm -f ${DOWNLOAD_DIR}/boot-amlogic_gx-aarch64.dd
 wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${amlogic_gx_generic_tree_tag}/misc.av8/u-boot/boot-odroid_c2-aarch64.dd -O ${DOWNLOAD_DIR}/boot-amlogic_gx-aarch64.dd
 
 # get different u-boot versions for different amlogic versions to have them around
+rm -rf ${DOWNLOAD_DIR}/boot-extra-${1}
 mkdir -p ${DOWNLOAD_DIR}/boot-extra-${1}
 cp ${DOWNLOAD_DIR}/boot-amlogic_gx-aarch64.dd ${DOWNLOAD_DIR}/boot-extra-${1}/boot-amlogic-gxb-odroid-c2.dd
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_gxb_uboot_version}/boot-amlogic_gxb_atf-aarch64.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/boot-amlogic-gxb-atf-tv-box.dd
