@@ -231,6 +231,10 @@ if [ "$PARTUUID_ROOT" = "YES" ]; then
     sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
     sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
   fi
+  if [ -f ${MOUNT_POINT}/boot/r89-boot/parameter-linux ]; then
+    sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/r89-boot/parameter-linux
+    sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/r89-boot/parameter-linux
+  fi
   if [ -f ${MOUNT_POINT}/boot/uEnv.ini ]; then
     sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/uEnv.ini
     sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/uEnv.ini
@@ -243,6 +247,10 @@ else
   if [ -f ${MOUNT_POINT}/boot/menu/extlinux.conf ]; then
     sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
     sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
+  fi
+  if [ -f ${MOUNT_POINT}/boot/r89-boot/parameter-linux ]; then
+    sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/r89-boot/parameter-linux
+    sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/r89-boot/parameter-linux
   fi
   if [ -f ${MOUNT_POINT}/boot/uEnv.ini ]; then
     sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/uEnv.ini
