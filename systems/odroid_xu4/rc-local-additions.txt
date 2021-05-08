@@ -1,0 +1,4 @@
+# switch from blinking to steady blue light as a sign that the system is up
+echo default-on > /sys/class/leds/led1:heart/trigger
+# comment out the line above and uncomment this to get rid of the blinking blue led instead
+#echo none > /sys/class/leds/led1:heart/trigger
