@@ -12,4 +12,4 @@ wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/r
 
 # on tegra a fresher xorg is required as well
 rm -f ${DOWNLOAD_DIR}/opt-xserver-${3}-${2}.tar.gz
-wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${xserver_release_version}/opt-xserver-${xserver_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-xserver-${3}-${2}.tar.gz
+wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${xserver_release_version}/opt-xserver-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-xserver-${3}-${2}.tar.gz
