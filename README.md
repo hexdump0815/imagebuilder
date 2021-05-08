@@ -1,4 +1,4 @@
-IMPORTANT: this branch is experimental and work in progress, so it is most probably not working!
+IMPORTANT: the branches have been renamed - the old master branch is now called legacy, the old dev branch dev-old and the old experimental branch is now the main branch
 
 # introduction
 
