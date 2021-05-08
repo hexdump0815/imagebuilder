@@ -11,6 +11,12 @@ export IMAGE_DIR=/compile/local/imagebuilder-diskimage
 export MOUNT_POINT=/tmp/imagebuilder-mnt
 
 # check that everything is there and set
+if [ ! -x /usr/bin/unlz4 ]; then
+  echo ""
+  echo "unlz4 not found - please install the liblz4-tool package - giving up"
+  echo ""
+  exit 1
+fi
 if [ ! -f systems/${1}/mbr-partitions.txt ] && [ ! -f systems/${1}/gpt-partitions.txt ]; then
   echo ""
   echo "systems/${1}/mbr-partitions.txt or systems/${1}/gpt-partitions.txt does not exist - giving up"

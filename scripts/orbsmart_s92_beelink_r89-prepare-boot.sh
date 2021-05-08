@@ -42,8 +42,8 @@ set -e
 mkdir -p ${MYTMPDIR}
 echo "- creating kernel image"
 ${MOUNT_POINT}/boot/r89-boot/mkkrnlimg -a ${MOUNT_POINT}/boot/zImage-${kver} ${MYTMPDIR}/kernel-linux.img
-cp ${MOUNT_POINT}/boot/initrd.img-${kver} ${MYTMPDIR}/initrd.img-${kver}.gz
-gunzip ${MYTMPDIR}/initrd.img-${kver}.gz
+cp ${MOUNT_POINT}/boot/initrd.img-${kver} ${MYTMPDIR}/initrd.img-${kver}.lz4
+unlz4 ${MYTMPDIR}/initrd.img-${kver}.lz4
 echo "- creating initrd image"
 ${MOUNT_POINT}/boot/r89-boot/mkkrnlimg -a ${MYTMPDIR}/initrd.img-${kver} ${MYTMPDIR}/boot-linux.img
 rm ${MYTMPDIR}/initrd.img-${kver}
