@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-chromebook_veyron_release_version="5.10.25-stb-cbr%2B"
+chromebook_veyron_release_version="5.10.35-stb-cbr%2B"
 chromebook_veyron_jerry_uboot_version="v2017.09-cbr"
 chromebook_veyron_speedy_uboot_version="v2021.01-cbr"
 chromebook_veyron_minnie_uboot_version="v2021.01-cbr"
