@@ -1,2 +1,3 @@
+# disabled for now as it resulted in very strange hangs of the system etc.
 # initialize bluetooth firmware
-btattach -B /dev/ttyS0 -P bcm -S 1500000 &
+#btattach -B /dev/ttyS0 -P bcm -S 1500000 &
