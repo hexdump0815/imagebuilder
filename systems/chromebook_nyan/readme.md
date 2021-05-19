@@ -7,7 +7,7 @@
 
 ## tested systems - working
 
-- acer cb5 311 - nyan big
+- acer chromebook cb5 311 - nyan big
   - there are several versions available: 2g/4g ram and hd/full hd display
   - the 4gb/full hd i have is working well
   - sometimes the initial kernel console output stays blank but xorg will start well after a while
@@ -18,3 +18,17 @@
 
 - hp chromebook 14 g3 - nyan blaze
   - never seen one of those, but at least there is a dtb for it in the mainline kernel
+
+## generic mainline linux on arm chromebook notes
+
+- https://github.com/hexdump0815/linux-mainline-and-mali-on-arm-chomebooks/blob/main/readme.md
+
+## kernel build notes
+
+- https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/blob/master/readme.cbt
+- https://github.com/hexdump0815/linux-mainline-tegra-k1-kernel/blob/master/readme.cbt
+  - older v5.4 mainline kernel
+
+## u-boot build notes
+
+- https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/blob/master/readme.cbt

@@ -9,11 +9,11 @@
 
 - medion chromebook s2013 - jaq
 - medion chromebook s2015 - mighty
-- asus c201 - speedy
+- asus chromebook c201 - speedy
 
 ## tested systems - partially working
 
-- asus c101p / c101pa - minnie
+- asus chromebook c101p / c101pa - minnie
   - see also: https://github.com/hexdump0815/imagebuilder/issues/16
 
 ## untested
@@ -40,3 +40,16 @@
 - prowise 11.6" entry line chromebook - mighty
 - sector 5 e1 rugged chromebook - mighty
 - viglen chromebook 11 - mighty
+- asus chromebit cs10 - mickey
+
+## generic mainline linux on arm chromebook notes
+
+- https://github.com/hexdump0815/linux-mainline-and-mali-on-arm-chomebooks/blob/main/readme.md
+
+## kernel build notes
+
+- https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/blob/master/readme.cbr
+
+## u-boot build notes
+
+- https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/blob/master/readme.cbr

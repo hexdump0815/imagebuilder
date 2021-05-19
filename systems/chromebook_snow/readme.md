@@ -19,3 +19,17 @@
   - with mainline i ended up with a black screen which is clear as there is a lot of hardware missing in the mainline exynos5250-spring.dts file (looks like it was started and never finished)
   - i'm trying to bring this dts file forward as a low priority spare time project, maybe it will work some day
   - u-boot.kpart in /boot/extra - it works but does not see any usb devices which are required to boot from as this chromebook does not have an sd card slot
+
+## generic mainline linux on arm chromebook notes
+
+- https://github.com/hexdump0815/linux-mainline-and-mali-on-arm-chomebooks/blob/main/readme.md
+
+## kernel build notes
+
+- https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/blob/master/readme.cbe
+- https://github.com/hexdump0815/linux-chromeos-kernel/blob/main/readme.308
+  - adjusted legacy chromeos kernel, required for spring for now
+
+## u-boot build notes
+
+- https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/blob/master/readme.cbe
