@@ -190,14 +190,14 @@ fi
 
 # add support for self built fresher mesa
 if [ "${2}" = "armv7l" ]; then
-  echo "LD_LIBRARY_PATH=/opt/mesa/lib/arm-linux-gnueabihf/dri" > etc/environment.d/50-opt-mesa.conf
-  echo "LIBGL_DRIVERS_PATH=/opt/mesa/lib/arm-linux-gnueabihf/dri" >> etc/environment.d/50-opt-mesa.conf
-  echo "GBM_DRIVERS_PATH=/opt/mesa/lib/arm-linux-gnueabihf/dri" >> etc/environment.d/50-opt-mesa.conf
+  echo "LD_LIBRARY_PATH=/opt/mesa/lib/arm-linux-gnueabihf/dri:/usr/lib/arm-linux-gnueabihf/dri" > etc/environment.d/50-opt-mesa.conf
+  echo "LIBGL_DRIVERS_PATH=/opt/mesa/lib/arm-linux-gnueabihf/dri:/usr/lib/arm-linux-gnueabihf/dri" >> etc/environment.d/50-opt-mesa.conf
+  echo "GBM_DRIVERS_PATH=/opt/mesa/lib/arm-linux-gnueabihf/dri:/usr/lib/arm-linux-gnueabihf/dri" >> etc/environment.d/50-opt-mesa.conf
   echo "/opt/mesa/lib/arm-linux-gnueabihf" > etc/ld.so.conf.d/aaa-mesa.conf
 elif [ "${2}" = "aarch64" ]; then
-  echo "LD_LIBRARY_PATH=/opt/mesa/lib/aarch64-linux-gnu/dri" > etc/environment.d/50-opt-mesa.conf
-  echo "LIBGL_DRIVERS_PATH=/opt/mesa/lib/aarch64-linux-gnu/dri" >> etc/environment.d/50-opt-mesa.conf
-  echo "GBM_DRIVERS_PATH=/opt/mesa/lib/aarch64-linux-gnu/dri" >> etc/environment.d/50-opt-mesa.conf
+  echo "LD_LIBRARY_PATH=/opt/mesa/lib/aarch64-linux-gnu/dri:/usr/lib/aarch64-linux-gnu/dri" > etc/environment.d/50-opt-mesa.conf
+  echo "LIBGL_DRIVERS_PATH=/opt/mesa/lib/aarch64-linux-gnu/dri:/usr/lib/aarch64-linux-gnu/dri" >> etc/environment.d/50-opt-mesa.conf
+  echo "GBM_DRIVERS_PATH=/opt/mesa/lib/aarch64-linux-gnu/dri:/usr/lib/aarch64-linux-gnu/dri" >> etc/environment.d/50-opt-mesa.conf
   echo "/opt/mesa/lib/aarch64-linux-gnu" > etc/ld.so.conf.d/aaa-mesa.conf
 fi
 
