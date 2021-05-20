@@ -32,3 +32,8 @@
 ## u-boot build notes
 
 - https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/blob/master/readme.cbt
+
+## special notes
+
+- for the nouveau mesa opengl driver a newer version of the xorg server is required
+- the boot console sometimes stays dark after u-boot, but after a while xorg will start and display properly then anyway

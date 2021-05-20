@@ -28,3 +28,7 @@
 ## u-boot build notes
 
 - https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/blob/master/readme.cbe
+
+## special notes
+
+- after first boot please run /scripts/fix-snow-audio.sh as root to fix the ucm audio config files for the corresponding system

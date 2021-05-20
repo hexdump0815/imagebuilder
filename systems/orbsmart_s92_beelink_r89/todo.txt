@@ -1,0 +1,2 @@
+- get bluetooth working again (best completely via dts settings)
+- upstream the reworked r89 dts

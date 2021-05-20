@@ -33,3 +33,9 @@
 ## u-boot build notes
 
 - https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/blob/master/readme.cbe
+
+## special notes
+
+- the usb3 is disabled as it did not work very reliable
+- the webcam is not supported (it looks like the usb bus it is connected to is not yet seen by the kernel)
+- after first boot please run /scripts/fix-snow-audio.sh as root to fix the ucm audio config files for the corresponding system

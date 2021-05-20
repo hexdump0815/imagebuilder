@@ -24,3 +24,7 @@
 the boot loader of those tv boxes seems to be encrypted and locked and thus cannot be easily replaced, but there is a properly signed etc. boot block which can get regular linux kernel booting - i have adjusted some scripts around this to create a boot block in the proper format from a mainline linux kernel, dtb and initrd at:
 
 - https://github.com/hexdump0815/imagebuilder/tree/main/systems/orbsmart_s92_beelink_r89/extra-files/boot/r89-boot
+
+## special notes
+
+- bluetooth currently does not work, it seems to hang the system when trying to enable it via cmdline tool
