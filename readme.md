@@ -8,7 +8,7 @@ please keep in mind that the intention of those images is to make it easier to g
 
 # creating images
 
-see scripts/README.md as a start
+see scripts/readme.md as a start
 
 more coming soon ...
 
