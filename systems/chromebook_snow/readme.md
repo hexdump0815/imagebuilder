@@ -36,8 +36,17 @@
 
 ## special notes
 
-- the usb3 is disabled as it did not work very reliable
-- the webcam is not supported (it looks like the usb bus it is connected to is not yet seen by the kernel)
+- active support from google for the snow chromebooks (samsung xe303c12) ended beginning of 2019, so they might be around for cheap
+- they are very nice to use with linux: small, light (just a bit above 1kg), battery lasts for 4-6 hours at least
+- what does not work with mainline:
+  - usb3 port gives trouble with suspend, so i disabled it
+  - webcam will not work (the usb bus it is connected to is somehow not seen in mainline)
+  - 3g modem (if installed) will not work (situation similar to the webcam i guess, no idea if there even exists a driver for it)
+  - full suspend/resume/hibernation do not work properly, so suspend to idle is configured by default and seems to work perfectly and the chromebook should survive about a day in this state from battery
+- what works: everything else, i.e. sound, wifi, external monitor, gles/opengl with legacy mali blob
+- the mali gpu is only supported via the legacy mali blob as it is not yet supported by the open source panfrost mali driver (and most probably never will be due to too many hardware errata/bugs)
 - after first boot please run /scripts/fix-snow-audio.sh as root to fix the ucm audio config files for the corresponding system
-- the mali gpu is only supported via the legacy mali blob as it is not yet supported by the open source panfrost mali driver
 - for the rev5 samsung snow chromebook the file extlinux/extlinux.conf in the second partition needs to be edited (otherwise audio will not work properly) - see the comments in the file
+- do not lower the display unused value (at xfce -> settings -> power manager -> display -> brightness reduction) below about 35% as at some point it is simply black (even above 0% already)
+- the wireless connection seems to drop from time to time, reloading the wifi module usually helps to bring it back (rmmod mwifiex_sdio mwifiex; modprobe mwifiex_sdio)
+- different legacy mali blob versions are available: r4p0, r5p0, r6p0, r12p0

@@ -1,4 +1,4 @@
-# orbsmart s92, beelink r89, ubox tv box
+# orbsmart s92, beelink r89, tronsmart orion r28, ubox tv box
 
 ## bootable sd card images
 
@@ -11,6 +11,8 @@
 ## untested systems
 
 - beelink r89
+  - should just work as i think its the exact same hardware
+- tronsmart orion r28
   - should just work as i think its the exact same hardware
 - ubox tv box
   - should just work as i think its nearly the same hardware
