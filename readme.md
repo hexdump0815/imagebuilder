@@ -45,20 +45,20 @@ more coming soon ...
 
 # system specific information
 
-- https://github.com/hexdump0815/imagebuilder/blob/main/systems/allwinner_h3/readme.md
-- https://github.com/hexdump0815/imagebuilder/tree/main/systems/allwinner_h6#readme
-- https://github.com/hexdump0815/imagebuilder/blob/main/systems/amlogic_gx/readme.md
-- https://github.com/hexdump0815/imagebuilder/blob/main/systems/amlogic_m8/readme.md
-- https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_kukui/readme.md
-- https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_nyan/readme.md
-- https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_oak/readme.md
-- https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_peach/readme.md
-- https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_snow/readme.md
-- https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_veyron/readme.md
-- https://github.com/hexdump0815/imagebuilder/blob/main/systems/odroid_mc1/readme.md
-- https://github.com/hexdump0815/imagebuilder/blob/main/systems/odroid_u3/readme.md
-- https://github.com/hexdump0815/imagebuilder/blob/main/systems/orbsmart_s92_beelink_r89/readme.md
-- https://github.com/hexdump0815/imagebuilder/blob/main/systems/raspberry_pi_3/readme.md
-- https://github.com/hexdump0815/imagebuilder/blob/main/systems/raspberry_pi_4/readme.md
-- https://github.com/hexdump0815/imagebuilder/blob/main/systems/rockchip_rk3288/readme.md
-- https://github.com/hexdump0815/imagebuilder/blob/main/systems/rockchip_rk33xx/readme.md
+- allwinner h3: https://github.com/hexdump0815/imagebuilder/blob/main/systems/allwinner_h3/readme.md
+- allwinner h6: https://github.com/hexdump0815/imagebuilder/tree/main/systems/allwinner_h6#readme
+- amlogic gx: https://github.com/hexdump0815/imagebuilder/blob/main/systems/amlogic_gx/readme.md
+- amlogic m8:https://github.com/hexdump0815/imagebuilder/blob/main/systems/amlogic_m8/readme.md
+- chromebook kukui: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_kukui/readme.md
+- chromebook nyan: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_nyan/readme.md
+- chromebook oak: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_oak/readme.md
+- chromebook peach: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_peach/readme.md
+- chromebook snow: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_snow/readme.md
+- chromebook veyron: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_veyron/readme.md
+- odroid mc1: https://github.com/hexdump0815/imagebuilder/blob/main/systems/odroid_mc1/readme.md
+- odroid u3: https://github.com/hexdump0815/imagebuilder/blob/main/systems/odroid_u3/readme.md
+- orbsmart s92 and beelink r89: https://github.com/hexdump0815/imagebuilder/blob/main/systems/orbsmart_s92_beelink_r89/readme.md
+- raspberry pi 3: https://github.com/hexdump0815/imagebuilder/blob/main/systems/raspberry_pi_3/readme.md
+- raspberry pi 4: https://github.com/hexdump0815/imagebuilder/blob/main/systems/raspberry_pi_4/readme.md
+- rockchip rk3288: https://github.com/hexdump0815/imagebuilder/blob/main/systems/rockchip_rk3288/readme.md
+- rockchip rk33xx: https://github.com/hexdump0815/imagebuilder/blob/main/systems/rockchip_rk33xx/readme.md
