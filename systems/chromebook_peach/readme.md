@@ -32,3 +32,4 @@
 ## special notes
 
 - after first boot please run /scripts/fix-snow-audio.sh as root to fix the ucm audio config files for the corresponding system
+- the mali gpu is only supported via the legacy mali blob as it is not yet supported by the open source panfrost mali driver

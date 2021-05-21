@@ -39,3 +39,5 @@
 - the usb3 is disabled as it did not work very reliable
 - the webcam is not supported (it looks like the usb bus it is connected to is not yet seen by the kernel)
 - after first boot please run /scripts/fix-snow-audio.sh as root to fix the ucm audio config files for the corresponding system
+- the mali gpu is only supported via the legacy mali blob as it is not yet supported by the open source panfrost mali driver
+- for the rev5 samsung snow chromebook the file extlinux/extlinux.conf in the second partition needs to be edited (otherwise audio will not work properly) - see the comments in the file

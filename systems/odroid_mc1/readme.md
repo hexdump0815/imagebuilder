@@ -24,3 +24,7 @@
 ## u-boot build notes
 
 - https://github.com/hexdump0815/u-boot-misc/blob/master/readme.e54
+
+## special notes
+
+- the mali gpu is only supported via the legacy mali blob as it is not yet supported by the open source panfrost mali driver
