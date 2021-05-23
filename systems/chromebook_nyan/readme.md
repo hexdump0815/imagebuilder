@@ -37,3 +37,18 @@
 
 - for the nouveau mesa opengl driver a newer version of the xorg server is required
 - the boot console sometimes stays dark after u-boot, but after a while xorg will start and display properly then anyway
+  - maybe it is related to the drm initialization order:
+    - working:
+      [drm] Initialized tegra 0.0.0 20120330 for drm on minor 0
+      drm drm: [drm] fb0: tegradrmfb frame buffer device
+    - not working:
+      drm drm: [drm] fb0: tegradrmfb frame buffer device
+      [drm] Initialized tegra 0.0.0 20120330 for drm on minor 0
+    - next would be to find a way to force proper order
+- espeically this chromebook seems to have problems with battery calibration and quite often thinks that the battery is daed after it had not been used
+  - unplug the power
+  - use a paperclip or a needle and push iabout 5-10 seconds into the small hole in the bottom of the device
+  - let it sit unpowered for about 5-10 minutes
+  - plug in the power
+  - battery will hopefully be back afterwards
+  - see also: https://www.youtube.com/watch?v=NfhgnxUJoZo
