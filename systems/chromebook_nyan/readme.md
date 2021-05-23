@@ -39,9 +39,11 @@
 - the boot console sometimes stays dark after u-boot, but after a while xorg will start and display properly then anyway
   - maybe it is related to the drm initialization order:
     - working:
+
       [drm] Initialized tegra 0.0.0 20120330 for drm on minor 0
       drm drm: [drm] fb0: tegradrmfb frame buffer device
     - not working:
+
       drm drm: [drm] fb0: tegradrmfb frame buffer device
       [drm] Initialized tegra 0.0.0 20120330 for drm on minor 0
     - next would be to find a way to force proper order
