@@ -49,7 +49,7 @@
       [drm] Initialized tegra 0.0.0 20120330 for drm on minor 0
       ```
     - next would be to find a way to force proper order
-- espeically this chromebook seems to have problems with battery calibration and quite often thinks that the battery is daed after it had not been used
+- especially the acer cb5 311 chromebook (nyan-big) seems to have problems with battery calibration and quite often thinks that the battery is daed after it had not been used
   - unplug the power
   - use a paperclip or a needle and push iabout 5-10 seconds into the small hole in the bottom of the device
   - let it sit unpowered for about 5-10 minutes
