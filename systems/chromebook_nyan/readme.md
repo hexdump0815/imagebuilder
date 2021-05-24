@@ -54,5 +54,5 @@
   - use a paperclip or a needle and push iabout 5-10 seconds into the small hole in the bottom of the device
   - let it sit unpowered for about 5-10 minutes
   - plug in the power
-  - battery will hopefully be back afterwards
+  - battery will hopefully be back afterwards, maybe charging it over night might be required to bring it back
   - see also: https://www.youtube.com/watch?v=NfhgnxUJoZo
