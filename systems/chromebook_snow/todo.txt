@@ -1,0 +1,12 @@
+- reenable usb3 power and try to make it more reliable (especially for suspend/resume)
+- try to find out why the webcam on usb is not discovered (maybe related to the above problem?)
+- try to get usb support working fpr spring (as there is no sd card slot to boot from instead)
+  - ehci and xhci controllers are both discovered, but no connected devices (usb stop; usb start; usb tree)
+  - usb power seems to be there
+  - for snow it seems to be working, it sees usb devices just fine
+  - the linux kernel can handle usb just fine on spring, maybe compare linux snow & spring dts to find potential differences to add to u-boot
+- try to get display support working with mainline
+  - the spring dts in mainline seems to miss some parts, among them the stuff relevant for the display
+  - u-boot has some display related info in its dts and the display works in spring u-boot
+  - legacy kernel has working display support
+  - add the missing dts parts based on u-boot, legacy and maybe partiall also peach info

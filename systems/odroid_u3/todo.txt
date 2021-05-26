@@ -1,0 +1,1 @@
+- low prio: maybe try to get booting a kernel from usb working in u-boot (currently it will hand i think)

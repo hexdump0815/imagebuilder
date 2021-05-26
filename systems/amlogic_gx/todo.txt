@@ -1,0 +1,4 @@
+- find out why the performance is much lower for s905x3 than for s905x2 (only about 2/3 with vcvrack)
+  - tinymembench shows a very small l1 cache for the s905x3
+  - surprisingly quite a few perf counters seem to be missing on the s905x3 which are there on all other amlogic socs
+- add better support for s912, s905x2, s905x3, s922x, so far only s905, s905x and s905w have been tested well

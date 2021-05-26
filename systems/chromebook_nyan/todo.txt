@@ -1,0 +1,20 @@
+- get console support working reliably for v5.10+
+  - it works quite reliable for v5.4
+  - it works sometimes for v5.10
+  - it does not work anymore for v5.12
+  - without CONFIG_FBDEV_EMULATION and tegra, kms helper and nouveau buils as modules at least xorg starts reliable for v5.12 (no console or vt's)
+  - seems to be related to drm initialization order
+    - working:
+      ```
+      [drm] Initialized tegra 0.0.0 20120330 for drm on minor 0
+      drm drm: [drm] fb0: tegradrmfb frame buffer device
+      ```
+    - not working:
+      ```
+      drm drm: [drm] fb0: tegradrmfb frame buffer device
+      [drm] Initialized tegra 0.0.0 20120330 for drm on minor 0
+      ```
+    - next would be to find a way to force proper order
+- get thermal throttling (soctherm) working
+  - currently cpu speed is limited in rc.local to 1.7ghz to avoid shutdown due to overheating
+- find a way to reenable the display after resume without the current hack

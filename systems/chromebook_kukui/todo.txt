@@ -1,0 +1,3 @@
+- get the display working with mainline (currently it works with a lot of magic patches)
+- get the usb bandwidth problems working with mainline (the happen mostly with usb audio i think - visible in the kernel logs)
+- maybe get more kukui systems supported beyond krane

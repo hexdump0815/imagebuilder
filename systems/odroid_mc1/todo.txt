@@ -1,0 +1,1 @@
+- find out why the performance is about 20% lower with mainline than with the odroid v5.4 tree (seen with vcvrack)

@@ -37,18 +37,9 @@
 
 - for the nouveau mesa opengl driver a newer version of the xorg server is required
 - the boot console sometimes stays dark after u-boot, but after a while xorg will start and display properly then anyway
-  - maybe it is related to the drm initialization order:
-    - working:
-      ```
-      [drm] Initialized tegra 0.0.0 20120330 for drm on minor 0
-      drm drm: [drm] fb0: tegradrmfb frame buffer device
-      ```
-    - not working:
-      ```
-      drm drm: [drm] fb0: tegradrmfb frame buffer device
-      [drm] Initialized tegra 0.0.0 20120330 for drm on minor 0
-      ```
-    - next would be to find a way to force proper order
+  - it works reliable for v5.4, sometimes for v5.10 and not at all for v5.12
+- after suspend/resume the display is not properly reenabled
+  - there is an ugly hack implemented to bring it back via xrandr hook, but this only works for the default user currently
 - especially the acer cb5 311 chromebook (nyan-big) seems to have problems with battery calibration and quite often thinks that the battery is daed after it had not been used for a while - one possible solution might be the following:
   - unplug the power
   - use a paperclip or a needle and push iabout 5-10 seconds into the small hole in the bottom of the device
