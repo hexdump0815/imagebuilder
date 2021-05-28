@@ -13,7 +13,7 @@
 
 ## tested systems - partially working
 
-- asus chromebook c101p / c101pa - minnie
+- asus chromebook c100 - minnie
   - see also: https://github.com/hexdump0815/imagebuilder/issues/16
 
 ## untested
