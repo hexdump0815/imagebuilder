@@ -20,7 +20,7 @@
 
 ## generic mainline linux on arm chromebook notes
 
-- https://github.com/hexdump0815/linux-mainline-on-arm-chomebooks/blob/main/readme.md
+- https://github.com/hexdump0815/linux-mainline-on-arm-chromebooks/blob/main/readme.md
 
 ## kernel build notes
 
