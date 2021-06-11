@@ -54,6 +54,7 @@ more coming soon ...
 - chromebook oak: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_oak/readme.md
 - chromebook peach: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_peach/readme.md
 - chromebook snow: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_snow/readme.md
+- chromebook spring: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_spring/readme.md
 - chromebook veyron: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_veyron/readme.md
 - odroid mc1: https://github.com/hexdump0815/imagebuilder/blob/main/systems/odroid_mc1/readme.md
 - odroid u3: https://github.com/hexdump0815/imagebuilder/blob/main/systems/odroid_u3/readme.md
