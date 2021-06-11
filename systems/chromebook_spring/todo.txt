@@ -1,5 +1,3 @@
-- reenable usb3 power and try to make it more reliable (especially for suspend/resume)
-- try to find out why the webcam on usb is not discovered (maybe related to the above problem?)
 - try to get usb support working for spring (as there is no sd card slot to boot from instead)
   - ehci and xhci controllers are both discovered, but no connected devices (usb stop; usb start; usb tree)
   - usb power seems to be there

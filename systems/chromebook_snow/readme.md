@@ -14,6 +14,7 @@
 
 - hp chromebook 11 g1 - spring 
 
+  - moved to its own chromebook_spring setup based on legacy cros kernel until it will work with mainline - afterwards it can be included here again most probably
   - i was able to get it running using a chromeos kernel (https://github.com/hexdump0815/linux-chromeos-kernel/releases) as kpart kernel on a usb stick
   - important: this chromebook is very picky about the usb devices it will boot from, only some usb sticks for instance can be used to boot from - maybe some experimentation is required to find a proper one
   - with mainline i ended up with a black screen which is clear as there is a lot of hardware missing in the mainline exynos5250-spring.dts file (looks like it was started and never finished)

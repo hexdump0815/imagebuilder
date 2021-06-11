@@ -1,0 +1,6 @@
+# enable light supend mode, i.e. only cpu is put into sleep, everything else stays alive
+echo s2idle > /sys/power/mem_sleep
+
+# temporary hacks for spring with legacy kernel
+echo 63 > /sys/class/backlight/ps8622-backlight/brightness
+/usr/lib/upower/upowerd &
