@@ -34,6 +34,17 @@ if [ "${1}" != "$(cat ${DOWNLOAD_DIR}/system.txt)" ] || \
   exit 1
 fi
 
+# from partition-mapping it is clear if this is a chromebook or not via CROSPARTS
+if [ ! -f systems/${1}/partition-mapping.txt ]; then
+  echo ""
+  echo "systems/${1}/partition-mapping.txt does not exist - giving up"
+  echo ""
+  exit 1
+else
+  # get partition mapping info
+  . systems/${1}/partition-mapping.txt
+fi
+
 # set defaults for the values coming from imagebuilder.conf otherwise
 DEFAULT_USERNAME=linux
 
@@ -161,9 +172,7 @@ fi
 
 # TODO: the chromebook-boot dir should be cleaned up in the future
 # for the arm chromebooks add some useful files to the boot partition
-if [ "$1" = "chromebook_snow" ] || [ "$1" = "chromebook_veyron" ] || \
-	[ "$1" = "chromebook_nyan" ] || [ "$1" = "chromebook_oak" ] || \
-	[ "$1" = "chromebook_kukui" ] || [ "$1" = "chromebook_peach" ]; then
+if [ "CROSPARTS" = "true" ]; then
   cp -r ${WORKDIR}/files/chromebook-boot boot
 fi
 

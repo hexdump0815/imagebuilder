@@ -102,9 +102,7 @@ fi
 losetup /dev/loop0 ${IMAGE_DIR}/${1}-${2}-${3}.img
 
 # the arm chromebooks have some special boot partition setup
-if [ "$1" = "chromebook_snow" ] || [ "$1" = "chromebook_veyron" ] || \
-   [ "$1" = "chromebook_nyan" ] || [ "$1" = "chromebook_oak" ] || \
-   [ "$1" = "chromebook_kukui" ] || [ "$1" = "chromebook_peach" ]; then
+if [ "CROSPARTS" = "true" ]; then
 
   # the fllowing part is based on
   # https://github.com/eballetbo/chromebooks/blob/master/chromebook-setup.sh
@@ -147,9 +145,7 @@ losetup -d /dev/loop0
 losetup --partscan /dev/loop0 ${IMAGE_DIR}/${1}-${2}-${3}.img
 
 # for chromebooks write the kernel to the first kernel partition
-if [ "$1" = "chromebook_snow" ] || [ "$1" = "chromebook_veyron" ] || \
-   [ "$1" = "chromebook_nyan" ] || [ "$1" = "chromebook_oak" ] || \
-   [ "$1" = "chromebook_kukui" ] || [ "$1" = "chromebook_peach" ]; then
+if [ "CROSPARTS" = "true" ]; then
   dd if=${DOWNLOAD_DIR}/boot-${1}-${2}.dd of=/dev/loop0p1 status=progress
 fi
 
