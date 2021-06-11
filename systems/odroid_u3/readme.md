@@ -31,3 +31,6 @@
 - the odroid u3 (and the others most probably too) seems to be very sensitive to stable power supply, so if you see strange crashes on boot, check if the power supply is good enough
 - suspend/wake/hibernate seems to be working at least on the odroid u3 (the others were not tested yet), resume is done via the physical button
 - there is a thread on the odroid forums about running mainline on the odroid u3 at https://forum.odroid.com/viewtopic.php?f=55&t=3691&sid=1a9bcfd371f8be232c2620b64bad2150&start=450
+- for a working edid file for a 1280x720 screen resolution see https://forum.odroid.com/viewtopic.php?p=329241&sid=7a49d9e1a9c91ee32c46bf6dc64c5b47#p329241
+- for a patched libc to make widevine working see https://forum.odroid.com/viewtopic.php?p=329192&sid=7a49d9e1a9c91ee32c46bf6dc64c5b47#p329192
+- for a precompiled kodi with hw accel to use with this image please see https://forum.odroid.com/viewtopic.php?p=329945&sid=7a49d9e1a9c91ee32c46bf6dc64c5b47#p329945
