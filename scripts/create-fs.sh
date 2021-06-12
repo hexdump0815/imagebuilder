@@ -172,7 +172,7 @@ fi
 
 # TODO: the chromebook-boot dir should be cleaned up in the future
 # for the arm chromebooks add some useful files to the boot partition
-if [ "CROSPARTS" = "true" ]; then
+if [ "${CROSPARTS}" = "true" ]; then
   cp -r ${WORKDIR}/files/chromebook-boot boot
 fi
 
