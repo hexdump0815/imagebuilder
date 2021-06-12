@@ -33,7 +33,7 @@
 
 ## special notes
 
-- full suspend/resume/hibernation do not work properly, so suspend to idle is configured by default and seems to work perfectly and the chromebook should survive about a day in this state from battery - proper suspend/resume might even work with the legacy kernel (untested yet)
+- suspend/resume/hibernation do not work properly (at least if running from a usb device, results in filesystem errors after resume - emmc not tested yet)
 - what works with the legacy kernel: nearly everything should work, i.e. sound, wifi, webcam, gles/opengl with legacy mali blob ...
 - the mali gpu is only supported via the legacy mali blob as it is not yet supported by the open source panfrost mali driver (and most probably never will be due to too many hardware errata/bugs)
 - the wireless connection seems to drop from time to time, reloading the wifi module usually helps to bring it back (rmmod mwifiex_sdio mwifiex; modprobe mwifiex_sdio)
