@@ -2,7 +2,7 @@
 
 ## bootable sd card images
 
-- none yet
+- https://github.com/hexdump0815/imagebuilder/releases/tag/210613-01
 
 ## tested systems - working
 
@@ -31,5 +31,5 @@
 
 ## special notes
 
-- after first boot please run /scripts/fix-snow-audio.sh as root to fix the ucm audio config files for the corresponding system
+- after first boot please run /scripts/fix-peach-audio.sh as root to fix the ucm audio config files for the corresponding system
 - the mali gpu is only supported via the legacy mali blob as it is not yet supported by the open source panfrost mali driver
