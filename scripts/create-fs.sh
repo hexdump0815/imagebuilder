@@ -202,6 +202,14 @@ elif [ "${2}" = "aarch64" ]; then
   echo "/opt/mesa/lib/aarch64-linux-gnu" > etc/ld.so.conf.d/aaa-mesa.conf
 fi
 
+# post install script per system
+if [ -x ${WORKDIR}/systems/${1}/postinstall.sh ]; then
+  ${WORKDIR}/systems/${1}/postinstall.sh
+fi
+if [ -x ${WORKDIR}/systems/${1}/postinstall-${3}.sh ]; then
+  ${WORKDIR}/systems/${1}/postinstall-${3}.sh
+fi
+
 # post install script which is run chrooted per system
 if [ -x ${WORKDIR}/systems/${1}/postinstall-chroot.sh ]; then
   cp ${WORKDIR}/systems/${1}/postinstall-chroot.sh ${BUILD_ROOT}/postinstall-chroot.sh
@@ -212,14 +220,6 @@ if [ -x ${WORKDIR}/systems/${1}/postinstall-chroot-${3}.sh ]; then
   cp ${WORKDIR}/systems/${1}/postinstall-chroot-${3}.sh ${BUILD_ROOT}/postinstall-chroot-${3}.sh
   chroot ${BUILD_ROOT} /postinstall-chroot-${3}.sh ${1} ${2} ${3}
   rm -f ${BUILD_ROOT}/postinstall-chroot-${3}.sh
-fi
-
-# post install script per system
-if [ -x ${WORKDIR}/systems/${1}/postinstall.sh ]; then
-  ${WORKDIR}/systems/${1}/postinstall.sh
-fi
-if [ -x ${WORKDIR}/systems/${1}/postinstall-${3}.sh ]; then
-  ${WORKDIR}/systems/${1}/postinstall-${3}.sh
 fi
 
 chroot ${BUILD_ROOT} ldconfig
