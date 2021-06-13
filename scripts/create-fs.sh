@@ -189,6 +189,18 @@ sed -i "s,DEFAULT_USERNAME=linux,DEFAULT_USERNAME=${DEFAULT_USERNAME},g" scripts
 # create an empty xorg.conf.d dir where the xorg config files can go to
 mkdir -p ${BUILD_ROOT}/etc/X11/xorg.conf.d
 
+# post install script which is run chrooted per system
+if [ -x ${WORKDIR}/systems/${1}/postinstall-chroot.sh ]; then
+  cp ${WORKDIR}/systems/${1}/postinstall-chroot.sh ${BUILD_ROOT}/postinstall-chroot.sh
+  chroot ${BUILD_ROOT} /postinstall-chroot.sh
+  rm -f ${BUILD_ROOT}/postinstall-chroot.sh
+fi
+if [ -x ${WORKDIR}/systems/${1}/postinstall-chroot-${3}.sh ]; then
+  cp ${WORKDIR}/systems/${1}/postinstall-chroot-${3}.sh ${BUILD_ROOT}/postinstall-chroot-${3}.sh
+  chroot ${BUILD_ROOT} /postinstall-chroot-${3}.sh
+  rm -f ${BUILD_ROOT}/postinstall-chroot-${3}.sh
+fi
+
 # post install script per system
 if [ -x ${WORKDIR}/systems/${1}/postinstall.sh ]; then
   ${WORKDIR}/systems/${1}/postinstall.sh
