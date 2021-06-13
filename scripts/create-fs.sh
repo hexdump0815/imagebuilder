@@ -189,6 +189,19 @@ sed -i "s,DEFAULT_USERNAME=linux,DEFAULT_USERNAME=${DEFAULT_USERNAME},g" scripts
 # create an empty xorg.conf.d dir where the xorg config files can go to
 mkdir -p ${BUILD_ROOT}/etc/X11/xorg.conf.d
 
+# add support for self built fresher mesa
+if [ "${2}" = "armv7l" ]; then
+  echo "LD_LIBRARY_PATH=/opt/mesa/lib/arm-linux-gnueabihf/dri:/usr/lib/arm-linux-gnueabihf/dri" > etc/environment.d/50-opt-mesa.conf
+  echo "LIBGL_DRIVERS_PATH=/opt/mesa/lib/arm-linux-gnueabihf/dri:/usr/lib/arm-linux-gnueabihf/dri" >> etc/environment.d/50-opt-mesa.conf
+  echo "GBM_DRIVERS_PATH=/opt/mesa/lib/arm-linux-gnueabihf/dri:/usr/lib/arm-linux-gnueabihf/dri" >> etc/environment.d/50-opt-mesa.conf
+  echo "/opt/mesa/lib/arm-linux-gnueabihf" > etc/ld.so.conf.d/aaa-mesa.conf
+elif [ "${2}" = "aarch64" ]; then
+  echo "LD_LIBRARY_PATH=/opt/mesa/lib/aarch64-linux-gnu/dri:/usr/lib/aarch64-linux-gnu/dri" > etc/environment.d/50-opt-mesa.conf
+  echo "LIBGL_DRIVERS_PATH=/opt/mesa/lib/aarch64-linux-gnu/dri:/usr/lib/aarch64-linux-gnu/dri" >> etc/environment.d/50-opt-mesa.conf
+  echo "GBM_DRIVERS_PATH=/opt/mesa/lib/aarch64-linux-gnu/dri:/usr/lib/aarch64-linux-gnu/dri" >> etc/environment.d/50-opt-mesa.conf
+  echo "/opt/mesa/lib/aarch64-linux-gnu" > etc/ld.so.conf.d/aaa-mesa.conf
+fi
+
 # post install script which is run chrooted per system
 if [ -x ${WORKDIR}/systems/${1}/postinstall-chroot.sh ]; then
   cp ${WORKDIR}/systems/${1}/postinstall-chroot.sh ${BUILD_ROOT}/postinstall-chroot.sh
@@ -207,19 +220,6 @@ if [ -x ${WORKDIR}/systems/${1}/postinstall.sh ]; then
 fi
 if [ -x ${WORKDIR}/systems/${1}/postinstall-${3}.sh ]; then
   ${WORKDIR}/systems/${1}/postinstall-${3}.sh
-fi
-
-# add support for self built fresher mesa
-if [ "${2}" = "armv7l" ]; then
-  echo "LD_LIBRARY_PATH=/opt/mesa/lib/arm-linux-gnueabihf/dri:/usr/lib/arm-linux-gnueabihf/dri" > etc/environment.d/50-opt-mesa.conf
-  echo "LIBGL_DRIVERS_PATH=/opt/mesa/lib/arm-linux-gnueabihf/dri:/usr/lib/arm-linux-gnueabihf/dri" >> etc/environment.d/50-opt-mesa.conf
-  echo "GBM_DRIVERS_PATH=/opt/mesa/lib/arm-linux-gnueabihf/dri:/usr/lib/arm-linux-gnueabihf/dri" >> etc/environment.d/50-opt-mesa.conf
-  echo "/opt/mesa/lib/arm-linux-gnueabihf" > etc/ld.so.conf.d/aaa-mesa.conf
-elif [ "${2}" = "aarch64" ]; then
-  echo "LD_LIBRARY_PATH=/opt/mesa/lib/aarch64-linux-gnu/dri:/usr/lib/aarch64-linux-gnu/dri" > etc/environment.d/50-opt-mesa.conf
-  echo "LIBGL_DRIVERS_PATH=/opt/mesa/lib/aarch64-linux-gnu/dri:/usr/lib/aarch64-linux-gnu/dri" >> etc/environment.d/50-opt-mesa.conf
-  echo "GBM_DRIVERS_PATH=/opt/mesa/lib/aarch64-linux-gnu/dri:/usr/lib/aarch64-linux-gnu/dri" >> etc/environment.d/50-opt-mesa.conf
-  echo "/opt/mesa/lib/aarch64-linux-gnu" > etc/ld.so.conf.d/aaa-mesa.conf
 fi
 
 chroot ${BUILD_ROOT} ldconfig
