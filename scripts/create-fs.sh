@@ -205,12 +205,12 @@ fi
 # post install script which is run chrooted per system
 if [ -x ${WORKDIR}/systems/${1}/postinstall-chroot.sh ]; then
   cp ${WORKDIR}/systems/${1}/postinstall-chroot.sh ${BUILD_ROOT}/postinstall-chroot.sh
-  chroot ${BUILD_ROOT} /postinstall-chroot.sh
-  rm -f ${BUILD_ROOT}/postinstall-chroot.sh
+  chroot ${BUILD_ROOT} /postinstall-chroot.sh ${1} ${2} ${3}
+  rm -f ${BUILD_ROOT}/postinstall-chroot.sh ${1}
 fi
 if [ -x ${WORKDIR}/systems/${1}/postinstall-chroot-${3}.sh ]; then
   cp ${WORKDIR}/systems/${1}/postinstall-chroot-${3}.sh ${BUILD_ROOT}/postinstall-chroot-${3}.sh
-  chroot ${BUILD_ROOT} /postinstall-chroot-${3}.sh
+  chroot ${BUILD_ROOT} /postinstall-chroot-${3}.sh ${1} ${2} ${3}
   rm -f ${BUILD_ROOT}/postinstall-chroot-${3}.sh
 fi
 
