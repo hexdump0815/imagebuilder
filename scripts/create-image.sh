@@ -79,6 +79,9 @@ else
     echo "INFO: SWAPPART is not set in systems/${1}/partition-mapping.txt - this is ok"
     echo ""
   fi
+  if [ "$CROSPARTS" != "" ]; then
+    echo "CROSPARTS=$CROSPARTS"
+  fi
 fi
 
 mkdir -p ${IMAGE_DIR}
