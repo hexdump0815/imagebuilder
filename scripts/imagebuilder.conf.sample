@@ -1,1 +1,4 @@
+# username of the default user created for the image
 LOGINUSERNAME=linux
+# use root=LABEL=xyz (=NO below) or root=PARTUUID=xyz (=YES below) for the rootfs mount
+PARTUUID_ROOT=NO

@@ -5,6 +5,11 @@ export WORKDIR=`pwd`
 
 . scripts/args-and-arch-check-functions.sh
 
+# get the imagebuilder config
+if [ -f scripts/imagebuilder.conf ]; then
+  . scripts/imagebuilder.conf
+fi
+
 export BUILD_ROOT=/compile/local/imagebuilder-root
 export DOWNLOAD_DIR=/compile/local/imagebuilder-download
 export IMAGE_DIR=/compile/local/imagebuilder-diskimage
