@@ -35,6 +35,8 @@ if [ "${1}" != "$(cat ${DOWNLOAD_DIR}/system.txt)" ] || \
 fi
 
 # from partition-mapping it is clear if this is a chromebook or not via CROSPARTS
+# in theory this can go now that the old chromebook-boot dir is gone, but lets keep
+# it around as a differentiator for chromebooks - maybe its useful one day ...
 if [ ! -f systems/${1}/partition-mapping.txt ]; then
   echo ""
   echo "systems/${1}/partition-mapping.txt does not exist - giving up"
@@ -168,12 +170,6 @@ if [ -f etc/default/numlockx ]; then
 fi
 if [ -f etc/default/apport ]; then
   sed -i 's,^enabled=1,enabled=0,g' etc/default/apport
-fi
-
-# TODO: the chromebook-boot dir should be cleaned up in the future
-# for the arm chromebooks add some useful files to the boot partition
-if [ "${CROSPARTS}" = "true" ]; then
-  cp -r ${WORKDIR}/files/chromebook-boot boot
 fi
 
 # remove the generated ssh keys so that fresh ones are generated on
