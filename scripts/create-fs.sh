@@ -198,6 +198,10 @@ elif [ "${2}" = "aarch64" ]; then
   echo "/opt/mesa/lib/aarch64-linux-gnu" > etc/ld.so.conf.d/aaa-mesa.conf
 fi
 
+# add some imagebuilder version info as /etc/imagebuilder-info
+IMAGEBUILDER_VERSION=$(cd ${WORKDIR}; git rev-parse --verify HEAD)
+echo ${1} ${2} ${3} ${IMAGEBUILDER_VERSION} > ${BUILD_ROOT}/etc/imagebuilder-info
+
 # post install script per system
 if [ -x ${WORKDIR}/systems/${1}/postinstall.sh ]; then
   ${WORKDIR}/systems/${1}/postinstall.sh
