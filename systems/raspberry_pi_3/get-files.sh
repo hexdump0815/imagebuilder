@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-raspberry_pi_3_release_version="5.10.25-stb-av8%2B"
+raspberry_pi_3_release_version="5.10.45-stb-av8%2B"
 raspberry_pi_3_uboot_version="210429-01"
 
 rm -f ${DOWNLOAD_DIR}/kernel-raspberry_pi-aarch64.tar.gz
