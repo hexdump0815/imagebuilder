@@ -38,3 +38,4 @@
 - the mali gpu is only supported via the legacy mali blob as it is not yet supported by the open source panfrost mali driver (and most probably never will be due to too many hardware errata/bugs)
 - the wireless connection seems to drop from time to time, reloading the wifi module usually helps to bring it back (rmmod mwifiex_sdio mwifiex; modprobe mwifiex_sdio)
 - different legacy mali blob versions are available: r4p0, r5p0, r6p0, r12p0
+- at least my spring seems to have a problem with rather quick battery drain if it is not connected to power for a few days, not sure if its a general problem or only affects mine
