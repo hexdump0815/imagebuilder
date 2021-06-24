@@ -43,6 +43,7 @@
 - the thermal cpu throttling is not working yet and the cpu frequency is limited to 1.7 ghz in /etc/rc.local for now to avoid automatic shutdown due to overheating in case of constant full load
 - after suspend/resume the display is not properly reenabled
   - there is an ugly hack implemented to bring it back via xrandr hook, but this only works for the default user currently
+- the write protect screw of the cb5 311 (nyan-big) is not that easy to find: there is a screw marked 'jp10' on the board, this one has to be removed und the metal sticker has to be peeled off in order to remove the hardware write protection
 - especially the acer cb5 311 chromebook (nyan-big) seems to have problems with battery calibration and quite often thinks that the battery is daed after it had not been used for a while - one possible solution might be the following:
   - unplug the power
   - use a paperclip or a needle and push iabout 5-10 seconds into the small hole in the bottom of the device
@@ -50,3 +51,4 @@
   - plug in the power
   - battery will hopefully be back afterwards, maybe charging it over night might be required to bring it back
   - see also: https://www.youtube.com/watch?v=NfhgnxUJoZo
+  - if that does not help, then most probably the battery is most probably beyond its end of life
