@@ -43,6 +43,9 @@
 - the thermal cpu throttling is not working yet and the cpu frequency is limited to 1.7 ghz in /etc/rc.local for now to avoid automatic shutdown due to overheating in case of constant full load
 - after suspend/resume the display is not properly reenabled
   - there is an ugly hack implemented to bring it back via xrandr hook, but this only works for the default user currently
+  - there is a new fix in place (https://github.com/hexdump0815/imagebuilder/commit/ce3b53d70219fba42ad8aa961ac08aaec5478bec), which should work for all users and that will be used for all images _after_ 210613-02
+- deep suspend does not seem work and the suspend to idle (s2idle) used in the images so far does not seem to save a lot of energy (it drained about 50% of the battery in around 5 hours)
+- hibernation (suspend to disk) does not seem to work, it at least fails to restore the display on resume and maybe even crashes (no more details due to missing serial console)
 - the write protect screw of the cb5 311 (nyan-big) is not that easy to find: there is a screw marked 'jp10' on the board, this one has to be removed und the metal sticker has to be peeled off in order to remove the hardware write protection
 - especially the acer cb5 311 chromebook (nyan-big) seems to have problems with battery calibration and quite often thinks that the battery is daed after it had not been used for a while - one possible solution might be the following:
   - unplug the power
@@ -52,3 +55,4 @@
   - battery will hopefully be back afterwards, maybe charging it over night might be required to bring it back
   - see also: https://www.youtube.com/watch?v=NfhgnxUJoZo
   - if that does not help, then most probably the battery is most probably beyond its end of life
+  - in case the battery is really dead: it looks like the battery of the acer cb3 111 chromebook (intel) can also be used in the nyan chromebook (cb5 311) - that one has only 3 (vs 4) cells and thus a lower voltage and capacity, but the nyan seems to deal well with this
