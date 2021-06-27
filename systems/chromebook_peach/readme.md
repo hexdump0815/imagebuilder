@@ -33,3 +33,4 @@
 
 - after first boot please run /scripts/fix-peach-audio.sh as root to fix the ucm audio config files for the corresponding system
 - the mali gpu is only supported via the legacy mali blob as it is not yet supported by the open source panfrost mali driver
+- the battery of the snow chromebook (xe303c12) seems to be interchangable with the battery of the peach chromebook (xe503c12)
