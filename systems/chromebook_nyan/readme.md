@@ -54,5 +54,5 @@
   - plug in the power
   - battery will hopefully be back afterwards, maybe charging it over night might be required to bring it back
   - see also: https://www.youtube.com/watch?v=NfhgnxUJoZo
-  - if that does not help, then most probably the battery is most probably beyond its end of life
+  - if that does not help, then most probably the battery is beyond its end of life
   - in case the battery is really dead: it looks like the battery of the acer cb3 111 chromebook (intel) can also be used in the nyan chromebook (cb5 311) - that one has only 3 (vs 4) cells and thus a lower voltage and capacity, but the nyan seems to deal well with this
