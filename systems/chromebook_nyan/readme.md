@@ -9,10 +9,6 @@
 ## tested systems - working
 
 - acer chromebook cb5 311 - nyan big
-  - there are several versions available: 2g/4g ram and hd/full hd display
-  - the 4gb/full hd i have is working well
-  - the 2gb/hd i have is working well, but the u-boot output is not visible as u-boot does not seem to be able to initialize the display properly - as a result one has to type the number at the boot prompt blindly at the right time for now :)
-  - the 2gb model requires a different u-boot to be written to the first partition after the image was written to the sd card - the u-boot image to be written can be found in the extra folder of the boot partition or can be downloaded from here (gunzip first before writing it to the first partition): https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/v2021.07-rc4-cbt/uboot.kpart.cbt-2g.gz
 
 ## untested systems
 
@@ -35,6 +31,10 @@
 
 ## special notes
 
+- there are several versions of the nyan big available: 2g/4g ram and hd/full hd display
+  - the 4gb/full hd i have is working well
+  - the 2gb/hd i have is working well, but the u-boot output is not visible as u-boot does not seem to be able to initialize the display properly - as a result one has to type the number at the boot prompt blindly at the right time for now :)
+  - the 2gb model requires a different u-boot to be written to the first partition after the image was written to the sd card - the u-boot image to be written can be found in the extra folder of the boot partition or can be downloaded from here (gunzip first before writing it to the first partition): https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/v2021.07-rc4-cbt/uboot.kpart.cbt-2g.gz
 - sometimes the initial kernel console output stays blank but xorg will start well after a while - this seems to affect the v5.10 and newer kernels (seems to get worse with each version - maybe related to fw_devlink dependencies during parallel probing at boot), the v5.4 kernel seems to be much more reliable in this respect (this is why the nyan images were reverted back to use the v5.4 kernel for now)
 - for some people the 210321-01 image did not boot, but the 200526-01 one did boot, so it might be worth to try that one too
 - see also: https://github.com/hexdump0815/imagebuilder/issues/6
