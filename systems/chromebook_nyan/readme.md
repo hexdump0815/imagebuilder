@@ -38,7 +38,7 @@
 - sometimes the initial kernel console output stays blank but xorg will start well after a while - this seems to affect the v5.10 and newer kernels (seems to get worse with each version - maybe related to fw_devlink dependencies during parallel probing at boot), the v5.4 kernel seems to be much more reliable in this respect (this is why the nyan images were reverted back to use the v5.4 kernel for now)
 - for some people the 210321-01 image did not boot, but the 200526-01 one did boot, so it might be worth to try that one too
 - see also: https://github.com/hexdump0815/imagebuilder/issues/6
-- the nouveau gpu driver does not work with the v5.4 kernel and is thus disabled, it partially works with the v5.10 kernel but is very buggy and glmark2 hangs due to memory allocation problems
+- the nouveau gpu driver does not work with the v5.4 kernel and is thus disabled, it partially works with the v5.10 kernel but is very buggy and glmark2 hangs due to memory allocation problems (looks like this only affects the 4gb model, on the 2gb model it works well ...)
 - for the nouveau mesa opengl driver a newer version of the xorg server is required
 - the thermal cpu throttling is not working yet and the cpu frequency is limited to 1.7 ghz in /etc/rc.local for now to avoid automatic shutdown due to overheating in case of constant full load
 - after suspend/resume the display is not properly reenabled
