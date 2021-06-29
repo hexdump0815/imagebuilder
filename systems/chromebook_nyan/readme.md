@@ -24,6 +24,8 @@
 - https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/blob/master/readme.cbt
 - https://github.com/hexdump0815/linux-mainline-tegra-k1-kernel/blob/master/readme.cbt
   - older v5.4 mainline kernel
+- https://github.com/hexdump0815/linux-chromeos-kernel/blob/main/readme.310
+  - adjusted legacy chromeos kernel
 
 ## u-boot build notes
 
