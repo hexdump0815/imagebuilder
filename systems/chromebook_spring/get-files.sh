@@ -1,15 +1,15 @@
 # this file is supposed to be sourced by the get-files shell script
 
-chromebook_spring_release_version="3.10.38-cos-r91"
+chromebook_spring_legacy_release_version="3.10.38-cos-r91"
 chromebook_spring_uboot_version="v2018.11-cbe"
 chromebook_spring_mali_blob_version="9051dfe1f2198e2ed41c322359ee8324043d55a9"
 gl4es_focal_armv7l_version="9051dfe1f2198e2ed41c322359ee8324043d55a9"
 
 rm -f ${DOWNLOAD_DIR}/kernel-chromebook_spring-armv7l.tar.gz
-wget -v https://github.com/hexdump0815/linux-chromeos-kernel/releases/download/${chromebook_spring_release_version}/${chromebook_spring_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-chromebook_spring-armv7l.tar.gz
+wget -v https://github.com/hexdump0815/linux-chromeos-kernel/releases/download/${chromebook_spring_legacy_release_version}/${chromebook_spring_legacy_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-chromebook_spring-armv7l.tar.gz
 
 # extract the cros kpart image from the kernel tar.gz to use it for the cros kernel partition
-( cd ${DOWNLOAD_DIR} && tar xzf kernel-chromebook_spring-armv7l.tar.gz boot/vmlinux.kpart-${chromebook_spring_release_version} && mv boot/vmlinux.kpart-${chromebook_spring_release_version} boot-chromebook_spring-armv7l.dd && rmdir boot )
+( cd ${DOWNLOAD_DIR} && tar xzf kernel-chromebook_spring-armv7l.tar.gz boot/vmlinux.kpart-${chromebook_spring_legacy_release_version} && mv boot/vmlinux.kpart-${chromebook_spring_legacy_release_version} boot-chromebook_spring-armv7l.dd && rmdir boot )
 
 # get mainline u-boot for spring - not properly working yet, but maybe good to have around
 rm -rf ${DOWNLOAD_DIR}/boot-extra-${1}
