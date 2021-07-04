@@ -1,9 +1,16 @@
-# enable light supend mode, i.e. only cpu is put into sleep, everything else stays alive
-echo s2idle > /sys/power/mem_sleep
+# temporary hacks for spring with legacy kernel
+# check that the legacy chromeos kernel is not in use
+uname -r | grep -q ^3
+if [ "$?" != "0"]; then
+  # enable light supend mode, i.e. only cpu is put into sleep, everything else stays alive
+  echo s2idle > /sys/power/mem_sleep
 
-# lower the max cpu frequency as thermal throttling does not work yet and it will
-# overheat and shut down at some point otherwise - with this value it seems to run well
-echo 1734000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+  # lower the max cpu frequency as thermal throttling does not work yet and it will
+  # overheat and shut down at some point otherwise - with this value it seems to run well
+  echo 1734000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 
-# increase the gpu frequency - not done yet
-#echo 06 > /sys/kernel/debug/dri/129/pstate
+  # increase the gpu frequency, only do it when nouveau is around - not done yet
+  #if [ -f /sys/kernel/debug/dri/129/pstate ]; then
+  #  echo 06 > /sys/kernel/debug/dri/129/pstate
+  #fi
+fi

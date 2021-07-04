@@ -1,3 +1,7 @@
 # temporary hacks for spring with legacy kernel
-echo 63 > /sys/class/backlight/ps8622-backlight/brightness
-/usr/lib/upower/upowerd &
+# check if the legacy chromeos kernel is in use
+uname -r | grep -q ^3
+if [ "$?" = "0"]; then
+  echo 63 > /sys/class/backlight/ps8622-backlight/brightness
+  /usr/lib/upower/upowerd &
+fi

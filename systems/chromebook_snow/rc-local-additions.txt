@@ -1,2 +1,10 @@
-# enable light supend mode, i.e. only cpu is put into sleep, everything else stays alive
-echo s2idle > /sys/power/mem_sleep
+# temporary hacks for spring with legacy kernel
+# check if the legacy chromeos kernel is in use
+uname -r | grep -q ^3
+if [ "$?" = "0"]; then
+  echo 1000 > /sys/class/backlight/backlight.12/brightness
+  /usr/lib/upower/upowerd &
+else
+  # enable light supend mode, i.e. only cpu is put into sleep, everything else stays alive
+  echo s2idle > /sys/power/mem_sleep
+fi
