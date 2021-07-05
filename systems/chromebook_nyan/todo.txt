@@ -17,4 +17,10 @@
     - next would be to find a way to force proper order
 - get thermal throttling (soctherm) working
   - currently cpu speed is limited in rc.local to 1.7ghz to avoid shutdown due to overheating
+  - a new patch to usethe regular kernel cpu freq throttling seems to work quite well
 - find a way to reenable the display after resume without the current hack
+- maybe get some proper kind of suspend working
+  - the current s2idle mode does not really save much energy (the battery will just last slightly longer than with normal use)
+  - the lowest lp0 suspend mode does not seem to besupported by mainline and would require some extra firmware (see chromeos kernel - maybe for inspiration)
+  - someone from archlinux arm got at least lp1 suspend mode working, but i was not able to reproduce this (i was unable to wake it up again after suspend) - see: https://archlinuxarm.org/forum/viewtopic.php?f=49&t=12185&sid=054215884699c2b79e457eadb8599012&start=230#p64180
+  - see also: https://www.kernel.org/doc/Documentation/devicetree/bindings/arm/tegra/nvidia%2Ctegra20-pmc.txt
