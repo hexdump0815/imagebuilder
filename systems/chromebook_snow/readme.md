@@ -38,7 +38,8 @@
   - usb3 port gives trouble with suspend, so i disabled it
   - webcam will not work (the usb bus it is connected to is somehow not seen in mainline)
   - 3g modem (if installed) will not work (situation similar to the webcam i guess, no idea if there even exists a driver for it)
-  - full suspend/resume/hibernation do not work properly, so suspend to idle is configured by default and seems to work perfectly and the chromebook should survive about a day in this state from battery
+  - until image version 210613-04 full suspend/resume/hibernation do not work properly, so suspend to idle is configured by default and seems to work perfectly and the chromebook should survive about a day in this state from battery
+  - for all images after version 210613-04 full deep suspend/resume should work fine
 - what works: everything else, i.e. sound, wifi, external monitor, gles/opengl with legacy mali blob
 - the mali gpu is only supported via the legacy mali blob as it is not yet supported by the open source panfrost mali driver (and most probably never will be due to too many hardware errata/bugs)
 - after first boot please run /scripts/fix-snow-audio.sh as root to fix the ucm audio config files for the corresponding system

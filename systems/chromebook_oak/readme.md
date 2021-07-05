@@ -30,5 +30,5 @@
 
 - there is no gpu acceleration as there is no open source driver available for the powervr gpu in the mt8173 soc, mesa software rendering is used instead for opengl etc.
 - suspend/resume status:
-  - with v5.10.25 it works fine (console and xorg) with https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_oak/extra-files/usr/lib/systemd/system-sleep/mrvl-reload
+  - with v5.10.25 it works fine (console and xorg) with https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_oak/extra-files/usr/lib/systemd/system-sleep/mrvl-reload - so allimages after version 210509-01 should be fine
   - with v5.13.0 it works but drm fails on restore - bisecting required

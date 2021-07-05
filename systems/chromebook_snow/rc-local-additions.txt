@@ -6,5 +6,5 @@ if [ "$?" = "0"]; then
   /usr/lib/upower/upowerd &
 else
   # enable light supend mode, i.e. only cpu is put into sleep, everything else stays alive
-  echo s2idle > /sys/power/mem_sleep
+  #echo s2idle > /sys/power/mem_sleep
 fi
