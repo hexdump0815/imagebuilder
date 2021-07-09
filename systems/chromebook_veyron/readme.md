@@ -54,3 +54,7 @@
 ## u-boot build notes
 
 - https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/blob/master/readme.cbr
+
+## special notes
+
+- for all images after version 210613-03 full deep suspend/resume should work fine
