@@ -28,6 +28,9 @@ if [ ${LEGACY_KERNEL} = "no" ]; then
   # copy the snow u-boot to the right place, so that it will be written to the kernel partition
   cp ${DOWNLOAD_DIR}/boot-extra-${1}/uboot.kpart.cbe-snow ${DOWNLOAD_DIR}/boot-chromebook_snow-armv7l.dd
 
+  # put the legacy kernel into /boot/extra as well - just in case
+  wget -v https://github.com/hexdump0815/linux-chromeos-kernel/releases/download/${chromebook_snow_legacy_release_version}/${chromebook_snow_legacy_release_version}.tar.gz -O ${DOWNLOAD_DIR}/boot-extra-${1}/kernel-chromebook_snow-legacy.tar.gz
+
 else
 
   # get the the legacy chromeos kernel
