@@ -8,10 +8,22 @@ export WORKDIR=`pwd`
 export DOWNLOAD_DIR=/compile/local/imagebuilder-download
 export OFFLINE_DIR=/compile/local/imagebuilder-offline
 
+if [ "${2}" = "armv7l" ] || [ "${2}" = "aarch64" ]; then
+  POSSIBLE_TARGET_HOST="aarch64"
+fi
+
+if [ "${2}" = "i686" ] || [ "${2}" = "x86_64" ]; then
+  POSSIBLE_TARGET_HOST="x86_64"
+fi
+
 # check if the given arch matches the supported arch for the selected system
-if [ ${2} != $(cat systems/$1/arch.txt) ]; then
+if [ $(cat systems/$1/arch.txt) != ${2} ] || [ $(cat systems/$1/arch.txt) != ${POSSIBLE_TARGET_HOST} ]; then
   echo ""
-  echo "the target arch ${2} is not supported for the selected system (supported is: $(cat systems/$1/arch.txt)) - giving up"
+  echo "the target arch ${2} is supported for the selected system - moving on"
+  echo ""
+else
+  echo ""
+  echo "the target arch ${2} is not supported for the selected system - giving up"
   echo ""
   exit 1
 fi

@@ -54,9 +54,9 @@ else
     exit
   fi
   if [ "$ROOTFS" = "btrfs" ]; then
-    if [ ! -x /bin/mkfs.btrfs ]; then
+    if [ ! -x /bin/mkfs.btrfs ] && [ ! -x /usr/sbin/mkfs.btrfs ]; then
       echo ""
-      echo "/bin/mkfs.btrfs is not available - please install the btrfs-progs package"
+      echo "mkfs.btrfs is not available - please install the btrfs-progs package"
       echo ""
       exit 1
     fi
@@ -86,6 +86,15 @@ else
   fi
   if [ "$CROSPARTS" != "" ]; then
     echo "CROSPARTS=$CROSPARTS"
+  fi
+  if [ "$UEFI32" != "" ]; then
+    echo "UEFI32=$UEFI32"
+  fi
+  if [ "$UEFI64" != "" ]; then
+    echo "UEFI64=$UEFI64"
+  fi
+  if [ "$MBR" != "" ]; then
+    echo "MBR=$MBR"
   fi
 fi
 
@@ -172,6 +181,11 @@ else
 fi
 mkdir ${MOUNT_POINT}/boot
 mount /dev/loop0p$BOOTPART ${MOUNT_POINT}/boot
+if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ]; then
+  mkfs -t vfat -F 32 -n EFI /dev/loop0p1
+  mkdir -p ${MOUNT_POINT}/boot/efi
+  mount /dev/loop0p1 ${MOUNT_POINT}/boot/efi
+fi
 
 echo "copying over the root fs to the target image - this may take a while ..."
 date
@@ -201,17 +215,22 @@ else
 fi
 
 # create a customized fstab file
+cp /dev/null ${MOUNT_POINT}/etc/fstab
 FSTAB_EXT4_BOOT="LABEL=bootpart /boot ext4 defaults,noatime,nodiratime,errors=remount-ro 0 2"
 FSTAB_VFAT_BOOT="LABEL=BOOTPART /boot vfat defaults,rw,owner,flush,umask=000 0 0"
 FSTAB_BTRFS_ROOT="LABEL=rootpart / btrfs defaults,ssd,compress-force=zstd,noatime,nodiratime 0 1"
 FSTAB_EXT4_ROOT="LABEL=rootpart / ext4 defaults,noatime,nodiratime,errors=remount-ro 0 1"
 FSTAB_SWAP_FILE="/swap/file.0 none swap sw 0 0"
 FSTAB_SWAP_PART="LABEL=swappart none swap sw 0 0"
+if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ]; then
+  FSTAB_VFAT_EFI="LABEL=EFI /boot/efi vfat umask=0077 0 1"
+  echo $FSTAB_VFAT_EFI >> ${MOUNT_POINT}/etc/fstab
+fi
 
 if [ "$BOOTFS" = "ext4" ]; then
-  echo $FSTAB_EXT4_BOOT > ${MOUNT_POINT}/etc/fstab
+  echo $FSTAB_EXT4_BOOT >> ${MOUNT_POINT}/etc/fstab
 else
-  echo $FSTAB_VFAT_BOOT > ${MOUNT_POINT}/etc/fstab
+  echo $FSTAB_VFAT_BOOT >> ${MOUNT_POINT}/etc/fstab
 fi
 if [ "$ROOTFS" = "btrfs" ]; then
   echo $FSTAB_BTRFS_ROOT >> ${MOUNT_POINT}/etc/fstab
@@ -224,56 +243,108 @@ else
   echo $FSTAB_SWAP_PART >> ${MOUNT_POINT}/etc/fstab
 fi
 
-export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/*Image-* | sed 's,.*Image-,,g' | sort -u`
-if [ "$PARTUUID_ROOT" = "YES" ]; then
-  ROOT_PARTUUID=$(blkid | grep "/dev/loop0p$ROOTPART" | awk '{print $5}' | sed 's,",,g')
-  if [ -f ${MOUNT_POINT}/boot/extlinux/extlinux.conf ]; then
-    sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
-    sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
-  fi
-  if [ -f ${MOUNT_POINT}/boot/menu/extlinux.conf ]; then
-    sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
-    sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
-  fi
-  if [ -f ${MOUNT_POINT}/boot/r89-boot/parameter-linux ]; then
-    sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/r89-boot/parameter-linux
-    sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/r89-boot/parameter-linux
-  fi
-  if [ -f ${MOUNT_POINT}/boot/uEnv.ini ]; then
-    sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/uEnv.ini
-    sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/uEnv.ini
-  fi
-else
-  if [ -f ${MOUNT_POINT}/boot/extlinux/extlinux.conf ]; then
-    sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
-    sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
-  fi
-  if [ -f ${MOUNT_POINT}/boot/menu/extlinux.conf ]; then
-    sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
-    sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
-  fi
-  if [ -f ${MOUNT_POINT}/boot/r89-boot/parameter-linux ]; then
-    sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/r89-boot/parameter-linux
-    sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/r89-boot/parameter-linux
-  fi
-  if [ -f ${MOUNT_POINT}/boot/uEnv.ini ]; then
-    sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/uEnv.ini
-    sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/uEnv.ini
+if [ "${2}" = "armv7l" ] || [ "${2}" = "aarch64" ]; then
+  export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/*Image-* | sed 's,.*Image-,,g' | sort -u`
+  if [ "$PARTUUID_ROOT" = "YES" ]; then
+    ROOT_PARTUUID=$(blkid | grep "/dev/loop0p$ROOTPART" | awk '{print $5}' | sed 's,",,g')
+    if [ -f ${MOUNT_POINT}/boot/extlinux/extlinux.conf ]; then
+      sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
+      sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
+    fi
+    if [ -f ${MOUNT_POINT}/boot/menu/extlinux.conf ]; then
+      sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
+      sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
+    fi
+    if [ -f ${MOUNT_POINT}/boot/r89-boot/parameter-linux ]; then
+      sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/r89-boot/parameter-linux
+      sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/r89-boot/parameter-linux
+    fi
+    if [ -f ${MOUNT_POINT}/boot/uEnv.ini ]; then
+      sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/uEnv.ini
+      sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/uEnv.ini
+    fi
+  else
+    if [ -f ${MOUNT_POINT}/boot/extlinux/extlinux.conf ]; then
+      sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
+      sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
+    fi
+    if [ -f ${MOUNT_POINT}/boot/menu/extlinux.conf ]; then
+      sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
+      sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
+    fi
+    if [ -f ${MOUNT_POINT}/boot/r89-boot/parameter-linux ]; then
+      sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/r89-boot/parameter-linux
+      sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/r89-boot/parameter-linux
+    fi
+    if [ -f ${MOUNT_POINT}/boot/uEnv.ini ]; then
+      sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/uEnv.ini
+      sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/uEnv.ini
+    fi
   fi
 fi
 
+# TODO: this should move to the system postinstall
 # for the orbsmart s92 / beelink r89 the boot loader has to be written in a special way to the disk
 if [ "$1" = "orbsmart_s92_beelink_r89" ]; then
   ${WORKDIR}/scripts/orbsmart_s92_beelink_r89-prepare-boot.sh ${KERNEL_VERSION}
   ${WORKDIR}/scripts/orbsmart_s92_beelink_r89-create-boot.sh
 fi
 
+# TODO: this should move to the system postinstall
 # for the amlogic m8x we will have to shorten the kernel and initrd filenames due to a 23 char limit
 if [ "$1" = "amlogic_m8" ]; then
   ${MOUNT_POINT}/boot/shorten-filenames.sh
 fi
 
-df -h ${MOUNT_POINT} ${MOUNT_POINT}/boot
+if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ] || [ "${MBR}" = "true" ]; then
+  mount -o bind /dev ${MOUNT_POINT}/dev
+  mount -o bind /dev/pts ${MOUNT_POINT}/dev/pts
+  mount -t sysfs /sys ${MOUNT_POINT}/sys
+  mount -t proc /proc ${MOUNT_POINT}/proc
+fi
+
+if [ "${UEFI32}" = "true" ]; then
+  chroot ${MOUNT_POINT} apt-get -yq install grub2-common grub-efi-ia32 grub-efi-ia32-bin
+  chroot ${MOUNT_POINT} grub-install --target=i386-efi /dev/loop0p1 --efi-directory=/boot/efi/ --boot-directory=/boot/
+  # debian needs some extra steps to enable fallback boot sometimes required to boot from external media
+  if [ "${3}" = "bullseye" ]; then
+    chroot ${MOUNT_POINT} mkdir -p /boot/efi/EFI/BOOT
+    chroot ${MOUNT_POINT} cp /boot/efi/EFI/debian/grubia32.efi /boot/efi/EFI/BOOT/BOOTIA32.EFI
+    chroot ${MOUNT_POINT} cp /usr/share/images/desktop-base/desktop-grub.png /boot/grub
+  fi
+  chroot ${MOUNT_POINT} update-grub
+fi
+
+if [ "${UEFI64}" = "true" ]; then
+  chroot ${MOUNT_POINT} apt-get -yq install grub2-common grub-efi-amd64 grub-efi-amd64-bin
+  chroot ${MOUNT_POINT} grub-install --target=x86_64-efi /dev/loop0p1 --efi-directory=/boot/efi/ --boot-directory=/boot/
+  # debian needs some extra steps to enable fallback boot sometimes required to boot from external media
+  if [ "${3}" = "bullseye" ]; then
+    chroot ${MOUNT_POINT} mkdir -p /boot/efi/EFI/BOOT
+    chroot ${MOUNT_POINT} cp /boot/efi/EFI/debian/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
+    chroot ${MOUNT_POINT} cp /usr/share/images/desktop-base/desktop-grub.png /boot/grub
+  fi
+  chroot ${MOUNT_POINT} update-grub
+fi
+
+if [ "${MBR}" = "true" ]; then
+  chroot ${MOUNT_POINT} apt-get -yq install grub2-common grub-pc grub-pc-bin
+  chroot ${MOUNT_POINT} grub-install /dev/loop0
+  chroot ${MOUNT_POINT} update-grub
+fi
+
+# TODO: maybe move the update-initramfs from create-fs here ...
+
+if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ] || [ "${MBR}" = "true" ]; then
+  umount ${MOUNT_POINT}/proc ${MOUNT_POINT}/sys ${MOUNT_POINT}/dev/pts ${MOUNT_POINT}/dev
+fi
+
+if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ]; then
+  df -h ${MOUNT_POINT} ${MOUNT_POINT}/boot ${MOUNT_POINT}/boot/efi
+  umount ${MOUNT_POINT}/boot/efi
+else
+  df -h ${MOUNT_POINT} ${MOUNT_POINT}/boot
+fi
 umount ${MOUNT_POINT}/boot 
 umount ${MOUNT_POINT}
 

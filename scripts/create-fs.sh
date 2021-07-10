@@ -63,6 +63,11 @@ else
   echo ""
 fi
 
+# give up of the cache creation script failed
+if [ "$?" = "1" ]; then
+  exit 1
+fi
+
 echo ""
 echo "copying over the root cache to the target root - this may take a while ..."
 date
@@ -82,9 +87,11 @@ cd ${BUILD_ROOT}/
 
 rm -f create-chroot-stage-0?.sh
 
-tar --numeric-owner -xhzf ${DOWNLOAD_DIR}/kernel-${1}-${2}.tar.gz
-if [ -f ${DOWNLOAD_DIR}/kernel-mali-${1}-${2}.tar.gz ]; then
-  tar --numeric-owner -xhzf ${DOWNLOAD_DIR}/kernel-mali-${1}-${2}.tar.gz
+if [ -f ${DOWNLOAD_DIR}/kernel-${1}-${2}.tar.gz ]; then
+  tar --numeric-owner -xhzf ${DOWNLOAD_DIR}/kernel-${1}-${2}.tar.gz
+  if [ -f ${DOWNLOAD_DIR}/kernel-mali-${1}-${2}.tar.gz ]; then
+    tar --numeric-owner -xhzf ${DOWNLOAD_DIR}/kernel-mali-${1}-${2}.tar.gz
+  fi
 fi
 
 if [ -d ${DOWNLOAD_DIR}/boot-extra-${1} ]; then
@@ -92,8 +99,10 @@ if [ -d ${DOWNLOAD_DIR}/boot-extra-${1} ]; then
   cp -r ${DOWNLOAD_DIR}/boot-extra-${1}/* boot/extra
 fi
 
-# install the self built fresher mesa version
-tar --numeric-owner -xzf ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
+# install the self built fresher mesa version if one is there
+if [ -f ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz ]; then
+  tar --numeric-owner -xzf ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
+fi
 
 # some systems need a fresher xorg server
 if [ -f ${DOWNLOAD_DIR}/opt-xserver-${3}-${2}.tar.gz ]; then
@@ -196,6 +205,16 @@ elif [ "${2}" = "aarch64" ]; then
   echo "LIBGL_DRIVERS_PATH=/opt/mesa/lib/aarch64-linux-gnu/dri:/usr/lib/aarch64-linux-gnu/dri" >> etc/environment.d/50-opt-mesa.conf
   echo "GBM_DRIVERS_PATH=/opt/mesa/lib/aarch64-linux-gnu/dri:/usr/lib/aarch64-linux-gnu/dri" >> etc/environment.d/50-opt-mesa.conf
   echo "/opt/mesa/lib/aarch64-linux-gnu" > etc/ld.so.conf.d/aaa-mesa.conf
+elif [ "${2}" = "i686" ]; then
+  echo "LD_LIBRARY_PATH=/opt/mesa/lib/i386-linux-gnu/dri:/usr/lib/i386-linux-gnu/dri" > etc/environment.d/50-opt-mesa.conf
+  echo "LIBGL_DRIVERS_PATH=/opt/mesa/lib/i386-linux-gnu/dri:/usr/lib/i386-linux-gnu/dri" >> etc/environment.d/50-opt-mesa.conf
+  echo "GBM_DRIVERS_PATH=/opt/mesa/lib/i386-linux-gnu/dri:/usr/lib/i386-linux-gnu/dri" >> etc/environment.d/50-opt-mesa.conf
+  echo "/opt/mesa/lib/i386-linux-gnu" > etc/ld.so.conf.d/aaa-mesa.conf
+elif [ "${2}" = "x86_64" ]; then
+  echo "LD_LIBRARY_PATH=/opt/mesa/lib/x86_64-linux-gnu/dri:/usr/lib/x86_64-linux-gnu/dri" > etc/environment.d/50-opt-mesa.conf
+  echo "LIBGL_DRIVERS_PATH=/opt/mesa/lib/x86_64-linux-gnu/dri:/usr/lib/x86_64-linux-gnu/dri" >> etc/environment.d/50-opt-mesa.conf
+  echo "GBM_DRIVERS_PATH=/opt/mesa/lib/x86_64-linux-gnu/dri:/usr/lib/x86_64-linux-gnu/dri" >> etc/environment.d/50-opt-mesa.conf
+  echo "/opt/mesa/lib/x86_64-linux-gnu" > etc/ld.so.conf.d/aaa-mesa.conf
 fi
 
 # add some imagebuilder version info as /etc/imagebuilder-info
@@ -225,6 +244,12 @@ fi
 chroot ${BUILD_ROOT} ldconfig
 
 export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/*Image-* | sed 's,.*Image-,,g' | sort -u`
+
+# in case we did not get a kernel version, try it again with the vmlinuz
+if [ "$KERNEL_VERSION" = "" ]; then
+  echo "trying vmlinuz as kernel name instead of *Image:"
+  export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/vmlinuz-* | sed 's,.*vmlinuz-,,g' | sort -u`
+fi
 
 # hack to get the fsck binaries in properly even in our chroot env
 cp -f usr/share/initramfs-tools/hooks/fsck tmp/fsck.org

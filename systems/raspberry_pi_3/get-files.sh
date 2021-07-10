@@ -3,8 +3,8 @@
 raspberry_pi_3_release_version="5.10.45-stb-av8%2B"
 raspberry_pi_3_uboot_version="210429-01"
 
-rm -f ${DOWNLOAD_DIR}/kernel-raspberry_pi-aarch64.tar.gz
-wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${raspberry_pi_3_release_version}/${raspberry_pi_3_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-raspberry_pi_3-aarch64.tar.gz
+rm -f ${DOWNLOAD_DIR}/kernel-raspberry_pi-${2}.tar.gz
+wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${raspberry_pi_3_release_version}/${raspberry_pi_3_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-raspberry_pi_3-${2}.tar.gz
 
 rm -rf ${DOWNLOAD_DIR}/boot-extra-${1}
 mkdir -p ${DOWNLOAD_DIR}/boot-extra-${1}

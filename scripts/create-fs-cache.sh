@@ -10,19 +10,34 @@ if [ "$#" != "2" ]; then
   echo "possible arch options:"
   echo "- armv7l - 32bit"
   echo "- aarch64 - 64bit"
+  echo "- i686 - 32bit"
+  echo "- x86_64 - 64bit"
   echo ""
   echo "possible release options:"
-  echo "- focal - ubuntu"
-  echo "- bullseye - debian (not yet supported)"
+  echo "- focal - ubuntu focal"
+  echo "- bullseye - debian bullseye"
   echo ""
   echo "example: $0 armv7l focal"
   echo ""
   exit 1
 fi
 
-if [ $(uname -m) != ${1} ]; then
+if [ "${1}" = "armv7l" ] || [ "${1}" = "aarch64" ]; then
+  POSSIBLE_TARGET_HOST="aarch64"
+fi
+
+if [ "${1}" = "i686" ] || [ "${1}" = "x86_64" ]; then
+  POSSIBLE_TARGET_HOST="x86_64"
+fi
+
+# check if the given arch matches the supported arch for the selected system
+if [ $(uname -m) != ${1} ] || [ $(uname -m) != ${POSSIBLE_TARGET_HOST} ]; then
   echo ""
-  echo "the target arch ${1} is not the same arch this system is running on: $(uname -m) - giving up"
+  echo "the target arch ${1} is supported for the selected system - moving on"
+  echo ""
+else
+  echo ""
+  echo "the target arch ${1} is not supported for the selected system - giving up"
   echo ""
   exit 1
 fi
@@ -41,23 +56,36 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
   cd ${BUILD_ROOT_CACHE}
 
   if [ "${1}" = "armv7l" ]; then
-    BOOTSTRAP_ARCH=armhf
+    BOOTSTRAP_ARCH="armhf"
+    SERVER_PREFIX="ports."
+    SERVER_POSTFIX=""
   elif [ "${1}" = "aarch64" ]; then
-    BOOTSTRAP_ARCH=arm64
+    BOOTSTRAP_ARCH="arm64"
+    SERVER_PREFIX="ports."
+    SERVER_POSTFIX=""
+  elif [ "${1}" = "i686" ]; then
+    BOOTSTRAP_ARCH="i386"
+    SERVER_PREFIX="archive."
+    SERVER_POSTFIX="ubuntu/"
+  elif [ "${1}" = "x86_64" ]; then
+    BOOTSTRAP_ARCH="amd64"
+    SERVER_PREFIX="archive."
+    SERVER_POSTFIX="ubuntu/"
   fi
+  mkdir -p ${BUILD_ROOT_CACHE}/etc/apt
   if [ "${2}" = "focal" ]; then
-    LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} ${2} ${BUILD_ROOT_CACHE} http://ports.ubuntu.com/
-    cp ${WORKDIR}/files/focal-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
+    LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} ${2} ${BUILD_ROOT_CACHE} http://${SERVER_PREFIX}ubuntu.com/${SERVER_POSTFIX}
+    cp ${WORKDIR}/files/focal-${BOOTSTRAP_ARCH}-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
     # parse in the proper ubuntu version
     sed -i "s,UBUNTUVERSION,focal,g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
   elif [ "${2}" = "bullseye" ]; then
     LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} ${2} ${BUILD_ROOT_CACHE} http://deb.debian.org/debian/
-    cp ${WORKDIR}/files/bullseye-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
+    cp ${WORKDIR}/files/bullseye-${BOOTSTRAP_ARCH}-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
     # parse in the proper debian version
     sed -i "s,DEBIANVERSION,bullseye,g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
   elif [ "${2}" = "sonaremin" ]; then
     LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} focal ${BUILD_ROOT_CACHE} http://ports.ubuntu.com/
-    cp ${WORKDIR}/files/focal-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
+    cp ${WORKDIR}/files/focal-${BOOTSTRAP_ARCH}-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
     # parse in the proper ubuntu version
     sed -i "s,UBUNTUVERSION,focal,g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
   fi
@@ -71,7 +99,7 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
   cp /proc/mounts ${BUILD_ROOT_CACHE}/etc/mtab
   cp /etc/resolv.conf ${BUILD_ROOT_CACHE}/etc/resolv.conf
 
-  chroot ${BUILD_ROOT_CACHE} /create-chroot-stage-01.sh ${2}
+  chroot ${BUILD_ROOT_CACHE} /create-chroot-stage-01.sh ${2} ${1}
 
   umount ${BUILD_ROOT_CACHE}/proc ${BUILD_ROOT_CACHE}/sys ${BUILD_ROOT_CACHE}/dev/pts ${BUILD_ROOT_CACHE}/dev
 else
