@@ -6,6 +6,7 @@ rockchip_rk33xx_uboot_rk3328_ddrbin_legacy_atf_version="210131-01"
 rockchip_rk33xx_uboot_ddrbin_spl_version="210131-01"
 rockchip_rk33xx_uboot_ddrbin_666mhz_spl_version="210131-01"
 rockchip_rk33xx_uboot_tpl_spl_version="210131-01"
+mesa_release_version="21.0.1"
 
 rm -f ${DOWNLOAD_DIR}/kernel-rockchip_rk33xx-${2}.tar.gz
 wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/releases/download/${rockchip_rk33xx_release_version}/${rockchip_rk33xx_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-rockchip_rk33xx-${2}.tar.gz
@@ -27,3 +28,6 @@ wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${rockchip_
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${rockchip_rk33xx_uboot_ddrbin_666mhz_spl_version}/boot-rk3328-ddrbin-666mhz-spl-aarch64.dd.gz -O - | gunzip -c >> ${DOWNLOAD_DIR}/boot-extra-${1}/boot-rk3328-ddrbin-666mhz-spl.dd
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${rockchip_rk33xx_uboot_tpl_spl_version}/boot-rk3328-tpl-spl-aarch64.dd.gz -O - | gunzip -c >> ${DOWNLOAD_DIR}/boot-extra-${1}/boot-rk3328-tpl-spl.dd
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${rockchip_rk33xx_uboot_tpl_spl_version}/u-boot-rk3328.img.gz -O - | gunzip -c >> ${DOWNLOAD_DIR}/boot-extra-${1}/u-boot-rk3328.img
+
+# get the self built fresher mesa
+wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz

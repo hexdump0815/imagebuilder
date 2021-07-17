@@ -12,6 +12,7 @@ chromebook_nyan_kernel_tree="linux-mainline-tegra-k1-kernel"
 chromebook_nyan_legacy_release_version="3.10.18-cos-r91"
 chromebook_nyan_uboot_version="v2018.11-cbt"
 chromebook_nyan_2g_uboot_version="v2021.07-rc4-cbt"
+mesa_release_version="21.0.1"
 xserver_release_version="21.0.1"
 
 rm -rf ${DOWNLOAD_DIR}/boot-extra-${1}
@@ -46,6 +47,9 @@ else
   wget -v https://github.com/hexdump0815/${chromebook_nyan_kernel_tree}/releases/download/${chromebook_nyan_release_version}/${chromebook_nyan_release_version}.tar.gz -O ${DOWNLOAD_DIR}/boot-extra-${1}/kernel-chromebook_nyan-mainline.tar.gz
 
 fi
+
+# get the self built fresher mesa
+wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
 
 ## on tegra a fresher xorg is required as well
 #rm -f ${DOWNLOAD_DIR}/opt-xserver-${3}-${2}.tar.gz
