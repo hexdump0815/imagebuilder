@@ -16,8 +16,8 @@ if [ "$1" = "focal" ]; then
     apt-get -yq install linux-image-generic
   fi
 elif [ "$1" = "bullseye" ]; then 
-  tasksel install standard
   apt-get -yq install locales vim openssh-server ssh-askpass sudo net-tools ifupdown iputils-ping kmod less rsync u-boot-tools usbutils dosfstools mesa-utils mesa-utils-extra console-data task-xfce-desktop xserver-xorg-input-synaptics blueman firmware-linux-free firmware-linux firmware-linux-nonfree firmware-misc-nonfree firmware-brcm80211 firmware-iwlwifi firmware-intel-sound firmware-samsung firmware-libertas firmware-realtek firmware-qcom-soc firmware-qcom-media firmware-atheros pulseaudio pavucontrol lvm2 cryptsetup-bin cryptsetup slick-greeter btrfs-progs btrfs-compsize dialog cgpt liblz4-tool vboot-kernel-utils bc plymouth plymouth-themes
+  tasksel install standard
   if [ "$2" = "i686" ]; then
     apt-get -yq install linux-image-686
   elif [ "$2" = "x86_64" ]; then
