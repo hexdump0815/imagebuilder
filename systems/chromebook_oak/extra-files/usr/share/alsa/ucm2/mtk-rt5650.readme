@@ -1,0 +1,3 @@
+based on https://chromium.googlesource.com/chromiumos/overlays/board-overlays/+/refs/heads/master/overlay-oak/chromeos-base/chromeos-bsp-oak/files/ucm-config/mtk-rt5650-rt5514/
+
+not everything is working perfectly fine yet (the automatic headphone jack switch does not for instance), but basic functionality seems to be there
