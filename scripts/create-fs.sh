@@ -196,26 +196,28 @@ mkdir -p ${BUILD_ROOT}/etc/X11/xorg.conf.d
 
 # add support for self built fresher mesa
 if [ "${2}" = "armv7l" ]; then
-  echo "LD_LIBRARY_PATH=/opt/mesa/lib/arm-linux-gnueabihf/dri:/usr/lib/arm-linux-gnueabihf/dri" > etc/environment.d/50-opt-mesa.conf
-  echo "LIBGL_DRIVERS_PATH=/opt/mesa/lib/arm-linux-gnueabihf/dri:/usr/lib/arm-linux-gnueabihf/dri" >> etc/environment.d/50-opt-mesa.conf
-  echo "GBM_DRIVERS_PATH=/opt/mesa/lib/arm-linux-gnueabihf/dri:/usr/lib/arm-linux-gnueabihf/dri" >> etc/environment.d/50-opt-mesa.conf
+  echo "LD_LIBRARY_PATH=/opt/mesa/lib/arm-linux-gnueabihf/dri:/usr/lib/arm-linux-gnueabihf/dri" > etc/environment.d/50opt-mesa.conf
+  echo "LIBGL_DRIVERS_PATH=/opt/mesa/lib/arm-linux-gnueabihf/dri:/usr/lib/arm-linux-gnueabihf/dri" >> etc/environment.d/50opt-mesa.conf
+  echo "GBM_DRIVERS_PATH=/opt/mesa/lib/arm-linux-gnueabihf/dri:/usr/lib/arm-linux-gnueabihf/dri" >> etc/environment.d/50opt-mesa.conf
   echo "/opt/mesa/lib/arm-linux-gnueabihf" > etc/ld.so.conf.d/aaa-mesa.conf
 elif [ "${2}" = "aarch64" ]; then
-  echo "LD_LIBRARY_PATH=/opt/mesa/lib/aarch64-linux-gnu/dri:/usr/lib/aarch64-linux-gnu/dri" > etc/environment.d/50-opt-mesa.conf
-  echo "LIBGL_DRIVERS_PATH=/opt/mesa/lib/aarch64-linux-gnu/dri:/usr/lib/aarch64-linux-gnu/dri" >> etc/environment.d/50-opt-mesa.conf
-  echo "GBM_DRIVERS_PATH=/opt/mesa/lib/aarch64-linux-gnu/dri:/usr/lib/aarch64-linux-gnu/dri" >> etc/environment.d/50-opt-mesa.conf
+  echo "LD_LIBRARY_PATH=/opt/mesa/lib/aarch64-linux-gnu/dri:/usr/lib/aarch64-linux-gnu/dri" > etc/environment.d/50opt-mesa.conf
+  echo "LIBGL_DRIVERS_PATH=/opt/mesa/lib/aarch64-linux-gnu/dri:/usr/lib/aarch64-linux-gnu/dri" >> etc/environment.d/50opt-mesa.conf
+  echo "GBM_DRIVERS_PATH=/opt/mesa/lib/aarch64-linux-gnu/dri:/usr/lib/aarch64-linux-gnu/dri" >> etc/environment.d/50opt-mesa.conf
   echo "/opt/mesa/lib/aarch64-linux-gnu" > etc/ld.so.conf.d/aaa-mesa.conf
 elif [ "${2}" = "i686" ]; then
-  echo "LD_LIBRARY_PATH=/opt/mesa/lib/i386-linux-gnu/dri:/usr/lib/i386-linux-gnu/dri" > etc/environment.d/50-opt-mesa.conf
-  echo "LIBGL_DRIVERS_PATH=/opt/mesa/lib/i386-linux-gnu/dri:/usr/lib/i386-linux-gnu/dri" >> etc/environment.d/50-opt-mesa.conf
-  echo "GBM_DRIVERS_PATH=/opt/mesa/lib/i386-linux-gnu/dri:/usr/lib/i386-linux-gnu/dri" >> etc/environment.d/50-opt-mesa.conf
+  echo "LD_LIBRARY_PATH=/opt/mesa/lib/i386-linux-gnu/dri:/usr/lib/i386-linux-gnu/dri" > etc/environment.d/50opt-mesa.conf
+  echo "LIBGL_DRIVERS_PATH=/opt/mesa/lib/i386-linux-gnu/dri:/usr/lib/i386-linux-gnu/dri" >> etc/environment.d/50opt-mesa.conf
+  echo "GBM_DRIVERS_PATH=/opt/mesa/lib/i386-linux-gnu/dri:/usr/lib/i386-linux-gnu/dri" >> etc/environment.d/50opt-mesa.conf
   echo "/opt/mesa/lib/i386-linux-gnu" > etc/ld.so.conf.d/aaa-mesa.conf
 elif [ "${2}" = "x86_64" ]; then
-  echo "LD_LIBRARY_PATH=/opt/mesa/lib/x86_64-linux-gnu/dri:/usr/lib/x86_64-linux-gnu/dri" > etc/environment.d/50-opt-mesa.conf
-  echo "LIBGL_DRIVERS_PATH=/opt/mesa/lib/x86_64-linux-gnu/dri:/usr/lib/x86_64-linux-gnu/dri" >> etc/environment.d/50-opt-mesa.conf
-  echo "GBM_DRIVERS_PATH=/opt/mesa/lib/x86_64-linux-gnu/dri:/usr/lib/x86_64-linux-gnu/dri" >> etc/environment.d/50-opt-mesa.conf
+  echo "LD_LIBRARY_PATH=/opt/mesa/lib/x86_64-linux-gnu/dri:/usr/lib/x86_64-linux-gnu/dri" > etc/environment.d/50opt-mesa.conf
+  echo "LIBGL_DRIVERS_PATH=/opt/mesa/lib/x86_64-linux-gnu/dri:/usr/lib/x86_64-linux-gnu/dri" >> etc/environment.d/50opt-mesa.conf
+  echo "GBM_DRIVERS_PATH=/opt/mesa/lib/x86_64-linux-gnu/dri:/usr/lib/x86_64-linux-gnu/dri" >> etc/environment.d/50opt-mesa.conf
   echo "/opt/mesa/lib/x86_64-linux-gnu" > etc/ld.so.conf.d/aaa-mesa.conf
 fi
+cp etc/environment.d/50opt-mesa.conf etc/X11/Xsession.d/50opt-mesa.conf
+echo "export LD_LIBRARY_PATH LIBGL_DRIVERS_PATH GBM_DRIVERS_PATH" >> etc/X11/Xsession.d/50opt-mesa.conf
 
 # add some imagebuilder version info as /etc/imagebuilder-info
 IMAGEBUILDER_VERSION=$(cd ${WORKDIR}; git rev-parse --verify HEAD)
