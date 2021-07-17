@@ -17,6 +17,7 @@
 - lenovo chromebook c330 - hana
 - lenovo chromebook s330 - hana
 - lenovo chromebook 100e 2nd gen - hana
+- lenovo ideapad flex 3 chromebook (mt8173 version) - hana
 
 ## generic mainline linux on arm chromebook notes
 

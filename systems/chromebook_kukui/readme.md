@@ -14,9 +14,13 @@
 ## untested systems
 
 - acer chromebook spin cp311-3h - juniper
-- acer chromebook cm3 - kakadu
-- acer chromebook flip cm3 - damu
+- acer chromebook 311 (c722/c722t) - willow
+- asus chromebook cm3 - kakadu
+- asus chromebook flip cm3 - damu
+- asus chromebook flip cz1 - cerise
 - hp chromebook 11a - kappa
+- lenovo ideapad flex 3 chromebook (mt8183 version) - fennel
+- lenovo 10e chromebook tablet - kodama
 
 ## generic mainline linux on arm chromebook notes
 
