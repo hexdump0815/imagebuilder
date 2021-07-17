@@ -40,8 +40,10 @@ echo zstd > /sys/module/zswap/parameters/compressor
 echo z3fold > /sys/module/zswap/parameters/zpool
 # default is 20, less means less compressed memory and less cpu usage
 # for compression, more is the other way around, depends on actual hw
-# with 10 there is no big win on memory, but only compressed pages
+# with 10 there is a ~25% win on memory, but only compressed pages
 # are written to the swap sapce and thus io to emmc/sd is reduced
-# after some real world testing it looks like 35 is a useable value too
-echo 20 > /sys/module/zswap/parameters/max_pool_percent
+# this seems to be some kind of a sweet spot for running low performance
+# systems for a longer time without being busy compressing/decompressing
+# the memory all the time ... in some situations up to 35 might be ok
+echo 10 > /sys/module/zswap/parameters/max_pool_percent
 echo 1 > /sys/module/zswap/parameters/enabled
