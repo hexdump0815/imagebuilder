@@ -6,11 +6,13 @@ case "$1" in
     # unload bt modules
     rmmod btmrvl_sdio
     rmmod btmrvl
+    rmmod btsdio
     sleep 1
     ;;
 
   "post")
     # load bt modules
+    modprobe btsdio
     modprobe btmrvl
     modprobe btmrvl_sdio
     # reload the wifi module
