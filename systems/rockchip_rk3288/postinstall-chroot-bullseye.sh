@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # block update of the installed mesa packages as some of their contents get changed
-apt-mark libgl1-mesa-dri mesa-va-drivers
+apt-mark hold libgl1-mesa-dri mesa-va-drivers
 
 # symlink the own mesa dri drivers into the system - on debian there seems to be no
 # other way - the /etc/environtment* approach working for ubuntu does not seem to work
