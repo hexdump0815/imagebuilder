@@ -32,7 +32,7 @@ if [ "${2}" = "i686" ] || [ "${2}" = "x86_64" ]; then
   POSSIBLE_TARGET_HOST="x86_64"
 fi
 
-if [ $(uname -m) != ${2} ] || [ $(uname -m) != ${POSSIBLE_TARGET_HOST} ]; then
+if [ $(uname -m) = ${2} ] || [ $(uname -m) = ${POSSIBLE_TARGET_HOST} ]; then
   echo ""
   echo "the target arch ${2} is supported by the arch this system is running on: $(uname -m) - moving on"
   echo ""
