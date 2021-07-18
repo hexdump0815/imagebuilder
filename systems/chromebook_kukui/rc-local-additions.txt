@@ -1,3 +1,5 @@
 # not enven suspend to idle works on krane yet, but lets just do it anyway ...
 # enable light supend mode, i.e. only cpu is put into sleep, everything else stays alive
 #echo s2idle > /sys/power/mem_sleep
+
+modprobe mt8183-mt6358-ts3a227-max98357
