@@ -10,3 +10,6 @@
   - u-boot has some display related info in its dts and the display works in spring u-boot
   - legacy kernel has working display support
   - add the missing dts parts based on u-boot, legacy and maybe partiall also peach info
+- get ucm and sound working properly
+  - currently ucm is initializing the mixer settings properly, but pulseaudio cannot deal properly with the resulting ucm setup
+  - there is a hack in place so that there isat least some working pulseaudio output
