@@ -1,7 +1,7 @@
 # temporary hacks for spring with legacy kernel
 # check that the legacy chromeos kernel is not in use
 uname -r | grep -q ^3
-if [ "$?" != "0"]; then
+if [ "$?" != "0" ]; then
   # enable light supend mode, i.e. only cpu is put into sleep, everything else stays alive
   echo s2idle > /sys/power/mem_sleep
 
