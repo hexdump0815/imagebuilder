@@ -35,15 +35,18 @@ if [ -d /sys/block/sda ] || [ -d /sys/block/sdb ] || [ -d /sys/block/sdc ]; then
   done
 fi
 
-# do some low memory optimization by using zswap memory compression
-echo zstd > /sys/module/zswap/parameters/compressor 
-echo z3fold > /sys/module/zswap/parameters/zpool
-# default is 20, less means less compressed memory and less cpu usage
-# for compression, more is the other way around, depends on actual hw
-# with 10 there is a ~25% win on memory, but only compressed pages
-# are written to the swap sapce and thus io to emmc/sd is reduced
-# this seems to be some kind of a sweet spot for running low performance
-# systems for a longer time without being busy compressing/decompressing
-# the memory all the time ... in some situations up to 35 might be ok
-echo 10 > /sys/module/zswap/parameters/max_pool_percent
-echo 1 > /sys/module/zswap/parameters/enabled
+# do the zswap setup only if zswap is around
+if [ -f /sys/module/zswap/parameters/enabled ]; then
+  # do some low memory optimization by using zswap memory compression
+  echo zstd > /sys/module/zswap/parameters/compressor 
+  echo z3fold > /sys/module/zswap/parameters/zpool
+  # default is 20, less means less compressed memory and less cpu usage
+  # for compression, more is the other way around, depends on actual hw
+  # with 10 there is a ~25% win on memory, but only compressed pages
+  # are written to the swap sapce and thus io to emmc/sd is reduced
+  # this seems to be some kind of a sweet spot for running low performance
+  # systems for a longer time without being busy compressing/decompressing
+  # the memory all the time ... in some situations up to 35 might be ok
+  echo 10 > /sys/module/zswap/parameters/max_pool_percent
+  echo 1 > /sys/module/zswap/parameters/enabled
+fi
