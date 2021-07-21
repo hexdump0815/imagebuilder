@@ -3,39 +3,47 @@
 case "$1" in
 
   "pre")
-    # unload bt modules
-    rmmod btmrvl_sdio
-    rmmod btmrvl
-    sleep 1
-    # switch to a text console as this reduces the risk of the video mode to get messed up after resume
-    chvt 6
-    sleep 1
+    # check that the legacy chromeos kernel is not in use
+    uname -r | grep -q ^3
+    if [ "$?" != "0" ]; then
+      # unload bt modules
+      rmmod btmrvl_sdio
+      rmmod btmrvl
+      sleep 1
+      # switch to a text console as this reduces the risk of the video mode to get messed up after resume
+      chvt 6
+      sleep 1
+    fi
     ;;
 
   "post")
-    # load bt modules
-    modprobe btmrvl
-    modprobe btmrvl_sdio
-    # reload the wifi module
-    rmmod mwifiex_sdio
-    sleep 1
-    modprobe mwifiex_sdio
-    # switch back to xorg console, this switch will also reconnect the keyboard
-    sleep 1
-    chvt 7
-    sleep 1
-    # create an empty xauth file and make it the default for this script
-    install -m 600 /dev/null /root/.Xauthority-nyan
-    export XAUTHORITY=/root/.Xauthority-nyan
-    # get the user of the xorg session
-    CONSOLE_USER=$(w | grep tty7 | awk '{print $1}')
-    # allow root (= this systemd script) to run xrandr for this user
-    xauth add $(xauth -f /home/${CONSOLE_USER}/.Xauthority list | tail -1)
-    # this will reset the display on nyan in case it gets messed up after resume
-    xrandr --display :0 --output eDP-1 --off
-    xrandr --display :0 --output eDP-1 --auto
-    # remove the temporary xauth file
-    rm -f /root/.Xauthority-nyan
+    # check that the legacy chromeos kernel is not in use
+    uname -r | grep -q ^3
+    if [ "$?" != "0" ]; then
+      # load bt modules
+      modprobe btmrvl
+      modprobe btmrvl_sdio
+      # reload the wifi module
+      rmmod mwifiex_sdio
+      sleep 1
+      modprobe mwifiex_sdio
+      # switch back to xorg console, this switch will also reconnect the keyboard
+      sleep 1
+      chvt 7
+      sleep 1
+      # create an empty xauth file and make it the default for this script
+      install -m 600 /dev/null /root/.Xauthority-nyan
+      export XAUTHORITY=/root/.Xauthority-nyan
+      # get the user of the xorg session
+      CONSOLE_USER=$(w | grep tty7 | awk '{print $1}')
+      # allow root (= this systemd script) to run xrandr for this user
+      xauth add $(xauth -f /home/${CONSOLE_USER}/.Xauthority list | tail -1)
+      # this will reset the display on nyan in case it gets messed up after resume
+      xrandr --display :0 --output eDP-1 --off
+      xrandr --display :0 --output eDP-1 --auto
+      # remove the temporary xauth file
+      rm -f /root/.Xauthority-nyan
+    fi
     ;;
 
   *)
