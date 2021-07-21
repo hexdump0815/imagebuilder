@@ -1,4 +1,4 @@
-# temporary hacks for spring with legacy kernel
+# temporary hacks for nyan with mainline / legacy kernel
 # check that the legacy chromeos kernel is not in use
 uname -r | grep -q ^3
 if [ "$?" != "0" ]; then
@@ -13,4 +13,41 @@ if [ "$?" != "0" ]; then
   #if [ -f /sys/kernel/debug/dri/129/pstate ]; then
   #  echo 06 > /sys/kernel/debug/dri/129/pstate
   #fi
+else
+  # for the legacy kernel the sound has to be initialized manually
+  amixer -q -c 1 cset name='Left Speaker Mixer Left DAC Switch' on 2> /dev/null
+  amixer -q -c 1 cset name='Right Speaker Mixer Right DAC Switch' on 2> /dev/null
+  amixer -q -c 1 cset name='Headphone Left Switch' on 2> /dev/null
+  amixer -q -c 1 cset name='Headphone Right Switch' on 2> /dev/null
+  amixer -q -c 1 cset name='Digital EQ 3 Band Switch' off 2> /dev/null
+  amixer -q -c 1 cset name='Digital EQ 5 Band Switch' off 2> /dev/null
+  amixer -q -c 1 cset name='Digital EQ 7 Band Switch' off 2> /dev/null
+  amixer -q -c 1 cset name='Biquad Switch' off 2> /dev/null
+  amixer -q -c 1 cset name='Filter Mode' Music 2> /dev/null
+  amixer -q -c 1 cset name='ADC Oversampling Rate' 0 2> /dev/null
+  amixer -q -c 1 cset name='DMIC Mux' DMIC 2> /dev/null
+  amixer -q -c 1 cset name='MIC2 Mux' IN34 2> /dev/null
+  amixer -q -c 1 cset name='Right ADC Mixer MIC2 Switch' on 2> /dev/null
+  amixer -q -c 1 cset name='Left ADC Mixer MIC2 Switch' on 2> /dev/null
+  amixer -q -c 1 cset name='MIC2 Volume' 10 2> /dev/null
+  amixer -q -c 1 cset name='MIC2 Boost Volume' 0 2> /dev/null
+  amixer -q -c 1 cset name='Mic Jack Switch' off 2> /dev/null
+  amixer -q -c 1 cset name='Int Mic Switch' on 2> /dev/null
+  amixer -q -c 1 cset name='ADCR Boost Volume' 4 2> /dev/null
+  amixer -q -c 1 cset name='ADCL Boost Volume' 4 2> /dev/null
+  amixer -q -c 1 cset name='ADCR Volume' 11 2> /dev/null
+  amixer -q -c 1 cset name='ADCL Volume' 11 2> /dev/null
+  amixer -q -c 1 cset name='Left Speaker Mixer Left DAC Switch' on 2> /dev/null
+  amixer -q -c 1 cset name='Right Speaker Mixer Right DAC Switch' on 2> /dev/null
+  amixer -q -c 1 cset name='Speaker Left Mixer Volume' 2 2> /dev/null
+  amixer -q -c 1 cset name='Speaker Right Mixer Volume' 2 2> /dev/null
+  amixer -q -c 1 cset name='Record Path DC Blocking' on 2> /dev/null
+  amixer -q -c 1 cset name='Playback Path DC Blocking' on 2> /dev/null
+  amixer -q -c 1 cset name='Headphone Left Switch' on 2> /dev/null
+  amixer -q -c 1 cset name='Headphone Right Switch' on 2> /dev/null
+  # this one does not seem to exist with the legacy kernel
+  #amixer -q -c 1 cset name='Headphones Switch' off 2> /dev/null
+  amixer -q -c 1 cset name='Speaker Left Switch' on 2> /dev/null
+  amixer -q -c 1 cset name='Speaker Right Switch' on 2> /dev/null
+  amixer -q -c 1 cset name='Speakers Switch' on 2> /dev/null
 fi
