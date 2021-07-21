@@ -13,7 +13,8 @@ if [ "$?" != "0" ]; then
   #if [ -f /sys/kernel/debug/dri/129/pstate ]; then
   #  echo 06 > /sys/kernel/debug/dri/129/pstate
   #fi
-else
+# run the below only on the first boot, i.e. when there is no asound.state yet
+elif [ ! -f /var/lib/alsa/asound.state ]; then
   # for the legacy kernel the sound has to be initialized manually
   amixer -q -c 1 cset name='Left Speaker Mixer Left DAC Switch' on 2> /dev/null
   amixer -q -c 1 cset name='Right Speaker Mixer Right DAC Switch' on 2> /dev/null
