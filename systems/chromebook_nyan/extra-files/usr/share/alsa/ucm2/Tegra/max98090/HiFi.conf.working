@@ -45,6 +45,7 @@ SectionDevice."Speaker".0 {
 	]
 	DisableSequence [
 	]
+}
 
 #SectionDevice."Headphone".0 {
 #	Value {
