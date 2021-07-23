@@ -1,0 +1,6 @@
+- change default search engine in firefox to duckduckgo.com instead of google
+- add onboard as onscreen keyboard to the login window and the default xfce session
+- fix screen lock problem on focal after suspend (it looks like two screen lockers are fighting with each other)
+- add more doc info to the top level readme (initial setup, scripts in /scripts dir etc.)
+- add some notes about installing to emmc with luks encrypted root disk on system where it is possible
+- add some notes about getting hibernation working on systems where it is working
