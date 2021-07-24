@@ -81,7 +81,6 @@ mount -o bind /dev ${BUILD_ROOT}/dev
 mount -o bind /dev/pts ${BUILD_ROOT}/dev/pts
 mount -t sysfs /sys ${BUILD_ROOT}/sys
 mount -t proc /proc ${BUILD_ROOT}/proc
-
 chroot ${BUILD_ROOT} /create-chroot-stage-02.sh ${3} ${DEFAULT_USERNAME}
 
 cd ${BUILD_ROOT}/
@@ -94,6 +93,20 @@ if [ -f ${DOWNLOAD_DIR}/kernel-${1}-${2}.tar.gz ]; then
   tar --numeric-owner -xhzf ${DOWNLOAD_DIR}/kernel-${1}-${2}.tar.gz
   if [ -f ${DOWNLOAD_DIR}/kernel-mali-${1}-${2}.tar.gz ]; then
     tar --numeric-owner -xhzf ${DOWNLOAD_DIR}/kernel-mali-${1}-${2}.tar.gz
+  fi
+fi
+
+# if there is no own kernel, then install the dist kernel
+if [ "$3" = "focal" ] || [ "$3" = "sonaremin" ]; then
+  if [ "$2" = "x86_64" ] && [ "${OWN_KERNEL}" != "true" ]; then
+    chroot ${BUILD_ROOT} apt-get -yq install linux-image-generic
+  fi
+elif [ "$3" = "bullseye" ]; then
+  if [ "$2" = "i686" ] && [ "${OWN_KERNEL}" != "true" ]; then
+    chroot ${BUILD_ROOT} apt-get -yq install linux-image-686
+  # in the chromebook native case there is an own special cros kernel
+  elif [ "$2" = "x86_64" ] && [ "${OWN_KERNEL}" != "true" ]; then
+    chroot ${BUILD_ROOT} apt-get -yq install linux-image-amd64
   fi
 fi
 
