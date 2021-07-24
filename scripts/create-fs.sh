@@ -89,6 +89,8 @@ cd ${BUILD_ROOT}/
 rm -f create-chroot-stage-0?.sh
 
 if [ -f ${DOWNLOAD_DIR}/kernel-${1}-${2}.tar.gz ]; then
+  # this might be used later in the scripts to distinguish between own and dist kernel
+  export OWN_KERNEL="true"
   tar --numeric-owner -xhzf ${DOWNLOAD_DIR}/kernel-${1}-${2}.tar.gz
   if [ -f ${DOWNLOAD_DIR}/kernel-mali-${1}-${2}.tar.gz ]; then
     tar --numeric-owner -xhzf ${DOWNLOAD_DIR}/kernel-mali-${1}-${2}.tar.gz
