@@ -27,3 +27,4 @@
 - get ucm and sound working properly
   - currently ucm is initializing the mixer settings properly, but pulseaudio cannot deal properly with the resulting ucm setup
   - there is a hack in place so that there isat least some working pulseaudio output
+- get u-boot working properly, i.e. one u-boot working for the 2gb/hd and 4gb/full hd model and properly working display all the time
