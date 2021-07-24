@@ -12,6 +12,9 @@ apt-get -yq upgrade
 # TODO: libllvm10 is here for the self built mesa, maybe it can go soon or already ...
 if [ "$1" = "focal" ]; then 
   apt-get -yq install locales vim openssh-server ssh-askpass sudo net-tools ifupdown iputils-ping kmod less rsync u-boot-tools usbutils dosfstools mesa-utils mesa-utils-extra console-data xubuntu-desktop linux-firmware lvm2 cryptsetup-bin slick-greeter rsyslog btrfs-progs btrfs-compsize dialog libllvm10 cgpt liblz4-tool vboot-kernel-utils plymouth plymouth-label plymouth-theme-xubuntu-logo plymouth-theme-xubuntu-text xserver-xorg-video-fbdev
+  # light-locker is broken in ubuntu focal after resume from suspend so remove it
+  # the xfce internal locker works fine, so the locking functionality is still there
+  apt-get -yq remove light-locker
   # in the chromebook native case there is an own special cros kernel
   if [ "$2" = "x86_64" ] && [ "${CROSPARTS}" != "true" ]; then
     apt-get -yq install linux-image-generic
