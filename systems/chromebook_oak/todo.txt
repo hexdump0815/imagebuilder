@@ -1,0 +1,1 @@
+- check if it is possible to somehow use the binary opengl driver working with the kernel driver which has been forward ported to mainline (either with armv7l userland and the chromeos blobs or maybe even with aarch64 userland if there are any other blobs)

@@ -2,8 +2,7 @@
 
 ## bootable sd card images
 
-- https://github.com/hexdump0815/imagebuilder/releases/tag/210509-01
-- https://github.com/hexdump0815/imagebuilder/releases/tag/210321-01
+- https://github.com/hexdump0815/imagebuilder/releases/tag/210724-02
 
 ## tested systems - working
 
@@ -29,7 +28,9 @@
 
 ## special notes
 
+- most things seem to work more or less
 - there is no gpu acceleration as there is no open source driver available for the powervr gpu in the mt8173 soc, mesa software rendering is used instead for opengl etc.
 - suspend/resume status:
-  - with v5.10.25 it works fine (console and xorg) with https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_oak/extra-files/usr/lib/systemd/system-sleep/mrvl-reload - so allimages after version 210509-01 should be fine
+  - with v5.10 it works fine (console and xorg) with https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_oak/extra-files/usr/lib/systemd/system-sleep/mrvl-reload - so all images starting with version 210724-02 should be fine
   - with v5.13.0 it works but drm fails on restore - bisecting required
+- the current sound setup is more a hack than something real, but for basic stuff it seems to work

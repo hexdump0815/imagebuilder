@@ -2,14 +2,12 @@
 
 ## bootable sd card images
 
-- https://github.com/hexdump0815/imagebuilder/releases/tag/210321-01
+- https://github.com/hexdump0815/imagebuilder/releases/tag/210724-03
 
 ## tested systems - working
 
 - lenovo ideapad duet 10.1 chromebook - krane
-  - somewhat working, see notes for the release download
 - acer chromebook spin cp311-3h - juniper
-  - somewhat working with v5.13 kernel - see notes below
 
 ## untested systems
 
@@ -33,12 +31,12 @@
 
 ## special notes
 
-- krane is working ok with the v5.10 kernel
-- krane and juniper are working ok with the v5.13 kernel
-  - gpu did not work for me yet (tested with xorg only so far), seems to work in cadmium so should be fixable
-  - krane has usb bandwidth problems most probably due to usb-c only and some patches missing
-  - juniper can not get edid info for its panel driver if panfrost is y, works with panfrost m
-  - kernel config is merged for both mt8173 and mt8183, mt8183 still seem to break mt8173 drm - so they need to be compiled separately for now
-- things to come:
-  - wlan and bluetooth - firmware files from cadmium are in now
-  - sound - cadmium has it working, ucm files are available from chromium sources
+- most things seem to work more or less (mostly thanks to the kernel patches partially taken from https://github.com/Maccraft123/Cadmium/tree/master/baseboard/kukui/patches)
+- juniper: sometimes the touchpad does not seem to work after booting, rebooting usually helps
+- krane: the display rotation will be set properly after the first reboot automatically, so just reboot once more after the first time
+- some log spamming kernel messages have been silenced:
+  - krane has usb bandwidth problems, especially with usb audio
+  - juniper seems to have some audio related interrupt issues
+- the kernel config is merged now for both mt8173 and mt8183, mt8183 patches still seem to break mt8173 drm - so they need to be compiled separately for now
+- so far only juniper and krane are supported, but other mt8183 chromebooks might be added easily
+- the current sound setup is more a hack than something real, but for basic stuff it seems to work
