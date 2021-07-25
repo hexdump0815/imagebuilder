@@ -1,0 +1,32 @@
+from: https://wiki.archlinux.org/index.php/Power_management/Suspend_and_hibernate#Hibernation_into_swap_file_on_Btrfs
+
+IMPORTANT for 32bit arches: compile with -D_FILE_OFFSET_BITS=64 !!!
+
+
+Hibernation into swap file on Btrfs
+
+Hibernation onto a swap file is supported by recent versions of systemd [3].
+
+The resume_offset number can be computed using the tool btrfs_map_physical.c. Do not try to use the filefrag tool, on Btrfs the "physical" offset you get from filefrag is not the real physical offset on disk; there is a virtual disk address space in order to support multiple devices. [4]
+
+Download or copy the tool btrfs_map_physical.c into a file named btrfs_map_physical.c, then compile it,
+
+$ gcc -O2 -o btrfs_map_physical btrfs_map_physical.c
+
+and run it. An example output is shown below.
+
+# ./btrfs_map_physical /path/to/swapfile
+
+FILE OFFSET  EXTENT TYPE  LOGICAL SIZE  LOGICAL OFFSET  PHYSICAL SIZE  DEVID  PHYSICAL OFFSET
+0            regular      4096          2927632384      268435456      1      4009762816
+4096         prealloc     268431360     2927636480      268431360      1      4009766912
+268435456    prealloc     268435456     3251634176      268435456      1      4333764608
+536870912    prealloc     268435456     3520069632      268435456      1      4602200064
+805306368    prealloc     268435456     3788505088      268435456      1      4870635520
+1073741824   prealloc     268435456     4056940544      268435456      1      5139070976
+1342177280   prealloc     268435456     4325376000      268435456      1      5407506432
+1610612736   prealloc     268435456     4593811456      268435456      1      5675941888
+
+Note the the first physical offset returned by this tool. In this example, we use 4009762816. Also note the pagesize that can be found with getconf PAGESIZE.
+
+To compute the resume_offset value, divide the physical offset by the pagesize. In this example, it is 4009762816 / 4096 = 978946.

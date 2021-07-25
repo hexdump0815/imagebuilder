@@ -1,0 +1,36 @@
+btrfs and hibernation info
+
+# check btrfs fs for consistency - recalc chksums and compare if they are stil lthe same
+btrfs scrub start /dev/btrfs-device
+btrfs scrub status /dev/btrfs-device
+
+# hibernate, i.e. suspend to disk with encrypted rootfs and swapfile (btrfs and ext4)
+# see: https://wiki.archlinux.org/index.php/Power_management/Suspend_and_hibernate
+#      https://askubuntu.com/questions/1034185/ubuntu-18-04-cant-resume-after-hibernate
+#      https://github.com/systemd/systemd/issues/14249#issuecomment-565739381
+#      https://ubuntuforums.org/showthread.php?t=2386567
+# kernel options required:
+# CONFIG_HIBERNATE_CALLBACKS=y
+# CONFIG_HIBERNATION=y
+# CONFIG_PM_STD_PARTITION=""
+
+# this seems to be not required on debian bullseye, but ubuntu focal needs it
+# see files subdir for file content
+vi /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla
+mkdir -p /etc/systemd/system/systemd-hibernate.service.d
+vi /etc/systemd/system/systemd-hibernate.service.d/override.conf
+systemctl daemon-reload
+
+# see files subdir for btrfs_map_physical source and info
+btrfs_map_physical /swap/file
+# the last value of the first line (first physical offset of the swap file) is what we want
+# divide result by page size (getconf PAGESIZE) = 4096
+# for ext4: filefrag -v /swapfile | awk '{ if($1=="0:"){print substr($4, 1, length($4)-2)} }'
+# in this case no further division is required
+#
+# grub or uboot params: resume=/dev/mapper/encrypted resume_offset=<divided number from above>
+# /etc/initramfs-tools/conf.d/resume:
+RESUME=/dev/mapper/encrypted
+RESUME_OFFSET=<divided number from above>
+
+# hibernate via: logout menu in xfce or systemctl hibernate

@@ -1,0 +1,224 @@
+install to emmc with luks full disk encryption
+
+these are some notes about how to install the system booted from sd card or
+usb onto the internal emmc storage. this is just the most probably most
+common use case, but the target can also be any other storage device, even
+another sd card or usb drive. it is focussed on chromebooks, but many parts
+can be used in the same or a similar way for other systems.
+
+IMPORTANT: in case the target is the internal emmc of a chromebook, it is
+very recommended to set the gbb flags to 0x19 as otherwise one might end up
+in a situation where the system gets unbootable when the usb boot flags get
+lost due to a drained battery
+
+IMPORTANT: better do not do this on amlogic or rockchip android tv boxes as
+they usually have essential parts required for the boot process located at
+certain places in the emmc and might get unbootable if they get overwritten.
+there are ways to work around this in some situations, but they are far from
+trivial and might not work in all situations. allwinner tv boxes should be
+fine as allwinner socs always boot from sd card first by default (better
+test it before starting to overwrite the emmc)
+
+# chromebook partition setup required for chromebooks - see scripts/create-image.sh
+# this will create two chromeos kernel partitions
+apt-get install cgpt
+sgdisk -Z /dev/mmcblk0
+partprobe /dev/mmcblk0
+sgdisk -C -e -G /dev/mmcblk0
+partprobe /dev/mmcblk0
+cgpt create /dev/mmcblk0
+partprobe /dev/mmcblk0
+cgpt add -i 1 -t kernel -b 8192 -s 65536 -l KernelA -S 1 -T 2 -P 10 /dev/mmcblk0
+cgpt add -i 2 -t kernel -b 73728 -s 65536 -l KernelB -S 0 -T 2 -P 5 /dev/mmcblk0
+
+# side note: n case of a dd copy a full disk and the 4th partition is too large
+# for the target disk - just delete it while fixing the gpt table and recreate it
+# afterwards with fdisk
+# sgdisk -C -e -G -d=4 /dev/targetdisk
+
+# now fdisk by hand to get to something like below - for non chromebooks a 512mb
+# boot partitions and a large partition for the encrypted root as p1 and p2 might
+# be good, for efi setups a 128mb efi partitions (partition type 1) as p1 and
+# boot and root as p2 and p3 might work well - non chromebook and non efi setups
+# usually do not need a gpt partition table and an empty mbr partition table
+# (o in fdisk) might be a good start - as a result the partition numers might
+# differ from the examples below
+
+fdisk -l /dev/mmcblk0
+Disk /dev/mmcblk0: 29.12 GiB, 31268536320 bytes, 61071360 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 44BBFDC7-6617-FF43-9DC7-5817789BF8A6
+
+Device           Start      End  Sectors  Size Type
+/dev/mmcblk0p1    8192    73727    65536   32M ChromeOS kernel
+/dev/mmcblk0p2   73728   139263    65536   32M ChromeOS kernel
+/dev/mmcblk0p3  139264  1187839  1048576  512M Linux filesystem
+/dev/mmcblk0p4 1187840 61071326 59883487 28.6G Linux filesystem
+
+# set the boot partition lecacy bootable in fdisk:
+# mbr: a 1 w (for partition 1)
+# gpt: x A 3 r w (for partition 3) - gpt example below:
+/dev/mmcblk0p3  139264  1187839  1048576 0FC63DAF-8483-4772-8E79-3D69D8477DE4 41D13648-115C-AA4E-A49B-A41FB6968AE7      LegacyBIOSBootable
+
+# side note: for very low end armv7 systems adiantum might be a good idea for the crypto
+# cryptsetup luksFormat -c xchacha12,aes-adiantum-plain64 -s 256 /dev/xyz
+# luks2 - just for reference, not used or needed here
+# cryptsetup luksFormat --type luks2 --sector-size 4096 -c xchacha12,aes-adiantum-plain64 -s 256 /dev/xyz
+
+# create and ext4 fs without journal on boot, setup the crypt stuff and create
+# a btrfs fs on it (ext4 example below) - partition numbers based on the chromebook
+# example from above - might need to be adjusted
+mkfs -t ext4 -O ^has_journal -m 0 -L bootemmc /dev/mmcblk0p3
+cryptsetup luksFormat /dev/mmcblk0p4
+cryptsetup open --type luks /dev/mmcblk0p4 encrypted
+mkfs -t btrfs -m single -L rootemmc /dev/mapper/encrypted 
+mount -o ssd,compress-force=zstd,noatime,nodiratime /dev/mapper/encrypted /mnt
+# ext4 case without journal (to reduce writes to emmc etc.)
+# mkfs -t ext4 -O ^has_journal -L rootemmc /dev/mapper/encrypted
+# mount -o noatime,nodiratime,errors=remount-ro /dev/mapper/encrypted /mnt
+
+# mount the fresh crypted root disk to /mnt and the other parts as well
+cd /mnt
+mkdir -p /mnt/boot
+mount /dev/mmcblk0p3 /mnt/boot
+# efi case
+# mkdir -p /mnt/boot/efi
+# mount /dev/your_efi_partition /mnt/boot/efi
+
+# copy over the currently running system - efi will be installed from scratch
+rsync -axADHSX --no-inc-recursive --delete /boot/ /mnt/boot
+rsync -axADHSX --no-inc-recursive --delete --exclude='/swap/*' / /mnt
+
+# create swap files or file - the brtfs cmds will give an error in the ext4
+# case, but this should be no problem
+rm -rf /mnt/swap
+btrfs subvolume create /mnt/swap
+chmod 755 /mnt/swap
+chattr -R +C /mnt/swap
+btrfs property set /mnt/swap compression none
+cd /mnt/swap
+# see https://blog.passcod.name/2020/jun/16/full-disk-encryption-with-btrfs-swap-and-hibernation
+truncate -s 0 ./file; btrfs property set ./file compression none; fallocate -l 2G file; chmod 600 ./file; mkswap -L file ./file
+# alternative for multiple smaller swap files
+for i in 0 1 2 3 ; do truncate -s 0 ./file.$i; btrfs property set ./file.$i compression none; fallocate -l 512M file.$i; chmod 600 ./file.$i; mkswap -L file.$i ./file.$i; done
+cd ..
+
+# adjust partition table and hostname (if wanted) - fstab example below
+vi etc/fstab etc/hosts etc/hostname 
+
+# /etc/fstab: static file system information.
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# LABEL=rootemmc / ext4 defaults,noatime,nodiratime,errors=remount-ro 0 1
+LABEL=rootemmc / btrfs defaults,ssd,compress-force=zstd,noatime,nodiratime 0 1
+LABEL=bootemmc /boot ext4 defaults 0 2
+/swap/file none swap sw 0 0
+#/swap/file.0 none swap sw 0 0
+#/swap/file.1 none swap sw 0 0
+#/swap/file.2 none swap sw 0 0
+#/swap/file.3 none swap sw 0 0
+
+# adjust the crypttab file, so that initrd knows which disk to setup encrypted
+vi etc/crypttab
+
+# the uuid can be obtained via blkid cmd for the partition we used for cryptsetup above
+encrypted UUID=26519515-9875-4bb3-b244-0e9d403bc794 none luks,discard
+
+# enter chroot of the new system to do some required setup
+chroot /mnt mount -t proc proc /proc 
+chroot /mnt mount -t sysfs sysfs /sys 
+mount --bind /dev /mnt/dev 
+mount --bind /run /mnt/run 
+chroot /mnt
+
+# enable xz compression for initrd - saves space in /boot and makes initrd smaller
+# for fit image in case that is needed - memlimit might need adjustment in case
+# update-initramfs gives an error
+# create /etc/initramfs-tools/conf.d/compress:
+COMPRESS=xz
+XZ_OPT='-9 --check=crc32 –memlimit-compress=25%'
+
+# rebuild initrd for all kernels to have the crypttab setup in it
+update-initramfs -c -k all
+
+# this section is required for chromebooks using fit images on aarch64 (gru,oak, kukui etc.)
+# the below example is for oak and needs to be adjusted accordingly - it can be put into a
+# script /boot/kernel-and-initrd.sh ... this needs to be run whenever a new kernel is being
+# built ... vmlinux.kpart-initrd-${kver} will be the cromeos style kernel image for the
+# chromeos kernel partition which contains the initrd with the cryptsetup info - without this
+# it will not be possible to access the crypted root disk
+# IMPORTANT: the resulting vmlinux.kpart-initrd... files has to be smaller than 32mb for
+#            aarch64 systems and smaller than 16mb for armv7l systems - thus its nearly
+#            impossible to do this on a armv7l system as the initrd is usually too big
+
+#!/bin/bash
+
+kver="5.10.50-stb-mt7+"
+
+cd /boot
+cp -v vmlinux.kpart-initrd-${kver} vmlinux.kpart-initrd-${kver}.old
+cp Image-${kver} Image
+lzma -9 -z -f -k -v Image
+cp initrd.img-${kver} initrd.img.xz
+echo "console=tty1 root=LABEL=rootemmc rootwait ro fsck.fix=yes fsck.repair=yes net.ifnames=0 ipv6.disable=1 quiet splash" > cmdline
+dd if=/dev/zero of=bootloader.bin bs=512 count=1
+mkimage -D "-I dts -O dtb -p 2048" -f auto -A arm64 -O linux -T kernel -C lzma -a 0 -d Image.lzma -b dtb-${kver}/mt8173-elm.dtb -b dtb-${kver}/mt8173-elm-hana.dtb -b dtb-${kver}/mt8173-elm-hana-rev7.dtb -i initrd.img.xz kernel.itb
+vbutil_kernel --pack vmlinux.kpart --keyblock /usr/share/vboot/devkeys/kernel.keyblock --signprivate /usr/share/vboot/devkeys/kernel_data_key.vbprivk --version 1 --config cmdline --bootloader bootloader.bin --vmlinuz kernel.itb --arch arm
+cp -v vmlinux.kpart /boot/vmlinux.kpart-initrd-${kver}
+rm -f Image Image.lzma initrd.img.xz cmdline bootloader.bin kernel.itb vmlinux.kpart
+echo ""
+echo "  dd if=vmlinux.kpart-initrd-${kver} of=/dev/mmcblk0p1"
+echo ""
+
+# exit chroot
+cd 
+
+# unmount chroot dirs
+umount /mnt/dev
+umount /mnt/proc
+umount /mnt/sys
+umount /mnt/run
+umount /mnt/boot/efi
+umount /mnt/boot
+umount /mnt
+
+# close the crypted device
+cryptsetup close encrypted
+
+# reboot in the hope that it will work :)
+reboot
+
+# some useful further cryptsetup info
+# from https://alvinalexander.com/linux-unix/how-change-disk-encryption-password-luks
+#  and https://www.lisenet.com/2013/luks-add-keys-backup-and-restore-volume-header/
+# multiple passphrases - max 8
+# get the used slots
+cryptsetup luksDump /dev/sdxy
+# add to some free slot - for example 1
+cryptsetup luksAddKey /dev/sdxy -S 1
+# remove a passphrase - IMPORTANT: do not remove the last one
+cryptsetup luksRemoveKey /dev/sdxy
+
+# home partition with the same key - apt-get install keyutils - kernel config: CONFIG_KEYS=y
+# see: /usr/share/doc/cryptsetup/README.keyctl
+cryptsetup luksFormat /dev/sdxy
+cryptsetup open --type luks /dev/sdxy homecrypt
+mkfs -t ext4 -O ^has_journal -m 0 -L home /dev/mapper/homecrypt
+
+/etc/crypttab:
+encrypted UUID=0e5bbb2c-0021-4e6d-adaa-de4bcd27d75b root_and_home luks,discard,keyscript=decrypt_keyctl
+homecrypt UUID=94fd468c-abfd-4bfb-930c-18eee845daeb root_and_home luks,keyscript=decrypt_keyctl
+
+# extending a luks crypt partition
+# see: https://unix.stackexchange.com/questions/320957/extend-a-luks-encrypted-partition-to-fill-disk
+cryptsetup luksOpen /dev/somedevice crypt-volume
+cryptsetup resize crypt-volume
+e2fsck -f /dev/mapper/crypt-volume
+resize2fs /dev/mapper/crypt-volume
+
+# some read/write queue optimization
+https://wiki.archlinux.org/index.php/Dm-crypt/Specialties#Disable_workqueue_for_increased_solid_state_drive_(SSD)_performance
+via: https://forum.armbian.com/topic/17272-cryptsetup-supporting-no_read_workqueueno_write_workqueue-on-ssds/
