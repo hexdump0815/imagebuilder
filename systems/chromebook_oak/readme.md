@@ -3,6 +3,8 @@
 ## bootable sd card images
 
 - https://github.com/hexdump0815/imagebuilder/releases/tag/210724-02
+- https://github.com/hexdump0815/imagebuilder/releases/tag/210509-01
+- https://github.com/hexdump0815/imagebuilder/releases/tag/210321-01
 
 ## tested systems - working
 
