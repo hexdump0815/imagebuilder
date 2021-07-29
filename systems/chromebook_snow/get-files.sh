@@ -6,6 +6,7 @@ LEGACY_KERNEL="no"
 chromebook_snow_release_version="5.10.25-stb-cbe%2B"
 chromebook_snow_legacy_release_version="3.10.38-cos-r91"
 chromebook_snow_uboot_version="v2017.09-cbe"
+chromebook_snow_alternative_uboot_version="v2018.11-cbe"
 chromebook_spring_uboot_version="v2018.11-cbe"
 chromebook_snow_mali_blob_version="9051dfe1f2198e2ed41c322359ee8324043d55a9"
 gl4es_focal_armv7l_version="9051dfe1f2198e2ed41c322359ee8324043d55a9"
@@ -14,6 +15,7 @@ rm -rf ${DOWNLOAD_DIR}/boot-extra-${1}
 mkdir -p ${DOWNLOAD_DIR}/boot-extra-${1}
 # get different u-boot versions for different exynos5250 chromebook versions
 wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_snow_uboot_version}/uboot.kpart.cbe-snow.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/uboot.kpart.cbe-snow
+wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_snow_alternative_uboot_version}/uboot.kpart.cbe.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/uboot.kpart.cbe-snow-alternative
 wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_spring_uboot_version}/uboot.kpart.cbe-spring.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/uboot.kpart.cbe-spring
 rm -f ${DOWNLOAD_DIR}/boot-chromebook_snow-armv7l.dd
 
