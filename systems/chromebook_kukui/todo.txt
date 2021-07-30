@@ -1,5 +1,5 @@
 - get the display working with mainline (currently it works with a lot of magic patches)
   - v5.13 looks better with fresher and less patches, but there is still room for improvements
 - get the usb bandwidth problems working with mainline (the happen mostly with usb audio i think - visible in the kernel logs)
-- maybe get more kukui systems supported beyond krane
+- maybe get more kukui systems supported beyond krane and juniper
 - there seems to be some probing dependency for the juniper panel: it only works if not compiled as a module
