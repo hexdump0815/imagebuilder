@@ -1,4 +1,4 @@
-# chromebook x86 uefi
+# chromebook x86 native chromeos boot
 
 ## bootable sd card images
 
