@@ -2,28 +2,26 @@
 
 ## bootable sd card images
 
-- coming soon
+- https://github.com/hexdump0815/imagebuilder/releases/tag/210724-04
 
 ## tested systems - working
 
-- coming soon
+- dell 3189 chromebook - kefka
 
-## tested systems - partially working
+## tested systems
 
-- coming soon
+- in theory it should work for nearly all intel chromebooks with a working uefi firmware installed
+- as there are no real chromebook dependency the chance is high that the images should simply work on most intel systems with uefi booting with secure boot disabled
 
-## generic mainline linux on arm chromebook notes
+## generic mainline linux on intel chromebook notes
 
-- coming soon
+- https://github.com/hexdump0815/linux-mainline-on-intel-chromebooks/blob/main/readme.md
 
 ## kernel build notes
 
-- coming soon
-
-## u-boot build notes
-
-- coming soon
+- the regular debian/ubuntu distribution kernel is used in this case, so no kernel build required
 
 ## special notes
 
-- coming soon
+- for using these images a uefi bios from https://mrchromebox.tech/ has to be installed first (if one is available at all)
+- images with 64bit userland (native) are provided as well as images with 32bit userland, which might be better for systems with only 2gb ram due to the lower ram consumption (about a third less for 32bit vs. 64bit)

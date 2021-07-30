@@ -1,1 +1,2 @@
-- coming soon
+- investigate if it is maybe possible to use mainline kernels for this kind of booting as well
+  - check which kernel config options would be required in this case

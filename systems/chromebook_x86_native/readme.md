@@ -2,28 +2,26 @@
 
 ## bootable sd card images
 
-- coming soon
+- none yet
 
 ## tested systems - working
 
-- coming soon
+- hp chromebook x360 12b with celeron n4000 - bloog
 
-## tested systems - partially working
+## untested systems
 
-- coming soon
+- maybe other intel chromebooks with gemini lake socs using a 4.14 kernel are working fully or partially as well
 
-## generic mainline linux on arm chromebook notes
+## generic mainline linux on intel chromebook notes
 
-- coming soon
+- https://github.com/hexdump0815/linux-mainline-on-intel-chromebooks/blob/main/readme.md
 
 ## kernel build notes
 
-- coming soon
-
-## u-boot build notes
-
-- coming soon
+- https://github.com/hexdump0815/linux-chromeos-kernel/blob/main/readme.414
 
 ## special notes
 
-- coming soon
+- there is no legacy or uefi firmware available from https://mrchromebox.tech/ for gemini lake chromebooks, so booting regular linux installers on them does not work
+- these images are using the native chromeos boot procedure (chromeos kernel format written to special chromeos kernel partitions) to be able to run a regular linux system on them anyway
+- currently a self compiled kernel is used based on the corresponding chromeos kernel for those devices
