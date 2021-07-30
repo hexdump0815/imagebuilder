@@ -2,6 +2,7 @@
 
 ## bootable sd card images
 
+- https://github.com/hexdump0815/imagebuilder/releases/tag/210725-02
 - https://github.com/hexdump0815/imagebuilder/releases/tag/210613-04
 - https://github.com/hexdump0815/imagebuilder/releases/tag/210321-01
 - https://github.com/hexdump0815/imagebuilder/releases/tag/191230-01
@@ -38,11 +39,12 @@
   - usb3 port gives trouble with suspend, so i disabled it
   - webcam will not work (the usb bus it is connected to is somehow not seen in mainline)
   - 3g modem (if installed) will not work (situation similar to the webcam i guess, no idea if there even exists a driver for it)
-  - until image version 210613-04 full suspend/resume/hibernation do not work properly, so suspend to idle is configured by default and seems to work perfectly and the chromebook should survive about a day in this state from battery
-  - for all images after version 210613-04 full deep suspend/resume should work fine
+  - before version 210725-02 full suspend/resume/hibernation do not work properly, so suspend to idle is configured by default and seems to work perfectly and the chromebook should survive about a day in this state from battery
+  - for all images starting with version 210725-02 full deep suspend/resume should work fine
 - what works: everything else, i.e. sound, wifi, external monitor, gles/opengl with legacy mali blob
+- the current sound setup is more a hack than something real, but for basic stuff it seems to work
 - the mali gpu is only supported via the legacy mali blob as it is not yet supported by the open source panfrost mali driver (and most probably never will be due to too many hardware errata/bugs)
-- after first boot please run /scripts/fix-snow-audio.sh as root to fix the ucm audio config files for the corresponding system
+- after first boot please run /scripts/fix-snow-audio.sh as root to fix the ucm audio config files for the corresponding system and reboot
 - for the rev5 samsung snow chromebook the file extlinux/extlinux.conf in the second partition needs to be edited (otherwise audio will not work properly) - see the comments in the file
 - do not lower the display unused value (at xfce -> settings -> power manager -> display -> brightness reduction) below about 35% as at some point it is simply black (even above 0% already)
 - the wireless connection seems to drop from time to time, reloading the wifi module usually helps to bring it back (rmmod mwifiex_sdio mwifiex; modprobe mwifiex_sdio)
