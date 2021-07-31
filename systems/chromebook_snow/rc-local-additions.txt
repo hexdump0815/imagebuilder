@@ -8,7 +8,7 @@ if [ "$?" = "0" ]; then
   elif [ -x /usr/libexec/upowerd ]; then
     /usr/libexec/upowerd &
   fi
-else
-  # enable light supend mode, i.e. only cpu is put into sleep, everything else stays alive
-  #echo s2idle > /sys/power/mem_sleep
+#else
+#  enable light supend mode, i.e. only cpu is put into sleep, everything else stays alive
+#  echo s2idle > /sys/power/mem_sleep
 fi
