@@ -43,6 +43,7 @@
   - for all images starting with version 210725-02 full deep suspend/resume should work fine
 - what works: everything else, i.e. sound, wifi, external monitor, gles/opengl with legacy mali blob
 - the current sound setup is more a hack than something real, but for basic stuff it seems to work
+- sound seems to be gone after resume from suspend, if it is really required it might be considered to switch to s2idle for suspend in /etc/rc.local
 - the mali gpu is only supported via the legacy mali blob as it is not yet supported by the open source panfrost mali driver (and most probably never will be due to too many hardware errata/bugs)
 - after first boot please run /scripts/fix-snow-audio.sh as root to fix the ucm audio config files for the corresponding system and reboot
 - for the rev5 samsung snow chromebook the file extlinux/extlinux.conf in the second partition needs to be edited (otherwise audio will not work properly) - see the comments in the file
