@@ -2,6 +2,7 @@
 
 ## bootable sd card images
 
+- https://github.com/hexdump0815/imagebuilder/releases/tag/210731-01
 - https://github.com/hexdump0815/imagebuilder/releases/tag/210613-03
 - https://github.com/hexdump0815/imagebuilder/releases/tag/210321-01
 - https://github.com/hexdump0815/imagebuilder/releases/tag/200526-01
@@ -11,13 +12,10 @@
 - medion chromebook s2013 - jaq
 - medion chromebook s2015 - mighty
 - asus chromebook c201 - speedy
-
-## tested systems - partially working
-
 - asus chromebook c100 - minnie
   - see also: https://github.com/hexdump0815/imagebuilder/issues/16
 
-## untested
+## untested systems
 
 (list below from: https://www.chromium.org/chromium-os/tpm_firmware_update?tmpl=/system/app/templates/print/&showPrintDialog=1)
 
@@ -57,4 +55,9 @@
 
 ## special notes
 
-- for all images after version 210613-03 full deep suspend/resume should work fine
+- for all images starting with 210731-01 full deep suspend/resume seems to be working, but sometimes maybe not that reliable (it might be considered to switch to s2idle for suspend in /etc/rc.local in case it should be too unreliable)
+- the current sound setup is more a hack than something real, but for basic stuff it seems to work
+- for some strange reason the sound output will be set to headphone by default after the first boot and needs to be switched to speakers manually once
+- sound seems to be gone after resume from suspend, if it is really required it might be considered to switch to s2idle for suspend in
+/etc/rc.local
+- by default the image will boot on veyron jaq, all other systems will require some adjustments of the file extlinux/extlinux.conf in the second partition (see the comments in the file) and writing the corresponding u-boot file from the "extra" subdir of the third partititon (/boot/extra) to the first partition
