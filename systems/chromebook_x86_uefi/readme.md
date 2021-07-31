@@ -6,9 +6,10 @@
 
 ## tested systems - working
 
+- acer c200 chromebook - squawks
 - dell 3189 chromebook - kefka
 
-## tested systems
+## untested systems
 
 - in theory it should work for nearly all intel chromebooks with a working uefi firmware installed
 - as there are no real chromebook dependency the chance is high that the images should simply work on most intel systems with uefi booting with secure boot disabled

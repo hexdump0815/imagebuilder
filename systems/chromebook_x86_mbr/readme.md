@@ -6,9 +6,9 @@
 
 ## tested systems - working
 
-- acer cb3 111 - gnawty
+- acer cb3 111 chromebook - gnawty
 
-## tested systems
+## untested systems
 
 - in theory it should work for nearly all intel chromebooks with a working legacy rw firmware installed
 - as there are no real chromebook dependency the chance is high that the images should simply work on most intel systems with mbr booting
