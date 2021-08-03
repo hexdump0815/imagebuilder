@@ -36,9 +36,6 @@ fi
 
 rm ${MYTMPDIR}/*
 
-# exit on error
-set -e
-
 mkdir -p ${MYTMPDIR}
 echo "- creating kernel image"
 /boot/r89-boot/mkkrnlimg -a /boot/zImage-${kver} ${MYTMPDIR}/kernel-linux.img
