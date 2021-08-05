@@ -17,7 +17,7 @@ wget -v https://github.com/hexdump0815/linux-mainline-and-mali-exynos5422-kernel
 #wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-kernel/releases/download/${odroid_mc1_release_version}/${odroid_mc1_release_version}-mali-exynos5422.tar.gz -O ${DOWNLOAD_DIR}/kernel-mali-odroid_mc1-armv7l.tar.gz
 
 rm -f ${DOWNLOAD_DIR}/boot-odroid_mc1-armv7l.dd
-wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${odroid_mc1_uboot_version}/e54-boot.dd.gz -O - | gunzip -c >> ${DOWNLOAD_DIR}/boot-odroid_mc1-armv7l.dd
+wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${odroid_mc1_uboot_version}/e54-boot.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-odroid_mc1-armv7l.dd
 
 rm -f ${DOWNLOAD_DIR}/opengl-odroid_mc1-armv7l.tar.gz
 wget -v https://github.com/hexdump0815/linux-mainline-and-mali-exynos5422-kernel/raw/${odroid_mc1_mali_blob_version}/misc.e54/opt-mali-exynos5422-armv7l.tar.gz -O ${DOWNLOAD_DIR}/opengl-odroid_mc1-armv7l.tar.gz
