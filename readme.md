@@ -56,6 +56,9 @@ more coming soon ...
 - chromebook snow: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_snow/readme.md
 - chromebook spring: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_spring/readme.md
 - chromebook veyron: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_veyron/readme.md
+- chromebook x86 mbr: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_x86_mbr/readme.md
+- chromebook x86 uefi: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_x86_uefi/readme.md
+- chromebook x86 native: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_x86_native/readme.md
 - odroid mc1: https://github.com/hexdump0815/imagebuilder/blob/main/systems/odroid_mc1/readme.md
 - odroid u3: https://github.com/hexdump0815/imagebuilder/blob/main/systems/odroid_u3/readme.md
 - orbsmart s92 and beelink r89: https://github.com/hexdump0815/imagebuilder/blob/main/systems/orbsmart_s92_beelink_r89/readme.md
