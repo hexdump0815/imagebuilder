@@ -61,3 +61,5 @@ some more work will be required to make the devices below working
   - also in general try different dtbs of the proper type in case the box does not boot
 - important: do not touch the emmc on amlogic tv boxes as it contains important information to boot them at well defined places of the emmc - if this gets removed the box will no longer boot at all
   - if you want to touch your emmc you should really know what you are doing and are on your own (plus risk to brick your box) - you have been warned ...
+- alternatively there is also support for amlogic socs in alpine linux at: https://git.alpinelinux.org/aports/tree/testing/linux-amlogic/
+- there is also a page about amlogic tv boxes in the manjaro wiki: https://wiki.manjaro.org/index.php/Amlogic_TV_boxes
