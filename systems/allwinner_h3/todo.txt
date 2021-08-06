@@ -1,0 +1,1 @@
+- add support for all those orangepi and nanopi h3 boards
