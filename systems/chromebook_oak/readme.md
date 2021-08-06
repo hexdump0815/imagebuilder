@@ -36,3 +36,6 @@
   - with v5.10 it works fine (console and xorg) with https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_oak/extra-files/usr/lib/systemd/system-sleep/mrvl-reload - so all images starting with version 210724-02 should be fine
   - with v5.13.0 it works but drm fails on restore - bisecting required
 - the current sound setup is more a hack than something real, but for basic stuff it seems to work
+- alternatively there is also support for oak-elm and gru-kevin in alpine linux at:
+  - https://git.alpinelinux.org/aports/tree/testing/linux-elm/
+  - https://git.alpinelinux.org/aports/tree/testing/linux-gru/
