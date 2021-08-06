@@ -1,0 +1,1 @@
+- add support for the pine64 rock64 sbc with rk3288 soc

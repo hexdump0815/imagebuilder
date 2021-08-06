@@ -2,7 +2,7 @@
 
 ## bootable sd card images
 
-- none yet
+- https://github.com/hexdump0815/imagebuilder/releases/tag/210806-01
 
 ## tested systems - working
 
@@ -12,6 +12,10 @@
 
 - asus tinkerboard s
 
+some more work will be required to make the devices below working
+
+- pine64 rock64 sbc with rk3288 soc
+
 ## kernel build notes
 
 - https://github.com/hexdump0815/linux-mainline-and-mali-generic-kernel/blob/master/readme.av7
@@ -19,3 +23,7 @@
 ## u-boot build notes
 
 - https://github.com/hexdump0815/u-boot-misc/blob/master/readme.rk3288
+
+## special notes
+
+- none yet
