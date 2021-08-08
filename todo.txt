@@ -1,5 +1,9 @@
 - change default search engine in firefox to duckduckgo.com instead of google
 - add onboard as onscreen keyboard to the login window and the default xfce session
 - add more doc info to the top level readme (initial setup, scripts in /scripts dir etc.)
-- add some notes about installing to emmc with luks encrypted root disk on system where it is possible
-- add some notes about getting hibernation working on systems where it is working
+- add support for dell venue 8 pro x86 tablet
+- add support for other x86 tablets with 32bit uefi and a 64bit soc which otherwise work well with a generic kernel
+- add support for the nvidia jetson nano
+- add support for the orange pi zero 2 and allwinner h616 tv boxes when enough h616 support is in the mainline kernel
+- maybe add apple m1 support when asahi linux progressed far enough
+- maybe add support for building android style boot and system images to run a proper linux dist on some android tablets too
