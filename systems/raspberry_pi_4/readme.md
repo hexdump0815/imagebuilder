@@ -2,7 +2,7 @@
 
 ## bootable sd card images
 
-- none yet
+- https://github.com/hexdump0815/imagebuilder/releases/tag/210808-03
 
 ## tested systems - working
 
@@ -19,3 +19,8 @@
 ## u-boot build notes
 
 - https://github.com/hexdump0815/u-boot-misc/blob/master/readme.rpi
+
+## special notes
+
+- before booting the sd card the first time some adjustements are required to configure it for the type of box:
+  - adjust the selected dtb in the file extlinux/extlinux.conf on the boot filesystem (1st partition) - see the comments in the file
