@@ -8,6 +8,7 @@
 
 - acer c200 chromebook - squawks
 - dell 3189 chromebook - kefka
+- teclast tpad x80 plus windows 10 / android tablet
 
 ## untested systems
 
