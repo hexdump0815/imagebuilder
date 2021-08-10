@@ -301,6 +301,9 @@ if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ] || [ "${MBR}" = "true" ]
   mount -o bind /dev/pts ${MOUNT_POINT}/dev/pts
   mount -t sysfs /sys ${MOUNT_POINT}/sys
   mount -t proc /proc ${MOUNT_POINT}/proc
+
+  # do this to avoid failing apt installs due to a too old fs-cache
+  chroot ${MOUNT_POINT} apt-get update
 fi
 
 if [ "${UEFI32}" = "true" ]; then
@@ -312,7 +315,6 @@ if [ "${UEFI32}" = "true" ]; then
     chroot ${MOUNT_POINT} cp /boot/efi/EFI/debian/grubia32.efi /boot/efi/EFI/BOOT/BOOTIA32.EFI
     chroot ${MOUNT_POINT} cp /usr/share/images/desktop-base/desktop-grub.png /boot/grub
   fi
-  chroot ${MOUNT_POINT} update-grub
 fi
 
 if [ "${UEFI64}" = "true" ]; then
@@ -324,18 +326,28 @@ if [ "${UEFI64}" = "true" ]; then
     chroot ${MOUNT_POINT} cp /boot/efi/EFI/debian/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
     chroot ${MOUNT_POINT} cp /usr/share/images/desktop-base/desktop-grub.png /boot/grub
   fi
-  chroot ${MOUNT_POINT} update-grub
 fi
 
 if [ "${MBR}" = "true" ]; then
   chroot ${MOUNT_POINT} apt-get -yq install grub2-common grub-pc grub-pc-bin
   chroot ${MOUNT_POINT} grub-install /dev/loop0
-  chroot ${MOUNT_POINT} update-grub
 fi
 
 # TODO: maybe move the update-initramfs from create-fs here ...
 
 if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ] || [ "${MBR}" = "true" ]; then
+  # grub config script per system
+  if [ -x ${WORKDIR}/systems/${1}/grubconfig.sh ]; then
+    cp ${WORKDIR}/systems/${1}/grubconfig.sh ${MOUNT_POINT}/grubconfig.sh
+    chroot ${MOUNT_POINT} /grubconfig.sh
+    rm -f ${MOUNT_POINT}/grubconfig.sh
+  fi
+  if [ -x ${WORKDIR}/systems/${1}/grubconfig-${3}.sh ]; then
+    cp ${WORKDIR}/systems/${1}/grubconfig-${3}.sh ${MOUNT_POINT}/grubconfig-${3}.sh
+    chroot ${MOUNT_POINT} /grubconfig-${3}.sh
+    rm -f ${MOUNT_POINT}/grubconfig-${3}.sh
+  fi
+  chroot ${MOUNT_POINT} update-grub
   umount ${MOUNT_POINT}/proc ${MOUNT_POINT}/sys ${MOUNT_POINT}/dev/pts ${MOUNT_POINT}/dev
 fi
 
