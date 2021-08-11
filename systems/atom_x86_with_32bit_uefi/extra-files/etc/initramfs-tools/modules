@@ -1,0 +1,21 @@
+# List of modules that you want to include in your initramfs.
+# They will be loaded at boot time in the order below.
+#
+# Syntax:  module_name [args ...]
+#
+# You must run update-initramfs(8) to effect this change.
+#
+# Examples:
+#
+# raid1
+# sd_mod
+
+# those lines together with the grub kernel cmdline options:
+#   rd.driver.blacklist=i915 rd.driver.blacklist=drm rd.driver.blacklist=drm_kms_helper
+# make sure that the backlight pwmgets loaded before the drm
+# stuff - this should avoid errors like:
+#   [drm] *ERROR* Failed to get the SoC PWM chip
+# resulting in the backlight brightness not being controllable
+i2c-designware-pci
+pwm_lpss
+pwm_lpss_platform
