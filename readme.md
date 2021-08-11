@@ -49,6 +49,7 @@ more coming soon ...
 - allwinner h6: https://github.com/hexdump0815/imagebuilder/tree/main/systems/allwinner_h6#readme
 - amlogic gx: https://github.com/hexdump0815/imagebuilder/blob/main/systems/amlogic_gx/readme.md
 - amlogic m8:https://github.com/hexdump0815/imagebuilder/blob/main/systems/amlogic_m8/readme.md
+- intel 64bit atom tablets / systems with 32bit uefi bios: https://github.com/hexdump0815/imagebuilder/blob/main/systems/atom_x86_with_32bit_uefi/readme.md
 - chromebook kukui: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_kukui/readme.md
 - chromebook nyan: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_nyan/readme.md
 - chromebook oak: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_oak/readme.md
