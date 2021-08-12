@@ -1,1 +1,4 @@
-- make speaker sound working in case this is still an issue
+- create a defconfig based kernel more optimized for this chromebook
+- try to get suspend/resume working, s2idle and deep suspend do not seem to work right now
+- rework sound/ucm to maybe support headphones too
+- make sure that sound is really safe as it gets quite warm around the right speaker
