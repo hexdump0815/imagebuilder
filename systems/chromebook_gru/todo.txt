@@ -1,0 +1,1 @@
+- make speaker sound working in case this is still an issue
