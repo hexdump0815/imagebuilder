@@ -50,17 +50,17 @@ more coming soon ...
 - amlogic gx (gxbb=s905, gxl=s905x/s905w, gxm=s912, g12a=s905x2, g12b=s922x and sm1=s905x3) devices and tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/amlogic_gx/readme.md
 - amlogic m8 (s802, s805 and s812) devices and tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/amlogic_m8/readme.md
 - intel 64bit atom (z3470d, z8300, z8350 etc.) systems (often tablets) with 32bit uefi bios: https://github.com/hexdump0815/imagebuilder/blob/main/systems/atom_x86_with_32bit_uefi/readme.md
-- arm 32bit chromebook snow: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_snow/readme.md
-- arm 32bit chromebook spring: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_spring/readme.md
-- arm 32bit chromebooks peach: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_peach/readme.md
-- arm 32bit chromebook nyan: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_nyan/readme.md
-- arm 32bit chromebooks veyron: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_veyron/readme.md
-- arm 64bit chromebooks gru: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_gru/readme.md (wip)
-- arm 64bit chromebooks oak: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_oak/readme.md
-- arm 64bit chromebooks kukui: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_kukui/readme.md
+- arm exynos 5250 32bit chromebook snow: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_snow/readme.md
+- arm exynos 5250 32bit chromebook spring: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_spring/readme.md
+- arm exynos 5420 32bit chromebooks peach: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_peach/readme.md
+- arm tegra k1 32bit chromebook nyan: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_nyan/readme.md
+- arm rockchip rk3288 32bit chromebooks veyron: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_veyron/readme.md
+- arm rockchip rk3399 64bit chromebooks gru: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_gru/readme.md (wip)
+- arm mediatek mt8173 64bit chromebooks oak: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_oak/readme.md
+- arm mediatek mt8183 64bit chromebooks kukui: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_kukui/readme.md
 - intel chromebooks with legacy/mbr booting firmware and generic intel systems with mbr booting bios: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_x86_mbr/readme.md
 - intel chromebooks with uefi firmware and generic intel systems with uefi bios: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_x86_uefi/readme.md
-- intel chromebooks without any alternative bios using the chromeos native way for booting: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_x86_native/readme.md
+- intel gemini lake chromebooks without any alternative bios using the chromeos native way for booting: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_x86_native/readme.md
 - odroid u3 (u3, u2, x2, x) devices: https://github.com/hexdump0815/imagebuilder/blob/main/systems/odroid_u3/readme.md
 - odroid mc1 (mc1, xu3, xu4, hc1, hc2) devices: https://github.com/hexdump0815/imagebuilder/blob/main/systems/odroid_mc1/readme.md
 - orbsmart s92, beelink r89 and similar rockchip rk3288 tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/orbsmart_s92_beelink_r89/readme.md
