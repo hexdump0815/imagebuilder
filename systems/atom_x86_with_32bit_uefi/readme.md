@@ -1,4 +1,4 @@
-# intel 64bit atom tablets / systems with 32bit uefi bios
+# intel 64bit atom (z3470d, z8300, z8350 etc.) systems (often tablets) with 32bit uefi bios
 
 ## bootable sd card images
 
@@ -8,6 +8,7 @@
 
 - chuwi vi8 windows 10 / android tablet
 - dell venue 8 pro windows 10 tablet (model 5830 only)
+- teclast x80 hd windows 10 / android tablet
 
 ## untested systems
 
