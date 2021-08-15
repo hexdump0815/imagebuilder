@@ -183,6 +183,8 @@ grub-install --target=i386-efi /dev/xyz --efi-directory=/boot/efi/ --boot-direct
 # uefi 64bit - xyz = efi partition (example /dev/sdb1), apt-get install grub2-common grub-efi-amd64 grub-efi-amd64-bin
 grub-install --target=x86_64-efi /dev/xyz --efi-directory=/boot/efi/ --boot-directory=/boot/
 
+update-grub
+
 # exit chroot
 exit
 cd 
