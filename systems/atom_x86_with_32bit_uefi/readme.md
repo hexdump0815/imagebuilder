@@ -1,4 +1,4 @@
-# intel 64bit atom (z3470d, z8300, z8350 etc.) systems (often tablets) with 32bit uefi bios
+# intel 64bit atom (z3735f, z3470d, z8300, z8350 etc.) systems (often tablets) with 32bit uefi bios
 
 ## bootable sd card images
 
@@ -32,8 +32,9 @@
   - the touch screen is not supported by default as the required kernel module is not enabled in the debian kernel (CONFIG_TOUCHSCREEN_SILEAD) - a cusomt kernel has to be built to enable it
 - some things relevant for the unobook
   - the cameras are not supported yet
-  - sound does not give output nether via speaker or headphone jack
-  - the devices seem to come with secure boot enabled and it was qite tricky to get it disabled as so far i did not find any key to get directly into the bios
+  - sound does not give output neither via speaker nor via headphone jack
+  - the devices seem to come with secure boot enabled and it was quite tricky to get it disabled as so far i did not find any key to get directly into the bios
     - luckily my device did boot from usb first, not sure if this is the default
     - i was able to get into the bios by booting the debian bullseye default i386 installer, go to the grub cmdline there and exit it via 'exit' command - also exiting this way from an efi shell works in case someone ends up in an efi shell
     - after such an exit the bios boot device menu was shown, from there one can get into another menu via 'tab' key from which one can enter the bios setup and disable secure boot in it
+    - a plan b i had in mind was to use the mokutil command to try to disable secure boot from within debian bullseye system installed with secure boot enabled using the default i386 installer
