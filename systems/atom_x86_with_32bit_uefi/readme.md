@@ -37,4 +37,4 @@
     - luckily my device did boot from usb first, not sure if this is the default
     - i was able to get into the bios by booting the debian bullseye default i386 installer, go to the grub cmdline there and exit it via 'exit' command - also exiting this way from an efi shell works in case someone ends up in an efi shell
     - after such an exit the bios boot device menu was shown, from there one can get into another menu via 'tab' key from which one can enter the bios setup and disable secure boot in it
-    - a plan b i had in mind was to use the mokutil command to try to disable secure boot from within debian bullseye system installed with secure boot enabled using the default i386 installer
+    - a plan b i had in mind was to use the mokutil command to try to disable secure boot from within a debian bullseye system installed with secure boot enabled using the default i386 installer
