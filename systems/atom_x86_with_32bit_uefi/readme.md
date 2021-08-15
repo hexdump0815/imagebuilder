@@ -33,6 +33,7 @@
 - some things relevant for the unobook
   - the cameras are not supported yet
   - sound does not give output neither via speaker nor via headphone jack
+  - the touchpad does not seem to be able to handle multiple fingers, but there is a vertical scroll area on the right side at least
   - the devices seem to come with secure boot enabled and it was quite tricky to get it disabled as so far i did not find any key to get directly into the bios
     - luckily my device did boot from usb first, not sure if this is the default
     - i was able to get into the bios by booting the debian bullseye default i386 installer, go to the grub cmdline there and exit it via 'exit' command - also exiting this way from an efi shell works in case someone ends up in an efi shell
