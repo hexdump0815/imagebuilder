@@ -9,6 +9,7 @@
 - chuwi vi8 windows 10 / android tablet
 - dell venue 8 pro windows 10 tablet (model 5830 only)
 - teclast x80 hd windows 10 / android tablet
+- unobook 2in1 educational laptop
 
 ## untested systems
 
@@ -29,3 +30,10 @@
   - there is a lot of information about running linux on the dellvenue 8 pro at https://www.studioteabag.com/science/dell-venue-pro-linux/
 - some things relevant for the chuwi vi8
   - the touch screen is not supported by default as the required kernel module is not enabled in the debian kernel (CONFIG_TOUCHSCREEN_SILEAD) - a cusomt kernel has to be built to enable it
+- some things relevant for the unobook
+  - the cameras are not supported yet
+  - sound does not give output nether via speaker or headphone jack
+  - the devices seem to come with secure boot enabled and it was qite tricky to get it disabled as so far i did not find any key to get directly into the bios
+    - luckily my device did boot from usb first, not sure if this is the default
+    - i was able to get into the bios by booting the debian bullseye default i386 installer, go to the grub cmdline there and exit it via 'exit' command - also exiting this way from an efi shell works in case someone ends up in an efi shell
+    - after such an exit the bios boot device menu was shown, from there one can get into another menu via 'tab' key from which one can enter the bios setup and disable secure boot in it
