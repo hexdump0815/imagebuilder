@@ -1,84 +1,155 @@
 SectionVerb {
 	EnableSequence [
 		cdev "hw:GoogleNyanBig"
-		cset "name='Left Speaker Mixer Left DAC Switch' on"
-		cset "name='Right Speaker Mixer Right DAC Switch' on"
-		cset "name='Headphone Left Switch' on"
-		cset "name='Headphone Right Switch' on"
 		cset "name='Digital EQ 3 Band Switch' off"
 		cset "name='Digital EQ 5 Band Switch' off"
 		cset "name='Digital EQ 7 Band Switch' off"
 		cset "name='Biquad Switch' off"
 		cset "name='Filter Mode' Music"
 		cset "name='ADC Oversampling Rate' 0"
-		cset "name='DMIC Mux' DMIC"
-		cset "name='MIC2 Mux' IN34"
-		cset "name='Right ADC Mixer MIC2 Switch' on"
-		cset "name='Left ADC Mixer MIC2 Switch' on"
-		cset "name='MIC2 Volume' 10"
-		cset "name='MIC2 Boost Volume' 0"
-		cset "name='Mic Jack Switch' off"
-		cset "name='Int Mic Switch' on"
 		cset "name='ADCR Boost Volume' 4"
 		cset "name='ADCL Boost Volume' 4"
 		cset "name='ADCR Volume' 11"
 		cset "name='ADCL Volume' 11"
-		cset "name='Left Speaker Mixer Left DAC Switch' on"
-		cset "name='Right Speaker Mixer Right DAC Switch' on"
-		cset "name='Speaker Left Mixer Volume' 2"
-		cset "name='Speaker Right Mixer Volume' 2"
 		cset "name='Record Path DC Blocking' on"
 		cset "name='Playback Path DC Blocking' on"
+		cset "name='DMIC Mux' DMIC"
+		cset "name='MIC1 Volume' 0"
+		cset "name='MIC1 Boost Volume' 0"
+		cset "name='MIC2 Mux' IN34"
+		cset "name='MIC2 Volume' 0"
+		cset "name='MIC2 Boost Volume' 0"
+		cset "name='Right ADC Mixer MIC2 Switch' on"
+		cset "name='Left ADC Mixer MIC2 Switch' on"
+		cset "name='Mic Jack Switch' off"
+		cset "name='Int Mic Switch' on"
+		cset "name='Headphone Left Mixer Volume' 2"
+		cset "name='Headphone Right Mixer Volume' 2"
+		cset "name='Left Headphone Mixer Left DAC Switch' on"
+		cset "name='Right Headphone Mixer Right DAC Switch' on"
 		cset "name='Headphone Left Switch' on"
 		cset "name='Headphone Right Switch' on"
 		cset "name='Headphones Switch' off"
+		cset "name='Speaker Left Mixer Volume' 2"
+		cset "name='Speaker Right Mixer Volume' 2"
+		cset "name='Left Speaker Mixer Left DAC Switch' on"
+		cset "name='Right Speaker Mixer Right DAC Switch' on"
 		cset "name='Speaker Left Switch' on"
 		cset "name='Speaker Right Switch' on"
 		cset "name='Speakers Switch' on"
 	]
+
 	DisableSequence [
 	]
 }
 
-SectionDevice."Speaker".0 {
+SectionDevice."Headphones" {
+	Comment "Headphones"
+
+	Value {
+		PlaybackPriority 100
+		PlaybackPCM "hw:${CardId}"
+		OutputDspName ""
+		JackControl "GoogleNyanBig Headphones"
+	}
+
+	ConflictingDevice [
+		"Speaker"
+	]
+
 	EnableSequence [
+		cdev "hw:GoogleNyanBig"
+		cset "name='Speakers Switch' off"
+		cset "name='Headphones Switch' on"
 	]
+
 	DisableSequence [
+		cdev "hw:GoogleNyanBig"
+		cset "name='Headphones Switch' off"
+		cset "name='Speakers Switch' on"
 	]
 }
 
-#SectionDevice."Headphone".0 {
-#	Value {
-#		OutputDspName ""
-#	}
-#	EnableSequence [
-#		cdev "hw:GoogleNyanBig"
-#		cset "name='Speakers Switch' off"
-#		cset "name='Headphones Switch' on"
-#	]
-#	DisableSequence [
-#		cdev "hw:GoogleNyanBig"
-#		cset "name='Headphones Switch' off"
-#		cset "name='Speakers Switch' on"
-#	]
-#}
+SectionDevice."Speaker" {
+	Comment "Speaker"
 
-#SectionDevice."Mic".0 {
-#	Value {
-#		CaptureControl "MIC2"
-#	}
-#	EnableSequence [
-#		cdev "hw:GoogleNyanBig"
-#		cset "name='Int Mic Switch' off"
-#		cset "name='DMIC Mux' ADC"
-#		cset "name='Mic Jack Switch' on"
-#		cset "name='Record Path DC Blocking' on"
-#	]
-#	DisableSequence [
-#		cdev "hw:GoogleNyanBig"
-#		cset "name='Mic Jack Switch' off"
-#		cset "name='DMIC Mux' DMIC"
-#		cset "name='Int Mic Switch' on"
-#		cset "name='Record Path DC Blocking' off"
-#	]
-#}
+	Value {
+		PlaybackPriority 100
+		PlaybackPCM "hw:${CardId}"
+	}
+
+	ConflictingDevice [
+		"Headphones"
+	]
+
+	EnableSequence [
+		cdev "hw:GoogleNyanBig"
+		cset "name='Headphones Switch' off"
+		cset "name='Speakers Switch' on"
+	]
+
+	DisableSequence [
+		cdev "hw:GoogleNyanBig"
+		cset "name='Speakers Switch' off"
+		cset "name='Headphones Switch' on"
+	]
+}
+
+SectionDevice."HeadsetMic" {
+	Comment "Headset Microphone"
+
+	Value {
+		CapturePriority 100
+		CapturePCM "hw:${CardId}"
+		CaptureControl "MIC2"
+		# the mic jack input is there, but it does not respond
+                # to pluuging something in, so better ignore it for now
+		#JackControl "GoogleNyanBig Mic Jack"
+	}
+
+	ConflictingDevice [
+		"InternalMic"
+	]
+
+	EnableSequence [
+		cdev "hw:GoogleNyanBig"
+		cset "name='Int Mic Switch' off"
+		cset "name='DMIC Mux' ADC"
+		cset "name='Mic Jack Switch' on"
+	]
+
+	DisableSequence [
+		cdev "hw:GoogleNyanBig"
+		cset "name='Mic Jack Switch' off"
+		cset "name='DMIC Mux' DMIC"
+		cset "name='Int Mic Switch' on"
+	]
+}
+
+SectionDevice."InternalMic" {
+	Comment "Internal Microphone"
+
+	Value {
+		CapturePriority 100
+		CapturePCM "hw:${CardId}"
+		CaptureControl "MIC2"
+	}
+
+	ConflictingDevice [
+		"HeadsetMic"
+	]
+
+	EnableSequence [
+		cdev "hw:GoogleNyanBig"
+		cset "name='Int Mic Switch' on"
+		cset "name='DMIC Mux' DMIC"
+		cset "name='Mic Jack Switch' off"
+	]
+
+	DisableSequence [
+		cdev "hw:GoogleNyanBig"
+		cset "name='Mic Jack Switch' on"
+		cset "name='DMIC Mux' ADC"
+		cset "name='Int Mic Switch' off"
+	]
+}

@@ -1,9 +1,10 @@
 #!/bin/bash
 
-echo "" >> etc/pulse/default.pa
-echo "# required for working pulseaudio on nyan big - audio input does not yet work well" >> etc/pulse/default.pa
-echo "load-module module-alsa-sink device=hw:1" >> etc/pulse/default.pa
-echo "#load-module module-alsa-source device=hw:1" >> etc/pulse/default.pa
+# this is no longer required due to the new and improved ucm files
+#echo "" >> etc/pulse/default.pa
+#echo "# required for working pulseaudio on nyan big - audio input does not yet work well" >> etc/pulse/default.pa
+#echo "load-module module-alsa-sink device=hw:1" >> etc/pulse/default.pa
+#echo "#load-module module-alsa-source device=hw:1" >> etc/pulse/default.pa
 
 # the v5.4 kernel does not work well together with the nouveau gpu driver, so disable it for now
 cp -v etc/X11/xorg.conf.d.samples/11-no-glamor.conf etc/X11/xorg.conf.d
