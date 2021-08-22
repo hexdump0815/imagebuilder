@@ -40,4 +40,6 @@
   - juniper seems to have some audio related interrupt issues
 - the kernel config is merged now for both mt8173 and mt8183, mt8183 patches still seem to break mt8173 drm - so they need to be compiled separately for now
 - so far only juniper and krane are supported, but other mt8183 chromebooks might be added easily
-- the current sound setup is more a hack than something real, but for basic stuff it seems to work
+- the current sound setup is not complete yet:
+  - the levels of the internal mic are very low (as a workaround they can be boosted in software at pulseaudio level via "pactl set-source-volume 1 400%")
+  - a headset mic does not work yet, so better use a small usb audio interface for a headset if needed for now

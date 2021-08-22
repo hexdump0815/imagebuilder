@@ -63,4 +63,3 @@
   - see also: https://www.youtube.com/watch?v=NfhgnxUJoZo
   - if that does not help, then most probably the battery is beyond its end of life
   - in case the battery is really dead: it looks like the battery of the acer cb3 111 chromebook (intel) can also be used in the nyan chromebook (cb5 311) - that one has only 3 (vs 4) cells and thus a lower voltage and capacity, but the nyan seems to deal well with this (ifixit also lists this battery as compatible with the acer cb5 311: https://www.ifixit.com/Store/PC-Laptop/Acer-AC14B18J-Laptop-Battery/IF352-003?o=2#)
-- the current sound setup is more a hack than something real, but for basic stuff it seems to work
