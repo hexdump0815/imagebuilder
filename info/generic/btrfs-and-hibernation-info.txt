@@ -14,7 +14,7 @@ btrfs scrub status /dev/btrfs-device
 # CONFIG_HIBERNATION=y
 # CONFIG_PM_STD_PARTITION=""
 
-# this seems to be not required on debian bullseye, but ubuntu focal needs it
+# the first two lines seem to be not required on debian bullseye, but ubuntu focal needs them
 # see files subdir for file content
 vi /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla
 mkdir -p /etc/systemd/system/systemd-hibernate.service.d
