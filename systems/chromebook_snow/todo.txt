@@ -12,4 +12,6 @@
   - add the missing dts parts based on u-boot, legacy and maybe partiall also peach info
 - get ucm and sound working properly
   - currently ucm is initializing the mixer settings properly, but pulseaudio cannot deal properly with the resulting ucm setup
+  - i tried to improve the ucm setup, but was not able to get anything reliably better - best was working speaker and headphones, but after once switching to headphones and back some ugly distortion came along every few seconds - so i kept the hacked simple setup with only speaker output for now
   - there is a hack in place so that there is at least some working pulseaudio output
+  - mic input not working - the problem seems to be that the kernel cannot open the capture channels (maybe full duplex is not working)
