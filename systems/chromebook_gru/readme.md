@@ -25,4 +25,6 @@
 
 - still very much work in progress, please do not use it yet
 - wifi, bt, basic sound seem to be ok, suspend/resume and earlier display/drm init will need some work
+- the current sound setup is not complete yet:
+  - headphones and headset mic do not work yet, so better use a small usb audio interface for a headset if needed for now
 - more info coming soon
