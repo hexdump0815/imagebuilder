@@ -56,7 +56,6 @@
 ## special notes
 
 - for all images starting with 210731-01 full deep suspend/resume seems to be working, but sometimes maybe not that reliable (it might be considered to switch to s2idle for suspend in /etc/rc.local in case it should be too unreliable)
-- the current sound setup is more a hack than something real, but for basic stuff it seems to work
 - for some strange reason the sound output will be set to headphone by default after the first boot and needs to be switched to speakers manually once
 - sound seems to be gone after resume from suspend, if it is really required it might be considered to switch to s2idle for suspend in
 /etc/rc.local

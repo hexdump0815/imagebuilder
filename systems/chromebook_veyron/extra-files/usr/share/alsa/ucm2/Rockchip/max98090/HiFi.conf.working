@@ -19,6 +19,7 @@ SectionVerb {
 		cset "name='MIC2 Mux' IN34"
 		cset "name='Right ADC Mixer MIC2 Switch' on"
 		cset "name='Left ADC Mixer MIC2 Switch' on"
+		cset "name='Record Path DC Blocking' on"
 		cset "name='MIC2 Volume' 20"
 		cset "name='Headset Mic Switch' off"
 		cset "name='Int Mic Switch' on"
@@ -41,30 +42,17 @@ SectionVerb {
 	]
 }
 
-#SectionDevice."Mic" {
-#	Comment "Internal Microphone"
-#
-#	Value {
-#		CapturePriority 100
-#		CapturePCM "hw:${CardId}"
-#	}
-#
-#	EnableSequence [
-#		cset "name='Int Mic Switch' on"
-#	]
-#
-#	DisableSequence [
-#		cset "name='Int Mic Switch' off"
-#	]
-#}
-
 SectionDevice."Headphones" {
 	Comment "Headphones"
 
 	Value {
-		PlaybackPriority 200
+		PlaybackPriority 100
 		PlaybackPCM "hw:${CardId}"
 	}
+
+	ConflictingDevice [
+		"Speaker"
+	]
 
 	EnableSequence [
 		cset "name='Speaker Switch' off"
@@ -78,29 +66,6 @@ SectionDevice."Headphones" {
 	]
 }
 
-#SectionDevice."Headset" {
-#	Comment "Headset Microphone"
-#
-#	Value {
-#		CapturePriority 200
-#		CapturePCM "hw:${CardId}"
-#	}
-#
-#	EnableSequence [
-#		cset "name='Int Mic Switch' off"
-#		cset "name='DMIC Mux' ADC"
-#		cset "name='Headset Mic Switch' on"
-#		cset "name='Record Path DC Blocking' on"
-#	]
-#
-#	DisableSequence [
-#		cset "name='Headset Mic Switch' off"
-#		cset "name='DMIC Mux' DMIC"
-#		cset "name='Int Mic Switch' on"
-#		cset "name='Record Path DC Blocking' off"
-#	]
-#}
-
 SectionDevice."Speaker" {
 	Comment "Speaker"
 
@@ -109,11 +74,63 @@ SectionDevice."Speaker" {
 		PlaybackPCM "hw:${CardId}"
 	}
 
+	ConflictingDevice [
+		"Headphones"
+	]
+
 	EnableSequence [
 		cset "name='Speaker Switch' on"
 	]
 
 	DisableSequence [
 		cset "name='Speaker Switch' off"
+	]
+}
+
+SectionDevice."HeadsetMic" {
+	Comment "Headset Microphone"
+
+	Value {
+		CapturePriority 100
+		CapturePCM "hw:${CardId}"
+	}
+
+	ConflictingDevice [
+		"InternalMic"
+	]
+
+	EnableSequence [
+		cset "name='Int Mic Switch' off"
+		cset "name='DMIC Mux' ADC"
+		cset "name='Headset Mic Switch' on"
+		cset "name='Record Path DC Blocking' on"
+	]
+
+	DisableSequence [
+		cset "name='Headset Mic Switch' off"
+		cset "name='DMIC Mux' DMIC"
+		cset "name='Int Mic Switch' on"
+		cset "name='Record Path DC Blocking' off"
+	]
+}
+
+SectionDevice."InternalMic" {
+	Comment "Internal Microphone"
+
+	Value {
+		CapturePriority 100
+		CapturePCM "hw:${CardId}"
+	}
+
+	ConflictingDevice [
+		"HeadsetMic"
+	]
+
+	EnableSequence [
+		cset "name='Int Mic Switch' on"
+	]
+
+	DisableSequence [
+		cset "name='Int Mic Switch' off"
 	]
 }
