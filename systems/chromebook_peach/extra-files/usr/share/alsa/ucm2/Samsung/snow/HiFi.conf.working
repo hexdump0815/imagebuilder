@@ -1,99 +1,142 @@
 SectionVerb {
-	Value {
-		OutputDspName "speaker_eq"
-	}
 	EnableSequence [
 		cdev "hw:PeachPitI2SMAX9"
-		cset "name='Left Speaker Mixer Left DAC Switch' on"
-		cset "name='Right Speaker Mixer Right DAC Switch' on"
-		cset "name='Headphone Left Switch' on"
-		cset "name='Headphone Right Switch' on"
 		cset "name='Digital EQ 3 Band Switch' off"
 		cset "name='Digital EQ 5 Band Switch' off"
 		cset "name='Digital EQ 7 Band Switch' off"
+		cset "name='Digital EQ Volume' 0"
 		cset "name='Biquad Switch' off"
 		cset "name='Filter Mode' Music"
 		cset "name='ADC Oversampling Rate' 0"
-
-		cset "name='MIC2 Mux' IN34"
-		cset "name='DMIC Mux' DMIC"
-		cset "name='Right ADC Mixer MIC2 Switch' off"
-		cset "name='Left ADC Mixer MIC2 Switch' off"
-
 		cset "name='ADCR Boost Volume' 4"
 		cset "name='ADCL Boost Volume' 4"
 		cset "name='ADCR Volume' 11"
 		cset "name='ADCL Volume' 11"
-
-		cset "name='Speaker Left Mixer Volume' 2"
-		cset "name='Speaker Right Mixer Volume' 2"
 		cset "name='Record Path DC Blocking' on"
 		cset "name='Playback Path DC Blocking' on"
-
-	]
-	DisableSequence [
-	]
-}
-
-SectionDevice."HDMI".0 {
-	Value {
-		JackName "PeachPitI2SMAX9 HDMI Jack"
-		OutputDspName ""
-		EDIDFile "/sys/devices/platform/exynos-drm/drm/card0/card0-HDMI-A-1/edid"
-	}
-	EnableSequence [
-		cdev "hw:PeachPitI2SMAX9"
-		cset "name='Left Speaker Mixer Left DAC Switch' off"
-		cset "name='Right Speaker Mixer Right DAC Switch' off"
-	]
-	DisableSequence [
-		cdev "hw:PeachPitI2SMAX9"
-		cset "name='Left Speaker Mixer Left DAC Switch' on"
-		cset "name='Right Speaker Mixer Right DAC Switch' on"
-	]
-}
-
-SectionDevice."Headphone".0 {
-	Value {
-		JackName "PeachPitI2SMAX9 Headphone Jack"
-		OutputDspName ""
-	}
-
-	EnableSequence [
-		cdev "hw:PeachPitI2SMAX9"
-		cset "name='Left Speaker Mixer Left DAC Switch' off"
-		cset "name='Right Speaker Mixer Right DAC Switch' off"
-	]
-	DisableSequence [
-		cdev "hw:PeachPitI2SMAX9"
-		cset "name='Left Speaker Mixer Left DAC Switch' on"
-		cset "name='Right Speaker Mixer Right DAC Switch' on"
-	]
-}
-
-SectionDevice."Mic".0 {
-	Value {
-		JackName "PeachPitI2SMAX9 Mic Jack"
-		CaptureControl "MIC2"
-	}
-
-	EnableSequence [
-		cdev "hw:PeachPitI2SMAX9"
-
+		cset "name='DMIC Mux' DMIC"
+		cset "name='MIC1 Volume' 0"
+		cset "name='MIC1 Boost Volume' 0"
+		cset "name='MIC2 Mux' IN34"
+		cset "name='MIC2 Volume' 0"
+		cset "name='MIC2 Boost Volume' 0"
 		cset "name='Right ADC Mixer MIC2 Switch' on"
 		cset "name='Left ADC Mixer MIC2 Switch' on"
-		cset "name='DMIC Mux' ADC"
-		cset "name='MIC2 Volume' 20"
-		cset "name='Record Path DC Blocking' on"
+		cset "name='Headphone Volume' 24"
+		cset "name='Headphone Left Mixer Volume' 3"
+		cset "name='Headphone Right Mixer Volume' 3"
+		cset "name='Left Headphone Mixer Left DAC Switch' on"
+		cset "name='Right Headphone Mixer Right DAC Switch' on"
+		cset "name='Headphone Left Switch' off"
+		cset "name='Headphone Right Switch' off"
+		cset "name='Speaker Volume' 24"
+		cset "name='Speaker Left Mixer Volume' 3"
+		cset "name='Speaker Right Mixer Volume' 3"
+		cset "name='Left Speaker Mixer Left DAC Switch' on"
+		cset "name='Right Speaker Mixer Right DAC Switch' on"
+		cset "name='Speaker Left Switch' on"
+		cset "name='Speaker Right Switch' on"
+	]
+
+	DisableSequence [
+	]
+}
+
+SectionDevice."Headphones" {
+	Comment "Headphones"
+
+	Value {
+		PlaybackPriority 100
+		PlaybackPCM "hw:${CardId}"
+		OutputDspName ""
+	}
+
+	ConflictingDevice [
+		"Speaker"
+	]
+
+	EnableSequence [
+		cdev "hw:PeachPitI2SMAX9"
+		cset "name='Headphone Left Switch' on"
+		cset "name='Headphone Right Switch' on"
 	]
 
 	DisableSequence [
 		cdev "hw:PeachPitI2SMAX9"
-
-		cset "name='DMIC Mux' DMIC"
-		cset "name='Right ADC Mixer MIC2 Switch' off"
-		cset "name='Left ADC Mixer MIC2 Switch' off"
-		cset "name='MIC2 Volume' 0"
-		cset "name='Record Path DC Blocking' off"
+		cset "name='Headphone Left Switch' off"
+		cset "name='Headphone Right Switch' off"
 	]
 }
+
+SectionDevice."Speaker" {
+	Comment "Speaker"
+
+	Value {
+		PlaybackPriority 100
+		PlaybackPCM "hw:${CardId}"
+	}
+
+	ConflictingDevice [
+		"Headphones"
+	]
+
+	EnableSequence [
+		cdev "hw:PeachPitI2SMAX9"
+		cset "name='Speaker Left Switch' on"
+		cset "name='Speaker Right Switch' on"
+	]
+
+	DisableSequence [
+		cdev "hw:PeachPitI2SMAX9"
+		cset "name='Speaker Left Switch' off"
+		cset "name='Speaker Right Switch' off"
+	]
+}
+
+#SectionDevice."HeadsetMic" {
+#	Comment "Headset Microphone"
+#
+#	Value {
+#		CapturePriority 100
+#		CapturePCM "hw:${CardId}"
+#		CaptureControl "MIC2"
+#	}
+#
+#	ConflictingDevice [
+#		"InternalMic"
+#	]
+#
+#	EnableSequence [
+#		cdev "hw:PeachPitI2SMAX9"
+#		cset "name='DMIC Mux' ADC"
+#	]
+#
+#	DisableSequence [
+#		cdev "hw:PeachPitI2SMAX9"
+#		cset "name='DMIC Mux' DMIC"
+#	]
+#}
+
+#SectionDevice."InternalMic" {
+#	Comment "Internal Microphone"
+#
+#	Value {
+#		CapturePriority 100
+#		CapturePCM "hw:${CardId}"
+#		CaptureControl "MIC2"
+#	}
+#
+#	ConflictingDevice [
+#		"HeadsetMic"
+#	]
+#
+#	EnableSequence [
+#		cdev "hw:PeachPitI2SMAX9"
+#		cset "name='DMIC Mux' DMIC"
+#	]
+#
+#	DisableSequence [
+#		cdev "hw:PeachPitI2SMAX9"
+#		cset "name='DMIC Mux' ADC"
+#	]
+#}

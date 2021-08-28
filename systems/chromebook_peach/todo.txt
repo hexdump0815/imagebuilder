@@ -1,3 +1,2 @@
-- get ucm and sound working properly
-  - currently ucm is initializing the mixer settings properly, but pulseaudio cannot deal properly with the resulting ucm setup
-  - there is a hack in place so that there is at least some working pulseaudio output
+- rework sound/ucm to maybe support internal and headset mic too - they are disabled for now
+  - the problem seems to be that the kernel cannot open the capture channels (maybe full duplex is not working)
