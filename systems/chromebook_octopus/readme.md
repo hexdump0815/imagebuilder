@@ -1,4 +1,4 @@
-# chromebook x86 native chromeos boot
+# chromebook octopus - intel gemini lake with native chromeos boot
 
 ## bootable sd card images
 
@@ -10,7 +10,7 @@
 
 ## untested systems
 
-- maybe other intel chromebooks with gemini lake socs using a 4.14 kernel are working fully or partially as well
+- most probably other intel chromebooks with gemini lake socs using a 4.14 kernel are working fully or partially as well
 
 ## generic mainline linux on intel chromebook notes
 

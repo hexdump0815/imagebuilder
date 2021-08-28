@@ -107,7 +107,7 @@ if [ "$3" = "focal" ] || [ "$3" = "sonaremin" ]; then
 elif [ "$3" = "bullseye" ]; then
   if [ "$2" = "i686" ] && [ "${OWN_KERNEL}" != "true" ]; then
     chroot ${BUILD_ROOT} apt-get -yq install linux-image-686
-  # in the chromebook native case there is an own special cros kernel
+  # in the chromebook octopus case there is an own special cros kernel
   elif [ "$2" = "x86_64" ] && [ "${OWN_KERNEL}" != "true" ]; then
     chroot ${BUILD_ROOT} apt-get -yq install linux-image-amd64
   fi
