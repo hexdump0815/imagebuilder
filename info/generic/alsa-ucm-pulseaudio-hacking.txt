@@ -61,3 +61,5 @@ these are some notes from trying to make ucm files from chromeos useable for mai
   - sometimes to befound in the overlays of the baseboard (kukui below) or of the model (krane below, which has a kukui baseboard too)
   - https://chromium.googlesource.com/chromiumos/overlays/board-overlays/+/refs/heads/master/overlay-kukui/chromeos-base/chromeos-bsp-kukui/files/kukui/audio/ucm-config
   - https://chromium.googlesource.com/chromiumos/overlays/board-overlays/+/refs/heads/master/overlay-kukui/chromeos-base/chromeos-bsp-kukui/files/krane/audio/ucm-config
+
+- evtest can be used to listen for jack plug/unplug events to find them
