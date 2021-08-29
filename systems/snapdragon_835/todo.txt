@@ -1,0 +1,5 @@
+- get cpu frequency scaling working
+- get gpu support working
+- get wifi working
+- get sound working
+- get suspend/resume working
