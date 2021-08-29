@@ -96,6 +96,9 @@ else
   if [ "$MBR" != "" ]; then
     echo "MBR=$MBR"
   fi
+  if [ "$UEFI64ARM" != "" ]; then
+    echo "UEFI64ARM=$UEFI64ARM"
+  fi
 fi
 
 mkdir -p ${IMAGE_DIR}
@@ -181,7 +184,7 @@ else
 fi
 mkdir ${MOUNT_POINT}/boot
 mount /dev/loop0p$BOOTPART ${MOUNT_POINT}/boot
-if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ]; then
+if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ] || [ "${UEFI64ARM}" = "true" ]; then
   mkfs -t vfat -F 32 -n EFI /dev/loop0p1
   mkdir -p ${MOUNT_POINT}/boot/efi
   mount /dev/loop0p1 ${MOUNT_POINT}/boot/efi
@@ -222,7 +225,7 @@ FSTAB_BTRFS_ROOT="LABEL=rootpart / btrfs defaults,ssd,compress-force=zstd,noatim
 FSTAB_EXT4_ROOT="LABEL=rootpart / ext4 defaults,noatime,nodiratime,errors=remount-ro 0 1"
 FSTAB_SWAP_FILE="/swap/file.0 none swap sw 0 0"
 FSTAB_SWAP_PART="LABEL=swappart none swap sw 0 0"
-if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ]; then
+if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ] || [ "${UEFI64ARM}" = "true" ]; then
   FSTAB_VFAT_EFI="LABEL=EFI /boot/efi vfat umask=0077 0 1"
   echo $FSTAB_VFAT_EFI >> ${MOUNT_POINT}/etc/fstab
 fi
@@ -296,7 +299,7 @@ if [ "$1" = "amlogic_m8" ]; then
   ${MOUNT_POINT}/boot/shorten-filenames.sh
 fi
 
-if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ] || [ "${MBR}" = "true" ]; then
+if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ] || [ "${MBR}" = "true" ] || [ "${UEFI64ARM}" = "true" ]; then
   mount -o bind /dev ${MOUNT_POINT}/dev
   mount -o bind /dev/pts ${MOUNT_POINT}/dev/pts
   mount -t sysfs /sys ${MOUNT_POINT}/sys
@@ -333,9 +336,22 @@ if [ "${MBR}" = "true" ]; then
   chroot ${MOUNT_POINT} grub-install /dev/loop0
 fi
 
+if [ "${UEFI64ARM}" = "true" ]; then
+  chroot ${MOUNT_POINT} apt-get -yq install grub2-common grub-efi-arm64 grub-efi-arm64-bin
+  chroot ${MOUNT_POINT} grub-install --target=arm64-efi /dev/loop0p1 --efi-directory=/boot/efi/ --boot-directory=/boot/ --no-nvram --no-bootsector --dtb=/boot/selected.dtb --removable
+#  # debian needs some extra steps to enable fallback boot sometimes required to boot from external media
+#  if [ "${3}" = "bullseye" ]; then
+#    chroot ${MOUNT_POINT} mkdir -p /boot/efi/EFI/BOOT
+#    #chroot ${MOUNT_POINT} cp /boot/efi/EFI/debian/grubaa64.efi /boot/efi/EFI/BOOT/BOOTAA64.EFI
+#    chroot ${MOUNT_POINT} cp /boot/efi/EFI/debian/grubaa64.efi /boot/efi/EFI/BOOT/grubaa64.efi
+#    chroot ${MOUNT_POINT} cp /boot/efi/EFI/debian/fbaa64.efi /boot/efi/EFI/BOOT/fbaa64.efi
+#    chroot ${MOUNT_POINT} cp /usr/share/images/desktop-base/desktop-grub.png /boot/grub
+#  fi
+fi
+
 # TODO: maybe move the update-initramfs from create-fs here ...
 
-if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ] || [ "${MBR}" = "true" ]; then
+if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ] || [ "${MBR}" = "true" ] || [ "${UEFI64ARM}" = "true" ]; then
   # grub config script per system
   if [ -x ${WORKDIR}/systems/${1}/grubconfig.sh ]; then
     cp ${WORKDIR}/systems/${1}/grubconfig.sh ${MOUNT_POINT}/grubconfig.sh
@@ -351,7 +367,7 @@ if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ] || [ "${MBR}" = "true" ]
   umount ${MOUNT_POINT}/proc ${MOUNT_POINT}/sys ${MOUNT_POINT}/dev/pts ${MOUNT_POINT}/dev
 fi
 
-if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ]; then
+if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ] || [ "${UEFI64ARM}" = "true" ]; then
   df -h ${MOUNT_POINT} ${MOUNT_POINT}/boot ${MOUNT_POINT}/boot/efi
   umount ${MOUNT_POINT}/boot/efi
 else
