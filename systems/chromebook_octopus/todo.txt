@@ -1,2 +1,7 @@
 - investigate if it is maybe possible to use mainline kernels for this kind of booting as well
   - check which kernel config options would be required in this case
+- make glamor accelerated xorg work
+- find proper source urls for the still missing firmware
+- make the intel wifi in thosechromebook work reliable
+- make the missing parts of sound working
+  - headphones and the internal mic do not work yet

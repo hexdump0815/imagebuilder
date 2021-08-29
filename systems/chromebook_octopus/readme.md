@@ -25,3 +25,8 @@
 - there is no legacy or uefi firmware available from https://mrchromebox.tech/ for gemini lake chromebooks, so booting regular linux installers on them does not work
 - these images are using the native chromeos boot procedure (chromeos kernel format written to special chromeos kernel partitions) to be able to run a regular linux system on them anyway
 - currently a self compiled kernel is used based on the corresponding chromeos kernel for those devices
+- glamor/opengl accelerated xorg does not yet work for some reason
+- some firmware files are still required from chromeos
+- wifi drops the connection as soon as it is established
+- the current sound setup is not complete yet:
+  - headphones and internal mic do not work yet, so better use a small usb audio interface for a headset if needed for now
