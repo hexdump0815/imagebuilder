@@ -77,13 +77,14 @@ date
 echo "done"
 echo ""
 
-# do this to avoid failing apt installs due to a too old fs-cache
-chroot ${BUILD_ROOT} apt-get update
-
 mount -o bind /dev ${BUILD_ROOT}/dev
 mount -o bind /dev/pts ${BUILD_ROOT}/dev/pts
 mount -t sysfs /sys ${BUILD_ROOT}/sys
 mount -t proc /proc ${BUILD_ROOT}/proc
+
+# do this to avoid failing apt installs due to a too old fs-cache
+chroot ${BUILD_ROOT} apt-get update
+
 chroot ${BUILD_ROOT} /create-chroot-stage-02.sh ${3} ${DEFAULT_USERNAME}
 
 cd ${BUILD_ROOT}/
