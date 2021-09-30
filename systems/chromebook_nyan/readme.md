@@ -10,6 +10,7 @@
 ## tested systems - working
 
 - acer chromebook cb5 311 - nyan big
+- acer chromebook 13 c810 - nyan big
 
 ## untested systems
 
