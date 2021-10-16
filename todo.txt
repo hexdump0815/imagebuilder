@@ -1,5 +1,4 @@
 - change default search engine in firefox to duckduckgo.com instead of google
-- add onboard as onscreen keyboard to the login window and the default xfce session
 - add more doc info to the top level readme (initial setup, scripts in /scripts dir etc.)
 - add support for the nvidia jetson nano
 - add support for the orange pi zero 2 and allwinner h616 tv boxes when enough h616 support is in the mainline kernel
