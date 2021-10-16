@@ -297,6 +297,9 @@ if [ ${PMOSKERNEL} != "true" ]; then
   sed -i 's,fsck_types=.*,fsck_types="vfat ext4",g' usr/share/initramfs-tools/hooks/fsck
   chroot ${BUILD_ROOT} update-initramfs -c -k ${KERNEL_VERSION}
   mv -f tmp/fsck.org usr/share/initramfs-tools/hooks/fsck
+else
+  # the pmos boot.img reads its initrd extension from here
+  cp boot/extra/initramfs-extra boot
 fi
 
 cd ${WORKDIR}
