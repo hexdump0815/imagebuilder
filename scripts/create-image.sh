@@ -155,6 +155,15 @@ else
   fi
 fi
 
+# in case of a postmarketos kernel other labels for boot and root partitions are used
+if [ "$PMOSKERNEL" = "true" ]; then
+  BOOTPARTLABEL="pmOS_boot"
+  ROOTPARTLABEL="pmOS_root"
+else
+  BOOTPARTLABEL="bootpart"
+  ROOTPARTLABEL="rootpart"
+fi
+
 # inspired by https://github.com/jeromebrunet/libretech-image-builder/blob/libretech-cc-xenial-4.13/linux-image.sh
 if [ -f systems/${1}/mbr-partitions.txt ]; then
   fdisk /dev/loop0 < systems/${1}/mbr-partitions.txt
@@ -175,14 +184,14 @@ fi
 if [ "$BOOTFS" = "fat" ]; then
   mkfs.vfat -F32 -n BOOTPART /dev/loop0p$BOOTPART
 elif [ "$BOOTFS" = "ext4" ]; then
-  mkfs -t ext4 -O ^has_journal -m 0 -L bootpart /dev/loop0p$BOOTPART
+  mkfs -t ext4 -O ^has_journal -m 0 -L $BOOTPARTLABEL /dev/loop0p$BOOTPART
 fi
 
 if [ "$ROOTFS" = "btrfs" ]; then
-  mkfs -t btrfs -m single -L rootpart /dev/loop0p$ROOTPART
+  mkfs -t btrfs -m single -L $ROOTPARTLABEL /dev/loop0p$ROOTPART
   mount -o ssd,compress-force=zstd,noatime,nodiratime /dev/loop0p$ROOTPART ${MOUNT_POINT}
 else
-  mkfs -t ext4 -O ^has_journal -m 2 -L rootpart /dev/loop0p$ROOTPART
+  mkfs -t ext4 -O ^has_journal -m 2 -L $ROOTPARTLABEL /dev/loop0p$ROOTPART
   mount /dev/loop0p$ROOTPART ${MOUNT_POINT}
 fi
 mkdir ${MOUNT_POINT}/boot
@@ -222,10 +231,11 @@ fi
 
 # create a customized fstab file
 cp /dev/null ${MOUNT_POINT}/etc/fstab
-FSTAB_EXT4_BOOT="LABEL=bootpart /boot ext4 defaults,noatime,nodiratime,errors=remount-ro 0 2"
+FSTAB_EXT4_BOOT="LABEL=$BOOTPARTLABEL /boot ext4 defaults,noatime,nodiratime,errors=remount-ro 0 2"
+# pmos kernels do not use fat boot partitions, so the name can be hardcoded here
 FSTAB_VFAT_BOOT="LABEL=BOOTPART /boot vfat defaults,rw,owner,flush,umask=000 0 0"
-FSTAB_BTRFS_ROOT="LABEL=rootpart / btrfs defaults,ssd,compress-force=zstd,noatime,nodiratime 0 1"
-FSTAB_EXT4_ROOT="LABEL=rootpart / ext4 defaults,noatime,nodiratime,errors=remount-ro 0 1"
+FSTAB_BTRFS_ROOT="LABEL=$ROOTPARTLABEL / btrfs defaults,ssd,compress-force=zstd,noatime,nodiratime 0 1"
+FSTAB_EXT4_ROOT="LABEL=$ROOTPARTLABEL / ext4 defaults,noatime,nodiratime,errors=remount-ro 0 1"
 FSTAB_SWAP_FILE="/swap/file.0 none swap sw 0 0"
 FSTAB_SWAP_PART="LABEL=swappart none swap sw 0 0"
 if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ] || [ "${UEFI64ARM}" = "true" ]; then
@@ -271,19 +281,19 @@ if [ "${2}" = "armv7l" ] || [ "${2}" = "aarch64" ]; then
     fi
   else
     if [ -f ${MOUNT_POINT}/boot/extlinux/extlinux.conf ]; then
-      sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
+      sed -i "s,ROOT_PARTUUID,LABEL=$ROOTPARTLABEL,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
       sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
     fi
     if [ -f ${MOUNT_POINT}/boot/menu/extlinux.conf ]; then
-      sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
+      sed -i "s,ROOT_PARTUUID,LABEL=$ROOTPARTLABEL,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
       sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/menu/extlinux.conf
     fi
     if [ -f ${MOUNT_POINT}/boot/r89-boot/parameter-linux ]; then
-      sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/r89-boot/parameter-linux
+      sed -i "s,ROOT_PARTUUID,LABEL=$ROOTPARTLABEL,g" ${MOUNT_POINT}/boot/r89-boot/parameter-linux
       sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/r89-boot/parameter-linux
     fi
     if [ -f ${MOUNT_POINT}/boot/uEnv.ini ]; then
-      sed -i "s,ROOT_PARTUUID,LABEL=rootpart,g" ${MOUNT_POINT}/boot/uEnv.ini
+      sed -i "s,ROOT_PARTUUID,LABEL=$ROOTPARTLABEL,g" ${MOUNT_POINT}/boot/uEnv.ini
       sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/uEnv.ini
     fi
   fi
