@@ -12,7 +12,7 @@
 
 - https://github.com/hexdump0815/linux-amazon-mt8127-kernel/blob/master/readme.f27
 
-right now i'm still using a postmarketos kernel+initrd=boot.img and will later move to an own boot.img
+right now i'm still using a postmarketos kernel+initrd=boot.img and will maybe later move to an own boot.img
 
 ## special notes
 
