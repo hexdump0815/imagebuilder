@@ -7,3 +7,10 @@
 
 # set display brightness
 echo 63 > /sys/class/leds/lcd-backlight/brightness
+
+# this seems to be required for this legacy kernel
+if [ -x /usr/lib/upower/upowerd ]; then
+  /usr/lib/upower/upowerd &
+elif [ -x /usr/libexec/upowerd ]; then
+  /usr/libexec/upowerd &
+fi
