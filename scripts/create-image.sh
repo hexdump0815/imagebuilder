@@ -87,6 +87,9 @@ else
   if [ "$CROSPARTS" != "" ]; then
     echo "CROSPARTS=$CROSPARTS"
   fi
+  if [ "$PMOSKERNEL" != "" ]; then
+    echo "PMOSKERNEL=$PMOSKERNEL"
+  fi
   if [ "$UEFI32" != "" ]; then
     echo "UEFI32=$UEFI32"
   fi

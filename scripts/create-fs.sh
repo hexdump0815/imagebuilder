@@ -45,7 +45,14 @@ if [ ! -f systems/${1}/partition-mapping.txt ]; then
 else
   # get partition mapping info
   . systems/${1}/partition-mapping.txt
-  export CROSPARTS
+  if [ "$CROSPARTS" != "" ]; then
+    echo "CROSPARTS=$CROSPARTS"
+    export CROSPARTS
+  fi
+  if [ "$PMOSKERNEL" != "" ]; then
+    echo "PMOSKERNEL=$PMOSKERNEL"
+    export PMOSKERNEL
+  fi
 fi
 
 # set defaults for the values coming from imagebuilder.conf otherwise
@@ -265,19 +272,21 @@ fi
 
 chroot ${BUILD_ROOT} ldconfig
 
-export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/*Image-* | sed 's,.*Image-,,g' | sort -u`
+if [ ${PMOSKERNEL} != "true" ]; then
+  export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/*Image-* | sed 's,.*Image-,,g' | sort -u`
 
-# in case we did not get a kernel version, try it again with the vmlinuz
-if [ "$KERNEL_VERSION" = "" ]; then
-  echo "trying vmlinuz as kernel name instead of *Image:"
-  export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/vmlinuz-* | sed 's,.*vmlinuz-,,g' | sort -u`
+  # in case we did not get a kernel version, try it again with the vmlinuz
+  if [ "$KERNEL_VERSION" = "" ]; then
+    echo "trying vmlinuz as kernel name instead of *Image:"
+    export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/vmlinuz-* | sed 's,.*vmlinuz-,,g' | sort -u`
+  fi
+  
+  # hack to get the fsck binaries in properly even in our chroot env
+  cp -f usr/share/initramfs-tools/hooks/fsck tmp/fsck.org
+  sed -i 's,fsck_types=.*,fsck_types="vfat ext4",g' usr/share/initramfs-tools/hooks/fsck
+  chroot ${BUILD_ROOT} update-initramfs -c -k ${KERNEL_VERSION}
+  mv -f tmp/fsck.org usr/share/initramfs-tools/hooks/fsck
 fi
-
-# hack to get the fsck binaries in properly even in our chroot env
-cp -f usr/share/initramfs-tools/hooks/fsck tmp/fsck.org
-sed -i 's,fsck_types=.*,fsck_types="vfat ext4",g' usr/share/initramfs-tools/hooks/fsck
-chroot ${BUILD_ROOT} update-initramfs -c -k ${KERNEL_VERSION}
-mv -f tmp/fsck.org usr/share/initramfs-tools/hooks/fsck
 
 cd ${WORKDIR}
 
