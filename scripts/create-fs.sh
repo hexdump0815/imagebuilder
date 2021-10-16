@@ -126,6 +126,11 @@ if [ -d ${DOWNLOAD_DIR}/boot-extra-${1} ]; then
   cp -r ${DOWNLOAD_DIR}/boot-extra-${1}/* boot/extra
 fi
 
+# install the modules in case of a pmos kernel
+if [ -f ${DOWNLOAD_DIR}/boot-extra-${1}/lib-modules.tar.gz ]; then
+  tar --numeric-owner -xhzf ${DOWNLOAD_DIR}/boot-extra-${1}/lib-modules.tar.gz
+fi
+
 # install the self built fresher mesa version if one is there
 if [ -f ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz ]; then
   tar --numeric-owner -xzf ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
