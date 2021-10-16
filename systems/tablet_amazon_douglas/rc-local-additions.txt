@@ -1,0 +1,9 @@
+# enable ondemand cpufreq governor and all cpu cores - this does not seem to work for douglas
+#echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+#echo 1 > /sys/devices/system/cpu/cpu0/online > /dev/null 2>&1
+#echo 1 > /sys/devices/system/cpu/cpu1/online > /dev/null 2>&1
+#echo 1 > /sys/devices/system/cpu/cpu2/online > /dev/null 2>&1
+#echo 1 > /sys/devices/system/cpu/cpu3/online > /dev/null 2>&1
+
+# set display brightness
+echo 63 > /sys/class/leds/lcd-backlight/brightness
