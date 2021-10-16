@@ -1,3 +1,5 @@
 [org.onboard]
 theme='Droid'
 start-minimized=true
+xembed-onboard=true
+docking-enabled=true
