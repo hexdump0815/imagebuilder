@@ -213,9 +213,10 @@ if [ -f etc/default/apport ]; then
   sed -i 's,^enabled=1,enabled=0,g' etc/default/apport
 fi
 
-# start the onboard virtual keyboard automatically
+# start the onboard virtual keyboard automatically, also in lightdm
 if [ -f etc/xdg/autostart/onboard-autostart.desktop ]; then
   echo "X-XFCE-Autostart-Override=true" >> etc/xdg/autostart/onboard-autostart.desktop
+  echo "onscreen-keyboard=true" >> etc/lightdm/slick-greeter.conf
 fi
 
 # remove the generated ssh keys so that fresh ones are generated on
