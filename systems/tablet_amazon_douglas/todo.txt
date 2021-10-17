@@ -17,3 +17,6 @@
 - the legacy v3.18 kernel used here seems to be based on v3.18.19, upsteam it went until v3.18.140 (around may 2019)
   - maybe try to patch the legacy up to there step by step
   - maybe even backport later security fixes
+- there is a v4.9 tree available for the 2018 fire hd 8 (karnak)
+  - https://github.com/hexdump0815/linux-amazon-mediatek-mt8163-kernel-source/tree/karnak-v4.9-import
+  - maybe it can be made working for douglas (and maybe even the 2016 fire hd 8 - giza - too)?
