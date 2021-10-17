@@ -10,6 +10,7 @@
   - gpu release does not match: if the kernel driver version is faked to be proper one gets "The DDK was built for 0x720 r1p1 status range [...], but none of the GPUs matched:"
   - the gpu is r1p0
   - maybe that check can be hacked around as well?
+  - i guess the only possible way - if there is any working one at all - would be via pbuffer (LIBGL_FB=3) mode of gl4es
 - there is the beginning of a mainline port of the linux kernel for the mt8163 soc: https://github.com/mt8163-mainline/linux
   - maybe have a look at it?
   - maybe the mt8173 code in mainline is helpful?

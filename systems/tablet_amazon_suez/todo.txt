@@ -12,6 +12,7 @@
   - a look at the mainling effort for the mt8163 soc might help (https://github.com/mt8163-mainline/linux)
 - there are kernel drivers available for the powervr blob for both v3.18 and near mainline (v5.10 i think) in the chromeos repos
   - maybe it is possible to get them to work together with the (32bit) blob files from chromeos in either legacy or mainline?
+  - i guess the only possible way would be via pbuffer (LIBGL_FB=3) mode of gl4es
   - some maybe interesting links:
     - https://github.com/xc-racer99/mesa-pvr/
     - https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/master/media-libs/arc-mesa-img/files/

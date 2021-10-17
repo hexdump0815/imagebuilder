@@ -1,1 +1,10 @@
 - check if it is possible to somehow use the binary opengl driver working with the kernel driver which has been forward ported to mainline (either with armv7l userland and the chromeos blobs or maybe even with aarch64 userland if there are any other blobs)
+- there are kernel drivers available for the powervr blob for both v3.18 and near mainline (v5.10 i think) in the chromeos repos
+  - maybe it is possible to get them to work together with the (32bit) blob files from chromeos in either legacy or mainline?
+  - i guess the only possible way would be via pbuffer (LIBGL_FB=3) mode of gl4es
+  - some maybe interesting links:
+    - https://github.com/xc-racer99/mesa-pvr/
+    - https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/master/media-libs/arc-mesa-img/files/
+    - both via: https://wiki.postmarketos.org/wiki/Nokia_N900_(nokia-n900)
+    - see also: https://gitlab.com/postmarketOS/pmaports/-/merge_requests/1868
+  - for 64bit support: maybe those blob files are worth a look? - https://git.ti.com/git/graphics/ti-img-rogue-umlibs.git
