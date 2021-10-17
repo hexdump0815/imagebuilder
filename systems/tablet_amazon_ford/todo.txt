@@ -1,1 +1,3 @@
-- none yet
+- the legacy v3.10 kernel used here seems to be based on v3.10.54, upsteam it went until v3.10.108 (around november 2017)
+  - maybe try to patch the legacy up to there step by step
+  - maybe even backport later security fixes

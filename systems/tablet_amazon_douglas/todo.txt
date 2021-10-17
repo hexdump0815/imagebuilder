@@ -1,1 +1,18 @@
-- none yet
+- the fbconsole driver seems to be broken
+  - seems to basically work (one can switch to it, login blindly on a vt etc.), but all is black on black :)
+  - xorg seems to somehow be able to hanlde it
+  - worst case maybe just disable the fbconsole driver?
+- from time to time an info is printed about hanging kernel threads
+  - should be checked in detail
+- there is (as far as i know) only one mali blob available for the mali gpu on the allwinner h6 soc (blob: opt-mali-* here - https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h6-kernel/tree/master/misc.ah6 ... kernel driver build info: https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h6-kernel/blob/master/readme.ah6-mali-h6-fbdev)
+  - maybe have a look if it can be made working for the mali t720 in the mt8163 as well?
+  - kernel driver versions do not match: versions are 10.0 (kernel) vs 10.6 (user) - the kernel version could be faked or the kernel driver could be replaced
+  - gpu release does not match: if the kernel driver version is faked to be proper one gets "The DDK was built for 0x720 r1p1 status range [...], but none of the GPUs matched:"
+  - the gpu is r1p0
+  - maybe that check can be hacked around as well?
+- there is the beginning of a mainline port of the linux kernel for the mt8163 soc: https://github.com/mt8163-mainline/linux
+  - maybe have a look at it?
+  - maybe the mt8173 code in mainline is helpful?
+- the legacy v3.18 kernel used here seems to be based on v3.18.19, upsteam it went until v3.18.140 (around may 2019)
+  - maybe try to patch the legacy up to there step by step
+  - maybe even backport later security fixes
