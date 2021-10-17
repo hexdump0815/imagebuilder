@@ -1,3 +1,8 @@
+- the system seems to hang on boot from time to time
+  - seems to happen more often with bullseye than with focal (but i may be wrong)
 - the legacy v3.10 kernel used here seems to be based on v3.10.54, upsteam it went until v3.10.108 (around november 2017)
   - maybe try to patch the legacy up to there step by step
   - maybe even backport later security fixes
+- have a look trying to get the legacy wifi driver working somehow (see mediatek section of: https://wiki.postmarketos.org/wiki/WiFi)
+  - all experiments so far failed
+- it looks like audio is handled via some hal blob on android only as there is no alsa sound device

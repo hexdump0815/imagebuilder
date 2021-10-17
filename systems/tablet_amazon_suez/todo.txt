@@ -19,3 +19,8 @@
     - both via: https://wiki.postmarketos.org/wiki/Nokia_N900_(nokia-n900)
     - see also: https://gitlab.com/postmarketOS/pmaports/-/merge_requests/1868
   - for 64bit support: maybe those blob files are worth a look? - https://git.ti.com/git/graphics/ti-img-rogue-umlibs.git
+- have a look trying to get the legacy wifi driver working somehow (see mediatek section of: https://wiki.postmarketos.org/wiki/WiFi)
+  - no experiments done so far
+- audio looks promising
+  - there is an mtk alsa audio device in linux and a mixer
+  - maybe only a proper ucm file is required? (see: https://wiki.postmarketos.org/wiki/Alsa_UCM)
