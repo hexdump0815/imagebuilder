@@ -20,6 +20,14 @@ wget -v https://github.com/hexdump0815/pmaports-amazon/releases/download/${amazo
 wget -v https://github.com/hexdump0815/pmaports-amazon/releases/download/${amazon_ford_pmos_release_version}/vmlinuz.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/vmlinuz.gz
 wget -v https://github.com/hexdump0815/pmaports-amazon/releases/download/${amazon_ford_pmos_release_version}/lib-modules.tar.gz -O ${DOWNLOAD_DIR}/boot-extra-${1}/lib-modules.tar.gz
 
+# the fb refresher is required for mt8127 based amazon fire 7 tablets to keep the screen updated
+
+fb_refresher_version="1.0"
+
+rm -rf ${DOWNLOAD_DIR}/postinstall-${1}
+mkdir -p ${DOWNLOAD_DIR}/postinstall-${1}
+wget -v https://github.com/hexdump0815/msm-fb-refresher/releases/download/${fb_refresher_version}/opt-msm-fb-refresher-${3}-armv7l.tar.gz -O ${DOWNLOAD_DIR}/postinstall-${1}/opt-msm-fb-refresher-${3}-armv7l.tar.gz
+
 # get a mali blob which surprisingly to some degree is useable for this older fire 7 tablet
 
 amazon_ford_mali_blob_version="771a635a97ef86d185614027f53c92862a4a4a9c"
