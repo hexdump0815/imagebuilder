@@ -77,5 +77,6 @@ else
   echo ""
   echo "no offline dir detected - downloading the files required"
   echo ""
+  # the three arguments are taken over from the calling script due to the .
   . systems/$1/get-files.sh
 fi

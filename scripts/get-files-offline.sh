@@ -61,7 +61,7 @@ for i in $(ls systems); do
     echo ""
     # set DOWNLOAD_DIR to OFFLINE_DIR
     export DOWNLOAD_DIR=${OFFLINE_DIR}
-    . systems/${i}/get-files.sh ${i} ${1}
+    . systems/${i}/get-files.sh ${i} ${1} ${2}
     echo ""
   fi
   # do the same for the possible target hosts
@@ -71,7 +71,7 @@ for i in $(ls systems); do
     echo ""
     # set DOWNLOAD_DIR to OFFLINE_DIR
     export DOWNLOAD_DIR=${OFFLINE_DIR}
-    . systems/${i}/get-files.sh ${i} ${POSSIBLE_TARGET_HOST}
+    . systems/${i}/get-files.sh ${i} ${POSSIBLE_TARGET_HOST} ${2}
     echo ""
   fi
 done
