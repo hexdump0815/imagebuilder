@@ -261,12 +261,17 @@ echo "export LD_LIBRARY_PATH LIBGL_DRIVERS_PATH GBM_DRIVERS_PATH" >> etc/X11/Xse
 IMAGEBUILDER_VERSION=$(cd ${WORKDIR}; git rev-parse --verify HEAD)
 echo ${1} ${2} ${3} ${IMAGEBUILDER_VERSION} > ${BUILD_ROOT}/etc/imagebuilder-info
 
+# copy postinstall files into the build root if there are any
+if [ -d ${DOWNLOAD_DIR}/postinstall-${1} ]; then
+  cp -r ${DOWNLOAD_DIR}/postinstall-${1} ${BUILD_ROOT}/postinstall
+fi
+
 # post install script per system
 if [ -x ${WORKDIR}/systems/${1}/postinstall.sh ]; then
-  ${WORKDIR}/systems/${1}/postinstall.sh
+  ${WORKDIR}/systems/${1}/postinstall.sh ${1} ${2} ${3}
 fi
 if [ -x ${WORKDIR}/systems/${1}/postinstall-${3}.sh ]; then
-  ${WORKDIR}/systems/${1}/postinstall-${3}.sh
+  ${WORKDIR}/systems/${1}/postinstall-${3}.sh ${1} ${2} ${3}
 fi
 
 # post install script which is run chrooted per system
@@ -279,6 +284,11 @@ if [ -x ${WORKDIR}/systems/${1}/postinstall-chroot-${3}.sh ]; then
   cp ${WORKDIR}/systems/${1}/postinstall-chroot-${3}.sh ${BUILD_ROOT}/postinstall-chroot-${3}.sh
   chroot ${BUILD_ROOT} /postinstall-chroot-${3}.sh ${1} ${2} ${3}
   rm -f ${BUILD_ROOT}/postinstall-chroot-${3}.sh
+fi
+
+# cleanup postinstall files
+if [ -d ${BUILD_ROOT}/postinstall ]; then
+  rm -rf ${BUILD_ROOT}/postinstall
 fi
 
 chroot ${BUILD_ROOT} ldconfig
