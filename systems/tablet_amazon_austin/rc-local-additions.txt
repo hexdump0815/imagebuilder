@@ -8,8 +8,8 @@
 # set display brightness
 echo 63 > /sys/class/leds/lcd-backlight/brightness
 
-# start the fb refresher
-/opt/msm-fb-refresher/msm-fb-refresher --loop &
+# start the fb refresher - done now via /etc/systemd/system/fb-refresher.service
+#/opt/msm-fb-refresher/msm-fb-refresher --loop &
 
 # this seems to be required for this legacy kernel
 if [ -x /usr/lib/upower/upowerd ]; then

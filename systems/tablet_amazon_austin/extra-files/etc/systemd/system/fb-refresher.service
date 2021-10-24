@@ -1,0 +1,12 @@
+[Unit]
+Description=start msm-fb-refresher
+Before=basic.target
+After=local-fs.target sysinit.target
+DefaultDependencies=no
+
+[Service]
+Type=simple
+ExecStart=/opt/msm-fb-refresher/msm-fb-refresher --loop
+
+[Install]
+WantedBy=basic.target
