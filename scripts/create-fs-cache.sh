@@ -75,16 +75,41 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
   mkdir -p ${BUILD_ROOT_CACHE}/etc/apt
   if [ "${2}" = "focal" ]; then
     LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} ${2} ${BUILD_ROOT_CACHE} http://${SERVER_PREFIX}ubuntu.com/${SERVER_POSTFIX}
+    # exit if debootstrap failed for some reason
+    if [ "$?" != "0" ]; then
+      echo ""
+      echo "error while running debootstrap - giving up"
+      echo ""
+      rm -rf ${BUILD_ROOT_CACHE}
+      exit 1
+    fi
     cp ${WORKDIR}/files/focal-${BOOTSTRAP_ARCH}-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
     # parse in the proper ubuntu version
     sed -i "s,UBUNTUVERSION,focal,g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
   elif [ "${2}" = "bullseye" ]; then
-    LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} ${2} ${BUILD_ROOT_CACHE} http://deb.debian.org/debian/
+    wget https://ftp-master.debian.org/keys/release-11.asc -qO- | gpg --import --no-default-keyring --keyring ${DOWNLOAD_DIR}/debian-release-11.gpg
+    LANG=C debootstrap --keyring=${DOWNLOAD_DIR}/debian-release-11.gpg --variant=minbase --arch=${BOOTSTRAP_ARCH} ${2} ${BUILD_ROOT_CACHE} http://deb.debian.org/debian/
+    # exit if debootstrap failed for some reason
+    if [ "$?" != "0" ]; then
+      echo ""
+      echo "error while running debootstrap - giving up"
+      echo ""
+      rm -rf ${BUILD_ROOT_CACHE}
+      exit 1
+    fi
     cp ${WORKDIR}/files/bullseye-${BOOTSTRAP_ARCH}-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
     # parse in the proper debian version
     sed -i "s,DEBIANVERSION,bullseye,g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
   elif [ "${2}" = "sonaremin" ]; then
     LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} focal ${BUILD_ROOT_CACHE} http://ports.ubuntu.com/
+    # exit if debootstrap failed for some reason
+    if [ "$?" != "0" ]; then
+      echo ""
+      echo "error while running debootstrap - giving up"
+      echo ""
+      rm -rf ${BUILD_ROOT_CACHE}
+      exit 1
+    fi
     cp ${WORKDIR}/files/focal-${BOOTSTRAP_ARCH}-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
     # parse in the proper ubuntu version
     sed -i "s,UBUNTUVERSION,focal,g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
