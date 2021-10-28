@@ -1,5 +1,10 @@
 [org.onboard]
+layout='Compact'
 theme='Droid'
+key-label-font='Sans'
 start-minimized=true
 xembed-onboard=true
+
+[org.onboard.window]
 docking-enabled=true
+force-to-top=true
