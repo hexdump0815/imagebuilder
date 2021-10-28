@@ -27,16 +27,3 @@ fb_refresher_version="1.0"
 rm -rf ${DOWNLOAD_DIR}/postinstall-${1}
 mkdir -p ${DOWNLOAD_DIR}/postinstall-${1}
 wget -v https://github.com/hexdump0815/msm-fb-refresher/releases/download/${fb_refresher_version}/opt-msm-fb-refresher-${3}-armv7l.tar.gz -O ${DOWNLOAD_DIR}/postinstall-${1}/opt-msm-fb-refresher-${3}-armv7l.tar.gz
-
-# get a mali blob which surprisingly to some degree is useable for this older fire 7 tablet
-
-amazon_ford_mali_blob_version="771a635a97ef86d185614027f53c92862a4a4a9c"
-gl4es_focal_armv7l_version="9051dfe1f2198e2ed41c322359ee8324043d55a9"
-
-rm -f ${DOWNLOAD_DIR}/opengl-tablet_amazon_ford-armv7l.tar.gz
-wget -v https://github.com/hexdump0815/linux-amazon-mediatek-mt8127-kernel/raw/${amazon_ford_mali_blob_version}/misc/opt-mali-meson-r4p0-armv7l.tar.gz -O ${DOWNLOAD_DIR}/opengl-tablet_amazon_ford-armv7l.tar.gz
-rm -f ${DOWNLOAD_DIR}/opengl-fbdev-tablet_amazon_ford-armv7l.tar.gz
-wget -v https://github.com/hexdump0815/linux-amazon-mediatek-mt8127-kernel/raw/${amazon_ford_mali_blob_version}/misc/opt-mali-meson-fbdev-r4p0-armv7l.tar.gz -O ${DOWNLOAD_DIR}/opengl-fbdev-tablet_amazon_ford-armv7l.tar.gz
-
-rm -f ${DOWNLOAD_DIR}/gl4es-armv7l-focal.tar.gz
-wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${gl4es_focal_armv7l_version}/misc/gl4es-armv7l-ubuntu.tar.gz -O ${DOWNLOAD_DIR}/gl4es-armv7l-focal.tar.gz
