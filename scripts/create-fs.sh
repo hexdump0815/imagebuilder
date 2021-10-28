@@ -213,12 +213,6 @@ if [ -f etc/default/apport ]; then
   sed -i 's,^enabled=1,enabled=0,g' etc/default/apport
 fi
 
-# start the onboard virtual keyboard automatically, also in lightdm
-if [ -f etc/xdg/autostart/onboard-autostart.desktop ]; then
-  echo "X-XFCE-Autostart-Override=true" >> etc/xdg/autostart/onboard-autostart.desktop
-  echo "onscreen-keyboard=true" >> etc/lightdm/slick-greeter.conf
-fi
-
 # remove the generated ssh keys so that fresh ones are generated on
 # first boot for each installed image
 rm -f etc/ssh/*key*
@@ -290,6 +284,9 @@ fi
 if [ -d ${BUILD_ROOT}/postinstall ]; then
   rm -rf ${BUILD_ROOT}/postinstall
 fi
+
+# recompile glib schemas to enable our onboard settings
+chroot ${BUILD_ROOT} glib-compile-schemas /usr/share/glib-2.0/schemas/
 
 chroot ${BUILD_ROOT} ldconfig
 
