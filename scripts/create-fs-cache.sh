@@ -22,6 +22,13 @@ if [ "$#" != "2" ]; then
   exit 1
 fi
 
+if [ "${1}" = "i686" ] && [ "${2}" != "bullseye" ]; then
+  echo ""
+  echo "the target arch i686 is only supported for debian bullseye as there is no i686 build of ubuntu focal - giving up"
+  echo ""
+  exit 1
+fi
+
 if [ "${1}" = "armv7l" ] || [ "${1}" = "aarch64" ]; then
   POSSIBLE_TARGET_HOST="aarch64"
 fi
