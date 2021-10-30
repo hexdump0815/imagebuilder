@@ -4,7 +4,7 @@ systemctl enable fb-refresher
 
 # mount /boot with noauto as due to this mount the booting sometimes hangs on this system
 # /boot comes already mounted from the postmarketos initramfs used here anyway ...
-sed -i 's,remount-ro 0 2,remount-ro,noauto 0 2,g' /etc/fstab
+sed -i 's/remount-ro 0 2/remount-ro,noauto 0 2/g' /etc/fstab
 
 # remove and disable some things which are not needed or disturbing on this weak
 # tablet with its legacy kernel to speed up the boot process
