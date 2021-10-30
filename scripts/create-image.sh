@@ -231,7 +231,12 @@ fi
 
 # create a customized fstab file
 cp /dev/null ${MOUNT_POINT}/etc/fstab
-FSTAB_EXT4_BOOT="LABEL=$BOOTPARTLABEL /boot ext4 defaults,noatime,nodiratime,errors=remount-ro 0 2"
+# the pmos initramfs is premounting /boot already, so no need to mount it via fstab
+if [ "$PMOSKERNEL" = "true" ]; then
+  FSTAB_EXT4_BOOT="LABEL=$BOOTPARTLABEL /boot ext4 defaults,noatime,nodiratime,errors=remount-ro,noauto 0 2"
+else
+  FSTAB_EXT4_BOOT="LABEL=$BOOTPARTLABEL /boot ext4 defaults,noatime,nodiratime,errors=remount-ro 0 2"
+fi
 # pmos kernels do not use fat boot partitions, so the name can be hardcoded here
 FSTAB_VFAT_BOOT="LABEL=BOOTPART /boot vfat defaults,rw,owner,flush,umask=000 0 0"
 FSTAB_BTRFS_ROOT="LABEL=$ROOTPARTLABEL / btrfs defaults,ssd,compress-force=zstd,noatime,nodiratime 0 1"
