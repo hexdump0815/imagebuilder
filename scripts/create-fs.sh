@@ -290,7 +290,7 @@ chroot ${BUILD_ROOT} glib-compile-schemas /usr/share/glib-2.0/schemas/
 
 chroot ${BUILD_ROOT} ldconfig
 
-if [ ${PMOSKERNEL} != "true" ]; then
+if [ "${PMOSKERNEL}" != "true" ]; then
   export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/*Image-* | sed 's,.*Image-,,g' | sort -u`
 
   # in case we did not get a kernel version, try it again with the vmlinuz
