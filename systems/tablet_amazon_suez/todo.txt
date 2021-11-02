@@ -4,12 +4,17 @@
   - worst case maybe just disable the fbconsole driver?
 - from time to time an info is printed about hanging kernel threads
   - should be checked in detail
+- the legacy v3.18 kernel used here seems to be based on v3.18.19, upsteam it went until v3.18.140 (around may 2019)
+  - maybe try to patch the legacy up to there step by step - an example tree which seems to have done this:
+    - https://android.googlesource.com/kernel/mediatek/+log/refs/heads/android-3.18/Makefile
+  - maybe even backport later security fixes
 - there is quite good support for the mt8173 soc in mainline for the elm/hana chromebooks
   - maybe it is possible to get mainline working for suez as well
   - a dtb would have to be constructed
   - hopefully enough information can be gathered from the legacy sources
   - hopefully the mainline drivers cover the basic required areas (panel, backlight, usb, mmc, ...)
   - a look at the mainling effort for the mt8163 soc might help (https://github.com/mt8163-mainline/linux)
+  - it is close to impossible to get it mainlined as the amazon tablets use mt-boot as cpu enable method and mainline only accepts psci or spin-table (i got this info from the maintainer of the mt8163 mainline tree)
 - there are kernel drivers available for the powervr blob for both v3.18 and near mainline (v5.10 i think) in the chromeos repos
   - maybe it is possible to get them to work together with the (32bit) blob files from chromeos in either legacy or mainline?
   - i guess the only possible way would be via pbuffer (LIBGL_FB=3) mode of gl4es
@@ -19,6 +24,7 @@
     - both via: https://wiki.postmarketos.org/wiki/Nokia_N900_(nokia-n900)
     - see also: https://gitlab.com/postmarketOS/pmaports/-/merge_requests/1868
   - for 64bit support: maybe those blob files are worth a look? - https://git.ti.com/git/graphics/ti-img-rogue-umlibs.git
+    - looks like this one is for another powervr version
 - have a look trying to get the legacy wifi driver working somehow (see mediatek section of: https://wiki.postmarketos.org/wiki/WiFi)
   - no experiments done so far
 - audio looks promising
