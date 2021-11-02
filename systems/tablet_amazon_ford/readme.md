@@ -22,7 +22,7 @@
 - the kernels and initramfs images are built using the postmarketos build systems (which is very nice btw.), thus the postmarketos splash screen on boot :)
 - to use those the devices one needs an unlocked boot loader, so they will not work out of the box on a device
   - see: https://forum.xda-developers.com/t/unlock-root-twrp-unbrick-downgrade-fire-7-ford-and-austin.3899860/ - don't create any issues around this topic, ask in the forum there
-- just uncompress the files, write the boot.img to boot via fastboot with the unlocked bootloader via twrp, write the device image to an sd card
+- just uncompress the files, write the boot.img to boot via fastboot with the unlocked bootloader via twrp (a reboot into twrp and power down in it is required afterwards to patch the boot partition properly), write the device image to an sd card
 - usb keyboard and/or mouse can be connected via usb otg (maybe hub)
   - maybe replug them if they do not work
 - there is an onscreen keyboard option in the menu of the login screen and available via accessories -> onboard in the xfce session and sometimes also in the menu via the onboard icon
