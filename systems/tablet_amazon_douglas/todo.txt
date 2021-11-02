@@ -14,15 +14,17 @@
 - there is the beginning of a mainline port of the linux kernel for the mt8163 soc: https://github.com/mt8163-mainline/linux
   - maybe have a look at it?
   - maybe the mt8173 code in mainline is helpful?
+  - it is close to impossible to get it mainlined as the amazon tablets use mt-boot as cpu enable method and mainline only accepts psci or spin-table (i got this info from the maintainer of the above mainline tree)
 - the legacy v3.18 kernel used here seems to be based on v3.18.19, upsteam it went until v3.18.140 (around may 2019)
-  - maybe try to patch the legacy up to there step by step
+  - maybe try to patch the legacy up to there step by step - an example tree which seems to have done this:
+    - https://android.googlesource.com/kernel/mediatek/+log/refs/heads/android-3.18/Makefile
   - maybe even backport later security fixes
 - there is a v4.9 tree available for the 2018 fire hd 8 (karnak)
   - https://github.com/hexdump0815/linux-amazon-mediatek-mt8163-kernel-source/tree/karnak-v4.9-import
   - maybe it can be made working for douglas (and maybe even the 2016 fire hd 8 - giza - too)?
 - have a look trying to get the legacy wifi driver working somehow (see mediatek section of: https://wiki.postmarketos.org/wiki/WiFi)
-  - experiments so far at least resulted once in the log that wifi started successfully, but no wlan divice in the end
+  - experiments so far at least resulted once in the log that wifi started successfully, but no wlan device in the end
 - not sure how audio is handled on douglas
-  - in android it has a similar mtk audio device like suez
+  - in android it has a similar mtk audio device like for suez (which even shows an alsa device in linux)
   - in linux no alsa device is visible and sound can be problematic as it seems (see: https://wiki.postmarketos.org/wiki/Amazon_Fire_HD_8_2017_(amazon-douglas))
   - compiling sound partially as modules seems to at least allow the basic alsa sound stack to be used for usb audio at least
