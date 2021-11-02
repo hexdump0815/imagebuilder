@@ -1,7 +1,9 @@
-- the system seems to hang on boot from time to time
-  - seems to happen more often with bullseye than with focal (but i may be wrong)
+- fixed: the system seems to hang on boot from time to time
+  - looks like this came from trying to mount /boot which is not needed as its already mounted via initramfs
 - the legacy v3.10 kernel used here seems to be based on v3.10.54, upsteam it went until v3.10.108 (around november 2017)
-  - maybe try to patch the legacy up to there step by step
+  - maybe try to patch the legacy up to there step by step - some trees which seem to have done this:
+    - https://github.com/mt8127/android_kernel_alcatel_ttab
+    - https://github.com/ggow/android_kernel_amazon_mt8127-common
   - maybe even backport later security fixes
 - have a look trying to get the legacy wifi driver working somehow (see mediatek section of: https://wiki.postmarketos.org/wiki/WiFi)
   - all experiments so far failed
