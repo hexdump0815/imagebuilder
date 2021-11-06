@@ -1,3 +1,4 @@
+- fix extend-root.sh to handle sdx devices as well as mmcblkxpypz devices like used with pmos kernels and data partition on emmc
 - change default search engine in firefox to duckduckgo.com instead of google
 - add more doc info to the top level readme (initial setup, scripts in /scripts dir etc.)
 - add support for the nvidia jetson nano
