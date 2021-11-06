@@ -14,6 +14,7 @@
   - with v5.11 drm seems to crash on display resume
   - with v5.15 drm does not seem to crash anymore, but it does not seem to be able to get the display timings properly anymore due to some problems with either the ps8460 edp bridge or due to i2c-mt65xx issues - see below
   - using the mrvl-and-edp-reload hack used for the nyan chromebook the display somehow comes back after resume but is quite broken
+  - bisecting the problem is complicated due to two different issues being involved (drm crash and edid detect problem) and during a bisect try i ended up in completely non-working kernel versions at some point
 ```
 working (5.10.50):
 
