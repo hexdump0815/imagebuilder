@@ -35,6 +35,7 @@
 
 ## special notes
 
+- this system stays on the linux v5.4 kernel for now as later mainline kernels have problems with the display initialization
 - most things seem to work more or less (suspend/resume and the gpu are the most troublesome areas)
 - there are two sets of images provided: one using a v5.4 mainline kernel (with not really useable suspend/resume) and another with av3.10 legacy cromeos kernel (with working suspend/resume but the kernel is no longer maintained)
   - if suspend/resume is urgently required the legacy kernel might be the only useable option (i had some problems with the keyboard and touchpad not working anymore in x11 after resume even with the legacy kernel with ubuntu focal - but i also saw it working in this setup)

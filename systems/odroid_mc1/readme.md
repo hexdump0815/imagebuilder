@@ -28,4 +28,5 @@
 
 ## special notes
 
+- this system stays on the linux v5.4 kernel from odroid for now as later mainline kernels have about 20% lower performance in some scenarios (but work fine otherwise)
 - the mali gpu is only supported via the legacy mali blob as it is not yet supported by the open source panfrost mali driver

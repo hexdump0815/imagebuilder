@@ -30,6 +30,7 @@
 
 ## special notes
 
+- this system stays on the linux v5.10 kernel for now as later mainline kernels have problems with the display reinitialization after resume
 - most things seem to work more or less
 - there is no gpu acceleration as there is no open source driver available for the powervr gpu in the mt8173 soc, mesa software rendering is used instead for opengl etc.
 - suspend/resume status:
