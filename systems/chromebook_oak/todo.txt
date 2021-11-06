@@ -8,3 +8,126 @@
     - both via: https://wiki.postmarketos.org/wiki/Nokia_N900_(nokia-n900)
     - see also: https://gitlab.com/postmarketOS/pmaports/-/merge_requests/1868
   - for 64bit support: maybe those blob files are worth a look? - https://git.ti.com/git/graphics/ti-img-rogue-umlibs.git
+    - looks like this one is for another powervr version
+- get suspend/resume working for kernels > v5.10
+  - with v5.10 it works fine
+  - with v5.11 drm seems to crash on display resume
+  - with v5.15 drm does not seem to crash anymore, but it does not seem to be able to get the display timings properly anymore due to some problems with either the ps8460 edp bridge or due to i2c-mt65xx issues - see below
+  - using the mrvl-and-edp-reload hack used for the nyan chromebook the display somehow comes back after resume but is quite broken
+```
+working (5.10.50):
+
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:32:eDP-1]
+[drm:drm_add_display_info] Supported Monitor Refresh rate range is 0 Hz - 0 Hz
+[drm:drm_add_display_info] non_desktop set to 0
+[drm:drm_add_display_info] Supported Monitor Refresh rate range is 0 Hz - 0 Hz
+[drm:drm_add_display_info] non_desktop set to 0
+[drm:drm_add_edid_modes] ELD: no CEA Extension found
+[drm:drm_add_display_info] Supported Monitor Refresh rate range is 0 Hz - 0 Hz
+[drm:drm_add_display_info] non_desktop set to 0
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:32:eDP-1] probed modes :
+[drm:drm_mode_debug_printmodeline] Modeline "1366x768": 60 73150 1366 1414 1446 1526 768 771 776 799 0x48 0x9
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:34:HDMI-A-1]
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:34:HDMI-A-1] disconnected
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:32:eDP-1]
+[drm:drm_add_display_info] Supported Monitor Refresh rate range is 0 Hz - 0 Hz
+[drm:drm_add_display_info] non_desktop set to 0
+[drm:drm_add_display_info] Supported Monitor Refresh rate range is 0 Hz - 0 Hz
+[drm:drm_add_display_info] non_desktop set to 0
+[drm:drm_add_edid_modes] ELD: no CEA Extension found
+[drm:drm_add_display_info] Supported Monitor Refresh rate range is 0 Hz - 0 Hz
+[drm:drm_add_display_info] non_desktop set to 0
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:32:eDP-1] probed modes :
+[drm:drm_mode_debug_printmodeline] Modeline "1366x768": 60 73150 1366 1414 1446 1526 768 771 776 799 0x48 0x9
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:34:HDMI-A-1]
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:34:HDMI-A-1] disconnected
+[drm:drm_mode_setcrtc] [CRTC:43:crtc-0]
+[drm:drm_mode_setcrtc] [CONNECTOR:32:eDP-1]
+[drm:drm_mode_setcrtc] [CRTC:52:crtc-1]
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:32:eDP-1]
+[drm:drm_add_display_info] Supported Monitor Refresh rate range is 0 Hz - 0 Hz
+[drm:drm_add_display_info] non_desktop set to 0
+[drm:drm_add_display_info] Supported Monitor Refresh rate range is 0 Hz - 0 Hz
+[drm:drm_add_display_info] non_desktop set to 0
+[drm:drm_add_edid_modes] ELD: no CEA Extension found
+[drm:drm_add_display_info] Supported Monitor Refresh rate range is 0 Hz - 0 Hz
+[drm:drm_add_display_info] non_desktop set to 0
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:32:eDP-1] probed modes :
+[drm:drm_mode_debug_printmodeline] Modeline "1366x768": 60 73150 1366 1414 1446 1526 768 771 776 799 0x48 0x9
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:34:HDMI-A-1]
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:34:HDMI-A-1] disconnected
+
+non working (5.15.0):
+
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:32:eDP-1]
+[drm:drm_do_probe_ddc_edid] drm: skipping non-existent adapter i2c-mt65xx
+[drm:drm_connector_update_edid_property] [CONNECTOR:32:eDP-1] Edid was changed.
+[drm:drm_connector_update_edid_property] Updating change counter to 2
+[drm:drm_mode_debug_printmodeline] Modeline "1366x768": 60 73150 1366 1414 1446 1526 768 771 776 799 0x48 0x9
+[drm:drm_mode_prune_invalid] Not using 1366x768 mode: STALE
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:32:eDP-1] probed modes :
+[drm:drm_mode_debug_printmodeline] Modeline "1024x768": 60 65000 1024 1048 1184 1344 768 771 777 806 0x40 0xa
+[drm:drm_mode_debug_printmodeline] Modeline "800x600": 60 40000 800 840 968 1056 600 601 605 628 0x40 0x5
+[drm:drm_mode_debug_printmodeline] Modeline "800x600": 56 36000 800 824 896 1024 600 601 603 625 0x40 0x5
+[drm:drm_mode_debug_printmodeline] Modeline "848x480": 60 33750 848 864 976 1088 480 486 494 517 0x40 0x5
+[drm:drm_mode_debug_printmodeline] Modeline "640x480": 60 25175 640 656 752 800 480 490 492 525 0x40 0xa
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:34:HDMI-A-1]
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:34:HDMI-A-1] disconnected
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:32:eDP-1]
+[drm:drm_do_probe_ddc_edid] drm: skipping non-existent adapter i2c-mt65xx
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:32:eDP-1] probed modes :
+[drm:drm_mode_debug_printmodeline] Modeline "1024x768": 60 65000 1024 1048 1184 1344 768 771 777 806 0x40 0xa
+[drm:drm_mode_debug_printmodeline] Modeline "800x600": 60 40000 800 840 968 1056 600 601 605 628 0x40 0x5
+[drm:drm_mode_debug_printmodeline] Modeline "800x600": 56 36000 800 824 896 1024 600 601 603 625 0x40 0x5
+[drm:drm_mode_debug_printmodeline] Modeline "848x480": 60 33750 848 864 976 1088 480 486 494 517 0x40 0x5
+[drm:drm_mode_debug_printmodeline] Modeline "640x480": 60 25175 640 656 752 800 480 490 492 525 0x40 0xa
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:34:HDMI-A-1]
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:34:HDMI-A-1] disconnected
+[drm:drm_mode_setcrtc] [CRTC:43:crtc-0]
+[drm:drm_mode_setcrtc] [CONNECTOR:32:eDP-1]
+[drm:drm_mode_setcrtc] [CRTC:52:crtc-1]
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:32:eDP-1]
+[drm:drm_do_probe_ddc_edid] drm: skipping non-existent adapter i2c-mt65xx
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:32:eDP-1] probed modes :
+[drm:drm_mode_debug_printmodeline] Modeline "1024x768": 60 65000 1024 1048 1184 1344 768 771 777 806 0x40 0xa
+[drm:drm_mode_debug_printmodeline] Modeline "800x600": 60 40000 800 840 968 1056 600 601 605 628 0x40 0x5
+[drm:drm_mode_debug_printmodeline] Modeline "800x600": 56 36000 800 824 896 1024 600 601 603 625 0x40 0x5
+[drm:drm_mode_debug_printmodeline] Modeline "848x480": 60 33750 848 864 976 1088 480 486 494 517 0x40 0x5
+[drm:drm_mode_debug_printmodeline] Modeline "640x480": 60 25175 640 656 752 800 480 490 492 525 0x40 0xa
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:34:HDMI-A-1]
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:34:HDMI-A-1] disconnected
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:32:eDP-1]
+[drm:drm_add_display_info] Supported Monitor Refresh rate range is 0 Hz - 0 Hz
+[drm:drm_add_display_info] non_desktop set to 0
+[drm:drm_add_display_info] Supported Monitor Refresh rate range is 0 Hz - 0 Hz
+[drm:drm_add_display_info] non_desktop set to 0
+[drm:drm_add_edid_modes] ELD: no CEA Extension found
+[drm:drm_add_display_info] Supported Monitor Refresh rate range is 0 Hz - 0 Hz
+[drm:drm_add_display_info] non_desktop set to 0
+[drm:drm_mode_debug_printmodeline] Modeline "1024x768": 60 65000 1024 1048 1184 1344 768 771 777 806 0x40 0xa
+[drm:drm_mode_prune_invalid] Not using 1024x768 mode: STALE
+[drm:drm_mode_debug_printmodeline] Modeline "800x600": 60 40000 800 840 968 1056 600 601 605 628 0x40 0x5
+[drm:drm_mode_prune_invalid] Not using 800x600 mode: STALE
+[drm:drm_mode_debug_printmodeline] Modeline "800x600": 56 36000 800 824 896 1024 600 601 603 625 0x40 0x5
+[drm:drm_mode_prune_invalid] Not using 800x600 mode: STALE
+[drm:drm_mode_debug_printmodeline] Modeline "848x480": 60 33750 848 864 976 1088 480 486 494 517 0x40 0x5
+[drm:drm_mode_prune_invalid] Not using 848x480 mode: STALE
+[drm:drm_mode_debug_printmodeline] Modeline "640x480": 60 25175 640 656 752 800 480 490 492 525 0x40 0xa
+[drm:drm_mode_prune_invalid] Not using 640x480 mode: STALE
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:32:eDP-1] probed modes :
+[drm:drm_mode_debug_printmodeline] Modeline "1366x768": 60 73150 1366 1414 1446 1526 768 771 776 799 0x48 0x9
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:34:HDMI-A-1]
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:34:HDMI-A-1] disconnected
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:32:eDP-1]
+[drm:drm_add_display_info] Supported Monitor Refresh rate range is 0 Hz - 0 Hz
+[drm:drm_add_display_info] non_desktop set to 0
+[drm:drm_add_display_info] Supported Monitor Refresh rate range is 0 Hz - 0 Hz
+[drm:drm_add_display_info] non_desktop set to 0
+[drm:drm_add_edid_modes] ELD: no CEA Extension found
+[drm:drm_add_display_info] Supported Monitor Refresh rate range is 0 Hz - 0 Hz
+[drm:drm_add_display_info] non_desktop set to 0
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:32:eDP-1] probed modes :
+[drm:drm_mode_debug_printmodeline] Modeline "1366x768": 60 73150 1366 1414 1446 1526 768 771 776 799 0x48 0x9
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:34:HDMI-A-1]
+[drm:drm_helper_probe_single_connector_modes] [CONNECTOR:34:HDMI-A-1] disconnected
+```
