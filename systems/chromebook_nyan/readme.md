@@ -11,11 +11,11 @@
 
 - acer chromebook cb5 311 - nyan big
 - acer chromebook 13 c810 - nyan big
+- hp chromebook 14 g3 - nyan blaze (wip)
 
 ## untested systems
 
-- hp chromebook 14 g3 - nyan blaze
-  - never seen one of those, but at least there is a dtb for it in the mainline kernel
+- maybe there are more nyan models which were not tested yet
 
 ## generic mainline linux on arm chromebook notes
 
@@ -47,6 +47,10 @@
   - the 4gb/full hd i have is working well
   - the 2gb/hd i have is working well, but the u-boot output is not visible as u-boot does not seem to be able to initialize the display properly (a lot of screen flickering) - as a result one has to type the number at the boot prompt blindly at the right time for now :)
   - the 2gb model requires a different u-boot to be written to the first partition after the image was written to the sd card (the default u-boot in the image is for the 4gb version) - the u-boot image to be written can be found in the extra folder of the boot partition or can be downloaded from here (gunzip first before writing it to the first partition): https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/v2021.07-rc4-cbt/uboot.kpart.cbt-2g.gz
+- some nyan blaze notes:
+  - for the nyan blaze also the 2gb u-boot should be used (resulting in only 2gb available ram even if 4gb are built in) for now, a separate one will be made available soon
+  - sound still needs a bit of config work, but in principle it can be made working
+  - the legacy image should work out of the box for the nyan blaze
 - sometimes the initial kernel console output stays blank but xorg will start well after a while - this seems to affect the v5.10 and newer kernels (seems to get worse with each version - maybe related to fw_devlink dependencies during parallel probing at boot), the v5.4 kernel seems to be much more reliable in this respect (this is why the nyan images were reverted back to use the v5.4 kernel for now)
 - some nyan big related issue with some info: https://github.com/hexdump0815/imagebuilder/issues/6
 - the nouveau gpu driver does not work too well (artifacts sometimes and glmark2 haengs at some point with memory allocation problems on the 4gb model) and is thus disabled by default
