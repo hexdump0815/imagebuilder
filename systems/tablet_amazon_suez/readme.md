@@ -26,6 +26,7 @@
   - maybe replug them if they do not work
 - there is an onscreen keyboard option in the menu of the login screen and available via accessories -> onboard in the xfce session and sometimes also in the menu via the onboard icon
 - virtual console terminals do not really work, it is possible to switch to them and to login, but they seem to be black on black :)
+- sound seem to work in principle (via alsaucm enadev even switching between headphones and speakers is working), but there is still quite a bit of improvement required to get it fully working (see todo file)
 - username/password is as usual linux/changeme
 - the tablet will only boot with a battery connected and charging the battery while running linux on it and using usb devices at the same time is very complicated to impossible (i at least got it to the point of draining the battery very slowly by using some special otg hub)
 - shutdown with power connected seems to reboot the tablet, connecting power always boots it ... so in the end it can only charged while having linux running :)

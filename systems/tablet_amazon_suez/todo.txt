@@ -26,7 +26,5 @@
   - for 64bit support: maybe those blob files are worth a look? - https://git.ti.com/git/graphics/ti-img-rogue-umlibs.git
     - looks like this one is for another powervr version
 - have a look trying to get the legacy wifi driver working somehow (see mediatek section of: https://wiki.postmarketos.org/wiki/WiFi)
-  - no experiments done so far
-- audio looks promising
-  - there is an mtk alsa audio device in linux and a mixer
-  - maybe only a proper ucm file is required? (see: https://wiki.postmarketos.org/wiki/Alsa_UCM)
+  - all experiments so far failed
+- maybe somehow get the alsa audio device to cooperate better with pulseaudio (i.e. not having to use device=sysdefault in the pulseaudio config)
