@@ -6,6 +6,13 @@ common use case, but the target can also be any other storage device, even
 another sd card or usb drive. it is focussed on chromebooks, but many parts
 can be used in the same or a similar way for other systems.
 
+in case one want to have another default username than linux of the provided
+bootable sd card images, just boot the image once from sd card, loging, set
+a password for root (passwd root), reboot, switch to the first virtual console
+(ctrl-alt-f1 - important: before logging into xorg) and login there as root
+(mind the default us keyboard layout for the default password changem). now
+run /scripts/rename-default-user.sh mypreferredusername and afterwards reboot.
+
 IMPORTANT: in case the target is the internal emmc of a chromebook, it is
 very recommended to set the gbb flags to 0x19 as otherwise one might end up
 in a situation where the system gets unbootable when the usb boot flags get
@@ -144,6 +151,8 @@ COMPRESS=xz
 XZ_OPT='-9 --check=crc32 –memlimit-compress=25%'
 
 # rebuild initrd for all kernels to have the crypttab setup in it
+# if that returns immediately use the kernel version found in /boot
+# like 5.10.50-stb-mt7+ instead of all
 update-initramfs -c -k all
 
 # this section is required for chromebooks using fit images on aarch64 (gru,oak, kukui etc.)
@@ -151,7 +160,8 @@ update-initramfs -c -k all
 # script /boot/kernel-and-initrd.sh ... this needs to be run whenever a new kernel is being
 # built ... vmlinux.kpart-initrd-${kver} will be the cromeos style kernel image for the
 # chromeos kernel partition which contains the initrd with the cryptsetup info - without this
-# it will not be possible to access the crypted root disk
+# it will not be possible to access the crypted root disk - so run it already once after
+# creating, chmod a+x and and adjusting the script
 # IMPORTANT: the resulting vmlinux.kpart-initrd... files has to be smaller than 32mb for
 #            aarch64 systems and smaller than 16mb for armv7l systems - thus its nearly
 #            impossible to do this on a armv7l system as the initrd is usually too big
@@ -172,7 +182,7 @@ vbutil_kernel --pack vmlinux.kpart --keyblock /usr/share/vboot/devkeys/kernel.ke
 cp -v vmlinux.kpart /boot/vmlinux.kpart-initrd-${kver}
 rm -f Image Image.lzma initrd.img.xz cmdline bootloader.bin kernel.itb vmlinux.kpart
 echo ""
-echo "  dd if=vmlinux.kpart-initrd-${kver} of=/dev/mmcblk0p1"
+echo "  dd if=/boot/vmlinux.kpart-initrd-${kver} of=/dev/mmcblk0p1"
 echo ""
 
 # grub install - this section is required intel mbr or uefibooting systems
