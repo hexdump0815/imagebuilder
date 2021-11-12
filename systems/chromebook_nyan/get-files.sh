@@ -10,16 +10,20 @@ chromebook_nyan_kernel_tree="linux-mainline-tegra-k1-kernel"
 #chromebook_nyan_release_version="5.10.25-stb-cbt%2B"
 #chromebook_nyan_kernel_tree="linux-mainline-and-mali-generic-stable-kernel"
 chromebook_nyan_legacy_release_version="3.10.18-cos-r91"
-chromebook_nyan_uboot_version="v2018.11-cbt"
-chromebook_nyan_2g_uboot_version="v2021.07-rc4-cbt"
+chromebook_nyan_2g_uboot_version="v2021.10-cbt"
+chromebook_nyan_2g_noflicker_uboot_version="v2021.10-cbt"
+chromebook_nyan_4g_uboot_version="v2021.10-cbt"
+chromebook_nyan_4g_noflicker_uboot_version="v2021.10-cbt"
 mesa_release_version="21.0.1"
 xserver_release_version="21.0.1"
 
 rm -rf ${DOWNLOAD_DIR}/boot-extra-${1}
 mkdir -p ${DOWNLOAD_DIR}/boot-extra-${1}
 # get different u-boot versions for different nyan chromebook versions
-wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_nyan_uboot_version}/uboot.kpart.cbt.gz -O - | gunzip -c > ${DOWNLOAD_DIR}//boot-extra-${1}/uboot.kpart.cbt-nyan-4g
-wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_nyan_2g_uboot_version}/uboot.kpart.cbt-2g.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/uboot.kpart.cbt-nyan-2g
+wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_nyan_2g_uboot_version}/uboot.kpart.cbt-2g.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/uboot.kpart.cbt-2g
+wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_nyan_2g_noflicker_uboot_version}/uboot.kpart.cbt-2g-noflicker.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/uboot.kpart.cbt-2g-noflicker
+wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_nyan_4g_uboot_version}/uboot.kpart.cbt-4g.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/uboot.kpart.cbt-4g
+wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_nyan_4g_noflicker_uboot_version}/uboot.kpart.cbt-4g-noflicker.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/uboot.kpart.cbt-4g-noflicker
 rm -f ${DOWNLOAD_DIR}/boot-chromebook_nyan-armv7l.dd
 
 if [ ${LEGACY_KERNEL} = "no" ]; then
@@ -29,7 +33,7 @@ if [ ${LEGACY_KERNEL} = "no" ]; then
   wget -v https://github.com/hexdump0815/${chromebook_nyan_kernel_tree}/releases/download/${chromebook_nyan_release_version}/${chromebook_nyan_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-chromebook_nyan-armv7l.tar.gz
 
   # copy the 4gb nyan u-boot to the right place, so that it will be written to the kernel partition
-  cp ${DOWNLOAD_DIR}/boot-extra-${1}/uboot.kpart.cbt-nyan-4g ${DOWNLOAD_DIR}/boot-chromebook_nyan-armv7l.dd
+  cp ${DOWNLOAD_DIR}/boot-extra-${1}/uboot.kpart.cbt-4g ${DOWNLOAD_DIR}/boot-chromebook_nyan-armv7l.dd
 
   # put the legacy kernel into /boot/extra as well - just in case
   wget -v https://github.com/hexdump0815/linux-chromeos-kernel/releases/download/${chromebook_nyan_legacy_release_version}/${chromebook_nyan_legacy_release_version}.tar.gz -O ${DOWNLOAD_DIR}/boot-extra-${1}/kernel-chromebook_nyan-legacy.tar.gz
