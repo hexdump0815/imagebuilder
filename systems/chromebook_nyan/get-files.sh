@@ -4,11 +4,11 @@
 LEGACY_KERNEL="no"
 
 # this one is for the v5.4 kernel tree which has a way more reliable display handling
-chromebook_nyan_release_version="5.4.125-stb-cbt%2B"
-chromebook_nyan_kernel_tree="linux-mainline-tegra-k1-kernel"
-# this one is for the v5.10 or newer kernel tree which still has very unreliable display handling
-#chromebook_nyan_release_version="5.10.25-stb-cbt%2B"
-#chromebook_nyan_kernel_tree="linux-mainline-and-mali-generic-stable-kernel"
+#chromebook_nyan_release_version="5.4.125-stb-cbt%2B"
+#chromebook_nyan_kernel_tree="linux-mainline-tegra-k1-kernel"
+# this one is for the v5.15 newer kernel which seem to work now
+chromebook_nyan_release_version="5.15.2-stb-cbt%2B"
+chromebook_nyan_kernel_tree="linux-mainline-and-mali-generic-stable-kernel"
 chromebook_nyan_legacy_release_version="3.10.18-cos-r91"
 chromebook_nyan_2g_uboot_version="v2021.10-cbt"
 chromebook_nyan_2g_noflicker_uboot_version="v2021.10-cbt"
