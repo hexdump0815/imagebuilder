@@ -2,6 +2,7 @@
 
 ## bootable sd card images
 
+- https://github.com/hexdump0815/imagebuilder/releases/tag/211114-01
 - https://github.com/hexdump0815/imagebuilder/releases/tag/210724-01
 - https://github.com/hexdump0815/imagebuilder/releases/tag/210613-02
 - https://github.com/hexdump0815/imagebuilder/releases/tag/210321-01
@@ -11,7 +12,7 @@
 
 - acer chromebook cb5 311 - nyan big
 - acer chromebook 13 c810 - nyan big
-- hp chromebook 14 g3 - nyan blaze (wip)
+- hp chromebook 14 g3 - nyan blaze
 
 ## untested systems
 
@@ -35,23 +36,26 @@
 
 ## special notes
 
-- this system stays on the linux v5.4 kernel for now as later mainline kernels have problems with the display initialization
 - when switching nyan chromebooks into developer mode for the first time an error might occur (something with executing some command showing an error in the top left of the screen) - just wait 10+ minutes and if nothing happens, just turn off the chromebook and on restart it will switch into developer mode again automatically and this time it should succeed
 - most things seem to work more or less (suspend/resume and the gpu are the most troublesome areas)
-- there are two sets of images provided: one using a v5.4 mainline kernel (with not really useable suspend/resume) and another with av3.10 legacy cromeos kernel (with working suspend/resume but the kernel is no longer maintained)
+- there are two sets of images provided: one using a v5.4 mainline kernel (with not really useable suspend/resume) and another with a v3.10 legacy cromeos kernel (with working suspend/resume but the kernel is no longer maintained)
   - if suspend/resume is urgently required the legacy kernel might be the only useable option (i had some problems with the keyboard and touchpad not working anymore in x11 after resume even with the legacy kernel with ubuntu focal - but i also saw it working in this setup)
   - if not the mainline kernel version should be used
   - both image types contain both kernels (the other kernel tar.gz file is located in /boot/extra) and can be converted into each other with a hand full of commands (will add them here soon)
   - to make it useable with both kernels the root filesystems uses ext4 and not btrfs like those images here usually as the btrfs support in the legacy kernel is too old to be really useable
 - there are several versions of the nyan big available: 2g/4g ram and hd/full hd display
   - the 4gb/full hd i have is working well
-  - the 2gb/hd i have is working well, but the u-boot output is not visible as u-boot does not seem to be able to initialize the display properly (a lot of screen flickering) - as a result one has to type the number at the boot prompt blindly at the right time for now :)
-  - the 2gb model requires a different u-boot to be written to the first partition after the image was written to the sd card (the default u-boot in the image is for the 4gb version) - the u-boot image to be written can be found in the extra folder of the boot partition or can be downloaded from here (gunzip first before writing it to the first partition): https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/v2021.07-rc4-cbt/uboot.kpart.cbt-2g.gz
+  - the 2gb/hd i have is working well, but the u-boot output is not visible as u-boot does not seem to be able to initialize the display properly (a lot of screen flickering or a black screen) - as a result one has to type the number at the boot prompt blindly at the right time for now :)
+  - the 2gb model requires a different u-boot to be written to the first partition after the image was written to the sd card (the default u-boot in the image is for the 4gb version) - the u-boot image to be written can be found in the extra folder of the boot partition or can be downloaded from here (gunzip first before writing it to the first partition): https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/tag/v2021.10-cbt
+  - in case of a lot of screen flickering in the u-boot stage there is a "-noflicker" version of the u-boot, which should show a black screen instead of the crazy flickering
 - some nyan blaze notes:
-  - for the nyan blaze also the 2gb u-boot should be used (resulting in only 2gb available ram even if 4gb are built in) for now, a separate one will be made available soon
+  - for the nyan blaze the same u-boot can be used as for the nyan big (depending on the memory in the system the 2gb or 4gb version)
   - sound still needs a bit of config work, but in principle it can be made working
   - the legacy image should work out of the box for the nyan blaze
-- sometimes the initial kernel console output stays blank but xorg will start well after a while - this seems to affect the v5.10 and newer kernels (seems to get worse with each version - maybe related to fw_devlink dependencies during parallel probing at boot), the v5.4 kernel seems to be much more reliable in this respect (this is why the nyan images were reverted back to use the v5.4 kernel for now)
+- on the u-boot prompt there are three possible options:
+  - 1: linux-big - nyan big with the 1366x768 screen
+  - 2: linux-big-fhd - nyan big with the full hd 1920x1080 screen
+  - 3: linux-blaze - nyan blaze with the 1366x768 screen (not sure if there is maybe a full hd version of the blaze as well?)
 - some nyan big related issue with some info: https://github.com/hexdump0815/imagebuilder/issues/6
 - the nouveau gpu driver does not work too well (artifacts sometimes and glmark2 haengs at some point with memory allocation problems on the 4gb model) and is thus disabled by default
 - for the nouveau mesa opengl driver a newer version of the xorg server is required
