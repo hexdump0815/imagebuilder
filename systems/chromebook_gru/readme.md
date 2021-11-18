@@ -18,8 +18,7 @@
 
 ## kernel build notes
 
-- https://github.com/hexdump0815/linux-mainline-mediatek-mt81xx-kernel/blob/master/readme.mt7
-  - this will move soon into its own gru config somewhere else
+- https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/blob/master/readme.cbg
 
 ## special notes
 
