@@ -27,8 +27,7 @@
 
 ## kernel build notes
 
-- https://github.com/hexdump0815/linux-mainline-mediatek-mt81xx-kernel/blob/master/readme.cbm
-  - v5.10 kernel with a lot of hacks to make it work somehow at least on the duet (krane)
+- https://github.com/hexdump0815/linux-mainline-mediatek-mt81xx-kernel/blob/master/readme.mt8
 
 ## special notes
 
