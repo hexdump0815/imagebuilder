@@ -1,1 +1,3 @@
-- none yet
+- make the kernel config defconfig based
+- get suspend/resume working
+- rework sound/ucm to maybe support headphones and headset mic too - they are disabled for now

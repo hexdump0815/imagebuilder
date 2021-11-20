@@ -2,7 +2,7 @@
 
 ## bootable sd card images
 
-- none yet
+- https://github.com/hexdump0815/imagebuilder/releases/tag/211120-02
 
 ## tested systems - working
 
@@ -23,4 +23,7 @@
 
 ## special notes
 
-- this is very much still wip and not ready yet
+- this is still very much wip, things might work or might not work
+- wifi, bt, basic sound seem to be ok, suspend/resume does not seem to work properly yet
+- the current sound setup is not complete yet:
+  - headphones and headset mic do not work yet, so better use a small usb audio interface for a headset if needed for now
