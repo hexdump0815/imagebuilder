@@ -1,0 +1,3 @@
+based on https://chromium.googlesource.com/chromiumos/overlays/board-overlays/+/refs/heads/master/overlay-trogdor/chromeos-base/chromeos-bsp-trogdor/files/lazor/audio/ucm-config
+
+not everything is working perfectly fine yet (the headphones output and the headset mic do not work yet), but basic functionality seems to be there
