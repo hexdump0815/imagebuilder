@@ -1,4 +1,4 @@
-- create a defconfig based kernel more optimized for this chromebook
-- try to get suspend/resume working, s2idle and deep suspend do not seem to work right now
+- cleanup the defconfig based kernel (keep only what is really needed for gru)
 - rework sound/ucm to maybe support headphones and headset mic too - they are disabled for now
   - it looks like the headphone/headset audio setup is somewhat special (looking at a name like wacky_spi_audio in the dts) and using and own rt5514 codec
+- maybe it is somehow possible to get the penguins early at boot onto the screen? :)
