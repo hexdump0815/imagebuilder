@@ -1,0 +1,4 @@
+Firmware images built from the source tree:
+https://chromium.googlesource.com/chromiumos/platform/ec/
+
+git sha1 of build point appears in the FW image filename.
