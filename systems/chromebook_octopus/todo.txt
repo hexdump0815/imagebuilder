@@ -1,7 +1,9 @@
 - investigate if it is maybe possible to use mainline kernels for this kind of booting as well
-  - check which kernel config options would be required in this case
+  - it is possible, tested with v5.15.2, based on cros kernel config
+  - wifi and sound are not working yet in this case (maybe it is required to port the iwl7000 driver from cros to mainline?)
+  - glamor is working well in xorg with mainline kernel
 - make glamor accelerated xorg work
 - find proper source urls for the still missing firmware
-- make the intel wifi in thosechromebook work reliable
+- make the intel wifi in those chromebooks work reliable
 - make the missing parts of sound working
   - headphones and the internal mic do not work yet
