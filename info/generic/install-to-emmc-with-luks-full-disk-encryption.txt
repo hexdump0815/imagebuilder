@@ -116,6 +116,8 @@ for i in 0 1 2 3 ; do truncate -s 0 ./file.$i; btrfs property set ./file.$i comp
 cd ..
 
 # adjust partition table and hostname (if wanted) - fstab example below
+# in case the bootable image was using ext4 as root fs and now btrfs is chosen,
+# this needs to be adjusted in the fstab accordinly (see example for both below)
 vi etc/fstab etc/hosts etc/hostname 
 
 # /etc/fstab: static file system information.
@@ -216,6 +218,11 @@ grub-install --target=i386-efi /dev/xyz --efi-directory=/boot/efi/ --boot-direct
 grub-install --target=x86_64-efi /dev/xyz --efi-directory=/boot/efi/ --boot-directory=/boot/
 
 update-grub
+
+# extlinux.conf adjustment - this section is required for systems using u-boot
+# usually only the root disk should be adjusted to root=rootemmc and maybe the
+# default boot should be adjusted in case of multiple options
+vi /boot/extlinux/extlinux.conf
 
 # exit chroot
 exit
