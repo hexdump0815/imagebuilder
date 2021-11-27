@@ -2,9 +2,6 @@
 - change default search engine in firefox to duckduckgo.com instead of google
 - add more doc info to the top level readme (initial setup, scripts in /scripts dir etc.)
 - add support for the nvidia jetson nano
-- add support for the orange pi zero 2 and allwinner h616 tv boxes when enough h616 support is in the mainline kernel
-- maybe add support for gru (rk3399) and trogdor (snapdragon 7180c) chromebooks
-- maybe add support for the asus novago and similar snapdragon 835 laptops in case i get some useable image together for it
+- improve support for the asus novago and similar snapdragon 835 laptops, currently the image does not boot yet
 - maybe add apple m1 support when asahi linux progressed far enough
-- maybe add support for building android style boot and system images to run a proper linux dist on some android tablets and smartphones too
 - maybe create some useable qemu images too
