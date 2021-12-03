@@ -319,15 +319,14 @@ if [ "$1" = "amlogic_m8" ]; then
   ${MOUNT_POINT}/boot/shorten-filenames.sh
 fi
 
-if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ] || [ "${MBR}" = "true" ] || [ "${UEFI64ARM}" = "true" ]; then
-  mount -o bind /dev ${MOUNT_POINT}/dev
-  mount -o bind /dev/pts ${MOUNT_POINT}/dev/pts
-  mount -t sysfs /sys ${MOUNT_POINT}/sys
-  mount -t proc /proc ${MOUNT_POINT}/proc
+# prepare for a complete chroot env partially needed by the following steps
+mount -o bind /dev ${MOUNT_POINT}/dev
+mount -o bind /dev/pts ${MOUNT_POINT}/dev/pts
+mount -t sysfs /sys ${MOUNT_POINT}/sys
+mount -t proc /proc ${MOUNT_POINT}/proc
 
-  # do this to avoid failing apt installs due to a too old fs-cache
-  chroot ${MOUNT_POINT} apt-get update
-fi
+# do this to avoid failing apt installs due to a too old fs-cache
+chroot ${MOUNT_POINT} apt-get update
 
 if [ "${UEFI32}" = "true" ]; then
   chroot ${MOUNT_POINT} apt-get -yq install grub2-common grub-efi-ia32 grub-efi-ia32-bin
@@ -384,8 +383,17 @@ if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ] || [ "${MBR}" = "true" ]
     rm -f ${MOUNT_POINT}/grubconfig-${3}.sh
   fi
   chroot ${MOUNT_POINT} update-grub
-  umount ${MOUNT_POINT}/proc ${MOUNT_POINT}/sys ${MOUNT_POINT}/dev/pts ${MOUNT_POINT}/dev
 fi
+
+# finalize script which is run chrooted per system
+if [ -x ${WORKDIR}/systems/${1}/finalize-chroot.sh ]; then
+  cp ${WORKDIR}/systems/${1}/finalize-chroot.sh ${MOUNT_POINT}/finalize-chroot.sh
+  chroot ${MOUNT_POINT} /finalize-chroot.sh ${1} ${2} ${3}
+  rm -f ${MOUNT_POINT}/finalize-chroot.sh
+fi
+
+# umount all the extra stuff mounted for chroot usage as we are done with chroots now
+umount ${MOUNT_POINT}/proc ${MOUNT_POINT}/sys ${MOUNT_POINT}/dev/pts ${MOUNT_POINT}/dev
 
 if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ] || [ "${UEFI64ARM}" = "true" ]; then
   df -h ${MOUNT_POINT} ${MOUNT_POINT}/boot ${MOUNT_POINT}/boot/efi
