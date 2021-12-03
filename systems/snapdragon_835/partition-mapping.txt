@@ -2,4 +2,5 @@ BOOTFS=ext4
 ROOTFS=ext4
 BOOTPART=2
 ROOTPART=3
-UEFI64ARM=true
+# the native amr64 grub install does not seem to work yet - boot setup currently done via ugly postinstall-chroot.sh hack
+#UEFI64ARM=true
