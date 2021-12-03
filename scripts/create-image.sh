@@ -377,11 +377,6 @@ if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ] || [ "${MBR}" = "true" ]
     chroot ${MOUNT_POINT} /grubconfig.sh
     rm -f ${MOUNT_POINT}/grubconfig.sh
   fi
-  if [ -x ${WORKDIR}/systems/${1}/grubconfig-${3}.sh ]; then
-    cp ${WORKDIR}/systems/${1}/grubconfig-${3}.sh ${MOUNT_POINT}/grubconfig-${3}.sh
-    chroot ${MOUNT_POINT} /grubconfig-${3}.sh
-    rm -f ${MOUNT_POINT}/grubconfig-${3}.sh
-  fi
   chroot ${MOUNT_POINT} update-grub
 fi
 
