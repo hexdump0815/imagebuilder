@@ -264,6 +264,8 @@ else
   echo $FSTAB_SWAP_PART >> ${MOUNT_POINT}/etc/fstab
 fi
 
+# TODO: the r89 and uEnv.ini sections are special to orbsmart_s92_beelink_r89 and amlogic_m8
+#       only and should thus be converted to finalize-chroot.sh scripts now that those exist
 if [ "$PMOSKERNEL" != "true" ]; then
   if [ "${2}" = "armv7l" ] || [ "${2}" = "aarch64" ]; then
     export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/*Image-* | sed 's,.*Image-,,g' | sort -u`
