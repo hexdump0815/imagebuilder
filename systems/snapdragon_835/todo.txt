@@ -1,4 +1,3 @@
-- have a look at the newer oneplus 5 tree: https://gitlab.com/msm8998-mainline/linux/-/commits/op5/5.15/
 - get cpu frequency scaling working
 - get gpu support working
 - get wifi working
