@@ -1,4 +1,4 @@
-# allwinner h6
+# allwinner h616
 
 ## bootable sd card images
 
