@@ -2,7 +2,7 @@
 
 ## bootable sd card images
 
-- none yet
+- https://github.com/hexdump0815/imagebuilder/releases/tag/211204-03
 
 ## tested systems - working
 
@@ -29,4 +29,7 @@
   - github issues with tested and structured information on how to get the images working on a box where they did not work out of the box are welcome
   - sound is not working, wifi, bluetooth and sometimes even ethernet might work or might not work depending on the tv box
 - as allwinner socs always boot by default from sd card the emmc can safely be overwritten (but do a backup of the original android system via dd command beforehand - it might be useful later)
-- panfrost opengl gpu acceleration does not seem to work well yet, thus glamor is disabled for xorg
+- a suitable dtb should be chosen in /boot/extlinux/extlinux.conf (maybe even trying them all to see which works best - default is x96q)
+- panfrost opengl gpu acceleration does not seem to work completely stable yet, thus glamor is disabled for xorg (just edit the xorg conf to comment out the Option "AccelMethod" "none" line to enable panfrost)
+- if panfrost is enabled there are some visual glitches visible like for instance a missing font for the input field of the login window
+- the whole system seems to be a bit unstable depending on the hardware, it might be require to disable more of the higher freq opp points in the dtb to get more stability
