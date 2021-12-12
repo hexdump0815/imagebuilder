@@ -7,7 +7,7 @@ wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-ke
 
 ( cd ${DOWNLOAD_DIR} ; tar xzf kernel-chromebook_trogdor-${2}.tar.gz boot ; mv boot/vmlinux.kpart-* boot-chromebook_trogdor-${2}.dd ; rm -rf boot )
 
-# some qcom tool are required to get wifi working on snapdragon sc7180 devices
+# some qcom tools are required to get wifi working on snapdragon sc7180 devices
 
 qcom_tools_version="20211117-01"
 
