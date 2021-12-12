@@ -1,0 +1,12 @@
+[Unit]
+Description=start msm-firmware-loader-unpack
+DefaultDependencies=no
+Requires=msm-firmware-loader.service
+After=msm-firmware-loader.service
+
+[Service]
+Type=simple
+ExecStart=/opt/msm-firmware-loader/msm-firmware-loader-unpack.sh
+
+[Install]
+WantedBy=sysinit.target
