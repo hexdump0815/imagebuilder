@@ -8,7 +8,7 @@
 
 - samsung galaxy tab a 9.7 lte - sm-t555
 
-## tested systems - working
+## untested systems
 
 - samsung galaxy tab a 9.7 wifi - sm-t550
 - samsung galaxy tab a 9.7 wifi pen - sm-p550
