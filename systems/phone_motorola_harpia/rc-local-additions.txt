@@ -1,0 +1,2 @@
+# set display brightness
+echo 1024 > /sys/class/backlight/1a98000.dsi.0/brightness

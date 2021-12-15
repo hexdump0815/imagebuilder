@@ -1,0 +1,12 @@
+[Unit]
+Description=start msm-firmware-loader
+Before=udev.service systemd-udevd.service systemd-udev-trigger.service
+#After=local-fs.target
+DefaultDependencies=no
+
+[Service]
+Type=simple
+ExecStart=/opt/msm-firmware-loader/msm-firmware-loader.sh
+
+[Install]
+WantedBy=sysinit.target
