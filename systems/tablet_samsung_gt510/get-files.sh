@@ -8,7 +8,7 @@ samsung_gt510_pmos_release_version="linux-postmarketos-qcom-msm8916-5.15-r1"
 
 rm -rf ${DOWNLOAD_DIR}/postinstall-${1}
 mkdir -p ${DOWNLOAD_DIR}/postinstall-${1}
-wget -v https://github.com/hexdump0815/pmaports-other/releases/download/${samsung_gt510_pmos_release_version}/boot-and-modules.tar.gz -O ${DOWNLOAD_DIR}/postinstall-${1}/boot-and-modules.tar.gz
+wget -v https://github.com/hexdump0815/pmaports-other/releases/download/${samsung_gt510_pmos_release_version}/boot-and-modules-samsung-gt510.tar.gz -O ${DOWNLOAD_DIR}/postinstall-${1}/boot-and-modules.tar.gz
 
 # some qcom tools are required to get wifi working on snapdragon socs
 
