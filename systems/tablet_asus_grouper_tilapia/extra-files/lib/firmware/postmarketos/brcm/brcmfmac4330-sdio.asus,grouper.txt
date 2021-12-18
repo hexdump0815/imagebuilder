@@ -1,0 +1,47 @@
+# Azurewave Release 2011/12/29
+# NH665 bgn+BT+FM
+manfid=0x2d0
+prodid=0x0552
+vendid=0x14e4
+devid=0x4360
+boardtype=0x0552
+boardrev=0x11
+# this design has 2.4GHz SP3T switch
+boardflags=0x00081200
+nocrc=1
+xtalfreq=37400
+boardnum=22
+#macaddr=00:11:22:33:44:55
+#nvram_override=1
+cckdigfilttype=20             #20~26
+ag0=255
+aa2g=3
+ccode=XY
+regrev=4
+#pa0b0=0x13e1
+#pa0b1=0xfdab
+#pa0b2=0xff66
+rssismf2g=0xa
+rssismc2g=0x3
+rssisav2g=0x7
+maxp2ga0=0x46
+sromrev=3
+#il0macaddr=00:11:22:33:44:55
+wl0id=0x431b
+cckPwrOffset=5
+#ofdmdigfilttype2g=4
+ofdm2gpo=0x44444444
+mcs2gpo0=0x6666
+mcs2gpo1=0x6666
+swctrlmap_2g=0x44844484,0x4a8a4282,0x42824282,0x818a82,0x1ff
+rfreg033=0x19
+rfreg033_cck=0x1f
+dacrate2g=160
+txalpfbyp2g=1
+bphyscale=17
+cckPwrIdxCorr=-15
+pacalidx2g=45
+txgaintbl=1
+muxenab=0x10
+#triso2g=9
+
