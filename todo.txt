@@ -1,8 +1,6 @@
 - fix extend-root.sh to handle sdx devices as well as mmcblkxpypz devices like used with pmos kernels and data partition on emmc
 - change default search engine in firefox to duckduckgo.com instead of google (looks like this is complicated)
 - add more doc info to the top level readme (initial setup, scripts in /scripts dir etc.)
-- maybe add support for the samsung galaxy tab a 9.7 2015 (gt510) based on the pmos mainline kernel
-- maybe add support for the motorola moto g4 play (harpia) based on the pmos mainline kernel
 - maybe add support for amazon giza, karnak and mustang tablets and the fire tv 2 box (sloane)
 - maybe add support for the nvidia jetson nano
 - maybe add support for the pinebook pro
