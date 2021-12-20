@@ -14,12 +14,18 @@
 
 - acer chromebook spin cp311-3h - juniper
 - acer chromebook 311 (c722/c722t) - willow
+- acer chromebook 314 (cb314-2h/cb314-2ht) - cozmo
 - asus chromebook cm3 - kakadu
 - asus chromebook flip cm3 - damu
-- asus chromebook flip cz1 - cerise
+- asus chromebook cz1 - cerise
+- asus chromebook flip cz1 - stern
+- asus chromebook detachable cz1 - katsu
 - hp chromebook 11a - kappa
+- hp chromebook x360 11mk g3 ee - burnet
 - lenovo ideapad flex 3 chromebook (mt8183 version) - fennel
+- lenovo ideapad 3 chromebook 14 inch (mt8183 version) - fennel14
 - lenovo 10e chromebook tablet - kodama
+- lenovo 100e gen 2 chromebook - makomo
 
 ## generic mainline linux on arm chromebook notes
 
