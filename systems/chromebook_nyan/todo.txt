@@ -1,4 +1,5 @@
 - get console support working reliably for v5.10+
+  - update: there is some work in progress regarding this issue
   - it works quite reliable for v5.4
   - it works sometimes for v5.10
   - it does not work anymore for v5.12
@@ -25,3 +26,4 @@
   - someone from archlinux arm got at least lp1 suspend mode working, but i was not able to reproduce this (i was unable to wake it up again after suspend) - see: https://archlinuxarm.org/forum/viewtopic.php?f=49&t=12185&sid=054215884699c2b79e457eadb8599012&start=230#p64180
   - see also: https://www.kernel.org/doc/Documentation/devicetree/bindings/arm/tegra/nvidia%2Ctegra20-pmc.txt
 - get u-boot working properly, i.e. one u-boot working for the 2gb/hd and 4gb/full hd model and properly working display all the time
+- it looks like there is a regression in mesa when trying to use the nouveau driver: mesa-21.0.1 works, mesa-21.1.0 does not longer work
