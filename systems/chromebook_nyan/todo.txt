@@ -22,8 +22,9 @@
 - find a way to reenable the display after resume without the current hack
 - maybe get some proper kind of suspend working
   - the current s2idle mode does not really save much energy (the battery will just last slightly longer than with normal use)
-  - the lowest lp0 suspend mode does not seem to besupported by mainline and would require some extra firmware (see chromeos kernel - maybe for inspiration)
+  - the lowest lp0 suspend mode does not seem to be supported by mainline and would require some extra firmware (see chromeos kernel - maybe for inspiration)
   - someone from archlinux arm got at least lp1 suspend mode working, but i was not able to reproduce this (i was unable to wake it up again after suspend) - see: https://archlinuxarm.org/forum/viewtopic.php?f=49&t=12185&sid=054215884699c2b79e457eadb8599012&start=230#p64180
   - see also: https://www.kernel.org/doc/Documentation/devicetree/bindings/arm/tegra/nvidia%2Ctegra20-pmc.txt
+  - see https://libera.irclog.whitequark.org/tegra/2021-12-22 for some experiments: lp2 and most probably lp1 seem to basically work, at least when booted with init=/bin/bash suspend/resume worked fine via "rtcwake -m mem -s 15" with a deep mem suspend, fully booted (systemd) the system did a clean shutdown immediately after resume
 - get u-boot working properly, i.e. one u-boot working for the 2gb/hd and 4gb/full hd model and properly working display all the time
 - it looks like there is a regression in mesa when trying to use the nouveau driver: mesa-21.0.1 works, mesa-21.1.0 does not longer work
