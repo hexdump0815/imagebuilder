@@ -297,8 +297,10 @@ if [ "${PMOSKERNEL}" != "true" ]; then
   chroot ${BUILD_ROOT} update-initramfs -c -k ${KERNEL_VERSION}
   mv -f tmp/fsck.org usr/share/initramfs-tools/hooks/fsck
 else
-  # the pmos boot.img reads its initrd extension from here
-  cp boot/extra/initramfs-extra boot
+  # the pmos boot.img reads its initrd extension from here (if not in kernel-and-modules.tar.gz)
+  if [ -f boot/extra/initramfs-extra ]; then
+    cp boot/extra/initramfs-extra boot
+  fi
 fi
 
 cd ${WORKDIR}
