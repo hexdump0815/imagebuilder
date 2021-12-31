@@ -183,6 +183,8 @@ fi
 
 if [ "$BOOTFS" = "fat" ]; then
   mkfs.vfat -F32 -n BOOTPART /dev/loop0p$BOOTPART
+elif [ "$BOOTFS" = "ext2" ]; then
+  mkfs -t ext2 -m 0 -L $BOOTPARTLABEL /dev/loop0p$BOOTPART
 elif [ "$BOOTFS" = "ext4" ]; then
   mkfs -t ext4 -O ^has_journal -m 0 -L $BOOTPARTLABEL /dev/loop0p$BOOTPART
 fi
@@ -234,8 +236,10 @@ cp /dev/null ${MOUNT_POINT}/etc/fstab
 # the pmos initramfs is premounting /boot already, so no need to mount it via fstab
 if [ "$PMOSKERNEL" = "true" ]; then
   FSTAB_EXT4_BOOT="LABEL=$BOOTPARTLABEL /boot ext4 defaults,noatime,nodiratime,errors=remount-ro,noauto 0 2"
+  FSTAB_EXT2_BOOT="LABEL=$BOOTPARTLABEL /boot ext2 defaults,noatime,nodiratime,errors=remount-ro,noauto 0 2"
 else
   FSTAB_EXT4_BOOT="LABEL=$BOOTPARTLABEL /boot ext4 defaults,noatime,nodiratime,errors=remount-ro 0 2"
+  FSTAB_EXT2_BOOT="LABEL=$BOOTPARTLABEL /boot ext2 defaults,noatime,nodiratime,errors=remount-ro 0 2"
 fi
 # pmos kernels do not use fat boot partitions, so the name can be hardcoded here
 FSTAB_VFAT_BOOT="LABEL=BOOTPART /boot vfat defaults,rw,owner,flush,umask=000 0 0"
@@ -250,6 +254,8 @@ fi
 
 if [ "$BOOTFS" = "ext4" ]; then
   echo $FSTAB_EXT4_BOOT >> ${MOUNT_POINT}/etc/fstab
+elif [ "$BOOTFS" = "ext2" ]; then
+  echo $FSTAB_EXT2_BOOT >> ${MOUNT_POINT}/etc/fstab
 else
   echo $FSTAB_VFAT_BOOT >> ${MOUNT_POINT}/etc/fstab
 fi
