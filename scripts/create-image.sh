@@ -15,6 +15,20 @@ export DOWNLOAD_DIR=/compile/local/imagebuilder-download
 export IMAGE_DIR=/compile/local/imagebuilder-diskimage
 export MOUNT_POINT=/tmp/imagebuilder-mnt
 
+if [ ! -d ${DOWNLOAD_DIR} ]; then
+  echo ""
+  echo "download dir ${DOWNLOAD_DIR} does not exists - please run get-files.sh first ..."
+  echo ""
+  exit 1
+fi
+
+if [ ! -d ${BUILD_ROOT} ]; then
+  echo ""
+  echo "build root dir ${BUILD_ROOT} does not exists - please run create-fs.sh first ..."
+  echo ""
+  exit 1
+fi
+
 # check that everything is there and set
 if [ ! -x /usr/bin/unlz4 ]; then
   echo ""
