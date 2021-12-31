@@ -1,1 +1,1 @@
-- nothing yet
+- try to find out why sound is not working yet - no alsa device

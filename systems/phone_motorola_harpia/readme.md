@@ -28,3 +28,6 @@
 - if the phone is connected to a computer or power supply via usb a shutdown will result in a reboot, disconnecting it will let it shutdown properly
 - sometimes there the system was hanging during shutdown, tapping onto the screen a few times seems to help
 - in case of problems with the boot process the phone does not seem to respond to the power button anymore to turn it off, pressing the vol-down and the power button together for a while might help out in those situation
+- sound does not seem to work
+- wifi only works partially (see link below)
+- see also: https://wiki.postmarketos.org/wiki/Motorola_Moto_G4_Play_(motorola-harpia)

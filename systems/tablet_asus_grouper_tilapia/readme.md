@@ -23,3 +23,4 @@
 ## special notes
 
 - this is not very useable yet, still in a very early and experimental phase
+- see also https://wiki.postmarketos.org/wiki/Google_Nexus_7_2012_(asus-grouper)

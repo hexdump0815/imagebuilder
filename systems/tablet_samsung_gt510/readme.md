@@ -30,3 +30,4 @@
 - if the tablet is connected to a computer or power supply via usb a shutdown will result in a reboot, disconnecting it will let it shutdown properly
 - sometimes there the system was hanging during shutdown, tapping onto the screen a few times seems to help
 - in case of problems with the boot process the tablet does not seem to respond to the power button anymore to turn it off, pressing the vol-down and the power button together for a while might help out in those situation
+- see also https://wiki.postmarketos.org/wiki/Samsung_Galaxy_Tab_A_9.7_2015_(samsung-gt510)
