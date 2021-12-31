@@ -26,3 +26,4 @@
 - to install write the image to an sd card and install lk2nd-msm8916.img from https://github.com/msm8916-mainline/lk2nd/releases via the instructions in https://github.com/msm8916-mainline/lk2nd/blob/master/README.md
 - a1 rated sd cards are highly recommended as otherwise the performance will be bad due to bad random disk io
 - if the phone is connected to a computer or power supply via usb a shutdown will result in a reboot, disconnecting it will let it shutdown properly
+- sometimes there the system was hanging during shutdown, tapping onto the screen a few times seems to help

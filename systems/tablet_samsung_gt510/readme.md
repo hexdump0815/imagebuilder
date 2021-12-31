@@ -28,5 +28,5 @@
 - a1 rated sd cards are highly recommended as otherwise the performance will be bad due to bad random disk io
 - for some reason at least once the firmware loading for wifi did not work after the first boot, after rebooting it worked
 - if the tablet is connected to a computer or power supply via usb a shutdown will result in a reboot, disconnecting it will let it shutdown properly
-- sometimes there the system was hanging during shutdown, no idea yet why this happens from time to time
+- sometimes there the system was hanging during shutdown, tapping onto the screen a few times seems to help
 - in case of problems with the boot process the tablet does not seem to respond to the power button anymore to turn it off, pressing the vol-down and the power button together for a while might help out in those situation
