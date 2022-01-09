@@ -1,1 +1,1 @@
-- nothing yet
+- u-boot v2021.10 works unstable with atf v2.6 but stable with atf v2.3 - bisecting required, testcase: running "7z b" for a while
