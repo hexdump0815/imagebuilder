@@ -15,6 +15,8 @@
   - with v5.15 drm does not seem to crash anymore, but it does not seem to be able to get the display timings properly anymore due to some problems with either the ps8460 edp bridge or due to i2c-mt65xx issues - see below
   - using the mrvl-and-edp-reload hack used for the nyan chromebook the display somehow comes back after resume but is quite broken
   - bisecting the problem is complicated due to two different issues being involved (drm crash and edid detect problem) and during a bisect try i ended up in completely non-working kernel versions at some point
+  - for v5.16 there are some patches which make the display come back after suspend/resume at https://github.com/hexdump0815/linux-mainline-mediatek-mt81xx-kernel/tree/master/misc.cbm/patches/5.16.0/mt8173-fix-panel-suspend
+    - sadly with working display resume the next suspend/resume problem on oak seems to come up: afterwards reboot hangs and another suspend will not work properly anymore (might be usb related, but not sure yet) 
 ```
 working (5.10.50):
 
