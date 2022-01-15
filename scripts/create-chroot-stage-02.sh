@@ -12,6 +12,15 @@ if [ "${1}" != "bullseye" ]; then
   systemctl disable fwupd-refresh.service
 fi
 
+# this is required to make docker work on bullseye with the current kernels
+# see https://wiki.debian.org/iptables
+if [ "${1}" = "bullseye" ]; then
+  update-alternatives --set iptables /usr/sbin/iptables-legacy
+  update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
+  update-alternatives --set arptables /usr/sbin/arptables-legacy
+  update-alternatives --set ebtables /usr/sbin/ebtables-legacy
+fi
+
 # in case you want to enable automatic updates, just comment out the next lines
 # TODO: not sure if the first two are still required
 systemctl disable apt-daily
