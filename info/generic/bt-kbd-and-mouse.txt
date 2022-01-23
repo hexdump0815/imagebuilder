@@ -1,0 +1,66 @@
+it looks like sometimes pairing a bluetooth keyboard and mouse via the gui
+tools does not always work - this is the procedure to do it via cmdline and
+to save it, so that the paring will happen again automatically (that can
+take a moment) after bootup - tested on a samsung gt510 (galaxy tab a 9.7
+lte) with a bt keyboard and mouse
+
+based on: https://www.linuxquestions.org/questions/blog/isaackuo-112178/simple-bluetooth-keyboard-how-to-37550/
+
+bluetoothctl
+remove 20:20:05:15:7F:CE (mac of the kdb in case it is already somehow connected)
+scan on
+pair 20:20:05:15:7F:CE
+<type passkey on bluetooth keyboard> (was not required in my case - maybe was done before already?)
+connect 20:20:05:15:7F:CE
+trust 20:20:05:15:7F:CE (this is important to keep it over reboots)
+quit
+
+important: /etc/bluetooth/main.conf -> “AutoEnable = true”
+
+full log from website above:
+root@rapunzel:~# bluetoothctl -a
+[NEW] Controller 74:F0:6D:EA:D2:14 rapunzel [default]
+[NEW] Device 00:1F:20:91:C7:8C Logitech K810
+Agent registered
+[Logitech K810]# remove 00:1F:20:91:C7:8C
+[CHG] Device 00:1F:20:91:C7:8C ServicesResolved: no
+Device has been removed
+[CHG] Device 00:1F:20:91:C7:8C Connected: no
+[DEL] Device 00:1F:20:91:C7:8C Logitech K810
+[bluetooth]# scan on
+Discovery started
+[CHG] Controller 74:F0:6D:EA:D2:14 Discovering: yes
+[NEW] Device 00:1F:20:91:C7:8C Logitech K810
+[bluetooth]# pair 00:1F:20:91:C7:8C
+Attempting to pair with 00:1F:20:91:C7:8C
+[CHG] Device 00:1F:20:91:C7:8C Connected: yes
+[agent] Passkey: 391752
+[agent] Passkey: 391752
+[agent] Passkey: 391752
+[agent] Passkey: 391752
+[agent] Passkey: 391752
+[agent] Passkey: 391752
+[agent] Passkey: 391752
+[CHG] Device 00:1F:20:91:C7:8C Modalias: usb:v046DpB319d1202
+[CHG] Device 00:1F:20:91:C7:8C UUIDs: 00001000-0000-1000-8000-00805f9b34fb
+[CHG] Device 00:1F:20:91:C7:8C UUIDs: 00001124-0000-1000-8000-00805f9b34fb
+[CHG] Device 00:1F:20:91:C7:8C UUIDs: 00001200-0000-1000-8000-00805f9b34fb
+[CHG] Device 00:1F:20:91:C7:8C ServicesResolved: yes
+[CHG] Device 00:1F:20:91:C7:8C Paired: yes
+Pairing successful
+[CHG] Device 00:1F:20:91:C7:8C ServicesResolved: no
+[CHG] Device 00:1F:20:91:C7:8C Connected: no
+[bluetooth]# connect 00:1F:20:91:C7:8C
+Attempting to connect to 00:1F:20:91:C7:8C
+[CHG] Device 00:1F:20:91:C7:8C Connected: yes
+Connection successful
+[CHG] Device 00:1F:20:91:C7:8C ServicesResolved: yes
+[Logitech K810]# trust 00:1F:20:91:C7:8C
+[CHG] Device 00:1F:20:91:C7:8C Trusted: yes
+Changing 00:1F:20:91:C7:8C trust succeeded
+[Logitech K810]# quit
+Agent unregistered
+[DEL] Controller 74:F0:6D:EA:D2:14 ariel [default]
+root@rapunzel:~#
+
+bt mouse: same procedure as above ...
