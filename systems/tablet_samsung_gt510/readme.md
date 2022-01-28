@@ -32,3 +32,4 @@
 - in case of problems with the boot process the tablet does not seem to respond to the power button anymore to turn it off, pressing the vol-down and the power button together for a while might help out in those situation
 - see also https://wiki.postmarketos.org/wiki/Samsung_Galaxy_Tab_A_9.7_2015_(samsung-gt510)
 - for changing the kernel config via the pmbootstrap framework the following command should be used as the msm8916 kernel can be built for armv7l or aarch64: pmbootstrap kconfig edit --arch aarch64 postmarketos-qcom-msm8916
+- if the usb port in the kernel is switched from "peripheral" to "host" mode in the dtb it is possible to connect usb devices (keyboard, mouse, ethernet etc.) to it via a powered otg usb hub ... it has to be powered as the usb port itself will not provide power ... it looks like the tablet even gets powered well via the powered hub in this mode

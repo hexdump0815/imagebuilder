@@ -31,3 +31,4 @@
 - sound does not seem to work
 - wifi only works partially (see link below)
 - see also: https://wiki.postmarketos.org/wiki/Motorola_Moto_G4_Play_(motorola-harpia)
+- if the usb port in the kernel is switched from "peripheral" to "host" mode in the dtb it is possible to connect usb devices (keyboard, mouse, ethernet etc.) to it via a powered otg usb hub ... it has to be powered as the usb port itself will not provide power ... it looks like the phone even gets powered well via the powered hub in this mode
