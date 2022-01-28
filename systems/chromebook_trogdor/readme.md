@@ -24,6 +24,6 @@
 ## special notes
 
 - this is still very much wip, things might work or might not work
-- wifi, bt, basic sound seem to be ok, suspend/resume does not seem to work properly yet
+- wifi, bt, basic sound seem to be ok, suspend/resume does not seem to work properly yet (at least if running from usb, when running from emmc it is reported to work)
 - the current sound setup is not complete yet:
   - headphones and headset mic do not work yet, so better use a small usb audio interface for a headset if needed for now
