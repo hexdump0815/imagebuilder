@@ -1,4 +1,10 @@
 # switch from blinking to steady blue light as a sign that the system is up
-echo default-on > /sys/class/leds/led1:heart/trigger
+# v5.4 odroid kernel
+echo default-on > /sys/class/leds/blue\:heartbeat/trigger
+# v5.x mainline kernel
+#echo default-on > /sys/class/leds/led1:heart/trigger
 # comment out the line above and uncomment this to get rid of the blinking blue led instead
+# v5.4 odroid kernel
+#echo none > /sys/class/leds/blue\:heartbeat/trigger
+# v5.x mainline kernel
 #echo none > /sys/class/leds/led1:heart/trigger
