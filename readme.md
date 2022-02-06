@@ -16,7 +16,7 @@ more coming soon ...
 
 simply write/flash (not just copy!) the images to an sd card - there is a lot of documentation about how to do this on the web. the images require an sd card of at least 8gb size (for the newer images even 4gb sould be enough) - more is no problem and can be made useable after the first boot of the image.
 
-the images provided are ubuntu 20.04 lts (focal) with the xubuntu desktop environment. debian 11 (bullhead) with the xfce desktop environment will be added as soon as it gets officially released. they have a user named "linux" configured with the password "changeme" and sudo permission (use "sudo -i" to get root). the hostname is set to "changeme". they are assuming a us keyboard and are setup for english, so one should configure it as needed after the first boot - a good start might be:
+the images provided are ubuntu 20.04 lts (focal) with the xubuntu desktop environment. debian 11 (bullseye) with the xfce desktop environment will be added as soon as it gets officially released. they have a user named "linux" configured with the password "changeme" and sudo permission (use "sudo -i" to get root). the hostname is set to "changeme". they are assuming a us keyboard and are setup for english, so one should configure it as needed after the first boot - a good start might be:
 
 * locale: dpkg-reconfigure locales
 * timezone: dpkg-reconfigure tzdata
