@@ -17,3 +17,6 @@ if [ -x /usr/lib/upower/upowerd ]; then
 elif [ -x /usr/libexec/upowerd ]; then
   /usr/libexec/upowerd &
 fi
+
+# this should be uncommented if wifi should start automatically on bootup
+#/scripts/start-wifi.sh

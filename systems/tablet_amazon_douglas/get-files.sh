@@ -14,3 +14,8 @@ wget -v https://github.com/hexdump0815/pmaports-amazon/releases/download/${amazo
 wget -v https://github.com/hexdump0815/pmaports-amazon/releases/download/${amazon_douglas_pmos_release_version}/initramfs.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/initramfs
 wget -v https://github.com/hexdump0815/pmaports-amazon/releases/download/${amazon_douglas_pmos_release_version}/vmlinuz.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/vmlinuz.gz
 wget -v https://github.com/hexdump0815/pmaports-amazon/releases/download/${amazon_douglas_pmos_release_version}/lib-modules.tar.gz -O ${DOWNLOAD_DIR}/boot-extra-${1}/lib-modules.tar.gz
+
+# get the firmware and related files to get wifi working
+rm -rf ${DOWNLOAD_DIR}/postinstall-${1}
+mkdir -p ${DOWNLOAD_DIR}/postinstall-${1}
+wget -v https://github.com/hexdump0815/imagebuilder-firmware/blob/main/tablet_amazon_douglas-firmware.tar.gz -O ${DOWNLOAD_DIR}/postinstall-${1}/tablet_amazon_douglas-firmware.tar.gz
