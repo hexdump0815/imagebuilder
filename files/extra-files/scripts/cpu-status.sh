@@ -2,30 +2,14 @@
 
 while true; do
   date
-  if [ -f /sys/class/thermal/thermal_zone0/temp ]; then
-    echo -n "temp: "
-    cat /sys/class/thermal/thermal_zone0/temp
-  fi
-  if [ -f /sys/class/thermal/thermal_zone1/temp ]; then
-    echo -n "temp: "
-    cat /sys/class/thermal/thermal_zone1/temp
-  fi
-  if [ -f /sys/class/thermal/thermal_zone2/temp ]; then
-    echo -n "temp: "
-    cat /sys/class/thermal/thermal_zone2/temp
-  fi
-  if [ -f /sys/class/hwmon/hwmon0/temp1_input ]; then
-    echo -n "temp: "
-    cat /sys/class/hwmon/hwmon0/temp1_input
-  fi
-  if [ -f /sys/class/hwmon/hwmon1/temp1_input ]; then
-    echo -n "temp: "
-    cat /sys/class/hwmon/hwmon1/temp1_input
-  fi
-  if [ -f /sys/class/hwmon/hwmon2/temp1_input ]; then
-    echo -n "temp: "
-    cat /sys/class/hwmon/hwmon2/temp1_input
-  fi
+  for i in $(find /sys/class/thermal/thermal_zone*/temp 2> /dev/null); do
+    echo -n "zone $(echo $i | sed 's,/sys/class/thermal/thermal_zone,,g;s,/temp,,g') temp: "
+    cat $i
+  done
+  for i in $(find /sys/class/hwmon/hwmon*/temp*_input 2> /dev/null); do
+    echo -n "hwmon $(echo $i | sed 's,/sys/class/hwmon/hwmon,,g;s,temp,,g;s,_input,,g') temp: "
+    cat $i
+  done
   if [ -f /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq ]; then
     echo "cpu frequencies:" 
     cat /sys/devices/system/cpu/cpu?/cpufreq/scaling_cur_freq 
