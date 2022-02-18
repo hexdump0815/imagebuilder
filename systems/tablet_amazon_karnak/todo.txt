@@ -1,0 +1,5 @@
+- see the todo file for tablet_amazon_douglas
+- try to get wifi working
+  - all tries to get it working using an android bionic chroot env and the android commands and firmware always resulted in the tablet rebooting when running wmt_loader
+- try to get audio working
+  - it might be somewhat similar to suez audio (rt5514 based) for which audio is somewhat working
