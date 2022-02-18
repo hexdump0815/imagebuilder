@@ -32,3 +32,6 @@
 - shutdown with power connected seems to reboot the tablet, connecting power always boots it ... so in the end it can only charged while having linux running :)
 - the display is setup in landscape mode by default for xorg, if portrait mode is desired then the monitor conf in /etc/X11/xorg.conf.d (see xorg.conf.d.samples for other examples) needs to be adjusted for the screen and /etc/udev/rules.d/90-android-touch-dev.rules for the touch screen
 - as this tablet does not have that much memory (1.5gb) there are also images with armv7l 32bit userland are provided to reduce the memory usage next to the aarch64 64bit ones (the kernel is 64bit)
+- wifi seems to work by using the android firmware and tools in a minimal android bionic chroot env
+  - wifi can be stated via /scripts/start-wifi.sh
+  - uncomment the start of this script in /etc/rc.local in case wifi should be enabled by default

@@ -5,6 +5,4 @@
     - https://github.com/mt8127/android_kernel_alcatel_ttab
     - https://github.com/ggow/android_kernel_amazon_mt8127-common
   - maybe even backport later security fixes
-- have a look trying to get the legacy wifi driver working somehow (see mediatek section of: https://wiki.postmarketos.org/wiki/WiFi)
-  - all experiments so far failed
 - it looks like audio is handled via some hal blob on android only as there is no alsa sound device
