@@ -58,9 +58,10 @@ make ARCH=arm64 mrproper
 abuild rootpkg
 
 # the result should either way be a package here:
-# .../.local/var/pmbootstrap/chroot_native/mnt/pmbootstrap-packages/aarch64/linux-amazon-douglas-3.18.19-r5.apk
-# this one needs to be copied to .../.local/var/pmbootstrap/cache_apk_aarch64
-cp .../.local/var/pmbootstrap/chroot_native/mnt/pmbootstrap-packages/aarch64/linux-amazon-douglas-3.18.19-r5.apk .../.local/var/pmbootstrap/cache_apk_aarch64
+# ${HOME}/.local/var/pmbootstrap/chroot_native/mnt/pmbootstrap-packages/aarch64/linux-amazon-douglas-3.18.19-r5.apk
+# this one needs to be copied to ${HOME}/.local/var/pmbootstrap/cache_apk_aarch64
+# from here on the steps are done outside of the pmbootstrap chroot again
+sudo cp ${HOME}/.local/var/pmbootstrap/chroot_native/mnt/pmbootstrap-packages/aarch64/linux-amazon-douglas-3.18.19-r5.apk ${HOME}/.local/var/pmbootstrap/cache_apk_aarch64
 
 # after the manual compilation and copy the pmbootstrap packages needs to get reindexed:
 pmbootstrap index
