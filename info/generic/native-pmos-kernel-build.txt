@@ -73,7 +73,7 @@ pmbootstrap build --force device-amazon-douglas
 # create a boot.img, root fs etc. to take the files we want out of later
 pmbootstrap install
 
-# resulting root fs will now be here: .../.local/var/pmbootstrap/chroot_rootfs_amazon-douglas
+# resulting root fs will now be here: ${HOME}/.local/var/pmbootstrap/chroot_rootfs_amazon-douglas
 
 # writing the boot.img to the filesystem should be done via twrp only (at least on the amazon tablets)
 # as this takes care of some special actions to keep the bootloader unlocked ... if it is written directly
