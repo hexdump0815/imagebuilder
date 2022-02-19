@@ -36,9 +36,17 @@ ln -sf strip gcc6-aarch64-alpine-linux-musl-strip
 ln -sf gcc6-gcc-nm gcc6-aarch64-alpine-linux-musl-nm
 ln -sf gcc6-gcc-ar gcc6-aarch64-alpine-linux-musl-ar
 
-su pmos
-export HOME=/home/pmos
+# the above is the aarch64 case, for the armv7 case (ford on ford) it looks like
+cd /usr/bin
+ln -sf ld gcc4-armv7-alpine-linux-musleabihf-ld 
+ln -sf objcopy gcc4-armv7-alpine-linux-musleabihf-objcopy
+ln -sf strip gcc4-armv7-alpine-linux-musleabihf-strip
+ln -sf gcc4-gcc-nm gcc4-armv7-alpine-linux-musleabihf-nm
+ln -sf gcc4-gcc-ar gcc4-armv7-alpine-linux-musleabihf-ar
 
+su pmos
+
+export HOME=/home/pmos
 cd /home/pmos/build
 export ARCH=arm64
 export CARCH=aarch64
@@ -46,8 +54,16 @@ export CROSS_COMPILE=gcc6-aarch64-alpine-linux-musl-
 export CC=gcc6-aarch64-alpine-linux-musl-gcc
 abuild -df build
 
-# alternative manual steps for the build step (untested):
+# the above is the aarch64 case, for the armv7 case (ford on ford) it looks like
+export HOME=/home/pmos
+cd /home/pmos/build
+export ARCH=arm
+export CARCH=armv7
+export CROSS_COMPILE=gcc4-armv7-alpine-linux-musleabihf-
+export CC=gcc4-armv7-alpine-linux-musleabihf-gcc
+abuild -df build
 
+# alternative manual steps for the build step (untested):
 cd /home/pmos/build/src/linux...
 make ARCH=arm64 CROSS_COMPILE=aarch64-alpine-linux-musl- defconfig
 make ARCH=arm64 CROSS_COMPILE=aarch64-alpine-linux-musl- menuconfig
