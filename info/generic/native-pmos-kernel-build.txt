@@ -1,0 +1,75 @@
+# these notes give an idea of how to build a postmarketos kernel natively on the arm device itself
+# the aarch64 build of a linux-amazon-douglas kernel on a dougals tablet running debian is used as an example later on
+
+# setting up pmbootstrap as a user:
+
+sudo apt-get install python3-pip python3-argcomplete
+pip3 install --user pmbootstrap
+
+# add the following lines to your .bashrc and source it:
+--- snip ---
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+eval "$(register-python-argcomplete3 pmbootstrap)"
+--- snip ---
+
+# setup pmbootstrap:
+pmbootstrap init
+
+# the next steps are inspired by: https://wiki.postmarketos.org/index.php?title=User:Alexeymin/Kernel_development_in_chroot_using_abuild&mobileaction=toggle_view_desktop
+
+pmbootstrap checksum linux-amazon-douglas
+# in case kernel config changes are needed
+pmbootstrap kconfig edit
+# the below step for some reason did not fully work for me as some commands like ld, objcopy, nm, ar and strip were not where the build expected them ...
+pmbootstrap build --force linux-amazon-douglas
+# now: ctrl-c after it has installed everything, unpacked and patched the kernel sources and starts to compile the kernel
+pmbootstrap chroot
+
+# inside of the chroot - fix the names to they end up as expected (guessed from the build errors before)
+cd /usr/bin
+ln -s ld gcc6-aarch64-alpine-linux-musl-ld 
+ln -s objcopy gcc6-aarch64-alpine-linux-musl-objcopy
+ln -s nm gcc6-aarch64-alpine-linux-musl-nm
+ln -s ar gcc6-aarch64-alpine-linux-musl-ar
+ln -s strip gcc6-aarch64-alpine-linux-musl-strip
+
+su pmos
+export HOME=/home/pmos
+
+cd /home/pmos/build
+export ARCH=arm64
+export CARCH=aarch64
+export CROSS_COMPILE=gcc6-aarch64-alpine-linux-musl-
+export CC=gcc6-aarch64-alpine-linux-musl-gcc
+abuild -df build
+
+# alternative manual steps for the build step (untested):
+
+cd /home/pmos/build/src/linux...
+make ARCH=arm64 CROSS_COMPILE=aarch64-alpine-linux-musl- defconfig
+make ARCH=arm64 CROSS_COMPILE=aarch64-alpine-linux-musl- menuconfig
+make ARCH=arm64 CROSS_COMPILE=aarch64-alpine-linux-musl- -j9
+make ARCH=arm64 mrproper
+
+# create a apk package which will be needed later
+abuild rootpkg
+
+# the result should either way be a package here:
+# .../.local/var/pmbootstrap/chroot_native/mnt/pmbootstrap-packages/aarch64/linux-amazon-douglas-3.18.19-r5.apk
+# this one needs to be copied to .../.local/var/pmbootstrap/cache_apk_aarch64
+cp .../.local/var/pmbootstrap/chroot_native/mnt/pmbootstrap-packages/aarch64/linux-amazon-douglas-3.18.19-r5.apk .../.local/var/pmbootstrap/cache_apk_aarch64
+
+# after the manual compilation and copy the pmbootstrap packages needs to get reindexed:
+pmbootstrap index
+
+# now the build can continue:
+pmbootstrap checksum device-amazon-douglas
+pmbootstrap build --force device-amazon-douglas
+
+# create a boot.img, root fs etc. to take the files we want out of later
+pmbootstrap install
+
+# resulting root fs will now be here: .../.local/var/pmbootstrap/chroot_rootfs_amazon-douglas
