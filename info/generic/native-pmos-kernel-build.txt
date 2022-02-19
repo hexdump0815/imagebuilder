@@ -30,11 +30,11 @@ pmbootstrap chroot
 
 # inside of the chroot - fix the names to they end up as expected (guessed from the build errors before)
 cd /usr/bin
-ln -s ld gcc6-aarch64-alpine-linux-musl-ld 
-ln -s objcopy gcc6-aarch64-alpine-linux-musl-objcopy
-ln -s nm gcc6-aarch64-alpine-linux-musl-nm
-ln -s ar gcc6-aarch64-alpine-linux-musl-ar
-ln -s strip gcc6-aarch64-alpine-linux-musl-strip
+ln -sf ld gcc6-aarch64-alpine-linux-musl-ld 
+ln -sf objcopy gcc6-aarch64-alpine-linux-musl-objcopy
+ln -sf strip gcc6-aarch64-alpine-linux-musl-strip
+ln -sf gcc6-gcc-nm gcc6-aarch64-alpine-linux-musl-nm
+ln -sf gcc6-gcc-ar gcc6-aarch64-alpine-linux-musl-ar
 
 su pmos
 export HOME=/home/pmos
@@ -73,3 +73,7 @@ pmbootstrap build --force device-amazon-douglas
 pmbootstrap install
 
 # resulting root fs will now be here: .../.local/var/pmbootstrap/chroot_rootfs_amazon-douglas
+
+# writing the boot.img to the filesystem should be done via twrp only (at least on the amazon tablets)
+# as this takes care of some special actions to keep the bootloader unlocked ... if it is written directly
+# to the boot partition it might result in a bricked device, boot loops, loosing the bootloader unlock etc.
