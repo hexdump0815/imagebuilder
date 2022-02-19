@@ -6,6 +6,7 @@ systemctl enable fb-refresher
 # tablet with its legacy kernel to speed up the boot process
 apt-get -yq remove --purge exim4-base exim4-daemon-light exim4-config libgnutls-dane0 libunbound8
 systemctl disable lvm2-monitor.service lvm2-lvmpolld.socket
+systemctl disable e2scrub_reap.service
 systemctl mask systemd-networkd-wait-online.service
 systemctl mask NetworkManager-wait-online.service
 systemctl mask serial-getty@ttyMT0.service
