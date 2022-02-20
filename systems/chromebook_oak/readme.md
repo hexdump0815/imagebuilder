@@ -14,10 +14,10 @@
 ## untested systems
 
 - asus chromebook c202xa - hana
-- lenovo chromebook 300e - hana
+- lenovo chromebook 300e (mt8173 version) - hana
 - lenovo chromebook c330 - hana
 - lenovo chromebook s330 - hana
-- lenovo chromebook 100e 2nd gen - hana
+- lenovo chromebook 100e (mt8173 version) - hana
 - lenovo ideapad flex 3 chromebook (mt8173 version) - hana
 
 ## generic mainline linux on arm chromebook notes
