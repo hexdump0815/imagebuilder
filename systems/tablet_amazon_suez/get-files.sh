@@ -4,7 +4,7 @@
 
 # get a kernel etc. from a special portmarketos based build
 
-amazon_suez_pmos_release_version="linux-amazon-suez-3.18.19-r4"
+amazon_suez_pmos_release_version="linux-amazon-suez-3.18.19-r6"
 
 rm -rf ${DOWNLOAD_DIR}/boot-extra-${1}
 mkdir -p ${DOWNLOAD_DIR}/boot-extra-${1}

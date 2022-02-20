@@ -4,7 +4,7 @@
 
 # get a kernel etc. from a special portmarketos based build
 
-amazon_karnak_pmos_release_version="linux-amazon-karnak-3.18.19-r2"
+amazon_karnak_pmos_release_version="linux-amazon-karnak-3.18.19-r3"
 
 rm -rf ${DOWNLOAD_DIR}/boot-extra-${1}
 mkdir -p ${DOWNLOAD_DIR}/boot-extra-${1}

@@ -4,7 +4,7 @@
 
 # get a kernel etc. from a special portmarketos based build
 
-amazon_douglas_pmos_release_version="linux-amazon-douglas-3.18.19-r5"
+amazon_douglas_pmos_release_version="linux-amazon-douglas-3.18.19-r8"
 
 rm -rf ${DOWNLOAD_DIR}/boot-extra-${1}
 mkdir -p ${DOWNLOAD_DIR}/boot-extra-${1}
@@ -18,4 +18,4 @@ wget -v https://github.com/hexdump0815/pmaports-amazon/releases/download/${amazo
 # get the firmware and related files to get wifi working
 rm -rf ${DOWNLOAD_DIR}/postinstall-${1}
 mkdir -p ${DOWNLOAD_DIR}/postinstall-${1}
-wget -v https://github.com/hexdump0815/imagebuilder-firmware/blob/main/tablet_amazon_douglas-firmware.tar.gz -O ${DOWNLOAD_DIR}/postinstall-${1}/tablet_amazon_douglas-firmware.tar.gz
+wget -v https://github.com/hexdump0815/imagebuilder-firmware/raw/main/tablet_amazon_douglas-firmware.tar.gz -O ${DOWNLOAD_DIR}/postinstall-${1}/tablet_amazon_douglas-firmware.tar.gz
