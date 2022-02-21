@@ -21,6 +21,7 @@ SectionVerb {
 		cset "name='MIC2 Boost Volume' 0"
 		cset "name='Right ADC Mixer MIC2 Switch' on"
 		cset "name='Left ADC Mixer MIC2 Switch' on"
+		cset "name='Mic Jack Switch' off"
 		cset "name='Int Mic Switch' on"
 		cset "name='Headphone Left Mixer Volume' 2"
 		cset "name='Headphone Right Mixer Volume' 2"
@@ -28,6 +29,7 @@ SectionVerb {
 		cset "name='Right Headphone Mixer Right DAC Switch' on"
 		cset "name='Headphone Left Switch' on"
 		cset "name='Headphone Right Switch' on"
+		cset "name='Headphones Switch' off"
 		cset "name='Speaker Left Mixer Volume' 2"
 		cset "name='Speaker Right Mixer Volume' 2"
 		cset "name='Left Speaker Mixer Left DAC Switch' on"
@@ -48,7 +50,7 @@ SectionDevice."Headphones" {
 		PlaybackPriority 100
 		PlaybackPCM "hw:${CardId}"
 		OutputDspName ""
-		JackControl "GoogleNyanBig Headphones Jack"
+		JackControl "GoogleNyanBig Headphones"
 	}
 
 	ConflictingDevice [
@@ -58,10 +60,12 @@ SectionDevice."Headphones" {
 	EnableSequence [
 		cdev "hw:GoogleNyanBig"
 		cset "name='Speakers Switch' off"
+		cset "name='Headphones Switch' on"
 	]
 
 	DisableSequence [
 		cdev "hw:GoogleNyanBig"
+		cset "name='Headphones Switch' off"
 		cset "name='Speakers Switch' on"
 	]
 }
@@ -80,12 +84,14 @@ SectionDevice."Speaker" {
 
 	EnableSequence [
 		cdev "hw:GoogleNyanBig"
+		cset "name='Headphones Switch' off"
 		cset "name='Speakers Switch' on"
 	]
 
 	DisableSequence [
 		cdev "hw:GoogleNyanBig"
 		cset "name='Speakers Switch' off"
+		cset "name='Headphones Switch' on"
 	]
 }
 
@@ -109,10 +115,12 @@ SectionDevice."HeadsetMic" {
 		cdev "hw:GoogleNyanBig"
 		cset "name='Int Mic Switch' off"
 		cset "name='DMIC Mux' ADC"
+		cset "name='Mic Jack Switch' on"
 	]
 
 	DisableSequence [
 		cdev "hw:GoogleNyanBig"
+		cset "name='Mic Jack Switch' off"
 		cset "name='DMIC Mux' DMIC"
 		cset "name='Int Mic Switch' on"
 	]
@@ -135,10 +143,12 @@ SectionDevice."InternalMic" {
 		cdev "hw:GoogleNyanBig"
 		cset "name='Int Mic Switch' on"
 		cset "name='DMIC Mux' DMIC"
+		cset "name='Mic Jack Switch' off"
 	]
 
 	DisableSequence [
 		cdev "hw:GoogleNyanBig"
+		cset "name='Mic Jack Switch' on"
 		cset "name='DMIC Mux' ADC"
 		cset "name='Int Mic Switch' off"
 	]
