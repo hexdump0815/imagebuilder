@@ -38,3 +38,4 @@
   - wifi can be stated via /scripts/start-wifi.sh
   - uncomment the start of this script in /etc/rc.local in case wifi should be enabled by default
   - wifi support was added in february 2022, so all images from before do not have it yet but it can be added easily afterwards
+- there is also a 9th generation 2019 version of the fire 7 tablet, which is not recommended as most of the devices produced from 2020 on cannot get their bootloader unlocked and getting a kernel version working for it seems to be quite complicated as well
