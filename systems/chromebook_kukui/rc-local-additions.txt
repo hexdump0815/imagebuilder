@@ -2,14 +2,14 @@
 #echo s2idle > /sys/power/mem_sleep
 
 # try to copy the right xorg monitor rotation conf file depending on system at first boot
-if [ ! -f /etc/X11/xorg.conf.d/31-monitor-no-dpms-rotate-left.conf ] && [ ! -f /etc/X11/xorg.conf.d/31-monitor-no-dpms.conf ]; then
+if [ ! -f /etc/X11/xorg.conf.d/31-monitor-rotate-left.conf ] && [ ! -f /etc/X11/xorg.conf.d/31-monitor.conf ]; then
   # krane has a rotated panel
   grep -q 'MediaTek krane' /proc/device-tree/model
   if [ "$?" = "0" ]; then
-    cp /etc/X11/xorg.conf.d.samples/31-monitor-no-dpms-rotate-left.conf /etc/X11/xorg.conf.d
+    cp /etc/X11/xorg.conf.d.samples/31-monitor-rotate-left.conf /etc/X11/xorg.conf.d
   # juniper has no rotated panel
   else
-    cp /etc/X11/xorg.conf.d.samples/31-monitor-no-dpms.conf /etc/X11/xorg.conf.d
+    cp /etc/X11/xorg.conf.d.samples/31-monitor.conf /etc/X11/xorg.conf.d
   fi
 fi
 
