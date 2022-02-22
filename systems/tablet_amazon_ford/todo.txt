@@ -6,3 +6,5 @@
     - https://github.com/ggow/android_kernel_amazon_mt8127-common
   - maybe even backport later security fixes
 - it looks like audio is handled via some hal blob on android only as there is no alsa sound device
+- maybe try to get docker working with the legacy kernel
+  - enabling the required options results in tons of new compile errors (showing the amazingly low quality of the amazon legacy kernel sources), not sure if its really worth trying to fix all of them
