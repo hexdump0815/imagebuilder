@@ -40,3 +40,4 @@
 - shutdown with power connected seems to reboot the tablet, connecting power always boots it ... so in the end it can only charged while having linux running :)
 - the display is setup in landscape mode by default for xorg, if portrait mode is desired then the monitor conf in /etc/X11/xorg.conf.d (see xorg.conf.d.samples for other examples) needs to be adjusted for the screen and /etc/udev/rules.d/90-android-touch-dev.rules for the touch screen
 - as this tablet does not have that much memory (1.5gb) there are also images with armv7l 32bit userland are provided to reduce the memory usage next to the aarch64 64bit ones (the kernel is 64bit)
+- the kernel builds starting with linux-amazon-karnak-3.18.19-r3 have options enabled so that docker should run on them, although a docker downgrade might be required in case of problems as the legacy kernel might be too old for the latest docker versions

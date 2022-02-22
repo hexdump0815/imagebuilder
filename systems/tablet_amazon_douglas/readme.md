@@ -36,3 +36,4 @@
   - wifi can be stated via /scripts/start-wifi.sh
   - uncomment the start of this script in /etc/rc.local in case wifi should be enabled by default
   - wifi support was added in february 2022, so all images from before do not have it yet but it can be added easily afterwards
+- the kernel builds starting with linux-amazon-douglas-3.18.19-r8 have options enabled so that docker should run on them, although a docker downgrade might be required in case of problems as the legacy kernel might be too old for the latest docker versions
