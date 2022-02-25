@@ -110,7 +110,7 @@ btrfs property set /mnt/swap compression none
 cd /mnt/swap
 # see https://blog.passcod.name/2020/jun/16/full-disk-encryption-with-btrfs-swap-and-hibernation
 # single file - better for hibernation
-truncate -s 0 ./file; btrfs property set ./file compression none; fallocate -l 2G file; chmod 600 ./file; mkswap -L file ./file
+truncate -s 0 ./file.0; btrfs property set ./file.0 compression none; fallocate -l 2G file.0; chmod 600 ./file.0; mkswap -L file.0 ./file.0
 # alternative for multiple smaller swap files - more flexible to later remove some ifspace is needed
 for i in 0 1 2 3 ; do truncate -s 0 ./file.$i; btrfs property set ./file.$i compression none; fallocate -l 512M file.$i; chmod 600 ./file.$i; mkswap -L file.$i ./file.$i; done
 cd ..
@@ -217,7 +217,19 @@ grub-install --target=i386-efi /dev/xyz --efi-directory=/boot/efi/ --boot-direct
 # uefi 64bit - xyz = efi partition (example /dev/sdb1), apt-get install grub2-common grub-efi-amd64 grub-efi-amd64-bin
 grub-install --target=x86_64-efi /dev/xyz --efi-directory=/boot/efi/ --boot-directory=/boot/
 
+# maybe update the grub config, especially the kernel cmdline - if for example the
+# graphical password prompt for cryptsetup is perferred over the simple console
+# text prompt the option "splash" should be added to the kernel cmdline (GRUB_CMDLINE_LINUX
+# and/or GRUB_CMDLINE_LINUX_DEFAULT) - other potentially interesting options might be:
+# "root=LABEL=rootemmc rootwait ro fsck.repair=yes net.ifnames=0 ipv6.disable=1 systemd.gpt_auto=0"
+vi /etc/default/grub
+
 update-grub
+
+# on some systems (for example chrombooks with a flashed coreboot uefi bios) the
+# following steps might be required in order to make them boot properly
+mkdir -p /boot/efi/EFI/BOOT
+cp /boot/efi/EFI/debian/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
 
 # extlinux.conf adjustment - this section is required for systems using u-boot
 # usually only the root disk should be adjusted to root=rootemmc and maybe the
