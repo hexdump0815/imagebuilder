@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-rockchip_rk3288_release_version="5.10.25-stb-av7%2B"
+rockchip_rk3288_release_version="5.15.22-stb-av7%2B"
 rockchip_rk3288_generic_tree_tag=${generic_tree_tag}
 mesa_release_version="21.0.1"
 
