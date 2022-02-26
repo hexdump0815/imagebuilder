@@ -1,1 +1,3 @@
 - find out why the performance is about 20% lower with mainline than with the odroid v5.4 tree (seen with vcvrack)
+  - the cpu opp table entries look a bit strange on mainline: the 1.8ghz entry for instance has a lower voltage as the 1.7ghz entry
+  - maybe this is the reason for bootup messages like: cpu cpu4: EM: OPP:1700000 is inefficient
