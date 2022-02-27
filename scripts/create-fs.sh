@@ -290,7 +290,7 @@ if [ "${PMOSKERNEL}" != "true" ]; then
     echo "trying vmlinuz as kernel name instead of *Image:"
     export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/vmlinuz-* | sed 's,.*vmlinuz-,,g' | sort -u`
   fi
-  
+
   # hack to get the fsck binaries in properly even in our chroot env
   cp -f usr/share/initramfs-tools/hooks/fsck tmp/fsck.org
   sed -i 's,fsck_types=.*,fsck_types="vfat ext4",g' usr/share/initramfs-tools/hooks/fsck
