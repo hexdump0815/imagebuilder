@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-orbsmart_s92_beelink_r89_release_version="5.10.25-stb-av7%2B"
+orbsmart_s92_beelink_r89_release_version="5.15.22-stb-av7%2B"
 mesa_release_version="21.0.1"
 
 rm -f ${DOWNLOAD_DIR}/kernel-orbsmart_s92_beelink_r89-armv7l.tar.gz
