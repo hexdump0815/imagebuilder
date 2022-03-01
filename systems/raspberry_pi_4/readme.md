@@ -14,7 +14,10 @@
 
 ## kernel build notes
 
+- https://github.com/hexdump0815/linux-mainline-raspberry-pi-kernel/blob/main/readme.rpi
+  - mainline linux kernel
 - https://github.com/hexdump0815/linux-raspberry-pi-4-kernel/blob/master/readme.64b
+  - downstream raspberry pi kernel used before
 
 ## u-boot build notes
 
@@ -22,5 +25,5 @@
 
 ## special notes
 
-- before booting the sd card the first time some adjustements are required to configure it for the type of box:
+- before booting the sd card the first time some adjustements are required to configure it for the type of rpi:
   - adjust the selected dtb in the file extlinux/extlinux.conf on the boot filesystem (1st partition) - see the comments in the file

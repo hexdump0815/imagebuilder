@@ -1,2 +1,2 @@
-- try to fix distorted audio on the headphone jack with v5.10 rpi kernel
+- try to fix distorted audio on the headphone jack with v5.10+ rpi and mainline kernel
   - the older v5.8 rpi kernel seems to be ok in this regard

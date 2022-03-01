@@ -4,5 +4,4 @@ echo "snd_bcm2835" >> etc/modules
 
 cp -v etc/X11/xorg.conf.d.samples/11-modesetting.conf etc/X11/xorg.conf.d
 
-mv -v boot/extra/rpi_4-u-boot.bin boot/u-boot.bin
-rmdir boot/extra
+cp -v postinstall/* boot
