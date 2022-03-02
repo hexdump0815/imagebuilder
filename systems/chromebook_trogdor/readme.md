@@ -24,6 +24,7 @@
 ## special notes
 
 - this is still very much wip, things might work or might not work
-- wifi, bt, basic sound seem to be ok, suspend/resume does not seem to work properly yet (at least if running from usb, when running from emmc it is reported to work)
+- wifi, bt, basic sound seem to be ok, suspend/resume does not seem to work properly yet (at least if running from usb, when running from emmc it is reported to work somewhat at least on lazor, but not sure if really completely as it does not seem to enter the deep sleep mode properly)
 - the current sound setup is not complete yet:
   - headphones and headset mic do not work yet, so better use a small usb audio interface for a headset if needed for now
+- on lazor the keyboard backlight can be controlled via /sys/class/leds/cros_ec\:\:kbd_backlight/brightness (values can go from 0-1023)
