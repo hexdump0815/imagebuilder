@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-amlogic_m8_release_version="5.10.25-stb-av7%2B"
+amlogic_m8_release_version="5.15.22-stb-av7%2B"
 amlogic_m8_generic_tree_tag=${generic_tree_tag}
 
 rm -f ${DOWNLOAD_DIR}/kernel-amlogic_m8-armv7l.tar.gz
