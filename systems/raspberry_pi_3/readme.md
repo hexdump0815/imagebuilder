@@ -22,5 +22,5 @@
 
 ## special notes
 
-- before booting the sd card the first time some adjustements are required to configure it for the type of box:
+- before booting the sd card the first time some adjustements are required to configure it for the type of rpi:
   - adjust the selected dtb in the file extlinux/extlinux.conf on the boot filesystem (1st partition) - see the comments in the file

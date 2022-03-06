@@ -1,7 +1,7 @@
 enable_uart=1
-#force_turbo=1
-boot_delay=1
-gpu_mem=16
-dwc_otg.speed=1
-#disable_splash=1
-avoid_warnings=2
+arm_64bit=1
+upstream_kernel=1
+# choose the proper one
+#kernel=u-boot.bin-rpi4b
+kernel=u-boot.bin-rpi3bplus
+#kernel=u-boot.bin-rpi3b
