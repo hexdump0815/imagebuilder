@@ -2,7 +2,5 @@
 - change default search engine in firefox to duckduckgo.com instead of google (looks like this is complicated)
 - add more doc info to the top level readme (initial setup, scripts in /scripts dir etc.)
 - maybe add support for the nvidia jetson nano
-- maybe add support for the pinebook pro
-- maybe add support for the pinetab
 - maybe add apple m1 support when asahi linux progressed far enough
 - maybe create some useable qemu images too
