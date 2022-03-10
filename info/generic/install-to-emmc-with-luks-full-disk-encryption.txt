@@ -51,6 +51,7 @@ cgpt add -i 2 -t kernel -b 73728 -s 65536 -l KernelB -S 0 -T 2 -P 5 /dev/mmcblk0
 # (o in fdisk) might be a good start - as a result the partition numers might
 # differ from the examples below
 
+# chromebook example
 fdisk -l /dev/mmcblk0
 Disk /dev/mmcblk0: 29.12 GiB, 31268536320 bytes, 61071360 sectors
 Units: sectors of 1 * 512 = 512 bytes
@@ -65,7 +66,36 @@ Device           Start      End  Sectors  Size Type
 /dev/mmcblk0p3  139264  1187839  1048576  512M Linux filesystem
 /dev/mmcblk0p4 1187840 61071326 59883487 28.6G Linux filesystem
 
-# set the boot partition lecacy bootable in fdisk:
+# efi example
+fdisk -l
+Disk /dev/mmcblk1: 14.68 GiB, 15758000128 bytes, 30777344 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 06C88013-0E38-B140-9267-D85E97917781
+
+Device           Start      End  Sectors  Size Type
+/dev/mmcblk1p1    2048   264191   262144  128M EFI System (type 1)
+/dev/mmcblk1p2  264192  1312767  1048576  512M Linux filesystem (default type)
+/dev/mmcblk1p3 1312768 30777310 29464543   14G Linux filesystem
+
+# mbr example
+fdisk -l /dev/sdb
+Disk /dev/sdb: 14.84 GiB, 15931539456 bytes, 31116288 sectors
+Disk model: Card  Reader
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x422081e2
+
+Device     Boot   Start      End  Sectors  Size Id Type
+/dev/sdb1  *      32768  1081343  1048576  512M 83 Linux (type 83)
+/dev/sdb2       1081344 31116287 30034944 14.3G 83 Linux
+
+# set the boot partition lecacy bootable in fdisk - only required really
+# for u-boot as it uses this flag to find its extlinux.conf:
 # mbr: a 1 w (for partition 1)
 # gpt: x A 3 r w (for partition 3) - gpt example below:
 /dev/mmcblk0p3  139264  1187839  1048576 0FC63DAF-8483-4772-8E79-3D69D8477DE4 41D13648-115C-AA4E-A49B-A41FB6968AE7      LegacyBIOSBootable
@@ -99,6 +129,12 @@ mount /dev/mmcblk0p3 /mnt/boot
 # copy over the currently running system - efi will be installed from scratch
 rsync -axADHSX --no-inc-recursive --delete /boot/ /mnt/boot
 rsync -axADHSX --no-inc-recursive --delete --exclude='/swap/*' / /mnt
+
+# in case one wants to transfer the installation via a tar archive
+# the "--numeric-owner" option is a good idea to make sure the
+# uids/gids of the files are consistent independently of what system
+# has been booted to do all the installation procedure
+# tar --numeric-owner -xzf some-tar-archive.tar.gz
 
 # create swap files or file - the brtfs cmds will give an error in the ext4
 # case, but this should be no problem
@@ -227,7 +263,8 @@ vi /etc/default/grub
 update-grub
 
 # on some systems (for example chrombooks with a flashed coreboot uefi bios) the
-# following steps might be required in order to make them boot properly
+# following steps might be required in order to make them boot properly (this
+# is required at least for debian bullseye on some systems - see example below)
 mkdir -p /boot/efi/EFI/BOOT
 cp /boot/efi/EFI/debian/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
 
