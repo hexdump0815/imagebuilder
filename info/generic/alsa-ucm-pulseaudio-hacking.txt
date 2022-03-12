@@ -1,6 +1,12 @@
 these are some notes from trying to make ucm files from chromeos useable for mainline
 
-- it seems to be a good idea to add all settings of different ports with useful default values (either from enable or disable depending on what it should be by default) to the global enable section of the verb as otherwise some things seem to not be initialized properly all the time
+- it seems to be a good idea to add all settings of different ports with useful default values (either from enable or disable depending on what it should be by default) to the global enable section of the verb as otherwise some things seem to not be initialized properly all the time (might be related to the next point)
+
+- it looks like something like "alsaucm -c simple-card set _verb HiFi set _enadev Speaker" (example) is required to run the EnableSequence part of SectionVerb, so if changes to the ucm files for some strange reason do not get update properly after changing and reloading them, running such a command might be worth a try
+
+- most of the entries in an ucm file can be verified with the amixer command - example:
+  cset "name='Headphone Playback Volume' 2" # in the ucm file
+  amixer cset name='Headphone Playback Volume' 2 # same done from the cmdline
 
 - it is a good idea to start with a single port (for instance speaker) and comment out everything else first and then add them one by one after getting the former ones working
 
