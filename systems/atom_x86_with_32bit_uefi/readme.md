@@ -10,6 +10,7 @@
 - dell venue 8 pro windows 10 tablet (model 5830 only)
 - teclast x80 hd windows 10 / android tablet
 - unobook 2in1 educational laptop
+- beelink z83 box
 
 ## untested systems
 
@@ -39,3 +40,5 @@
     - i was able to get into the bios by booting the debian bullseye default i386 installer, go to the grub cmdline there and exit it via 'exit' command - also exiting this way from an efi shell works in case someone ends up in an efi shell
     - after such an exit the bios boot device menu was shown, from there one can get into another menu via 'tab' key from which one can enter the bios setup and disable secure boot in it
     - a plan b i had in mind was to use the mokutil command to try to disable secure boot from within a debian bullseye system installed with secure boot enabled using the default i386 installer
+- something relevant for the beelink z83
+  - it is recommended to run "apt-get install r8168-dkms" to install a ethernet driver, which is more stable (with the default in kernel driver ethernet sometimes worked and sometimes not
