@@ -149,11 +149,11 @@ cd /mnt/swap
 truncate -s 0 ./file.0; btrfs property set ./file.0 compression none; fallocate -l 2G file.0; chmod 600 ./file.0; mkswap -L file.0 ./file.0
 # alternative for multiple smaller swap files - more flexible to later remove some ifspace is needed
 for i in 0 1 2 3 ; do truncate -s 0 ./file.$i; btrfs property set ./file.$i compression none; fallocate -l 512M file.$i; chmod 600 ./file.$i; mkswap -L file.$i ./file.$i; done
-cd ..
 
 # adjust partition table and hostname (if wanted) - fstab example below
 # in case the bootable image was using ext4 as root fs and now btrfs is chosen,
 # this needs to be adjusted in the fstab accordinly (see example for both below)
+cd ..
 vi etc/fstab etc/hosts etc/hostname 
 
 # /etc/fstab: static file system information.
@@ -267,6 +267,8 @@ update-grub
 # is required at least for debian bullseye on some systems - see example below)
 mkdir -p /boot/efi/EFI/BOOT
 cp /boot/efi/EFI/debian/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
+# for 32bit uefi it would be
+cp /boot/efi/EFI/debian/grubia32.efi /boot/efi/EFI/BOOT/BOOTIA32.EFI
 
 # extlinux.conf adjustment - this section is required for systems using u-boot
 # usually only the root disk should be adjusted to root=rootemmc and maybe the
