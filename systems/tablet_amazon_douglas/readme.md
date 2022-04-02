@@ -14,6 +14,10 @@
   - https://github.com/hexdump0815/pmaports-amazon/tree/main/linux-amazon-douglas
   - https://github.com/hexdump0815/pmaports-amazon/tree/main/device-amazon-douglas
 
+## priority
+
+- low: will be worked on and improved rarely, not much left to be done due to legacy kernel
+
 ## special notes
 
 - this is not very useable yet, still in a very early and experimental phase

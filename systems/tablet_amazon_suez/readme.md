@@ -14,6 +14,10 @@
   - https://github.com/hexdump0815/pmaports-amazon/tree/main/linux-amazon-suez
   - https://github.com/hexdump0815/pmaports-amazon/tree/main/device-amazon-suez
 
+## priority
+
+- low: will be worked on and improved rarely, another try to get native wifi working or otherwise some cheap usb wifi will be included in the kernel config, otherwise not much left to be done due to legacy kernel
+
 ## special notes
 
 - this is not very useable yet, still in a very early and experimental phase

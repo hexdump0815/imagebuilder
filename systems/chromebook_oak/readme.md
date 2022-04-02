@@ -28,6 +28,10 @@
 
 - https://github.com/hexdump0815/linux-mainline-mediatek-mt81xx-kernel/blob/master/readme.mt7
 
+## priority
+
+- medium: will be worked on and improved from time to time, waiting for working suspend/resume on latest kernels and mainline gpu driver to get ready
+
 ## special notes
 
 - this system stays on the linux v5.10 kernel for now as later mainline kernels have problems with the display reinitialization after resume

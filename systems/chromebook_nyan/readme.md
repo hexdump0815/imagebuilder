@@ -34,6 +34,10 @@
 
 - https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/blob/master/readme.cbt
 
+## priority
+
+- medium: will be worked on and improved from time to time
+
 ## special notes
 
 - when switching nyan chromebooks into developer mode for the first time an error might occur (something with executing some command showing an error in the top left of the screen) - just wait 10+ minutes and if nothing happens, just turn off the chromebook and on restart it will switch into developer mode again automatically and this time it should succeed

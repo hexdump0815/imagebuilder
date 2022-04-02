@@ -20,6 +20,10 @@
   - https://github.com/hexdump0815/pmaports-other/tree/main/linux-postmarketos-qcom-msm8916
   - https://github.com/hexdump0815/pmaports-other/tree/main/device-motorola-harpia
 
+## priority
+
+- low: will be worked on and improved rarely
+
 ## special notes
 
 - this is not very useable yet, still in a very early and experimental phase

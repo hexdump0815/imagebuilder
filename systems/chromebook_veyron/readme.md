@@ -53,6 +53,10 @@
 
 - https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/blob/master/readme.cbr
 
+## priority
+
+- medium: will be worked on and improved from time to time
+
 ## special notes
 
 - for all images starting with 210731-01 full deep suspend/resume seems to be working, but sometimes maybe not that reliable (it might be considered to switch to s2idle for suspend in /etc/rc.local in case it should be too unreliable)

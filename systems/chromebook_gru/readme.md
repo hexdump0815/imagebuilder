@@ -20,6 +20,10 @@
 
 - https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/blob/master/readme.cbg
 
+## priority
+
+- medium: will be worked on and improved from time to time
+
 ## special notes
 
 - wifi, bt, basic sound seem to be ok, suspend/resume seems to work, earlier display/drm init will need some more work (if it is at all possible)

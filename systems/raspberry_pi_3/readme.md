@@ -20,6 +20,10 @@
 
 - https://github.com/hexdump0815/u-boot-misc/blob/master/readme.rpi
 
+## priority
+
+- low: will be worked on and improved rarely, hardware not that interesting anymore nowadays, well supported elsewhere too
+
 ## special notes
 
 - before booting the sd card the first time some adjustements are required to configure it for the type of rpi:

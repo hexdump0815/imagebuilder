@@ -25,6 +25,10 @@
 - https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/blob/master/readme.cbe
   - mainline u-boot, hopefully working at some point in the future on spring too
 
+## priority
+
+- on hold: no further activities planned so far, mainline support is in bad shape, too old hardware without mainline gpu support
+
 ## special notes
 
 - i was able to get it running using a chromeos kernel (https://github.com/hexdump0815/linux-chromeos-kernel/releases) as kpart kernel on a usb stick

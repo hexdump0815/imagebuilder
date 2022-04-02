@@ -23,6 +23,10 @@
 
 - the regular debian/ubuntu distribution kernel is used in this case, so no kernel build required
 
+## priority
+
+- low: will be worked on and improved rarely, not that much left to be done
+
 ## special notes
 
 - for using these images a uefi bios from https://mrchromebox.tech/ has to be installed first (if one is available at all)

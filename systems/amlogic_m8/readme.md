@@ -24,6 +24,10 @@ some more work will be required to make the devices below working
 - https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/blob/master/readme.av7
 - https://github.com/hexdump0815/linux-mainline-and-mali-amlogic-kernel/blob/master/readme.m8x
 
+## priority
+
+- on hold: no further activities planned so far, maybe this will change when hdmi support hits mainline
+
 ## special notes
 
 - tv boxes are always hit and miss, so they might work or might not work and are usually of low quality

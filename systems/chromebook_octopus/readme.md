@@ -23,6 +23,10 @@
 - https://github.com/hexdump0815/linux-chromeos-kernel/blob/main/readme.414
   - adjusted legacy chromeos kernel
 
+## priority
+
+- medium: will be worked on and improved from time to time, getting wifi and audio working are the next topics
+
 ## special notes
 
 - there is no legacy or uefi firmware available from https://mrchromebox.tech/ for gemini lake chromebooks, so booting regular linux installers on them does not work

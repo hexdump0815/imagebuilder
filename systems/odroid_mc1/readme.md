@@ -26,6 +26,10 @@
 
 - https://github.com/hexdump0815/u-boot-misc/blob/master/readme.e54
 
+## priority
+
+- low: will be worked on and improved rarely, not much left to be done as the v5.14 odroid kernel still seems to be the best option
+
 ## special notes
 
 - this system stays on the linux v5.4 kernel from odroid for now as later mainline kernels have about 20% lower performance in some scenarios (but work fine otherwise)

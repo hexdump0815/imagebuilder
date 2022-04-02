@@ -24,6 +24,10 @@
 
 - https://github.com/hexdump0815/u-boot-misc/blob/master/readme.exy
 
+## priority
+
+- medium: will be worked on and improved from time to time
+
 ## special notes
 
 - for the odroid x2 the file extlinux/extlinux.conf in the first partition needs to be edited - see the comments in the file

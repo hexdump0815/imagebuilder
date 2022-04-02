@@ -31,6 +31,10 @@
 
 - https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/blob/master/readme.cbe
 
+## priority
+
+- low: will be worked on and improved rarely, too old hardware without mainline gpu support
+
 ## special notes
 
 - active support from google for the snow chromebooks (samsung xe303c12) ended beginning of 2019, so they might be around for cheap

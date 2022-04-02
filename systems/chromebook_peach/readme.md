@@ -30,6 +30,10 @@
 
 - https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/blob/master/readme.cbe
 
+## priority
+
+- low: will be worked on and improved rarely, too old hardware without mainline gpu support
+
 ## special notes
 
 - after first boot please run /scripts/fix-peach-audio.sh as root to fix the ucm audio config files for the corresponding system and reboot

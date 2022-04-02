@@ -37,6 +37,10 @@ some more work will be required to make the devices below working
 - https://github.com/hexdump0815/u-boot-misc/blob/master/readme.gxl
 - https://github.com/hexdump0815/u-boot-misc/blob/master/readme.gxy
 
+## priority
+
+- medium: will be worked on and improved from time to time
+
 ## special notes
 
 - tv boxes are always hit and miss, so they might work or might not work and are usually of low quality

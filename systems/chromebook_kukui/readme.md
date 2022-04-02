@@ -34,6 +34,10 @@
 
 - https://github.com/hexdump0815/linux-mainline-mediatek-mt81xx-kernel/blob/master/readme.mt8
 
+## priority
+
+- high: most activities will most probably happen here
+
 ## special notes
 
 - most things seem to work more or less (mostly thanks to the kernel patches partially taken from https://github.com/Maccraft123/Cadmium/tree/master/baseboard/kukui/patches)

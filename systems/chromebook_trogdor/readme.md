@@ -21,6 +21,10 @@
 
 - https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/blob/master/readme.cbq
 
+## priority
+
+- medium: will be worked on and improved from time to time
+
 ## special notes
 
 - this is still very much wip, things might work or might not work

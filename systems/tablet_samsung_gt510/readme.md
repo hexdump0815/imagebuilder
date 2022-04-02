@@ -20,6 +20,10 @@
   - https://github.com/hexdump0815/pmaports-other/tree/main/linux-postmarketos-qcom-msm8916
   - https://github.com/hexdump0815/pmaports-other/tree/main/device-samsung-gt510
 
+## priority
+
+- medium: will be worked on and improved from time to time
+
 ## special notes
 
 - this is not very useable yet, still in a very early and experimental phase

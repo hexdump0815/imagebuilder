@@ -21,6 +21,10 @@
 
 - https://github.com/hexdump0815/u-boot-misc/blob/master/readme.h616
 
+## priority
+
+- medium: will be worked on and improved from time to time
+
 ## special notes
 
 - tv boxes are always hit and miss, so they might work or might not work and are usually of low quality

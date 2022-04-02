@@ -22,6 +22,10 @@
 - https://github.com/hexdump0815/linux-mainline-x86-64-kernel/blob/main/readme.d8p
   - old special kernel for the dell venue 8 pro which seems to no longer be required
 
+## priority
+
+- low: will be worked on and improved rarely, not that much left to be done
+
 ## special notes
 
 - to change the screen orientation to landscape mode by default /etc/lightdm/lighdm.conf needs to be adjusted by uncommenting the corresponding shell script for supported devices

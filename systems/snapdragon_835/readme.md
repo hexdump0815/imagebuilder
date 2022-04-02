@@ -18,6 +18,10 @@
 
 - https://github.com/hexdump0815/linux-mainline-qcom-msm8998-kernel/blob/main/readme.qcn
 
+## priority
+
+- low: will be worked on and improved rarely, still very limited mainline support which is unlikely to change soon
+
 ## special notes
 
 - this is very much work in progress and not really useable yet

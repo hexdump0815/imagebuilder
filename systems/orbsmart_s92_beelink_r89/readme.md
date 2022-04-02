@@ -28,6 +28,10 @@ the boot loader of those tv boxes seems to be encrypted and locked and thus cann
 
 - https://github.com/hexdump0815/imagebuilder/tree/main/systems/orbsmart_s92_beelink_r89/extra-files/boot/r89-boot
 
+## priority
+
+- medium: will be worked on and improved from time to time
+
 ## special notes
 
 - bluetooth currently does not work, it seems to hang the system when trying to enable it via cmdline tool
