@@ -7,14 +7,16 @@
 
 ## tested systems - working
 
+- odroid u3+
 - odroid u3
 - odroid u2
+- odroid u
 - odroid x2
 - odroid x
 
 ## untested systems
 
-- odroid u
+- looks like there is none of them left :)
 
 ## kernel build notes
 
@@ -39,3 +41,4 @@
 - for a working edid file for a 1280x720 screen resolution see https://forum.odroid.com/viewtopic.php?p=329241&sid=7a49d9e1a9c91ee32c46bf6dc64c5b47#p329241
 - for a patched libc to make widevine working see https://forum.odroid.com/viewtopic.php?p=329192&sid=7a49d9e1a9c91ee32c46bf6dc64c5b47#p329192
 - for a precompiled kodi with hw accel to use with this image please see https://forum.odroid.com/viewtopic.php?p=329945&sid=7a49d9e1a9c91ee32c46bf6dc64c5b47#p329945
+- some notes on running the image on the odroid u: https://github.com/hexdump0815/imagebuilder/issues/39
