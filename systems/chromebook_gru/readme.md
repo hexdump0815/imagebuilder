@@ -29,3 +29,5 @@
 - wifi, bt, basic sound seem to be ok, suspend/resume seems to work, earlier display/drm init will need some more work (if it is at all possible)
 - the current sound setup is not complete yet:
   - headphones and headset mic do not work yet, so better use a small usb audio interface for a headset if needed for now
+- alternatively there is also support for gru-kevin in alpine linux at:
+  - https://git.alpinelinux.org/aports/tree/testing/linux-gru/

@@ -40,6 +40,5 @@
 - suspend/resume status:
   - with v5.10 it works fine (console and xorg) with https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_oak/extra-files/usr/lib/systemd/system-sleep/mrvl-reload - so all images starting with version 210724-02 should be fine
   - with v5.11+ it is broken as the display does not come back after resume - see todo
-- alternatively there is also support for oak-elm and gru-kevin in alpine linux at:
+- alternatively there is also support for oak-elm in alpine linux at:
   - https://git.alpinelinux.org/aports/tree/testing/linux-elm/
-  - https://git.alpinelinux.org/aports/tree/testing/linux-gru/
