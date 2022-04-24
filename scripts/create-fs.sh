@@ -108,7 +108,7 @@ if [ -f ${DOWNLOAD_DIR}/kernel-${1}-${2}.tar.gz ]; then
 fi
 
 # if there is no own kernel, then install the dist kernel
-if [ "$3" = "focal" ] || [ "$3" = "sonaremin" ]; then
+if [ "$3" = "focal" ] || [ "$3" = "jammy" ] || [ "$3" = "sonaremin" ]; then
   if [ "$2" = "x86_64" ] && [ "${OWN_KERNEL}" != "true" ]; then
     chroot ${BUILD_ROOT} apt-get -yq install linux-image-generic
   fi

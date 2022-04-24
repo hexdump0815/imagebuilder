@@ -45,5 +45,7 @@ wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_g
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_sm1_serial_uboot_version}/boot-amlogic_sm1-aarch64-x96-air-serial.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/boot-amlogic-sm1-tv-box-serial.dd
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${amlogic_gx_sm1_serial_uboot_version}/sm1-serial-u-boot.bin.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/sm1-serial-tv-box-u-boot.bin
 
-# get the self built fresher mesa
-wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
+# get the self built fresher mesa - except for jammy (for now) which has a newer version already
+if [ "${3}" != "jammy" ]; then
+  wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
+fi

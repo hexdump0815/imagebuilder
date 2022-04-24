@@ -17,6 +17,7 @@ if [ "$#" != "3" ]; then
   echo ""
   echo "possible release options:"
   echo "- focal - ubuntu focal"
+  echo "- jammy - ubuntu jammy (wip)"
   echo "- bullseye - debian bullseye"
   echo ""
   echo "example: ${0} odroid_u3 armv7l focal"
@@ -45,7 +46,7 @@ fi
 
 if [ "${2}" = "i686" ] && [ "${3}" != "bullseye" ]; then
   echo ""
-  echo "the target arch i686 is only supported for debian bullseye as there is no i686 build of ubuntu focal - giving up"
+  echo "the target arch i686 is only supported for debian bullseye as there is no i686 build of ubuntu focal or jammy - giving up"
   echo ""
   exit 1
 fi

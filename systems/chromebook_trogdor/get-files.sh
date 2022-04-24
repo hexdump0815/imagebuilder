@@ -16,5 +16,7 @@ rm -rf ${DOWNLOAD_DIR}/postinstall-${1}
 mkdir -p ${DOWNLOAD_DIR}/postinstall-${1}
 wget -v https://github.com/hexdump0815/qcom-tools-build/releases/download/${qcom_tools_version}/qcom-tools-${2}-${3}.tar.gz -O ${DOWNLOAD_DIR}/postinstall-${1}/qcom-tools-${2}-${3}.tar.gz
 
-# get the self built fresher mesa
-wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
+# get the self built fresher mesa - except for jammy (for now) which has a newer version already
+if [ "${3}" != "jammy" ]; then
+  wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
+fi

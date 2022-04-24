@@ -15,6 +15,8 @@ if [ "$1" = "focal" ]; then
   # light-locker is broken in ubuntu focal after resume from suspend so remove it
   # the xfce internal locker works fine, so the locking functionality is still there
   apt-get -yq remove light-locker
+elif [ "$1" = "jammy" ]; then
+  apt-get -yq install locales vim openssh-server ssh-askpass sudo net-tools ifupdown iputils-ping kmod less rsync u-boot-tools usbutils dosfstools mesa-utils mesa-utils-extra console-data xubuntu-desktop linux-firmware lvm2 cryptsetup-bin slick-greeter rsyslog btrfs-progs btrfs-compsize dialog cgpt liblz4-tool vboot-kernel-utils plymouth plymouth-label plymouth-theme-xubuntu-logo plymouth-theme-xubuntu-text xserver-xorg-video-fbdev xinput rfkill gnome-system-tools gnome-system-monitor
 elif [ "$1" = "bullseye" ]; then 
   apt-get -yq install locales vim openssh-server ssh-askpass sudo net-tools ifupdown iputils-ping kmod less rsync u-boot-tools usbutils dosfstools mesa-utils mesa-utils-extra console-data task-xfce-desktop xserver-xorg-input-synaptics blueman firmware-linux-free firmware-linux firmware-linux-nonfree firmware-misc-nonfree firmware-brcm80211 firmware-iwlwifi firmware-intel-sound firmware-samsung firmware-libertas firmware-realtek firmware-qcom-soc firmware-qcom-media firmware-atheros pulseaudio pavucontrol lvm2 cryptsetup-bin cryptsetup slick-greeter btrfs-progs btrfs-compsize dialog cgpt liblz4-tool vboot-kernel-utils bc plymouth plymouth-themes xserver-xorg-video-fbdev xinput rfkill curl onboard gnome-system-tools gnome-system-monitor
   tasksel install standard

@@ -52,8 +52,10 @@ else
 
 fi
 
-# get the self built fresher mesa
-wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
+# get the self built fresher mesa - except for jammy (for now) which has a newer version already
+if [ "${3}" != "jammy" ]; then
+  wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
+fi
 
 ## on tegra a fresher xorg is required as well
 #rm -f ${DOWNLOAD_DIR}/opt-xserver-${3}-${2}.tar.gz

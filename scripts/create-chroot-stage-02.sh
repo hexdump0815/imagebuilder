@@ -12,9 +12,21 @@ if [ "${1}" != "bullseye" ]; then
   systemctl disable fwupd-refresh.service
 fi
 
+# do not use the default firefox snap package (too much bloat) but instead
+# install firefox-esr (nicely in sync with what debian bullseye is using)
+# from the mozilla teams ppa for it (with this there is also no pkg name
+# conflict with the snap firefox version
+# see: https://ubuntuhandbook.org/index.php/2022/03/install-firefox-esr-ubuntu/
+# if the regular (non-esr) firefox is preferred, have a look at:
+# https://fostips.com/ubuntu-21-10-two-firefox-remove-snap/
+if [ "${1}" = "jammy" ]; then
+  add-apt-repository -y ppa:mozillateam/ppa
+  apt-get -yq install firefox-esr
+fi
+
 # this is required to make docker work on bullseye with the current kernels
 # see https://wiki.debian.org/iptables
-if [ "${1}" = "bullseye" ]; then
+if [ "${1}" = "bullseye" ] || [ "${1}" = "jammy" ]; then
   update-alternatives --set iptables /usr/sbin/iptables-legacy
   update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
   update-alternatives --set arptables /usr/sbin/arptables-legacy

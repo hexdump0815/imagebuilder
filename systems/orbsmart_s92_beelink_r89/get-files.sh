@@ -9,5 +9,7 @@ wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-ke
 #rm -f ${DOWNLOAD_DIR}/kernel-mali-orbsmart_s92_beelink_r89-armv7l.tar.gz
 #wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${orbsmart_s92_beelink_r89_release_version}/${orbsmart_s92_beelink_r89_release_version}-mali-rk3288.tar.gz -O ${DOWNLOAD_DIR}/kernel-mali-orbsmart_s92_beelink_r89-armv7l.tar.gz
 
-# get the self built fresher mesa
-wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
+# get the self built fresher mesa - except for jammy (for now) which has a newer version already
+if [ "${3}" != "jammy" ]; then
+  wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
+fi

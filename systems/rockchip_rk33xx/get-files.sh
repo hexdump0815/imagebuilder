@@ -29,5 +29,7 @@ wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${rockchip_
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${rockchip_rk33xx_uboot_tpl_spl_version}/boot-rk3328-tpl-spl-aarch64.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/boot-rk3328-tpl-spl.dd
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${rockchip_rk33xx_uboot_tpl_spl_version}/u-boot-rk3328.img.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/u-boot-rk3328.img
 
-# get the self built fresher mesa
-wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
+# get the self built fresher mesa - except for jammy (for now) which has a newer version already
+if [ "${3}" != "jammy" ]; then
+  wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
+fi
