@@ -9,6 +9,7 @@
 
 - lenovo ideapad duet 10.1 chromebook - krane
 - acer chromebook spin cp311-3h - juniper
+- hp chromebook 11a - kappa
 
 ## untested systems
 
@@ -19,7 +20,6 @@
 - asus chromebook cz1 - cerise
 - asus chromebook flip cz1 - stern
 - asus chromebook detachable cz1 - katsu
-- hp chromebook 11a - kappa
 - hp chromebook x360 11mk g3 ee - burnet
 - lenovo ideapad flex 3 chromebook (mt8183 version) - fennel
 - lenovo ideapad 3 chromebook 14 inch (mt8183 version) - fennel14
@@ -47,7 +47,7 @@
   - krane has usb bandwidth problems, especially with usb audio
   - juniper seems to have some audio related interrupt issues
 - the kernel config is merged now for both mt8173 and mt8183, mt8183 patches still seem to break mt8173 drm - so they need to be compiled separately for now
-- so far only juniper and krane are supported, but other mt8183 chromebooks might be added easily
+- so far only krane, juniper and kappa are supported, but other mt8183 chromebooks might work (at least partially) too or can be added easily
 - the current sound setup is not complete yet:
   - the levels of the internal mic are very low (as a workaround they can be boosted in software at pulseaudio level via "pactl set-source-volume 1 400%")
   - a headset mic does not work yet, so better use a small usb audio interface for a headset if needed for now
