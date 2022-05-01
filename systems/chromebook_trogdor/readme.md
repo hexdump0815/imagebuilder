@@ -7,10 +7,11 @@
 ## tested systems - working
 
 - acer chromebook spin sp513-1h - lazor
+- hp chromebook x2 - coachz
+  - see: https://github.com/hexdump0815/imagebuilder/issues/44
 
 ## untested systems
 
-- hp chromebook x2 - coachz
 - lenovo chromeboot duet 5 - homestar
 
 ## generic mainline linux on arm chromebook notes
