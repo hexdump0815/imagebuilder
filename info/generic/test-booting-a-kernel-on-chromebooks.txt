@@ -44,3 +44,13 @@ to the kpart partition, which does no longer work if the
 kernel is booted from the kernel partition 2 instead of 1
 (in the example above the root filesystem is expected at the
 next partition after the kernel partition, i.e. offset=1)
+
+for testing and debugging kernel topics it might be useful to
+be able to see the kernel console output during boot. for
+this a special suzyqable is required and the following should
+be added to the kernel commandline when building the kpart
+kernel image (after the already existing console= entry, as
+only the last console= entry has the highest priority for
+displaying the kernel boot log)
+
+  console=ttyS0,115200n8 earlycon
