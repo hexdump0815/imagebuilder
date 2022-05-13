@@ -8,13 +8,15 @@ case "$1" in
     rmmod btrtl
     rmmod btintel
     rmmod btbcm
+    sleep 1
+    # unload the wifi module
     rmmod mwifiex_pcie
     rmmod mwifiex
     sleep 1
     ;;
 
   "post")
-    # reload the wifi module
+    # load the wifi module
     modprobe mwifiex_pcie
     sleep 1
     # load bt modules
@@ -22,6 +24,7 @@ case "$1" in
     modprobe btintel
     modprobe btrtl
     modprobe btusb
+    sleep 1
     ;;
 
   *)

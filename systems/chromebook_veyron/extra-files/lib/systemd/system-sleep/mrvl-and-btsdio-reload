@@ -8,17 +8,20 @@ case "$1" in
     rmmod btmrvl
     rmmod btsdio
     sleep 1
+    # unload the wifi module
+    rmmod mwifiex_sdio
+    sleep 1
     ;;
 
   "post")
+    # load the wifi module
+    modprobe mwifiex_sdio
+    sleep 1
     # load bt modules
     modprobe btsdio
     modprobe btmrvl
     modprobe btmrvl_sdio
-    # reload the wifi module
-    rmmod mwifiex_sdio
     sleep 1
-    modprobe mwifiex_sdio
     ;;
 
   *)

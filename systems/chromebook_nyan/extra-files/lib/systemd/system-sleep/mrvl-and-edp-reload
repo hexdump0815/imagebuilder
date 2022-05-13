@@ -10,6 +10,9 @@ case "$1" in
       rmmod btmrvl_sdio
       rmmod btmrvl
       sleep 1
+      # unload the wifi module
+      rmmod mwifiex_sdio
+      sleep 1
       # switch to a text console as this reduces the risk of the video mode to get messed up after resume
       chvt 6
       sleep 1
@@ -20,13 +23,13 @@ case "$1" in
     # check that the legacy chromeos kernel is not in use
     uname -r | grep -q ^3
     if [ "$?" != "0" ]; then
+      # load the wifi module
+      modprobe mwifiex_sdio
+      sleep 1
       # load bt modules
       modprobe btmrvl
       modprobe btmrvl_sdio
-      # reload the wifi module
-      rmmod mwifiex_sdio
       sleep 1
-      modprobe mwifiex_sdio
       # switch back to xorg console, this switch will also reconnect the keyboard
       sleep 1
       chvt 7
