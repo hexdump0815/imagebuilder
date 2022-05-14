@@ -1,3 +1,8 @@
+- there is some effort in progress to create an open source vulkan driver for the gpu
+  - it will take a while if it will be useable and mesa zink would be required to provide opengl on top of vulkan
+  - https://www.phoronix.com/scan.php?page=news_item&px=Open-Source-PowerVR-Vulkan
+  - https://lists.freedesktop.org/archives/mesa-dev/2022-March/225699.html
+  - https://gitlab.freedesktop.org/users/frankbinns/activity
 - check if it is possible to somehow use the binary opengl driver working with the kernel driver which has been forward ported to mainline (either with armv7l userland and the chromeos blobs or maybe even with aarch64 userland if there are any other blobs)
 - there are kernel drivers available for the powervr blob for both v3.18 and near mainline (v5.10 i think) in the chromeos repos
   - maybe it is possible to get them to work together with the (32bit) blob files from chromeos in either legacy or mainline?
@@ -18,3 +23,5 @@
   - bisecting the problem is complicated due to two different issues being involved (drm crash and edid detect problem) and during a bisect try i ended up in completely non-working kernel versions at some point
   - for v5.16 there are some patches which make the display come back after suspend/resume at https://github.com/hexdump0815/linux-mainline-mediatek-mt81xx-kernel/tree/master/misc.cbm/patches/5.16.0/mt8173-fix-panel-suspend
     - sadly with working display resume the next suspend/resume problem on oak seems to come up: afterwards reboot hangs and another suspend will not work properly anymore (might be usb related, but not sure yet) 
+  - with v5.17 there seems to be a new problem around display power management: resume from dpms suspend results in a black screen
+  - with v5.18 suspend/resume seems to work again (tested with elm running from emmc), but the dpms resume issue is still there
