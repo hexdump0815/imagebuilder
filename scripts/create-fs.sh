@@ -220,6 +220,12 @@ rm -f etc/ssh/*key*
 mkdir -p etc/systemd/system/multi-user.target.wants
 ( cd etc/systemd/system/multi-user.target.wants ;  ln -s ../regenerate-ssh-host-keys.service . )
 
+# delete random-seed and machine-id according to https://systemd.io/BUILDING_IMAGES/
+# so that they get created unique per machine on first boot
+# inspired by: https://github.com/armbian/build/pull/3774
+echo "uninitialized" > etc/machine-id
+rm -f var/lib/systemd/random-seed var/lib/dbus/machine-id
+
 # if a different default user name was set, parse it into the rename user script
 sed -i "s,DEFAULT_USERNAME=linux,DEFAULT_USERNAME=${DEFAULT_USERNAME},g" scripts/rename-default-user.sh
 
