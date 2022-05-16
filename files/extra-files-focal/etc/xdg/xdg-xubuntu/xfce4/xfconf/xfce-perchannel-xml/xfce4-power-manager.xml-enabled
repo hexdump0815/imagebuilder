@@ -6,7 +6,7 @@
     <property name="lock-screen-suspend-hibernate" type="bool" value="false"/>
     <property name="blank-on-ac" type="int" value="5"/>
     <property name="blank-on-battery" type="int" value="5"/>
-    <property name="dpms-enabled" type="bool" value="false"/>
+    <property name="dpms-enabled" type="bool" value="true"/>
     <property name="dpms-on-ac-sleep" type="uint" value="6"/>
     <property name="dpms-on-ac-off" type="uint" value="7"/>
     <property name="dpms-on-battery-sleep" type="uint" value="6"/>
@@ -19,9 +19,9 @@
     <property name="hibernate-button-action" type="uint" value="3"/>
     <property name="battery-button-action" type="uint" value="3"/>
     <property name="inactivity-sleep-mode-on-battery" type="uint" value="1"/>
-    <property name="brightness-on-battery" type="uint" value="9"/>
+    <property name="brightness-on-battery" type="uint" value="120"/>
     <property name="brightness-level-on-battery" type="uint" value="50"/>
     <property name="brightness-level-on-ac" type="uint" value="50"/>
-    <property name="brightness-on-ac" type="uint" value="9"/>
+    <property name="brightness-on-ac" type="uint" value="120"/>
   </property>
 </channel>
