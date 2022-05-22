@@ -2,7 +2,7 @@
 
 allwinner_h616_release_version="5.15.22-stb-616%2B"
 allwinner_h616_uboot_version="211126-01"
-mesa_release_version="21.3.0"
+mesa_release_version="22.1.0"
 
 rm -f ${DOWNLOAD_DIR}/kernel-allwinner_h616-${2}.tar.gz
 wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h6-kernel/releases/download/${allwinner_h616_release_version}/${allwinner_h616_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-allwinner_h616-${2}.tar.gz
@@ -18,7 +18,5 @@ wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${allwinner
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${allwinner_h616_uboot_version}/boot-allwinner_h616-x96mate-aarch64.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/boot-allwinner_h616-x96mate.dd
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${allwinner_h616_uboot_version}/boot-allwinner_h616-opizero2-aarch64.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/boot-allwinner_h616-opizero2.dd
 
-# get the self built fresher mesa - except for jammy (for now) which has a newer version already
-if [ "${3}" != "jammy" ]; then
-  wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
-fi
+# get the self built fresher mesa
+wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz

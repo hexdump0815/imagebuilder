@@ -2,7 +2,7 @@
 
 raspberry_pi_3_release_version="5.15.22-stb-av8%2B"
 raspberry_pi_3_uboot_version="220301-01"
-mesa_release_version="21.3.0"
+mesa_release_version="22.1.0"
 # bootloader blob and dtb versions
 dtb_commit="fb0bfa6a669745578041e838fc73cc17e8c543c9"
 boot_commit="9c04ed2c1ad06a615d8e6479806ab252dbbeb95a"
@@ -40,7 +40,5 @@ wget -v https://github.com/raspberrypi/firmware/raw/${boot_commit}/boot/start_db
 wget -v https://github.com/raspberrypi/firmware/raw/${boot_commit}/boot/start.elf -O ${DOWNLOAD_DIR}/postinstall-${1}/start.elf
 wget -v https://github.com/raspberrypi/firmware/raw/${boot_commit}/boot/start_x.elf -O ${DOWNLOAD_DIR}/postinstall-${1}/start_x.elf
 
-# get the self built fresher mesa - except for jammy (for now) which has a newer version already
-if [ "${3}" != "jammy" ]; then
-  wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
-fi
+# get the self built fresher mesa
+wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz

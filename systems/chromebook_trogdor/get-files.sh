@@ -1,7 +1,7 @@
 # this file is supposed to be sourced by the get-files shell script
 
 chromebook_trogdor_release_version="5.15.22-stb-cbq"
-mesa_release_version="21.3.0"
+mesa_release_version="22.1.0"
 
 rm -f ${DOWNLOAD_DIR}/kernel-chromebook_trogdor-${2}.tar.gz
 wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${chromebook_trogdor_release_version}/${chromebook_trogdor_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-chromebook_trogdor-${2}.tar.gz
@@ -16,7 +16,5 @@ rm -rf ${DOWNLOAD_DIR}/postinstall-${1}
 mkdir -p ${DOWNLOAD_DIR}/postinstall-${1}
 wget -v https://github.com/hexdump0815/qcom-tools-build/releases/download/${qcom_tools_version}/qcom-tools-${2}-${3}.tar.gz -O ${DOWNLOAD_DIR}/postinstall-${1}/qcom-tools-${2}-${3}.tar.gz
 
-# get the self built fresher mesa - except for jammy (for now) which has a newer version already
-if [ "${3}" != "jammy" ]; then
-  wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
-fi
+# get the self built fresher mesa
+wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz

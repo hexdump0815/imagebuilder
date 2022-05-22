@@ -14,6 +14,8 @@ chromebook_nyan_2g_uboot_version="v2021.10-cbt"
 chromebook_nyan_2g_noflicker_uboot_version="v2021.10-cbt"
 chromebook_nyan_4g_uboot_version="v2021.10-cbt"
 chromebook_nyan_4g_noflicker_uboot_version="v2021.10-cbt"
+# stick to this older mesa version for nyan as with newer ones there
+# were regressions which have to be checked and resolved first
 mesa_release_version="21.0.1"
 xserver_release_version="21.0.1"
 
@@ -52,10 +54,8 @@ else
 
 fi
 
-# get the self built fresher mesa - except for jammy (for now) which has a newer version already
-if [ "${3}" != "jammy" ]; then
-  wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
-fi
+# get the self built fresher mesa
+wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
 
 ## on tegra a fresher xorg is required as well
 #rm -f ${DOWNLOAD_DIR}/opt-xserver-${3}-${2}.tar.gz
