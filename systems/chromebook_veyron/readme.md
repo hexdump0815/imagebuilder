@@ -53,6 +53,10 @@
 
 - https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/blob/master/readme.cbr
 
+## mesa build notes
+
+- https://github.com/hexdump0815/mesa-etc-build/blob/master/mesa-build.txt
+
 ## priority
 
 - medium: will be worked on and improved from time to time

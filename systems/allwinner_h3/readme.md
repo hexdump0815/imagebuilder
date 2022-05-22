@@ -25,6 +25,10 @@ some more work will be required to make the devices below working
 
 - https://github.com/hexdump0815/u-boot-misc/blob/master/readme.h3
 
+## mesa build notes
+
+- https://github.com/hexdump0815/mesa-etc-build/blob/master/mesa-build.txt
+
 ## priority
 
 - on hold: no further activities planned so far, too old hardware and quite good armbian support as alternative

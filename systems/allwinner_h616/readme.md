@@ -21,6 +21,10 @@
 
 - https://github.com/hexdump0815/u-boot-misc/blob/master/readme.h616
 
+## mesa build notes
+
+- https://github.com/hexdump0815/mesa-etc-build/blob/master/mesa-build.txt
+
 ## priority
 
 - medium: will be worked on and improved from time to time

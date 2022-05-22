@@ -20,6 +20,10 @@
 
 - https://github.com/hexdump0815/u-boot-misc/blob/master/readme.rpi
 
+## mesa build notes
+
+- https://github.com/hexdump0815/mesa-etc-build/blob/master/mesa-build.txt
+
 ## priority
 
 - low: will be worked on and improved rarely, hardware not that interesting anymore nowadays, well supported elsewhere too

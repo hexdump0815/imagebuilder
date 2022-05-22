@@ -28,6 +28,10 @@ the boot loader of those tv boxes seems to be encrypted and locked and thus cann
 
 - https://github.com/hexdump0815/imagebuilder/tree/main/systems/orbsmart_s92_beelink_r89/extra-files/boot/r89-boot
 
+## mesa build notes
+
+- https://github.com/hexdump0815/mesa-etc-build/blob/master/mesa-build.txt
+
 ## priority
 
 - medium: will be worked on and improved from time to time
