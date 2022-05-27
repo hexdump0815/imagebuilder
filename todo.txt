@@ -6,3 +6,4 @@
 - maybe create some useable qemu images too
 - check potential problem with the systemd-gpt-auto-generator - see: https://github.com/hexdump0815/imagebuilder/issues/43#issuecomment-1116133516
 - maybe provide kernel headers as well as part of the kernel tar.gz files - see: https://github.com/hexdump0815/imagebuilder/issues/31#issuecomment-1111972167
+- investigate if its possible to replace the first boot image on newer chromebooks - should be possible and means most probably just to find the proper format, tools to create it and to replace it in the boot flash area
