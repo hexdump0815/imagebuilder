@@ -2,14 +2,18 @@
 
 ## bootable sd card images
 
+- https://github.com/hexdump0815/imagebuilder/releases/tag/220528-01
 - https://github.com/hexdump0815/imagebuilder/releases/tag/210724-03
 - https://github.com/hexdump0815/imagebuilder/releases/tag/210321-01
 
 ## tested systems - working
 
 - lenovo ideapad duet 10.1 chromebook - krane
+  - see also: https://github.com/hexdump0815/imagebuilder/issues/53
 - acer chromebook spin cp311-3h - juniper
+  - see also: https://github.com/hexdump0815/imagebuilder/issues/52
 - hp chromebook 11a - kappa
+  - see also: https://github.com/hexdump0815/imagebuilder/issues/52
 - lenovo ideapad 3 chromebook 14 inch (mt8183 version) - fennel14
   - see also: https://github.com/hexdump0815/imagebuilder/issues/49
 
