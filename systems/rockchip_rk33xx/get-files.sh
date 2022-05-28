@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-rockchip_rk33xx_release_version="5.15.22-stb-rkc%2B"
+rockchip_rk33xx_release_version="5.18.0-stb-rkc%2B"
 rockchip_rk33xx_uboot_rk3318_ddrbin_legacy_atf_version="210131-01"
 rockchip_rk33xx_uboot_rk3328_ddrbin_legacy_atf_version="210131-01"
 rockchip_rk33xx_uboot_ddrbin_spl_version="210131-01"
