@@ -3,7 +3,7 @@
 # toggle installing legacy kernel or mainline kernel by default
 LEGACY_KERNEL="no"
 
-chromebook_snow_release_version="5.15.22-stb-cbe%2B"
+chromebook_snow_release_version="5.18.0-stb-cbe%2B"
 chromebook_snow_legacy_release_version="3.10.38-cos-r91"
 chromebook_snow_uboot_version="v2017.09-cbe"
 chromebook_snow_alternative_uboot_version="v2018.11-cbe"
