@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-chromebook_octopus_release_version="5.15.22-stb-cbo"
+chromebook_octopus_release_version="5.18.0-stb-cbo%2B"
 chromebook_octopus_legacy_release_version="4.14.228-cos-r91+"
 
 rm -f ${DOWNLOAD_DIR}/kernel-chromebook_octopus-${2}.tar.gz
