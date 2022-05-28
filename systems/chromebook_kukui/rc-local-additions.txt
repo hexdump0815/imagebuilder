@@ -2,12 +2,13 @@
 #echo s2idle > /sys/power/mem_sleep
 
 # try to copy the right xorg monitor rotation conf file depending on system at first boot
+# as a result the wrong screen orientation should be corrected after the first reboot on krane
 if [ ! -f /etc/X11/xorg.conf.d/31-monitor-rotate-left.conf ] && [ ! -f /etc/X11/xorg.conf.d/31-monitor.conf ]; then
   # krane has a rotated panel
   grep -q 'MediaTek krane' /proc/device-tree/model
   if [ "$?" = "0" ]; then
     cp /etc/X11/xorg.conf.d.samples/31-monitor-rotate-left.conf /etc/X11/xorg.conf.d
-  # juniper has no rotated panel
+  # most others do not have a rotated panel
   else
     cp /etc/X11/xorg.conf.d.samples/31-monitor.conf /etc/X11/xorg.conf.d
   fi
