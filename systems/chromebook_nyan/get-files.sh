@@ -6,8 +6,8 @@ LEGACY_KERNEL="no"
 # this one is for the v5.4 kernel tree which had a way more reliable display handling in the past
 #chromebook_nyan_release_version="5.4.125-stb-cbt%2B"
 #chromebook_nyan_kernel_tree="linux-mainline-tegra-k1-kernel"
-# this one is for the v5.15 newer kernel which seems to work similarly well now
-chromebook_nyan_release_version="5.15.22-stb-cbt%2B"
+# this one is for the v5.18 newer kernel which seems to work similarly well now
+chromebook_nyan_release_version="5.18.0-stb-cbt%2B"
 chromebook_nyan_kernel_tree="linux-mainline-and-mali-generic-stable-kernel"
 chromebook_nyan_legacy_release_version="3.10.18-cos-r91"
 chromebook_nyan_2g_uboot_version="v2021.10-cbt"
