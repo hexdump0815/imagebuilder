@@ -28,3 +28,4 @@
   - see https://libera.irclog.whitequark.org/tegra/2021-12-22 for some experiments: lp2 and most probably lp1 seem to basically work, at least when booted with init=/bin/bash suspend/resume worked fine via "rtcwake -m mem -s 15" with a deep mem suspend, fully booted (systemd) the system did a clean shutdown immediately after resume
 - get u-boot working properly, i.e. one u-boot working for the 2gb/hd and 4gb/full hd model and properly working display all the time
 - it looks like there is a regression in mesa when trying to use the nouveau driver: mesa-21.0.1 works, mesa-21.1.0 does not longer work
+  - a test with v5.18.0 and mesa v22.1.0 resulted in the following error when trying to run glxgears with a proper nouveau and newer xorg setup: "... src/gallium/frontends/dri/dri2.c:705: dri2_allocate_textures: Assertion `*zsbuf' failed."
