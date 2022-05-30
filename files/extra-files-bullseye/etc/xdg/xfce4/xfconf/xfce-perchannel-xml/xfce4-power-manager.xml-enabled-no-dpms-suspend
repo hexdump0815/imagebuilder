@@ -6,7 +6,7 @@
     <property name="lock-screen-suspend-hibernate" type="empty"/>
     <property name="blank-on-ac" type="int" value="0"/>
     <property name="blank-on-battery" type="int" value="0"/>
-    <property name="dpms-enabled" type="bool" value="true"/>
+    <property name="dpms-enabled" type="bool" value="false"/>
     <property name="dpms-on-ac-sleep" type="uint" value="0"/>
     <property name="dpms-on-ac-off" type="uint" value="0"/>
     <property name="dpms-on-battery-sleep" type="uint" value="0"/>
