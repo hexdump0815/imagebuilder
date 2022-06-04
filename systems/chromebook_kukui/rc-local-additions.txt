@@ -14,13 +14,14 @@ if [ ! -f /etc/X11/xorg.conf.d/31-monitor-rotate-left.conf ] && [ ! -f /etc/X11/
   fi
 fi
 
-# lock the gpu devfreq freq scaling to a single fixed freq as it does not seem to work stable
-# resulting in gpu errors like "gpu sched timeout", "AS_ACTIVE bit stuck" or page faults
-# see: https://oftc.irclog.whitequark.org/panfrost/2022-01-09#30513966
-if [ -f /sys/class/devfreq/13040000.gpu/max_freq ]; then
-  # for possible values see /sys/class/devfreq/13040000.gpu/available_frequencies
-  echo 400000000 > /sys/class/devfreq/13040000.gpu/max_freq
-  echo 400000000 > /sys/class/devfreq/13040000.gpu/min_freq
-fi
+# this is no longer required since v5.18 and a patch added for it
+## lock the gpu devfreq freq scaling to a single fixed freq as it does not seem to work stable
+## resulting in gpu errors like "gpu sched timeout", "AS_ACTIVE bit stuck" or page faults
+## see: https://oftc.irclog.whitequark.org/panfrost/2022-01-09#30513966
+#if [ -f /sys/class/devfreq/13040000.gpu/max_freq ]; then
+#  # for possible values see /sys/class/devfreq/13040000.gpu/available_frequencies
+#  echo 400000000 > /sys/class/devfreq/13040000.gpu/max_freq
+#  echo 400000000 > /sys/class/devfreq/13040000.gpu/min_freq
+#fi
 
 modprobe mt8183-mt6358-ts3a227-max98357
