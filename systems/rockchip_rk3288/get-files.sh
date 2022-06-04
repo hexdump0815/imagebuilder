@@ -4,7 +4,7 @@ rockchip_rk3288_release_version="5.15.22-stb-av7%2B"
 # the newer kernel is not yet tested (no more hardware at hand), but should work ...
 #rockchip_rk3288_release_version="5.18.0-stb-av7%2B"
 rockchip_rk3288_generic_tree_tag=${generic_tree_tag}
-mesa_release_version="22.1.0"
+mesa_release_version="22.1.1"
 
 rm -f ${DOWNLOAD_DIR}/kernel-rockchip_rk3288-armv7l.tar.gz
 wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${rockchip_rk3288_release_version}/${rockchip_rk3288_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-rockchip_rk3288-armv7l.tar.gz

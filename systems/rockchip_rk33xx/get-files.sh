@@ -6,7 +6,7 @@ rockchip_rk33xx_uboot_rk3328_ddrbin_legacy_atf_version="210131-01"
 rockchip_rk33xx_uboot_ddrbin_spl_version="210131-01"
 rockchip_rk33xx_uboot_ddrbin_666mhz_spl_version="210131-01"
 rockchip_rk33xx_uboot_tpl_spl_version="210131-01"
-mesa_release_version="22.1.0"
+mesa_release_version="22.1.1"
 
 rm -f ${DOWNLOAD_DIR}/kernel-rockchip_rk33xx-${2}.tar.gz
 wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/releases/download/${rockchip_rk33xx_release_version}/${rockchip_rk33xx_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-rockchip_rk33xx-${2}.tar.gz

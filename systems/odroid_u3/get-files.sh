@@ -2,7 +2,7 @@
 
 odroid_u3_release_version="5.18.0-stb-exy%2B"
 odroid_u3_uboot_version="200821-01"
-mesa_release_version="22.1.0"
+mesa_release_version="22.1.1"
 
 rm -f ${DOWNLOAD_DIR}/kernel-odroid_u3-armv7l.tar.gz
 wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${odroid_u3_release_version}/${odroid_u3_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-odroid_u3-armv7l.tar.gz

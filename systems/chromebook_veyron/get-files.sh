@@ -5,7 +5,7 @@ chromebook_veyron_jerry_uboot_version="v2017.09-cbr"
 chromebook_veyron_speedy_uboot_version="v2021.01-cbr"
 chromebook_veyron_minnie_uboot_version="v2021.01-cbr"
 chromebook_veyron_mickey_uboot_version="v2021.01-cbr"
-mesa_release_version="22.1.0"
+mesa_release_version="22.1.1"
 
 rm -f ${DOWNLOAD_DIR}/kernel-chromebook_veyron-armv7l.tar.gz
 wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${chromebook_veyron_release_version}/${chromebook_veyron_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-chromebook_veyron-armv7l.tar.gz

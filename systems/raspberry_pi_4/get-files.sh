@@ -2,7 +2,7 @@
 
 raspberry_pi_4_release_version="5.15.22-stb-rpi%2B"
 raspberry_pi_4_uboot_version="220301-01"
-mesa_release_version="22.1.0"
+mesa_release_version="22.1.1"
 # bootloader blob and dtb versions
 dtb_commit="fb0bfa6a669745578041e838fc73cc17e8c543c9"
 boot_commit="9c04ed2c1ad06a615d8e6479806ab252dbbeb95a"

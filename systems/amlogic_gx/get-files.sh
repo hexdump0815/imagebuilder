@@ -11,7 +11,7 @@ amlogic_gx_g12a_uboot_version="200926-01"
 amlogic_gx_g12a_serial_uboot_version="200926-01"
 amlogic_gx_sm1_uboot_version="200926-01"
 amlogic_gx_sm1_serial_uboot_version="200926-01"
-mesa_release_version="22.1.0"
+mesa_release_version="22.1.1"
 
 rm -f ${DOWNLOAD_DIR}/kernel-amlogic_gx-${2}.tar.gz
 wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${amlogic_gx_release_version}/${amlogic_gx_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-amlogic_gx-${2}.tar.gz

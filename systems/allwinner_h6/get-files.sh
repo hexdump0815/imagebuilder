@@ -3,7 +3,7 @@
 
 allwinner_h6_release_version="5.18.0-stb-ah6%2B"
 allwinner_h6_uboot_version="211229-01"
-mesa_release_version="22.1.0"
+mesa_release_version="22.1.1"
 
 rm -f ${DOWNLOAD_DIR}/kernel-allwinner_h6-${2}.tar.gz
 wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h6-kernel/releases/download/${allwinner_h6_release_version}/${allwinner_h6_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-allwinner_h6-${2}.tar.gz
