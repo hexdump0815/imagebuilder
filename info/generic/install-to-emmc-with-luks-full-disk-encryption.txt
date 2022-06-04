@@ -294,6 +294,19 @@ cryptsetup close encrypted
 # reboot in the hope that it will work :)
 reboot
 
+# some cosmetic information to get rid of potential kernel messages during the
+# graphical plymouth bootscreen (quie splash kernel cmdline options)
+- add 'loglevel=3 vt.global_cursor_default=0' after "quiet" to kernel cmdline
+- add 'echo "4 4 1 7" > /proc/sys/kernel/printk' and 'setterm -cursor on' to /etc/rc.local
+# inspired by
+- via: https://wiki.archlinux.org/title/silent_boot#Kernel_parameters
+- and: https://serverfault.com/questions/724069/hide-kernel-messages-in-plymouth
+
+# on some system bluetooth seems to be always enable on bootup even if disabled 
+# in the last session - to disable it each time on boot automatically:
+- add '( sleep 15 ; rfkill block 0 ) &' to /etc/rc.local
+- check the id/number with 'rfkill list' beforehand
+
 # some useful further cryptsetup info
 # from https://alvinalexander.com/linux-unix/how-change-disk-encryption-password-luks
 #  and https://www.lisenet.com/2013/luks-add-keys-backup-and-restore-volume-header/
