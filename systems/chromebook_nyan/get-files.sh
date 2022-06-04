@@ -16,7 +16,7 @@ chromebook_nyan_4g_uboot_version="v2021.10-cbt"
 chromebook_nyan_4g_noflicker_uboot_version="v2021.10-cbt"
 # stick to this older mesa version for nyan as with newer ones there
 # were regressions which have to be checked and resolved first
-mesa_release_version="21.0.1"
+mesa_release_version="21.0.3"
 xserver_release_version="21.0.1"
 
 rm -rf ${DOWNLOAD_DIR}/boot-extra-${1}
