@@ -1,0 +1,7 @@
+# lock the gpu devfreq freq scaling to a single fixed freq as it does not seem to work stable
+# resulting in gpu errors like "gpu sched timeout", "AS_ACTIVE bit stuck" or page faults
+if [ -f /sys/class/devfreq/1800000.gpu/max_freq ]; then
+  # for possible values see /sys/class/devfreq/1800000.gpu/available_frequencies
+  echo 216000000 > /sys/class/devfreq/1800000.gpu/max_freq
+  echo 216000000 > /sys/class/devfreq/1800000.gpu/min_freq
+fi
