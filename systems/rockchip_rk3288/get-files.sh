@@ -2,7 +2,7 @@
 
 rockchip_rk3288_release_version="5.15.22-stb-av7%2B"
 # the newer kernel is not yet tested (no more hardware at hand), but should work ...
-#rockchip_rk3288_release_version="5.18.0-stb-av7%2B"
+#rockchip_rk3288_release_version="5.18.1-stb-av7%2B"
 rockchip_rk3288_generic_tree_tag=${generic_tree_tag}
 mesa_release_version="22.1.1"
 
