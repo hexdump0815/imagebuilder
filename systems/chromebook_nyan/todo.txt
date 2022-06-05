@@ -26,6 +26,9 @@
   - someone from archlinux arm got at least lp1 suspend mode working, but i was not able to reproduce this (i was unable to wake it up again after suspend) - see: https://archlinuxarm.org/forum/viewtopic.php?f=49&t=12185&sid=054215884699c2b79e457eadb8599012&start=230#p64180
   - see also: https://www.kernel.org/doc/Documentation/devicetree/bindings/arm/tegra/nvidia%2Ctegra20-pmc.txt
   - see https://libera.irclog.whitequark.org/tegra/2021-12-22 for some experiments: lp2 and most probably lp1 seem to basically work, at least when booted with init=/bin/bash suspend/resume worked fine via "rtcwake -m mem -s 15" with a deep mem suspend, fully booted (systemd) the system did a clean shutdown immediately after resume
+  - v5.18 update:
+    - s2idle works, deep works (i.e. even the display gets restore properly now) with rtcwake and full new xorg, if run via suspend it does not seem to get any wake events (maybe kbd is no longer working during suspend to get the events?)
+    - hibernate fails to jump to system on resume and thus does still not work - hibernate options required to test: see info/generic/btrfs-and-hibernation-info.txt
 - get u-boot working properly, i.e. one u-boot working for the 2gb/hd and 4gb/full hd model and properly working display all the time
 - it looks like there is a regression in mesa when trying to use the nouveau driver: mesa-21.0.1 works, mesa-21.1.0 does not longer work
   - a test with v5.18.0 and mesa v22.1.0 resulted in the following error when trying to run glxgears with a proper nouveau and newer xorg setup: "... src/gallium/frontends/dri/dri2.c:705: dri2_allocate_textures: Assertion `*zsbuf' failed."
