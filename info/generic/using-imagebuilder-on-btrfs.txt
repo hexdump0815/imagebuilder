@@ -5,23 +5,22 @@ disk for the imagebuilder framework (in case it is supposed to run in the root f
 already is btrfs this step is not required):
 
 mkfs -t btrfs -m single -L clocal /dev/xyz
-mount -o ssd,compress-force=zstd,noatime,nodiratime /dev/xyz /mnt
 
 add to /etc/fstab: 
-LABEL=clocal /home/compile/local btrfs defaults,ssd,compress-force=zstd,noatime,nodiratime 0 2
+LABEL=clocal /compile/local btrfs defaults,ssd,compress-force=zstd,noatime,nodiratime 0 2
 
-mkdir /home/compile/local
-mount /home/compile/local
+mkdir -p /compile/local
+mount /compile/local
 
 the following srteps will be required in any case when the imagebuilder-diskimage dir should
 reside on a btrfs filesystem (it should be deleted beforehand in case it already exists):
 
-cd /home/compile/local/
-btrfs subvolume create /home/compile/local/imagebuilder-diskimage
-chattr -R +C /home/compile/local/imagebuilder-diskimage
-btrfs property set /home/compile/local/imagebuilder-diskimage compression none
+cd /compile/local/
+btrfs subvolume create /compile/local/imagebuilder-diskimage
+chattr -R +C /compile/local/imagebuilder-diskimage
+btrfs property set /compile/local/imagebuilder-diskimage compression none
 
 # this is required in case the sonaremin image builder is used as well
-#btrfs subvolume create /home/compile/local/sonaremin-diskimage
-#chattr -R +C /home/compile/local/sonaremin-diskimage
-#btrfs property set /home/compile/local/sonaremin-diskimage compression none
+#btrfs subvolume create /compile/local/sonaremin-diskimage
+#chattr -R +C /compile/local/sonaremin-diskimage
+#btrfs property set /compile/local/sonaremin-diskimage compression none
