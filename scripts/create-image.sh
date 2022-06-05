@@ -68,7 +68,7 @@ else
     exit
   fi
   if [ "$ROOTFS" = "btrfs" ]; then
-    if [ ! -x /bin/mkfs.btrfs ] && [ ! -x /usr/sbin/mkfs.btrfs ]; then
+    if [ ! -x /bin/mkfs.btrfs ] && [ ! -x /usr/sbin/mkfs.btrfs ] && [ ! -x /sbin/mkfs.btrfs ] ; then
       echo ""
       echo "mkfs.btrfs is not available - please install the btrfs-progs package"
       echo ""
