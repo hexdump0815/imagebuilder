@@ -136,7 +136,7 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
     sed -i "s,UBUNTUVERSION,focal,g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
   fi
 
-  cp ${WORKDIR}/scripts/create-chroot-stage-0?.sh ${BUILD_ROOT_CACHE}
+  cp ${WORKDIR}/scripts/create-chroot-stage-01.sh ${BUILD_ROOT_CACHE}
 
   mount -o bind /dev ${BUILD_ROOT_CACHE}/dev
   mount -o bind /dev/pts ${BUILD_ROOT_CACHE}/dev/pts

@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# IMPORTANT: as this script is being run as part of the rootfs cache
+#            creation the rootfs cache has to be deleted after each
+#            change in this script so that it gets recreated properly
 
 # do not ask anything
 export DEBIAN_FRONTEND=noninteractive

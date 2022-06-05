@@ -92,6 +92,8 @@ mount -t proc /proc ${BUILD_ROOT}/proc
 # do this to avoid failing apt installs due to a too old fs-cache
 chroot ${BUILD_ROOT} apt-get update
 
+cp ${WORKDIR}/scripts/create-chroot-stage-02.sh ${BUILD_ROOT}
+
 chroot ${BUILD_ROOT} /create-chroot-stage-02.sh ${3} ${DEFAULT_USERNAME}
 
 cd ${BUILD_ROOT}/
