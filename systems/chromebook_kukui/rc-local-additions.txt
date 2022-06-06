@@ -24,4 +24,17 @@ fi
 #  echo 400000000 > /sys/class/devfreq/13040000.gpu/min_freq
 #fi
 
-modprobe mt8183-mt6358-ts3a227-max98357
+grep -q 'Google fennel14 sku0 board' /proc/device-tree/model
+if [ "$?" = "0" ]; then
+  # fennel14 has a different audio setup
+  modprobe mt8183-da7219-max98357
+  alsaucm -n -b - <<EOM
+  open mt8183_da7219_r
+  reset
+  set _verb HiFi
+  set _enadev Speaker
+EOM
+else
+  # most others work with this audio setup
+  modprobe mt8183-mt6358-ts3a227-max98357
+fi
