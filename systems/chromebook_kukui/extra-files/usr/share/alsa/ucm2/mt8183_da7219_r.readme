@@ -1,1 +1,3 @@
 based on https://chromium.googlesource.com/chromiumos/overlays/board-overlays/+/refs/heads/master/overlay-jacuzzi/chromeos-base/chromeos-bsp-jacuzzi/files/fennel14/audio/ucm-config
+
+see also: https://github.com/hexdump0815/imagebuilder/issues/54
