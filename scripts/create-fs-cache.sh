@@ -15,7 +15,7 @@ if [ "$#" != "2" ]; then
   echo ""
   echo "possible release options:"
   echo "- focal - ubuntu focal"
-  echo "- jammy - ubuntu jammy (wip)"
+  echo "- jammy - ubuntu jammy"
   echo "- bullseye - debian bullseye"
   echo ""
   echo "example: $0 armv7l focal"
