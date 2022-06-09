@@ -17,6 +17,8 @@
   - see also: https://github.com/hexdump0815/imagebuilder/issues/52
 - lenovo ideapad 3 chromebook 14 inch (mt8183 version) - fennel14
   - see also: https://github.com/hexdump0815/imagebuilder/issues/49
+- lenovo ideapad flex 3 chromebook (mt8183 version) - fennel
+  - see also: https://github.com/hexdump0815/imagebuilder/issues/58
 
 ## untested systems
 
@@ -28,7 +30,6 @@
 - asus chromebook flip cz1 - stern
 - asus chromebook detachable cz1 - katsu
 - hp chromebook x360 11mk g3 ee - burnet
-- lenovo ideapad flex 3 chromebook (mt8183 version) - fennel
 - lenovo 10e chromebook tablet - kodama
 - lenovo 100e chromebook (mt8183 version) - makomo
 
