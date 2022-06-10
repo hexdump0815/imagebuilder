@@ -1,8 +1,3 @@
-- get the display working with mainline (currently it works with a lot of magic patches)
-  - v5.13 looks better with fresher and less patches, but there is still room for improvements
-- get the usb bandwidth problems working with mainline (the happen mostly with usb audio i think - visible in the kernel logs)
-- maybe get more kukui systems supported beyond krane and juniper
-- there seems to be some probing dependency for the juniper panel: it only works if not compiled as a module
 - some notes about the apu/npu in the mt8183, not sure how relevant or useful they are
   - https://lists.freedesktop.org/archives/dri-devel/2021-September/323978.html
     - via: https://www.phoronix.com/scan.php?page=news_item&px=DRM-AI-APU-RFC
@@ -11,3 +6,9 @@
   - mt8192 related, but maybe somewhat related: https://www.phoronix.com/scan.php?page=news_item&px=Mediatek-MT8192-APU-Driver
   - mediatek genio 500 looks very similar to mt8183: https://www.cnx-software.com/2022/05/13/mediatek-genio-1200-premium-aiot-processor-with-4-8-tops-npu/
     - mediatek ai developer site, maybe relevant if the genio 500 maybe is just a relabeled mt8183: https://www.mediatek.com/aiot/home
+- some potential ideas about how to get the cameras on krane working:
+  - problem: they are not the usually well supported usb video class devices, but low level camera devices
+  - this might be a potential software stack to interact with them: https://static.sched.com/hosted_files/osselc21/5b/20210928-elc-libcamera.pdf
+  - maybe interesting discussion about the topic: https://oftc.irclog.whitequark.org/aarch64-laptops/2021-07-12#30069329
+  - the krane camera seems to be OV8856: https://lwn.net/Articles/771163/
+  - maybe interesting too: https://patchwork.kernel.org/project/linux-rockchip/patch/20201115111002.d7x2a4ephofohd7o@basti.Speedport_W_724V_Typ_A_05011603_06_001/
