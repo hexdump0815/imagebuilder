@@ -1,1 +1,3 @@
 - low prio: maybe try to get booting a kernel from usb working in u-boot (currently it will hand i think)
+- add a ucm file to configure audio properly and get rid of some related messages
+- v5.18 kernel eth mac address setting needs to be adjusted: gives warning right now and eth does not seem to work
