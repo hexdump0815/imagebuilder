@@ -1,7 +1,11 @@
 - make glamor accelerated xorg work for legacy kernel
+  - this seems to be a problem mostly for the older 4.x kernels and is most probably gone with v5.10 etc.
 - add maybe still missing firmware
-- make the intel wifi in those chromebooks work reliable (currently it sees the wifi networks, but does not connect properly)
-- maybe port the iwl7000 wifi driver from chromeos to mainline to add support for wifi cards which require this driver
+- make wifi in those chromebooks work reliable (currently it sees the wifi networks, but does not connect properly)
+  - with the v5.10 legacy kernel it seems to work
 - make sound working for the mainline kernel
 - make the missing parts of sound working for the legacy kernel
   - headphones and the internal mic do not work yet
+- think about ways to add some support for initrd loading which is required for instance for luks encrypted root fs
+  - problem: the depthcharge bootloader does not support initrd loading on intel systems (on arm systems it is supported)
+  - maybe try to do it by including a small generic initrd into the kernel which then loads the remaining and specific parts from /boot (postmarketos is using a similar strategy with only a tiny initial initrd for systems which do not support normal sized initrds)
