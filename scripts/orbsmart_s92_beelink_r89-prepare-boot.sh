@@ -49,10 +49,16 @@ else
     cp ${MOUNT_POINT}/boot/initrd.img-${kver} ${MYTMPDIR}/initrd.img-${kver}.lz4
     unlz4 ${MYTMPDIR}/initrd.img-${kver}.lz4
   else
-    echo ""
-    echo "unsupported initrd format - only gzip and lz4 are supported - giving up"
-    echo ""
-    exit 1
+    file ${MOUNT_POINT}/boot/initrd.img-${kver} | grep -qi "Zstandard compressed data"
+    if [ "$?" = "0" ]; then
+      cp ${MOUNT_POINT}/boot/initrd.img-${kver} ${MYTMPDIR}/initrd.img-${kver}.zst
+      unzstd ${MYTMPDIR}/initrd.img-${kver}.zst
+    else
+      echo ""
+      echo "unsupported initrd format - only gzip, lz4 and zstd are supported - giving up"
+      echo ""
+      exit 1
+    fi
   fi
 fi
 echo "- creating initrd image"
