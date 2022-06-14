@@ -54,3 +54,15 @@ if [ -f /sys/module/zswap/parameters/enabled ]; then
   echo 15 > /sys/module/zswap/parameters/max_pool_percent
   echo 1 > /sys/module/zswap/parameters/enabled
 fi
+
+# if the mglru patches are in place, then setting this might be good
+# for interactive usage as a thrashing prevention
+if [ -f /sys/kernel/mm/lru_gen/min_ttl_ms ]; then
+  echo 1000 > /sys/kernel/mm/lru_gen/min_ttl_ms
+fi
+
+# ... and offer an option to disable them as their functionality is
+# enabled by default if they are in use
+#if [ -f /sys/kernel/mm/lru_gen/enabled ]; then
+#  echo 0 > /sys/kernel/mm/lru_gen/enabled
+#fi
