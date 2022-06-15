@@ -1,1 +1,1 @@
-- add support for rk3399, so far only rk3328 has been tested
+- add support (i.e. u-boot, maybe patches and/or ucm files) for rk3399 sbc's and tv boxes, so far only rk3328 and the rk3399 based pinebook pro have been tested
