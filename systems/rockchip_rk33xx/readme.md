@@ -8,6 +8,7 @@
 
 ## tested systems - working
 
+- pinebook pro rk3399
 - h96max rk3318 tv box
 - t9 rk3328 tv box
 
@@ -18,7 +19,6 @@
 some more work will be required to make the devices below working
 
 - pine64 rock64
-- pinebook pro
 - rockpi 4a
 - rockpi 4b
 - nanopi m4
@@ -45,6 +45,7 @@ some more work will be required to make the devices below working
 
 ## special notes
 
+- on the pinebook pro it is assumed that towboot is installed in the spi
 - tv boxes are always hit and miss, so they might work or might not work and are usually of low quality
   - be happy in case it works for your box
   - it is impossible to support all tv boxes with their wild mix of hardware or usually quite low quality, so please do not open github issues in case the images do not work for your box
