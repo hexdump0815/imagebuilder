@@ -61,6 +61,11 @@ if [ -f /sys/kernel/mm/lru_gen/min_ttl_ms ]; then
   echo 1000 > /sys/kernel/mm/lru_gen/min_ttl_ms
 fi
 
+# see: https://forum.armbian.com/topic/20018-mglru-patches-to-bring-down-kswapd-cpu-usage/?do=findComment&comment=141847
+if [ -f /proc/sys/vm/watermark_boost_factor ]; then
+  echo 0 > /proc/sys/vm/watermark_boost_factor
+fi
+
 # ... and offer an option to disable them as their functionality is
 # enabled by default if they are in use
 #if [ -f /sys/kernel/mm/lru_gen/enabled ]; then
