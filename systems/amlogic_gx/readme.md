@@ -2,12 +2,14 @@
 
 ## bootable sd card images
 
+- https://github.com/hexdump0815/imagebuilder/releases/tag/220618-01
 - https://github.com/hexdump0815/imagebuilder/releases/tag/210805-01
 
 ## tested systems - working
 
 - odroid c2 (gxbb)
 - a95x f3 tv box (g12a)
+- h96max x3 tv box (sm1)
 
 ## untested systems
 
