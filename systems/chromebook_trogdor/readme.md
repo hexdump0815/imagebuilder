@@ -38,3 +38,4 @@
 - the current sound setup is not complete yet:
   - headphones and headset mic do not work yet, so better use a small usb audio interface for a headset if needed for now
 - on lazor the keyboard backlight can be controlled via /sys/class/leds/cros_ec\:\:kbd_backlight/brightness (values can go from 0-1023)
+- when booting from an usb medium the bootup might hang waiting to discover the root device - in such cases it might help to shortly unplug and replug the usb medium the system is booted from
