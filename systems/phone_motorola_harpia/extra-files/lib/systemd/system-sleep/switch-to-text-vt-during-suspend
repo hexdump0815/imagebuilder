@@ -1,0 +1,22 @@
+#!/bin/bash
+
+case "$1" in
+
+  "pre")
+    # switch to a text console as this reduces the risk of the video mode to get messed up after resume
+    sleep 1
+    chvt 6
+    sleep 1
+    ;;
+
+  "post")
+    # switch back to xorg console after resume
+    sleep 1
+    chvt 7
+    sleep 1
+    ;;
+
+  *)
+    ;;
+
+esac
