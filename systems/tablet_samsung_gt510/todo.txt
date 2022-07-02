@@ -1,1 +1,4 @@
-- nothing yet
+- try to figure out why the tablet will wake from suspend on its own after about 30-60 minutes
+  - only rtc and battery have a non zero wakeup event_count, but disabling both as wakeup sources did not help
+  - removing the wland driver and everything around it which results in stopping the remoteproc did not help either
+  - the wakeup on its own happends independently of usb being connected or not

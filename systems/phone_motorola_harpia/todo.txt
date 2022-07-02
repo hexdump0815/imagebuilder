@@ -1,1 +1,5 @@
 - try to find out why sound is not working yet - no alsa device
+- try to find out why it takes so long to wake up from suspend
+- find a way to charge the device properly
+  - while running linux i did not find a way to charge it yet (not in any of the 3 different modes of a special otg usb hub)
+  - when powered off it will boot into linux as soon as power is connected and the above applies (so no charging)

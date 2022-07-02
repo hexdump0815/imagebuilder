@@ -30,9 +30,11 @@
 - to install write the image to an sd card and install lk2nd-msm8916.img from https://github.com/msm8916-mainline/lk2nd/releases via the instructions in https://github.com/msm8916-mainline/lk2nd/blob/master/README.md
 - a1 rated sd cards are highly recommended as otherwise the performance will be bad due to bad random disk io
 - if the phone is connected to a computer or power supply via usb a shutdown will result in a reboot, disconnecting it will let it shutdown properly
-- sometimes there the system was hanging during shutdown, tapping onto the screen a few times seems to help
+- sometimes there the system was hanging during shutdown, tapping onto the screen a few times seems to help (i did not see this happen anymore in recent times)
 - in case of problems with the boot process the phone does not seem to respond to the power button anymore to turn it off, pressing the vol-down and the power button together for a while might help out in those situation
 - sound does not seem to work
 - wifi only works partially (see link below)
 - see also: https://wiki.postmarketos.org/wiki/Motorola_Moto_G4_Play_(motorola-harpia)
-- if the usb port in the kernel is switched from "peripheral" to "host" mode in the dtb it is possible to connect usb devices (keyboard, mouse, ethernet etc.) to it via a powered otg usb hub ... it has to be powered as the usb port itself will not provide power ... it looks like the phone even gets powered well via the powered hub in this mode
+- if the usb port in the kernel is switched from "peripheral" to "host" mode in the dtb (which is the case for latest kernel used here) it is possible to connect usb devices (keyboard, mouse, ethernet etc.) to it via a powered otg usb hub ... it has to be powered as the usb port itself will not provide power ... it looks like the phone even gets powered well via the powered hub in this mode
+- suspend via s2idle mode seems to work quite well and the phone should be able to survive more than a day in this mode - wakeup can be done via a short press on the power button or by conneting power to usb - it takes a very long time for the phone to wake up for some reason (up to a few minutes)
+- charging of the phone does not seem to work while running linux (see todo.txt) - luckily if running with a powered special otg usb hub with its switch in the middle position the phone seems to be powered quite well via usb - the only way to charge it so far i found is to boot into the twrp recovery i had installed beforehand via vol-down + power and then select recovery mode, in this mode it seems to charge properly

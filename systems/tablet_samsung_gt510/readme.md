@@ -32,8 +32,9 @@
 - a1 rated sd cards are highly recommended as otherwise the performance will be bad due to bad random disk io
 - for some reason at least once the firmware loading for wifi did not work after the first boot, after rebooting it worked
 - if the tablet is connected to a computer or power supply via usb a shutdown will result in a reboot, disconnecting it will let it shutdown properly
-- sometimes there the system was hanging during shutdown, tapping onto the screen a few times seems to help
+- sometimes there the system was hanging during shutdown, tapping onto the screen a few times seems to help (i did not see this happen anymore in recent times)
 - in case of problems with the boot process the tablet does not seem to respond to the power button anymore to turn it off, pressing the vol-down and the power button together for a while might help out in those situation
 - see also https://wiki.postmarketos.org/wiki/Samsung_Galaxy_Tab_A_9.7_2015_(samsung-gt510)
 - for changing the kernel config via the pmbootstrap framework the following command should be used as the msm8916 kernel can be built for armv7l or aarch64: pmbootstrap kconfig edit --arch aarch64 postmarketos-qcom-msm8916
-- if the usb port in the kernel is switched from "peripheral" to "host" mode in the dtb it is possible to connect usb devices (keyboard, mouse, ethernet etc.) to it via a powered otg usb hub ... it has to be powered as the usb port itself will not provide power ... it looks like the tablet even gets powered well via the powered hub in this mode
+- if the usb port in the kernel is switched from "peripheral" to "host" mode in the dtb (which is the case for latest kernel used here) it is possible to connect usb devices (keyboard, mouse, ethernet etc.) to it via a powered otg usb hub ... it has to be powered as the usb port itself will not provide power ... it looks like the tablet even gets powered well via the powered hub in this mode
+- suspend via s2idle mode seems to work quite well and the tablet should be able to survive more than a day in this mode - wakeup can be done via a short press on the power button or by conneting power to usb - sadly it seems to wake up on its own after about 30-60 minutes for yet unknown reasons
