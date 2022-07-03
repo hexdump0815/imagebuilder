@@ -11,6 +11,7 @@
 ## untested systems
 
 - acer chromebook cb514-2h - spherion
+- asus chromebook flip cm3 (mt8192 version) - hayato
 
 ## generic mainline linux on arm chromebook notes
 
