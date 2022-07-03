@@ -53,7 +53,7 @@
 
 - most things seem to work more or less (mostly thanks to the kernel patches partially taken from https://github.com/Maccraft123/Cadmium/tree/master/baseboard/kukui/patches)
 - juniper: sometimes the touchpad does not seem to work after booting, rebooting usually helps
-- krane: the display rotation will be set properly after the first reboot automatically, so just reboot once more after the first time
+- krane: the display rotation will be set properly during the first boot, afterwards it will reboot once automatically and should come up with the display correctly set to landscape mode
 - some log spamming kernel messages have been silenced:
   - krane has usb bandwidth problems, especially with usb audio
   - juniper seems to have some audio related interrupt issues

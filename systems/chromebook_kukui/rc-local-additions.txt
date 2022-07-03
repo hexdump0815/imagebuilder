@@ -8,6 +8,8 @@ if [ ! -f /etc/X11/xorg.conf.d/31-monitor-rotate-left.conf ] && [ ! -f /etc/X11/
   grep -q 'MediaTek krane' /proc/device-tree/model
   if [ "$?" = "0" ]; then
     cp /etc/X11/xorg.conf.d.samples/31-monitor-rotate-left.conf /etc/X11/xorg.conf.d
+    sync
+    reboot
   # most others do not have a rotated panel
   else
     cp /etc/X11/xorg.conf.d.samples/31-monitor.conf /etc/X11/xorg.conf.d
