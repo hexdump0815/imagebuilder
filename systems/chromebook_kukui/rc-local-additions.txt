@@ -26,9 +26,29 @@ fi
 #  echo 400000000 > /sys/class/devfreq/13040000.gpu/min_freq
 #fi
 
-grep -q 'Google fennel14 sku0 board' /proc/device-tree/model
-if [ "$?" = "0" ]; then
-  # fennel14 has a different audio setup
+# load the proper audio modules per system (for all tested systems and the ones with the identical audio setup)
+touch /tmp/no-audio-setup-done
+# some krane, jacuzzi and kodama systems require this audio setup
+if $(grep -q 'MediaTek krane sku0 board$' /proc/device-tree/model) || \
+   $(grep -q 'MediaTek krane sku176 board$' /proc/device-tree/model) || \
+   $(grep -q 'Google burnet board$' /proc/device-tree/model) || \
+   $(grep -q 'Google cozmo board$' /proc/device-tree/model) || \
+   $(grep -q 'Google juniper sku16 board$' /proc/device-tree/model) || \
+   $(grep -q 'Google kappa board$' /proc/device-tree/model) || \
+   $(grep -q 'Google kenzo sku17 board$' /proc/device-tree/model) || \
+   $(grep -q 'Google willow board sku1$' /proc/device-tree/model) || \
+   $(grep -q 'MediaTek kodama sku16 board$' /proc/device-tree/model) || \
+   $(grep -q 'MediaTek kodama sku272 board$' /proc/device-tree/model) || \
+   $(grep -q 'MediaTek kodama sku288 board$' /proc/device-tree/model) || \
+   $(grep -q 'MediaTek kodama sku32 board$' /proc/device-tree/model) ; then
+  modprobe mt8183-mt6358-ts3a227-max98357
+  rm -f /tmp/no-audio-setup-done
+fi
+# some fennel and kakadu systems require this audio setup
+if $(grep -q 'Google fennel sku1 board$' /proc/device-tree/model) || \
+   $(grep -q 'Google fennel sku6 board$' /proc/device-tree/model) || \
+   $(grep -q 'Google fennel14 sku0 board$' /proc/device-tree/model) || \
+   $(grep -q 'MediaTek kakadu board$' /proc/device-tree/model) ; then
   modprobe mt8183-da7219-max98357
   alsaucm -n -b - <<EOM
   open mt8183_da7219_r
@@ -36,7 +56,5 @@ if [ "$?" = "0" ]; then
   set _verb HiFi
   set _enadev Speaker
 EOM
-else
-  # most others work with this audio setup
-  modprobe mt8183-mt6358-ts3a227-max98357
+  rm -f /tmp/no-audio-setup-done
 fi
