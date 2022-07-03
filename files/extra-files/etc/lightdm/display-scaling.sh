@@ -17,8 +17,9 @@ xrandr --output $OUTPUT --mode 1200x1920 --panning 800x1280 --scale 0.6666x0.666
 # then it might be required to adjust the values in the coordinate transformation
 # matrix in /etc/udev/rules.d/90-android-touch-dev.rules to for example:
 # ENV{ID_INPUT_TOUCHSCREEN}=="1", \
-# ENV{LIBINPUT_CALIBRATION_MATRIX}="0 1 0 -0.5 0 0.5"
-# to get the touch screen working properly
+# ENV{LIBINPUT_CALIBRATION_MATRIX}="0 1 0 -0.5625 0 0.5625"
+# to get the touch screen working properly - the factor used (here 0.5625) should
+# be the square of the scaling factor used (here 0.75*0.75)
 
 # this is needed as for some reason the above command gives an error, but still does what it should
 exit 0
