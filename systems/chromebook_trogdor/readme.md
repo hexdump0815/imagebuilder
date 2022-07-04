@@ -14,6 +14,7 @@
 ## untested systems
 
 - lenovo chromeboot duet 5 - homestar
+- lenovo chromeboot duet 3 - wormdingler
 
 ## generic mainline linux on arm chromebook notes
 
