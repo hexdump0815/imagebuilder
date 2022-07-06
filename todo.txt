@@ -7,5 +7,10 @@
 - check potential problem with the systemd-gpt-auto-generator - see: https://github.com/hexdump0815/imagebuilder/issues/43#issuecomment-1116133516
 - maybe provide kernel headers as well as part of the kernel tar.gz files - see: https://github.com/hexdump0815/imagebuilder/issues/31#issuecomment-1111972167
 - investigate if its possible to replace the first boot image on newer chromebooks - should be possible and means most probably just to find the proper format, tools to create it and to replace it in the boot flash area
+  - this looks way more complicated than initially thought:
+    - deleting the vbgfx.bin, font.bin and selected locale_xy.bin via cbfstool results in an ugly white screen with some half corrupted text
+    - unpacking the .bin files with some hacked together python script gives a lot of bmp files with graphics and text fragments on white background from which the screens are assembled
+      - the cbfs .bin archive format used is defined here: https://github.com/coreboot/coreboot/blob/master/util/archive/archive.h
+    - as a result the white background seems to be set in the bootloader and the maximum somewhat easily possible might be a nearly white initial boot screen by replacing all visible bmp fragments with completely white ones of the same size
 - recheck the partition flags and check the loadpin kernel option - see: https://github.com/hexdump0815/imagebuilder/issues/43#issuecomment-1155224159
 - rewrite the emmc luks install document to be more clear and create different sections for the different setups (chromebook, efi, mbr, u-boot etc.)
