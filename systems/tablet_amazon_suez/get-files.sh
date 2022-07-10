@@ -4,13 +4,8 @@
 
 # get a kernel etc. from a special portmarketos based build
 
-amazon_suez_pmos_release_version="linux-amazon-suez-3.18.19-r6"
+amazon_suez_pmos_release_version="linux-amazon-suez-3.18.19-r8"
 
-rm -rf ${DOWNLOAD_DIR}/boot-extra-${1}
-mkdir -p ${DOWNLOAD_DIR}/boot-extra-${1}
-wget -v https://github.com/hexdump0815/pmaports-amazon/releases/download/${amazon_suez_pmos_release_version}/boot.img.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/boot.img
-wget -v https://github.com/hexdump0815/pmaports-amazon/releases/download/${amazon_suez_pmos_release_version}/config-amazon-suez.aarch64.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/config-amazon-suez.aarch64
-wget -v https://github.com/hexdump0815/pmaports-amazon/releases/download/${amazon_suez_pmos_release_version}/initramfs-extra.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/initramfs-extra
-wget -v https://github.com/hexdump0815/pmaports-amazon/releases/download/${amazon_suez_pmos_release_version}/initramfs.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/initramfs
-wget -v https://github.com/hexdump0815/pmaports-amazon/releases/download/${amazon_suez_pmos_release_version}/vmlinuz.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/vmlinuz.gz
-wget -v https://github.com/hexdump0815/pmaports-amazon/releases/download/${amazon_suez_pmos_release_version}/lib-modules.tar.gz -O ${DOWNLOAD_DIR}/boot-extra-${1}/lib-modules.tar.gz
+rm -rf ${DOWNLOAD_DIR}/postinstall-${1}
+mkdir -p ${DOWNLOAD_DIR}/postinstall-${1}
+wget -v https://github.com/hexdump0815/pmaports-amazon/releases/download/${amazon_suez_pmos_release_version}/boot-and-modules-amazon-suez.tar.gz -O ${DOWNLOAD_DIR}/postinstall-${1}/boot-and-modules.tar.gz
