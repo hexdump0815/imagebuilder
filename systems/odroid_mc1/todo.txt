@@ -1,3 +1,12 @@
 - find out why the performance is about 20% lower with mainline than with the odroid v5.4 tree (seen with vcvrack)
   - the cpu opp table entries look a bit strange on mainline: the 1.8ghz entry for instance has a lower voltage as the 1.7ghz entry
   - maybe this is the reason for bootup messages like: cpu cpu4: EM: OPP:1700000 is inefficient
+- maybe give the open source panfrost gpu driver a try - see: https://github.com/hexdump0815/imagebuilder/issues/27#issuecomment-1178779950
+  - see also:
+    - https://gitlab.com/postmarketOS/pmaports/-/blob/master/device/testing/linux-postmarketos-exynos5/0037-soc-samsung-pm_domains-Bring-back-old-driver-impleme.patch
+    - https://oftc.irclog.whitequark.org/panfrost/2022-06-26#31046193
+    - https://github.com/chewitt/linux/commit/d2e34de706735675fad7498f1697e013c3b61f39
+    - https://github.com/chewitt/linux/commit/fbd0c343b51b21b680053869b09533f44754e9b5
+    - https://github.com/chewitt/linux/commit/4d9cc9d7c982b59cef1a91fdea9a52d3f3489247
+    - https://github.com/asheplyakov/linux/commit/a01bdb3fe2f88314a16fff240a1214e754276e99
+    - https://oftc.irclog.whitequark.org/panfrost/2022-06-08#30993792
