@@ -30,6 +30,7 @@
 ## special notes
 
 - there is no legacy or uefi firmware available from https://mrchromebox.tech/ for gemini lake chromebooks, so booting regular linux installers on them does not work
+  - update: meanwhile it is available - see: https://mrchromebox.tech/#devices
 - these images are using the native chromeos boot procedure (chromeos kernel format written to special chromeos kernel partitions) to be able to run a regular linux system on them anyway
 - a regular mainline kernel works based on the chromeos kernel config
 - alternatively a self compiled kernel is used based on the corresponding chromeos kernel for those devices (it is included at /boot/extra in the images to have it around)
