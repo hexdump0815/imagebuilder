@@ -58,3 +58,16 @@ if $(grep -q 'Google fennel sku1 board$' /proc/device-tree/model) || \
 EOM
   rm -f /tmp/no-audio-setup-done
 fi
+# some damu and willow systems require this audio setup
+if $(grep -q 'Google damu board$' /proc/device-tree/model) || \
+   $(grep -q 'Google willow board sku0$' /proc/device-tree/model) ; then
+  modprobe mt8183-da7219-max98357
+  alsaucm -n -b - <<EOM
+  open mt8183_da7219_m
+  reset
+  set _verb HiFi
+  set _enadev Speaker
+  set _enadev InternalMic
+EOM
+  rm -f /tmp/no-audio-setup-done
+fi

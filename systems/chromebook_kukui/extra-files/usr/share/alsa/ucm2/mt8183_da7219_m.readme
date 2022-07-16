@@ -1,0 +1,3 @@
+based on https://chromium.googlesource.com/chromiumos/overlays/board-overlays/+/refs/heads/master/overlay-jacuzzi/chromeos-base/chromeos-bsp-jacuzzi/files/damu/audio/ucm-config/HiFi.conf
+
+not everything is working perfectly fine yet (headphones and headset mic do not work yet for instance), but basic functionality seems to be there

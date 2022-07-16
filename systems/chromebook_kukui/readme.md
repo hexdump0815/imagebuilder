@@ -19,13 +19,14 @@
   - see also: https://github.com/hexdump0815/imagebuilder/issues/49
 - lenovo ideapad flex 3 chromebook (mt8183 version) - fennel
   - see also: https://github.com/hexdump0815/imagebuilder/issues/58
+- asus chromebook flip cm3 (mt8183 version) - damu
+  - see also: https://github.com/hexdump0815/imagebuilder/issues/62
 
 ## untested systems
 
 - acer chromebook 311 (c722/c722t) - willow
 - acer chromebook 314 (cb314-2h/cb314-2ht) - cozmo
 - asus chromebook cm3 - kakadu
-- asus chromebook flip cm3 (mt8183 version) - damu
 - asus chromebook cz1 - cerise
 - asus chromebook flip cz1 - stern
 - asus chromebook detachable cz1 - katsu
