@@ -28,6 +28,8 @@
   - see https://libera.irclog.whitequark.org/tegra/2021-12-22 for some experiments: lp2 and most probably lp1 seem to basically work, at least when booted with init=/bin/bash suspend/resume worked fine via "rtcwake -m mem -s 15" with a deep mem suspend, fully booted (systemd) the system did a clean shutdown immediately after resume
   - v5.18 update:
     - s2idle works, deep works (i.e. even the display gets restore properly now) with rtcwake and full new xorg, if run via suspend it does not seem to get any wake events (maybe kbd is no longer working during suspend to get the events?)
+    - i even had deep suspend once working to the point that it even came back after clicking on the trackpad, but i was not able to reproduce it again - this at least shows that it should be possible to get it working - suspend time in this example was a bit less than a minute
+    - i did some battery usage measurements with s2idle resulting in about 4% battery usage per hour vs. only slightly less (3.5%+) with lp1 deep sleep via rtcwake, so with s2idle we already nearly get what is possible with mainline on this system - should still be enough to keep it alive when moving from a to b or over night
     - hibernate fails to jump to system on resume and thus does still not work - hibernate options required to test: see info/generic/btrfs-and-hibernation-info.txt
 - get u-boot working properly, i.e. one u-boot working for the 2gb/hd and 4gb/full hd model and properly working display all the time
 - it looks like there is a regression in mesa when trying to use the nouveau driver: mesa-21.0.1 works, mesa-21.1.0 does not longer work

@@ -72,6 +72,7 @@
 - with the mainline kernel after suspend/resume the display is not properly reenabled
   - there is an ugly hack implemented to bring it back via xrandr hook (see: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_nyan/extra-files/lib/systemd/system-sleep/mrvl-and-edp-reload )
 - deep suspend does not seem work with the mainline kernel and the suspend to idle (s2idle) used in the images so far does not seem to save a lot of energy (it drained about 50% of the battery in around 5 hours)
+  - update: with the v5.18.1 kernel s2idle suspend uses about 4% battery per hour, so should be fine to keep it alive when moving from a to b or over night
 - hibernation (suspend to disk) does not seem to work with the mainline kernel neither, it at least fails to restore the display on resume and maybe even crashes (no more details due to missing serial console)
 - the write protect screw of the cb5 311 (nyan-big) is not that easy to find: there is a screw marked 'jp10' on the board, this one has to be removed und the metal sticker has to be peeled off in order to remove the hardware write protection
 - especially the acer cb5 311 chromebook (nyan-big) seems to have problems with battery calibration and quite often thinks that the battery is daed after it had not been used for a while - one possible solution might be the following:
