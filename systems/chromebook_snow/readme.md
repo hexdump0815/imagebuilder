@@ -40,6 +40,7 @@
 
 - active support from google for the snow chromebooks (samsung xe303c12) ended beginning of 2019, so they might be around for cheap
 - they are very nice to use with linux: small, light (just a bit above 1kg), battery lasts for 4-6 hours at least
+- please be aware that there seems to be an early batch of snow chromebooks which are not running stable with a mainline kernel, but are running well with a legacy chromeos based kernel - looks like some hardware problem, which was silently fixed in the chromeos kernel but never made it to mainline - see: https://github.com/hexdump0815/imagebuilder/issues/63
 - what does not work with mainline:
   - usb3 port gives trouble with suspend, so i disabled it
   - webcam will not work (the usb bus it is connected to is somehow not seen in mainline)
