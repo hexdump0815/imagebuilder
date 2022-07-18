@@ -61,7 +61,7 @@
   - dd the image to an sd card
   - mount partition 4 of it somewhere (example: /mnt) and partition 3 at boot below it (example: /mnt/boot)
   - go to the mounted root (example: cd /mnt)
-  - unpack the legacy kernel: tar xzf /boot/extra/kernel-chromebook_snow-legacy.tar.gz
+  - unpack the legacy kernel: tar xzf boot/extra/kernel-chromebook_snow-legacy.tar.gz
   - dd the kpart kernel (vmlinux.kpart-3.10.38-cos-r91) to the first partition of the sd card
   - umount everything mounted before
   - try to boot that sd card
