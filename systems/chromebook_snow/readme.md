@@ -57,3 +57,11 @@
 - different legacy mali blob versions are available: r4p0, r5p0, r6p0, r12p0
 - the battery of the snow chromebook (xe303c12) seems to be interchangable with the battery of the peach chromebook (xe503c12)
 - it looks like some snow chromebooks (maybe some rev5 ones) seem to have an atmel touchpad instead of the usual cyapa one - see https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/issues/6 for a kernel patch and the other referenced issue in this one
+- how to use the legacy kernel instead of the mainline one:
+  - dd the image to an sd card
+  - mount partition 4 of it somewhere (example: /mnt) and partition 3 at boot below it (example: /mnt/boot)
+  - go to the mounted root (example: cd /mnt)
+  - unpack the legacy kernel: tar xzf /boot/extra/kernel-chromebook_snow-legacy.tar.gz
+  - dd the kpart kernel (vmlinux.kpart-3.10.38-cos-r91) to the first partition of the sd card
+  - umount everything mounted before
+  - try to boot that sd card
