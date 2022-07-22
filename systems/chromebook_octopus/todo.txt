@@ -10,3 +10,4 @@
   - problem: the depthcharge bootloader does not support initrd loading on intel systems (on arm systems it is supported)
   - maybe try to do it by including a small generic initrd into the kernel which then loads the remaining and specific parts from /boot (postmarketos is using a similar strategy with only a tiny initial initrd for systems which do not support normal sized initrds)
 - maybe have a look at https://github.com/MrChromebox/scripts/issues/89#issuecomment-1181326697 - looks like uefi firmware without the need to change the ro part of the flash
+  - some success - see: https://github.com/hexdump0815/coreboot-cb-rw-uefi-payload
