@@ -6,11 +6,12 @@
 
 ## tested systems - working
 
-- none yet
+- acer chromebook cp513-2h - tomato
+  - see also: https://github.com/hexdump0815/imagebuilder/issues/61
 
 ## untested systems
 
-- acer chromebook cp513-2h - tomato
+- none yet
 
 ## generic mainline linux on arm chromebook notes
 
@@ -27,7 +28,7 @@
 
 ## priority
 
-- draft mode: unclear if it is working at all
+- experimental mode
 
 ## special notes
 
