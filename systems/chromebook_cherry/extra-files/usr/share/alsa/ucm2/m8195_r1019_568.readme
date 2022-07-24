@@ -1,0 +1,16 @@
+Based on https://chromium.googlesource.com/chromiumos/overlays/board-overlays/+/HEAD/overlay-cherry/chromeos-base/chromeos-bsp-cherry/files/tomato/audio/ucm-config/m8195_r1019_5682s.tomato/
+
+Headphone and Mic are not enabled by default. It should be ok to enable them.
+When enabled, pulseaudio seems to use them by default, you may need to change to use Speaker and Internal Mic manually with command:
+```
+pactl set-default-sink 1
+pactl set-default-source 3
+```
+
+Also, you may need to initialize the SectionDevice manually once (only one time) to make pulseaudio finds them properly, same for Headphone and Mic.
+```
+alsaucm  -c m8195_r1019_5682s set _verb HiFi set _enadev Speaker
+alsaucm  -c m8195_r1019_5682s set _verb HiFi set _enadev "Internal Mic"
+```
+
+More info on https://github.com/hexdump0815/imagebuilder/issues/61
