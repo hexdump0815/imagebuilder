@@ -1,0 +1,7 @@
+Based on https://chromium.googlesource.com/chromiumos/overlays/board-overlays/+/HEAD/overlay-asurada/chromeos-base/chromeos-bsp-asurada/files/spherion/audio/ucm-config/mt8192_mt6359_rt1015p_rt5682.spherion/
+
+Also, you may need to initialize the SectionDevice manually once (only one time) to make pulseaudio finds them properly, same for Headphone and Mic.
+```
+alsaucm  -c mt8192_mt6359_rt1015p_rt5682 set _verb HiFi set _enadev Speaker
+alsaucm  -c mt8192_mt6359_rt1015p_rt5682 set _verb HiFi set _enadev "Internal Mic"
+```
