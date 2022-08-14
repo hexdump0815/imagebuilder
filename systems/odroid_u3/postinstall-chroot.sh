@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "${3}" = "bullseye" ]; then
+if [ "${3}" = "bullseye" ]  || [ "${3}" = "bookworm" ]; then
   # block update of the installed mesa packages as some of their contents get changed
   apt-mark hold libgl1-mesa-dri mesa-va-drivers
 

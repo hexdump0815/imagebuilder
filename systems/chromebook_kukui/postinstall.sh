@@ -7,7 +7,7 @@ cp -v etc/X11/xorg.conf.d.samples/13-panfrost-swapped-dri-nodes.conf etc/X11/xor
 #cp -v etc/X11/xorg.conf.d.samples/31-monitor-rotate-left.conf etc/X11/xorg.conf.d
 cp -v etc/X11/xorg.conf.d.samples/51-touchpad.conf etc/X11/xorg.conf.d
 
-# bullseye
+# bullseye and bookworm
 if [ -f etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml-enabled ]; then
   cp -v etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml-enabled etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml
 # focal and jammy

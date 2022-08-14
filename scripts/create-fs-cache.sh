@@ -17,15 +17,16 @@ if [ "$#" != "2" ]; then
   echo "- focal - ubuntu focal"
   echo "- jammy - ubuntu jammy"
   echo "- bullseye - debian bullseye"
+  echo "- bookworm - debian bookworm (wip)"
   echo ""
   echo "example: $0 armv7l focal"
   echo ""
   exit 1
 fi
 
-if [ "${1}" = "i686" ] && [ "${2}" != "bullseye" ]; then
+if [ "${1}" = "i686" ] && [ "${2}" = "focal" ] || [ "${1}" = "i686" ] && [ "${2}" = "jammy" ]; then
   echo ""
-  echo "the target arch i686 is only supported for debian bullseye as there is no i686 build of ubuntu focal or jammy - giving up"
+  echo "the target arch i686 is only supported for debian bullseye and bookworm as there is no i686 build of ubuntu focal or jammy - giving up"
   echo ""
   exit 1
 fi
@@ -121,6 +122,20 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
     cp ${WORKDIR}/files/bullseye-${BOOTSTRAP_ARCH}-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
     # parse in the proper debian version
     sed -i "s,DEBIANVERSION,bullseye,g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
+  elif [ "${2}" = "bookworm" ]; then
+    wget https://ftp-master.debian.org/keys/release-11.asc -qO- | gpg --import --no-default-keyring --keyring ${DOWNLOAD_DIR}/debian-release-11.gpg
+    LANG=C debootstrap --keyring=${DOWNLOAD_DIR}/debian-release-11.gpg --variant=minbase --arch=${BOOTSTRAP_ARCH} ${2} ${BUILD_ROOT_CACHE} http://deb.debian.org/debian/
+    # exit if debootstrap failed for some reason
+    if [ "$?" != "0" ]; then
+      echo ""
+      echo "error while running debootstrap - giving up"
+      echo ""
+      rm -rf ${BUILD_ROOT_CACHE}
+      exit 1
+    fi
+    cp ${WORKDIR}/files/bookworm-${BOOTSTRAP_ARCH}-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
+    # parse in the proper debian version
+    sed -i "s,DEBIANVERSION,bookworm,g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
   elif [ "${2}" = "sonaremin" ]; then
     LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} focal ${BUILD_ROOT_CACHE} http://ports.ubuntu.com/
     # exit if debootstrap failed for some reason

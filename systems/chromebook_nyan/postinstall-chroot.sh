@@ -6,7 +6,7 @@
 #mv -v /usr/lib/xorg/Xorg /usr/lib/xorg/Xorg.org
 #ln -sv /opt/xserver/bin/Xorg /usr/lib/xorg/Xorg
 
-if [ "${3}" = "bullseye" ]; then
+if [ "${3}" = "bullseye" ] || [ "${3}" = "bookworm" ]; then
   # block update of the installed mesa packages as some of their contents get changed
   apt-mark hold libgl1-mesa-dri mesa-va-drivers
 

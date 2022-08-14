@@ -7,7 +7,7 @@ export LANG=C
 
 systemctl enable ssh
 systemctl disable fstrim.timer
-if [ "${1}" != "bullseye" ]; then
+if [ "${1}" = "focal" ] || [ "${1}" = "jammy" ]; then
   systemctl disable fwupd.service
   systemctl disable fwupd-refresh.service
 fi
@@ -26,7 +26,7 @@ fi
 
 # this is required to make docker work on bullseye with the current kernels
 # see https://wiki.debian.org/iptables
-if [ "${1}" = "bullseye" ] || [ "${1}" = "jammy" ]; then
+if [ "${1}" = "bullseye" ] || [ "${1}" = "bookworm" ] || [ "${1}" = "jammy" ]; then
   update-alternatives --set iptables /usr/sbin/iptables-legacy
   update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
   update-alternatives --set arptables /usr/sbin/arptables-legacy
@@ -38,7 +38,7 @@ fi
 systemctl disable apt-daily
 systemctl disable apt-daily-upgrade
 systemctl disable apt-daily-upgrade.timer
-if [ "${1}" != "bullseye" ]; then
+if [ "${1}" = "focal" ] || [ "${1}" = "jammy" ]; then
   systemctl disable unattended-upgrades.service
   sed -i 's,Update-Package-Lists "1",Update-Package-Lists "0",g' /etc/apt/apt.conf.d/10periodic
   sed -i 's,Update-Package-Lists "1",Update-Package-Lists "0",g;s,Unattended-Upgrade "1",Unattended-Upgrade "0",g' /etc/apt/apt.conf.d/20auto-upgrades
@@ -55,7 +55,7 @@ sed -i 's,# en_US ISO-8859-1,en_US ISO-8859-1,g;s,# en_US.UTF-8 UTF-8,en_US.UTF-
 locale-gen
 
 # remove snapd and dmidecode (only on ubuntu) as it crashes on some arm devices on boot
-if [ "${1}" != "bullseye" ]; then
+if [ "${1}" = "focal" ] || [ "${1}" = "jammy" ]; then
   apt-get -yq remove snapd dmidecode
 fi
 

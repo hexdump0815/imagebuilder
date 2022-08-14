@@ -354,7 +354,7 @@ if [ "${UEFI32}" = "true" ]; then
   chroot ${MOUNT_POINT} apt-get -yq install grub2-common grub-efi-ia32 grub-efi-ia32-bin
   chroot ${MOUNT_POINT} grub-install --target=i386-efi /dev/loop0p1 --efi-directory=/boot/efi/ --boot-directory=/boot/
   # debian needs some extra steps to enable fallback boot sometimes required to boot from external media
-  if [ "${3}" = "bullseye" ]; then
+  if [ "${3}" = "bullseye" ] || [ "$3" = "bookworm" ]; then
     chroot ${MOUNT_POINT} mkdir -p /boot/efi/EFI/BOOT
     chroot ${MOUNT_POINT} cp /boot/efi/EFI/debian/grubia32.efi /boot/efi/EFI/BOOT/BOOTIA32.EFI
     chroot ${MOUNT_POINT} cp /usr/share/images/desktop-base/desktop-grub.png /boot/grub
@@ -365,7 +365,7 @@ if [ "${UEFI64}" = "true" ]; then
   chroot ${MOUNT_POINT} apt-get -yq install grub2-common grub-efi-amd64 grub-efi-amd64-bin
   chroot ${MOUNT_POINT} grub-install --target=x86_64-efi /dev/loop0p1 --efi-directory=/boot/efi/ --boot-directory=/boot/
   # debian needs some extra steps to enable fallback boot sometimes required to boot from external media
-  if [ "${3}" = "bullseye" ]; then
+  if [ "${3}" = "bullseye" ] || [ "$3" = "bookworm" ]; then
     chroot ${MOUNT_POINT} mkdir -p /boot/efi/EFI/BOOT
     chroot ${MOUNT_POINT} cp /boot/efi/EFI/debian/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
     chroot ${MOUNT_POINT} cp /usr/share/images/desktop-base/desktop-grub.png /boot/grub
@@ -384,7 +384,7 @@ if [ "${UEFI64ARM}" = "true" ]; then
   chroot ${MOUNT_POINT} apt-get -yq install grub2-common grub-efi-arm64 grub-efi-arm64-bin
   chroot ${MOUNT_POINT} grub-install --target=arm64-efi /dev/loop0p1 --efi-directory=/boot/efi/ --boot-directory=/boot/ --no-nvram --no-bootsector --dtb=/boot/selected.dtb --removable
 #  # debian needs some extra steps to enable fallback boot sometimes required to boot from external media
-#  if [ "${3}" = "bullseye" ]; then
+#  if [ "${3}" = "bullseye" ] || [ "$3" = "bookworm" ]; then
 #    chroot ${MOUNT_POINT} mkdir -p /boot/efi/EFI/BOOT
 #    #chroot ${MOUNT_POINT} cp /boot/efi/EFI/debian/grubaa64.efi /boot/efi/EFI/BOOT/BOOTAA64.EFI
 #    chroot ${MOUNT_POINT} cp /boot/efi/EFI/debian/grubaa64.efi /boot/efi/EFI/BOOT/grubaa64.efi

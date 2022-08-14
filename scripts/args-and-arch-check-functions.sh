@@ -19,6 +19,7 @@ if [ "$#" != "3" ]; then
   echo "- focal - ubuntu focal"
   echo "- jammy - ubuntu jammy"
   echo "- bullseye - debian bullseye"
+  echo "- bookworm - debian bookworm (wip)"
   echo ""
   echo "example: ${0} odroid_u3 armv7l focal"
   echo ""
@@ -44,9 +45,9 @@ else
   exit 1
 fi
 
-if [ "${2}" = "i686" ] && [ "${3}" != "bullseye" ]; then
+if [ "${2}" = "i686" ] && [ "${3}" = "focal" ] || [ "${2}" = "i686" ] && [ "${3}" = "jammy" ]; then
   echo ""
-  echo "the target arch i686 is only supported for debian bullseye as there is no i686 build of ubuntu focal or jammy - giving up"
+  echo "the target arch i686 is only supported for debian bullseye and bookworm as there is no i686 build of ubuntu focal or jammy - giving up"
   echo ""
   exit 1
 fi
