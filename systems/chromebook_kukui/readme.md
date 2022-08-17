@@ -22,7 +22,7 @@
 - asus chromebook flip cm3 (mt8183 version) - damu
   - see also: https://github.com/hexdump0815/imagebuilder/issues/62
 - asus chromebook cm3 - kakadu
-  - see also: https://github.com/hexdump0815/imagebuilder/issues/xy
+  - see also: https://github.com/hexdump0815/imagebuilder/issues/71
 
 ## untested systems
 
@@ -55,13 +55,13 @@
 
 - most things seem to work more or less (mostly thanks to the kernel patches partially taken from https://github.com/Maccraft123/Cadmium/tree/master/baseboard/kukui/patches)
 - juniper: sometimes the touchpad does not seem to work after booting, rebooting usually helps
-- krane: the display rotation will be set properly during the first boot, afterwards it will reboot once automatically and should come up with the display correctly set to landscape mode
+- krane and kakadu: the display rotation will be set properly during the first boot, afterwards it will reboot once automatically and should come up with the display correctly set to landscape mode
 - some log spamming kernel messages have been silenced:
   - krane has usb bandwidth problems, especially with usb audio
   - juniper seems to have some audio related interrupt issues
 - the kernel config is merged now for both mt8173 and mt8183, mt8183 patches still seem to break mt8173 drm - so they need to be compiled separately for now
-- so far only krane, juniper and kappa are supported, but other mt8183 chromebooks might work (at least partially) too or can be added easily
-- the current sound setup is not complete yet:
+- so far only the above tested kukui chromebooks are supported, but other mt8183 chromebooks most probably will work (at least partially) too or can be added easily
+- the current sound setup is not complete yet
   - the levels of the internal mic are very low (as a workaround they can be boosted in software at pulseaudio level via "pactl set-source-volume 1 400%")
   - a headset mic does not work yet, so better use a small usb audio interface for a headset if needed for now
 - it looks like gpu frequency scaling does not work properly yet resulting in gpu errors like "gpu sched timeout", "AS_ACTIVE bit stuck" or page faults, what seems to help is to lock the gpu freq to just a single one for now by echoing a freq from /sys/class/devfreq/13040000.gpu/available_frequencies to both /sys/class/devfreq/13040000.gpu/min_freq and /sys/class/devfreq/13040000.gpu/max_freq (maybe in rc.local or similar) - 400000000 seems to work (others most probably as well) - see also: https://oftc.irclog.whitequark.org/panfrost/2022-01-09#30513966 - update: gpu freq scaling should work with the supplied v5.18 kernel
