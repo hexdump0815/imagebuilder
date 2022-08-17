@@ -110,18 +110,18 @@ if [ -f ${DOWNLOAD_DIR}/kernel-${1}-${2}.tar.gz ]; then
 fi
 
 # if there is no own kernel, then install the dist kernel
-if [ "$3" = "focal" ] || [ "$3" = "jammy" ] || [ "$3" = "sonaremin" ]; then
-  if [ "$2" = "x86_64" ] && [ "${OWN_KERNEL}" != "true" ]; then
-    chroot ${BUILD_ROOT} apt-get -yq install linux-image-generic
-  fi
-elif [ "$3" = "bullseye" ] || [ "$3" = "bookworm" ]; then
-  if [ "$2" = "i686" ] && [ "${OWN_KERNEL}" != "true" ]; then
-    chroot ${BUILD_ROOT} apt-get -yq install linux-image-686
+# if [ "$3" = "focal" ] || [ "$3" = "jammy" ] || [ "$3" = "sonaremin" ]; then
+#   if [ "$2" = "x86_64" ] && [ "${OWN_KERNEL}" != "true" ]; then
+#     chroot ${BUILD_ROOT} apt-get -yq install linux-image-generic
+#   fi
+# elif [ "$3" = "bullseye" ] || [ "$3" = "bookworm" ]; then
+#   if [ "$2" = "i686" ] && [ "${OWN_KERNEL}" != "true" ]; then
+#     chroot ${BUILD_ROOT} apt-get -yq install linux-image-686
   # in the chromebook octopus case there is an own special cros kernel
-  elif [ "$2" = "x86_64" ] && [ "${OWN_KERNEL}" != "true" ]; then
-    chroot ${BUILD_ROOT} apt-get -yq install linux-image-amd64
-  fi
-fi
+#   elif [ "$2" = "x86_64" ] && [ "${OWN_KERNEL}" != "true" ]; then
+#     chroot ${BUILD_ROOT} apt-get -yq install linux-image-amd64
+#   fi
+# fi
 
 if [ -d ${DOWNLOAD_DIR}/boot-extra-${1} ]; then
   mkdir -p boot/extra
