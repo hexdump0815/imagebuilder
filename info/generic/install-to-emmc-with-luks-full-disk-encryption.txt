@@ -26,6 +26,9 @@ trivial and might not work in all situations. allwinner tv boxes should be
 fine as allwinner socs always boot from sd card first by default (better
 test it before starting to overwrite the emmc)
 
+
+# chromebook special section - relevant for all chromebooks
+
 # chromebook partition setup required for chromebooks - see scripts/create-image.sh
 # this will create two chromeos kernel partitions
 apt-get install cgpt
@@ -35,8 +38,19 @@ sgdisk -C -e -G /dev/mmcblk0
 partprobe /dev/mmcblk0
 cgpt create /dev/mmcblk0
 partprobe /dev/mmcblk0
+# the next two commands should work for all chromebooks except veyron - see below for those
 cgpt add -i 1 -t kernel -b 8192 -s 65536 -l KernelA -S 1 -T 2 -P 10 /dev/mmcblk0
 cgpt add -i 2 -t kernel -b 73728 -s 65536 -l KernelB -S 0 -T 2 -P 5 /dev/mmcblk0
+# for veyron (= rk3288 based) chromebooks the following commands have to be used instead
+# as for some strange reasons the beginning of the emmc cannot be written to which also
+# results in the primary gpt partition table having to be ignored on those devices
+# the workaround here is to simply create the kernel partitions a bit further into
+# the emmc device - then everything is working fine - the extra cgpt repair is
+# required due to the mentioned issues with the primary gpt partition table
+cgpt add -i 1 -t kernel -b 73728 -s 32768 -l KernelA -S 1 -T 2 -P 10 /dev/mmcblk0
+cgpt repair /dev/mmcblk0
+cgpt add -i 2 -t kernel -b 106496 -s 32768 -l KernelB -S 0 -T 2 -P 5 /dev/mmcblk0
+cgpt repair /dev/mmcblk0
 
 # side note: n case of a dd copy a full disk and the 4th partition is too large
 # for the target disk - just delete it while fixing the gpt table and recreate it
@@ -66,6 +80,9 @@ Device           Start      End  Sectors  Size Type
 /dev/mmcblk0p3  139264  1187839  1048576  512M Linux filesystem
 /dev/mmcblk0p4 1187840 61071326 59883487 28.6G Linux filesystem
 
+
+# efi boot special section in case efi booting is used
+
 # efi example
 fdisk -l
 Disk /dev/mmcblk1: 14.68 GiB, 15758000128 bytes, 30777344 sectors
@@ -79,6 +96,9 @@ Device           Start      End  Sectors  Size Type
 /dev/mmcblk1p1    2048   264191   262144  128M EFI System (type 1)
 /dev/mmcblk1p2  264192  1312767  1048576  512M Linux filesystem (default type)
 /dev/mmcblk1p3 1312768 30777310 29464543   14G Linux filesystem
+
+
+# mbr boot special section in case mbr  booting is used
 
 # mbr example
 fdisk -l /dev/sdb
@@ -94,11 +114,17 @@ Device     Boot   Start      End  Sectors  Size Id Type
 /dev/sdb1  *      32768  1081343  1048576  512M 83 Linux (type 83)
 /dev/sdb2       1081344 31116287 30034944 14.3G 83 Linux
 
+
+# u-boot special section in case u-boot is used
+
 # set the boot partition lecacy bootable in fdisk - only required really
 # for u-boot as it uses this flag to find its extlinux.conf:
 # mbr: a 1 w (for partition 1)
 # gpt: x A 3 r w (for partition 3) - gpt example below:
 /dev/mmcblk0p3  139264  1187839  1048576 0FC63DAF-8483-4772-8E79-3D69D8477DE4 41D13648-115C-AA4E-A49B-A41FB6968AE7      LegacyBIOSBootable
+
+
+# generic section required for all systems
 
 # side note: for very low end armv7 systems adiantum might be a good idea for the crypto
 # cryptsetup luksFormat -c xchacha12,aes-adiantum-plain64 -s 256 /dev/xyz
@@ -162,8 +188,7 @@ vi etc/fstab etc/hosts etc/hostname
 # LABEL=rootemmc / ext4 defaults,noatime,nodiratime,errors=remount-ro 0 1
 LABEL=rootemmc / btrfs defaults,ssd,compress-force=zstd,noatime,nodiratime 0 1
 LABEL=bootemmc /boot ext4 defaults 0 2
-/swap/file none swap sw 0 0
-#/swap/file.0 none swap sw 0 0
+/swap/file.0 none swap sw 0 0
 #/swap/file.1 none swap sw 0 0
 #/swap/file.2 none swap sw 0 0
 #/swap/file.3 none swap sw 0 0
@@ -185,16 +210,22 @@ chroot /mnt
 # for fit image in case that is needed - memlimit might need adjustment in case
 # update-initramfs gives an error
 # create /etc/initramfs-tools/conf.d/compress:
+vi /etc/initramfs-tools/conf.d/compress
+# content of the file:
 COMPRESS=xz
 XZ_OPT='-9 --check=crc32 –memlimit-compress=25%'
 
 # rebuild initrd for all kernels to have the crypttab setup in it
-# if that returns immediately use the kernel version found in /boot
-# like 5.10.50-stb-mt7+ instead of all
-update-initramfs -c -k all
+# IMPORTANT: if that returns immediately use the kernel version found in /boot
+# like 5.10.50-stb-mt7+ instead of all - this most probably willbe the normal case
+#update-initramfs -c -k all
+update-initramfs -c -k 5.10.50-stb-mt7+
 
-# this section is required for chromebooks using fit images on aarch64 (gru,oak, kukui etc.)
-# the below example is for oak and needs to be adjusted accordingly - it can be put into a
+# 64bit aarch64 chromebook special section
+
+# this section is required for chromebooks using fit images on aarch64 (gru, oak, kukui etc.)
+# the below examples are for oak and kukui and needs to be adjusted accordingly - other
+# 64bit chromebooks like gru, trogdor etc. need similar steps ... it can then be put into a
 # script /boot/kernel-and-initrd.sh ... this needs to be run whenever a new kernel is being
 # built ... vmlinux.kpart-initrd-${kver} will be the chromeos style kernel image for the
 # chromeos kernel partition which contains the initrd with the cryptsetup info - without this
@@ -204,6 +235,8 @@ update-initramfs -c -k all
 # IMPORTANT: the resulting vmlinux.kpart-initrd... files has to be smaller than 32mb for
 #            aarch64 systems and smaller than 16mb for armv7l systems - thus its nearly
 #            impossible to do this on a armv7l system as the initrd is usually too big
+# it might be a good idea to remove the "quiet splash" kernel cmdline options in the echo line
+# for a more verbose boot which makes debugging possible problems easier
 
 oak example:
 #!/bin/bash
@@ -245,6 +278,21 @@ echo ""
 echo "  dd if=/boot/vmlinux.kpart-initrd-${kver} of=/dev/mmcblk0p1"
 echo ""
 
+as mentioned above: after creating this script and making it executable, run it once
+
+
+# 32bit armv7l chromebook special section
+
+in case of 32bit armv7l chromebooks (snow, peach, nyan, veyron, etc.)
+u-boot needs to be written to the emmc kernel partition like in the below
+veyron example which is using the jerry u-boot binary - for each chromebook
+the proper u-boot binary has to be selected from /boot/extra:
+
+dd if=/boot/extra/uboot.kpart.cbr-jerry of=/dev/mmcblk0p1
+
+
+# grub special section in case grub is used
+
 # grub install - this section is required intel mbr or uefibooting systems
 # non uefi - xyz = disk to install bootblock on (example /dev/sdb), apt-get install grub2-common grub-pc grub-pc-bin
 grub-install /dev/xyz
@@ -270,16 +318,24 @@ cp /boot/efi/EFI/debian/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
 # for 32bit uefi it would be
 cp /boot/efi/EFI/debian/grubia32.efi /boot/efi/EFI/BOOT/BOOTIA32.EFI
 
+
+# u-boot special section in case u-boot is used (also relevant for 32bit chromebooks)
+
 # extlinux.conf adjustment - this section is required for systems using u-boot
 # usually only the root disk should be adjusted to root=rootemmc and maybe the
 # default boot should be adjusted in case of multiple options
+# it might be a good idea to remove the "quiet splash" kernel cmdline options for
+# a more verbose boot which makes debugging possible problems easier
 vi /boot/extlinux/extlinux.conf
+
+
+# generic section required for all systems
 
 # exit chroot
 exit
 cd 
 
-# unmount chroot dirs
+# unmount chroot dirs - the efi one might give an error in the non efi case as there is no such dir there
 umount /mnt/dev
 umount /mnt/proc
 umount /mnt/sys
@@ -293,6 +349,9 @@ cryptsetup close encrypted
 
 # reboot in the hope that it will work :)
 reboot
+
+
+# all done here - below is some extra info which might be helpful maybe
 
 # some cosmetic information to get rid of potential kernel messages during the
 # graphical plymouth bootscreen (quie splash kernel cmdline options)
