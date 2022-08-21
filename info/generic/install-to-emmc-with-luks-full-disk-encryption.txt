@@ -124,7 +124,7 @@ Device     Boot   Start      End  Sectors  Size Id Type
 /dev/mmcblk0p3  139264  1187839  1048576 0FC63DAF-8483-4772-8E79-3D69D8477DE4 41D13648-115C-AA4E-A49B-A41FB6968AE7      LegacyBIOSBootable
 
 
-# generic section required for all systems
+# generic section required for all systems - but of course the device names have to be adjusted!
 
 # side note: for very low end armv7 systems adiantum might be a good idea for the crypto
 # cryptsetup luksFormat -c xchacha12,aes-adiantum-plain64 -s 256 /dev/xyz
