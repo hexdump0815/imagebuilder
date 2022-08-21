@@ -29,6 +29,7 @@ btrfs_map_physical /swap/file
 # in this case no further division is required
 #
 # grub or uboot params: resume=/dev/mapper/encrypted resume_offset=<divided number from above>
+# note: make sure that there is no "noresume" still in the kernel cmdline
 # /etc/initramfs-tools/conf.d/resume:
 RESUME=/dev/mapper/encrypted
 RESUME_OFFSET=<divided number from above>
