@@ -269,13 +269,14 @@ if [ -d ${DOWNLOAD_DIR}/postinstall-${1} ]; then
 fi
 
 # post install script per system
-if [ -x ${WORKDIR}/systems/${1}/postinstall.sh ]; then
-  ${WORKDIR}/systems/${1}/postinstall.sh ${1} ${2} ${3}
+if [ -f ${WORKDIR}/systems/${1}/postinstall.sh ]; then
+  bash ${WORKDIR}/systems/${1}/postinstall.sh ${1} ${2} ${3}
 fi
 
 # post install script which is run chrooted per system
-if [ -x ${WORKDIR}/systems/${1}/postinstall-chroot.sh ]; then
+if [ -f ${WORKDIR}/systems/${1}/postinstall-chroot.sh ]; then
   cp ${WORKDIR}/systems/${1}/postinstall-chroot.sh ${BUILD_ROOT}/postinstall-chroot.sh
+  chmod a+x ${BUILD_ROOT}/postinstall-chroot.sh
   chroot ${BUILD_ROOT} /postinstall-chroot.sh ${1} ${2} ${3}
   rm -f ${BUILD_ROOT}/postinstall-chroot.sh
 fi
