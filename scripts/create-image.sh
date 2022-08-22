@@ -397,8 +397,9 @@ fi
 
 if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ] || [ "${MBR}" = "true" ] || [ "${UEFI64ARM}" = "true" ]; then
   # grub config script per system
-  if [ -x ${WORKDIR}/systems/${1}/grubconfig.sh ]; then
+  if [ -f ${WORKDIR}/systems/${1}/grubconfig.sh ]; then
     cp ${WORKDIR}/systems/${1}/grubconfig.sh ${MOUNT_POINT}/grubconfig.sh
+    chmod a+x ${MOUNT_POINT}/grubconfig.sh
     chroot ${MOUNT_POINT} /grubconfig.sh
     rm -f ${MOUNT_POINT}/grubconfig.sh
   fi
@@ -406,8 +407,9 @@ if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ] || [ "${MBR}" = "true" ]
 fi
 
 # finalize script which is run chrooted per system
-if [ -x ${WORKDIR}/systems/${1}/finalize-chroot.sh ]; then
+if [ -f ${WORKDIR}/systems/${1}/finalize-chroot.sh ]; then
   cp ${WORKDIR}/systems/${1}/finalize-chroot.sh ${MOUNT_POINT}/finalize-chroot.sh
+  chmod a+x ${MOUNT_POINT}/finalize-chroot.sh
   chroot ${MOUNT_POINT} /finalize-chroot.sh ${1} ${2} ${3}
   rm -f ${MOUNT_POINT}/finalize-chroot.sh
 fi
