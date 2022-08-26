@@ -42,5 +42,6 @@ the boot loader of those tv boxes seems to be encrypted and locked and thus cann
 
 - bluetooth currently does not work, it seems to hang the system when trying to enable it via cmdline tool
 - see /boot/r89-boot for the special boot preparation setup required for this tv box
+- it looks like this tv box even supports s2idle and deep suspend (tested with v5.19.4 on debian bookworm, but i guess it should work for other setups as well) - to wake it up from suspend just shortly press the power button
 - there is excellent support for another type of rk3288 tv box as armbian csc: https://forum.armbian.com/topic/7141-csc-armbian-for-rk3288-tv-box-boards-q8/
 - while we are at it, there is also excellent support for rk3228 and rk3229 tv boxes as armbian csc too: https://forum.armbian.com/topic/12656-csc-armbian-for-rk322x-tv-boxes/
