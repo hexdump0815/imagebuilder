@@ -1,1 +1,2 @@
 - add support for the pine64 rock64 sbc with rk3288 soc
+- maybe disable/modprobe.d blacklist panfrost by default as it does not seem to run into memory allocation problems if run with xorg/glamor and a current firefox with a few more tabs open - see: https://oftc.irclog.whitequark.org/panfrost/2022-08-27#31297769
