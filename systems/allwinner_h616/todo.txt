@@ -1,1 +1,1 @@
-- nothing yet
+- hibernate/suspend to disk does not work - it seems to suspend to disk fine, but resume does not seem to work (tested with v5.18.1)

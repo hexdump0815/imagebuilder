@@ -1,1 +1,2 @@
 - u-boot v2021.10 works unstable with atf v2.6 but stable with atf v2.3 - bisecting required, testcase: running "7z b" for a while
+- hibernate/suspend to disk works partially - eth gets lost after resume, one usb port on an external hub does not resume well - reresume often helps, all in all not fully reliable (tested with v5.18.1)
