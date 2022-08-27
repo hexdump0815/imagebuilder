@@ -1,2 +1,9 @@
 # uncomment this to get rid of the blinking blue led
 #echo none > /sys/class/leds/led1:heart/trigger
+
+# lock the gpu devfreq freq scaling to a single fixed freq as it might not work reliable
+if [ -f /sys/class/devfreq/13000000.gpu/max_freq ]; then
+  # for possible values see /sys/class/devfreq/13000000.gpu/available_frequencies
+  echo 350000000 > /sys/class/devfreq/13000000.gpu/min_freq
+  echo 350000000 > /sys/class/devfreq/13000000.gpu/max_freq
+fi
