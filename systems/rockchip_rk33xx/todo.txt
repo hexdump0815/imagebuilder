@@ -1,1 +1,2 @@
 - add support (i.e. u-boot, maybe patches and/or ucm files) for rk3399 sbc's and tv boxes, so far only rk3328 and the rk3399 based pinebook pro have been tested
+- hibernate/suspend to disk does not work on rk3328 tv boxes - it seems to suspend to disk fine, but resume does not seem to work as the usb ports are broken after resume (tested around v5.10 or v5.15)

@@ -2,3 +2,5 @@
   - tinymembench shows a very small l1 cache for the s905x3
   - surprisingly quite a few perf counters seem to be missing on the s905x3 which are there on all other amlogic socs
 - add support (i.e. u-boot, maybe patches and/or ucm files) for s922x (odroid n2, n2+, khadas vim3 and s922x tv boxes), so far only s905, s905x, s905w, s912, s905x2 and s905x3 have been tested
+- suspend does not seem to work - neither deeep not s2idle - tested with v5.19.1 via "rtcwake -m mem -s 15" which did not come back
+- hibernate/suspend to disk does not work - it seems to suspend to disk fine, but resume does not seem to work as display is not being restored properly (tested around v5.10 or v5.15)

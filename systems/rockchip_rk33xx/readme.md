@@ -47,6 +47,7 @@ some more work will be required to make the devices below working
 ## special notes
 
 - on the pinebook pro it is assumed that towboot is installed in the spi
+- on the pinebook pro s2idle and deep suspend are working (tested with v5.19.1 and towboot)
 - tv boxes are always hit and miss, so they might work or might not work and are usually of low quality
   - be happy in case it works for your box
   - it is impossible to support all tv boxes with their wild mix of hardware or usually quite low quality, so please do not open github issues in case the images do not work for your box
