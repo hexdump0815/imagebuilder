@@ -36,7 +36,9 @@
 
 ## special notes
 
-- this system stays on the linux v5.10 kernel for now as later mainline kernels have problems with the display reinitialization after resume - this is no longer the case since the 220606-02 image
+- i was daily driving (all my firefox and terminal activities, suspend/resume etc.) an oak-elm system for more than two weeks and it was working surprisingly well and reliable :)
+- this system stays on the linux v5.10 kernel for now as later mainline kernels have problems with the display reinitialization after resume
+  - this is no longer the case since the 220606-02 image
 - most things seem to work more or less
 - there is no gpu acceleration as there is no open source driver available for the powervr gpu in the mt8173 soc, mesa software rendering is used instead for opengl etc.
 - suspend/resume status:
