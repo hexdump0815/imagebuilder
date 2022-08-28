@@ -1,4 +1,4 @@
 - maybe have a look at mickey support
-- maybe disable/modprobe.d blacklist panfrost by default as it does not seem to run into memory allocation problems if run with xorg/glamor and a current firefox with a few more tabs open - see: https://oftc.irclog.whitequark.org/panfrost/2022-08-27#31297769
+- maybe disable/modprobe.d blacklist panfrost by default as it does seem to run into memory allocation problems if run with xorg/glamor and a current firefox with a few more tabs open - see: https://oftc.irclog.whitequark.org/panfrost/2022-08-27#31297769
   - maybe with panfrost enabled it works better if firefox gets forced to opengl mode via layers.acceleration.force-enabled = true ?
     - see: https://oftc.irclog.whitequark.org/panfrost/2022-08-27#31297793
