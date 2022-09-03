@@ -65,7 +65,7 @@
 
 ## special notes
 
-- i was daily driving (all my firefox and terminal activities, suspend/resume etc.) a veyron-mighty system for about a week and it was working surprisingly well and reliable :) (v5.19.3, debian bookworm, august 2022) - one thing was required for it to run stable: the panfrost gpu driver had to be disabled as otherwise it got quite unstable due to kernel memory allocation issues around the panfrost driver when firefox was used - as a result it is now disabled by default on all rk3288 systems
+- i was daily driving (all my firefox and terminal activities, suspend/resume etc.) a veyron-mighty system with 2gb ram and 16gb emmc for about a week and it was working surprisingly well and reliable :) (v5.19.3, debian bookworm, august 2022) - one thing was required for it to run stable: the panfrost gpu driver had to be disabled as otherwise it got quite unstable due to kernel memory allocation issues around the panfrost driver when firefox was used - as a result it is now disabled by default on all rk3288 systems
 - for all images starting with 210731-01 full deep suspend/resume seems to be working, but sometimes maybe not that reliable (it might be considered to switch to s2idle for suspend in /etc/rc.local in case it should be too unreliable)
 - for some strange reason the sound output will be set to headphone by default after the first boot and needs to be switched to speakers manually once
 - sound seems to be gone after resume from suspend, if it is really required it might be considered to switch to s2idle for suspend in
