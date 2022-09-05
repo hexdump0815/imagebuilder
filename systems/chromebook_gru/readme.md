@@ -9,10 +9,12 @@
 ## tested systems - working
 
 - asus chromebook flip c101p - bob
+- samsung chromebook plus xe513c24 - kevin
 
 ## untested systems
 
-- samsung chromebook plus - kevin
+- acer chromebook tab 10 - scarlet
+- asus chromebook tablet ct100 - maybe scarlet too?
 
 ## generic mainline linux on arm chromebook notes
 
@@ -37,3 +39,4 @@
   - headphones and headset mic do not work yet, so better use a small usb audio interface for a headset if needed for now
 - alternatively there is also support for gru-kevin in alpine linux at:
   - https://git.alpinelinux.org/aports/tree/testing/linux-gru/
+- the extremely large display resolution of kevin (2400x1600) seems to put the gpu to its limits with panfrost as xrandr display scaling does not seem to work well (display looks frozen)
