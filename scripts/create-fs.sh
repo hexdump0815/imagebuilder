@@ -289,6 +289,11 @@ fi
 # recompile glib schemas to enable our onboard settings
 chroot ${BUILD_ROOT} glib-compile-schemas /usr/share/glib-2.0/schemas/
 
+# remove libreoffice and do a final cleanup to get the size of the image down a bit
+chroot ${BUILD_ROOT} apt-get -y remove --purge libreoffice*
+chroot ${BUILD_ROOT} apt-get -y auto-remove
+chroot ${BUILD_ROOT} apt-get -y clean
+
 chroot ${BUILD_ROOT} ldconfig
 
 if [ "${PMOSKERNEL}" != "true" ]; then
