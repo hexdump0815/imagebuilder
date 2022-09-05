@@ -15,6 +15,8 @@
 - acer chromebook 13 c810 - nyan big
 - hp chromebook 14 g3 - nyan blaze
 
+see also https://github.com/hexdump0815/imagebuilder/issues/79 for all above
+
 ## untested systems
 
 - maybe there are more nyan models which were not tested yet

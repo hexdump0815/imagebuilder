@@ -10,6 +10,8 @@
 
 - samsung chromebook xe503c12 - peach pit
 
+see also https://github.com/hexdump0815/imagebuilder/issues/80 for all above
+
 ## untested systems
 
 - samsung chromebook xe503c32 - peach pi

@@ -17,6 +17,8 @@
 - asus chromebook c100 - minnie
   - see also: https://github.com/hexdump0815/imagebuilder/issues/16
 
+see also https://github.com/hexdump0815/imagebuilder/issues/81 for all above
+
 ## untested systems
 
 (list below from: https://www.chromium.org/chromium-os/tpm_firmware_update?tmpl=/system/app/templates/print/&showPrintDialog=1)

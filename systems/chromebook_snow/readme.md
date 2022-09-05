@@ -13,6 +13,8 @@
 - samsung chromebook xe303c12 rev4 - snow
 - samsung chromebook xe303c12 rev5 - snow
 
+see also https://github.com/hexdump0815/imagebuilder/issues/78 for all above
+
 ## tested systems - partially working
 
 - hp chromebook 11 g1 - spring 
