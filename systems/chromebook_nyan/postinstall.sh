@@ -6,6 +6,9 @@
 #echo "load-module module-alsa-sink device=hw:1" >> etc/pulse/default.pa
 #echo "#load-module module-alsa-source device=hw:1" >> etc/pulse/default.pa
 
+# maybe this helps to improve the suspend situation a bit ...
+echo "SuspendState=freeze" >> etc/systemd/sleep.conf
+
 # the v5.4 kernel does not work well together with the nouveau gpu driver, so disable it for now
 cp -v etc/X11/xorg.conf.d.samples/11-modesetting-no-glamor.conf etc/X11/xorg.conf.d
 # in case the newer xorg server is used which is required for the nouveau gpu driver to work

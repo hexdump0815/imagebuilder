@@ -12,6 +12,7 @@
     - i tried to rule out bt, wifi and sound by blacklisting or moving away their modules, but it did not change anything
     - i even had deep suspend once working to the point that it even came back after clicking on the trackpad, but i was not able to reproduce it again - this at least shows that it should be possible to get it working - suspend time in this example was a bit less than a minute
     - i did some battery usage measurements with s2idle resulting in about 4% battery usage per hour vs. only slightly less (3.5%+) with lp1 deep sleep via rtcwake, so with s2idle we already nearly get what is possible with mainline on this system - should still be enough to keep it alive when moving from a to b or over night
+    - i did another check to keep the system running idle with firefox with about 40 open tabs and display off and that used about 7% of the battery (around 50wh) per hour, which means about 3.5w per hour which is not that bad
     - hibernate fails to jump to system on resume and thus does still not work - hibernate options required to test: see info/generic/btrfs-and-hibernation-info.txt
 - get u-boot working properly, i.e. one u-boot working for the 2gb/hd and 4gb/full hd model and properly working display all the time
 - it looks like there is a regression in mesa when trying to use the nouveau driver: mesa-21.0.1 works, mesa-21.1.0 does not longer work
