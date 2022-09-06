@@ -5,7 +5,6 @@
 # as a result the wrong screen orientation should be corrected after the first reboot on krane
 if [ ! -f /etc/X11/xorg.conf.d/31-monitor-rotate-left.conf ] && [ ! -f /etc/X11/xorg.conf.d/31-monitor.conf ]; then
   # krane has a rotated panel
-  grep -q 'MediaTek krane' /proc/device-tree/model
   if $(grep -q 'MediaTek krane' /proc/device-tree/model) || \
      $(grep -q 'MediaTek kakadu board$' /proc/device-tree/model) ; then
     cp /etc/X11/xorg.conf.d.samples/31-monitor-rotate-left.conf /etc/X11/xorg.conf.d
