@@ -30,6 +30,7 @@
 ## untested systems
 
 - acer chromebook 311 (c722/c722t) - willow
+- acer chromebook 311 - kenzo
 - asus chromebook cz1 - cerise
 - asus chromebook flip cz1 - stern
 - asus chromebook detachable cz1 - katsu
