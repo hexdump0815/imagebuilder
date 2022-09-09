@@ -56,6 +56,7 @@
 
 ## special notes
 
+- i was daily driving (all my firefox and terminal activities, suspend/resume etc.) an kukui-krane system for about a week and it was working surprisingly well and reliable :) - the display was very nice to work with when scaled down via xrandr scaling to 1280x800 (v5.18.10, debian bookworm, september 2022)
 - most things seem to work more or less (mostly thanks to the kernel patches partially taken from https://github.com/Maccraft123/Cadmium/tree/master/baseboard/kukui/patches)
 - juniper: sometimes the touchpad does not seem to work after booting, rebooting usually helps
 - krane and kakadu: the display rotation will be set properly during the first boot, afterwards it will reboot once automatically and should come up with the display correctly set to landscape mode
