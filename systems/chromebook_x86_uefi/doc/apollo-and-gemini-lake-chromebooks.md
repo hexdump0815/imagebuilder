@@ -11,6 +11,7 @@ the steps cover two adjustements usually required for those devices:
 
 - enable uefi booting
 - make audio work
+- switch suspend to s2idle mode
 
 ## enable uefi booting
 
@@ -182,3 +183,12 @@ apt-mark hold firmware-intel-sound
 - after a reboot audio should hopefully work, it might be required to switch
   from headphones in pulseaudio once as for some reason the configuration used
 seems to default to headphones initially by default
+
+## switch suspend to s2idle mode
+
+as regular deep suspend most likeliy does not work with those apollo and
+gemini lake chromebooks it is required to to switch to s2idle mode for
+suspend. this can be done very easily by uncommenting the corresponding line
+in /etc/rc.local and rebooting or running the uncommented line once by hand.
+even in s2idle mode the power consumption will be very low in suspend mode and
+the system should survive several days in this mode.
