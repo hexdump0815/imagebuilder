@@ -37,6 +37,7 @@ if $(grep -q 'MediaTek krane sku0 board$' /proc/device-tree/model) || \
    $(grep -q 'Google kappa board$' /proc/device-tree/model) || \
    $(grep -q 'Google kenzo sku17 board$' /proc/device-tree/model) || \
    $(grep -q 'Google willow board sku1$' /proc/device-tree/model) || \
+   $(grep -q 'Google fennel sku7 board$' /proc/device-tree/model) || \
    $(grep -q 'MediaTek kodama sku16 board$' /proc/device-tree/model) || \
    $(grep -q 'MediaTek kodama sku272 board$' /proc/device-tree/model) || \
    $(grep -q 'MediaTek kodama sku288 board$' /proc/device-tree/model) || \
