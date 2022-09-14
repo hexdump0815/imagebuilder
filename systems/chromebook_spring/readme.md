@@ -27,7 +27,7 @@
 
 ## priority
 
-- on hold: no further activities planned so far, mainline support is in bad shape, too old hardware without mainline gpu support
+- on hold: no further activities planned so far, mainline support is in bad shape, too old hardware without mainline gpu support, no more access to hardware
 
 ## special notes
 
