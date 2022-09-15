@@ -250,7 +250,7 @@ lzma -9 -z -f -k -v Image
 cp initrd.img-${kver} initrd.img.xz
 echo "console=tty1 root=LABEL=rootemmc rootwait ro fsck.fix=yes fsck.repair=yes net.ifnames=0 ipv6.disable=1 quiet splash" > cmdline
 dd if=/dev/zero of=bootloader.bin bs=512 count=1
-mkimage -D "-I dts -O dtb -p 2048" -f auto -A arm64 -O linux -T kernel -C lzma -a 0 -d Image.lzma -b dtb-${kver}/mt8173-elm.dtb -b dtb-${kver}/mt8173-elm-hana.dtb -b dtb-${kver}/mt8173-elm-hana-rev7.dtb -i initrd.img.xz kernel.itb
+ls dtb-${kver}/mt8173-*.dtb | xargs printf " -b %s" | xargs mkimage -D "-I dts -O dtb -p 2048" -f auto -A arm64 -O linux -T kernel -C lzma -a 0 -d Image.lzma -i initrd.img.xz kernel.itb
 vbutil_kernel --pack vmlinux.kpart --keyblock /usr/share/vboot/devkeys/kernel.keyblock --signprivate /usr/share/vboot/devkeys/kernel_data_key.vbprivk --version 1 --config cmdline --bootloader bootloader.bin --vmlinuz kernel.itb --arch arm
 cp -v vmlinux.kpart /boot/vmlinux.kpart-initrd-${kver}
 rm -f Image Image.lzma initrd.img.xz cmdline bootloader.bin kernel.itb vmlinux.kpart
@@ -270,7 +270,7 @@ lzma -9 -z -f -k -v Image
 cp initrd.img-${kver} initrd.img.xz
 echo "console=tty1 root=LABEL=rootemmc rootwait ro fsck.fix=yes fsck.repair=yes net.ifnames=0 ipv6.disable=1 quiet splash" > cmdline
 dd if=/dev/zero of=bootloader.bin bs=512 count=1
-mkimage -D "-I dts -O dtb -p 2048" -f auto -A arm64 -O linux -T kernel -C lzma -a 0 -d Image.lzma -b dtb-${kver}/mt8183-kukui-jacuzzi-burnet.dtb -b dtb-${kver}/mt8183-kukui-kakadu.dtb -b dtb-${kver}/mt8183-kukui-jacuzzi-damu.dtb -b dtb-${kver}/mt8183-kukui-kodama-sku16.dtb -b dtb-${kver}/mt8183-kukui-jacuzzi-fennel-sku6.dtb -b dtb-${kver}/mt8183-kukui-kodama-sku272.dtb -b dtb-${kver}/mt8183-kukui-jacuzzi-fennel14.dtb -b dtb-${kver}/mt8183-kukui-kodama-sku288.dtb -b dtb-${kver}/mt8183-kukui-jacuzzi-juniper-sku16.dtb -b dtb-${kver}/mt8183-kukui-kodama-sku32.dtb -b dtb-${kver}/mt8183-kukui-jacuzzi-kappa.dtb -b dtb-${kver}/mt8183-kukui-krane-sku0.dtb -b dtb-${kver}/mt8183-kukui-jacuzzi-kenzo.dtb -b dtb-${kver}/mt8183-kukui-krane-sku176.dtb -b dtb-${kver}/mt8183-kukui-jacuzzi-willow-sku0.dtb -i initrd.img.xz kernel.itb
+ls dtb-${kver}/mt8183-*.dtb | xargs printf " -b %s" | xargs mkimage -D "-I dts -O dtb -p 2048" -f auto -A arm64 -O linux -T kernel -C lzma -a 0 -d Image.lzma -i initrd.img.xz kernel.itb
 vbutil_kernel --pack vmlinux.kpart --keyblock /usr/share/vboot/devkeys/kernel.keyblock --signprivate /usr/share/vboot/devkeys/kernel_data_key.vbprivk --version 1 --config cmdline --bootloader bootloader.bin --vmlinuz kernel.itb --arch arm
 cp -v vmlinux.kpart /boot/vmlinux.kpart-initrd-${kver}
 rm -f Image Image.lzma initrd.img.xz cmdline bootloader.bin kernel.itb vmlinux.kpart
