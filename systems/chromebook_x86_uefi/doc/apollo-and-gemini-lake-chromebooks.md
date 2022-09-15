@@ -57,6 +57,8 @@ firmware file for that codename at
 https://github.com/MrChromebox/scripts/blob/master/sources.sh - afterwards
 follow the steps as described below.
 
+#### apollo lake example
+
 older (mostly apollo lake) chromebooks without solid altfw support (example
 here: coral-rabbid):
 
@@ -101,7 +103,13 @@ crossystem dev_boot_usb=1
 crossystem dev_default_boot=usb
 ```
 - reboot with an uefi linux image on usb or sd card
+- it might be required to enter the uefi bios on bootup using "esc" when
+  offered to switch the boot device to the desired one in the "boote menu"
+section of the bios. please keep in mind that the sd card might appear there
+named like "generic usb device" as the sd card slot might be connected via usb
+internally.
 
+#### gemini lake example
 
 newer (mostly gemini lake) chromebooks with more solid altfw support (example
 here: octopus-blooglet):
@@ -147,6 +155,11 @@ crossystem dev_boot_altfw=1
 crossystem dev_default_boot=altfw
 ```
 - reboot with an uefi linux image on usb or sd card
+- it might be required to enter the uefi bios on bootup using "esc" when
+  offered to switch the boot device to the desired one in the "boote menu"
+section of the bios. please keep in mind that the sd card might appear there
+named like "generic usb device" as the sd card slot might be connected via usb
+internally.
 
 ### replace the bootloader entirely with one only supporting uefi
 
