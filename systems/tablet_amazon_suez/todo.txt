@@ -28,3 +28,4 @@
 - have a look trying to get the legacy wifi driver working somehow (see mediatek section of: https://wiki.postmarketos.org/wiki/WiFi)
   - all experiments so far failed
 - maybe somehow get the alsa audio device to cooperate better with pulseaudio (i.e. not having to use device=sysdefault in the pulseaudio config)
+  - besides that it might be required to enable the output once by hand before it will work even in alsa mode via "alsaucm -c mtk-snd-card -i" and then entering "set _verb Hifi" and "set _enadev Speaker" - it should remember it afterwards
