@@ -44,6 +44,8 @@ comfortable and 64gb or more is plenty of disk space ...
 - it was working surprisingly well and reliable
 - notes: panfrost driver had to be disabled as the system was getting unstable
   (kernel memory allocation issues) with it as soon as firefox was used heavily
+  - besides that firefox had to be restarted after about 3 days due to too high
+  memory usage most probably due to memory leaks in firefox
 - info: v5.19.3 kernel, debian bookworm, 2gb ram, 16gb emmc
 
 # kukui krane - september 2022
