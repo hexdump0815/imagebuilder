@@ -42,6 +42,7 @@ see also https://github.com/hexdump0815/imagebuilder/issues/78 for all above
 
 - active support from google for the snow chromebooks (samsung xe303c12) ended beginning of 2019, so they might be around for cheap
 - they are very nice to use with linux: small, light (just a bit above 1kg), battery lasts for 4-6 hours at least
+- it looks like he snow chromebooks from 2014 on are rev5, but i'm not sure at which point in time exactly the switch between rev4 and rev5 is - end of 2012 is definitely rev4 (and the very early ones seem to even be buggy - see below) and early 2013 is rev4 as well
 - please be aware that there seems to be an early batch of snow chromebooks which are not running stable with a mainline kernel, but are running well with a legacy chromeos based kernel - looks like some hardware problem, which was silently fixed in the chromeos kernel but never made it to mainline - this problem has been observed on a snow chromebook from october 2012 and on one from january 2013, so i guess it affects the first ones from end of 2012 and beginning of 2013 - see: https://github.com/hexdump0815/imagebuilder/issues/63
 - what does not work with mainline:
   - usb3 port gives trouble with suspend, so i disabled it
