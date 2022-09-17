@@ -37,7 +37,7 @@ possible to somehow watch youtube videos at an somewhat acceptable resolution
 it is considered to be ok, it does not matter if its 8k, 4k, full hd, hd or
 even less)
 
-# oak elm - august 2022
+# chromebook oak - elm - august 2022
 
 - tested for more than two weeks
 - it was working surprisingly well and reliable
@@ -45,7 +45,7 @@ even less)
   worked around by the default settings)
 - info: v5.19.1 kernel, debian bullseye, 4gb ram, 32gb emmc
 
-# veyron mighty - august 2022
+# chromebook veyron - mighty - august 2022
 
 - tested for about a week
 - it was working surprisingly well and reliable
@@ -56,7 +56,7 @@ even less)
   memory usage most probably due to memory leaks in firefox
 - info: v5.19.3 kernel, debian bookworm, 2gb ram, 16gb emmc
 
-# kukui krane - september 2022
+# chromebook kukui - krane - september 2022
 
 - tested for about a week
 - it was working surprisingly well and reliable
@@ -64,7 +64,7 @@ even less)
   scaling to 1280x800
 - info: v5.18.10 kernel, debian bookworm, 4gb ram, 64gb emmc
 
-# octopus bloog - september 2022
+# chromebook octopus - bloog - september 2022
 
 - tested for about a week
 - it was working surprisingly well and reliable
@@ -72,7 +72,7 @@ even less)
   since moving to emmc everything seemed to run perfectly fine
 - info: v5.19.6 kernel, debian bookworm, 4gb ram, 64gb emmc
 
-# snow - september 2022
+# chromebook snow - september 2022
 
 - tested a few hours and then given up on it
 - it is getting too slow to be really useable for a longer time as soon as it
