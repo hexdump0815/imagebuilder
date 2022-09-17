@@ -42,7 +42,8 @@ comfortable and 64gb or more is plenty of disk space ...
 
 - tested for about a week
 - it was working surprisingly well and reliable
-- notes: panfrost driver had to be disabled as the system was getting unstable
+- notes:
+  - panfrost driver had to be disabled as the system was getting unstable
   (kernel memory allocation issues) with it as soon as firefox was used heavily
   - besides that firefox had to be restarted after about 3 days due to too high
   memory usage most probably due to memory leaks in firefox
