@@ -25,9 +25,6 @@ cases and the following commands can be used to switch back to the default
 mesa before doing the upgrade:
 ```
 # to get the latest versions of the default debian mesa after the apt unhold
-apt-mark unhold libgl1-mesa-dri mesa-va-drivers
-apt-get update
-apt-get dist-upgrade
 # for armv7l (32bit arm)
 # /usr/lib/arm-linux-gnueabihf/dri should be a symlink and not a dir
 rm -i /usr/lib/arm-linux-gnueabihf/dri
@@ -38,6 +35,9 @@ mv /usr/lib/aarch64-linux-gnu/dri.org /usr/lib/aarch64-linux-gnu/dri
 # end of armv7l vs aarch64 sections
 mv /opt/mesa /opt/mesa.off
 ldconfig
+apt-mark unhold libgl1-mesa-dri mesa-va-drivers
+apt-get update
+apt-get dist-upgrade
 systemctl restart lightdm
 # or to be more safe to really use the updated versions
 reboot
