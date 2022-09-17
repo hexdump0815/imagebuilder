@@ -29,6 +29,13 @@ are being stored - with this it is possible to run linux quite well even on
 systems with 16gb of storage - even less is possible, 32gb is getting quite
 comfortable and 64gb or more is plenty of disk space ...
 - most of the images enable all the above mentioned features by default
+- please keep in mind that this is just a look at daily usage keeping in mind
+  that the systems are usually not the most powerful ones, so no wonders are
+expected and especially there is no focus as all gpu performance, gaming
+usage, video hardware decoding etc. (i.e. for instance as longs as it is
+possible to somehow watch youtube videos at an somewhat acceptable resolution
+it is considered to be ok, it does not matter if its 8k, 4k, full hd, hd or
+even less)
 
 # oak elm - august 2022
 
