@@ -26,7 +26,7 @@ tar -cf - * | ( cd / ; tar xhf - )
 cd ../extra-files-aarch64-bullseye
 tar -cf - * | ( cd / ; tar xhf - )
 cd ../../systems/amlogic_gx/extra-files/
-tar --exclude='boot' cf - * | ( cd / ; tar xhf - )
+tar --exclude='boot' -cf - * | ( cd / ; tar xhf - )
 
 # now it is time to have a look at the postinstall, rc-local-additions and
 # extra-files/boot/* files in systems/amlogic_gx and do/add newer things
