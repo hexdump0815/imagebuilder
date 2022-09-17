@@ -68,6 +68,6 @@ comfortable and 64gb or more is plenty of disk space ...
 - it is getting too slow to be really useable for a longer time as soon as it
   gets used more heavily
 - notes: it looks like having only 2gb ram (i.e. having to make quite a bit of
-  use of memory/swap compression) and only two not to powerful cpu cores is
+  use of memory/swap compression) and only two not too powerful cpu cores is
 the limiting factor here
 - info: v5.18.1 kernel, debian bookworm, 2gb ram, 16gb emmc
