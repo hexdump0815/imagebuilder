@@ -75,3 +75,4 @@ see also https://github.com/hexdump0815/imagebuilder/issues/81 for all above
 - deep suspend is a bit limited with a mainline kernel
   - see: https://irclog.whitequark.org/linux-rockchip/2018-04-03#21712549 - "for suspend/resume but at least between ChromeOS 3.14 and mainline there is a huge difference in handling of ddr self-refresh (not done in mainline at all, so you only get a light suspend)" - would need uboot or lower level support for more
   - it uses about 1.5-2% of the battery capacity per hour, so should keep the system alive for quite a while (more than a day) in suspend mode
+- in the past (up to including debian bullseye and ubuntu focal) display gamma and color profile settings (night/red shift mode, display color calibration etc.) were not working at all on arm systems and it seems like starting with debian bookworm it is now working on systems with the proper support for it - luckily on this system it seems to be supported now

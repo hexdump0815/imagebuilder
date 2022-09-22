@@ -71,6 +71,7 @@ some more work will be required to make the devices below working
   - if for g12a the t95q dtb or for sm1 the h96max-x3 dtb result in a kernel crash on boot or instability, try to use the sei520/sei610 dtbs as they do clock the cpu at lower frequencies
   - also in general try different dtbs of the proper type in case the box does not boot
 - important: do not touch the emmc on amlogic tv boxes as it contains important information to boot them at well defined places of the emmc - if this gets removed the box will no longer boot at all
+- in the past (up to including debian bullseye and ubuntu focal) display gamma and color profile settings (night/red shift mode, display color calibration etc.) were not working at all on arm systems and it seems like starting with debian bookworm it is now working on systems with the proper support for it - sadly on this system it is not supported as the kernel support for it seems to be missing
   - if you want to touch your emmc you should really know what you are doing and are on your own (plus risk to brick your box) - you have been warned ...
 - alternatively there is also support for amlogic socs in alpine linux at: https://git.alpinelinux.org/aports/tree/testing/linux-amlogic/
 - there is also a page about amlogic tv boxes in the manjaro wiki: https://wiki.manjaro.org/index.php/Amlogic_TV_boxes

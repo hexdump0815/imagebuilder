@@ -77,6 +77,7 @@ see also https://github.com/hexdump0815/imagebuilder/issues/79 for all above
   - update: with the v5.18.1 kernel s2idle suspend uses about 4% battery per hour, so should be fine to keep it alive when moving from a to b or over night, sadly it is not really reliable and sometimes does not come back from resume
 - hibernation (suspend to disk) does not seem to work with the mainline kernel neither, it at least fails to restore the display on resume and maybe even crashes (no more details due to missing serial console)
 - for more info about the suspend/resume topic see the todo.txt file
+- in the past (up to including debian bullseye and ubuntu focal) display gamma and color profile settings (night/red shift mode, display color calibration etc.) were not working at all on arm systems and it seems like starting with debian bookworm it is now working on systems with the proper support for it - sadly on this system it is not supported as the kernel support for it seems to be missing
 - the write protect screw of the cb5 311 (nyan-big) is not that easy to find: there is a screw marked 'jp10' on the board, this one has to be removed und the metal sticker has to be peeled off in order to remove the hardware write protection
 - especially the acer cb5 311 chromebook (nyan-big) seems to have problems with battery calibration and quite often thinks that the battery is dead after it had not been used for a while - one possible solution might be the following:
   - unplug the power

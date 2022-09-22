@@ -45,5 +45,6 @@
   - with v5.11+ it is broken as the display does not come back after resume - see todo
   - with v5.18 it is working again, only display sleep is broken and being worked around by special power management settings in the image
 - when booting from an usb medium the bootup might hang waiting to discover the root device - in such cases it might help to shortly unplug and replug the usb medium the system is booted from
+- in the past (up to including debian bullseye and ubuntu focal) display gamma and color profile settings (night/red shift mode, display color calibration etc.) were not working at all on arm systems and it seems like starting with debian bookworm it is now working on systems with the proper support for it - luckily on this system it seems to be supported now
 - alternatively there is also support for oak-elm in alpine linux at:
   - https://git.alpinelinux.org/aports/tree/testing/linux-elm/
