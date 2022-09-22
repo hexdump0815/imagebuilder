@@ -36,6 +36,15 @@ usage, video hardware decoding etc. (i.e. for instance as long as it is
 possible to somehow watch youtube videos at an somewhat acceptable resolution
 it is considered to be ok, it does not matter if its 8k, 4k, full hd, hd or
 even less)
+- from my experience the overhead from running a luks encrypted root fs can
+  be neglected on current systems, so it is nothing to worry about performance
+wise
+- running from emmc (or even ssd) as storage makes a big difference for daily
+  use compared to running from sd cards - if sd cards are used a1 rated ones
+should be choosen as they have much better random io, which is often happening
+in such a use case - regular (non a1 rated) sd cards are often very slow for
+desktop usage to the point of being close to unuseable - most cheap usb
+storage devices can be considered to behave similar to non a1 rated sd cards
 
 # chromebook oak - elm - august 2022
 
@@ -74,10 +83,23 @@ even less)
 
 # chromebook snow - september 2022
 
-- tested a few hours and then given up on it
-- it is getting too slow to be really useable for a longer time as soon as it
-  gets used more heavily
+- tested a few hours and then given up on it - it is getting too slow to be
+  really useable for a longer time as soon as it gets used more heavily
 - notes: it looks like having only 2gb ram (i.e. having to make quite a bit of
   use of memory/swap compression) and only two not too powerful cpu cores is
 the limiting factor here
 - info: v5.18.1 kernel, debian bookworm, 2gb ram, 16gb emmc
+
+# amlogic gx - h96max x3 s905x3 tv box - september 2022
+
+- tested for about a week
+- it was working reliable and quite ok (see below)
+- notes: after a while of use the system stalls for a moment from time to time
+  and i initially suspected it to be panfrost related again as on rk3288, but
+after disabling panfrost the stalls still aprreared from time to time and the
+reason seems to be that i was running from an sd card instead of emmc and the
+stalls seem to happen whenever data is being written to the swap file - so it
+looks like even the better a1 rated sd cards are still far behind emmc even if
+they are way better than regular sd cards - beside those stalls from time to
+time the system was quite useable
+- info: v5.19.1 kernel, debian bookworm, 4gb ram, 32gb a1 sd card
