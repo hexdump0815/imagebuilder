@@ -103,3 +103,12 @@ looks like even the better a1 rated sd cards are still far behind emmc even if
 they are way better than regular sd cards - beside those stalls from time to
 time the system was quite useable
 - info: v5.19.1 kernel, debian bookworm, 4gb ram, 32gb a1 sd card
+
+# rockchip rk3328 - t9 rk3328 tv box - september/october 2022
+
+- tested for about a week
+- it was working reliable and quite ok (see below)
+- notes: due to the not that fast cpu (rk3328 at 4x1.3 ghz) it is not the
+  fastest system, but it is still useable - running from emmc instead of sd
+card helps to compensate a bit for that
+- info: v5.19.1 kernel, debian bookworm, 4gb ram, 32gb emmc
