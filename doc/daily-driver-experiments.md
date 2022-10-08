@@ -108,25 +108,28 @@ time the system was quite useable
 
 - tested for about a week
 - it was working reliable and quite ok (see below)
-- notes: due to the not that fast cpu (rk3328 at 4x1.3 ghz) it is not the
-  fastest system, but it is still useable - running from emmc instead of sd
-card helps to compensate a bit for that
+- notes: due to the not that fast cpu (4xa53 at 1.3 ghz) it is not the fastest
+  system, but it is still useable - running from emmc instead of sd card helps
+to compensate a bit for that
 - info: v5.19.1 kernel, debian bookworm, 4gb ram, 32gb emmc
 
 # amlogic gx - mi box s905x tv box - october 2022
 
 - tested for a few days
-- it was working reliable and quite ok (see below)
-- notes: due to the not that fast cpu (s905x at 4x1.4 ghz) it is not the
+- it was working reliable and quite ok, but slow (see below)
+- notes: due to the not that fast cpu (4xa53 at 1.4 ghz) it is not the
   fastest system - combining this with only 2gb ram does not really help and
 using a 64bit kernel with a 32bit userland is the only option to be able to
 really use it as a desktop system for a bit heavier use (the 32bit userland
-uses only around two third of the memory compared to a 64bit one). running
+uses only around two thirds of the memory compared to a 64bit one). running
 from usb requires a high quality usb stick with good random io and putting
-the swap onto some area of the emmc is helpful as well. with all the system
-was kind of useable in the end, but rather on the slower end and some
-patience is required. raising the zswap percentage to 20% and providing 3gb
-of swap space might have been a good idea as well (with zswap some memory is
-counted twice once for the compressed memory and if something really gets
-swapped out in the end it gets counted again - see /scripts/zswap-status.sh)
-- info: v6.0.0 kernel, debian bookworm (32bit userland), 2gb ram, 32gb sandisk ultra usb stick for the system and 5gb android data partiion area on emmc for swap
+the swap onto some area of the emmc is helpful as well. with all that the
+system was kind of useable in the end, but rather on the slower end and some
+patience is required now and then. raising the zswap percentage to 20% and
+providing 3gb of swap space was a good idea as well (with zswap some memory is
+counted twice: once for the compressed memory and another time if a small
+fraction of that really gets written to disk in the end - see
+/scripts/zswap-status.sh)
+- info: v6.0.0 kernel, debian bookworm (32bit userland), 2gb ram, 32gb sandisk
+  ultra usb stick for the system and 5gb android data partiion area on emmc
+for swap
