@@ -14,14 +14,30 @@ are my findings from those experiments for the different systems tried.
 
 - 2gb ram is only useable for 32bit systems or maybe 64bit systems with a
   32bit userland as 64bit systems usually need up to 50% more memory than
-32bit systems
+32bit systems (or the other way around: a 32bit userland only needs about
+two thirds of the memory of a 64bit userland)
 - zswap memory/swap compression helps with the limited memory giving around
   25% more (virtually) available memory with the current setup without any
 major impact as long as there are enough or fast enough cpu cores around to
 handle the compression without any major side effects. raising the zswap
 percentage to higher values does not bring too much in real world situations
 as the kernel starts to get more and more busy comrpessing and decrompressing
-memory
+memory. for systems with only 2gb of ram it might make sense to increase the
+zswap percentage to 20% resulting in about one third of extra (virtually)
+available memory. the zswap memory compression ratio seems to end up around
+2.5-3 with the settings used for real world usage.
+- the swap file should be of about the size of the ram size as a good starting
+point - less might result in processes being killed from time to time due to
+short bursts of high memory usage and more might result in a very slow system
+due to a lot of swap io in the end. for systems with only 2gb of ram it might
+be a good idea to provide about 150% of that as swap space (i.e. 3gb in that
+case) as with zswap some swap space usage is counted twice: once for the
+compressed memory (which is considered as used swap space by the system
+although it is not written out to disk) and another time if a small fraction
+of that really gets written to disk in the end (if more memory is required
+than can be made available by compression) - see /scripts/zswap-status.sh to
+see how much is really writte to the swap file (usually much less than what is
+shown in 'top' or 'free'.
 - btrfs transparent filesystem compression helps quite well with the usually
   rather small storage sizes of chromebooks or other small devices by
 providing around 50%-100% more (virtual) disk space depending on what files
@@ -45,6 +61,7 @@ should be choosen as they have much better random io, which is often happening
 in such a use case - regular (non a1 rated) sd cards are often very slow for
 desktop usage to the point of being close to unuseable - most cheap usb
 storage devices can be considered to behave similar to non a1 rated sd cards
+and thus it is recommended to use high quality usb devices like sandisk ultra.
 
 # chromebook oak - elm - august 2022
 
@@ -116,20 +133,31 @@ to compensate a bit for that
 # amlogic gx - mi box s905x tv box - october 2022
 
 - tested for a few days
-- it was working reliable and quite ok, but slow (see below)
+- it was working reliable and quite ok, but somewhat slow (see below)
 - notes: due to the not that fast cpu (4xa53 at 1.4 ghz) it is not the
   fastest system - combining this with only 2gb ram does not really help and
 using a 64bit kernel with a 32bit userland is the only option to be able to
-really use it as a desktop system for a bit heavier use (the 32bit userland
-uses only around two thirds of the memory compared to a 64bit one). running
-from usb requires a high quality usb stick with good random io and putting
-the swap onto some area of the emmc is helpful as well. with all that the
-system was kind of useable in the end, but rather on the slower end and some
-patience is required now and then. raising the zswap percentage to 20% and
-providing 3gb of swap space was a good idea as well (with zswap some memory is
-counted twice: once for the compressed memory and another time if a small
-fraction of that really gets written to disk in the end - see
-/scripts/zswap-status.sh)
+really use it as a desktop system for a bit heavier use. putting the swap
+onto some area of the emmc was helpful in combination with a high quality usb
+stick for the root filesystem (the mi box does not have an sd card slot). with
+all that the system was kind of useable in the end, but rather on the slower
+end and some patience is required now and then.
 - info: v6.0.0 kernel, debian bookworm (32bit userland), 2gb ram, 32gb sandisk
   ultra usb stick for the system and 5gb android data partiion area on emmc
 for swap
+
+# amlogic gx - a95xr2 s905w tv box - october 2022
+
+- tested for a few days
+- it was working reliable and quite ok, but quite slow (see below)
+- notes: this was the try to go a bit lower even than for the last test with
+  the amlogic s905x as the s905w is even slower (4xa53 at 1.2 ghz), so all
+from above is valid here and the system is even a bit slower. running from
+emmc here instead of a usb stick on the s905x might help a bit here. to my
+surprise the analog audio output of the box was actually working after doing
+some minimal setting changes in alsamixer - i did not actualy expect this :)
+- info: v6.0.0 kernel, debian bookworm (32bit userland), 2gb ram, 16gb emmc
+
+# atom 32bit uefi - linx 1010b 2in1 - october 2022
+
+coming soon - currently testing it :)
