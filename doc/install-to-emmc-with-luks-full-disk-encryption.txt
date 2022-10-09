@@ -215,6 +215,9 @@ vi /etc/initramfs-tools/conf.d/compress
 COMPRESS=xz
 XZ_OPT='-9 --check=crc32 –memlimit-compress=25%'
 
+# to be on the safe side: make sure cryptsetup-initramfs is installed (it looks like
+# some older images did for some reason not have it installed
+#apt-get -y install cryptsetup-initramfs
 # rebuild initrd for all kernels to have the crypttab setup in it
 # IMPORTANT: if that returns immediately use the kernel version found in /boot
 # like 5.10.50-stb-mt7+ instead of all - this most probably willbe the normal case
