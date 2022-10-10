@@ -9,4 +9,6 @@ wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-ke
 ( cd ${DOWNLOAD_DIR} ; tar xzf kernel-chromebook_gru-${2}.tar.gz boot ; mv boot/vmlinux.kpart-* boot-chromebook_gru-${2}.dd ; rm -rf boot )
 
 # get the self built fresher mesa
-wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
+if [ "${3}" != "bookworm" ]; then
+  get https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
+fi

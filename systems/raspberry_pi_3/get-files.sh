@@ -41,4 +41,6 @@ wget -v https://github.com/raspberrypi/firmware/raw/${boot_commit}/boot/start.el
 wget -v https://github.com/raspberrypi/firmware/raw/${boot_commit}/boot/start_x.elf -O ${DOWNLOAD_DIR}/postinstall-${1}/start_x.elf
 
 # get the self built fresher mesa
-wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
+if [ "${3}" != "bookworm" ]; then
+  get https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
+fi

@@ -10,7 +10,9 @@ wget -v https://github.com/hexdump0815/linux-mainline-mediatek-mt81xx-kernel/rel
 ( cd ${DOWNLOAD_DIR} ; tar xzf kernel-chromebook_oak-${2}.tar.gz boot ; mv boot/vmlinux.kpart-* boot-chromebook_oak-${2}.dd ; rm -rf boot )
 
 # get the self built fresher mesa - not enabled for now
-#wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
+#if [ "${3}" != "bookworm" ]; then
+#  get https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
+#fi
 
 # put an alternative v5.10 kernel to /boot/extra as it at least had working dpms supsend
 rm -rf ${DOWNLOAD_DIR}/boot-extra-${1}
