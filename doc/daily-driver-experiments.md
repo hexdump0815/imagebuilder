@@ -7,8 +7,10 @@ week. usage usually is firefox with a few dozen tabs open (so not just a
 single tab) and running all the time (i.e. not restarted fresh each day) and
 lots of termial sessions. the system is usually only switched between running
 and suspend (or for low power system without supsend support running all the
-time) and never really rebooted as long as it is running stable. these notes
-are my findings from those experiments for the different systems tried.
+time) and never really rebooted as long as it is running stable. when running
+this way top with shift-h will show around 1500 threads, so actually quite a
+few for such small systems. these notes are my findings from those experiments
+for the different systems tried.
 
 # general notes
 
@@ -110,7 +112,7 @@ the limiting factor here
 # amlogic gx - h96max x3 s905x3 tv box - september 2022
 
 - tested for about a week
-- it was working reliable and quite ok (see below)
+- it was working reliable and quite ok
 - notes: after a while of use the system stalls for a moment from time to time
   and i initially suspected it to be panfrost related again as on rk3288, but
 after disabling panfrost the stalls still aprreared from time to time and the
@@ -124,8 +126,8 @@ time the system was quite useable
 # rockchip rk3328 - t9 rk3328 tv box - september/october 2022
 
 - tested for about a week
-- it was working reliable and quite ok (see below)
-- notes: due to the not that fast cpu (4xa53 at 1.3 ghz) it is not the fastest
+- it was working reliable and quite ok
+- notes: due to the not that fast cpu (4xa53 at 1.3ghz) it is not the fastest
   system, but it is still useable - running from emmc instead of sd card helps
 to compensate a bit for that
 - info: v5.19.1 kernel, debian bookworm, 4gb ram, 32gb emmc
@@ -133,8 +135,8 @@ to compensate a bit for that
 # amlogic gx - mi box s905x tv box - october 2022
 
 - tested for a few days
-- it was working reliable and quite ok, but somewhat slow (see below)
-- notes: due to the not that fast cpu (4xa53 at 1.4 ghz) it is not the
+- it was working reliable and quite ok, but somewhat slow
+- notes: due to the not that fast cpu (4xa53 at 1.4ghz) it is not the
   fastest system - combining this with only 2gb ram does not really help and
 using a 64bit kernel with a 32bit userland is the only option to be able to
 really use it as a desktop system for a bit heavier use. putting the swap
@@ -149,9 +151,9 @@ for swap
 # amlogic gx - a95xr2 s905w tv box - october 2022
 
 - tested for a few days
-- it was working reliable and quite ok, but quite slow (see below)
+- it was working reliable and quite ok, but quite slow
 - notes: this was the try to go a bit lower even than for the last test with
-  the amlogic s905x as the s905w is even slower (4xa53 at 1.2 ghz), so all
+  the amlogic s905x as the s905w is even slower (4xa53 at 1.2ghz), so all
 from above is valid here and the system is even a bit slower. running from
 emmc here instead of a usb stick on the s905x might help a bit here. to my
 surprise the analog audio output of the box was actually working after doing
@@ -160,4 +162,13 @@ some minimal setting changes in alsamixer - i did not actualy expect this :)
 
 # atom 32bit uefi - linx 1010b 2in1 - october 2022
 
-coming soon - currently testing it :)
+- given up after a day
+- it was working reliable and quite ok, but too slow
+- notes: i expected it to be faster than the amlogic s905w (faster out of
+  order intel cpu cores - 4xatom at up to 1.8 ghz vs. slower in order arm cpu
+cores - 4xa53 at 1.2ghz), but it was at least as slow if not even slower than
+that, most proably still quite useable for lighter load (just a few tabs in
+firefox etc.) but not really in the tested scenario. again due to the only 2gb
+of ram a 32bit userland was used to keep memory usage lower.
+- info: v6.0.0 kernel, debian bookworm (32bit i686 userland), 2gb ram, 32gb
+  emmc
