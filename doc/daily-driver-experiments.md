@@ -18,6 +18,11 @@ for the different systems tried.
   32bit userland as 64bit systems usually need up to 50% more memory than
 32bit systems (or the other way around: a 32bit userland only needs about
 two thirds of the memory of a 64bit userland)
+- if possible a 64bit userland is recommended over a 32bit one as nowadays the
+  64 bit version receives more real world testing, but if there is not enough
+memory 32bit is ok too - for arm more so than for intel as close to nobody is
+still using 32bit intel anywhere, on arm there is still a lot of raspberry pi
+stuff running on 32bit arm
 - zswap memory/swap compression helps with the limited memory giving around
   25% more (virtually) available memory with the current setup without any
 major impact as long as there are enough or fast enough cpu cores around to
@@ -172,3 +177,14 @@ firefox etc.) but not really in the tested scenario. again due to the only 2gb
 of ram a 32bit userland was used to keep memory usage lower.
 - info: v6.0.0 kernel, debian bookworm (32bit i686 userland), 2gb ram, 32gb
   emmc
+
+# chromebook octopus - blooglet - october 2022
+
+- tested for about two weeks
+- it was working surprisingly well and reliable
+- notes: it was a joy to use after testing all the lower spec systems over the
+  last weeks - 4gb of ram and at least 4 cpu cores of useable speed are really
+recommended for daily use if possible - with those specs using the system is
+really comfortable compared to everything with lower specs
+- info: v6.0.0 kernel, debian bookworm, 4gb ram, 64gb emmc, broken keyboard,
+  so it was used with usb kbd and mouse
