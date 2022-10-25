@@ -26,7 +26,7 @@
 
 ## priority
 
-- low: will be worked on and improved rarely, hardware not that interesting anymore nowadays, well supported elsewhere too
+- on hold: no further activities planned so far, no more access to hardware
 
 ## special notes
 
