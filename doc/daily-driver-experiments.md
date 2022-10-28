@@ -197,7 +197,7 @@ really comfortable compared to everything with lower specs
   ram - using the system is really comfortable ... only thing noticed: with
 the usb hub (on the usb-a port) i usually use for mouse, keyboard an ethernet
 the mouse simply did not work and always gave usb errors, with another usb hub
-i(on the usb-c port) everything was working fine
+(on the usb-c port) everything was working fine
 - info: v6.0.0 kernel, debian bookworm, 4gb ram, 32gb emmc
 
 # odroid u3 - october 2022
