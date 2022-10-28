@@ -43,8 +43,8 @@ compressed memory (which is considered as used swap space by the system
 although it is not written out to disk) and another time if a small fraction
 of that really gets written to disk in the end (if more memory is required
 than can be made available by compression) - see /scripts/zswap-status.sh to
-see how much is really writte to the swap file (usually much less than what is
-shown in 'top' or 'free'.
+see how much is really written to the swap file (usually much less than what
+is shown in 'top' or 'free'.
 - btrfs transparent filesystem compression helps quite well with the usually
   rather small storage sizes of chromebooks or other small devices by
 providing around 50%-100% more (virtual) disk space depending on what files
@@ -63,7 +63,7 @@ even less)
   be neglected on current systems, so it is nothing to worry about performance
 wise
 - running from emmc (or even ssd) as storage makes a big difference for daily
-  use compared to running from sd cards - if sd cards are used a1 rated ones
+  use compared to running from sd cards - if sd cards are used, a1 rated ones
 should be choosen as they have much better random io, which is often happening
 in such a use case - regular (non a1 rated) sd cards are often very slow for
 desktop usage to the point of being close to unuseable - most cheap usb
