@@ -188,3 +188,28 @@ recommended for daily use if possible - with those specs using the system is
 really comfortable compared to everything with lower specs
 - info: v6.0.0 kernel, debian bookworm, 4gb ram, 64gb emmc, broken keyboard,
   so it was used with usb kbd and mouse
+
+# chromebook kukui - kappa - october 2022
+
+- tested for about a week
+- it was working surprisingly well and reliable
+- notes: it was as useable as the blooglet due to the 8 cpu cores and 4gb of
+  ram - using the system is really comfortable ... only thing noticed: with
+the usb hub (on the usb-a port) i usually use for mouse, keyboard an ethernet
+the mouse simply did not work and always gave usb errors, with another usb hub
+i(on the usb-c port) everything was working fine
+- info: v6.0.0 kernel, debian bookworm, 4gb ram, 32gb emmc
+
+# odroid u3 - october 2022
+
+- given up early on during initial tests
+- it was not really working well as processes got oom killed after some
+  heavier firefox useage
+- notes: i always wanted to know if it is meanwhile possible to use the trusty
+  old odroid u3 as a desktop system due to all the new clever features like
+zswap, mglru etc. and it looks like it might be possible (albeit rather slow)
+but as soon as firefox got used a bit heavier the kernel oom killed a lot of
+processes and with them usually the whole org session, so not a good base for
+using it as a desktop ... there were some locking errors in dmesg as well, so
+some deeper investigation might be required to get this going
+- info: v6.0.0 kernel, debian bookworm, 2gb ram, 32gb a1 sd card
