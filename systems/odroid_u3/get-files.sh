@@ -10,6 +10,10 @@ wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-ke
 rm -f ${DOWNLOAD_DIR}/boot-odroid_u3-armv7l.dd
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${odroid_u3_uboot_version}/exy-boot.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-odroid_u3-armv7l.dd
 
+rm -rf ${DOWNLOAD_DIR}/boot-extra-${1}
+mkdir -p ${DOWNLOAD_DIR}/boot-extra-${1}
+cp ${DOWNLOAD_DIR}/boot-odroid_u3-armv7l.dd ${DOWNLOAD_DIR}/boot-extra-${1}/boot-odroid_u3-armv7l.dd
+
 # get the self built fresher mesa
 if [ "${3}" != "bookworm" ]; then
   get https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
