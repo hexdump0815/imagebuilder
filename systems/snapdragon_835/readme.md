@@ -30,4 +30,6 @@
 - the root filesystems is currently still set to ext4 (but the usual btrfs should work as well i guess)
 - so far only tested with bullseye, not sure if grub etc. in focal is new enough to be working
 - the linux support for those snapdragon 835 is missing a lot of things like gpu acceleration, wifi, sound, susped/resume, cpu frequency scaling etc., so it might only be useful in case you want to hack on it
+- booting should only be done from usb for now, please keep the windows installation on emmc/ufs as it might be required to get updated firmware files from it still
+- secure boot needs to be disabled in the bios in order to be able to boot those images as all
 - some outdated information and information on how to prepare the system to boot linux can be found here: https://github.com/aarch64-laptops/build
