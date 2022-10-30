@@ -24,7 +24,7 @@
 
 ## special notes
 
-- this is very much work in progress and not really useable yet
+- this is very much work in progress, not really useable yet and mostly ment as a starting point for helping to bring mainline linux forward on this platform
 - the grub setup so far is only an ugly hack to make it boot at all and the boot config is currently hard coded in /boot/boot/grub/grub.cfg
 - currently the dtb file for the asus novago is hard coded in the grub config file, this needs to be adjusted in case of another snapdragon 835 system
 - the root filesystems is currently still set to ext4 (but the usual btrfs should work as well i guess)
