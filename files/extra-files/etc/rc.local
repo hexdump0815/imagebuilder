@@ -42,7 +42,7 @@ if [ -f /sys/module/zswap/parameters/enabled ]; then
   echo z3fold > /sys/module/zswap/parameters/zpool
   # default is 20, less means less compressed memory and less cpu usage
   # for compression, more is the other way around, depends on actual hw
-  # with 15 there is a 25-30% win on available memory with a typical
+  # with 20 there is a 25-30% win on available memory with a typical
   # usual compression ratio of close to 1:3, but only compressed pages
   # are written to the swap space and thus io to emmc/sd is reduced
   # which should be good for the emmc/sd life time as well - this seems
@@ -50,8 +50,14 @@ if [ -f /sys/module/zswap/parameters/enabled ]; then
   # for a longer time without being busy compressing/decompressing the
   # memory all the time ... in some situations up to 35 might be ok, it
   # should be easier to raise the percentage the faster the cpu cores
-  # are and the more of them are available
-  echo 15 > /sys/module/zswap/parameters/max_pool_percent
+  # are and the more of them are available ... it is a good idea to set
+  # the size of the swap space to about 150% of the physical memory if
+  # enough disk space is available (otherwise 100% is ok too) as with
+  # zswap the used swap space is partially counted virtually twice for
+  # compressed pages swapped out to disk (i.e. not really all shown
+  # amount of used swap space is really used on disk, but shown this
+  # way to user space tools
+  echo 20 > /sys/module/zswap/parameters/max_pool_percent
   echo 1 > /sys/module/zswap/parameters/enabled
 fi
 
