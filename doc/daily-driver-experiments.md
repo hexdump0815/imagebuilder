@@ -44,7 +44,9 @@ although it is not written out to disk) and another time if a small fraction
 of that really gets written to disk in the end (if more memory is required
 than can be made available by compression) - see /scripts/zswap-status.sh to
 see how much is really written to the swap file (usually much less than what
-is shown in 'top' or 'free'.
+is shown in 'top' or 'free'. if there is enough disk space available it might
+be even with 4gb ram or more a good idea to size the swap space as 150% of the
+physical memory.
 - btrfs transparent filesystem compression helps quite well with the usually
   rather small storage sizes of chromebooks or other small devices by
 providing around 50%-100% more (virtual) disk space depending on what files
