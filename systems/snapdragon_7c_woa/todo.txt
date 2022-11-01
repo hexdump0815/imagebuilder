@@ -1,0 +1,1 @@
+- get more and more things working on sc7180 windows on arm systems and maybe add more devices
