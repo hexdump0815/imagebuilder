@@ -6,11 +6,11 @@
 
 ## tested systems - working
 
-- acer aspire 1 a114-61 (snapdragon 7c)
 - samsung galaxy book go (snapdragon 7c gen2)
 
 ## untested systems
 
+- acer aspire 1 a114-61 (snapdragon 7c)
 - asus exportbook b3 detachable b3000 (snapdragon 7c gen2)
 - hp laptop 14 (14-ed0123wm) (snapdragon 7c gen2)
 - lenovo 10w 82st (snapdragon 7c gen2)
