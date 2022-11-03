@@ -258,6 +258,13 @@ vbutil_kernel --pack vmlinux.kpart --keyblock /usr/share/vboot/devkeys/kernel.ke
 cp -v vmlinux.kpart /boot/vmlinux.kpart-initrd-${kver}
 rm -f Image Image.lzma initrd.img.xz cmdline bootloader.bin kernel.itb vmlinux.kpart
 echo ""
+echo "for single boot only testing:"
+echo ""
+echo "  dd if=/boot/vmlinux.kpart-initrd-${kver} of=/dev/mmcblk0p2"
+echo "  cgpt add -i 2 -S 0 -T 1 -P 15 /dev/mmcblk0"
+echo ""
+echo "to always boot this kernel after successful testing:"
+echo ""
 echo "  dd if=/boot/vmlinux.kpart-initrd-${kver} of=/dev/mmcblk0p1"
 echo ""
 
@@ -277,6 +284,13 @@ ls dtb-${kver}/mt8183-*.dtb | xargs printf " -b %s" | xargs mkimage -D "-I dts -
 vbutil_kernel --pack vmlinux.kpart --keyblock /usr/share/vboot/devkeys/kernel.keyblock --signprivate /usr/share/vboot/devkeys/kernel_data_key.vbprivk --version 1 --config cmdline --bootloader bootloader.bin --vmlinuz kernel.itb --arch arm
 cp -v vmlinux.kpart /boot/vmlinux.kpart-initrd-${kver}
 rm -f Image Image.lzma initrd.img.xz cmdline bootloader.bin kernel.itb vmlinux.kpart
+echo ""
+echo "for single boot only testing:"
+echo ""
+echo "  dd if=/boot/vmlinux.kpart-initrd-${kver} of=/dev/mmcblk0p2"
+echo "  cgpt add -i 2 -S 0 -T 1 -P 15 /dev/mmcblk0"
+echo ""
+echo "to always boot this kernel after successful testing:"
 echo ""
 echo "  dd if=/boot/vmlinux.kpart-initrd-${kver} of=/dev/mmcblk0p1"
 echo ""
