@@ -5,6 +5,7 @@
 #
 
 ENABLED=$(cat /sys/module/zswap/parameters/enabled)
+ZPERCENTAGE=$(cat /sys/module/zswap/parameters/max_pool_percent)
 COMPRESSOR=$(cat /sys/module/zswap/parameters/compressor)
 ZPOOL=$(cat /sys/module/zswap/parameters/zpool)
 PAGE_SIZE=$(getconf PAGE_SIZE)
@@ -29,6 +30,7 @@ else
 fi
 
 echo "Zswap enabled:            $ENABLED"
+echo "Percentage:               $ZPERCENTAGE"
 echo "Compressor:               $COMPRESSOR"
 echo "Zpool:                    $ZPOOL"
 echo
