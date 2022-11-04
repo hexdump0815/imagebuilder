@@ -68,15 +68,9 @@ see also https://github.com/hexdump0815/imagebuilder/issues/79 for all above
   - 2: linux-big-fhd - nyan big with the full hd 1920x1080 screen
   - 3: linux-blaze - nyan blaze with the 1366x768 screen (not sure if there is maybe a full hd version of the blaze as well?)
 - some nyan big related issue with some info: https://github.com/hexdump0815/imagebuilder/issues/6
-- the nouveau gpu driver does not work too well (artifacts sometimes and glmark2 haengs at some point with memory allocation problems on the 4gb model) and is thus disabled by default
-- for the nouveau mesa opengl driver a newer version of the xorg server is required
-- the thermal cpu throttling is not working yet and the cpu frequency is limited to 1.7 ghz in /etc/rc.local for now to avoid automatic shutdown due to overheating in case of constant full load (fixed for v5.18+ kernels)
-- with the mainline kernel after suspend/resume the display is not properly reenabled
-  - there is an ugly hack implemented to bring it back via xrandr hook (see: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_nyan/extra-files/lib/systemd/system-sleep/mrvl-and-edp-reload )
-- deep suspend does not seem work with the mainline kernel and the suspend to idle (s2idle) used in the images so far does not seem to save a lot of energy (it drained about 50% of the battery in around 5 hours)
-  - update: with the v5.18.1 kernel s2idle suspend uses about 4% battery per hour, so should be fine to keep it alive when moving from a to b or over night, sadly it is not really reliable and sometimes does not come back from resume
-- hibernation (suspend to disk) does not seem to work with the mainline kernel neither, it at least fails to restore the display on resume and maybe even crashes (no more details due to missing serial console)
-- for more info about the suspend/resume topic see the todo.txt file
+- for more info about xorg gpu support see doc/xorg-and-nouveau.md
+- for more info about the suspend/resume topic see doc/suspend-resume.md
+- the thermal cpu throttling was not working with older kernels and the cpu frequency was limited to 1.7 ghz in /etc/rc.local to avoid automatic shutdown due to overheating in case of constant full load (fixed for v5.18+ kernels)
 - in the past (up to including debian bullseye and ubuntu focal) display gamma and color profile settings (night/red shift mode, display color calibration etc.) were not working at all on arm systems and it seems like starting with debian bookworm it is now working on systems with the proper support for it - sadly on this system it is not supported as the kernel support for it seems to be missing
 - the write protect screw of the cb5 311 (nyan-big) is not that easy to find: there is a screw marked 'jp10' on the board, this one has to be removed und the metal sticker has to be peeled off in order to remove the hardware write protection
 - especially the acer cb5 311 chromebook (nyan-big) seems to have problems with battery calibration and quite often thinks that the battery is dead after it had not been used for a while - one possible solution might be the following:
