@@ -17,6 +17,10 @@ and it comes from the issue 3505 mentioned in the links section below
   early 2021 and use that instead of the dist xorg server, this worked quite
 ok, but ran into strange memory allocation errors on 4gb ram nyan systems
 (again see the below mentioned issue 3505 for more details)
+- this xorg server dev build requires some extra input config files for the
+  nyan big keyboard and usb keyboard and mouse to work:
+/etc/X11/xorg.conf.d.samples/51-newer-xorg-chromebook-kbd.conf and
+/etc/X11/xorg.conf.d.samples/51-newer-xorg-old-input.conf
 - the xorg server coming with bookworm currently (1.21.1.4) does not seem to
   work with mesa 22.x resulting in some strange alocation errors etc. even
 with glxgears and glmark2
