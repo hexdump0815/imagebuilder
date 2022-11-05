@@ -215,3 +215,15 @@ processes and with them usually the whole org session, so not a good base for
 using it as a desktop ... there were some locking errors in dmesg as well, so
 some deeper investigation might be required to get this going
 - info: v6.0.0 kernel, debian bookworm, 2gb ram, 32gb a1 sd card
+
+# rockchip rk33xx - pinebook pro - october/november 2022
+
+- tested for about a week
+- it was working surprisingly well and reliable
+- notes: it was as useable as the blooglet and the kappa before due to the 6
+  cpu cores and 4gb of ram - using the system is really comfortable ... i did
+some experiments with increasing the zswap percentage to 33 while setting the
+swap space to 200% ram (i.e. 8gb) and it seemed to work quite well and it
+looks like as a result less data was actually writte to the physical swap
+space
+- info: v6.0.0 kernel, debian bookworm, 4gb ram, 64gb emmc
