@@ -66,7 +66,8 @@ fi
 # on low end systems with high memory and cpu pressure it might be a
 # good idea to disable/comment this as otherwise the system might start
 # to kill processes via the oom killer when one would not really expect
-# it
+# it ... for systems with 4gb or memory of more 1000 might be a better
+# value here and still reliable
 if [ -f /sys/kernel/mm/lru_gen/min_ttl_ms ]; then
   echo 100 > /sys/kernel/mm/lru_gen/min_ttl_ms
 fi
