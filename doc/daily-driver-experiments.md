@@ -214,6 +214,9 @@ but as soon as firefox got used a bit heavier the kernel oom killed a lot of
 processes and with them usually the whole org session, so not a good base for
 using it as a desktop ... there were some locking errors in dmesg as well, so
 some deeper investigation might be required to get this going
+update: it looks like setting "echo 100 > /sys/kernel/mm/lru_gen/min_ttl_ms"
+or even set this to 0 can mitigate the problem a bit but looks like even with
+that some oom kills can still happen under high cpu and memory pressure
 - info: v6.0.0 kernel, debian bookworm, 2gb ram, 32gb a1 sd card
 
 # rockchip rk33xx - pinebook pro - october/november 2022

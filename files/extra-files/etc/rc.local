@@ -63,8 +63,12 @@ fi
 
 # if the mglru patches are in place, then setting this might be good
 # for interactive usage as a thrashing prevention
+# on low end systems with high memory and cpu pressure it might be a
+# good idea to disable/comment this as otherwise the system might start
+# to kill processes via the oom killer when one would not really expect
+# it
 if [ -f /sys/kernel/mm/lru_gen/min_ttl_ms ]; then
-  echo 1000 > /sys/kernel/mm/lru_gen/min_ttl_ms
+  echo 100 > /sys/kernel/mm/lru_gen/min_ttl_ms
 fi
 
 # see: https://forum.armbian.com/topic/20018-mglru-patches-to-bring-down-kswapd-cpu-usage/?do=findComment&comment=141847
