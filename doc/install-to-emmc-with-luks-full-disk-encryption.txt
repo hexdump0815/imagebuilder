@@ -217,6 +217,7 @@ XZ_OPT='-9 --check=crc32 –memlimit-compress=25%'
 
 # to be on the safe side: make sure cryptsetup-initramfs is installed (it looks like
 # some older images did for some reason not have it installed
+#apt-get update
 #apt-get -y install cryptsetup-initramfs
 # rebuild initrd for all kernels to have the crypttab setup in it
 # IMPORTANT: if that returns immediately use the kernel version found in /boot
