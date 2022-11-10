@@ -99,13 +99,13 @@ and thus it is recommended to use high quality usb devices like sandisk ultra.
   scaling to 1280x800
 - info: v5.18.10 kernel, debian bookworm, 4gb ram, 64gb emmc
 
-# chromebook octopus - bloog - september 2022
+# chromebook x86 uefi - bloog - september 2022
 
 - tested for about a week
 - it was working surprisingly well and reliable
 - notes: i started running from sd card which did not perform too well, but 
   since moving to emmc everything seemed to run perfectly fine
-- info: v5.19.6 kernel, debian bookworm, 4gb ram, 64gb emmc
+- info: v5.19.6 kernel, debian bookworm, 4gb ram, 64gb emmc, n4000 2 core cpu
 
 # chromebook snow - september 2022
 
@@ -177,10 +177,14 @@ cores - 4xa53 at 1.2ghz), but it was at least as slow if not even slower than
 that, most proably still quite useable for lighter load (just a few tabs in
 firefox etc.) but not really in the tested scenario. again due to the only 2gb
 of ram a 32bit userland was used to keep memory usage lower.
+- update: i retested this one when i retested the odroid u3 with the mglru
+  min_ttl_ms option, but it did not help - interestingly it seemed to use much
+more memory on 32bit i686 than on 32bit armv7l for some strange reason which
+resulted in it reaching the limits of useability earlier
 - info: v6.0.0 kernel, debian bookworm (32bit i686 userland), 2gb ram, 32gb
   emmc
 
-# chromebook octopus - blooglet - october 2022
+# chromebook x86 uefi - blooglet - october 2022
 
 - tested for about two weeks
 - it was working surprisingly well and reliable
@@ -189,7 +193,7 @@ of ram a 32bit userland was used to keep memory usage lower.
 recommended for daily use if possible - with those specs using the system is
 really comfortable compared to everything with lower specs
 - info: v6.0.0 kernel, debian bookworm, 4gb ram, 64gb emmc, broken keyboard,
-  so it was used with usb kbd and mouse
+  so it was used with usb kbd and mouse, n5000 4 core cpu
 
 # chromebook kukui - kappa - october 2022
 
@@ -214,9 +218,9 @@ but as soon as firefox got used a bit heavier the kernel oom killed a lot of
 processes and with them usually the whole org session, so not a good base for
 using it as a desktop ... there were some locking errors in dmesg as well, so
 some deeper investigation might be required to get this going
-update: it looks like setting "echo 100 > /sys/kernel/mm/lru_gen/min_ttl_ms"
-or even set this to 0 can mitigate the problem a bit but looks like even with
-that some oom kills can still happen under high cpu and memory pressure
+- update: it looks like setting "echo 100 > /sys/kernel/mm/lru_gen/min_ttl_ms"
+  or even set this to 0 can mitigate the problem a bit but looks like even
+with that some oom kills can still happen under high cpu and memory pressure
 - info: v6.0.0 kernel, debian bookworm, 2gb ram, 32gb a1 sd card
 
 # rockchip rk33xx - pinebook pro - october/november 2022
@@ -230,3 +234,18 @@ swap space to 200% ram (i.e. 8gb) and it seemed to work quite well and it
 looks like as a result less data was actually writte to the physical swap
 space
 - info: v6.0.0 kernel, debian bookworm, 4gb ram, 64gb emmc
+
+# chromebook x86 mbr - lenovo thinkpad x201 - november 2022
+
+- tested for about a week
+- it was working well and reliable
+- notes: it was as useable as the other systems with 64bit cpu, 4gb ram and
+  a reasonable fast cpu - using the system is comfortable ... i did some more
+experiments with increasing the zswap percentage to 33 while setting the
+swap space to 200% ram (i.e. 8gb) and it seemed to work quite well, but did
+not really give any really strong advantage ... it was interesting and a bit
+annoying to use a system with a fan again after nearly only using fanless ones
+for the last months if not years, a custom thinkfan config helped a bit, but
+a system without a fan is way nicer ...
+- info: v6.0.0 kernel, debian bookworm, 4gb ram, 80gb ssd, i5 m520 2/4 core
+  cpu
