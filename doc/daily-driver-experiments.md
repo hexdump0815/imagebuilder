@@ -243,9 +243,9 @@ space
   a reasonable fast cpu - using the system is comfortable ... i did some more
 experiments with increasing the zswap percentage to 33 while setting the
 swap space to 200% ram (i.e. 8gb) and it seemed to work quite well, but did
-not really give any really strong advantage ... it was interesting and a bit
-annoying to use a system with a fan again after nearly only using fanless ones
-for the last months if not years, a custom thinkfan config helped a bit, but
-a system without a fan is way nicer ...
+not give any really strong advantage ... it was interesting and a bit annoying
+to use a system with a fan again after nearly only using fanless ones for the
+last months if not years, a custom thinkfan config helped a bit, but a system
+without a fan is way nicer ...
 - info: v6.0.0 kernel, debian bookworm, 4gb ram, 80gb ssd, i5 m520 2/4 core
   cpu
