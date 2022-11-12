@@ -32,6 +32,7 @@
 
 - to change the screen orientation to landscape mode by default /etc/lightdm/lighdm.conf needs to be adjusted by uncommenting the corresponding shell script for supported devices
 - some things relevant for the dell venue 8 pro:
+  - to enter the bios press esc often on poweron and as soon as the dell logo appears press f2
   - bluetooth and the cameras are not supported yet
   - be careful with the micro-usb connector as it is the rare type-a version into which a type-b plug can easily inserted the wrong way around which most probably would kill the device
   - there is a lot of information about running linux on the dellvenue 8 pro at https://www.studioteabag.com/science/dell-venue-pro-linux/
