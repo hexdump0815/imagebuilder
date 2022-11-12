@@ -221,6 +221,15 @@ some deeper investigation might be required to get this going
 - update: it looks like setting "echo 100 > /sys/kernel/mm/lru_gen/min_ttl_ms"
   or even set this to 0 can mitigate the problem a bit but looks like even
 with that some oom kills can still happen under high cpu and memory pressure
+- update: some more investigation showed that the problem seems to be a system
+  with little memory, enabled zswap with a high percentage configured and
+enabling mglru seems to make things worse - zswap at 33%, mglru disabled
+seems to end in oom kills, zswap 20% and no mgrlu seems to still run well,
+zswap 20% and mglru enabled seems to end in oom kills and zswap disabled and
+mglru enabled seems to work well - all this is with
+/proc/sys/vm/watermark_boost_factor and /sys/kernel/mm/lru_gen/min_ttl_ms
+set to 0 - this seems to apply to at least all 32bit armv7l systems with only
+2gb of ram (but maybe other combinations are affected as well)
 - info: v6.0.0 kernel, debian bookworm, 2gb ram, 32gb a1 sd card
 
 # rockchip rk33xx - pinebook pro - october/november 2022
