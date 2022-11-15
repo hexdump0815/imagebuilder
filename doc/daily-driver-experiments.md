@@ -230,6 +230,9 @@ mglru enabled seems to work well - all this is with
 /proc/sys/vm/watermark_boost_factor and /sys/kernel/mm/lru_gen/min_ttl_ms
 set to 0 - this seems to apply to at least all 32bit armv7l systems with only
 2gb of ram (but maybe other combinations are affected as well)
+- update: the oom kill problem is finally solved thanks to the mglru author
+yu zhao and quite a bit of testing - see:
+https://github.com/hexdump0815/imagebuilder/commit/149edb06d079043645971e2a43ca35276ac4e04e
 - info: v6.0.0 kernel, debian bookworm, 2gb ram, 32gb a1 sd card
 
 # rockchip rk33xx - pinebook pro - october/november 2022
@@ -258,3 +261,15 @@ last months if not years, a custom thinkfan config helped a bit, but a system
 without a fan is way nicer ...
 - info: v6.0.0 kernel, debian bookworm, 4gb ram, 80gb ssd, i5 m520 2/4 core
   cpu
+
+# chromebook nyan - big - november 2022
+
+- tested for a few days
+- it was working well and reliable, but not that fast due to only 2gb ram
+- notes: it was not as nicely useable as the systems with 4gb ram but it was
+  still useable ... mglru had been disabled due to the mysterious oom kill
+issues already seen on the odroid u3 and meanwhile sorted out (see the odroid
+u3 entry above for details) but it should be possible to reenable mglru
+again after switching zswap to zsmalloc to gain some extra performance and
+response
+- info: v6.1-rc3 kernel, debian bookworm, 2gb ram, 32gb emmc
