@@ -215,14 +215,15 @@ vi /etc/initramfs-tools/conf.d/compress
 COMPRESS=xz
 XZ_OPT='-9 --check=crc32 –memlimit-compress=25%'
 
+# rebuild initrd for all kernels to have the crypttab setup in it
 # to be on the safe side: make sure cryptsetup-initramfs is installed (it looks like
 # some older images did for some reason not have it installed
-#apt-get update
-#apt-get -y install cryptsetup-initramfs
-# rebuild initrd for all kernels to have the crypttab setup in it
+apt-get update
+apt-get -y install cryptsetup-initramfs
+update-initramfs -c -k all
 # IMPORTANT: if that returns immediately use the kernel version found in /boot
-# like 5.10.50-stb-mt7+ instead of all - this most probably willbe the normal case
-#update-initramfs -c -k all
+# like 5.10.50-stb-mt7+ instead of all - this most probably will be the normal case
+# for self built and non packaged kernels
 update-initramfs -c -k 5.10.50-stb-mt7+
 
 # 64bit aarch64 chromebook special section
