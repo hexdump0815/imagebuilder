@@ -273,3 +273,11 @@ u3 entry above for details) but it should be possible to reenable mglru
 again after switching zswap to zsmalloc to gain some extra performance and
 response
 - info: v6.1-rc3 kernel, debian bookworm, 2gb ram, 32gb emmc
+
+# chromebook kukui - juniper - novemeber 2022
+
+- tested for a few days
+- it was working surprisingly well and reliable
+- notes: as expected exactly as useable as kappa above, even including the
+  usb hub and mouse problems :)
+- info: v6.0.0 kernel, debian bookworm, 4gb ram, 64gb emmc
