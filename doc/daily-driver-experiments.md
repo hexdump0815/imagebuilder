@@ -181,6 +181,10 @@ of ram a 32bit userland was used to keep memory usage lower.
   min_ttl_ms option, but it did not help - interestingly it seemed to use much
 more memory on 32bit i686 than on 32bit armv7l for some strange reason which
 resulted in it reaching the limits of useability earlier
+- update: i retested this one with the zsmalloc zswap option and it seems to
+  be a bit more useable, but it still is quite slow to use not at last due to
+the only 2gb of ram i think - arm systems seem to be able to deal a bit better
+with 2gb or ram and 32bit userland than x86 it seems
 - info: v6.0.0 kernel, debian bookworm (32bit i686 userland), 2gb ram, 32gb
   emmc
 
