@@ -161,6 +161,23 @@ section of the bios. please keep in mind that the sd card might appear there
 named like "generic usb device" as the sd card slot might be connected via usb
 internally.
 
+#### setting gbb flags
+
+if the flash rom write protection is already removed it is recommended to set
+the gbb flags to 0x1499 - for more information about this topic see:
+https://github.com/hexdump0815/linux-mainline-on-arm-chromebooks
+
+this values i built from the following enabled flags:
+```
+VB2_GBB_FLAG_DEV_SCREEN_SHORT_DELAY - 0x1
+VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON - 0x8
+VB2_GBB_FLAG_FORCE_DEV_BOOT_USB - 0x10
+VB2_GBB_FLAG_FORCE_DEV_BOOT_ALTFW - 0x80
+VB2_GBB_FLAG_DEFAULT_DEV_BOOT_ALTFW - 0x400
+VB2_GBB_FLAG_DISABLE_LID_SHUTDOWN - 0x1000
+```
+see: https://github.com/MrChromebox/scripts/issues/89#issuecomment-1252758487
+
 ### replace the bootloader entirely with one only supporting uefi
 
 in case write protection to the firmware flash has already been disabled it is
