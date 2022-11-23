@@ -89,6 +89,9 @@ and thus it is recommended to use high quality usb devices like sandisk ultra.
   (kernel memory allocation issues) with it as soon as firefox was used heavily
   - besides that firefox had to be restarted after about 3 days due to too high
   memory usage most probably due to memory leaks in firefox
+- update: it looks like the panfrost driver isssues were due to using the
+  z3fold pool allocator for zswap - using zsmalloc instead seems to not bring
+up such problems - see the odroid u3 entry below for more details
 - info: v5.19.3 kernel, debian bookworm, 2gb ram, 16gb emmc
 
 # chromebook kukui - krane - september 2022
@@ -122,7 +125,7 @@ the limiting factor here
 - it was working reliable and quite ok
 - notes: after a while of use the system stalls for a moment from time to time
   and i initially suspected it to be panfrost related again as on rk3288, but
-after disabling panfrost the stalls still aprreared from time to time and the
+after disabling panfrost the stalls still appeared from time to time and the
 reason seems to be that i was running from an sd card instead of emmc and the
 stalls seem to happen whenever data is being written to the swap file - so it
 looks like even the better a1 rated sd cards are still far behind emmc even if
@@ -185,6 +188,11 @@ resulted in it reaching the limits of useability earlier
   be a bit more useable, but it still is quite slow to use not at last due to
 the only 2gb of ram i think - arm systems seem to be able to deal a bit better
 with 2gb or ram and 32bit userland than x86 it seems
+- update: it looks like my test case simply gets a bit too heavy for systems
+  with 2gb of ram as using a rk3288 veyron chromebook with also 2gb ram again
+later showed the same slowness due to zswap spending a significant amount of
+time for compressing/decompressing memory - for lighter load such systems
+should still be quite useable
 - info: v6.0.0 kernel, debian bookworm (32bit i686 userland), 2gb ram, 32gb
   emmc
 
@@ -285,3 +293,31 @@ response
 - notes: as expected exactly as useable as kappa above, even including the
   usb hub and mouse problems :)
 - info: v6.0.0 kernel, debian bookworm, 4gb ram, 64gb emmc
+
+# chromebook x86 uefi - kefka - november 2022
+
+- tested for about a week
+- it was working very well and reliable, but there were some problems
+- notes: everything was working quite well and fluid due to 4gb ram and even
+  with 2 cores it seemed to be quite ok, but there seem to be some bugs in
+the used debian bookworm: one is related to the current firefox-esr 102 which
+seems to kind of hang after some time (i.e. getting very very slowly
+responding, no messages anywhere and everything else is working fine - found
+a few other reports about problems with this version currently as well) and
+the other bug seems to be related to the i915 drm and/or gpu driver which
+results in a black screen from time to time with the message "[drm] *ERROR*
+CPU pipe A FIFO underrun" - a suspend/resume cycle usually brought the display
+back reliably (found a few other reports about such problems as well)
+- info: v6.0.9 kernel, debian bookworm, 4gb ram, 32gb emmc, n3060 2 core cpu
+
+# chromebook veyron - jaq - november 2022
+
+- tested for a day
+- it was working ok, but quite slow - close to too slow
+- notes: it looks like 2gb or ram is a bit too little for my current workload
+  meanwhile, panfrost was enabled again and everything was working fine this
+time, most probably because the zsmalloc zswap pool allocator was used instead
+of the more problematic z3fold one used before, zswap percentage of 33 seemed
+to work best as it resulted in close to no real swap to disk which still slows
+down the system even more when using lower zswap values on a 2gb ram system
+- info: v6.0.0 kernel, debian bookworm, 2gb ram, 16gb emmc
