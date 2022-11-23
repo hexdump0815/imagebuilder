@@ -320,4 +320,7 @@ time, most probably because the zsmalloc zswap pool allocator was used instead
 of the more problematic z3fold one used before, zswap percentage of 33 seemed
 to work best as it resulted in close to no real swap to disk which still slows
 down the system even more when using lower zswap values on a 2gb ram system
+- update: right after writing this i got kernel messages which look like the
+  old panfrost problems again, so it might be a good idea to keep it off in
+case the system is not stable otherwise ...
 - info: v6.0.0 kernel, debian bookworm, 2gb ram, 16gb emmc
