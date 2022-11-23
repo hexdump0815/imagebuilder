@@ -33,6 +33,13 @@ memory. for systems with only 2gb of ram it might make sense to increase the
 zswap percentage to 20% resulting in about one third of extra (virtually)
 available memory. the zswap memory compression ratio seems to end up around
 2.5-3 with the settings used for real world usage.
+- switching the zswap pool allocation from z3fold to zsmalloc did not only
+  solve problems with 32bit armv7l systems (see odroid u3 entry below for
+more info) but also increased the memory compression level which can be
+achieved (as with zsmalloc more than 1:3 is possible for well compressable
+memory areas) from around 2.5-3 for z3fold to 3.5-4 (armv7l) or even around
+5 (x86_64) in real world desktop scenarios ... good zswap percentages seem to
+be 20 for 4gb or more or 33 for 2gb
 - the swap file should be of about the size of the ram size as a good starting
 point - less might result in processes being killed from time to time due to
 short bursts of high memory usage and more might result in a very slow system
@@ -46,7 +53,7 @@ than can be made available by compression) - see /scripts/zswap-status.sh to
 see how much is really written to the swap file (usually much less than what
 is shown in 'top' or 'free'. if there is enough disk space available it might
 be even with 4gb ram or more a good idea to size the swap space as 150% of the
-physical memory.
+physical memory or even better as 200%.
 - btrfs transparent filesystem compression helps quite well with the usually
   rather small storage sizes of chromebooks or other small devices by
 providing around 50%-100% more (virtual) disk space depending on what files
