@@ -290,7 +290,11 @@ without a fan is way nicer ...
 issues already seen on the odroid u3 and meanwhile sorted out (see the odroid
 u3 entry above for details) but it should be possible to reenable mglru
 again after switching zswap to zsmalloc to gain some extra performance and
-response
+response ... during the testing glamor (i.e. the gpu) was disabled in xorg
+and the regular debian bookworm mesa and xorg were used as otherwise firefox
+did crash from time to time
+- update: as assumed with zswap set to zsmalloc the system was running stable
+  again, even with mglru enabled during some retesting
 - info: v6.1-rc3 kernel, debian bookworm, 2gb ram, 32gb emmc
 
 # chromebook kukui - juniper - novemeber 2022
