@@ -319,6 +319,8 @@ the other bug seems to be related to the i915 drm and/or gpu driver which
 results in a black screen from time to time with the message "[drm] *ERROR*
 CPU pipe A FIFO underrun" - a suspend/resume cycle usually brought the display
 back reliably (found a few other reports about such problems as well)
+- update: it looks like intel_idle.max_cstate=3 or =4 might help to avoid the
+  above mentioned gpu problems (not yet tested)
 - info: v6.0.9 kernel, debian bookworm, 4gb ram, 32gb emmc, n3060 2 core cpu
 
 # chromebook veyron - jaq - november 2022
@@ -337,3 +339,17 @@ kefka came along on jaq after a while of usage as well ...
   old panfrost problems again, so it might be a good idea to keep it off in
 case the system is not stable otherwise ...
 - info: v6.0.0 kernel, debian bookworm, 2gb ram, 16gb emmc
+
+# chromebook x86 uefi - clapper - november 2022
+
+- tested for about a week
+- it was working very well, fluid and reliable
+- notes: not much to say, it simply worked very well without any of the
+  problems observed with kefka above - the only ajustment was a custom
+modprobe config required to avoid a bug with baytrail and braswell based
+systems where there audio will switch to a beeping sound after some minutes
+usually which can be worked around by uncommenting a line in the
+sound-byt-cht.conf modprobe config file (and which was required for kefka
+above as well in the end) ... zswap was used with 20% zsmalloc and a 4gb swap
+file plus mglru was enabled and those settings worked very well
+- info: v6.0.0 kernel, debian bookworm, 4gb ram, 16gb emmc, n2830 2 core cpu
