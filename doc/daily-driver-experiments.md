@@ -38,8 +38,8 @@ available memory. the zswap memory compression ratio seems to end up around
 more info) but also increased the memory compression level which can be
 achieved (as with zsmalloc more than 1:3 is possible for well compressable
 memory areas) from around 2.5-3 for z3fold to 3.5-4 (armv7l) or even around
-5 (x86_64) in real world desktop scenarios ... good zswap percentages seem to
-be 20 for 4gb or more or 33 for 2gb
+5 (aarch64/x86_64) in real world desktop scenarios ... good zswap percentages
+seem to be 20 for 4gb of ram or more or 33 for 2gb of ram
 - the swap file should be of about the size of the ram size as a good starting
 point - less might result in processes being killed from time to time due to
 short bursts of high memory usage and more might result in a very slow system
@@ -319,6 +319,10 @@ the other bug seems to be related to the i915 drm and/or gpu driver which
 results in a black screen from time to time with the message "[drm] *ERROR*
 CPU pipe A FIFO underrun" - a suspend/resume cycle usually brought the display
 back reliably (found a few other reports about such problems as well)
+- update: a custom modprobe config is required to avoid a bug with baytrail
+  and braswell based systems where their audio will switch to a beeping sound
+after some minutes usually which can be worked around by uncommenting a line
+in the sound-byt-cht.conf modprobe config file
 - update: it looks like intel_idle.max_cstate=3 or =4 might help to avoid the
   above mentioned gpu problems (not yet tested)
 - info: v6.0.9 kernel, debian bookworm, 4gb ram, 32gb emmc, n3060 2 core cpu
@@ -347,9 +351,20 @@ case the system is not stable otherwise ...
 - notes: not much to say, it simply worked very well without any of the
   problems observed with kefka above - the only ajustment was a custom
 modprobe config required to avoid a bug with baytrail and braswell based
-systems where there audio will switch to a beeping sound after some minutes
+systems where their audio will switch to a beeping sound after some minutes
 usually which can be worked around by uncommenting a line in the
 sound-byt-cht.conf modprobe config file (and which was required for kefka
 above as well in the end) ... zswap was used with 20% zsmalloc and a 4gb swap
 file plus mglru was enabled and those settings worked very well
 - info: v6.0.0 kernel, debian bookworm, 4gb ram, 16gb emmc, n2830 2 core cpu
+
+# chromebook oak - hana - november/december 2022
+
+- tested for a few days
+- it was working very well, fluid and reliable
+- notes: not much to say, it just worked as expected without any real problems
+  and has a very good battery life of 10-12 hours if just lightly used - the
+only thing to keep in mind is that there is still no support for its gpu in
+the mainline kernel and mesa, but for normal web, shell and office usage this
+does not really have any negative impact
+- info: v6.0.0 kernel, debian bookworm, 4gb ram, 32gb emmc
