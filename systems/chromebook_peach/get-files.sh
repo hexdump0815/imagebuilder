@@ -19,7 +19,7 @@ wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/r
 rm -rf ${DOWNLOAD_DIR}/boot-extra-${1}
 mkdir -p ${DOWNLOAD_DIR}/boot-extra-${1}
 cp ${DOWNLOAD_DIR}/boot-chromebook_peach-armv7l.dd ${DOWNLOAD_DIR}/boot-extra-${1}/uboot.kpart.cbe-peach-pit
-wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_peach_pi_uboot_version}/uboot.kpart.cbe-peach-pi.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/uboot.kpart.cbe-peach-pi
+wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_peach_pi_uboot_version}/uboot.kpart.cbe-peach-pi.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/uboot.kpart.cbe-peach-pi
 
 rm -f ${DOWNLOAD_DIR}/opengl-chromebook_peach-armv7l.tar.gz
 wget -v https://github.com/hexdump0815/linux-mainline-and-mali-exynos5422-kernel/raw/${chromebook_peach_mali_blob_version}/misc.e54/opt-mali-exynos5422-armv7l.tar.gz -O ${DOWNLOAD_DIR}/opengl-chromebook_peach-armv7l.tar.gz
