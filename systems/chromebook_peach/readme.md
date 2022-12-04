@@ -42,4 +42,5 @@ see also https://github.com/hexdump0815/imagebuilder/issues/80 for all above
 - the current sound setup is not complete yet:
   - internal mic and headset mic do not work yet, so better use a small usb audio interface for a headset or a mic if needed for now
 - the mali gpu is only supported via the legacy mali blob as it is not yet supported by the open source panfrost mali driver
+- the peach chromebooks seem to not boot properly with all sd cards ... if booting does not work it might be worth to try different sd cards ... older and smaller ones seem to have the higher chance to work well
 - the battery of the snow chromebook (xe303c12) seems to be interchangable with the battery of the peach pit chromebook (xe503c12)
