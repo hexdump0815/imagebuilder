@@ -325,6 +325,9 @@ after some minutes usually which can be worked around by uncommenting a line
 in the sound-byt-cht.conf modprobe config file
 - update: it looks like intel_idle.max_cstate=3 or =4 might help to avoid the
   above mentioned gpu problems (not yet tested)
+- update: max_cstate 4 and 3 did not fix the screen blanking issue, testing 2
+  now ... at least the firefox 102-esr problem should be addressed in a future
+firefox version - see: https://bugzilla.mozilla.org/show_bug.cgi?id=1781167
 - info: v6.0.9 kernel, debian bookworm, 4gb ram, 32gb emmc, n3060 2 core cpu
 
 # chromebook veyron - jaq - november 2022
