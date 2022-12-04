@@ -9,15 +9,13 @@
 ## tested systems - working
 
 - samsung chromebook xe503c12 - peach pit
+- samsung chromebook xe503c32 - peach pi
 
 see also https://github.com/hexdump0815/imagebuilder/issues/80 for all above
 
 ## untested systems
 
-- samsung chromebook xe503c32 - peach pi
-
-  - might work with a bit of luck
-  - u-boot.kpart in /boot/extra - untested too
+- none, there are only the above two peach systems
 
 ## generic mainline linux on arm chromebook notes
 
@@ -44,4 +42,4 @@ see also https://github.com/hexdump0815/imagebuilder/issues/80 for all above
 - the current sound setup is not complete yet:
   - internal mic and headset mic do not work yet, so better use a small usb audio interface for a headset or a mic if needed for now
 - the mali gpu is only supported via the legacy mali blob as it is not yet supported by the open source panfrost mali driver
-- the battery of the snow chromebook (xe303c12) seems to be interchangable with the battery of the peach chromebook (xe503c12)
+- the battery of the snow chromebook (xe303c12) seems to be interchangable with the battery of the peach pit chromebook (xe503c12)
