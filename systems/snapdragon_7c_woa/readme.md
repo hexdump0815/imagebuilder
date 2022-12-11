@@ -41,3 +41,9 @@
   - booting from usb seems to be quite selective on the device used: a sandisk ultra stick was detected only at around each 10th try, some no name slow cheap usb device worked much better, so some experimentation might be required
   - the right usb-c port (left not tested yet) is also working if some usb-c hub or adapter is connected to it while booting, this way a usb hub can be used to connect a mouse and usb ethernet
   - working so far: display framebuffer, keyboard (needs some key press during boot to get rid of logged errors), usb-a, usb-c (if connected together with usb-a at boot time already)
+  - some interesting info: https://github.com/aarch64-laptops/debian-cdimage/issues/21
+- acer aspire 1 a114-61 notes:
+  - the started mainline port for it by nikita travkin (travmurav):
+    - https://github.com/TravMurav/linux/tree/aspire1
+    - https://gitlab.com/TravMurav/pmaports/-/tree/aspire1/device/testing/linux-postmarketos-qcom-sc7180
+    - https://gitlab.com/TravMurav/pmaports/-/tree/aspire1/device/testing/device-acer-aspire1
