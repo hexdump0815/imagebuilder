@@ -328,6 +328,9 @@ in the sound-byt-cht.conf modprobe config file
 - update: max_cstate 4 and 3 did not fix the screen blanking issue, testing 2
   now ... at least the firefox 102-esr problem should be addressed in a future
 firefox version - see: https://bugzilla.mozilla.org/show_bug.cgi?id=1781167
+- update: it looks like intel_idle.max_cstate=2 seems to fix the blank display
+  issues - at least it was running without any problems for a few days this
+way
 - info: v6.0.9 kernel, debian bookworm, 4gb ram, 32gb emmc, n3060 2 core cpu
 
 # chromebook veyron - jaq - november 2022
