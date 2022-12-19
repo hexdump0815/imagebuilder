@@ -16,6 +16,7 @@
 - asus chromebook c201 - speedy
 - asus chromebook c100 - minnie
   - see also: https://github.com/hexdump0815/imagebuilder/issues/16
+- hisense chromebook 11 - jerry
 
 see also https://github.com/hexdump0815/imagebuilder/issues/81 for all above
 
@@ -29,7 +30,6 @@ see also https://github.com/hexdump0815/imagebuilder/issues/81 for all above
 - ctl j2 / j4 chromebook for education - jerry
 - edugear chromebook k series - jerry
 - epik 11.6" chromebook elb1101 - jerry
-- hisense chromebook 11 - jerry
 - mecer chromebook - jerry
 - ncomputing chromebook cx100 - jerry
 - poin2 chromebook 11 - jerry
