@@ -229,9 +229,8 @@ update-initramfs -c -k 5.10.50-stb-mt7+
 # 64bit aarch64 chromebook special section
 
 # this section is required for chromebooks using fit images on aarch64 (gru, oak, kukui etc.)
-# the below examples are for oak and kukui and needs to be adjusted accordingly - other
-# 64bit chromebooks like gru, trogdor etc. need similar steps ... it can then be put into a
-# script /boot/kernel-and-initrd.sh ... this needs to be run whenever a new kernel is being
+# the below example needs to be adjusted accordingly (see comments) ... it can then be put into
+# a script /boot/kernel-and-initrd.sh ... this needs to be run whenever a new kernel is being
 # built ... vmlinux.kpart-initrd-${kver} will be the chromeos style kernel image for the
 # chromeos kernel partition which contains the initrd with the cryptsetup info - without this
 # it will not be possible to access the crypted root disk - so run it already once after
@@ -240,13 +239,15 @@ update-initramfs -c -k 5.10.50-stb-mt7+
 # IMPORTANT: the resulting vmlinux.kpart-initrd... files has to be smaller than 32mb for
 #            aarch64 systems and smaller than 16mb for armv7l systems - thus its nearly
 #            impossible to do this on a armv7l system as the initrd is usually too big
+#            (for exynos armv7l devices the size limit seems to be even 8mb)
 # it might be a good idea to remove the "quiet splash" kernel cmdline options in the echo line
 # for a more verbose boot which makes debugging possible problems easier
 
-oak example:
+kukui example (others as comments - for some the device is mmcblk0 and for others mmcblk1):
 #!/bin/bash
 
-kver="5.10.50-stb-mt7+"
+# adjust to kernel version and name here
+kver="6.1.0-stb-mt8+"
 
 cd /boot
 cp -v vmlinux.kpart-initrd-${kver} vmlinux.kpart-initrd-${kver}.old
@@ -255,39 +256,18 @@ lzma -9 -z -f -k -v Image
 cp initrd.img-${kver} initrd.img.xz
 echo "console=tty1 root=LABEL=rootemmc rootwait ro fsck.fix=yes fsck.repair=yes net.ifnames=0 ipv6.disable=1 quiet splash" > cmdline
 dd if=/dev/zero of=bootloader.bin bs=512 count=1
-ls dtb-${kver}/mt8173-*.dtb | xargs printf " -b %s" | xargs mkimage -D "-I dts -O dtb -p 2048" -f auto -A arm64 -O linux -T kernel -C lzma -a 0 -d Image.lzma -i initrd.img.xz kernel.itb
-vbutil_kernel --pack vmlinux.kpart --keyblock /usr/share/vboot/devkeys/kernel.keyblock --signprivate /usr/share/vboot/devkeys/kernel_data_key.vbprivk --version 1 --config cmdline --bootloader bootloader.bin --vmlinuz kernel.itb --arch arm
-cp -v vmlinux.kpart /boot/vmlinux.kpart-initrd-${kver}
-rm -f Image Image.lzma initrd.img.xz cmdline bootloader.bin kernel.itb vmlinux.kpart
-echo ""
-echo "for single boot only testing:"
-echo ""
-echo "  dd if=/boot/vmlinux.kpart-initrd-${kver} of=/dev/mmcblk0p2"
-echo "  cgpt add -i 2 -S 0 -T 1 -P 15 /dev/mmcblk0"
-echo ""
-echo "to always boot this kernel after successful testing:"
-echo ""
-echo "  dd if=/boot/vmlinux.kpart-initrd-${kver} of=/dev/mmcblk0p1"
-echo ""
-
-kukui example:
-#!/bin/bash
-
-kver="5.13.2-stb-mt8+"
-
-cd /boot
-cp -v vmlinux.kpart-initrd-${kver} vmlinux.kpart-initrd-${kver}.old
-cp Image-${kver} Image
-lzma -9 -z -f -k -v Image
-cp initrd.img-${kver} initrd.img.xz
-echo "console=tty1 root=LABEL=rootemmc rootwait ro fsck.fix=yes fsck.repair=yes net.ifnames=0 ipv6.disable=1 quiet splash" > cmdline
-dd if=/dev/zero of=bootloader.bin bs=512 count=1
+# adjust to dtb names here:
+# - cbg: dtb-${kver}/rk3399-gru-*.dtb
+# - mt7: dtb-${kver}/mt8173-*.dtb
+# - mt8: dtb-${kver}/mt8183-*.dtb
+# - cbq: dtb-${kver}/sc7180-trogdor-*.dtb
 ls dtb-${kver}/mt8183-*.dtb | xargs printf " -b %s" | xargs mkimage -D "-I dts -O dtb -p 2048" -f auto -A arm64 -O linux -T kernel -C lzma -a 0 -d Image.lzma -i initrd.img.xz kernel.itb
 vbutil_kernel --pack vmlinux.kpart --keyblock /usr/share/vboot/devkeys/kernel.keyblock --signprivate /usr/share/vboot/devkeys/kernel_data_key.vbprivk --version 1 --config cmdline --bootloader bootloader.bin --vmlinuz kernel.itb --arch arm
 cp -v vmlinux.kpart /boot/vmlinux.kpart-initrd-${kver}
 rm -f Image Image.lzma initrd.img.xz cmdline bootloader.bin kernel.itb vmlinux.kpart
 echo ""
 echo "for single boot only testing:"
+echo "IMPORTANT: please double check your mmcblk device name beforehand"
 echo ""
 echo "  dd if=/boot/vmlinux.kpart-initrd-${kver} of=/dev/mmcblk0p2"
 echo "  cgpt add -i 2 -S 0 -T 1 -P 15 /dev/mmcblk0"
