@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-chromebook_oak_release_version="5.19.1-stb-mt7%2B"
+chromebook_oak_release_version="6.1.0-stb-mt7%2B"
 chromebook_oak_oldrelease_version="5.10.99-stb-mt7%2B"
 mesa_release_version="22.1.1"
 
