@@ -88,3 +88,13 @@ fi
 #if [ -f /sys/kernel/mm/lru_gen/enabled ]; then
 #  echo 0 > /sys/kernel/mm/lru_gen/enabled
 #fi
+
+# optionally enable the schedutil governor for cpu freq scaling if available
+#if [ -f /sys/devices/system/cpu/cpufreq/policy0/scaling_available_governors ]; then
+#  grep -q schedutil /sys/devices/system/cpu/cpufreq/policy0/scaling_available_governors
+#  if [ "$?" = "0" ]; then
+#    for policy in /sys/devices/system/cpu/cpufreq/policy?; do
+#      echo schedutil > $policy/scaling_governor
+#    done
+#  fi
+#fi
