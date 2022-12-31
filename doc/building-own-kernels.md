@@ -26,6 +26,10 @@ there is not that much space available
 - the gcc compiler and other required tools for the kernel compilation should
   be installed. simply running /scripts/install-buildtools.sh should install
 everything required
+- for many of the git repositories mentioned below git tags are used to mark
+  specific versions which were built successfully and in most cases even
+tested to be working, so it might be a good idea to start with such a tagged
+version to have a higher chance to get a working kernel as a result
 
 ## directory structure
 
