@@ -3,7 +3,7 @@
 # toggle installing legacy kernel or mainline kernel by default
 LEGACY_KERNEL="no"
 
-chromebook_snow_release_version="5.18.1-stb-cbe%2B"
+chromebook_snow_release_version="6.1.1-stb-cbe%2B"
 chromebook_snow_legacy_release_version="3.10.38-cos-r91"
 chromebook_snow_uboot_version="v2017.09-cbe"
 chromebook_snow_alternative_uboot_version="v2018.11-cbe"
@@ -21,11 +21,9 @@ rm -f ${DOWNLOAD_DIR}/boot-chromebook_snow-armv7l.dd
 
 if [ ${LEGACY_KERNEL} = "no" ]; then
 
-  # get the mainline kernel and its mali kernel module
+  # get the mainline kernel
   rm -f ${DOWNLOAD_DIR}/kernel-chromebook_snow-armv7l.tar.gz
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${chromebook_snow_release_version}/${chromebook_snow_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-chromebook_snow-armv7l.tar.gz
-  rm -f ${DOWNLOAD_DIR}/kernel-mali-chromebook_snow-armv7l.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${chromebook_snow_release_version}/${chromebook_snow_release_version}-mali-exynos5250.tar.gz -O ${DOWNLOAD_DIR}/kernel-mali-chromebook_snow-armv7l.tar.gz
 
   # copy the snow u-boot to the right place, so that it will be written to the kernel partition
   cp ${DOWNLOAD_DIR}/boot-extra-${1}/uboot.kpart.cbe-snow ${DOWNLOAD_DIR}/boot-chromebook_snow-armv7l.dd
@@ -44,7 +42,6 @@ else
 
   # put the mainline kernel into /boot/extra as well - just in case
   wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${chromebook_snow_release_version}/${chromebook_snow_release_version}.tar.gz -O ${DOWNLOAD_DIR}/boot-extra-${1}/kernel-chromebook_snow-mainline.tar.gz
-  wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/releases/download/${chromebook_snow_release_version}/${chromebook_snow_release_version}-mali-exynos5250.tar.gz -O ${DOWNLOAD_DIR}/boot-extra-${1}/kernel-mali-chromebook_snow-mainline.tar.gz
 
 fi
 
