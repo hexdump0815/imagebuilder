@@ -6,11 +6,11 @@
 
 ## tested systems - working
 
-- none yet
+- acer chromebook cb514-2h - spherion
+  - see also: https://github.com/hexdump0815/imagebuilder/issues/60
 
 ## untested systems
 
-- acer chromebook cb514-2h - spherion
 - asus chromebook flip cm3 (mt8192 version) - hayato
 
 ## generic mainline linux on arm chromebook notes
