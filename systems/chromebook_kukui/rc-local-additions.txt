@@ -6,7 +6,9 @@
 if [ ! -f /etc/X11/xorg.conf.d/31-monitor-rotate-left.conf ] && [ ! -f /etc/X11/xorg.conf.d/31-monitor.conf ]; then
   # krane has a rotated panel
   if $(grep -q 'MediaTek krane' /proc/device-tree/model) || \
-     $(grep -q 'MediaTek kakadu board$' /proc/device-tree/model) ; then
+     $(grep -q 'MediaTek kakadu board$' /proc/device-tree/model) || \
+     $(grep -q 'MediaTek katsu board$' /proc/device-tree/model) || \
+     $(grep -q 'MediaTek katsu sku38 board$' /proc/device-tree/model) ; then
     cp /etc/X11/xorg.conf.d.samples/31-monitor-rotate-left.conf /etc/X11/xorg.conf.d
     sync
     reboot
@@ -26,7 +28,10 @@ fi
 #  echo 400000000 > /sys/class/devfreq/13040000.gpu/min_freq
 #fi
 
-# load the proper audio modules per system (for all tested systems and the ones with the identical audio setup)
+# load the proper audio modules per system
+# (for all tested systems and the ones with the identical audio setup)
+# the modprobe part should be no longer required with some additional
+# patches in the v6.1 kernels, but lets still leave them here for now
 touch /tmp/no-audio-setup-done
 # some krane, jacuzzi and kodama systems require this audio setup
 if $(grep -q 'MediaTek krane sku0 board$' /proc/device-tree/model) || \
