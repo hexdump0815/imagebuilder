@@ -75,13 +75,13 @@ to install a chromebook kernel in the kpart format it simply has to be written
 to the first partition of the device the image had been installed on (sd card
 or usb disk) with the linux dd command like for example (assuming mmcblk0 as
 device):
-
+```
 dd if=/boot/vmlinux.kpart-xyz of=/dev/mmcblk0p1
-
+```
 or (assuming sda as device):
-
+```
 dd if=/boot/vmlinux.kpart-xyz of=/dev/sda1
-
+```
 please double check the device name the kernel is being written too beforehand
 as the dd command will simply override what is there without asking and
 without any extra checks.
