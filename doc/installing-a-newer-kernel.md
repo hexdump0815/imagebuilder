@@ -54,6 +54,12 @@ selection at the grub boot prompt.
 
 ### chromebooks
 
+first a note regarding 32bit armv7l chromebooks: so far they are not using the
+kpart kernel image based approach as described below (which is valid for all
+64bit aarch64 chromebooks) - they are using u-boot instead, so the u-boot
+section should apply. intel based chromebooks usually using some form of grub
+booting, so the grub section should apply for those.
+
 chromebook images can boot kernels from one of the two special kernel
 partitions of the disk (the first two small partitions), but the kernel builds
 usually only build a kernel, which can be booted from the first partition as
@@ -64,6 +70,21 @@ filesystem. as the root filesystem on those images is on partition 4 the
 kernel has to be in partition 1 to be able to find it (1+3 = 4). a new kpart
 image needs to be built with an offset of 2 to be able to boot it for testing
 purposes for instance from the second kernel boot partition.
+
+to install a chromebook kernel in the kpart format it simply has to be written
+to the first partition of the device the image had been installed on (sd card
+or usb disk) with the linux dd command like for example (assuming mmcblk0 as
+device):
+
+dd if=/boot/vmlinux.kpart-xyz of=/dev/mmcblk0p1
+
+or (assuming sda as device):
+
+dd if=/boot/vmlinux.kpart-xyz of=/dev/sda1
+
+please double check the device name the kernel is being written too beforehand
+as the dd command will simply override what is there without asking and
+without any extra checks.
 
 chromebooks will always boot from the kernel boot partition with the highest
 priority which is by default the first kernel boot partition of the images. it
