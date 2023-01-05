@@ -13,10 +13,10 @@
 - lenovo chromebook n23 - hana
 - acer chromebook r13 - elm
 - lenovo chromebook 300e (mt8173 version) - hana
+- asus chromebook c202xa - hana
 
 ## untested systems
 
-- asus chromebook c202xa - hana
 - lenovo chromebook c330 - hana
 - lenovo chromebook s330 - hana
 - lenovo chromebook 100e (mt8173 version) - hana
