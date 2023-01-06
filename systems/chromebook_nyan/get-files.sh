@@ -3,10 +3,6 @@
 # toggle installing legacy kernel or mainline kernel by default
 LEGACY_KERNEL="no"
 
-# this one is for the v5.4 kernel tree which had a way more reliable display handling in the past
-#chromebook_nyan_release_version="5.4.125-stb-cbt%2B"
-#chromebook_nyan_kernel_tree="linux-mainline-tegra-k1-kernel"
-# this one is for the v5.18 or newer kernel which seems to work similarly well now
 chromebook_nyan_release_version="6.1.0-stb-cbt"
 chromebook_nyan_kernel_tree="linux-mainline-and-mali-generic-stable-kernel"
 chromebook_nyan_legacy_release_version="3.10.18-cos-r91"
