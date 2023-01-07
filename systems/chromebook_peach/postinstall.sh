@@ -6,7 +6,12 @@
 #echo "load-module module-alsa-sink device=sysdefault" >> etc/pulse/default.pa
 #echo "#load-module module-alsa-source device=sysdefault" >> etc/pulse/default.pa
 
-cp -v etc/X11/xorg.conf.d.samples/11-modesetting-no-glamor.conf etc/X11/xorg.conf.d
+# so far only bookworm has a new enough mesa for panfrost to work on this system
+if [ "${3}" = "bookworm" ]; then
+  cp -v etc/X11/xorg.conf.d.samples/11-modesetting.conf etc/X11/xorg.conf.d
+else
+  cp -v etc/X11/xorg.conf.d.samples/11-modesetting-no-glamor.conf etc/X11/xorg.conf.d
+fi
 cp -v etc/X11/xorg.conf.d.samples/51-touchpad.conf etc/X11/xorg.conf.d
 cp -v etc/X11/xorg.conf.d.samples/31-monitor.conf etc/X11/xorg.conf.d
 
