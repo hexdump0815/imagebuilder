@@ -31,12 +31,16 @@ i found some information that it is possible to add a rw uefi payload to the
 standard chromebook bootloader and did some experiments partially documented
 here: https://github.com/hexdump0815/coreboot-cb-rw-uefi-payload
 
-this procedure should work at least for all or at least most of the newer
-devices, but maybe even for all apollo and gemini lake chromebooks. the good
-thing about it is that it is nearly risk free as it only writes to some of the
-overwritable regions of the bootloader flash (the so called rw region) and it
-is kind of impossible to brick a chromebook this way, i.e. even if it does not
-work in the end, the chromebook should still boot fine to chromeos afterwards.
+this procedure should work for all or at least most of the newer devices, but
+maybe even for all apollo and gemini lake chromebooks. the good thing about it
+is that it is nearly risk free as it only writes to some of the overwritable
+regions of the bootloader flash (the so called rw region) and it is kind of
+impossible to brick a chromebook this way, i.e. even if it does not work in
+the end, the chromebook should still boot fine to chromeos afterwards by
+pressing ctrl-d on the white boot screen. it did not work though for me when
+trying to do it the apollo lake way described below for a skylake based chell
+chromebook. for a kabylake based eve chromebook it seems to have worked for at
+least one person - see: https://github.com/MrChromebox/firmware/issues/122
 
 this procedure assumes a well charged apollo or gemini lake chromebook with
 chromeos installed and the developer mode enabled and logged in as chronos
@@ -81,7 +85,7 @@ curl -LO https://www.mrchromebox.tech/files/firmware/full_rom/coreboot_tiano-rab
 ```
 - extract the uefi payload from it
 ```
-cbfstool coreboot_tiano-rabbid-mrchromebox_20220718.rom extract -n fallback/payload -m x86 -f cbox.pl
+cbfstool coreboot_tiano-rabbid-mrchromebox_20220718.rom extract extract -n fallback/payload -m x86 -f cbox.pl
 ```
 - create a proper RW_LEGACY firmware file out of it - keep in mind the size
   found out above
@@ -89,7 +93,7 @@ cbfstool coreboot_tiano-rabbid-mrchromebox_20220718.rom extract -n fallback/payl
 cbfstool rwl.bin create -m x86 -s 0x00200000
 cbfstool rwl.bin add-payload -f cbox.pl -c lzma -n payload
 dd if=/dev/zero of=smmstore bs=256k count=1
-util/cbfstool/cbfstool rwl.bin add -f smmstore -n "smm store" -t raw -b 0x1bf000
+cbfstool rwl.bin add -f smmstore -n "smm store" -t raw -b 0x1bf000
 ```
 - write the freshly created rw uefi firmware to the RW_LEGACY section of the
   flash
@@ -104,7 +108,7 @@ crossystem dev_default_boot=usb
 ```
 - reboot with an uefi linux image on usb or sd card
 - it might be required to enter the uefi bios on bootup using "esc" when
-  offered to switch the boot device to the desired one in the "boote menu"
+  offered to switch the boot device to the desired one in the "boot menu"
 section of the bios. please keep in mind that the sd card might appear there
 named like "generic usb device" as the sd card slot might be connected via usb
 internally.
@@ -156,7 +160,7 @@ crossystem dev_default_boot=altfw
 ```
 - reboot with an uefi linux image on usb or sd card
 - it might be required to enter the uefi bios on bootup using "esc" when
-  offered to switch the boot device to the desired one in the "boote menu"
+  offered to switch the boot device to the desired one in the "boot menu"
 section of the bios. please keep in mind that the sd card might appear there
 named like "generic usb device" as the sd card slot might be connected via usb
 internally.
