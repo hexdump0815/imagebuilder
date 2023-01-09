@@ -1,7 +1,7 @@
 # this file is supposed to be sourced by the get-files shell script
 
 # use a chromeos based kernel until mainline starts to be useable
-chromebook_asurada_chromeos_release_version="5.4.131-asr-r93%2B"
+chromebook_asurada_chromeos_release_version="6.1.0-cos-mt9%2B"
 # this will be required when panfrost starts to get useable
 #mesa_release_version="22.1.1"
 
