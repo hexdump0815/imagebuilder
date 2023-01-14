@@ -255,6 +255,11 @@ elif [ "${2}" = "x86_64" ]; then
   echo "LIBGL_DRIVERS_PATH=/opt/mesa/lib/x86_64-linux-gnu/dri:/usr/lib/x86_64-linux-gnu/dri" >> etc/environment.d/50opt-mesa.conf
   echo "GBM_DRIVERS_PATH=/opt/mesa/lib/x86_64-linux-gnu/dri:/usr/lib/x86_64-linux-gnu/dri" >> etc/environment.d/50opt-mesa.conf
   echo "/opt/mesa/lib/x86_64-linux-gnu" > etc/ld.so.conf.d/aaa-mesa.conf
+elif [ "${2}" = "riscv64" ]; then
+  echo "LD_LIBRARY_PATH=/opt/mesa/lib/riscv64-linux-gnu/dri:/usr/lib/x86_64-linux-gnu/dri" > etc/environment.d/50opt-mesa.conf
+  echo "LIBGL_DRIVERS_PATH=/opt/mesa/lib/riscv64-linux-gnu/dri:/usr/lib/x86_64-linux-gnu/dri" >> etc/environment.d/50opt-mesa.conf
+  echo "GBM_DRIVERS_PATH=/opt/mesa/lib/riscv64-linux-gnu/dri:/usr/lib/x86_64-linux-gnu/dri" >> etc/environment.d/50opt-mesa.conf
+  echo "/opt/mesa/lib/riscv64-linux-gnu" > etc/ld.so.conf.d/aaa-mesa.conf
 fi
 cp etc/environment.d/50opt-mesa.conf etc/X11/Xsession.d/50opt-mesa.conf
 echo "export LD_LIBRARY_PATH LIBGL_DRIVERS_PATH GBM_DRIVERS_PATH" >> etc/X11/Xsession.d/50opt-mesa.conf
@@ -303,6 +308,17 @@ if [ "${PMOSKERNEL}" != "true" ]; then
   if [ "$KERNEL_VERSION" = "" ]; then
     echo "trying vmlinuz as kernel name instead of *Image:"
     export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/vmlinuz-* | sed 's,.*vmlinuz-,,g' | sort -u`
+  fi
+
+  # riscv64 has its kernel currently at a different place at least on the starfive visionfive2
+  if [ "$KERNEL_VERSION" = "" ]; then
+    echo "trying vmlinuz as kernel name in /boot/boot instead:"
+    export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/boot/vmlinuz-* | sed 's,.*vmlinuz-,,g' | sort -u`
+    # if /boot/boot is the case here then copy the files to /boot as well to make update-initramfs happy
+    # TODO: all this /boot/boot stuff should be handled better in the future ...
+    if [ "$KERNEL_VERSION" != "" ]; then
+      cp -a /boot/boot/*-${KERNEL_VERSION} ${BUILD_ROOT}/boot
+    fi
   fi
 
   # hack to get the fsck binaries in properly even in our chroot env

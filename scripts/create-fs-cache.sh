@@ -12,12 +12,14 @@ if [ "$#" != "2" ]; then
   echo "- aarch64 - 64bit"
   echo "- i686 - 32bit"
   echo "- x86_64 - 64bit"
+  echo "- riscv64 - 64bit (wip and works only with sidriscv below)"
   echo ""
   echo "possible release options:"
   echo "- focal - ubuntu focal (deprecated)"
   echo "- jammy - ubuntu jammy"
   echo "- bullseye - debian bullseye (deprecated)"
   echo "- bookworm - debian bookworm"
+  echo "- sidriscv - debian sid (wip and riscv only as bookworm is not useable yet"
   echo ""
   echo "example: $0 armv7l focal"
   echo ""
@@ -80,6 +82,10 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
     BOOTSTRAP_ARCH="amd64"
     SERVER_PREFIX="archive."
     SERVER_POSTFIX="ubuntu/"
+  elif [ "${1}" = "riscv64" ]; then
+    BOOTSTRAP_ARCH="riscv64"
+    SERVER_PREFIX="ports."
+    SERVER_POSTFIX=""
   fi
   mkdir -p ${BUILD_ROOT_CACHE}/etc/apt
   if [ "${2}" = "focal" ]; then
@@ -137,6 +143,20 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
     cp ${WORKDIR}/files/bookworm-${BOOTSTRAP_ARCH}-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
     # parse in the proper debian version
     sed -i "s,DEBIANVERSION,bookworm,g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
+  elif [ "${2}" = "sidriscv" ]; then
+    apt -y install debootstrap debian-ports-archive-keyring --no-install-recommends
+    LANG=C debootstrap --arch=${BOOTSTRAP_ARCH} --foreign --keyring /usr/share/keyrings/debian-ports-archive-keyring.gpg --include=debian-ports-archive-keyring --no-check-certificate --variant=minbase sid ${BUILD_ROOT_CACHE} http://deb.debian.org/debian-ports
+    # exit if debootstrap failed for some reason
+    if [ "$?" != "0" ]; then
+      echo ""
+      echo "error while running debootstrap - giving up"
+      echo ""
+      rm -rf ${BUILD_ROOT_CACHE}
+      exit 1
+    fi
+    cp ${WORKDIR}/files/sidriscv-${BOOTSTRAP_ARCH}-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
+    # this seems to be required to not need special options to apt commands when installing from the ports repo
+    echo 'APT::Get::AllowUnauthenticated "true";' > ${BUILD_ROOT_CACHE}/etc/apt/apt.conf.d/99unauthenticated
   elif [ "${2}" = "sonaremin" ]; then
     LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} focal ${BUILD_ROOT_CACHE} http://ports.ubuntu.com/
     # exit if debootstrap failed for some reason

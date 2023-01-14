@@ -12,6 +12,7 @@ if [ "$#" != "1" ]; then
   echo "- aarch64 - 64bit"
   echo "- i686 - 32bit"
   echo "- x86_64 - 64bit"
+  echo "- riscv64 - 64bit (wip)"
   echo ""
   echo "example: $0 armv7l"
   echo ""
