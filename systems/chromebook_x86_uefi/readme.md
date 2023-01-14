@@ -9,6 +9,8 @@
 
 - acer c200 chromebook - squawks
 - dell 3189 chromebook - kefka
+- hp chromebook 13 g1 - chell
+  - see the extra notes in the doc subdir for such skylakechromebooks
 - teclast tpad x80 plus windows 10 / android tablet
 
 ## untested systems
