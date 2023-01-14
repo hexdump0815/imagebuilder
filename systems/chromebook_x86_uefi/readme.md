@@ -10,12 +10,19 @@
 - acer c200 chromebook - squawks
 - dell 3189 chromebook - kefka
 - hp chromebook 13 g1 - chell
-  - see the extra notes in the doc subdir for such skylakechromebooks
+  - see the extra notes in the doc subdir for such skylake chromebooks
+- asus chromebook c423na - rabbid
+  - see the extra notes in the doc subdir for such apl/glk chromebooks
+- hp chromebook 12b - bloog
+  - see the extra notes in the doc subdir for such apl/glk chromebooks
+- hp chromebook 14a - blooglet
+  - see the extra notes in the doc subdir for such apl/glk chromebooks
 - teclast tpad x80 plus windows 10 / android tablet
 
 ## untested systems
 
 - in theory it should work for nearly all intel chromebooks with a working uefi firmware installed
+- apollo and gemini lake chromebooks should work well with the rw uefi payload method described in the doc subdir which does not require the slighly risky flashing of the full firmware
 - as there are no real chromebook dependency the chance is high that the images should simply work on most intel systems with uefi booting with secure boot disabled
 
 ## generic mainline linux on intel chromebook notes
