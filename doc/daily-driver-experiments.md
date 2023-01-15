@@ -86,6 +86,9 @@ and thus it is recommended to use high quality usb devices like sandisk ultra.
 - notes: no gpu support and display power management is not working well (but
   worked around by the default settings)
 - info: v5.19.1 kernel, debian bullseye, 4gb ram, 32gb emmc
+- update: retested for a few weeks in december 2022 with a v6.1.0 kernel and
+  it was working perfectly fine all the time and the battery life for light
+usage was often around 12 hours +/-
 
 # chromebook veyron - mighty - august 2022
 
@@ -374,3 +377,13 @@ only thing to keep in mind is that there is still no support for its gpu in
 the mainline kernel and mesa, but for normal web, shell and office usage this
 does not really have any negative impact
 - info: v6.0.0 kernel, debian bookworm, 4gb ram, 32gb emmc
+
+# chromebook x86 uefi - chell - january 2023
+
+- tested for more than a week
+- it was working very well, fluid and reliable
+- notes: this system has a skylake cpu and it seems like audio is broken in
+  all recent kernels above around v5.13 so a switch back to the last lts
+kernel with working audio v5.10 was required
+- info: v5.10.162 kernel, debian bookworm, 4gb ram, 32gb emmc, m3-6y30
+  2/4 core cpu
