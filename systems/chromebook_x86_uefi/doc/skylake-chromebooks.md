@@ -59,6 +59,12 @@ https://github.com/hexdump0815/imagebuilder/blob/main/doc/building-own-kernels.m
 and here:
 https://github.com/hexdump0815/imagebuilder/blob/main/doc/installing-a-newer-kernel.md
 
+## suspend/resume
+
+suspend/resume is working fine in s2idle mode, which can be enabled by
+uncommenting the correspoding line in /etc/rc.local. maybe even deep sleep
+is working, but i did not test that in detail yet.
+
 ## links
 
 - https://github.com/iofq/chell_audio - the firmware files and instructions were tkane from this repo
