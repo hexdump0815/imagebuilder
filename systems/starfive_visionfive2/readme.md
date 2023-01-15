@@ -2,7 +2,7 @@
 
 ## bootable sd card images
 
-- none yet
+- https://github.com/hexdump0815/imagebuilder/releases/tag/230115-01 (experimental first image)
 
 ## tested systems - working
 
@@ -30,5 +30,5 @@
 
 ## special notes
 
-- all this is very much wip and not really useable yet
+- all this is very much wip and not that useable yet
 - more info coming soon
