@@ -326,7 +326,7 @@ if [ "$PMOSKERNEL" != "true" ]; then
       fi
     fi
   elif [ "${2}" = "riscv64" ]; then
-    export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/boot/vmlinuz-* | sed 's,.*vmlinuz-,,g' | sort -u`
+    export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/vmlinuz-* | sed 's,.*vmlinuz-,,g' | sort -u`
     if [ "$PARTUUID_ROOT" = "YES" ]; then
       ROOT_PARTUUID=$(blkid | grep "/dev/loop0p$ROOTPART" | awk '{print $5}' | sed 's,",,g')
       if [ -f ${MOUNT_POINT}/boot/boot/extlinux/extlinux.conf ]; then

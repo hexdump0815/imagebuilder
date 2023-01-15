@@ -310,17 +310,6 @@ if [ "${PMOSKERNEL}" != "true" ]; then
     export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/vmlinuz-* | sed 's,.*vmlinuz-,,g' | sort -u`
   fi
 
-  # riscv64 has its kernel currently at a different place at least on the starfive visionfive2
-  if [ "$KERNEL_VERSION" = "" ]; then
-    echo "trying vmlinuz as kernel name in /boot/boot instead:"
-    export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/boot/vmlinuz-* | sed 's,.*vmlinuz-,,g' | sort -u`
-    # if /boot/boot is the case here then copy the files to /boot as well to make update-initramfs happy
-    # TODO: all this /boot/boot stuff should be handled better in the future ...
-    if [ "$KERNEL_VERSION" != "" ]; then
-      cp -a /boot/boot/*-${KERNEL_VERSION} ${BUILD_ROOT}/boot
-    fi
-  fi
-
   # hack to get the fsck binaries in properly even in our chroot env
   cp -f usr/share/initramfs-tools/hooks/fsck tmp/fsck.org
   sed -i 's,fsck_types=.*,fsck_types="vfat ext4",g' usr/share/initramfs-tools/hooks/fsck
