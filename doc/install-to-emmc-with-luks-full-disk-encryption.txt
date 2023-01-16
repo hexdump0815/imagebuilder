@@ -254,6 +254,7 @@ cp -v vmlinux.kpart-initrd-${kver} vmlinux.kpart-initrd-${kver}.old
 cp Image-${kver} Image
 lzma -9 -z -f -k -v Image
 cp initrd.img-${kver} initrd.img.xz
+# for cbq add: deferred_probe_timeout=30 clk_ignore_unused=1
 echo "console=tty1 root=LABEL=rootemmc rootwait ro fsck.fix=yes fsck.repair=yes net.ifnames=0 ipv6.disable=1 quiet splash" > cmdline
 dd if=/dev/zero of=bootloader.bin bs=512 count=1
 # adjust to dtb names here:
