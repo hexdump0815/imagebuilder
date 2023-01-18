@@ -17,6 +17,8 @@
 - asus chromebook c100 - minnie
   - see also: https://github.com/hexdump0815/imagebuilder/issues/16
 - hisense chromebook 11 - jerry
+- edugear chromebook m series - mighty
+  - see also: https://github.com/hexdump0815/imagebuilder/issues/110
 
 see also https://github.com/hexdump0815/imagebuilder/issues/81 for all above
 
@@ -36,7 +38,6 @@ see also https://github.com/hexdump0815/imagebuilder/issues/81 for all above
 - positivo chromebook ch1190 - jerry
 - videonet chromebook bl10 - jerry
 - chromebook pcm-116e - mighty
-- edugear chromebook m series - mighty
 - haier chromebook 11e - mighty
 - lumos education chromebook - mighty
 - nexian chromebook 11.6-inch - mighty
