@@ -8,11 +8,11 @@
 ## tested systems - working
 
 - asus novago tp370ql
+- lenovo miix 630
 
 ## untested systems
 
 - hp envy x2
-- lenovo miix 630
 - maybe rhere are more laptops with a snapdragon 835
 
 ## kernel build notes
