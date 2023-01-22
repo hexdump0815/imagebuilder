@@ -25,7 +25,7 @@ some more work will be required to make the devices below working
 
 ## u-boot build notes
 
-- none yet as for now the minimyth2 boot blocks are used
+- none yet as for now the minimyth2 legacy based boot blocks are used
 
 ## priority
 
