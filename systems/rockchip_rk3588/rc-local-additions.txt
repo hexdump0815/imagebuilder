@@ -1,0 +1,3 @@
+# looks like this is required to make usb2 work
+# see: https://github.com/armbian/build/blob/master/packages/bsp/orangepi5/orangepi5-usb2-init.service
+echo host > /sys/kernel/debug/usb/fc000000.usb/mode
