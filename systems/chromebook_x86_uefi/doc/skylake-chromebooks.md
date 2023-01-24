@@ -65,6 +65,8 @@ suspend/resume is working fine in s2idle mode, which can be enabled by
 uncommenting the correspoding line in /etc/rc.local. maybe even deep sleep
 is working, but i did not test that in detail yet.
 
+update: it looks like deep sleep (s3) is working as well at least on chell.
+
 ## links
 
 - https://github.com/iofq/chell_audio - the firmware files and instructions were tkane from this repo
