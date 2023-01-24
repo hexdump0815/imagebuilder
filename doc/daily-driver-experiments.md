@@ -387,3 +387,26 @@ does not really have any negative impact
 kernel with working audio v5.10 was required
 - info: v5.10.162 kernel, debian bookworm, 4gb ram, 32gb emmc, m3-6y30
   2/4 core cpu
+
+# chromebook trogdor - lazor - january 2023
+
+- tested for a few days
+- it was working very well, fluid and reliable
+- notes: i had access to a lazor again for a few days and used the time to
+  test it in daily use. not much to say, it just worked as expected without
+any real problems and has a very good battery life of around 10 hours +/- if
+just lightly used.
+- info: v6.1.1 kernel, debian bookworm, 4gb ram, 64gb emmc
+
+# chromebook gru - bob - january 2023
+
+- tested for a few days
+- it was working very well, fluid and reliable
+- notes: not much to say, it just worked as expected without any real problems
+  and has a very good battery life which is depending a bit on usage pattern,
+but should be somewhere in the range of 6-10 hours. the only thing i noticed
+is the the sceen blanked (short moment of black screen) from time to time for
+a very short moment, not sure if it is a general problem or only a temporary
+issue of the kernel version used. in the end it happens so rarely and the
+blanking is so short that it is not really a problem.
+- info: v6.1.0 kernel, debian bookworm, 4gb ram, 16gb emmc
