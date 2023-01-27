@@ -410,3 +410,18 @@ a very short moment, not sure if it is a general problem or only a temporary
 issue of the kernel version used. in the end it happens so rarely and the
 blanking is so short that it is not really a problem.
 - info: v6.1.0 kernel, debian bookworm, 4gb ram, 16gb emmc
+
+# chromebook veyron - minnie - january 2023
+
+- tested for a few days
+- it was working well, relatively fluid and reliable
+- notes: this is the first time again for quite a while that a 32bit system
+  with only 2gb ram was really useable in my daily drive usage scenario - i'm
+not sure if there are any improvements in the kernel or firefox which made
+this possible as the last times i tried it such a setup simply was not useable
+for a longer time - this time it really worked quite well, although of course
+a little slower and less snappy than 64bit systems with 4gb or ram ... the
+panfrost gpu driver was disabled again due to problems with it in earlier
+tries and the zswap percentage was set to 25% which seems to be a very good
+value in general, the swap file size was 4gb in this setup
+- info: v6.1.7 kernel, debian bookworm, 2gb ram, 16gb emmc
