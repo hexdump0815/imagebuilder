@@ -21,7 +21,7 @@ if [ "$#" != "3" ]; then
   echo "- jammy - ubuntu jammy"
   echo "- bullseye - debian bullseye (deprecated)"
   echo "- bookworm - debian bookworm"
-  echo "- sidriscv - debian sid (wip and riscv only as bookworm is not useable yet"
+  echo "- sidriscv - debian sid (wip and riscv only as bookworm is not useable yet)"
   echo ""
   echo "example: ${0} odroid_u3 armv7l focal"
   echo ""
