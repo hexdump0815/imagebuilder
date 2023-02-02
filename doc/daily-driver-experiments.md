@@ -387,6 +387,9 @@ does not really have any negative impact
 kernel with working audio v5.10 was required
 - info: v5.10.162 kernel, debian bookworm, 4gb ram, 32gb emmc, m3-6y30
   2/4 core cpu
+- update: it looks like the sound driver seems to die after resume from
+  suspend at some point after some days (suspend/resume before keeps it
+working all the time) - a reboot fixes the problem
 
 # chromebook trogdor - lazor - january 2023
 
