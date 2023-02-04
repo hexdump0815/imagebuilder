@@ -13,7 +13,7 @@
 ## untested systems
 
 - hp envy x2
-- maybe rhere are more laptops with a snapdragon 835
+- maybe there are more laptops with a snapdragon 835
 
 ## kernel build notes
 
