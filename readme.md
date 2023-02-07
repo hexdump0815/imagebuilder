@@ -16,7 +16,7 @@ finally some notes about the name: the framework did not have any real name so f
 
 # creating images
 
-see scripts/readme.md as a start
+see doc/using-the-imagebuilder-framework.md as a start
 
 more coming soon ...
 
