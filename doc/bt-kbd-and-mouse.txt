@@ -7,7 +7,7 @@ lte) with a bt keyboard and mouse
 based on: https://www.linuxquestions.org/questions/blog/isaackuo-112178/simple-bluetooth-keyboard-how-to-37550/
 
 bluetoothctl
-remove 20:20:05:15:7F:CE (mac of the kdb in case it is already somehow connected)
+remove 20:20:05:15:7F:CE (mac address of the kdb in case it is already somehow connected)
 scan on
 pair 20:20:05:15:7F:CE
 <type passkey on bluetooth keyboard> (was not required in my case - maybe was done before already?)
@@ -63,4 +63,4 @@ Agent unregistered
 [DEL] Controller 74:F0:6D:EA:D2:14 ariel [default]
 root@rapunzel:~#
 
-bt mouse: same procedure as above ...
+bluetooth mouse: same procedure as above

@@ -1,6 +1,6 @@
 btrfs and hibernation info
 
-# check btrfs fs for consistency - recalc chksums and compare if they are stil lthe same
+# check btrfs fs for consistency - recalculate checksums and compare if they are still the same
 btrfs scrub start /dev/btrfs-device
 btrfs scrub status /dev/btrfs-device
 

@@ -8,7 +8,7 @@ complicated to do and allows to build an up to date kernel when needed at any
 time or to add kernel config options not enabled by default.
 
 the structure used in the readme notes for the different kernels is a bit
-hardcoded which is not perfect and might be replaced with a somwhat more
+hardcoded which is not perfect and might be replaced with a somewhat more
 flexible approach, but for now it is as it is and if one prefers different
 paths, then the paths in the readme would have to be replaced accordingly. the
 directory structure is usually summarized at the top of the readme.
@@ -26,7 +26,7 @@ there is not that much space available
 - the gcc compiler and other required tools for the kernel compilation should
   be installed. simply running /scripts/install-buildtools.sh should install
 everything required
-- for many of the git repositories mentioned below git tags are used to mark
+- for many of the git repositories mentioned below, git tags are used to mark
   specific versions which were built successfully and in most cases even
 tested to be working, so it might be a good idea to start with such a tagged
 version to have a higher chance to get a working kernel as a result
@@ -43,7 +43,7 @@ the directory structure used - example: odroid u3 kernel (stb-exy)
   git repo mentioned in the file gitrepo next to the readme  - see below for some
 useful hints of how to optimize this a bit in case of limited space or building
 multiple different kernels
-- /compile/result/stable - the resulting kernel, modules etc. will end up in
+- /compile/result/stable - the resulting kernel, modules, and etc. will end up in
   this dir as tar.gz files - it has to be created initially as an empty
 directory
 - /compile/doc/kernel-config-options - this is a clone of
@@ -52,14 +52,14 @@ some common kernel config options used in the same way across multiple kernels,
 see below for some more info
 - /compile/doc/kernel-extra-patches - this is a clone of
   https://github.com/hexdump0815/kernel-extra-patches and contains extra out of
-mainline tree patches used for all or most of the kernel builds - example: mglru
+mainline tree patches used for all or most of the kernel builds - for example: mglru
 patches for improved memory handling
 
 ## checking out the kernel repo - example: odroid u3 kernel (stb-exy) v5.19.1
 
 the normal way to checkout the kernel sources is to git clone the git repo
 mentioned in the gitrepo file next to the readme inside of /compile/source and
-afterwards rename it to the patch given at the head of the readme ans checkout
+afterwards rename it to the patch given at the head of the readme ans checkout from
 the desired kernel version from it (something like "git tag | grep v5.19" might
 help to find out the latest version available for instance):
 ```
@@ -130,4 +130,4 @@ it is a good idea to check if there is still enough disk space available in
 
 ## what to do with the freshly built kernel to test and use it?
 
-this is decribed in the file installing-a-newer-kernel.md
+this is described in the file "installing-a-newer-kernel.md"
