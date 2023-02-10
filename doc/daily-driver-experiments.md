@@ -166,6 +166,7 @@ all that the system was kind of useable in the end, but rather on the slower
 end and some patience is required now and then.
 - info: v6.0.0 kernel, debian bookworm (32bit userland), 2gb ram, 32gb sandisk
   ultra usb stick for the system and 5gb android data partiion area on emmc
+used as swap device
   
 
 # amlogic gx - a95xr2 s905w tv box - october 2022
