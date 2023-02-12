@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-chromebook_peach_release_version="6.1.1-stb-cbp%2B"
+chromebook_peach_release_version="6.1.11-stb-cbp%2B"
 chromebook_peach_pit_uboot_version="v2018.11-cbe"
 chromebook_peach_pi_uboot_version="v2018.11-cbe"
 

@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-chromebook_gru_release_version="6.1.0-stb-cbg%2B"
+chromebook_gru_release_version="6.1.11-stb-cbg%2B"
 mesa_release_version="22.1.1"
 
 rm -f ${DOWNLOAD_DIR}/kernel-chromebook_gru-${2}.tar.gz

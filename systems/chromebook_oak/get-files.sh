@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-chromebook_oak_release_version="6.1.0-stb-mt7%2B"
+chromebook_oak_release_version="6.1.11-stb-mt7%2B"
 mesa_release_version="22.1.1"
 
 rm -f ${DOWNLOAD_DIR}/kernel-chromebook_oak-${2}.tar.gz

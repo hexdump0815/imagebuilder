@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-raspberry_pi_4_release_version="6.1.1-stb-rpi"
+raspberry_pi_4_release_version="6.1.11-stb-rpi"
 raspberry_pi_4_uboot_version="220301-01"
 mesa_release_version="22.1.1"
 # bootloader blob and dtb versions
