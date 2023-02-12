@@ -228,6 +228,8 @@ the usb hub (on the usb-a port) i usually use for mouse, keyboard an ethernet
 the mouse simply did not work and always gave usb errors, with another usb hub
 (on the usb-c port) everything was working fine
 - info: v6.0.0 kernel, debian bookworm, 4gb ram, 32gb emmc
+- update: the usb keyboard and mouse issued discovered above should be fixed
+  with https://github.com/hexdump0815/linux-mainline-mediatek-mt81xx-kernel/commit/926886a8e6523be8e9d6afcc7d29c652da93f974
 
 # odroid u3 - october 2022
 
@@ -308,6 +310,8 @@ did crash from time to time
 - notes: as expected exactly as useable as kappa above, even including the
   usb hub and mouse problems :)
 - info: v6.0.0 kernel, debian bookworm, 4gb ram, 64gb emmc
+- update: the usb keyboard and mouse issued discovered above should be fixed
+  with https://github.com/hexdump0815/linux-mainline-mediatek-mt81xx-kernel/commit/926886a8e6523be8e9d6afcc7d29c652da93f974
 
 # chromebook x86 uefi - kefka - november 2022
 
@@ -375,8 +379,8 @@ file, plus mglru was enabled and those settings worked very well
 - notes: not much to say, it just worked as expected without any real problems
   and has a very good battery life of 10-12 hours, if just lightly used - the
 only thing to keep in mind is that there is still no support for its gpu in
-the mainline kernel and mesa, but for normal web browsing, terminal sessions, and office usage this
-does not really have any negative impact
+the mainline kernel and mesa, but for normal web browsing, terminal sessions,
+and office usage this does not really have any negative impact
 - info: v6.0.0 kernel, debian bookworm, 4gb ram, 32gb emmc
 
 # chromebook x86 uefi - chell - january 2023
