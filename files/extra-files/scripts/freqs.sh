@@ -19,3 +19,8 @@ if [ -f /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors ]; then
     echo "available cpu governors:" 
     cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
 fi
+
+if [ -f /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ]; then
+    echo "governor:in use:"
+    cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+fi
