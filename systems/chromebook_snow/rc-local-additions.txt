@@ -1,14 +1,2 @@
-# temporary hacks for spring with legacy kernel
-# check if the legacy chromeos kernel is in use
-uname -r | grep -q ^3
-if [ "$?" = "0" ]; then
-  echo 1000 > /sys/class/backlight/backlight.12/brightness
-  if [ -x /usr/lib/upower/upowerd ]; then
-    /usr/lib/upower/upowerd &
-  elif [ -x /usr/libexec/upowerd ]; then
-    /usr/libexec/upowerd &
-  fi
-#else
-#  enable light supend mode, i.e. only cpu is put into sleep, everything else stays alive
-#  echo s2idle > /sys/power/mem_sleep
-fi
+# enable light supend mode, i.e. only cpu is put into sleep, everything else stays alive
+#echo s2idle > /sys/power/mem_sleep
