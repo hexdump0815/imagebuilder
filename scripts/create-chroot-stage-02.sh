@@ -26,6 +26,7 @@ fi
 
 # this is required to make docker work on bullseye with the current kernels
 # see https://wiki.debian.org/iptables
+# maybe this can even go now after the move from docker to podman
 if [ "${1}" = "bullseye" ] || [ "${1}" = "bookworm" ] || [ "${1}" = "jammy" ]; then
   update-alternatives --set iptables /usr/sbin/iptables-legacy
   update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
