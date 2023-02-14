@@ -80,6 +80,19 @@ and for that following the corresponding kernel build notes from
 https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/blob/master/readme.av8
 in this example).
 
+for some systems, especially all of the 64bit arm chromebooks which are using
+the native chromebook bootloader there are extra steps required to extract
+the bootable kernel image from the kernel .tar.gz file. in general it is a
+good idea to have a look at the "get-files.sh" for the system one wants to
+build an image for to see if there are any extra steps besides the wget
+commands to get the precompiled kernel etc. and everything related to them.
+the special steps for the chromebooks mentioned above are those for example:
+https://github.com/hexdump0815/imagebuilder/blob/ff75dd53677f3e59fbff4db125cf1152cba04b0a/systems/chromebook_kukui/get-files.sh#L9
+i.e. this extracts the corresponding vmlinux.kpart image (the kernel in a
+format which can be booted from the chromebook bootloader) out of the kernel
+.tar.gz file and puts it there as boot-xyz.dd so that it gets written to
+the first chromebook kernel partition in the image creation step.
+
 ## create the rootfs cache and rootfs
 
 the next step is to run:
