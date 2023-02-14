@@ -128,6 +128,10 @@ according to the readme goes through the following steps:
 it is a good idea to check if there is still enough disk space available in
 /boot and /lib/modules before the installation step.
 
+in case one wants to change kernel options beyond the ones used by default it
+is possible to run "make menuconfig" before the kernel build make (the "make
+-j 4 ..." or similar one) to add, change or remove kernel config options.
+
 ## what to do with the freshly built kernel to test and use it?
 
 this is described in the file "installing-a-newer-kernel.md"
