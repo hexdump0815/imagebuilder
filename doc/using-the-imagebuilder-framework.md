@@ -44,6 +44,39 @@ to install some extra tools and commands required for the imagebuilder. this
 step has to be done only once per system where the imagebuilder framework
 should be used.
 
+## special considerations when using the btrfs filesystem (default in most cases)
+
+when the imagebuilder framework is used on a system running on an imagebuilder
+based image then for most systems the rootfs is btrfs and some special setup
+is required to avoid useless extra compression (as the btrfs filesystem used
+has already transparent compression enabled) and maybe even potential
+problems in this case:
+```
+cd /compile/local/
+btrfs subvolume create /compile/local/imagebuilder-diskimage
+chattr -R +C /compile/local/imagebuilder-diskimage
+btrfs property set /compile/local/imagebuilder-diskimage compression none
+```
+
+in case one mounts some extra disk or partition to /compile/local to use it
+with the btrfs filesystem (which might be a good idea due to built in
+compression, checksumming and partially deduplication to save space) then the
+following commands could be used assuming /dev/xyz to be the disk or partition
+which should be mounted to /compile/local to be used as disk for the
+imagebuilder framework:
+```
+mkfs -t btrfs -m single -L clocal /dev/xyz
+```
+then the following line should be added at the end of /etc/fstab:
+```
+LABEL=clocal /compile/local btrfs defaults,ssd,compress-force=zstd,noatime,nodiratime 0 2
+```
+then it can be mounted finally via:
+```
+mkdir -p /compile/local
+mount /compile/local
+```
+
 ## getting some files required to build the image
 
 afterwards run:
