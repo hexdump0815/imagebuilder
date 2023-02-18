@@ -40,7 +40,7 @@
 
 - for the odroid x2 the file extlinux/extlinux.conf in the first partition needs to be edited - see the comments in the file
 - for the odroid x the file extlinux/extlinux.conf in the first partition needs to be edited - see the comments in the file
-- a fixed ether mac address is set in the same file and can be changed if multiple such devices are running in the same network or omitted to get a new random ethernet mac address on each boot
+- a fixed ether mac address is set in the same file and can be changed if multiple such devices are running in the same network or omitted to get a new random ethernet mac address on each boot, the fixed mac address is defined in /boot/extlinux/extlinux.conf and can either be changed to some other valid value there or the mac address option can be removed there resulting in a new random mac address on each boot
 - the odroid u3 (and the others most probably too) seems to be very sensitive to stable power supply, so if you see strange crashes on boot, check if the power supply is good enough
 - s2idle and deep suspend seem to be working at least on the odroid u3 (the others were not tested yet), resume is done via the physical button (tested with v5.19.1 on debian bullseye, but it was already working before as well)
 - it looks there is a locking problem in the kernel for those systems and one might get a "WARNING: possible circular locking dependency detected" once with a long trace which seems to point into the exynos mmc controller maybe - seems to be not critical and so far no real solution for it seems to be know
