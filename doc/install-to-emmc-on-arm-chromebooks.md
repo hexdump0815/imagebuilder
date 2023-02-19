@@ -37,6 +37,11 @@ work but has some advantages and is the way i would recommend
 installation is similar to the last approach with some steps required for the
 encryption added on top of it
 
+this document is in the end the steps required to install to emmc on arm
+chromebooks extracted from the somewhat harder to read document
+install-to-emmc-with-luks-full-disk-encryption.txt and brought into an easier
+to read form.
+
 ## preparations
 
 first it is required to find out the device the booted image is running on and
@@ -63,6 +68,10 @@ root@changeme:~# ls -d /dev/mmcblk* /dev/sd* | cat
 # check which device is mounted on /boot
 root@changeme:~# df -h /boot
 /dev/sda3         504M   68M  426M  14% /boot
+root@changeme:~# fdisk -l
+Disk /dev/mmcblk0: 29.12 GiB, 31268536320 bytes, 61071360 sectors
+Units: sectors of 1 * 512 = 512 bytes
+...
 ```
 this output shows us the following: the internal emmc device here is mmcblk0
 as it can be identified by the existing boot0/boot1/rpmb partitions for it as
@@ -79,7 +88,8 @@ not the emmc - instead it has four partitions: 1...4 for sdx or p1..p4 for
 mmcblkx and this is how the booted image looks like. this will be the source
 device of the installation call SRCDEV below. the df command output also helps
 to identify this as the device the image is booted from as the /boot partition
-of the running system is mounted from it.
+of the running system is mounted from it. the fdisk command can help in some
+cases to find out which device is which based on the shown sizes.
 
 two more important notes: first if the chromebook you want to install to is a
 veryon, then make sure to read the section about veyron below as some things
@@ -254,6 +264,8 @@ root@changeme:~# cd /mnt/swap
 root@changeme:~# truncate -s 0 ./file.0; btrfs property set ./file.0 compression none; fallocate -l 2G file.0; chmod 600 ./file.0; mkswap -L file.0 ./file.0
 # adjust the filesystem labels in the new etc/fstab
 root@changeme:~# sed -i 's,bootpart,bootemmc,g;s,rootpart,rootemmc,g' /mnt/etc/fstab
+# do the same in the u-boot config file if it exists (on 32bit arm chromebooks only)
+root@changeme:~# sed -i 's,rootpart,rootemmc,g' /mnt/boot/extlinux/extlinux.conf
 # umount everything
 root@changeme:~# umount /mnt/boot /mnt
 ```
