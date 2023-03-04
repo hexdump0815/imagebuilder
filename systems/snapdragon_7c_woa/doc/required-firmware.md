@@ -64,3 +64,20 @@ qcmpss7180_nm.mbn
 qcvss7180.mbn
 wlanmdsp.mbn
 ```
+it looks like there is still some problem with the qcmpss7180 firmware on the
+samsung galaxy book go and as a result it is better to move those two files
+away for now as otherwise the log might get spammed by failed tries to load
+it.
+
+## steps required to enable gpu support with the firmware files in place
+
+after the firmware files were put into place as described above the following
+steps have to be run as root on the system in order to enable gpu support in
+xorg:
+```
+cp /etc/X11/xorg.conf.d.samples/11-modesetting.conf /etc/X11/xorg.conf.d
+rm /etc/X11/xorg.conf.d/11-fbdev.conf
+update-initramfs -c -k $(uname -r)
+```
+after a reboot freedreno support should be enabled in xorg if everything is
+setup correctly.
