@@ -18,7 +18,7 @@ later for the linux side - the actual files are in subfolders and for some
 there are multiple versions around - in those cases the latest should be the
 best.
 
-for this and other reasones it is a good idea to leave a windows installation
+for this and other reasons it is a good idea to leave a windows installation
 on the device - only this way it is possible to get firmware and bios updates
 and besides that some information useful for linux bringup can be found in
 *.inf files and the registry in windows.
@@ -41,6 +41,8 @@ qcmpss7180_nm.mbn
 qcvss7180.mbn
 wlanmdsp.mbn
 ```
+for gpu functionality only qcdxkmsuc7180.mbn is required, the other files are
+required for things like wifi, video decoding, audio etc.
 
 see also:
 - https://oftc.irclog.whitequark.org/aarch64-laptops/2023-02-21#31912679
@@ -64,6 +66,9 @@ qcmpss7180_nm.mbn
 qcvss7180.mbn
 wlanmdsp.mbn
 ```
+for gpu functionality only qcdxkmsuc7180.mbn is required, the other files are
+required for things like wifi, video decoding, audio, lte modem etc.
+
 it looks like there is still some problem with the qcmpss7180 firmware on the
 samsung galaxy book go and as a result it is better to move those two files
 away for now as otherwise the log might get spammed by failed tries to load
@@ -81,3 +86,13 @@ update-initramfs -c -k $(uname -r)
 ```
 after a reboot freedreno support should be enabled in xorg if everything is
 setup correctly.
+
+## some general notes around firmware and firmware loading
+
+i noticed filesystem errors when running from usb and i'm not sure if those
+started when i started playing around with the firmware files or if they
+were around already before (i.e. some independent usb problem then). it
+could be that this is also related to firmware loading similar to what is
+described here (and in the lines around):
+https://oftc.irclog.whitequark.org/aarch64-laptops/2023-01-28#31850582
+but this does not have to be the case.
