@@ -36,7 +36,7 @@ see https://github.com/hexdump0815/imagebuilder/blob/main/doc/using-the-imagebui
 - intel 64bit atom (z3735f, z3470d, z8300, z8350 etc.) systems (often tablets) with 32bit uefi bios: https://github.com/hexdump0815/imagebuilder/blob/main/systems/atom_x86_with_32bit_uefi/readme.md
 - arm exynos 5250 32bit chromebooks snow: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_snow/readme.md
 - arm exynos 5250 32bit chromebooks spring: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_spring/readme.md (on hold)
-- arm exynos 5420 32bit chromebooks peach: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_peach/readme.md
+- arm exynos 5420/5800 32bit chromebooks peach: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_peach/readme.md
 - arm tegra k1 32bit chromebooks nyan: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_nyan/readme.md
 - arm rockchip rk3288 32bit chromebooks veyron: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_veyron/readme.md
 - arm rockchip rk3399 64bit chromebooks gru: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_gru/readme.md
@@ -44,7 +44,7 @@ see https://github.com/hexdump0815/imagebuilder/blob/main/doc/using-the-imagebui
 - arm mediatek mt8183 64bit chromebooks kukui: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_kukui/readme.md
 - arm mediatek mt8192 64bit chromebooks asurada: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_asurada/readme.md
 - arm mediatek mt8195 64bit chromebooks cherry: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_cherry/readme.md
-- arm qualcom 7c sc7180 64bit chromebooks trogdor: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_trogdor/readme.md
+- arm qualcom 7c gen1 and gen2 sc7180 64bit chromebooks trogdor: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_trogdor/readme.md
 - intel chromebooks with legacy/mbr booting firmware and generic intel systems with mbr booting bios: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_x86_mbr/readme.md
 - intel chromebooks with uefi firmware and generic intel systems with uefi bios: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_x86_uefi/readme.md
 - intel gemini lake chromebooks without any alternative bios using the chromeos native way for booting: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_octopus/readme.md (replaced by generic uefi one above)
@@ -54,14 +54,14 @@ see https://github.com/hexdump0815/imagebuilder/blob/main/doc/using-the-imagebui
 - raspberry pi 3: https://github.com/hexdump0815/imagebuilder/blob/main/systems/raspberry_pi_3/readme.md (on hold)
 - raspberry pi 4: https://github.com/hexdump0815/imagebuilder/blob/main/systems/raspberry_pi_4/readme.md
 - rockchip rk3288 devices: https://github.com/hexdump0815/imagebuilder/blob/main/systems/rockchip_rk3288/readme.md (on hold)
-- rockchip rk33xx devices and tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/rockchip_rk33xx/readme.md
-- rockchip rk356x devices and tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/rockchip_rk356x/readme.md (wip)
+- rockchip rk33xx (rk3318, rk3328, rk3399) devices and tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/rockchip_rk33xx/readme.md
+- rockchip rk356x (rk3566 and rk3568) devices and tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/rockchip_rk356x/readme.md (wip)
 - rockchip rk3588 devices: https://github.com/hexdump0815/imagebuilder/blob/main/systems/rockchip_rk3588/readme.md (wip)
 - snapdragon sdm835 msm8998 windows on arm devices: https://github.com/hexdump0815/imagebuilder/blob/main/systems/snapdragon_835/readme.md (wip)
-- snapdragon 7c sc7180 windows on arm devices: https://github.com/hexdump0815/imagebuilder/blob/main/systems/snapdragon_7c_woa/readme.md (wip)
-- starfive visionfive 2 devices: https://github.com/hexdump0815/imagebuilder/blob/main/systems/starfive_visionfive2/readme.md (wip)
+- snapdragon 7c gen1 and gen2 sc7180 windows on arm devices: https://github.com/hexdump0815/imagebuilder/blob/main/systems/snapdragon_7c_woa/readme.md (wip)
+- starfive visionfive 2 risc v sbc: https://github.com/hexdump0815/imagebuilder/blob/main/systems/starfive_visionfive2/readme.md (wip)
 - samsung galaxy tab a 9.7 gt510 msm8916 tablets: https://github.com/hexdump0815/imagebuilder/blob/main/systems/tablet_samsung_gt510/readme.md (wip)
-- motorola moto g4 play msm8916 phones: https://github.com/hexdump0815/imagebuilder/blob/main/systems/tablet_samsung_gt510/readme.md (wip)
+- motorola moto g4 play msm8916 phones: https://github.com/hexdump0815/imagebuilder/blob/main/systems/phone_motorola_harpia/readme.md (wip)
 - asus google nexus 7 nvidia tegra 3 grouper tilapia tablets: https://github.com/hexdump0815/imagebuilder/blob/main/systems/tablet_asus_grouper_tilapia/readme.md (on hold)
 - amazon ford tablets: https://github.com/hexdump0815/imagebuilder/blob/main/systems/tablet_amazon_ford/readme.md (legacy, on hold)
 - amazon austin tablets: https://github.com/hexdump0815/imagebuilder/blob/main/systems/tablet_amazon_austin/readme.md (legacy, on hold)
