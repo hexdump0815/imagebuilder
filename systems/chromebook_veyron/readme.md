@@ -20,6 +20,8 @@
 - hisense chromebook 11 - jerry
 - edugear chromebook m series - mighty
   - see also: https://github.com/hexdump0815/imagebuilder/issues/110
+- asus chromebit cs10 - mickey
+  - u-boot not working yet: https://github.com/hexdump0815/imagebuilder/issues/130#issuecomment-1454334195
 
 see also https://github.com/hexdump0815/imagebuilder/issues/81 for all above
 
@@ -45,7 +47,6 @@ see also https://github.com/hexdump0815/imagebuilder/issues/81 for all above
 - prowise 11.6" entry line chromebook - mighty
 - sector 5 e1 rugged chromebook - mighty
 - viglen chromebook 11 - mighty
-- asus chromebit cs10 - mickey
 
 ## generic mainline linux on arm chromebook notes
 
