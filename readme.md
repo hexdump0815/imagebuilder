@@ -14,66 +14,58 @@ for communication github issues should be used. before creating a new one, pleas
 
 finally some notes about the name: the framework did not have any real name so far besides "imagebuilder", but as this is hard to find and not so easy to reference i have decided to give it some name, so it can be referenced easier than as "images built with the hexdump0815 imagebuilder framework" - lets call it "velvet os" from now on. the name comes from the fact, that i sometimes use self-adhesive velvet to cover the (sometimes heavily scratched) top of my chromebooks, which has the nice side effect to let all the marketing branding of the device disappear, making it a perfect velvet os device ... lets hope that using velvet os images one day will be an as pleasant experience as touching velvet :)
 
-# creating images
+# important latest informations about the images - please check them out!
 
-see doc/using-the-imagebuilder-framework.md as a start
-
-more coming soon ...
+see https://github.com/hexdump0815/imagebuilder/blob/main/doc/important-information.md
 
 # using the images
 
-simply write/flash (not just copy!) the images to an sd card - there is a lot of documentation about how to do this on the web. the images require an sd card of at least 8gb size (for the newer images even 4gb sould be enough) - more is no problem and can be made useable after the first boot of the image.
+see https://github.com/hexdump0815/imagebuilder/blob/main/doc/first-steps.md
 
-the images provided are ubuntu 20.04 lts (focal) with the xubuntu desktop environment. debian 11 (bullseye) with the xfce desktop environment will be added as soon as it gets officially released. they have a user named "linux" configured with the password "changeme" and sudo permission (use "sudo -i" to get root). the hostname is set to "changeme". they are assuming a us keyboard and are setup for english, so one should configure it as needed after the first boot - a good start might be:
+# creating images
 
-* locale: dpkg-reconfigure locales
-* timezone: dpkg-reconfigure tzdata
-* console keyboard (run this on the console if needed at all): dpkg-reconfigure keyboard-configuration
-* console (run this on the console if needed at all): dpkg-reconfigure console-setup
-
-or even simpler, just use the various graphical settings tools installed.
-
-some commands to set the keyboardmapping in an x terminal:
-
-* english: setxkbmap us
-* french: setxkbmap fr
-* german: setxkbmap de
-* italian: setxkbmap it
-* portuguese: setxkbmap pt
-* russian: setxkbmap ru
-* spanish: setxkbmap es
-* ...
-* onscreen keyboard: apt-get install matchbox-keyboard ; matchbox-keyboard
-      alternatively: apt-get install onboard ; onboard
-* for console: loadkeys us (etc. like above)
-
-to use all the space on your sd card, please run the following script as root after the first boot: "/scripts/extend-rootfs.sh"
-
-more coming soon ...
+see https://github.com/hexdump0815/imagebuilder/blob/main/doc/using-the-imagebuilder-framework.md
 
 # system specific information
 
-- allwinner h3 devices and tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/allwinner_h3/readme.md
-- allwinner h6 devices and tv boxes: https://github.com/hexdump0815/imagebuilder/tree/main/systems/allwinner_h6#readme
+- allwinner h3 devices and tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/allwinner_h3/readme.md (on hold)
+- allwinner h6 devices and tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/allwinner_h6/readme.md
+- allwinner h616 devices and tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/allwinner_h616/readme.md (wip)
 - amlogic gx (gxbb=s905, gxl=s905x/s905w, gxm=s912, g12a=s905x2, g12b=s922x and sm1=s905x3) devices and tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/amlogic_gx/readme.md
 - amlogic m8 (s802, s805 and s812) devices and tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/amlogic_m8/readme.md
 - intel 64bit atom (z3735f, z3470d, z8300, z8350 etc.) systems (often tablets) with 32bit uefi bios: https://github.com/hexdump0815/imagebuilder/blob/main/systems/atom_x86_with_32bit_uefi/readme.md
-- arm exynos 5250 32bit chromebook snow: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_snow/readme.md
-- arm exynos 5250 32bit chromebook spring: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_spring/readme.md
+- arm exynos 5250 32bit chromebooks snow: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_snow/readme.md
+- arm exynos 5250 32bit chromebooks spring: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_spring/readme.md (on hold)
 - arm exynos 5420 32bit chromebooks peach: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_peach/readme.md
-- arm tegra k1 32bit chromebook nyan: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_nyan/readme.md
+- arm tegra k1 32bit chromebooks nyan: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_nyan/readme.md
 - arm rockchip rk3288 32bit chromebooks veyron: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_veyron/readme.md
-- arm rockchip rk3399 64bit chromebooks gru: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_gru/readme.md (wip)
+- arm rockchip rk3399 64bit chromebooks gru: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_gru/readme.md
 - arm mediatek mt8173 64bit chromebooks oak: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_oak/readme.md
 - arm mediatek mt8183 64bit chromebooks kukui: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_kukui/readme.md
+- arm mediatek mt8192 64bit chromebooks asurada: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_asurada/readme.md
+- arm mediatek mt8195 64bit chromebooks cherry: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_cherry/readme.md
 - arm qualcom 7c sc7180 64bit chromebooks trogdor: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_trogdor/readme.md
 - intel chromebooks with legacy/mbr booting firmware and generic intel systems with mbr booting bios: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_x86_mbr/readme.md
 - intel chromebooks with uefi firmware and generic intel systems with uefi bios: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_x86_uefi/readme.md
-- intel gemini lake chromebooks without any alternative bios using the chromeos native way for booting: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_octopus/readme.md
+- intel gemini lake chromebooks without any alternative bios using the chromeos native way for booting: https://github.com/hexdump0815/imagebuilder/blob/main/systems/chromebook_octopus/readme.md (replaced by generic uefi one above)
 - odroid u3 (u3, u2, x2, x) devices: https://github.com/hexdump0815/imagebuilder/blob/main/systems/odroid_u3/readme.md
-- odroid mc1 (mc1, xu3, xu4, hc1, hc2) devices: https://github.com/hexdump0815/imagebuilder/blob/main/systems/odroid_mc1/readme.md
+- odroid mc1 (mc1, xu3, xu4, hc1, hc2) devices: https://github.com/hexdump0815/imagebuilder/blob/main/systems/odroid_mc1/readme.md (on hold)
 - orbsmart s92, beelink r89 and similar rockchip rk3288 tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/orbsmart_s92_beelink_r89/readme.md
-- raspberry pi 3: https://github.com/hexdump0815/imagebuilder/blob/main/systems/raspberry_pi_3/readme.md
+- raspberry pi 3: https://github.com/hexdump0815/imagebuilder/blob/main/systems/raspberry_pi_3/readme.md (on hold)
 - raspberry pi 4: https://github.com/hexdump0815/imagebuilder/blob/main/systems/raspberry_pi_4/readme.md
-- rockchip rk3288 devices: https://github.com/hexdump0815/imagebuilder/blob/main/systems/rockchip_rk3288/readme.md
+- rockchip rk3288 devices: https://github.com/hexdump0815/imagebuilder/blob/main/systems/rockchip_rk3288/readme.md (on hold)
 - rockchip rk33xx devices and tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/rockchip_rk33xx/readme.md
+- rockchip rk356x devices and tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/rockchip_rk356x/readme.md (wip)
+- rockchip rk3588 devices: https://github.com/hexdump0815/imagebuilder/blob/main/systems/rockchip_rk3588/readme.md (wip)
+- snapdragon sdm835 msm8998 windows on arm devices: https://github.com/hexdump0815/imagebuilder/blob/main/systems/snapdragon_835/readme.md (wip)
+- snapdragon 7c sc7180 windows on arm devices: https://github.com/hexdump0815/imagebuilder/blob/main/systems/snapdragon_7c_woa/readme.md (wip)
+- starfive visionfive 2 devices: https://github.com/hexdump0815/imagebuilder/blob/main/systems/starfive_visionfive2/readme.md (wip)
+- samsung galaxy tab a 9.7 gt510 msm8916 tablets: https://github.com/hexdump0815/imagebuilder/blob/main/systems/tablet_samsung_gt510/readme.md (wip)
+- motorola moto g4 play msm8916 phones: https://github.com/hexdump0815/imagebuilder/blob/main/systems/tablet_samsung_gt510/readme.md (wip)
+- asus google nexus 7 nvidia tegra 3 grouper tilapia tablets: https://github.com/hexdump0815/imagebuilder/blob/main/systems/tablet_asus_grouper_tilapia/readme.md (on hold)
+- amazon ford tablets: https://github.com/hexdump0815/imagebuilder/blob/main/systems/tablet_amazon_ford/readme.md (legacy, on hold)
+- amazon austin tablets: https://github.com/hexdump0815/imagebuilder/blob/main/systems/tablet_amazon_austin/readme.md (legacy, on hold)
+- amazon giza tablets: https://github.com/hexdump0815/imagebuilder/blob/main/systems/tablet_amazon_giza/readme.md (legacy, on hold)
+- amazon douglas tablets: https://github.com/hexdump0815/imagebuilder/blob/main/systems/tablet_amazon_douglas/readme.md (legacy, on hold)
+- amazon karnak tablets: https://github.com/hexdump0815/imagebuilder/blob/main/systems/tablet_amazon_karnak/readme.md (legacy, on hold)
+- amazon suez tablets: https://github.com/hexdump0815/imagebuilder/blob/main/systems/tablet_amazon_suez/readme.md (legacy, on hold)
