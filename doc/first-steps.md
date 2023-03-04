@@ -30,3 +30,7 @@ anything with the proper keyboard layout before everything is setup properly:
 there is an onscreen keyboard available via top menu on the login screen and
 the onboard onscreen keyboard is available in the xfce session (the four
 little squares in right part of the menubar).
+
+it might be worth to have a look at the doc folder for other documents which
+might be of interest and also some systems have a doc dir with system specific
+information in their system directory.
