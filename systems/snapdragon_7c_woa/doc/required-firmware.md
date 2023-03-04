@@ -6,7 +6,7 @@ is the try to collect information about what is needed and where it can be
 obtained from. some of the files are part of the linux-firmware repo and some
 will have to be copied from the windows installation of the device as the
 firmware is often signed. the firmware files can usually be found at the
-path c:/Windows/System32/DriverStore/FileRepository in the windows
+path C:\Windows\System32\DriverStore\FileRepository in the windows
 installation. in a wsl shell on windows this means we are interested in the
 following files:
 ```
