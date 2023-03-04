@@ -1,4 +1,11 @@
 #!/bin/bash
 
-# for some reason apparmor did not work properly and delyed the bootup quite a bit - so lets disable it for now
-systemctl disable apparmor.service
+# not sure if this is really required
+mkdir -p /lib/firmware/rmtfs
+dd if=/dev/zero bs=1M count=2 of=/lib/firmware/rmtfs/modem_fs1
+dd if=/dev/zero bs=1M count=2 of=/lib/firmware/rmtfs/modem_fs2
+dd if=/dev/zero bs=1M count=2 of=/lib/firmware/rmtfs/modem_fsg
+dd if=/dev/zero bs=1M count=2 of=/lib/firmware/rmtfs/modem_fsc
+
+# install the qcom tools qrtr-ns and rmtfs
+apt-get -y install protection-domain-mapper qrtr-tools rmtfs tqftpserv
