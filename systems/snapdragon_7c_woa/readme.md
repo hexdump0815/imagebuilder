@@ -10,6 +10,8 @@
 - samsung galaxy book go (snapdragon 7c gen2)
 - acer aspire 1 a114-61 (snapdragon 7c)
 
+see also https://github.com/hexdump0815/imagebuilder/issues/136 for all above
+
 ## untested systems
 
 - asus exportbook b3 detachable b3000 (snapdragon 7c gen2)
