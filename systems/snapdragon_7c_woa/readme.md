@@ -19,6 +19,9 @@ see also https://github.com/hexdump0815/imagebuilder/issues/136 for all above
 - hp laptop 14 (14-ed0123wm) (snapdragon 7c gen2)
 - lenovo 10w 82st (snapdragon 7c gen2)
 - tcl book 14 go (snapdragon 7c)
+- jp.ik turn connect t101 (snapdragon 7c)
+- jp.ik leap connect t304 (snapdragon 7c)
+- positivo wise n1212S (snapdragon 7c)
 
 ## kernel build notes
 
