@@ -96,3 +96,11 @@ could be that this is also related to firmware loading similar to what is
 described here (and in the lines around):
 https://oftc.irclog.whitequark.org/aarch64-laptops/2023-01-28#31850582
 but this does not have to be the case.
+
+update: the latest image has the pd mapper disabled by default and it looks
+like with this the filesystem corruption is gone when running with an usb
+rootfs ... only minimal testing done so far, but as it was running reliable
+before i started to look into firmware loading and as part of that playing
+around with pd-mapper this might maybe really be it. in that case the
+pd-mapper startup most probably will have to move into initrd when there is
+no usb rootfs mounted yet.
