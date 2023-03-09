@@ -1,8 +1,7 @@
 BOOTFS=ext4
-ROOTFS=ext4
+ROOTFS=btrfs
 BOOTPART=2
 ROOTPART=3
 # the native amr64 grub install does not seem to work yet and it will fail the way it is currently scripted
 # but it still has to be enabled to properly create the efi partition
-# the boot setup currently is done via some ugly postinstall-chroot.sh hack for this system
 UEFI64ARM=true
