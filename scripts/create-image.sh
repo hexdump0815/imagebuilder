@@ -166,10 +166,6 @@ if [ "${CROSPARTS}" = "true" ]; then
 else
   if [ -f ${DOWNLOAD_DIR}/boot-${1}-${2}.dd ]; then
     dd if=${DOWNLOAD_DIR}/boot-${1}-${2}.dd of=/dev/loop0
-    # clear the partition table and reread it via partprobe in case the boot
-    # blocks provided contained a gpt partition table which might confuse later
-    sgdisk -Z /dev/loop0
-    partprobe /dev/loop0
   fi
 fi
 
