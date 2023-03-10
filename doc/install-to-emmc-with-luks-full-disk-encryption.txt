@@ -393,6 +393,7 @@ homecrypt UUID=94fd468c-abfd-4bfb-930c-18eee845daeb root_and_home luks,keyscript
 
 # extending a luks crypt partition
 # see: https://unix.stackexchange.com/questions/320957/extend-a-luks-encrypted-partition-to-fill-disk
+# beforehand maybe extend the partition with fdisk without removing the signature from it
 cryptsetup luksOpen /dev/somedevice crypt-volume
 cryptsetup resize crypt-volume
 e2fsck -f /dev/mapper/crypt-volume
