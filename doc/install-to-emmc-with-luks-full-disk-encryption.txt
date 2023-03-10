@@ -1,5 +1,9 @@
 install to emmc with luks full disk encryption
 
+in case you want to install to emmc on a chromebook then maybe have a look at
+install-to-emmc-on-arm-chromebooks.md in the same dir first as it might
+explain the required steps in a somewhat easier to follow way.
+
 these are some notes about how to install the system booted from sd card or
 usb onto the internal emmc storage. this is just the most probably most
 common use case, but the target can also be any other storage device, even

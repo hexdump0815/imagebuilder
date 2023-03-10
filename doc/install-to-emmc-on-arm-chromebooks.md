@@ -274,4 +274,7 @@ system should boot into linux from emmc on the next boot.
 
 ## even more complex: with luks encrypted rootfs on emmc
 
-coming soon ...
+coming soon ... all the information is already in
+install-to-emmc-with-luks-full-disk-encryption.txt in the same dir but sadly
+this document is quite a bit harder to read than this one here and ths it is
+planned to an easier readable format here in the future as well.
