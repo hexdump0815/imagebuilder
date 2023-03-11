@@ -44,3 +44,4 @@
 - images with 64bit userland (native) are provided as well as images with 32bit userland, which might be better for systems with only 2gb ram due to the lower ram consumption (about a third less for 32bit vs. 64bit)
 - to change the screen orientation to landscape mode by default for some intel atom tablets /etc/lightdm/lighdm.conf needs to be adjusted by uncommenting the corresponding shell script for supported devices
 - on some intel baytrail, cherrytrail and braswell systems intel_idle.max_cstate=2 might be required as a kernel cmdline option in case of screen blanking or flickering issues
+- on some intel baytrail, cherrytrail and braswell systems some option for the sound driver is required (see /etc/modprobe.d/sound-byt-cht.conf) to avoid a beeping sound after a few minutes
