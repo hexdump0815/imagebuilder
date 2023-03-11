@@ -34,3 +34,9 @@ little squares in right part of the menubar).
 it might be worth to have a look at the doc folder for other documents which
 might be of interest and also some systems have a doc dir with system specific
 information in their system directory.
+
+another good source of information are the already existing github issues of
+this repository as quite a few topics and problems were discussed there
+already. the top level search of github restricted to "this repository" or
+the search box of the issues (best searching across open and closed issues)
+seem to work well for searching what is there.
