@@ -12,10 +12,10 @@ case it is please run the following commands:
 ```
 # show all affected files
 find /bin /boot /etc /lib /opt /root /sbin /scripts /usr -user linux -ls
+# remove the group writable flag for them
+find /bin /boot /etc /lib /opt /root /sbin /scripts /usr -user linux -exec chmod g-w {} \;
 # fix the ownership for them
 find /bin /boot /etc /lib /opt /root /sbin /scripts /usr -user linux -exec chown root:root {} \;
-# remove the group writable flag for them as well
-find /bin /boot /etc /lib /opt /root /sbin /scripts /usr -user linux -exec chmod g-w {} \;
 # check again - nothing should be left
 find /bin /boot /etc /lib /opt /root /sbin /scripts /usr -user linux -ls
 ```
