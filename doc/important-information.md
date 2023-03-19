@@ -16,6 +16,8 @@ find /bin /boot /etc /lib /opt /root /sbin /scripts /usr -user linux -ls
 find /bin /boot /etc /lib /opt /root /sbin /scripts /usr -user linux -exec chmod g-w {} \;
 # fix the ownership for them
 find /bin /boot /etc /lib /opt /root /sbin /scripts /usr -user linux -exec chown root:root {} \;
+# fix also the symlinks
+find /bin /boot /etc /lib /opt /root /sbin /scripts /usr -user linux -type l -exec chown -h root:root {} \;
 # check again - nothing should be left
 find /bin /boot /etc /lib /opt /root /sbin /scripts /usr -user linux -ls
 ```
