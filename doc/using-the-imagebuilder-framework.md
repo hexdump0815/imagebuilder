@@ -30,7 +30,8 @@ currently the imagebuilder framework has some paths hardcoded into its scripts
 and thus it should for now live in /compile/local/imagebuilder - at some
 point in time i hope to make it more flexible, so that the location where to
 run it can be freely chosen, but for now its best to clone this repo to
-/compile/local/imagebuilder as a first step.
+/compile/local/imagebuilder as a first step (in case the btrfs filesystem is
+used, please have a look at the next section beforehand):
 ```
 git clone https://github.com/hexdump0815/imagebuilder /compile/local/imagebuilder
 cd /compile/local/imagebuilder
