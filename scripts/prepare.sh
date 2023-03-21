@@ -3,4 +3,7 @@
 # install some packages required for the imagebuilder framework
 #
 
-apt-get install debootstrap liblz4-tool vboot-kernel-utils btrfs-progs cgpt
+apt-get -y install debootstrap liblz4-tool btrfs-progs
+if [ "$(uname -m)" != "riscv64" ]; then
+  apt-get -y install vboot-kernel-utils cgpt
+fi
