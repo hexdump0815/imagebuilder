@@ -1,4 +1,4 @@
-deb [allow-insecure=yes] http://ftp.ports.debian.org/debian-ports sid main
-deb [allow-insecure=yes] http://ftp.ports.debian.org/debian-ports unstable main
-deb [allow-insecure=yes] http://ftp.ports.debian.org/debian-ports unreleased main
-deb [allow-insecure=yes] http://ftp.ports.debian.org/debian-ports experimental main
+deb [allow-insecure=yes] http://ftp.ports.debian.org/debian-ports sid main contrib non-free non-free-firmware
+deb [allow-insecure=yes] http://ftp.ports.debian.org/debian-ports unstable main contrib non-free non-free-firmware
+deb [allow-insecure=yes] http://ftp.ports.debian.org/debian-ports unreleased main contrib non-free non-free-firmware
+deb [allow-insecure=yes] http://ftp.ports.debian.org/debian-ports experimental main contrib non-free non-free-firmware
