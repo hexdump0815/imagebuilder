@@ -174,6 +174,12 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
 
   cp ${WORKDIR}/scripts/create-chroot-stage-01.sh ${BUILD_ROOT_CACHE}
 
+  # in case of a leftover debootstrap dir move it out of the way to /tmp
+  # this way the logs are still around and it will be cleaned on first boot
+  if [ -d ${BUILD_ROOT_CACHE}/debootstrap ]; then
+    mv ${BUILD_ROOT_CACHE}/debootstrap ${BUILD_ROOT_CACHE}/tmp
+  fi
+
   mount -o bind /dev ${BUILD_ROOT_CACHE}/dev
   mount -o bind /dev/pts ${BUILD_ROOT_CACHE}/dev/pts
   mount -t sysfs /sys ${BUILD_ROOT_CACHE}/sys
