@@ -32,7 +32,7 @@ elif [ "$1" = "bookworm" ]; then
   tasksel install standard
 # special debian sid config for riscv64 as there is no useable bookworm for it yet
 elif [ "$1" = "sidriscv" ]; then
-  apt-get -yq install locales vim openssh-server ssh-askpass sudo net-tools ifupdown iputils-ping kmod less rsync u-boot-tools usbutils dosfstools mesa-utils mesa-utils-extra console-data task-xfce-desktop xserver-xorg-input-synaptics blueman firmware-linux-free pulseaudio pavucontrol lvm2 cryptsetup-bin cryptsetup cryptsetup-initramfs slick-greeter btrfs-progs btrfs-compsize dialog liblz4-tool bc plymouth plymouth-themes xserver-xorg-video-fbdev xinput rfkill curl onboard gnome-system-tools gnome-system-monitor git strace glmark2 pwgen fdisk gdisk debian-ports-archive-keyring ucf
+  apt-get -yq install locales vim openssh-server ssh-askpass sudo net-tools ifupdown iputils-ping kmod less rsync u-boot-tools usbutils dosfstools mesa-utils mesa-utils-extra console-data task-xfce-desktop xserver-xorg-input-synaptics blueman firmware-linux-free firmware-linux firmware-linux-nonfree firmware-misc-nonfree firmware-brcm80211 firmware-iwlwifi firmware-intel-sound firmware-samsung firmware-libertas firmware-realtek firmware-qcom-soc firmware-qcom-media firmware-atheros pulseaudio pavucontrol lvm2 cryptsetup-bin cryptsetup cryptsetup-initramfs slick-greeter btrfs-progs btrfs-compsize dialog liblz4-tool bc plymouth plymouth-themes xserver-xorg-video-fbdev xinput rfkill curl onboard gnome-system-tools gnome-system-monitor firmware-sof-signed git strace glmark2 pwgen fdisk gdisk debian-ports-archive-keyring
   tasksel install standard
 # special focal config used as base for building sonaremin images
 # libllvm10 is here for the self built mesa
