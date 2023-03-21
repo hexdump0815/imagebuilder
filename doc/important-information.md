@@ -20,6 +20,9 @@ find /bin /boot /etc /lib /opt /root /sbin /scripts /usr -user linux -exec chown
 find /bin /boot /etc /lib /opt /root /sbin /scripts /usr -user linux -type l -exec chown -h root:root {} \;
 # check again - nothing should be left
 find /bin /boot /etc /lib /opt /root /sbin /scripts /usr -user linux -ls
+# fix /
+chmod g-w /
+chown root:root /
 ```
 thanks a lot to @shelterx for pointing this out - see:
 https://github.com/hexdump0815/linux-mainline-on-arm-chromebooks/issues/1#issuecomment-1454750777
