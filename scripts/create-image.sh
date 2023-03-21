@@ -329,14 +329,14 @@ if [ "$PMOSKERNEL" != "true" ]; then
     export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/vmlinuz-* | sed 's,.*vmlinuz-,,g' | sort -u`
     if [ "$PARTUUID_ROOT" = "YES" ]; then
       ROOT_PARTUUID=$(blkid | grep "/dev/loop0p$ROOTPART" | awk '{print $5}' | sed 's,",,g')
-      if [ -f ${MOUNT_POINT}/boot/boot/extlinux/extlinux.conf ]; then
-        sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/boot/extlinux/extlinux.conf
-        sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/boot/extlinux/extlinux.conf
+      if [ -f ${MOUNT_POINT}/boot/extlinux/extlinux.conf ]; then
+        sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
+        sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
       fi
     else
-      if [ -f ${MOUNT_POINT}/boot/boot/extlinux/extlinux.conf ]; then
-        sed -i "s,ROOT_PARTUUID,LABEL=$ROOTPARTLABEL,g" ${MOUNT_POINT}/boot/boot/extlinux/extlinux.conf
-        sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/boot/extlinux/extlinux.conf
+      if [ -f ${MOUNT_POINT}/boot/extlinux/extlinux.conf ]; then
+        sed -i "s,ROOT_PARTUUID,LABEL=$ROOTPARTLABEL,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
+        sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
       fi
     fi
   fi

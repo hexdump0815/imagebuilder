@@ -10,4 +10,4 @@ boot_targets=distro mmc0 dhcp
 # Fix wrong fdtfile name
 fdtfile=starfive/jh7110-visionfive-v2.dtb
 # Fix missing bootcmd
-bootcmd=run bootcmd_distro
+bootcmd=run load_distro_uenv;run bootcmd_distro
