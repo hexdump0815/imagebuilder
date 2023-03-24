@@ -12,6 +12,7 @@
 - dell venue 8 pro windows 10 tablet (model 5830 only)
 - teclast x80 hd windows 10 / android tablet
 - linx 1010b windows 10 tablet / 2 in 1
+- trekstor surftab duo w1
 - unobook 2in1 educational laptop
 - beelink z83 box
 
