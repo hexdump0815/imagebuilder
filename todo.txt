@@ -1,7 +1,6 @@
 - fix extend-root.sh to handle sdx devices as well as mmcblkxpypz devices like used with pmos kernels and data partition on emmc
 - change default search engine in firefox to duckduckgo.com instead of google (looks like this is complicated)
 - add more doc info to the top level readme (initial setup, scripts in /scripts dir etc.)
-- maybe add support for the nvidia jetson nano (likely to be dropped as the mainline support and the nvidia oss commitment for it is not that good)
 - maybe add apple m1 support when asahi linux progressed far enough
 - maybe create some useable qemu images too
 - check potential problem with the systemd-gpt-auto-generator - see: https://github.com/hexdump0815/imagebuilder/issues/43#issuecomment-1116133516
