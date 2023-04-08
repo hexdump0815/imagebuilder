@@ -41,6 +41,13 @@ qcmpss7180_nm.mbn
 qcvss7180.mbn
 wlanmdsp.mbn
 ```
+and the following file has to be put additionally as well into
+/lib/firmware/ath10k/WCN3990/hw1.0 (at least it has to be put there in case
+wifi does not work properly with the original file, for instance it might
+properly connect to the wifi without working network connections in the end)
+```
+wlanmdsp.mbn
+```
 for gpu functionality only qcdxkmsuc7180.mbn is required, the other files are
 required for things like wifi, video decoding, audio etc.
 
@@ -66,13 +73,15 @@ qcmpss7180_nm.mbn
 qcvss7180.mbn
 wlanmdsp.mbn
 ```
+and the following file has to be put additionally as well into
+/lib/firmware/ath10k/WCN3990/hw1.0 (at least it has to be put there in case
+wifi does not work properly with the original file, for instance it might
+properly connect to the wifi without working network connections in the end)
+```
+wlanmdsp.mbn
+```
 for gpu functionality only qcdxkmsuc7180.mbn is required, the other files are
 required for things like wifi, video decoding, audio, lte modem etc.
-
-it looks like there is still some problem with the qcmpss7180 firmware on the
-samsung galaxy book go and as a result it is better to move those two files
-away for now as otherwise the log might get spammed by failed tries to load
-it.
 
 ## steps required to enable gpu support with the firmware files in place
 
@@ -83,24 +92,11 @@ xorg:
 cp /etc/X11/xorg.conf.d.samples/11-modesetting.conf /etc/X11/xorg.conf.d
 rm /etc/X11/xorg.conf.d/11-fbdev.conf
 update-initramfs -c -k $(uname -r)
+systemctl enable pd-mapper
+apt-mark hold firmware-atheros
 ```
 after a reboot freedreno support should be enabled in xorg if everything is
-setup correctly.
-
-## some general notes around firmware and firmware loading
-
-i noticed filesystem errors when running from usb and i'm not sure if those
-started when i started playing around with the firmware files or if they
-were around already before (i.e. some independent usb problem then). it
-could be that this is also related to firmware loading similar to what is
-described here (and in the lines around):
-https://oftc.irclog.whitequark.org/aarch64-laptops/2023-01-28#31850582
-but this does not have to be the case.
-
-update: the latest image has the pd mapper disabled by default and it looks
-like with this the filesystem corruption is gone when running with an usb
-rootfs ... only minimal testing done so far, but as it was running reliable
-before i started to look into firmware loading and as part of that playing
-around with pd-mapper this might maybe really be it. in that case the
-pd-mapper startup most probably will have to move into initrd when there is
-no usb rootfs mounted yet.
+setup correctly and at least wifi should work as well. the last line is there
+to avoid the wlanmdsp.mbn file to get overwritten by firmware-atheros package
+updates in case the windows firware file has been put into
+/lib/firmware/ath10k/WCN3990/hw1.0
