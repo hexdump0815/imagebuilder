@@ -56,7 +56,7 @@ cgpt repair /dev/mmcblk0
 cgpt add -i 2 -t kernel -b 106496 -s 32768 -l KernelB -S 0 -T 2 -P 5 /dev/mmcblk0
 cgpt repair /dev/mmcblk0
 
-# side note: n case of a dd copy a full disk and the 4th partition is too large
+# side note: in case of a dd copy a full disk and the 4th partition is too large
 # for the target disk - just delete it while fixing the gpt table and recreate it
 # afterwards with fdisk
 # sgdisk -C -e -G -d=4 /dev/targetdisk
