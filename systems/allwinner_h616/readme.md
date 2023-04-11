@@ -41,6 +41,7 @@
   - sound is not working, wifi, bluetooth and sometimes even ethernet might work or might not work depending on the tv box
 - as allwinner socs always boot by default from sd card the emmc can safely be overwritten (but do a backup of the original android system via dd command beforehand - it might be useful later)
 - a suitable dtb should be chosen in /boot/extlinux/extlinux.conf (maybe even trying them all to see which works best - default is x96q)
+- there seem to be newer (as 2022 or newer maybe) h313/h616 tv boxes which use lpddr3/lpddr4 memory and partially also slightly different soc versions and thuse will not boot at all with those images here for now (see https://oftc.irclog.whitequark.org/linux-sunxi/2023-03-27#32013409 and arround for more info)
 - panfrost opengl gpu acceleration does not seem to work completely stable yet, thus it is disabled by default
 - if panfrost is enabled there are some visual glitches visible like for instance a missing font for the input field of the login window (this seems to be better with the latest v5.18 kernel and v22.1 mesa)
 - the whole system seems to be a bit unstable depending on the hardware, it might be require to disable more of the higher freq opp points in the dtb to get more stability
