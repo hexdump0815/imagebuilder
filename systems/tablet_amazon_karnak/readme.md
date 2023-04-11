@@ -16,7 +16,7 @@
 
 ## priority
 
-- low: will be worked on and improved rarely, not much left to be done due to legacy kernel
+- on hold: no further activities planned so far, no more access to hardware
 
 ## special notes
 
