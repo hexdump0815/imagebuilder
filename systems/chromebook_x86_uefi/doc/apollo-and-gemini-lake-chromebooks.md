@@ -64,7 +64,8 @@ follow the steps as described below.
 #### apollo lake example
 
 older (mostly apollo lake) chromebooks without solid altfw support (example
-here: coral-rabbid):
+here: coral-rabbid - it did not work for a coral-robo360 for me, so it might
+work or not depending on the actual chromebook model):
 
 - save a backup copy of the original bios image before changing anything as it
   is always good to have it around just in case - so better transfer it (the
@@ -85,7 +86,7 @@ curl -LO https://www.mrchromebox.tech/files/firmware/full_rom/coreboot_tiano-rab
 ```
 - extract the uefi payload from it
 ```
-cbfstool coreboot_tiano-rabbid-mrchromebox_20220718.rom extract extract -n fallback/payload -m x86 -f cbox.pl
+cbfstool coreboot_tiano-rabbid-mrchromebox_20220718.rom extract -n fallback/payload -m x86 -f cbox.pl
 ```
 - create a proper RW_LEGACY firmware file out of it - keep in mind the size
   found out above
@@ -217,6 +218,9 @@ apt-mark hold firmware-intel-sound
 - after a reboot audio should hopefully work, it might be required to switch
   from headphones in pulseaudio once as for some reason the configuration used
 seems to default to headphones initially by default
+- it might require a special kernel build to work - see
+  https://github.com/hexdump0815/linux-mainline-x86-64-kernel/releases and
+https://github.com/hexdump0815/imagebuilder/blob/main/doc/installing-a-newer-kernel.md
 
 ## switch suspend to s2idle mode
 
