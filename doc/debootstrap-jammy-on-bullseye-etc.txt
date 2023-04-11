@@ -1,5 +1,5 @@
-it looks like bullseye does not yet bring a fresh enough debootstrap
-with it to bootstrap ubuntu jammy - to work around this one should
+it looks like bullseye does not bring a fresh enough debootstrap yet
+to bootstrap ubuntu jammy - to work around this one should
 install the latest sid debootstrap version from:
 
   https://packages.debian.org/sid/all/debootstrap/download
