@@ -433,3 +433,26 @@ panfrost gpu driver was disabled again due to problems with it in earlier
 tries and the zswap percentage was set to 25% which seems to be a very good
 value in general, the swap file size was 4gb in this setup
 - info: v6.1.7 kernel, debian bookworm, 2gb ram, 16gb emmc
+
+# allwinner h616 - t6xs tv box - april 2023
+
+- tested for a day
+- it was working good
+- notes: its not a good idea to go from faster systems back to slower ones,
+  so it was expected to be less fluid than the usually faster chromebooks i
+mostly used during the last weeks, but anyway it was quite useable and there
+weren't any major problems during the short testing phase
+- info: v6.1.11 kernel, debian bookworm, 4gb ram, 32gb emmc
+
+# samsung galaxy book go - april 2023
+
+- tested for a day
+- it was working quite well
+- notes: this is not a real daily driving test as a lot of things like
+  touchpad, suspend/resume, internal storage and much more is not working at
+all and other things are not working too well, but some things actually work
+(like wifi, gpu, usb to some degree) so its partially useable, especially if
+used with an external usb keyboard and mouse. the snapdragon 7c cpu and its
+gpu are more snappy than the corresponding mt8183 chromebooks ones for sure,
+so working with it is quite fluid.
+- info: v6.1.11 kernel, debian bookworm, 4gb ram, 32gb sd card, booted via usb
