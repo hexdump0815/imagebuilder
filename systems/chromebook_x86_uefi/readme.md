@@ -10,6 +10,7 @@
 
 - acer c200 chromebook - squawks
 - dell 3189 chromebook - kefka
+- lenovo chromebook 500e (1st generation) - robo360
 - hp chromebook 13 g1 - chell
   - see the extra notes in the doc subdir for such skylake chromebooks
 - asus chromebook c423na - rabbid
