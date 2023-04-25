@@ -28,7 +28,7 @@
 
 ## priority
 
-- low: will be worked on and improved rarely, not much left to be done as the v5.14 odroid kernel still seems to be the best option
+- on hold: no further activities planned so far, no more access to hardware
 
 ## special notes
 
