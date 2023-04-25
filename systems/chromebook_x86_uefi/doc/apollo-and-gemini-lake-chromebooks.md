@@ -172,7 +172,7 @@ if the flash rom write protection is already removed it is recommended to set
 the gbb flags to 0x1499 - for more information about this topic see:
 https://github.com/hexdump0815/linux-mainline-on-arm-chromebooks
 
-this values i built from the following enabled flags:
+this value is built from the sum of the following enabled flags:
 ```
 VB2_GBB_FLAG_DEV_SCREEN_SHORT_DELAY - 0x1
 VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON - 0x8
