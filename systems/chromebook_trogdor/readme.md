@@ -8,7 +8,7 @@
 
 ## tested systems - working
 
-- acer chromebook spin sp513-1h - lazor
+- acer chromebook spin sp513-1h/sp513-1hl - lazor
   - see also: https://github.com/hexdump0815/imagebuilder/issues/47
 - hp chromebook x2 - coachz
   - see also: https://github.com/hexdump0815/imagebuilder/issues/44

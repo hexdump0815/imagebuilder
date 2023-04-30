@@ -7,7 +7,7 @@
 
 ## tested systems - working
 
-- acer chromebook cb514-2h - spherion
+- acer chromebook cb514-2h/cb514-2ht - spherion
   - see also: https://github.com/hexdump0815/imagebuilder/issues/60
 
 ## untested systems
