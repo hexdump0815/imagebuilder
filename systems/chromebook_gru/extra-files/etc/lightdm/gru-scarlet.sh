@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# landscape mode and scale down thedisplay to 1280x960
+# landscape mode and scale down the display to 1280x960
 xrandr --output DSI-1 --mode 1536x2048 --panning 960x1280 --scale 0.625x0.625 --rotate left
 
 # find the touch screen input
