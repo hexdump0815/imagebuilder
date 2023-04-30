@@ -14,10 +14,11 @@
   - see also: https://github.com/hexdump0815/imagebuilder/issues/44
 - lenovo chromeboot duet 5 - homestar
   - see also: https://github.com/hexdump0815/imagebuilder/issues/68
+- lenovo chromeboot duet 3 - wormdingler
 
 ## untested systems
 
-- lenovo chromeboot duet 3 - wormdingler
+- according to the dts files in the kernel there are maybe other trogdor models as well
 
 ## generic mainline linux on arm chromebook notes
 

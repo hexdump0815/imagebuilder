@@ -1,2 +1,16 @@
 # enable light supend mode, i.e. only cpu is put into sleep, everything else stays alive
 #echo s2idle > /sys/power/mem_sleep
+
+# try to copy the right xorg monitor rotation conf file depending on system at first boot
+# as a result the wrong screen orientation should be corrected after the first reboot on wormdingler
+if [ ! -f /etc/X11/xorg.conf.d/31-monitor-no-dpms-rotate-left.conf ] && [ ! -f /etc/X11/xorg.conf.d/31-monitor-no-dpms.conf ]; then
+  # wormdingler has a rotated panel
+     $(grep -q 'Google Wormdingler' /proc/device-tree/model) ; then
+    cp /etc/X11/xorg.conf.d.samples/31-monitor-no-dpms-rotate-left.conf /etc/X11/xorg.conf.d
+    sync
+    reboot
+  # most others do not have a rotated panel
+  else
+    cp /etc/X11/xorg.conf.d.samples/31-monitor-no-dpms.conf /etc/X11/xorg.conf.d
+  fi
+fi

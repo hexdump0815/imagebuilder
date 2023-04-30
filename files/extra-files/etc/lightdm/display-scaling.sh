@@ -4,6 +4,8 @@ OUTPUT=$(xrandr | grep "connected primary" | awk '{print $1}')
 
 # example for lenovo duet - kukui krane
 xrandr --output $OUTPUT --mode 1200x1920 --panning 800x1280 --scale 0.6666x0.6666
+# example for lenovo duet 3 - trogdor wormdingler
+#xrandr --output $OUTPUT --mode 1200x2000 --panning 900x1500 --scale 0.75x0.75
 # example for samsung chromebook plus - gru kevin (does not seem to work well)
 #xrandr --output $OUTPUT --mode 2400x1600 --panning 1440x960 --scale 0.6x0.6
 # example for hp chromebook 13 g1 - chell
