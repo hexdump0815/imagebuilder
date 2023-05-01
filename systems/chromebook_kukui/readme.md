@@ -60,7 +60,7 @@
 - most things seem to work more or less (mostly thanks to the kernel patches partially taken from https://github.com/Maccraft123/Cadmium/tree/master/baseboard/kukui/patches)
 - it seems that sometimes kukui devices give a high pitch noise after resuming from suspend (seen with kappa and juniper so far) - a useable workaround is to put the device into suspend and wake it up again, then the noise should be gone - see also: https://github.com/hexdump0815/imagebuilder/issues/65
 - juniper: sometimes the touchpad does not seem to work after booting, rebooting usually helps
-- krane, kakadu and katsu: the display rotation will be set properly during the first boot, afterwards it will reboot once automatically and should come up with the display correctly set to landscape mode - so please don't be surprised about the first automatic reboot and be ready with strl-u for the second boot :)
+- krane, kakadu and katsu: the display rotation will be set properly during the first boot, afterwards it will reboot once automatically and should come up with the display correctly set to landscape mode - so please don't be surprised about the first automatic reboot and be ready with ctrl-u for the second boot :)
 - some log spamming kernel messages have been silenced:
   - krane has usb bandwidth problems, especially with usb audio
   - juniper seems to have some audio related interrupt issues
