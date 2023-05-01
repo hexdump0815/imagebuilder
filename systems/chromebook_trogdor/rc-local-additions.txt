@@ -5,7 +5,7 @@
 # as a result the wrong screen orientation should be corrected after the first reboot on wormdingler
 if [ ! -f /etc/X11/xorg.conf.d/31-monitor-no-dpms-rotate-left.conf ] && [ ! -f /etc/X11/xorg.conf.d/31-monitor-no-dpms.conf ]; then
   # wormdingler has a rotated panel
-     $(grep -q 'Google Wormdingler' /proc/device-tree/model) ; then
+  if $(grep -q 'Google Wormdingler' /proc/device-tree/model) ; then
     cp /etc/X11/xorg.conf.d.samples/31-monitor-no-dpms-rotate-left.conf /etc/X11/xorg.conf.d
     sync
     reboot
