@@ -4,7 +4,7 @@
 xrandr --output DSI-1 --mode 1200x2000 --panning 900x1500 --scale 0.75x0.75 --rotate left
 
 # find the touch screen input
-TOUCH_ID=`xinput list | grep "hid-over-i2c 0603:604A" | grep pointer | sed 's,.*id=,,g' | awk '{print $1}'`
+TOUCH_ID=`xinput list | grep "hid-over-i2c 0603:604A" | grep pointer | grep -v Eraser | sed 's,.*id=,,g' | awk '{print $1}'`
 
 # see https://linuxhint.com/rotate-screen-in-raspberry-pi/ for possible transformations
 # do not ask where the 0.6 is coming from, but this value scales the y axis properly
