@@ -2,6 +2,7 @@
 
 ## bootable sd card images
 
+- https://github.com/hexdump0815/imagebuilder/releases/tag/230501-01
 - https://github.com/hexdump0815/imagebuilder/releases/tag/230218-03
 - https://github.com/hexdump0815/imagebuilder/releases/tag/220814-01
 - https://github.com/hexdump0815/imagebuilder/releases/tag/211120-02
@@ -38,8 +39,8 @@
 
 ## special notes
 
-- this is still very much wip, things might work or might not work
-- wifi, bt, basic sound (on lazor) seem to be ok, suspend/resume does not seem to work properly yet (at least if running from usb, when running from emmc it might work meanwhile, but not sure if really completely as it is not sure yet if it enters the deep sleep mode properly)
+- wifi, bt, basic sound (at least on on lazor and wormdingler) seem to be ok, suspend/resume does not seem to work properly yet if running from usb, when running from emmc it seems to work
+- wormdingler: the display rotation will be set properly during the first boot, afterwards it will reboot once automatically and should come up with the display correctly set to landscape mode - so please don't be surprised about the first automatic reboot and be ready with ctrl-u for the second boot :)
 - the current sound setup is not complete yet (and broken on homestar right now):
   - headphones and headset mic do not work yet, so better use a small usb audio interface for a headset if needed for now
 - on lazor the keyboard backlight can be controlled via /sys/class/leds/cros_ec\:\:kbd_backlight/brightness (values can go from 0-1023)
