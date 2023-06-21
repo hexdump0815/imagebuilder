@@ -61,3 +61,4 @@ some more work will be required to make the devices below working
 - important: do not touch the emmc on rockchip tv boxes as it contains important information to boot them at well defined places of the emmc - if this gets removed the box might no longer boot at all
   - if you want to touch your emmc you should really know what you are doing and are on your own (plus risk to brick your box) - you have been warned ...
 - alternatively there is also excellent support for rk3318 and rk3328 tv boxes as armbian csc: https://forum.armbian.com/topic/17597-csc-armbian-for-rk3318-tv-box-boards/
+- pinebook pro: it looks like wifi will not come up properlyafter a reboot, doing a full cold shutdown and a poweron instead seems to work
