@@ -11,16 +11,16 @@
 
 ## tested systems - working
 
-- lenovo chromebook n23 - hana
 - acer chromebook r13 - elm
+- lenovo chromebook 100e (mt8173 version) - hana
 - lenovo chromebook 300e (mt8173 version) - hana
+- lenovo chromebook n23 - hana
 - asus chromebook c202xa - hana
 
 ## untested systems
 
 - lenovo chromebook c330 - hana
 - lenovo chromebook s330 - hana
-- lenovo chromebook 100e (mt8173 version) - hana
 - lenovo ideapad flex 3 chromebook (mt8173 version) - hana
 
 ## generic mainline linux on arm chromebook notes
