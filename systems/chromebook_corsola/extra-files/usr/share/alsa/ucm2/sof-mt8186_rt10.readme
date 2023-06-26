@@ -1,0 +1,7 @@
+Based on https://chromium.googlesource.com/chromiumos/overlays/board-overlays/+/HEAD/overlay-corsola/chromeos-base/chromeos-bsp-corsola/files/magneton/audio/ucm-config/
+
+Also, you may need to initialize the SectionDevice manually once (only one time) to make pulseaudio finds them properly, same for Headphone and InternalMic.
+```
+alsaucm  -c sof-mt8186_rt10 set _verb HiFi set _enadev Speaker
+alsaucm  -c sof-mt8186_rt10 set _verb HiFi set _enadev InternalMic
+```
