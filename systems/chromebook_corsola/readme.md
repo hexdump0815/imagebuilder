@@ -11,6 +11,9 @@
 ## untested systems
 
 - lenovo 100e gen 4 (mt8186 version) - rusty
+- lenovo 300e gen 4 (mt8186 version) - steelix
+- asus chromebook cm14 flip (cm1402f) - tentacruel
+- asus chromebook cm14 (cm1402c) - tentacool
 
 ## generic mainline linux on arm chromebook notes
 
