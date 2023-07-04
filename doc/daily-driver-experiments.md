@@ -258,6 +258,10 @@ set to 0 - this seems to apply to at least all 32bit armv7l systems with only
 - update: the oom kill problem is finally solved thanks to the mglru author,
 Yu Zhao, and quite a bit of testing - see:
 https://github.com/hexdump0815/imagebuilder/commit/149edb06d079043645971e2a43ca35276ac4e04e
+- update july 2023: i gave it another try with a v6.1.11 kernel for a bit over
+  a day and this time it was useable with some patience, but definitely quite
+a bit slower and less responsive than the kukui kappa chromebook i mostly use
+these days
 - info: v6.0.0 kernel, debian bookworm, 2gb ram, 32gb a1 sd card
 
 # rockchip rk33xx - pinebook pro - october/november 2022
