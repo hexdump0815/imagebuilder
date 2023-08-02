@@ -7,13 +7,13 @@
 ## tested systems - working
 
 - lenovo ideaPad slim 3 (mt8186 version) - magenton
+- asus chromebook cm14 (cm1402c) - tentacool (dtb says tentacruel)
 
 ## untested systems
 
 - lenovo 100e gen 4 (mt8186 version) - rusty
 - lenovo 300e gen 4 (mt8186 version) - steelix
 - asus chromebook cm14 flip (cm1402f) - tentacruel
-- asus chromebook cm14 (cm1402c) - tentacool
 
 ## generic mainline linux on arm chromebook notes
 
@@ -34,6 +34,12 @@
 
 ## special notes
 
-- this is just some experimental initial draft to support this system in some way
+- this is just some experimental initial draft to support this system in some
+  way
 - this is still very much wip and untested, things might work or might not work
-- as long as the chromeos kernel is used there is no gpu support and other stuff might also not work
+- as long as the chromeos kernel is used there is no gpu support and other
+  stuff might also not work
+- it looks like (at least the intial batch of) corsola chromebooks is a bit
+  buggy when trying to switch into developer mode and seems to hang there, so
+either an update has to be done first or they have to be restored from the
+latest recovery image - then switching to developer mode works properly
