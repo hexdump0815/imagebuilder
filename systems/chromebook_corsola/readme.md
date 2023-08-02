@@ -39,7 +39,7 @@
 - this is still very much wip and untested, things might work or might not work
 - as long as the chromeos kernel is used there is no gpu support and other
   stuff might also not work
-- it looks like (at least the intial batch of) corsola chromebooks is a bit
+- it looks like (at least the initial batch of) corsola chromebooks is a bit
   buggy when trying to switch into developer mode and seems to hang there, so
 either an update has to be done first or they have to be restored from the
 latest recovery image - then switching to developer mode works properly
