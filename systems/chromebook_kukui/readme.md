@@ -27,11 +27,12 @@
   - see also: https://github.com/hexdump0815/imagebuilder/issues/71
 - acer chromebook 314 (cb314-2h/cb314-2ht) - cozmo
   - see also: https://github.com/hexdump0815/imagebuilder/issues/75
+- acer chromebook 311 - kenzo
+  - see https://github.com/hexdump0815/imagebuilder/issues/141#issuecomment-1663779043
 
 ## untested systems
 
 - acer chromebook 311 (c722/c722t) - willow
-- acer chromebook 311 - kenzo
 - asus chromebook cz1 - cerise
 - asus chromebook flip cz1 - stern
 - asus chromebook detachable cz1 - katsu
