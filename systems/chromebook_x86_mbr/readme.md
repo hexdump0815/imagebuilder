@@ -9,6 +9,9 @@
 ## tested systems - working
 
 - acer cb3 111 chromebook - gnawty
+- lenovo thinkpad x200
+- lenovo thinkpad x201
+- lenovo thinkpad x301
 
 ## untested systems
 

@@ -20,6 +20,8 @@
 - hp chromebook 14a - blooglet
   - see the extra notes in the doc subdir for such apl/glk chromebooks
 - teclast tpad x80 plus windows 10 / android tablet
+- lenovo thinkpad x240
+- hp x2 elite 1012 g1
 
 ## untested systems
 
