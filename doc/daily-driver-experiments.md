@@ -230,6 +230,9 @@ the mouse simply did not work and always gave usb errors, with another usb hub
 - info: v6.0.0 kernel, debian bookworm, 4gb ram, 32gb emmc
 - update: the usb keyboard and mouse issued discovered above should be fixed
   with https://github.com/hexdump0815/linux-mainline-mediatek-mt81xx-kernel/commit/926886a8e6523be8e9d6afcc7d29c652da93f974
+- update august 2023: i used my kappa as daily driver for at least the last two
+  months and during that time up to 3 weeks in a row with only sleep and no
+reboot - all was working very nicely :)
 
 # odroid u3 - october 2022
 
