@@ -48,3 +48,8 @@
 - to change the screen orientation to landscape mode by default for some intel atom tablets /etc/lightdm/lighdm.conf needs to be adjusted by uncommenting the corresponding shell script for supported devices
 - on some intel baytrail, cherrytrail and braswell systems intel_idle.max_cstate=2 might be required as a kernel cmdline option in case of screen blanking or flickering issues
 - on some intel baytrail, cherrytrail and braswell systems some option for the sound driver is required (see /etc/modprobe.d/sound-byt-cht.conf) to avoid a beeping sound after a few minutes
+- some things relevant for the hp chromebook 13 g1 / chell:
+  - to avoid battery drain if the system is powered off it can be put into battery disconnect mode with some special keyboard and power-plug procedure as described here: https://github.com/hexdump0815/linux-mainline-on-arm-chromebooks#storing-chromebooks-and-avoiding-battery-drain - for chell it is important to use the usb-c port more towards the front of the device for this procedure as with the other one it does not seem to work (i.e. no proper battery disconnect mode in that case)
+  - the keyboard backlight can be controlled via /sys/class/leds/chromeos\:\:kbd_backlight/brightness (values can go from 0-100)
+- some things relevant for the hp x2 elite 1012 g1:
+  - if this device is just powered off normally the battery will drain quickly (up to around 5-10% per day), to completely turn it off the power button has to be pressed for about 15-20 seconds directly after shutdown - this way there will be no battery drain any longer and to power on the device a longer press to the power button will be required
