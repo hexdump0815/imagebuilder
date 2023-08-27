@@ -29,15 +29,16 @@
   - see also: https://github.com/hexdump0815/imagebuilder/issues/75
 - acer chromebook 311 - kenzo
   - see https://github.com/hexdump0815/imagebuilder/issues/141#issuecomment-1663779043
+- lenovo 10e chromebook tablet - kodama
+  - see https://github.com/hexdump0815/imagebuilder/issues/141#issuecomment-1694530926
+- asus chromebook detachable cz1 - katsu
 
 ## untested systems
 
 - acer chromebook 311 (c722/c722t) - willow
 - asus chromebook cz1 - cerise
 - asus chromebook flip cz1 - stern
-- asus chromebook detachable cz1 - katsu
 - hp chromebook x360 11mk g3 ee - burnet
-- lenovo 10e chromebook tablet - kodama
 - lenovo 100e chromebook (mt8183 version) - makomo
 
 ## generic mainline linux on arm chromebook notes
