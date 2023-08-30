@@ -17,6 +17,8 @@ cp ${DOWNLOAD_DIR}/boot-allwinner_h616-${2}.dd ${DOWNLOAD_DIR}/boot-extra-${1}/b
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${allwinner_h616_uboot_version}/boot-allwinner_h616-t95-aarch64.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/boot-allwinner_h616-t95.dd
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${allwinner_h616_uboot_version}/boot-allwinner_h616-x96mate-aarch64.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/boot-allwinner_h616-x96mate.dd
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${allwinner_h616_uboot_version}/boot-allwinner_h616-opizero2-aarch64.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/boot-allwinner_h616-opizero2.dd
+# get the warpme minimyth2 based axp313a boot block as well for h618 experiments
+wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h6-kernel/raw/3ecf55b1961a892211c8ff3b3ba7e7039dfe48ef/misc.616/u-boot/boot-h618-axp313a.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/boot-allwinner_h616-axp313a.dd
 
 # get the self built fresher mesa
 if [ "${3}" != "bookworm" ]; then
