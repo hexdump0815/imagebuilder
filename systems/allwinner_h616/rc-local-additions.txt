@@ -5,3 +5,12 @@ if [ -f /sys/class/devfreq/1800000.gpu/max_freq ]; then
   echo 250000000 > /sys/class/devfreq/1800000.gpu/max_freq
   echo 250000000 > /sys/class/devfreq/1800000.gpu/min_freq
 fi
+
+# here it is possible to set a higher max cpu frequency before enabling
+# the boost frequencies to step by step try out until which frequency
+# the system still remains stable - possible values are:
+# 1200000000 1320000000 1416000000 1512000000 1608000000 1704000000 1800000000
+if [ -f /sys/devices/system/cpu/cpufreq/boost ]; then
+  echo 1200000000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+  echo 1 > /sys/devices/system/cpu/cpufreq/boost
+fi
