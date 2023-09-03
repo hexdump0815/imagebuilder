@@ -1,26 +1,31 @@
 #!/bin/bash
 
-if [ -f /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq ]; then
+if [ `ls /sys/devices/system/cpu/cpu?/cpufreq/scaling_min_freq 2> /dev/null | wc -l` -gt 0 ]; then
     echo "available min cpu frequencies:" 
     cat /sys/devices/system/cpu/cpu?/cpufreq/scaling_min_freq
 fi
 
-if [ -f /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq ]; then
+if [ `ls /sys/devices/system/cpu/cpu?/cpufreq/scaling_max_freq 2> /dev/null | wc -l` -gt 0 ]; then
     echo "available max cpu frequencies:" 
     cat /sys/devices/system/cpu/cpu?/cpufreq/scaling_max_freq
 fi
 
-if [ -f /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies ]; then
+if [ `ls /sys/devices/system/cpu/cpu?/cpufreq/scaling_available_frequencies 2> /dev/null | wc -l` -gt 0 ]; then
     echo "all available cpu frequencies:" 
     cat /sys/devices/system/cpu/cpu?/cpufreq/scaling_available_frequencies
 fi
 
-if [ -f /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors ]; then
-    echo "available cpu governors:" 
-    cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
+if [ `ls /sys/devices/system/cpu/cpu?/cpufreq/scaling_boost_frequencies 2> /dev/null | wc -l` -gt 0 ]; then
+    echo "all available cpu boost frequencies:"
+    cat /sys/devices/system/cpu/cpu?/cpufreq/scaling_boost_frequencies
 fi
 
-if [ -f /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ]; then
+if [ `ls /sys/devices/system/cpu/cpu?/cpufreq/scaling_available_governors 2> /dev/null | wc -l` -gt 0 ]; then
+    echo "available cpu governors:" 
+    cat /sys/devices/system/cpu/cpu?/cpufreq/scaling_available_governors
+fi
+
+if [ `ls /sys/devices/system/cpu/cpu?/cpufreq/scaling_governor 2> /dev/null | wc -l` -gt 0 ]; then
     echo "governor:in use:"
-    cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+    cat /sys/devices/system/cpu/cpu?/cpufreq/scaling_governor
 fi
