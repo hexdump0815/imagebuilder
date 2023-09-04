@@ -20,6 +20,11 @@ if [ `ls /sys/devices/system/cpu/cpu?/cpufreq/scaling_boost_frequencies 2> /dev/
     cat /sys/devices/system/cpu/cpu?/cpufreq/scaling_boost_frequencies
 fi
 
+if [ -f /sys/devices/system/cpu/cpufreq/boost ]; then
+    echo -n "boost setting: "
+    cat /sys/devices/system/cpu/cpufreq/boost
+fi
+
 if [ `ls /sys/devices/system/cpu/cpu?/cpufreq/scaling_available_governors 2> /dev/null | wc -l` -gt 0 ]; then
     echo "available cpu governors:" 
     cat /sys/devices/system/cpu/cpu?/cpufreq/scaling_available_governors
