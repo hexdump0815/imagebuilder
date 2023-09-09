@@ -1,0 +1,8 @@
+# lock the gpu devfreq freq scaling to a single fixed freq as it does not seem to work stable
+# on some systems (at least meson8-mxiii) with freqs below 425000000 resulting in error msgs
+# like: devfreq d00c0000.gpu: dvfs failed with (-16) error
+if [ -f /sys/class/devfreq/d00c0000.gpu/max_freq ]; then
+  # for possible values see /sys/class/devfreq/d00c0000.gpu/available_frequencies
+  echo 425000000 > /sys/class/devfreq/d00c0000.gpu/min_freq
+  echo 425000000 > /sys/class/devfreq/d00c0000.gpu/max_freq
+fi
