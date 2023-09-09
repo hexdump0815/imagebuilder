@@ -1,0 +1,6 @@
+- fix gigabit ethernet on the systems which have such an eth port
+- some systems (at least meson8-mxiii) seem to loose the sd card access after a
+  reboot and thus will not boot from it in some setups (i think i also saw it
+  working somehow a few times before)
+- add odroid c1 u-boot bootblocks and boot scripts to the image, so that it at
+  least has the chance to work on that system too
