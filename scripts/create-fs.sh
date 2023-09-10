@@ -322,10 +322,6 @@ else
   fi
 fi
 
-# create a useable default /etc/resolv.conf instead of the one from the build system
-# it will usually be overwritten with something more useful via dhcp etc.
-echo "nameserver 1.1.1.1" > ${BUILD_ROOT}/etc/resolv.conf
-
 cd ${WORKDIR}
 
 umount ${BUILD_ROOT}/proc ${BUILD_ROOT}/sys ${BUILD_ROOT}/dev/pts ${BUILD_ROOT}/dev

@@ -428,6 +428,10 @@ if [ -f ${WORKDIR}/systems/${1}/finalize-chroot.sh ]; then
   rm -f ${MOUNT_POINT}/finalize-chroot.sh
 fi
 
+# create a useable default /etc/resolv.conf instead of the one from the build system
+# it will usually be overwritten with something more useful via dhcp etc.
+echo "nameserver 1.1.1.1" > ${MOUNT_POINT}/etc/resolv.conf
+
 # umount all the extra stuff mounted for chroot usage as we are done with chroots now
 umount ${MOUNT_POINT}/proc ${MOUNT_POINT}/sys ${MOUNT_POINT}/dev/pts ${MOUNT_POINT}/dev
 
