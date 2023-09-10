@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-chromebook_kukui_release_version="6.1.11-stb-mt8%2B"
+chromebook_kukui_release_version="6.1.51-stb-mt8%2B"
 mesa_release_version="22.1.1"
 
 rm -f ${DOWNLOAD_DIR}/kernel-chromebook_kukui-${2}.tar.gz

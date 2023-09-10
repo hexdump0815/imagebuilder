@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-amlogic_gx_release_version="6.1.11-stb-av8%2B"
+amlogic_gx_release_version="6.1.51-stb-av8%2B"
 amlogic_gx_generic_tree_tag=${generic_tree_tag}
 amlogic_gx_gxb_uboot_version="200718-01"
 amlogic_gx_gxb_serial_uboot_version="200718-01"
