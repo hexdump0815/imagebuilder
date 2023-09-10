@@ -184,7 +184,10 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
   mount -o bind /dev/pts ${BUILD_ROOT_CACHE}/dev/pts
   mount -t sysfs /sys ${BUILD_ROOT_CACHE}/sys
   mount -t proc /proc ${BUILD_ROOT_CACHE}/proc
-  cp /proc/mounts ${BUILD_ROOT_CACHE}/etc/mtab
+  if [ ! -L /etc/mtab ]; then
+    cp /proc/mounts ${BUILD_ROOT_CACHE}/etc/mtab
+  fi
+  # this is to have some useable resolver values during image build - it will be overwritten later
   cp /etc/resolv.conf ${BUILD_ROOT_CACHE}/etc/resolv.conf
 
   chroot ${BUILD_ROOT_CACHE} /create-chroot-stage-01.sh ${2} ${1}
