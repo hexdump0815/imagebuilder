@@ -2,7 +2,7 @@
 
 echo "no files to get here yet"
 
-#chromebook_x86_uefi_extra_release_version="6.1.0-stb-odk%2B"
+#chromebook_x86_uefi_extra_release_version="6.1.51-stb-odk%2B"
 #
 ## put the newer extra kernel into /boot/extra to have it around
 #rm -rf ${DOWNLOAD_DIR}/boot-extra-${1}

@@ -1,7 +1,7 @@
 # this file is supposed to be sourced by the get-files shell script  
 
 
-allwinner_h6_release_version="6.1.11-stb-ah6%2B"
+allwinner_h6_release_version="6.1.51-stb-ah6%2B"
 allwinner_h6_uboot_version="211229-01"
 allwinner_h6_uboot_noname_version="200718-01"
 mesa_release_version="22.1.1"
