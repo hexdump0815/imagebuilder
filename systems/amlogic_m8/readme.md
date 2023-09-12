@@ -45,7 +45,7 @@
 - important: do not touch the emmc on amogic tv boxes as it contains important information to boot them at well defined places of the emmc - if this gets removed the box might no longer boot at all
   - if you want to touch your emmc you should really know what you are doing and are on your own (plus risk to brick your box) - you have been warned ...
 - the meson8 mainline support is still very experimental
-- since image version the kernel is based on this meson8 mainline based kernel tree: https://github.com/xdarklight/linux/tree/meson-mx-integration-6.2-20221226
+- since image version 230910-01 the kernel is based on this meson8 mainline based kernel tree: https://github.com/xdarklight/linux/tree/meson-mx-integration-6.2-20221226
   - the changes of that tree were back ported into the v6.1 mainline lts tree as base
   - the hdmi output is working finally with the changes in this tree, but it does not seem to work well with all hdmi display modes (so it might not work with some monitors)
   - some boxes (at least the s802 based mxiii box) seem to loose access to the sd card after a warm reboot (and will reboot into android instead), shutdown and cold boot is working fine - i think i had it working better at some point while trying to get this kernel working, but will have to try to reproduce at which state (kernel config, dtb, dvfs and gpu enabled/disabled etc.) that was
