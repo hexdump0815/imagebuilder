@@ -26,7 +26,7 @@
 
 ## kernel build notes
 
-- https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/blob/master/readme.m8x
+- https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/blob/lts/readme.m8x
 
 ## priority
 
