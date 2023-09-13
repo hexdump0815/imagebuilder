@@ -42,9 +42,10 @@ some more work will be required to make the devices below working
 
 - tv boxes are always hit and miss, so they might work or might not work and are usually of low quality
   - be happy in case it works for your box
+  - names do not mean anything for tv boxes: two boxes with the same name and look might be identical inside, slightly different (often wifi, bt, memory and or emmc/nand chips) or completely different (different socs, nand instead of emmc, fake specs like 1gb ram and 8gb nand instead of 4gb ram and 32gb emmc) - all three options are possible even if they were bought together at the same time at the same place
   - it is impossible to support all tv boxes with their wild mix of hardware or usually quite low quality, so please do not open github issues in case the images do not work for your box
   - github issues with tested and structured information on how to get the images working on a box where they did not work out of the box are welcome
-  - sound is not working, wifi, bluetooth and sometimes even ethernet might work or might not work depending on the tv box
+  - sound, wifi, bluetooth and sometimes even ethernet might work or might not work depending on the tv box
 - as allwinner socs always boot by default from sd card the emmc can safely be overwritten (but do a backup of the original android system via dd command beforehand - it might be useful later)
 - there are some allwinner h6 tv boxes which cannot detect the size of the memory properly (they detect more memory than there is) and others cannot detect a connected hdmi monitor properly - to make the images working with most devices the two kernel cmdline parameters are set bydefault to overcome those problems: "mem=2048M video=HDMI-A-1:e" - those options can be omitted in case a box is working well to utilize the full amount of memory and the automatic hdmi monitor detection
 - there are graphics errors due to problems with the self compiled mesa version being used on the image (the lightdm login screen is distorted and the login to the xfce session does not seem to work at all on the ubuntu images) - installing a hopefully more stable newer self compiled version of mesa to /opt/mesa should hopefully fix this - in generel: if gpu accel is required, the bullseye image is definitely the better choice
