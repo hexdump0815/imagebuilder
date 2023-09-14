@@ -2,6 +2,7 @@
 
 ## bootable sd card images
 
+- https://github.com/hexdump0815/imagebuilder/releases/tag/230910-02
 - https://github.com/hexdump0815/imagebuilder/releases/tag/230222-02
 - https://github.com/hexdump0815/imagebuilder/releases/tag/220618-02
 - https://github.com/hexdump0815/imagebuilder/releases/tag/211204-03
@@ -10,11 +11,13 @@
 
 - x96q h313 tv box
 - tx6s h616 tv box
+- t95max h618 tv box
 
 ## untested systems
 
 - orange pi zero 2 sbc
-- other allwinner h616 based tv boxes
+- orange pi zero 3 sbc
+- other allwinner h616 and h618 based tv boxes
 
 ## kernel build notes
 
@@ -48,3 +51,8 @@
 - the whole system seems to be a bit unstable depending on the hardware, it might be require to disable more of the higher freq opp points in the dtb to get more stability
 - it looks like gpu frequency scaling does not work properly yet resulting in gpu errors like "gpu sched timeout", "AS_ACTIVE bit stuck" or page faults, what seems to help is to lock the gpu freq to just a single one for now by echoing a freq from /sys/class/devfreq/1800000.gpu/available_frequencies to both /sys/class/devfreq/1800000.gpu/min_freq and /sys/class/devfreq/1800000.gpu/max_freq (maybe in rc.local or similar) - 250000000 seems to work (others most probably as well)
 - it looks like its a good idea to disable any power management options for the display in the power manager, as otherwise xorg seems to get into a strange state (no more xorg, but console output instead on vt7 - all this without any error or traces) when the power management kicks in
+- there are some experimental box dtb files for three voltage levels: around normal voltage levels, 30mv and 60mv overvoltage added
+  - the higher the overvoltage the higher is the chance it will work on lower quality socs at the cost of shorter lifetime, higher temperature and higher energy consumption
+  - the cpu freqs for those box dtb files is limited to 1.2 ghz by default to make it hopefully run with the lowest quality devices, this limit can be raised in /etc/rc.local to whatever is possible to still get a stable system (instability might mean a non booting system or the system crashin after a few days in the end)
+  - a good procedure is to start with the 60mv dtb and if it is stable either go to the 30mv or normal dtb (if low temperature, energy consumption and long life time is the goal) or to start raising the max cpu freq (if max performance is the goal) - both approaches can also be mixed to end up somewhere in the middle or in case the soc is of higher quality, i.e. going from 60mv to 30mv after still being stable at 1.8ghz and then raising the max cpu freq again ...
+- for h618 based tv boxes the boot-allwinner_h616-axp313a.dd boot blocks from the extra dir of the boot partition might work, it has to be written via "dd if=boot-allwinner_h616-axp313a.dd of=/dev/sd_card_device bs=512 seek=1 skip=1" to the sd card after writing the image to it
