@@ -2,6 +2,7 @@
 
 ## bootable sd card images
 
+- https://github.com/hexdump0815/imagebuilder/releases/tag/230915-02
 - https://github.com/hexdump0815/imagebuilder/releases/tag/230218-04
 - https://github.com/hexdump0815/imagebuilder/releases/tag/220611-01
 - https://github.com/hexdump0815/imagebuilder/releases/tag/211114-01
@@ -68,6 +69,7 @@ see also https://github.com/hexdump0815/imagebuilder/issues/79 for all above
   - 1: linux-big - nyan big with the 1366x768 screen
   - 2: linux-big-fhd - nyan big with the full hd 1920x1080 screen
   - 3: linux-blaze - nyan blaze with the 1366x768 screen (not sure if there is maybe a full hd version of the blaze as well?)
+- the default boot blocks installed for the image are for the 4gb model and the default dtb selected is the lower res nyan-big model - not sure if this combination really exists, but one can easily choose the second option (linux-big-fhd) in the u-boot menu to boot for the full hd model and for all other combinations new bootblocks will have to be written and the extlinux.conf file has to be adjusted anyway
 - some nyan big related issue with some info: https://github.com/hexdump0815/imagebuilder/issues/6
 - for more info about xorg gpu support see doc/xorg-and-nouveau.md
 - for more info about the suspend/resume topic see doc/suspend-resume.md
