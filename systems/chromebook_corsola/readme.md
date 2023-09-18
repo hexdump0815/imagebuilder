@@ -7,7 +7,7 @@
 ## tested systems - working
 
 - lenovo ideapad slim 3 (mt8186 version) - magenton
-- asus chromebook cm14 (cm1402c) - tentacool (dtb says tentacruel)
+- asus chromebook cm14 (cm1402c) - tentacool
 
 ## untested systems
 
