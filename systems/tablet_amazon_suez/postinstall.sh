@@ -17,4 +17,4 @@ elif [ -f etc/xdg/xdg-xubuntu/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manag
 fi
 
 # install the kernel, initramfs, boot.img etc.
-tar xzf postinstall/boot-and-modules.tar.gz
+tar xhzf postinstall/boot-and-modules.tar.gz

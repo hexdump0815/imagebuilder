@@ -16,7 +16,7 @@ elif [ -f etc/xdg/xdg-xubuntu/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manag
 fi
 
 # install the kernel, initramfs, boot.img etc.
-tar xzf postinstall/boot-and-modules.tar.gz
+tar xhzf postinstall/boot-and-modules.tar.gz
 
 # install the qcom tools qrtr-ns and rmtfs
 tar xzf postinstall/qcom-tools-${2}-${3}.tar.gz
