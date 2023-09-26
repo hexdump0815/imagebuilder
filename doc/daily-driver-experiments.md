@@ -402,6 +402,11 @@ kernel with working audio v5.10 was required
 - update: it looks like the sound driver seems to die after resume from
   suspend at some point after some days (suspend/resume before keeps it
 working all the time) - a reboot fixes the problem
+- update september 2023: i used my chell as daily driver for the last few weeks
+  and during that time more than a month in a row with only sleep and no
+reboot, all was working very well with only the known problem of audio dying
+after a while, but that seemed to happen much later this time after more than a
+month ...
 
 # chromebook trogdor - lazor - january 2023
 
