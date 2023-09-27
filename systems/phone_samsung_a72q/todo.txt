@@ -1,0 +1,6 @@
+- test if a kernel built from the v6.0 branch of the map220v tree works too
+- try to port the sm7125 support to v6.1 to have at least a lts version with it
+- try to maybe port it forward further (maybe there is already some sm7125 mainlining effort?)
+- try to get usb host power working if possible
+- write s simple script to extract the required firmware from the android partitions
+- simplify the kernel build and installation
