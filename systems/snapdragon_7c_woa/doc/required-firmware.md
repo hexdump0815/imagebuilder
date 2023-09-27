@@ -13,7 +13,7 @@ following files:
 cd /mnt/c/Windows/System32/DriverStore/FileRepository
 tar czf /tmp/windows-firmware.tar.gz */*.mbn */*.jsn
 ```
-fomr this archive it is possible to pick the required firmware files then
+from this archive it is possible to pick the required firmware files then
 later for the linux side - the actual files are in subfolders and for some
 there are multiple versions around - in those cases the latest should be the
 best.
