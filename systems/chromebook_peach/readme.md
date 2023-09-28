@@ -39,11 +39,26 @@ see also https://github.com/hexdump0815/imagebuilder/issues/80 for all above
 
 ## special notes
 
-- after first boot please run /scripts/fix-peach-audio.sh as root to fix the ucm audio config files for the corresponding system and reboot
-- for all images starting with version 210725-01 full deep suspend/resume should work fine
+- after first boot please run /scripts/fix-peach-audio.sh as root to fix the
+  ucm audio config files for the corresponding system and reboot
+- for all images starting with version 210725-01 full deep suspend/resume
+  should work fine
 - the current sound setup is not complete yet:
-  - internal mic and headset mic do not work yet, so better use a small usb audio interface for a headset or a mic if needed for now
-- the mali gpu is only supported via the legacy mali blob as it is not yet supported by the open source panfrost mali driver
-- starting with the v6.1 kernels the legacy mali support has been dropped, but luckily the open source panfrost driver is working quite well on peach chromebooks as long as the mesa version is v22.3.0 or newer
-- the peach chromebooks seem to not boot properly with all sd cards ... if booting does not work it might be worth to try different sd cards ... older and smaller ones seem to have the higher chance to work well
-- the battery of the snow chromebook (xe303c12) seems to be interchangable with the battery of the peach pit chromebook (xe503c12)
+  - internal mic and headset mic do not work yet, so better use a small usb
+    audio interface for a headset or a mic if needed for now
+- the mali gpu is only supported via the legacy mali blob as it is not yet
+  supported by the open source panfrost mali driver
+- starting with the v6.1 kernels the legacy mali support has been dropped, but
+  luckily the open source panfrost driver is working quite well on peach
+chromebooks as long as the mesa version is v22.3.0 or newer
+- zswap does not work as well on armv7l with lpae enabled (to be able to use
+  all 4gb of ram) as on other systems as the achieved compression ratio with
+zsmalloc/zstd seemed to be limited to around 2 (usually around 3-4 for armv7l)
+resulting in more paging to the swapfile on disk, a workaround was to increase
+the zswap percentage to 50% in /etc/rc.local which was still well useable in
+this setup and resulted in less writes to disk again
+- the peach chromebooks seem to not boot properly with all sd cards ... if
+  booting does not work it might be worth to try different sd cards ... older
+and smaller ones seem to have the higher chance to work well
+- the battery of the snow chromebook (xe303c12) seems to be interchangable with
+  the battery of the peach pit chromebook (xe503c12)

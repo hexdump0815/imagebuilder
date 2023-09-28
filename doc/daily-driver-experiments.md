@@ -468,3 +468,19 @@ used with an external usb keyboard and mouse. the snapdragon 7c cpu and its
 gpu are more snappy than the corresponding mt8183 chromebooks ones for sure,
 so working with it is quite fluid.
 - info: v6.1.11 kernel, debian bookworm, 4gb ram, 32gb sd card, booted via usb
+
+# chromebook peach pit - september 2023
+
+- tested for about a day
+- it was useable, but see notes below
+- notes: in general useability was quite good for a device that old, but some
+  things were unexpected - first it looks like zswap does not work as well on
+armv7l with lpae enabled (to be able to use all 4gb of ram) as on other systems
+as the achieved compression ratio with zsmalloc/zstd seemed to be limited to
+around 2 (usually around 3-4 for armv7l) resulting in more paging to the
+swapfile on disk, a workaround was to increase the zswap percentage to 50%
+which was still well useable in this setup and resulted in less writes to disk
+again - second after about a day the system simply hung (no idea or traces why)
+so i gave up the test this time as i needed a reliable device at this time
+(will maybe try once more another time)
+- info: v6.1.51 kernel, debian bookworm, 4gb ram, 16gb emmc
