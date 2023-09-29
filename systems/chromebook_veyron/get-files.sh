@@ -22,6 +22,6 @@ wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/r
 wget -v https://github.com/hexdump0815/u-boot-chainloading-for-arm-chromebooks/releases/download/${chromebook_veyron_mickey_uboot_version}/uboot.kpart.cbr-mickey.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/uboot.kpart.cbr-mickey
 
 # get the self built fresher mesa
-if [ "${3}" != "bookworm" ]; then
+if [ "${3}" = "bullseye" ] || [ "${3}" = "focal" ]; then
   wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
 fi

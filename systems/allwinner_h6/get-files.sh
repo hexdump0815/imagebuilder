@@ -22,6 +22,6 @@ wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${allwinner
 cp ${DOWNLOAD_DIR}/boot-extra-${1}/boot-eachlink_h6_mini.dd ${DOWNLOAD_DIR}/boot-allwinner_h6-${2}.dd
 
 # get the self built fresher mesa
-if [ "${3}" != "bookworm" ]; then
+if [ "${3}" = "bullseye" ] || [ "${3}" = "focal" ]; then
   wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
 fi

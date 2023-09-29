@@ -21,6 +21,6 @@ wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${allwinner
 wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h6-kernel/raw/3ecf55b1961a892211c8ff3b3ba7e7039dfe48ef/misc.616/u-boot/boot-h618-axp313a.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/boot-allwinner_h616-axp313a.dd
 
 # get the self built fresher mesa
-if [ "${3}" != "bookworm" ]; then
+if [ "${3}" = "bullseye" ] || [ "${3}" = "focal" ]; then
   wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
 fi
