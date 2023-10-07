@@ -365,7 +365,7 @@ mount -t proc /proc ${MOUNT_POINT}/proc
 chroot ${MOUNT_POINT} apt-get update
 
 if [ "${UEFI32}" = "true" ]; then
-  chroot ${MOUNT_POINT} apt-get -yq install grub2-common grub-efi-ia32 grub-efi-ia32-bin
+  chroot ${MOUNT_POINT} apt-get -yq install grub2-common grub-efi-ia32 grub-efi-ia32-bin fdisk
   chroot ${MOUNT_POINT} grub-install --target=i386-efi /dev/loop0p1 --efi-directory=/boot/efi/ --boot-directory=/boot/
   # debian needs some extra steps to enable fallback boot sometimes required to boot from external media
   if [ "${3}" = "bullseye" ] || [ "$3" = "bookworm" ]; then
