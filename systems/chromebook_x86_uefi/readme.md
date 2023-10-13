@@ -23,6 +23,7 @@
 - teclast tpad x80 plus windows 10 / android tablet
 - lenovo thinkpad x240
 - hp x2 elite 1012 g1
+- asus chromebook c202s/c202sa - terra
 
 ## untested systems
 
