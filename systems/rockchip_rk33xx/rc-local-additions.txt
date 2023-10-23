@@ -1,0 +1,12 @@
+# sometimes on rk3328 it might be required to limit the gpu freq to avoid instability
+#if [ -f /sys/class/devfreq/ff300000.gpu/max_freq ]; then
+#  # for possible values see /sys/class/devfreq/ff300000.gpu/available_frequencies
+#  echo 300000000 > /sys/class/devfreq/ff300000.gpu/min_freq
+#  echo 300000000 > /sys/class/devfreq/ff300000.gpu/max_freq
+#fi
+
+# sometimes on rk3328 it might be required to limit the cpu freq to avoid instability
+#if [ -f /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq ]; then
+#  # for possible values see /sys/devices/system/cpu/cpufreq/policy0/scaling_available_frequencies
+#  echo 1200000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+#fi
