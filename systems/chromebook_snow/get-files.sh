@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-chromebook_snow_release_version="6.1.51-stb-cbe%2B"
+chromebook_snow_release_version="6.1.59-stb-cbe%2B"
 chromebook_snow_uboot_version="v2017.09-cbe"
 chromebook_snow_alternative_uboot_version="v2018.11-cbe"
 chromebook_snow_mali_blob_version="9051dfe1f2198e2ed41c322359ee8324043d55a9"

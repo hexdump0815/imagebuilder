@@ -47,12 +47,11 @@ see also https://github.com/hexdump0815/imagebuilder/issues/78 for all above
 - it looks like he snow chromebooks from 2014 on are rev5, but i'm not sure at which point in time exactly the switch between rev4 and rev5 is - end of 2012 is definitely rev4 (and the very early ones seem to even be buggy - see below) and early 2013 is rev4 as well
 - please be aware that there seems to be an early batch of snow chromebooks which are not running stable with a mainline kernel, but are running well with a legacy chromeos based kernel - looks like some hardware problem, which was silently fixed in the chromeos kernel but never made it to mainline - this problem has been observed on a snow chromebook from october 2012 and on one from january 2013, so i guess it affects the first ones from end of 2012 and beginning of 2013 - see: https://github.com/hexdump0815/imagebuilder/issues/63
 - what does not work with mainline:
-  - usb3 port gives trouble with suspend, so i disabled it
-  - webcam will not work (the usb bus it is connected to is somehow not seen in mainline)
-  - 3g modem (if installed) will not work (situation similar to the webcam i guess, no idea if there even exists a driver for it)
+  - usb3 might be unreliable, connecting devices through a usb2 hub seems to be a possible workaround in case of problems
+  - 3g modem (not tested)
   - before version 210725-02 full suspend/resume/hibernation do not work properly, so suspend to idle is configured by default and seems to work perfectly and the chromebook should survive about a day in this state from battery
   - for all images starting with version 210725-02 full deep suspend/resume should work fine
-- what works: everything else, i.e. sound, wifi, external monitor, gles/opengl with legacy mali blob
+- what works: everything else, i.e. sound, wifi, external hdmi monitor (broken with the v6.1.51 kernel, use the v6.1.59 kernel instead), gles/opengl with legacy mali blob
 - the current sound setup is more a hack than something real, but for basic stuff it seems to work
 - sound seems to be gone after resume from suspend, if it is really required it might be considered to switch to s2idle for suspend in /etc/rc.local
 - the mali gpu is only supported via the legacy mali blob as it is not yet supported by the open source panfrost mali driver (and most probably never will be due to too many hardware errata/bugs)
