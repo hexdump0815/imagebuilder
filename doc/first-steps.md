@@ -8,6 +8,16 @@ using the /scripts/extend-rootfs.sh script.
 
 the default username/password to login is: linux/changeme
 
+all images from november 2023 on will have the /scripts/desktop-to-server.sh
+to remove the ui, xorg, desktop etc. packages from the system in case it is
+intended for a more server type usage scenario where the removed packages
+would just increase the bloat and decrease the security of the system. for
+older images the commands in this script can be run manually - see:
+https://github.com/hexdump0815/imagebuilder/blob/main/files/extra-files-bookworm/scripts/desktop-to-server.sh
+and
+https://github.com/hexdump0815/imagebuilder/blob/main/files/extra-files-jammy/scripts/desktop-to-server.sh
+depending on the image in use.
+
 use "sudo -i" to get root if needed. the hostname is set by default to
 "changeme". the images are assuming a us keyboard and are setup for english,
 so one should configure it as needed after the first boot using the
