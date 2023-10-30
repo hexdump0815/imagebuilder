@@ -5,3 +5,10 @@ echo s2idle > /sys/power/mem_sleep
 #if [ -f /sys/kernel/debug/dri/129/pstate ]; then
 #  echo 06 > /sys/kernel/debug/dri/129/pstate
 #fi
+
+# on 32bit systems with enabled lpae to enable full 4gb memory access like this one
+# zswap seems to be able to reach at max around 1:2 overall compression ratio vs.
+# usually much higher ratios - to compensate a bit for this and keep the amount of
+# swapped pages written to real storage low lets double the amount of memory used
+# for the zswap compressed memory pool
+#echo 50 > /sys/module/zswap/parameters/max_pool_percent
