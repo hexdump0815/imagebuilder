@@ -98,3 +98,9 @@ fi
 #    done
 #  fi
 #fi
+
+# kernels from at least v6.2 to v6.6 seem to only enable zswap after an extra
+# swapon in case the kernel default is to have zswap disabled - so lets do a
+# quick swapoff and swapon cycle to make sure the zswap really gets enabled
+#swapoff -a
+#swapon -a
