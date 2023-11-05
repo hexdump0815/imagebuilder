@@ -63,4 +63,6 @@ some more work will be required to make the devices below working
 - important: do not touch the emmc on rockchip tv boxes as it contains important information to boot them at well defined places of the emmc - if this gets removed the box might no longer boot at all
   - if you want to touch your emmc you should really know what you are doing and are on your own (plus risk to brick your box) - you have been warned ...
 - alternatively there is also excellent support for rk3318 and rk3328 tv boxes as armbian csc: https://forum.armbian.com/topic/17597-csc-armbian-for-rk3318-tv-box-boards/
-- pinebook pro: it looks like wifi will not come up properlyafter a reboot, doing a full cold shutdown and a poweron instead seems to work
+- some things relevant for the pinebook pro:
+  - it looks like wifi will not come up properlyafter a reboot, doing a full cold shutdown and a poweron instead seems to work
+  - for updating the keyboard/touchpad firmware please have a look at: https://wiki.postmarketos.org/index.php?title=PINE64_Pinebook_Pro_(pine64-pinebookpro)&mobileaction=toggle_view_desktop#Updating_the_keyboard_and_touchpad_firmware - for this the libusb-1.0.0-dev needs to be installed on debian (and i guess on ubuntu too)
