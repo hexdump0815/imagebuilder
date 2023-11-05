@@ -119,6 +119,8 @@ up such problems - see the odroid u3 entry below for more details
 - notes: i started running from sd card which did not perform too well, but 
   since moving to emmc everything seemed to run perfectly fine
 - info: v5.19.6 kernel, debian bookworm, 4gb ram, 64gb emmc, n4000 2 core cpu
+- update october/november 2023: i used my bloog as daily driver again for a few
+  weeks and it was simply running perfectly fine ... kernel was v6.1.51
 
 # chromebook snow - september 2022
 
@@ -233,6 +235,9 @@ the mouse simply did not work and always gave usb errors, with another usb hub
 - update august 2023: i used my kappa as daily driver for at least the last two
   months and during that time up to 3 weeks in a row with only sleep and no
 reboot - all was working very nicely :)
+- update september/october 2023: i used my kappa as daily driver again for a
+  few weeks and the result is the same as the last time - everything is working
+very well ... kernel was v6.1.51 this time
 
 # odroid u3 - october 2022
 
@@ -278,6 +283,10 @@ swap space to 200% ram (i.e. 8gb) and it seemed to work quite well and it
 looks like as a result less data was actually writte to the physical swap
 space
 - info: v6.0.0 kernel, debian bookworm, 4gb ram, 64gb emmc
+- update october 2023: i used my pbp as daily driver again for a few days and
+  the result is the same as the last time - everything is working very well ...
+after updating the firmware of the touchpad it was getting a bit more useable,
+but still not as good as other touchpads ... kernel was v6.1.51 this time
 
 # chromebook x86 mbr - lenovo thinkpad x201 - november 2022
 
@@ -484,3 +493,14 @@ again - second after about a day the system simply hung (no idea or traces why)
 so i gave up the test this time as i needed a reliable device at this time
 (will maybe try once more another time)
 - info: v6.1.51 kernel, debian bookworm, 4gb ram, 16gb emmc
+
+# rockchip rk3328 - h96max rk3328 tv box - october 2023
+
+- tested for a few days
+- it was working reliable and quite ok
+- notes: due to the not that fast cpu (4xa53 at 1.5ghz) it is not the fastest
+  system, but it is still usable - running from emmc instead of sd card helps
+to compensate a bit for that, but in the end it is much slower than for
+instance a kappa chromebook with its 8 faster cpu cores - with some patience
+still no problem
+- info: v6.1.51 kernel, debian bookworm, 4gb ram, 32gb emmc
