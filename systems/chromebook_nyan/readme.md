@@ -56,6 +56,7 @@ see also https://github.com/hexdump0815/imagebuilder/issues/79 for all above
   - if not the mainline kernel version should be used
   - both image types contain both kernels (the other kernel tar.gz file is located in /boot/extra) and can be converted into each other with a hand full of commands (will add them here soon)
   - to make it useable with both kernels the root filesystems uses ext4 and not btrfs like those images here usually as the btrfs support in the legacy kernel is too old to be really useable
+  - for information about using the legacy kernel with legacy gpu drivers please have a look at https://github.com/hexdump0815/imagebuilder/issues/174
 - there are several versions of the nyan big available: 2g/4g ram and hd/full hd display
   - the 4gb/full hd i have is working well
   - the 2gb/hd i have is working well, but the u-boot output is not visible as u-boot does not seem to be able to initialize the display properly (a lot of screen flickering or a black screen) - as a result one has to type the number at the boot prompt blindly at the right time for now :)
