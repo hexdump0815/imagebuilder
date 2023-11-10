@@ -3,7 +3,7 @@
 OUTPUT=$(xrandr | grep "connected primary" | awk '{print $1}')
 
 # example for lenovo duet - kukui krane
-xrandr --output $OUTPUT --mode 1200x1920 --panning 800x1280 --scale 0.6666x0.6666
+#xrandr --output $OUTPUT --mode 1200x1920 --panning 800x1280 --scale 0.6666x0.6666
 # example for lenovo duet 3 - trogdor wormdingler
 #xrandr --output $OUTPUT --mode 1200x2000 --panning 900x1500 --scale 0.75x0.75
 # example for samsung chromebook plus - gru kevin (does not seem to work well)
@@ -26,6 +26,14 @@ xrandr --output $OUTPUT --mode 1200x1920 --panning 800x1280 --scale 0.6666x0.666
 # ENV{LIBINPUT_CALIBRATION_MATRIX}="0 1 0 -0.5625 0 0.5625"
 # to get the touch screen working properly - the factor used (here 0.5625) should
 # be the square of the scaling factor used (here 0.75*0.75)
+
+# the samsung gt510 might need this to get rid of some display corruption
+#xrandr --output $OUTPUT --off
+# the short sleep seems to be required with newer kernels ...
+#sleep 1
+#xrandr --output $OUTPUT --auto --rotate right
+# in case the display is not rotated
+#xrandr --output $OUTPUT --auto
 
 # this is needed as for some reason the above command gives an error, but still does what it should
 exit 0
