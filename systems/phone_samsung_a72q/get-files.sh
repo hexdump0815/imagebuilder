@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-samsung_a72q_release_version="5.19.0-stb-a72%2B"
+samsung_a72q_release_version="6.0.0-stb-a72%2B"
 
 rm -f ${DOWNLOAD_DIR}/kernel-phone_samsung_a72q-${2}.tar.gz
 wget -v https://github.com/hexdump0815/linux-mainline-qcom-kernel/releases/download/${samsung_a72q_release_version}/${samsung_a72q_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-phone_samsung_a72q-${2}.tar.gz
