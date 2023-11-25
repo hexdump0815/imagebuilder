@@ -1,1 +1,1 @@
-- add support for all those orangepi and nanopi h3 boards
+- maybe add support for other orangepi and nanopi h3 boards
