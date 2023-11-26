@@ -28,7 +28,7 @@ see https://github.com/hexdump0815/imagebuilder/blob/main/doc/using-the-imagebui
 
 # system specific information
 
-- allwinner h3 devices and tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/allwinner_h3/readme.md (on hold)
+- banana pi m1 and allwinner h3 tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/allwinner_h3/readme.md (on hold)
 - allwinner h6 devices and tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/allwinner_h6/readme.md
 - allwinner h616 devices and tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/allwinner_h616/readme.md (wip)
 - amlogic gx (gxbb=s905, gxl=s905x/s905w, gxm=s912, g12a=s905x2, g12b=s922x and sm1=s905x3) devices and tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/amlogic_gx/readme.md

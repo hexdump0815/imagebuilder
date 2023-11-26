@@ -2,6 +2,7 @@
 
 ## bootable sd card images
 
+- https://github.com/hexdump0815/imagebuilder/releases/tag/231126-01
 - https://github.com/hexdump0815/imagebuilder/releases/tag/210808-01
 
 ## tested systems - working
@@ -45,4 +46,4 @@ some more work will be required to make the devices below working
   - sound, wifi, bluetooth and sometimes even ethernet might work or might not work depending on the tv box
 - the image will boot by default on a banana pi m1, for other systems the corresponding u-boot from the /boot/extra directory has to be written to disk
 - as allwinner socs always boot by default from sd card the emmc can safely be overwritten (but do a backup of the original android system via dd command beforehand - it might be useful later)
-- at least the r39 u-boot seems to not be perfect yet as sometimes it needs a few tries to boot successfully
+- at least the r39 u-boot seems to be far from perfect as sometimes it needs a few tries to boot successfully, also using the sd card on my r39 box seems to be unreliable - it works with u-boot only on some small sd card and everything else on usb
