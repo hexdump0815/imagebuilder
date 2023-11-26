@@ -23,6 +23,16 @@
 - teclast tpad x80 plus windows 10 / android tablet
 - lenovo thinkpad x240
 - hp x2 elite 1012 g1
+- eduGear CMT Chromebook
+  - touchscreen not working with main line debian bookworm kernel
+  - touchscreen working with the latest kernel from project at https://github.com/hexdump0815/linux-mainline-x86-64-kernel/releases
+  - this unit should be similar to the following units
+    - CTL J5 Chromebook
+    - Haier Chromebook 11 C
+    - Multilaser Chromebook M11C
+    - PCMerge Chromebook PCM-116T-432B
+    - Prowise Chromebook Proline
+    - Viglen Chromebook 360
 
 ## untested systems
 
