@@ -62,6 +62,7 @@ see https://github.com/hexdump0815/imagebuilder/blob/main/doc/using-the-imagebui
 - starfive visionfive 2 risc v sbc: https://github.com/hexdump0815/imagebuilder/blob/main/systems/starfive_visionfive2/readme.md (wip)
 - samsung galaxy tab a 9.7 gt510 msm8916 tablets: https://github.com/hexdump0815/imagebuilder/blob/main/systems/tablet_samsung_gt510/readme.md (wip)
 - motorola moto g4 play msm8916 phones: https://github.com/hexdump0815/imagebuilder/blob/main/systems/phone_motorola_harpia/readme.md (wip)
+- samsung galaxy a52 and a72 sm7125 phones: https://github.com/hexdump0815/imagebuilder/blob/main/systems/phone_samsung_a72q/readme.md (wip)
 - asus google nexus 7 nvidia tegra 3 grouper tilapia tablets: https://github.com/hexdump0815/imagebuilder/blob/main/systems/tablet_asus_grouper_tilapia/readme.md (on hold)
 - amazon ford tablets: https://github.com/hexdump0815/imagebuilder/blob/main/systems/tablet_amazon_ford/readme.md (legacy, on hold)
 - amazon austin tablets: https://github.com/hexdump0815/imagebuilder/blob/main/systems/tablet_amazon_austin/readme.md (legacy, on hold)

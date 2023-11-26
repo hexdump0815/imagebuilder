@@ -18,7 +18,7 @@ for this system the files from the image subdir of the above mentioned
 partitions have to be copied to /lib/firmware/qcom/sm7125 - the following
 procedure worked for me after an initial boot of the device with the provided
 image and a powered usb-c hub with an ethernet connection (this is for an a72,
-for an a52 some lines will have to be adjusted accordingly):
+the commands for an a52 will follow below):
 ```
 mkdir /tmp/fwmnt
 mkdir /lib/firmware/qcom/sm7125/a72q
@@ -29,17 +29,29 @@ mount -o ro /dev/sda18 /tmp/fwmnt
 cp -av /tmp/fwmnt/image/* /lib/firmware/qcom/sm7125/a72q
 umount /tmp/fwmnt
 rmdir /tmp/fwmnt
-```
-and the wlanmdsp.mbn file has to be put additionally as well into
-/lib/firmware/ath10k/WCN3990/hw1.0 (at least it has to be put there in case
-wifi does not work properly with the original file, for instance it might
-properly connect to the wifi without working network connections in the end)
-```
 cp -v /lib/firmware/qcom/sm7125/a72q/wlanmdsp.mbn /lib/firmware/ath10k/WCN3990/hw1.0
-```
-and the zap shader files have to be put into the qcom firmware directory
-```
 cp -v /lib/firmware/qcom/sm7125/a72q/a615_zap.* /lib/firmware/qcom
+```
+some info about the last two lines: the wlanmdsp.mbn file has to be put
+additionally as well into /lib/firmware/ath10k/WCN3990/hw1.0 (at least it has
+to be put there in case wifi does not work properly with the original file, for
+instance it might properly connect to the wifi without working network
+connections in the end) and the zap shader files have to be put into the qcom
+firmware directory
+
+as promised here are the corresponding commands for the a52:
+```
+mkdir /tmp/fwmnt
+mkdir /lib/firmware/qcom/sm7125/a52q
+mount -o ro /dev/sda22 /tmp/fwmnt
+cp -v /tmp/fwmnt/image/* /lib/firmware/qcom/sm7125/a52q
+umount /tmp/fwmnt
+mount -o ro /dev/sda18 /tmp/fwmnt
+cp -av /tmp/fwmnt/image/* /lib/firmware/qcom/sm7125/a52q
+umount /tmp/fwmnt
+rmdir /tmp/fwmnt
+cp -v /lib/firmware/qcom/sm7125/a52q/wlanmdsp.mbn /lib/firmware/ath10k/WCN3990/hw1.0
+cp -v /lib/firmware/qcom/sm7125/a52q/a615_zap.* /lib/firmware/qcom
 ```
 
 ## steps required to enable gpu support with the firmware files in place
