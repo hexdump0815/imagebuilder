@@ -58,7 +58,7 @@
 - some things relevant for edugear cmt chromebook:
   - touchscreen not working with main line debian bookworm kernel
   - touchscreen working with the kernel from project at https://github.com/hexdump0815/linux-mainline-x86-64-kernel/releases/tag/6.1.51-stb-odk%2B
-  - this unit should be similar to the following units
+  - this unit should be similar to the following units:
     - ctl j5 chromebook
     - haier chromebook 11 c
     - cultilaser chromebook m11c
