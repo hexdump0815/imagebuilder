@@ -24,6 +24,7 @@
 - lenovo thinkpad x240
 - hp x2 elite 1012 g1
 - edugear cmt chromebook
+- asus chromebook c202s/c202sa - terra
 
 ## untested systems
 

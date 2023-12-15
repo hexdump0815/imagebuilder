@@ -17,6 +17,7 @@
 - lenovo chromeboot duet 5 - homestar
   - see also: https://github.com/hexdump0815/imagebuilder/issues/68
 - lenovo chromeboot duet 3 - wormdingler
+  - see also: https://github.com/hexdump0815/imagebuilder/issues/182
 
 ## untested systems
 
