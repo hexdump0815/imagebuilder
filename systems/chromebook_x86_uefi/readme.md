@@ -24,6 +24,7 @@
 - lenovo thinkpad x240
 - hp x2 elite 1012 g1
 - asus chromebook c202s/c202sa - terra
+- various thin clients: fujitsu futro s740 and s940, dell wyse 5070, hp t630
 
 ## untested systems
 
