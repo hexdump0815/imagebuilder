@@ -45,7 +45,7 @@ see also https://github.com/hexdump0815/imagebuilder/issues/136 for all above
 - samsung galaxy book go notes:
   - to enter the bios press f2 early after boot, sometimes it takes a few tries until it will enter the bios
   - to enter the boot selector press f10 early after powering on the device, sometimes it takes quite a few tries until the usb disk is detected by the boot selector (should be something like "uefi: usb ..." in the menu)
-  - booting from usb seems to be quite selective on the device used: a sandisk ultra stick was detected only at around each 10th try, some no name slow cheap usb device worked much better, so some experimentation might be required
+  - booting from usb seems to be quite selective on the device used: a sandisk ultra stick was detected only at around each 10th try, some no name slow cheap usb device worked much better, so some experimentation might be required - it seems to work more reliable if the usb device is connected via a usb-c to usb-a hub: this way it was visible each time in the boot menu, otherwise only every few tries
   - the right usb-c port (left not tested yet) is also working if some usb-c hub or adapter is connected to it while booting, this way a usb hub can be used to connect a mouse and usb ethernet
   - working so far: display framebuffer, keyboard (needs some key press during boot to get rid of logged errors), usb-a, usb-c (if connected together with usb-a at boot time already), gpu if at least one firmware file from windows is installed
   - some interesting info: https://github.com/aarch64-laptops/debian-cdimage/issues/21
