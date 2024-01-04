@@ -35,3 +35,4 @@
 - booting should only be done from usb for now, please keep the windows installation on emmc/ufs as it might be required to get updated firmware files from it still
 - secure boot needs to be disabled in the bios in order to be able to boot those images as all
 - some outdated information and information on how to prepare the system to boot linux can be found here: https://github.com/aarch64-laptops/build
+- it looks like it is possible to create a recovery disk/drive from within windows via "start/windows" button and then searching for "recovery drive" (or whatever the proper translation for the installed windows language might be) and then using the resulting application to create such a drive on some usb disk following the dialogs - i did not try or use this yet, but it looks like its a good idea to create such a thing before even starting to play around with linux on a windows on arm device as there are usually no recovery media available for them

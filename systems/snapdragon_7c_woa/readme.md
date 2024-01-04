@@ -55,3 +55,4 @@ see also https://github.com/hexdump0815/imagebuilder/issues/136 for all above
     - https://gitlab.com/TravMurav/pmaports/-/tree/aspire1/device/testing/linux-postmarketos-qcom-sc7180
     - https://gitlab.com/TravMurav/pmaports/-/tree/aspire1/device/testing/device-acer-aspire1
   - working so far (beyond what is supported on the samsung galaxy book go): touchpad, wifi, bt (not sure), audio (maybe), battery status
+- it looks like it is possible to create a recovery disk/drive from within windows via "start/windows" button and then searching for "recovery drive" (or whatever the proper translation for the installed windows language might be) and then using the resulting application to create such a drive on some usb disk following the dialogs - i did not try or use this yet, but it looks like its a good idea to create such a thing before even starting to play around with linux on a windows on arm device as there are usually no recovery media available for them
