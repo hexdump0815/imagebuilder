@@ -19,5 +19,4 @@ esac
 . /usr/share/initramfs-tools/hook-functions
 
 mkdir -p ${DESTDIR}/lib/firmware/qcom
-cp -a /lib/firmware/qcom/sc7180-acer-aspire1 ${DESTDIR}/lib/firmware/qcom
-cp -a /lib/firmware/qcom/sc7180-samsung-galaxy-book-go ${DESTDIR}/lib/firmware/qcom
+cp -a /lib/firmware/qcom/sc7180 ${DESTDIR}/lib/firmware/qcom

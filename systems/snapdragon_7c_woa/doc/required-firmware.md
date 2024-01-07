@@ -26,7 +26,7 @@ and besides that some information useful for linux bringup can be found in
 ## required firmware files for the acer aspire 1
 
 for this system the following files have to be put into
-/lib/firmware/qcom/sc7180-acer-aspire1:
+/lib/firmware/qcom/sc7180/acer/aspire1:
 ```
 adspr.jsn
 adspua.jsn
@@ -58,7 +58,7 @@ see also:
 ## required firmware files for the samsung galaxy book go
 
 for this system the following files have to be put into
-/lib/firmware/qcom/sc7180-samsung-galaxy-book-go:
+/lib/firmware/qcom/sc7180/samsung/galaxy-book-go:
 ```
 adspr.jsn
 adspua.jsn
