@@ -23,6 +23,7 @@
 - teclast tpad x80 plus windows 10 / android tablet
 - lenovo thinkpad x240
 - hp x2 elite 1012 g1
+- edugear cmt chromebook
 - asus chromebook c202s/c202sa - terra
 - various thin clients: fujitsu futro s740 and s940, dell wyse 5070, hp t630
 
@@ -56,3 +57,13 @@
   - the keyboard backlight can be controlled via /sys/class/leds/chromeos\:\:kbd_backlight/brightness (values can go from 0-100)
 - some things relevant for the hp x2 elite 1012 g1:
   - if this device is just powered off normally the battery will drain quickly (up to around 5-10% per day), to completely turn it off the power button has to be pressed for about 15-20 seconds directly after shutdown - this way there will be no battery drain any longer and to power on the device a longer press to the power button will be required
+- some things relevant for edugear cmt chromebook:
+  - touchscreen not working with main line debian bookworm kernel
+  - touchscreen working with the kernel from project at https://github.com/hexdump0815/linux-mainline-x86-64-kernel/releases/tag/6.1.51-stb-odk%2B
+  - this unit should be similar to the following units:
+    - ctl j5 chromebook
+    - haier chromebook 11 c
+    - cultilaser chromebook m11c
+    - pcmerge chromebook pcm-116t-432b
+    - prowise chromebook proline
+    - viglen chromebook 360
