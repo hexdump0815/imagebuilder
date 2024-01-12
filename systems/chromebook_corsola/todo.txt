@@ -1,1 +1,1 @@
-- try to get mainline kernel working on this device
+- try to get the regular stable mainline kernel working on this device
