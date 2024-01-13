@@ -1,3 +1,5 @@
+TODO: recheck and update if still relevant for newer debian and ubuntu versions
+
 it looks like bullseye does not bring a fresh enough debootstrap yet
 to bootstrap ubuntu jammy - to work around this one should
 install the latest sid debootstrap version from:

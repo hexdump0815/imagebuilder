@@ -17,13 +17,11 @@ if [ "$#" != "3" ]; then
   echo "- riscv64 - 64bit (wip and works only with sidriscv below)"
   echo ""
   echo "possible release options:"
-  echo "- focal - ubuntu focal (no longer supported)"
   echo "- jammy - ubuntu jammy (should work)"
-  echo "- bullseye - debian bullseye (no longer supported)"
   echo "- bookworm - debian bookworm (recommended)"
   echo "- sidriscv - debian sid (wip and riscv only as bookworm is not useable yet)"
   echo ""
-  echo "example: ${0} odroid_u3 armv7l focal"
+  echo "example: ${0} odroid_u3 armv7l bookworm"
   echo ""
   exit 1
 fi
@@ -47,9 +45,9 @@ else
   exit 1
 fi
 
-if [ "${2}" = "i686" ] && [ "${3}" = "focal" ] || [ "${2}" = "i686" ] && [ "${3}" = "jammy" ]; then
+if [ "${2}" = "i686" ] && [ "${3}" = "jammy" ] || [ "${2}" = "i686" ] && [ "${3}" = "noble" ]; then
   echo ""
-  echo "the target arch i686 is only supported for debian bullseye and bookworm as there is no i686 build of ubuntu focal or jammy - giving up"
+  echo "the target arch i686 is only supported for debian as there is no i686 build of ubuntu - giving up"
   echo ""
   exit 1
 fi

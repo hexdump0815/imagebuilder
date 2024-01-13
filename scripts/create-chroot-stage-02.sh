@@ -7,27 +7,27 @@ export LANG=C
 
 systemctl enable ssh
 systemctl disable fstrim.timer
-if [ "${1}" = "focal" ] || [ "${1}" = "jammy" ]; then
+if [ "${1}" = "jammy" ] || [ "${1}" = "noble" ]; then
   systemctl disable fwupd.service
   systemctl disable fwupd-refresh.service
 fi
 
 # do not use the default firefox snap package (too much bloat) but instead
-# install firefox-esr (nicely in sync with what debian bullseye is using)
+# install firefox-esr (nicely in sync with what debian is using)
 # from the mozilla teams ppa for it (with this there is also no pkg name
 # conflict with the snap firefox version
 # see: https://ubuntuhandbook.org/index.php/2022/03/install-firefox-esr-ubuntu/
 # if the regular (non-esr) firefox is preferred, have a look at:
 # https://fostips.com/ubuntu-21-10-two-firefox-remove-snap/
-if [ "${1}" = "jammy" ]; then
+if [ "${1}" = "jammy" ] || [ "${1}" = "noble" ]; then
   add-apt-repository -y ppa:mozillateam/ppa
   apt-get -yq install firefox-esr
 fi
 
-# this is required to make docker work on bullseye with the current kernels
+# this is required to make docker work on with more recent kernels
 # see https://wiki.debian.org/iptables
 # maybe this can even go now after the move from docker to podman
-if [ "${1}" = "bullseye" ] || [ "${1}" = "bookworm" ] || [ "${1}" = "jammy" ]; then
+if [ "${1}" = "bookworm" ] || [ "${1}" = "jammy" ] || [ "${1}" = "noble" ]; then
   update-alternatives --set iptables /usr/sbin/iptables-legacy
   update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
   update-alternatives --set arptables /usr/sbin/arptables-legacy
@@ -39,7 +39,7 @@ fi
 systemctl disable apt-daily
 systemctl disable apt-daily-upgrade
 systemctl disable apt-daily-upgrade.timer
-if [ "${1}" = "focal" ] || [ "${1}" = "jammy" ]; then
+if [ "${1}" = "jammy" ] || [ "${1}" = "noble" ]; then
   systemctl disable unattended-upgrades.service
   sed -i 's,Update-Package-Lists "1",Update-Package-Lists "0",g' /etc/apt/apt.conf.d/10periodic
   sed -i 's,Update-Package-Lists "1",Update-Package-Lists "0",g;s,Unattended-Upgrade "1",Unattended-Upgrade "0",g' /etc/apt/apt.conf.d/20auto-upgrades
@@ -56,7 +56,7 @@ sed -i 's,# en_US ISO-8859-1,en_US ISO-8859-1,g;s,# en_US.UTF-8 UTF-8,en_US.UTF-
 locale-gen
 
 # remove snapd and dmidecode (only on ubuntu) as it crashes on some arm devices on boot
-if [ "${1}" = "focal" ] || [ "${1}" = "jammy" ]; then
+if [ "${1}" = "jammy" ] || [ "${1}" = "noble" ]; then
   apt-get -yq remove snapd dmidecode
 fi
 

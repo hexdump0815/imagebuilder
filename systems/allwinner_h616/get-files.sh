@@ -20,8 +20,3 @@ wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${allwinner
 # get the warpme minimyth2 based axp313a boot block as well for h618 experiments
 wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h6-kernel/raw/24b1d4651f39f1a690debf06f23a9e35dae775e2/misc.616/u-boot/boot-h618-axp313a.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/boot-allwinner_h616-axp313a.dd
 wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h6-kernel/raw/24b1d4651f39f1a690debf06f23a9e35dae775e2/misc.616/u-boot/boot-h313-lpddr3.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/boot-allwinner_h313-lpddr3.dd
-
-# get the self built fresher mesa
-if [ "${3}" = "bullseye" ] || [ "${3}" = "focal" ]; then
-  wget https://github.com/hexdump0815/mesa-etc-build/releases/download/${mesa_release_version}/opt-mesa-${mesa_release_version}-${3}-${2}.tar.gz -O ${DOWNLOAD_DIR}/opt-mesa-${3}-${2}.tar.gz
-fi

@@ -316,7 +316,7 @@ update-grub
 
 # on some systems (for example chrombooks with a flashed coreboot uefi bios) the
 # following steps might be required in order to make them boot properly (this
-# is required at least for debian bullseye on some systems - see example below)
+# is required at least for debian on some systems - see example below)
 mkdir -p /boot/efi/EFI/BOOT
 cp /boot/efi/EFI/debian/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
 # for 32bit uefi it would be

@@ -3,6 +3,8 @@ testing
 
 ## introduction
 
+TODO: recheck and update if still relevant for newer debian and ubuntu versions
+
 currently debian stable is bullseye and debian testing is bookworm, so to go
 from the first to the second is described here. the motivation for going this
 way might be to have more up to date software packages. when thinking about

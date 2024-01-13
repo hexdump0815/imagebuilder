@@ -15,20 +15,18 @@ if [ "$#" != "2" ]; then
   echo "- riscv64 - 64bit (wip and works only with sidriscv below)"
   echo ""
   echo "possible release options:"
-  echo "- focal - ubuntu focal (no longer supported)"
   echo "- jammy - ubuntu jammy (should work)"
-  echo "- bullseye - debian bullseye (no longer supported)"
   echo "- bookworm - debian bookworm (recommended)"
   echo "- sidriscv - debian sid (wip and riscv only as bookworm is not useable yet"
   echo ""
-  echo "example: $0 armv7l focal"
+  echo "example: $0 armv7l bookworm"
   echo ""
   exit 1
 fi
 
-if [ "${1}" = "i686" ] && [ "${2}" = "focal" ] || [ "${1}" = "i686" ] && [ "${2}" = "jammy" ]; then
+if [ "${1}" = "i686" ] && [ "${2}" = "jammy" ] || [ "${1}" = "i686" ] && [ "${2}" = "noble" ]; then
   echo ""
-  echo "the target arch i686 is only supported for debian bullseye and bookworm as there is no i686 build of ubuntu focal or jammy - giving up"
+  echo "the target arch i686 is only supported for debian as there is no i686 build of ubuntu - giving up"
   echo ""
   exit 1
 fi
@@ -88,7 +86,7 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
     SERVER_POSTFIX=""
   fi
   mkdir -p ${BUILD_ROOT_CACHE}/etc/apt
-  if [ "${2}" = "focal" ]; then
+  if [ "${2}" = "jammy" ] || [ "${2}" = "noble" ]; then
     LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} ${2} ${BUILD_ROOT_CACHE} http://${SERVER_PREFIX}ubuntu.com/${SERVER_POSTFIX}
     # exit if debootstrap failed for some reason
     if [ "$?" != "0" ]; then
@@ -98,25 +96,11 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
       rm -rf ${BUILD_ROOT_CACHE}
       exit 1
     fi
-    cp ${WORKDIR}/files/focal-${BOOTSTRAP_ARCH}-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
-    # parse in the proper ubuntu version
-    sed -i "s,UBUNTUVERSION,focal,g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
-  elif [ "${2}" = "jammy" ]; then
-    LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} ${2} ${BUILD_ROOT_CACHE} http://${SERVER_PREFIX}ubuntu.com/${SERVER_POSTFIX}
-    # exit if debootstrap failed for some reason
-    if [ "$?" != "0" ]; then
-      echo ""
-      echo "error while running debootstrap - giving up"
-      echo ""
-      rm -rf ${BUILD_ROOT_CACHE}
-      exit 1
-    fi
-    cp ${WORKDIR}/files/focal-${BOOTSTRAP_ARCH}-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
+    cp ${WORKDIR}/files/jammy-${BOOTSTRAP_ARCH}-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
     # parse in the proper ubuntu version
     sed -i "s,UBUNTUVERSION,jammy,g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
-  elif [ "${2}" = "bullseye" ]; then
-    wget https://ftp-master.debian.org/keys/release-11.asc -qO- | gpg --import --no-default-keyring --keyring ${DOWNLOAD_DIR}/debian-release-11.gpg
-    LANG=C debootstrap --keyring=${DOWNLOAD_DIR}/debian-release-11.gpg --variant=minbase --arch=${BOOTSTRAP_ARCH} ${2} ${BUILD_ROOT_CACHE} http://deb.debian.org/debian/
+  elif [ "${2}" = "noble" ]; then
+    LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} ${2} ${BUILD_ROOT_CACHE} http://${SERVER_PREFIX}ubuntu.com/${SERVER_POSTFIX}
     # exit if debootstrap failed for some reason
     if [ "$?" != "0" ]; then
       echo ""
@@ -125,9 +109,9 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
       rm -rf ${BUILD_ROOT_CACHE}
       exit 1
     fi
-    cp ${WORKDIR}/files/bullseye-${BOOTSTRAP_ARCH}-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
-    # parse in the proper debian version
-    sed -i "s,DEBIANVERSION,bullseye,g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
+    cp ${WORKDIR}/files/noble-${BOOTSTRAP_ARCH}-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
+    # parse in the proper ubuntu version
+    sed -i "s,UBUNTUVERSION,noble,g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
   elif [ "${2}" = "bookworm" ]; then
     wget https://ftp-master.debian.org/keys/release-11.asc -qO- | gpg --import --no-default-keyring --keyring ${DOWNLOAD_DIR}/debian-release-11.gpg
     LANG=C debootstrap --keyring=${DOWNLOAD_DIR}/debian-release-11.gpg --no-check-certificate --variant=minbase --arch=${BOOTSTRAP_ARCH} ${2} ${BUILD_ROOT_CACHE} http://deb.debian.org/debian/
@@ -157,19 +141,6 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
     cp ${WORKDIR}/files/sidriscv-${BOOTSTRAP_ARCH}-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
     # this seems to be required to not need special options to apt commands when installing from the ports repo
     echo 'APT::Get::AllowUnauthenticated "true";' > ${BUILD_ROOT_CACHE}/etc/apt/apt.conf.d/99unauthenticated
-  elif [ "${2}" = "sonaremin" ]; then
-    LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} focal ${BUILD_ROOT_CACHE} http://ports.ubuntu.com/
-    # exit if debootstrap failed for some reason
-    if [ "$?" != "0" ]; then
-      echo ""
-      echo "error while running debootstrap - giving up"
-      echo ""
-      rm -rf ${BUILD_ROOT_CACHE}
-      exit 1
-    fi
-    cp ${WORKDIR}/files/focal-${BOOTSTRAP_ARCH}-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
-    # parse in the proper ubuntu version
-    sed -i "s,UBUNTUVERSION,focal,g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
   fi
 
   cp ${WORKDIR}/scripts/create-chroot-stage-01.sh ${BUILD_ROOT_CACHE}

@@ -11,7 +11,7 @@ unzip main.zip
 mv imagebuilder-main imagebuilder
 rm -f main.zip
 
-# install updated files - example aarch64 amlogic_gx bullseye
+# install updated files - example aarch64 amlogic_gx bookworm
 # use the h option of tar to avoid accidently overwriting symbolic links and
 # exclude etc to avoid breaking changes to the configuration - the excludes
 # can be omitted if this update procedure is done before any configurations
@@ -19,9 +19,9 @@ rm -f main.zip
 cd imagebuilder
 cd files/extra-files
 tar --exclude='etc/hosts' --exclude='etc/hostname' -cf - * | ( cd / ; tar xhf - )
-cd ../extra-files-bullseye && tar -cf - * | ( cd / ; tar xhf - )
+cd ../extra-files-bookworm && tar -cf - * | ( cd / ; tar xhf - )
 cd ../extra-files-aarch64 && tar -cf - * | ( cd / ; tar xhf - )
-cd ../extra-files-aarch64-bullseye && tar -cf - * | ( cd / ; tar xhf - )
+cd ../extra-files-aarch64-bookworm && tar -cf - * | ( cd / ; tar xhf - )
 cd ../../systems/amlogic_gx/extra-files && tar --exclude='boot' -cf - * | ( cd / ; tar xhf - )
 
 # now it is time to have a look at the postinstall, rc-local-additions and

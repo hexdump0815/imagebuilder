@@ -4,7 +4,6 @@ chromebook_snow_release_version="6.1.59-stb-cbe%2B"
 chromebook_snow_uboot_version="v2017.09-cbe"
 chromebook_snow_alternative_uboot_version="v2018.11-cbe"
 chromebook_snow_mali_blob_version="9051dfe1f2198e2ed41c322359ee8324043d55a9"
-gl4es_focal_armv7l_version="9051dfe1f2198e2ed41c322359ee8324043d55a9"
 
 rm -rf ${DOWNLOAD_DIR}/boot-extra-${1}
 mkdir -p ${DOWNLOAD_DIR}/boot-extra-${1}
@@ -22,6 +21,3 @@ rm -f ${DOWNLOAD_DIR}/opengl-chromebook_snow-armv7l.tar.gz
 wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${chromebook_snow_mali_blob_version}/misc/opt-mali-exynos5250-armv7l.tar.gz -O ${DOWNLOAD_DIR}/opengl-chromebook_snow-armv7l.tar.gz
 rm -f ${DOWNLOAD_DIR}/opengl-fbdev-chromebook_snow-armv7l.tar.gz
 wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${chromebook_snow_mali_blob_version}/misc/opt-mali-exynos5250-fbdev-r5p0-armv7l.tar.gz -O ${DOWNLOAD_DIR}/opengl-fbdev-chromebook_snow-armv7l.tar.gz
-
-rm -f ${DOWNLOAD_DIR}/gl4es-armv7l-focal.tar.gz
-wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/raw/${gl4es_focal_armv7l_version}/misc/gl4es-armv7l-ubuntu.tar.gz -O ${DOWNLOAD_DIR}/gl4es-armv7l-focal.tar.gz
