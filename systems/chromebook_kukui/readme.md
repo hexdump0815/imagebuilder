@@ -33,7 +33,7 @@
 - lenovo 10e chromebook tablet - kodama
   - see https://github.com/hexdump0815/imagebuilder/issues/141#issuecomment-1694530926
 - asus chromebook detachable cz1 - katsu
-- hp chromebook x360 11mk g9 ee - burnet
+- hp chromebook 11mk g9 ee - burnet/esche
   - reported via https://github.com/hexdump0815/imagebuilder/issues/187
 
 ## untested systems
