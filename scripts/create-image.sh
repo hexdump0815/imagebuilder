@@ -368,7 +368,7 @@ if [ "${UEFI32}" = "true" ]; then
   chroot ${MOUNT_POINT} apt-get -yq install grub2-common grub-efi-ia32 grub-efi-ia32-bin
   chroot ${MOUNT_POINT} grub-install --target=i386-efi /dev/loop0p1 --efi-directory=/boot/efi/ --boot-directory=/boot/
   # debian needs some extra steps to enable fallback boot sometimes required to boot from external media
-  if [ "$3" = "bookworm" ]; then
+  if [ "$3" = "bookworm" ] || [ "${3}" = "trixie" ]; then
     chroot ${MOUNT_POINT} mkdir -p /boot/efi/EFI/BOOT
     chroot ${MOUNT_POINT} cp /boot/efi/EFI/debian/grubia32.efi /boot/efi/EFI/BOOT/BOOTIA32.EFI
     chroot ${MOUNT_POINT} cp /usr/share/images/desktop-base/desktop-grub.png /boot/grub
@@ -379,7 +379,7 @@ if [ "${UEFI64}" = "true" ]; then
   chroot ${MOUNT_POINT} apt-get -yq install grub2-common grub-efi-amd64 grub-efi-amd64-bin
   chroot ${MOUNT_POINT} grub-install --target=x86_64-efi /dev/loop0p1 --efi-directory=/boot/efi/ --boot-directory=/boot/
   # debian needs some extra steps to enable fallback boot sometimes required to boot from external media
-  if [ "$3" = "bookworm" ]; then
+  if [ "$3" = "bookworm" ] || [ "${3}" = "trixie" ]; then
     chroot ${MOUNT_POINT} mkdir -p /boot/efi/EFI/BOOT
     chroot ${MOUNT_POINT} cp /boot/efi/EFI/debian/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
     chroot ${MOUNT_POINT} cp /usr/share/images/desktop-base/desktop-grub.png /boot/grub
@@ -399,7 +399,7 @@ if [ "${UEFI64ARM}" = "true" ]; then
   chroot ${MOUNT_POINT} apt-get -yq install grub2-common grub-efi-arm64 grub-efi-arm64-bin
   chroot ${MOUNT_POINT} grub-install --target=arm64-efi /dev/loop0p1 --efi-directory=/boot/efi/ --boot-directory=/boot/ --no-nvram --no-bootsector --dtb=/boot/selected.dtb --removable
   # debian needs some extra steps to enable fallback boot sometimes required to boot from external media
-  if [ "$3" = "bookworm" ]; then
+  if [ "$3" = "bookworm" ] || [ "${3}" = "trixie" ]; then
 # lets not do this yet as long as that special grub version is still used via
 # the systems extra-files/boot for the aarch64 images - maybe its time to check
 # if the regular debian/ubuntu grub is meanwhile working well enough on aarch64?

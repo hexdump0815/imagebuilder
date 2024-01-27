@@ -114,7 +114,7 @@ if [ "$3" = "jammy" ] || [ "$3" = "noble" ]; then
   if [ "$2" = "x86_64" ] && [ "${OWN_KERNEL}" != "true" ]; then
     chroot ${BUILD_ROOT} apt-get -yq install linux-image-generic
   fi
-elif [ "$3" = "bookworm" ]; then
+elif [ "$3" = "bookworm" ] || [ "$3" = "trixie" ]; then
   if [ "$2" = "i686" ] && [ "${OWN_KERNEL}" != "true" ]; then
     chroot ${BUILD_ROOT} apt-get -yq install linux-image-686
   # in the chromebook octopus case there is an own special cros kernel
