@@ -24,15 +24,10 @@ if [ "${1}" = "jammy" ] || [ "${1}" = "noble" ]; then
   apt-get -yq install firefox-esr
 fi
 
-# this is required to make docker work on with more recent kernels
-# see https://wiki.debian.org/iptables
-# maybe this can even go now after the move from docker to podman
-if [ "${1}" = "bookworm" ] || [ "${1}" = "jammy" ] || [ "${1}" = "noble" ]; then
-  update-alternatives --set iptables /usr/sbin/iptables-legacy
-  update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
-  update-alternatives --set arptables /usr/sbin/arptables-legacy
-  update-alternatives --set ebtables /usr/sbin/ebtables-legacy
-fi
+update-alternatives --set iptables /usr/sbin/iptables-legacy
+update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
+update-alternatives --set arptables /usr/sbin/arptables-legacy
+update-alternatives --set ebtables /usr/sbin/ebtables-legacy
 
 # in case you want to enable automatic updates, just comment out the next lines
 # TODO: not sure if the first two are still required
