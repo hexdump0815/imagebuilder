@@ -12,7 +12,11 @@
 
 ## untested systems
 
-- none yet
+- hp chromebook x360 13.3 (2023) - dojo
+  - it uses a sligtly slower (max 2.6ghz) kompanio 1200 soc vs. kompanio 1380
+    (max 3.0ghz) in tomato and seems to have nvme storage vs. emmc in tomato
+  - some more information from pmos:
+    https://wiki.postmarketos.org/wiki/HP_Chromebook_x360_13b-ca0xxx_(google-dojo)
 
 ## generic mainline linux on arm chromebook notes
 
