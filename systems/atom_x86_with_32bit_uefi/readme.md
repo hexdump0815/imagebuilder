@@ -40,7 +40,7 @@
   - be careful with the micro-usb connector as it is the rare type-a version into which a type-b plug can easily inserted the wrong way around which most probably would kill the device
   - there is a lot of information about running linux on the dellvenue 8 pro at https://www.studioteabag.com/science/dell-venue-pro-linux/
 - some things relevant for the chuwi vi8
-  - the touch screen is not supported by default as the required kernel module is not enabled in the debian kernel (CONFIG_TOUCHSCREEN_SILEAD) - a cusomt kernel has to be built to enable it
+  - the touchscreen might not be supported by default as the required kernel module is not enabled in the default kernel (silead, chipone or goodix - see: https://github.com/hexdump0815/linux-mainline-x86-64-kernel/commit/35f5767536347c8ba80cc18adc285181f666014c) - a custom kernel might have to be built to enable it
 - some things relevant for the unobook
   - the cameras are not supported yet
   - sound does not give output neither via speaker nor via headphone jack
