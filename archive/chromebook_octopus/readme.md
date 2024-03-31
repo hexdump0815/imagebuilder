@@ -25,7 +25,7 @@
 
 ## priority
 
-- medium: will be worked on and improved from time to time, getting wifi and audio working are the next topics
+- on hold: no further activities planned so far, no further plans to work on depthcharge booting on x86 devices for now
 
 ## special notes
 
