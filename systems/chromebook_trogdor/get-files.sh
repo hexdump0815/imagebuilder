@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-chromebook_trogdor_release_version="6.1.51-stb-cbq"
+chromebook_trogdor_release_version="6.6.23-stb-cbq%2B"
 mesa_release_version="22.1.1"
 
 rm -f ${DOWNLOAD_DIR}/kernel-chromebook_trogdor-${2}.tar.gz
