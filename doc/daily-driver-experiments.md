@@ -238,6 +238,13 @@ reboot - all was working very nicely :)
 - update september/october 2023: i used my kappa as daily driver again for a
   few weeks and the result is the same as the last time - everything is working
 very well ... kernel was v6.1.51 this time
+- update spring 2024: i used my kappa for several months as daily driver and it
+  was running very stable and well with an uptime of up to 54 days in a row
+once (and that only to switch to another chromebook to daily drive test and not
+because of any problems) ... the performance with the v6.6.9 kernel used seemed
+to be quite a bit better than with the v6.1 kernel used before and the annoying
+audio beeping problems seems to be much easier to hande now - see:
+https://github.com/hexdump0815/imagebuilder/issues/65#issuecomment-1883698383
 
 # odroid u3 - october 2022
 
@@ -426,6 +433,8 @@ month ...
 any real problems and has a very good battery life of around 10 hours +/- if
 just lightly used.
 - info: v6.1.1 kernel, debian bookworm, 4gb ram, 64gb emmc
+- update april/may 2024: i used my lazor for more than two weeks with a v6.6.23
+  kernel and everything was running very stable and well
 
 # chromebook gru - bob - january 2023
 
@@ -439,6 +448,10 @@ a very short moment, not sure if it is a general problem or only a temporary
 issue of the kernel version used. in the end it happens so rarely and the
 blanking is so short that it is not really a problem.
 - info: v6.1.0 kernel, debian bookworm, 4gb ram, 16gb emmc
+- update april 2024: i used my bob for more than two weeks with a v6.6.23
+  kernel and everything was running very stable and well, the only slight
+problem discovered were short black flashes of the screen from time to time
+which immediately disappeared when moving the mouse
 
 # chromebook veyron - minnie - january 2023
 
