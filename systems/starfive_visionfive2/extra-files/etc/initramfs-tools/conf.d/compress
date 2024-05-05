@@ -1,0 +1,2 @@
+COMPRESS=xz
+XZ_OPT='-9 --check=crc32 -memlimit-compress=25%'

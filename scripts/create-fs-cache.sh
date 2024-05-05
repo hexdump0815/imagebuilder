@@ -128,8 +128,9 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
     # parse in the proper debian version
     sed -i "s,DEBIANVERSION,bookworm,g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
   elif [ "${2}" = "sidriscv" ]; then
-    apt -y install debootstrap debian-ports-archive-keyring --no-install-recommends
-    LANG=C debootstrap --arch=${BOOTSTRAP_ARCH} --foreign --keyring /usr/share/keyrings/debian-ports-archive-keyring.gpg --include=debian-ports-archive-keyring --no-check-certificate --variant=minbase sid ${BUILD_ROOT_CACHE} http://deb.debian.org/debian-ports
+    wget https://ftp-master.debian.org/keys/release-12.asc -qO- | gpg --import --no-default-keyring --keyring ${DOWNLOAD_DIR}/debian-release-12.gpg
+    LANG=C debootstrap --keyring=${DOWNLOAD_DIR}/debian-release-12.gpg --no-check-certificate --variant=minbase --arch=${BOOTSTRAP_ARCH} sid ${BUILD_ROOT_CACHE} http://deb.debian.org/debian/
+    LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} sid ${BUILD_ROOT_CACHE} http://deb.debian.org/debian/
     # exit if debootstrap failed for some reason
     if [ "$?" != "0" ]; then
       echo ""
@@ -139,8 +140,26 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
       exit 1
     fi
     cp ${WORKDIR}/files/sidriscv-${BOOTSTRAP_ARCH}-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
-    # this seems to be required to not need special options to apt commands when installing from the ports repo
-    echo 'APT::Get::AllowUnauthenticated "true";' > ${BUILD_ROOT_CACHE}/etc/apt/apt.conf.d/99unauthenticated
+    # parse in the proper debian version
+    sed -i "s,DEBIANVERSION,sid,g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
+#    apt -y install debootstrap debian-ports-archive-keyring --no-install-recommends
+#    LANG=C debootstrap --arch=${BOOTSTRAP_ARCH} --foreign --keyring /usr/share/keyrings/debian-ports-archive-keyring.gpg --include=debian-ports-archive-keyring --no-check-certificate --variant=minbase sid ${BUILD_ROOT_CACHE} http://deb.debian.org/debian-ports
+#    # exit if debootstrap failed for some reason
+#    if [ "$?" != "0" ]; then
+#      echo ""
+#      echo "error while running debootstrap - giving up"
+#      echo ""
+#      rm -rf ${BUILD_ROOT_CACHE}
+#      exit 1
+#    fi
+#    cp ${WORKDIR}/files/sidriscv-${BOOTSTRAP_ARCH}-sources.list ${BUILD_ROOT_CACHE}/etc/apt/sources.list
+#    # this seems to be required to not need special options to apt commands when installing from the ports repo
+#    echo 'APT::Get::AllowUnauthenticated "true";' > ${BUILD_ROOT_CACHE}/etc/apt/apt.conf.d/99unauthenticated
+  else
+    echo ""
+    echo "${2} is not supported as release - giving up!"
+    echo ""
+    exit 1
   fi
 
   cp ${WORKDIR}/scripts/create-chroot-stage-01.sh ${BUILD_ROOT_CACHE}
