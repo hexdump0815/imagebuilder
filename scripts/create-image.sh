@@ -116,6 +116,9 @@ else
   if [ "$UEFI64ARM" != "" ]; then
     echo "UEFI64ARM=$UEFI64ARM"
   fi
+  if [ "$IMAGESIZE" != "" ]; then
+    echo "IMAGESIZE=$IMAGESIZE"
+  fi
 fi
 
 mkdir -p ${IMAGE_DIR}
@@ -130,10 +133,14 @@ fi
 
 # we use less than the marketing capacity of the sd card as it is usually lower in reality 3.5/5.5gb
 # the compressed btrfs root needs less space on disk
-if [ "$ROOTFS" = "btrfs" ]; then
-  truncate -s 3584M ${IMAGE_DIR}/${1}-${2}-${3}.img
+if [ "$IMAGESIZE" != "" ]; then
+    truncate -s ${IMAGESIZE} ${IMAGE_DIR}/${1}-${2}-${3}.img
 else
-  truncate -s 5632M ${IMAGE_DIR}/${1}-${2}-${3}.img
+  if [ "$ROOTFS" = "btrfs" ]; then
+    truncate -s 3584M ${IMAGE_DIR}/${1}-${2}-${3}.img
+  else
+    truncate -s 5632M ${IMAGE_DIR}/${1}-${2}-${3}.img
+  fi
 fi
 
 losetup /dev/loop0 ${IMAGE_DIR}/${1}-${2}-${3}.img
