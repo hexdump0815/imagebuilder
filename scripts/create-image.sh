@@ -462,7 +462,7 @@ if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ] || [ "${UEFI64ARM}" = "t
 else
   df -h ${MOUNT_POINT} ${MOUNT_POINT}/boot
 fi
-umount ${MOUNT_POINT}/boot 
+umount ${MOUNT_POINT}/boot
 umount ${MOUNT_POINT}
 
 losetup -d /dev/loop0

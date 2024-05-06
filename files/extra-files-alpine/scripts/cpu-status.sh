@@ -14,8 +14,8 @@ while true; do
     cat $i
   done
   if [ -f /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq ]; then
-    echo "cpu frequencies:" 
-    cat /sys/devices/system/cpu/cpu?/cpufreq/scaling_cur_freq 
+    echo "cpu frequencies:"
+    cat /sys/devices/system/cpu/cpu?/cpufreq/scaling_cur_freq
   fi
   sleep 15
 done
