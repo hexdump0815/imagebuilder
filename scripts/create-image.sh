@@ -326,7 +326,17 @@ if [ "$PMOSKERNEL" != "true" ]; then
       fi
     fi
   elif [ "${2}" = "riscv64" ]; then
-    export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/vmlinuz-* | sed 's,.*vmlinuz-,,g' | sort -u`
+    export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/*Image-* | sed 's,.*Image-,,g' | sort -u`
+    # in case we did not get a kernel version, try it again with the vmlinuz
+    if [ "$KERNEL_VERSION" = "" ]; then
+      echo "trying vmlinuz as kernel name instead of *Image:"
+      export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/vmlinuz-* | sed 's,.*vmlinuz-,,g' | sort -u`
+    fi
+    if [ "$KERNEL_VERSION" = "" ]; then
+      echo ""
+      echo "no KERNEL_VERSION detected - this is most probably a problem and should be fixed"
+      echo ""
+    fi
     if [ "$PARTUUID_ROOT" = "YES" ]; then
       ROOT_PARTUUID=$(blkid | grep "/dev/loop0p$ROOTPART" | awk '{print $5}' | sed 's,",,g')
       if [ -f ${MOUNT_POINT}/boot/extlinux/extlinux.conf ]; then

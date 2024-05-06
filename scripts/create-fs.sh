@@ -310,11 +310,15 @@ if [ "${PMOSKERNEL}" != "true" ]; then
     export KERNEL_VERSION=`ls ${BUILD_ROOT}/boot/vmlinuz-* | sed 's,.*vmlinuz-,,g' | sort -u`
   fi
 
-  # hack to get the fsck binaries in properly even in our chroot env
-  cp -f usr/share/initramfs-tools/hooks/fsck tmp/fsck.org
-  sed -i 's,fsck_types=.*,fsck_types="vfat ext4",g' usr/share/initramfs-tools/hooks/fsck
-  chroot ${BUILD_ROOT} update-initramfs -c -k ${KERNEL_VERSION}
-  mv -f tmp/fsck.org usr/share/initramfs-tools/hooks/fsck
+  if [ "$KERNEL_VERSION" = "" ]; then
+    echo "no KERNEL_VERSION - lets assume this is intended and ignore the initramfs rebuild"
+  else
+    # hack to get the fsck binaries in properly even in our chroot env
+    cp -f usr/share/initramfs-tools/hooks/fsck tmp/fsck.org
+    sed -i 's,fsck_types=.*,fsck_types="vfat ext4",g' usr/share/initramfs-tools/hooks/fsck
+    chroot ${BUILD_ROOT} update-initramfs -c -k ${KERNEL_VERSION}
+    mv -f tmp/fsck.org usr/share/initramfs-tools/hooks/fsck
+  fi
 else
   # the pmos boot.img reads its initrd extension from here (if not in boot-and-modules.tar.gz)
   if [ -f boot/extra/initramfs-extra ]; then
