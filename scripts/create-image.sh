@@ -32,7 +32,7 @@ fi
 # check that everything is there and set
 if [ ! -x /usr/bin/unlz4 ]; then
   echo ""
-  echo "unlz4 not found - please install the liblz4-tool package - giving up"
+  echo "unlz4 not found - please install the lz4 package - giving up"
   echo ""
   exit 1
 fi
