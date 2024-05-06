@@ -86,7 +86,7 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
     SERVER_POSTFIX=""
   fi
   mkdir -p ${BUILD_ROOT_CACHE}/etc/apt
-  if [ "${2}" = "jammy" ] || [ "${2}" = "noble" ]; then
+  if [ "${2}" = "jammy" ]; then
     LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} ${2} ${BUILD_ROOT_CACHE} http://${SERVER_PREFIX}ubuntu.com/${SERVER_POSTFIX}
     # exit if debootstrap failed for some reason
     if [ "$?" != "0" ]; then
