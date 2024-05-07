@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+
+start() {
+	/opt/milkv/uhubon.sh device
+	/opt/milkv/run_usb.sh probe rndis
+	/opt/milkv/run_usb.sh start rndis
+
+	sleep 0.5
+	ifconfig usb0 192.168.42.1
+
+	count=`ps | grep dnsmasq | grep -v grep | wc -l`
+	if [ ${count} -lt 1 ] ;then
+	  rc-service dnsmasq start
+	fi
+}
+
+stop () {
+	rc-service dnsmasq stop
+	ifconfig usb0 down
+	/opt/milkv/run_usb.sh stop rndis
+}
+

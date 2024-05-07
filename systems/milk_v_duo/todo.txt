@@ -1,0 +1,2 @@
+- self built u-boot, opensbi and fsbl as well
+- where is the kernel cmdline coming from?

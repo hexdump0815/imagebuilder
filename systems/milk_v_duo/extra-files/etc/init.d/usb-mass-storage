@@ -1,0 +1,9 @@
+#!/sbin/openrc-run
+
+start() {
+	printf "Starting mass storage class (msc): "
+	/opt/milkv/uhubon.sh device
+	/opt/milkv/run_usb.sh probe msc /dev/mmcblk0p1
+	/opt/milkv/run_usb.sh start
+}
+

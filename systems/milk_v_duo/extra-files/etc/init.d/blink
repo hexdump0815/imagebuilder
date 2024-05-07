@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+
+LED_GPIO=/sys/class/gpio/gpio440
+
+start() {
+  touch /tmp/blinking
+  /opt/milkv/blink.sh &
+}
+
+stop() {
+  rm -f /tmp/blinking
+}
