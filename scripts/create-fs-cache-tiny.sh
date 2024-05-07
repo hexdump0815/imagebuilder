@@ -75,7 +75,7 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
     echo ${APK_MIRROR}/edge/main > etc/apk/repositories
     echo ${APK_MIRROR}/edge/community >> etc/apk/repositories
     echo ${APK_MIRROR}/edge/testing >> etc/apk/repositories
-    wget -v ${APK_MIRROR}/edge/main/${BOOTSTRAP_ARCH}/${APK_PKG}.apk -O bootstrap/apk-tools-static.apk
+    wget -v ${APK_MIRROR}/edge/main/${BOOTSTRAP_ARCH}/${APK_PKG} -O bootstrap/apk-tools-static.apk
     cd bootstrap
     tar xzf apk-tools-static.apk sbin/apk.static
     cd ..
