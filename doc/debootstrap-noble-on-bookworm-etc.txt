@@ -1,7 +1,7 @@
 TODO: recheck and update if still relevant for newer debian and ubuntu versions
 
-it looks like bullseye does not bring a fresh enough debootstrap yet
-to bootstrap ubuntu jammy - to work around this one should
+it looks like bookworm might not bring a fresh enough debootstrap yet
+to bootstrap ubuntu noble - to work around this one should
 install the latest sid debootstrap version from:
 
   https://packages.debian.org/sid/all/debootstrap/download
@@ -14,5 +14,5 @@ which also requires the zstd package to be installed:
 
   apt-get -yq install zstd
 
-afterwards debootstrap on bullseye should be able to bootstrap jammy
+afterwards debootstrap on bookworm should be able to bootstrap noble
 as well :)

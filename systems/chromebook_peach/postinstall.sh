@@ -7,7 +7,7 @@
 #echo "#load-module module-alsa-source device=sysdefault" >> etc/pulse/default.pa
 
 # lets better use the dpms suspend free version here, as there were some drm unblank kernel errors
-# bookworm
+# bookworm and trixie
 if [ -f etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml-enabled-no-dpms-suspend ]; then
   cp -v etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml-enabled-no-dpms-suspend etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml
 # jammy and noble

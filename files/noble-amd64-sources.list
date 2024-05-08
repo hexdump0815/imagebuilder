@@ -1,0 +1,4 @@
+deb http://archive.ubuntu.com/ubuntu/ UBUNTUVERSION-security restricted multiverse main universe
+deb http://archive.ubuntu.com/ubuntu/ UBUNTUVERSION-updates restricted multiverse main universe
+deb http://archive.ubuntu.com/ubuntu/ UBUNTUVERSION-backports restricted multiverse main universe
+deb http://archive.ubuntu.com/ubuntu/ UBUNTUVERSION main universe restricted multiverse
