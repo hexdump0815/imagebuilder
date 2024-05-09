@@ -11,6 +11,9 @@ sed -i 's/^ttyS0.*/ttyS0::respawn:\/sbin\/agetty -L 115200 ttyS0 linux --noclear
 
 cp /boot/boot.sd-* /boot/boot.sd
 
+# enable blinking led when system has booted
+ln -s /etc/init.d/blink /etc/runlevels/default/blink
+
 # on those small systems it is faster to delete the packages later
 # if not needed than to install them if needed, so lets install the
 # build tools by default
