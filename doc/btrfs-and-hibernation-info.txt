@@ -14,8 +14,7 @@ btrfs scrub status /dev/btrfs-device
 # CONFIG_HIBERNATION=y
 # CONFIG_PM_STD_PARTITION=""
 
-# the first line (polkit) seem to be not required on debian bullseye, but ubuntu focal needs them
-# TODO: recheck and update for newer debian and ubuntu versions
+# the first line (polkit) seem to be not required on debian, but ubuntu seems to need it
 # see files subdir for file content
 vi /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla
 mkdir -p /etc/systemd/system/systemd-hibernate.service.d

@@ -5,7 +5,7 @@ testing
 
 TODO: recheck and update if still relevant for newer debian and ubuntu versions
 
-currently debian stable is bullseye and debian testing is bookworm, so to go
+currently debian stable is bookworm and debian testing is trixie, so to go
 from the first to the second is described here. the motivation for going this
 way might be to have more up to date software packages. when thinking about
 this, please keep in mind that going back from testing to stable is not easily
@@ -47,9 +47,9 @@ reboot
 if any or most probably most of the commands above fail with errors then most
 probably the is no self built mesa installed and activated on the system
 
-## steps to be done to go from bullseye=stable to bookworm=testing
+## steps to be done to go from bookworm=stable to trixie=testing
 
-- replace bullseye with bookworm in /etc/apt/sources.list
+- replace bookworm with trixie in /etc/apt/sources.list
 - run the following commands in this order (best not in xorg but in a regular
   framebuffer terminal to avoid potential trouble during the update):
 ```
@@ -58,9 +58,3 @@ apt-get upgrade
 apt-get full-upgrade
 ```
 - reboot and hope that everything is still working fine :)
-
-## some notes about bookworm
-
-with bookworm i saw for the first time xorg gamma settings via for instance
-xcalib working on systems which support it (like rk3288, mt8173, mt8183 and
-most probably some more) - i guess this is due to newer xorg etc.
