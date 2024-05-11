@@ -1,0 +1,6 @@
+BOOTFS=fat
+ROOTFS=ext4
+BOOTPART=1
+ROOTPART=2
+# as all the desktop stuff gets deleted only a smaller image size is needed
+IMAGESIZETINY=1024M

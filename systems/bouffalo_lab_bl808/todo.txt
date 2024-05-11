@@ -1,0 +1,14 @@
+- try to port the kernel patches forward to a v6.6-lts tree to get proper updates for a while
+- try to switch to 115200 for serial everywhere: opensbi, uboot, kernel cmdline, agetty
+  - see: https://github.com/openbouffalo/buildroot_bouffalo/pull/17/files (does not seem to work anymore)
+  - also: misc.obl/patches/oblfr/own-not-used/oblfr-change-speed-to-115200.patch (own try, not sure if that works)
+- try newer usb patches etc. to maybe get usb more useable - based on:
+  - https://github.com/openbouffalo/linux/pull/3
+  - https://github.com/grant-olson/buildroot_bouffalo/tree/usb_gadgets/board/pine64/ox64/patches/linux
+  - https://github.com/grant-olson/buildroot_bouffalo/releases/tag/usb_gadget-beta2
+  - https://github.com/grant-olson/buildroot_bouffalo/tree/usb_gadgets/board/pine64/ox64/patches/linux
+    - are already in misc.obl/patches/v6.5 but as .off as they do not apply cleanly (.off.off should stay off)
+    - to use them 0059-add-usb-driver.patch and use-usb-host-mode.patch should be disabled
+  - https://github.com/grant-olson/buildroot_bouffalo/tree/usb_gadgets/board/pine64/ox64/patches/oblfr
+    - are already in misc.obl/patches/olbfr but as .off as i was not able to build working loaders (.off.off should stay off)
+    - the m0 and d0 lowload files from the beta release from above should be used until an own build works
