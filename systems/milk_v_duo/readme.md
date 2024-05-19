@@ -16,7 +16,7 @@
 
 ## kernel build notes
 
-- none yet, prebuilt kernel from community alpine image is used for now
+- https://github.com/hexdump0815/linux-cvitek-cv18xx-kernel/blob/main/readme.duo
 
 ## u-boot build notes
 

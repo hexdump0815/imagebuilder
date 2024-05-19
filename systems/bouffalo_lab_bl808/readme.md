@@ -14,11 +14,11 @@
 
 ## kernel build notes
 
-- none yet, prebuilt kernel from openbouffalo image is used for now
+- https://github.com/hexdump0815/linux-mainline-bouffalo-labs-bl808-kernel/blob/main/readme.obl
 
 ## u-boot build notes
 
-- none yet as for now the openbouffalo u-boot etc. is used
+- https://github.com/hexdump0815/linux-mainline-bouffalo-labs-bl808-kernel/blob/main/readme.u-boot
 
 ## mesa build notes
 
