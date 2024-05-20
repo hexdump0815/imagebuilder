@@ -1,0 +1,28 @@
+bootdelay=5
+baudrate=115200
+stderr=serial
+stdin=serial,usbkbd
+stdout=serial
+# we can easily use the initrd load addr here as the mem is not used after
+# the uEnv.ini import anymore and that happens before the inird load
+uenv_ini_addr=0x20000000
+kernel_addr=0x10000000
+initrd_addr=0x20000000
+dtb_addr=0x1F000000
+
+# import the uEnv.ini file with all the changable values
+# filesize is set automatically after the load it seems
+import_uenv_ini=echo "importing uEnv.ini ...";\
+  load mmc 0:1 ${uenv_ini_addr} uEnv.ini;\
+  env import -t ${uenv_ini_addr} ${filesize};
+
+bootcmd=run import_uenv_ini;\
+  echo "loading kernel ...";\
+  load mmc 0:1 ${kernel_addr} Image-${kver};\
+  echo "loading dtb ...";\
+  load mmc 0:1 ${dtb_addr} dtb-${kver}/${dtb_name};\
+  echo "loading ramdisk ...";\
+  load mmc 0:1 ${initrd_addr} initrd.img-${kver};\
+  setenv initrd_info ${initrd_addr}:${filesize};\
+  echo "booting ...";\
+  booti ${kernel_addr} ${initrd_info} ${dtb_addr};
