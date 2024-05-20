@@ -350,10 +350,18 @@ if [ "$PMOSKERNEL" != "true" ]; then
         sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
         sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
       fi
+      if [ -f ${MOUNT_POINT}/boot/uEnv.ini ]; then
+        sed -i "s,ROOT_PARTUUID,$ROOT_PARTUUID,g" ${MOUNT_POINT}/boot/uEnv.ini
+        sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/uEnv.ini
+      fi
     else
       if [ -f ${MOUNT_POINT}/boot/extlinux/extlinux.conf ]; then
         sed -i "s,ROOT_PARTUUID,LABEL=$ROOTPARTLABEL,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
         sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/extlinux/extlinux.conf
+      fi
+      if [ -f ${MOUNT_POINT}/boot/uEnv.ini ]; then
+        sed -i "s,ROOT_PARTUUID,LABEL=$ROOTPARTLABEL,g" ${MOUNT_POINT}/boot/uEnv.ini
+        sed -i "s,KERNEL_VERSION,$KERNEL_VERSION,g" ${MOUNT_POINT}/boot/uEnv.ini
       fi
     fi
   fi
