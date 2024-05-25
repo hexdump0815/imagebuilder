@@ -52,9 +52,11 @@ hub_off() {
 case "$1" in
   host)
 	modprobe dwc2
-  echo host > /proc/cviusb/otg_role
+  	echo host > /proc/cviusb/otg_role
+	hub_on
 	;;
   device)
+  	hub_off
 	echo device > /proc/cviusb/otg_role
 	;;
   *)
