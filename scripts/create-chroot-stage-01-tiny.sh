@@ -7,6 +7,6 @@
 export LANG=C
 
 apk update
-apk add --allow-untrusted cfdisk sudo bash p7zip btrfs-progs btrfs-compsize zstd
+apk add --allow-untrusted cfdisk sudo bash p7zip btrfs-progs btrfs-compsize zstd dnsmasq
 
 rm -rf /bootstrap
