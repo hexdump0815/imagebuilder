@@ -1,2 +1,4 @@
 - self built u-boot, opensbi and fsbl as well
 - where is the kernel cmdline coming from?
+- cleanup of kernel config
+- maybe bring back the other usb gadget devices as modules
