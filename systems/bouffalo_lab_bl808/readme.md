@@ -14,11 +14,11 @@
 
 ## kernel build notes
 
-- https://github.com/hexdump0815/linux-mainline-bouffalo-labs-bl808-kernel/blob/main/readme.obl
+- https://github.com/hexdump0815/linux-mainline-bouffalo-lab-bl808-kernel/blob/main/readme.obl
 
 ## u-boot build notes
 
-- https://github.com/hexdump0815/linux-mainline-bouffalo-labs-bl808-kernel/blob/main/readme.u-boot
+- https://github.com/hexdump0815/linux-mainline-bouffalo-lab-bl808-kernel/blob/main/readme.u-boot
 
 ## mesa build notes
 
