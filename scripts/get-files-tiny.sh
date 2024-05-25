@@ -13,7 +13,7 @@ if [ "${2}" = "armv7l" ] || [ "${2}" = "aarch64" ]; then
 fi
 
 # check if the given arch matches the supported arch for the selected system
-if [ $(cat systems/$1/tiny-arch.txt) = ${2} ] || [ $(cat systems/$1/tiny-arch.txt) = ${POSSIBLE_TARGET_HOST} ]; then
+if [ $(cat systems/$1/arch-tiny.txt) = ${2} ] || [ $(cat systems/$1/arch-tiny.txt) = ${POSSIBLE_TARGET_HOST} ]; then
   echo ""
   echo "the target arch ${2} is supported for the selected system - moving on"
   echo ""
