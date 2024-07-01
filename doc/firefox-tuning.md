@@ -28,6 +28,13 @@ using memory. by reducing the number of tabs and windows for which for which
 this information is still kept around the memory usage of the browser might be
 used a bit.
 
+if firefox has been running for a while its memory usage might have grown quite
+a bit which might make especially system with little memory very slow (due to
+paging/swapping or memory compression in case of zswap) - one thing one might
+try to reduce the firefox memory usage a bit again is to open "about:memory" in
+the running firefox in a new tab and press the "minimize memory usage" button
+there.
+
 ## avoid the browser being detected as mobile version on some systems
 
 ```
