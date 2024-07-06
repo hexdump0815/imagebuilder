@@ -116,6 +116,15 @@ internally.
 
 #### gemini lake example
 
+UPDATE: the below instructions were valid for older firmware versions of gemini
+lake chromebooks but are not relevant any longer for newer firmware versions
+(discovered in the middle of 2024, not sure when it started) - for those newer
+gemeni lake chromebooks one can simply use the https://docs.mrchromebox.tech/
+script to install the RW_LEGACY firmware which is now uefi (and no longer the
+old seabios option). it is not required to install the more risky full uefi
+firmware from there - the nearly risk free RW_LEGACY firmware option is enough
+now.
+
 newer (mostly gemini lake) chromebooks with more solid altfw support (example
 here: octopus-blooglet):
 
