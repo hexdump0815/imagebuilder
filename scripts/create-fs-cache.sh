@@ -116,8 +116,7 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
     sed -i "s,UBUNTUVERSION,noble,g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
   elif [ "${2}" = "bookworm" ]; then
     wget https://ftp-master.debian.org/keys/release-12.asc -qO- | gpg --import --no-default-keyring --keyring ${DOWNLOAD_DIR}/debian-release-12.gpg
-    LANG=C debootstrap --keyring=${DOWNLOAD_DIR}/debian-release-12.gpg --no-check-certificate --variant=minbase --arch=${BOOTSTRAP_ARCH} ${2} ${BUILD_ROOT_CACHE} http://deb.debian.org/debian/
-    LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} ${2} ${BUILD_ROOT_CACHE} http://deb.debian.org/debian/
+    LANG=C debootstrap --keyring=${DOWNLOAD_DIR}/debian-release-12.gpg --variant=minbase --arch=${BOOTSTRAP_ARCH} ${2} ${BUILD_ROOT_CACHE} http://deb.debian.org/debian/
     # exit if debootstrap failed for some reason
     if [ "$?" != "0" ]; then
       echo ""
@@ -130,8 +129,6 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
     # parse in the proper debian version
     sed -i "s,DEBIANVERSION,bookworm,g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
   elif [ "${2}" = "trixie" ]; then
-    wget https://ftp-master.debian.org/keys/release-12.asc -qO- | gpg --import --no-default-keyring --keyring ${DOWNLOAD_DIR}/debian-release-12.gpg
-    LANG=C debootstrap --keyring=${DOWNLOAD_DIR}/debian-release-12.gpg --no-check-certificate --variant=minbase --arch=${BOOTSTRAP_ARCH} ${2} ${BUILD_ROOT_CACHE} http://deb.debian.org/debian/
     LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} ${2} ${BUILD_ROOT_CACHE} http://deb.debian.org/debian/
     # exit if debootstrap failed for some reason
     if [ "$?" != "0" ]; then
@@ -145,8 +142,6 @@ if [ ! -d ${BUILD_ROOT_CACHE} ]; then
     # parse in the proper debian version
     sed -i "s,DEBIANVERSION,trixie,g" ${BUILD_ROOT_CACHE}/etc/apt/sources.list
   elif [ "${2}" = "sidriscv" ]; then
-    wget https://ftp-master.debian.org/keys/release-12.asc -qO- | gpg --import --no-default-keyring --keyring ${DOWNLOAD_DIR}/debian-release-12.gpg
-    LANG=C debootstrap --keyring=${DOWNLOAD_DIR}/debian-release-12.gpg --no-check-certificate --variant=minbase --arch=${BOOTSTRAP_ARCH} sid ${BUILD_ROOT_CACHE} http://deb.debian.org/debian/
     LANG=C debootstrap --variant=minbase --arch=${BOOTSTRAP_ARCH} sid ${BUILD_ROOT_CACHE} http://deb.debian.org/debian/
     # exit if debootstrap failed for some reason
     if [ "$?" != "0" ]; then
