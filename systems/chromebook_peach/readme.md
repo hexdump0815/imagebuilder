@@ -39,8 +39,6 @@ see also https://github.com/hexdump0815/imagebuilder/issues/80 for all above
 
 ## special notes
 
-- after first boot please run /scripts/fix-peach-audio.sh as root to fix the
-  ucm audio config files for the corresponding system and reboot
 - for all images starting with version 210725-01 full deep suspend/resume
   should work fine
 - the current sound setup is not complete yet:
