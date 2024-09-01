@@ -12,13 +12,17 @@ The framework supports building debian and ubuntu images as they are very widely
 
 The imagebuilder framework currently supports more than 30 different systems (which might support multiple separate devices each in many cases) and the level at which they are supported varies a bit among them, but for all of them at least some bootable images exist to get started and to maybe improve them further. The systems with the most focus currently are most probably **chromebooks** (i.e. running a proper linux system instead of chromeos on them) as they are a perfect option to run linux on an arm soc based notebook at a very good price point and the odroid u/x series of sbc devices as there seem to be no other regularly maintained linux for them anymore otherwise.
 
-For communication github issues should be used. Before creating a new one, please check if there is already another one regarding the topic or problem existing. When creating a new one it is very important to always include all the basic information required, like which hardware is used, which image is used. In case of problems: how exactly do they manifest (instead of just "does not work") and in which context do they appear. With all this, please keep in mind that this is not a product, but a spare time project done and supported by volunteers - so it might take time until there is a solution, answer or suggestion or there might be even none. there is one special category of issues so far which is dealing with the state of certain systems and they have subjects like "chromebook_trogdor: status: coachz" - so it might be a good idea to search the github issues for such "status" information for a certain system.
+For communication github discussions or github issues of this repo should be used. Before creating a new one, please check if there is already another one regarding the topic or problem existing. When creating a new one it is very important to always include all the basic information required, like which hardware is used, which image is used. In case of problems: how exactly do they manifest (instead of just "does not work") and in which context do they appear. With all this, please keep in mind that this is not a product, but a spare time project done and supported by volunteers - so it might take time until there is a solution, answer or suggestion or there might be even none. there is one special category of issues so far which is dealing with the state of certain systems and they have subjects like "chromebook_trogdor: status: coachz" - so it might be a good idea to search the github issues for such "status" information for a certain system.
 
 Finally some notes about the name: the framework did not have any real name so far besides "imagebuilder", but as this is hard to find and not so easy to reference I have decided to give it some name, so it can be referenced easier than as "images built with the hexdump0815 imagebuilder framework" - lets call it "velvet os" from now on. The name comes from the fact, that I sometimes use self-adhesive velvet to cover the (sometimes heavily scratched) top of my chromebooks, which has the nice side effect to let all the marketing branding of the device disappear, making it a perfect velvet os device ...Let's hope that using velvet os images one day will be an as pleasant experience as touching velvet :)
 
 # important latest informations about the images - please check them out!
 
 see https://github.com/hexdump0815/imagebuilder/blob/main/doc/important-information.md
+
+# status updates and news around this project
+
+see https://github.com/hexdump0815/imagebuilder/blob/main/doc/news.md
 
 # using the images
 
