@@ -12,7 +12,7 @@ _Warning. this step will WIPE ALL YOUR DATA from you chromebook so if you have a
 
 **on laptops**
 
-hold ```[esc]```+```[reffresh]``` and press ```[power]```/```[lock]```
+hold ```[esc]```+```[refresh]``` and press ```[power]```/```[lock]```
 
 **on tablets**
 
