@@ -193,7 +193,7 @@ on newer chromeos versions (around 112+ or so) one should use ```futility gbb --
 
 8. re-check the software write protect via ```flashrom --wp-status``` - it should be enabled again now
 9. if everything looks good, you can shutdown your system now
-10. enable hardware write protection with screw or ccd
+10. enable hardware write protection with screw or ccd or just leave it open if that is ok 
 
 sources :
 
