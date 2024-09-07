@@ -78,7 +78,7 @@ should show that ccd is open
 
 now plugin suzyqcable to you chromebook
 
-_Note. it will on work plugged into one of chromebooks ports and in one orientation_
+_Note. it will only work plugged into one of chromebooks ports and in one orientation_
 
 now check if it works
 
