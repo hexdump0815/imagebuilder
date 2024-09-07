@@ -114,7 +114,7 @@ sda      179:0    0 116,5G  0 disk <-- your usb
 ```
 _Tip. just find a device with same size as ur usb_
 
-_Note. your partitions might be diffrent_
+_Note. your partitions might be different_
 
 flash the image
 ```
