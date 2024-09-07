@@ -66,7 +66,7 @@ but if it isn't run
 ```
 gsctool -a -o
 ```
-_Note. it will require you to press PP button (a fancy word for power button) a few times, if you screen turns off after pressing that button just press it twice in a row quicklu_
+_Note. it will require you to press PP button (a fancy word for "person presence" button which usually is the power button of the device) shortly (to not power off the device) a few times, if you screen turns off after pressing that button just press it twice in a row quicklu_
 
 after last press the device will shutdonw and you will have to enable developer mode again
 
