@@ -30,7 +30,7 @@ the circut is located on the motherboard
 described in [Hardware Maintanance Manual](https://download.lenovo.com/consumer/mobiles_pub/lenovo_10e_chromebook_tablet_hmm_v2.pdf)
 </details>
 
-_Tip.**you** can **look** for hardware maintanace manual for ur device **urself**, these are sometimes mentioned there_
+_Tip. **you** can **look** for hardware maintanace manual for ur device **urself**, these are sometimes mentioned there_
 
 _Note. if you find one yourself PR is welcome_
 
