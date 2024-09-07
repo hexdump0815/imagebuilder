@@ -2,7 +2,7 @@
 
 ![screw](./assets/wp-screw/lenovo10e.jpg)
 
-setting gbb flags will keep your device in developer mode with option to boot from usb at any time even if your battery ryns dry
+setting gbb flags will keep your device in developer mode with option to boot from usb at any time even if your battery runs dry
 
 these flags are usually protected by hardware write protection so you will need to disable it first
 
