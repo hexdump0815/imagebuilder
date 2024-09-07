@@ -118,9 +118,10 @@ _Note. your partitions might be different_
 
 flash the image
 ```
-sudo dd status=progress if=name.img of=/dev/sda
+sudo dd status=progress if=name.img of=/dev/<target-device>
 ```
-_Note. replace "sda" with you usb name from the step above_
+_Note. replace <target-device> with you usb name from the step above_
+_Warning. this operation will wipe your sd/usb drive_
 
 usb should be ready to go 🎉
 
