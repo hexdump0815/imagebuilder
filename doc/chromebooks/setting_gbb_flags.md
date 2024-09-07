@@ -89,7 +89,7 @@ output
 ```
 ttyUSB0 ttyUSB1 ttyUSB2
 ```
-_Note. this may not appear on some chromebooks with non chromeos, you can connect the other end diffrent linux pc_
+_Note. this may not appear on some chromebooks with non chromeos (due to a partially broken usb-stack in mainline linux for them), in such a case you can connect the other end diffrent linux pc_
  
 _Note. you can connect the device to itself if it has 2 ports_
 
