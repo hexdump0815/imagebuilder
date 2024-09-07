@@ -109,6 +109,15 @@ echo "wp true" > /dev/ttyUSB0
 echo "wp true atboot" > /dev/ttyUSB0
 ```
 
+The Open state is lost if Cr50 reboots, the device loses power (e.g., battery runs out and AC is not plugged in), or the battery is removed. Note that Cr50 does not reboot when the system reboots; it only reboots if it is updated, the devices loses power, the battery runs out, or it crashes. If you plan on flashing the AP firmware or flashing the EC firmware, it is recommended you modify the capability settings or set a CCD password, so you can reopen the device in the case that you accidentally brick it with bad firmware. The simplest way to do this is to reset to factory settings and enable testlab mode. [more](https://chromium.googlesource.com/chromiumos/platform/ec/+/fe6ca90e/docs/case_closed_debugging_cr50.md)
+
+_Note. This isn't required and will require you to press pp button a few times, so it might be easier to do it using minicom_
+
+```
+echo "ccd reset factory" > /dev/ttyUSB0
+echo "ccd testlab enable" > /dev/ttyUSB0
+```
+
 sources :
 - https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices
 - https://wiki.mrchromebox.tech/Firmware_Write_Protect#Disabling_WP_on_CR50_Devices_via_CCD
