@@ -45,7 +45,7 @@ press both ```[volume-up]```+```[volume-down]```
 ![en-dev](./assets/boot-menu/old-tablets/dev-enable.png)
 navigate to top option (Confirm Dissabling OS verification) and press ```[power]```
 
-_Note. on some devices with a black screen (but led on the side on) mentioned aboved for example lenovo 10e, the screen output is disabled there for whatever reason (the menu is still there thoe), but don't worry just press both ```[volume-up]```+```[volume-down]``` then press ```[volume-up]``` a few times then confirm with ```[power]```, after that screen output should be there_
+_Note. on some devices with a black screen (but led on the side on) mentioned aboved for example lenovo 10e, the screen output is disabled there for whatever reason (the menu is still there though), but don't worry just press both ```[volume-up]```+```[volume-down]``` then press ```[volume-up]``` a few times then confirm with ```[power]```, after that screen output should be there_
 
 after doing this the device should reboot to this screen
 ![dev-menu](./assets/boot-menu/old-tablets/dev-menu.png)
