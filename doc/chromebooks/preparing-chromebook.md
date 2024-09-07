@@ -113,6 +113,7 @@ sda      179:0    0 116,5G  0 disk <-- your usb
 └─sda5  179:5    0   7,5G  0 part [SWAP]
 ```
 _Tip. just find a device with same size as ur usb_
+_Note. you can also run the command befor and after plugging in the device to be sure_
 
 _Note. your partitions might be different_
 
