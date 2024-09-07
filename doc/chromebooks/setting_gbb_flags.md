@@ -120,7 +120,7 @@ sources :
 
 # Setting gbb flags
 
-gbb flags make it so if your chromebook battery runs dry, you won't lose access to your system
+gbb flags set some default behaviour for a chromeook which canl result in it not forgetting being in developer mode and being able to boot from usb devices if the battery runs dry (especially for older chromebooks). as a result you won't lose access to your system in such a case
 
 in order to set gbb flags you need to [enable developermode](./preparing-chromebook.md) and disable hardware write protection
 
