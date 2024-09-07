@@ -131,7 +131,7 @@ in order to set gbb flags you need to [enable developermode](./preparing-chromeb
 3. move to directory where ```touch testfile``` works (```cd /tmp``` should be ok)
 
 4. check software write protection with ```flashrom --wp-status```
-it will probaly enable, you can disable it with ```flashrom --wp-disable``` and check it again with ```flashrom --wp-status```
+it will probaly be enabled, you can disable it with ```flashrom --wp-disable``` and check it again with ```flashrom --wp-status```
 
 *Note. this will only work if the hardware write protection has been disabled beforehand*
 
