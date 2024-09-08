@@ -157,6 +157,8 @@ chattr -R +C /mnt/swap
 btrfs property set /mnt/swap compression none
 cd /mnt/swap
 ```
+With newer kernels / btrfs tools the property setting command might result in a warning which can be ignored in such cases - it should still work fine.
+
 _See. https://blog.passcod.name/2020/jun/16/full-disk-encryption-with-btrfs-swap-and-hibernation_
 
 we can make
