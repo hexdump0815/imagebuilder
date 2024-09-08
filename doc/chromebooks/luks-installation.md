@@ -84,10 +84,13 @@ create kernel partition
 cgpt add -i 1 -t kernel -b 8192 -s 65536 -l KernelA -S 1 -T 2 -P 10 /dev/${disk}
 cgpt add -i 2 -t kernel -b 73728 -s 65536 -l KernelB -S 0 -T 2 -P 5 /dev/${disk}
 ```
+_Note. for veyron chromebooks you need to run ```cgpt repair /dev/mmcblk0``` after each command_
 
 4. add the rest of partitions
 
-it should look like this
+it should look like this```
+_Note. for veyron chromebooks you need to run ```cgpt repair /dev/mmcblk0``` after each command_
+
 ```
 32M ChromeOS kernel <- we already made
 32M ChromeOS kernel <- same
