@@ -416,6 +416,7 @@ _Note. if you want to modify kelner cmdline, after first run the script will gen
 
 _Note. we're flashing this image to always boot because when at first non of partitions here contain kernel with proper initramfs, later when upgrading the kelner or cmdline, it's a good idea to test the kelner first so you don't brick you system_
 
+_Note. please make sure that there is enough space in /boot before running this script (when working there with multiple kernel versions, some older unused ones might habe to be removed first) and watch out for potential errors when running it as they might result in a broken and unbootable kernel in the worst case_
 _Note. if something goes wrong and you can't see what becauseof splash screen, you can remove ```quiet splash``` from /boot/cmdline and rerun the script, then reflash_
 
 _Note. if you want to make and image for a newer/diffrent kelner version than current one (for example to upgrade), run the script like this ```/boot/kernel-and-initrd.sh <kernel version>``` for example ```/boot/kernel-and-initrd.sh 6.6.23-stb-cbq+```_
