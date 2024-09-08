@@ -287,10 +287,10 @@ fi
 
 cd /boot || exit
 
-# choosing kelner version
+# choosing kernel version
 
 if [ "$#" != "1" ]; then
-  echo "Note. no kelner specified, going with current kelner"
+  echo "Note. no kernel specified, going with current kernel"
   kver=$(uname -r)
 fi
 
@@ -298,13 +298,13 @@ if [ "$#" == "1" ]; then
   kver=${1}
 fi
 
-echo "kelner chosen ${kver}"
+echo "kernel chosen ${kver}"
 
-#checking presence of the kelner
+#checking presence of the kernel
 
 if [ ! -e "Image-${kver}" ]; then
   echo "Image-${kver} seams to be missing"
-  echo "this kelner version doesn't seam to be present"
+  echo "this kernel version doesn't seam to be present"
   exit 1
 fi
 
@@ -414,14 +414,14 @@ and run once
 
 after script is done you need to flash the "to always boot this kernel ..."
 
-_Note. if you want to modify kelner cmdline, after first run the script will generete a cmdline file at /boot/cmdline , you can edit it and rerun script again then flash the image, ofc you can also do that later without chroot if you boot into actual system_ 
+_Note. if you want to modify kernel cmdline, after first run the script will generete a cmdline file at /boot/cmdline , you can edit it and rerun script again then flash the image, ofc you can also do that later without chroot if you boot into actual system_ 
 
-_Note. we're flashing this image to always boot because when at first non of partitions here contain kernel with proper initramfs, later when upgrading the kelner or cmdline, it's a good idea to test the kelner first so you don't brick you system_
+_Note. we're flashing this image to always boot because when at first non of partitions here contain kernel with proper initramfs, later when upgrading the kernel or cmdline, it's a good idea to test the kernel first so you don't brick you system_
 
 _Note. please make sure that there is enough space in /boot before running this script (when working there with multiple kernel versions, some older unused ones might habe to be removed first) and watch out for potential errors when running it as they might result in a broken and unbootable kernel in the worst case_
 _Note. if something goes wrong and you can't see what because of splash screen, you can remove ```quiet splash``` from /boot/cmdline and rerun the script, then reflash_
 
-_Note. if you want to make and image for a newer/diffrent kelner version than current one (for example to upgrade), run the script like this ```/boot/kernel-and-initrd.sh <kernel version>``` for example ```/boot/kernel-and-initrd.sh 6.6.23-stb-cbq+```_
+_Note. if you want to make and image for a newer/diffrent kernel version than current one (for example to upgrade), run the script like this ```/boot/kernel-and-initrd.sh <kernel version>``` for example ```/boot/kernel-and-initrd.sh 6.6.23-stb-cbq+```_
 
 exit the chroot and reboot
 ```

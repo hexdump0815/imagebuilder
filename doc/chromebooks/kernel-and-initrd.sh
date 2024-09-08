@@ -7,10 +7,10 @@ fi
 
 cd /boot || exit
 
-# choosing kelner version
+# choosing kernel version
 
 if [ "$#" != "1" ]; then
-  echo "Note. no kelner specified, going with current kelner"
+  echo "Note. no kernel specified, going with current kernel"
   kver=$(uname -r)
 fi
 
@@ -18,13 +18,13 @@ if [ "$#" == "1" ]; then
   kver=${1}
 fi
 
-echo "kelner chosen ${kver}"
+echo "kernel chosen ${kver}"
 
-#checking presence of the kelner
+#checking presence of the kernel
 
 if [ ! -e "Image-${kver}" ]; then
   echo "Image-${kver} seams to be missing"
-  echo "this kelner version doesn't seam to be present"
+  echo "this kernel version doesn't seam to be present"
   exit 1
 fi
 
