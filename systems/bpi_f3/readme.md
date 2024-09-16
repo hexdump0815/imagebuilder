@@ -31,4 +31,5 @@
 ## special notes
 
 - all this is very much wip and not that useable yet
+- the image has only been tested with the 4gb ram version of the bpi f3 and it looks like at least the 2gb ram version needs some special steps to get it booting - see: https://forum.banana-pi.org/t/bpi-f3-not-booting/18574/5
 - more info coming soon
