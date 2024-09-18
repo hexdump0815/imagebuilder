@@ -27,6 +27,7 @@
 - the kernels and initramfs images are built using the postmarketos build systems (which is very nice btw.), thus the postmarketos splash screen on boot :)
 - to use those the devices one needs an unlocked boot loader, so they will not work out of the box on a device
   - see: https://forum.xda-developers.com/t/unlock-root-twrp-unbrick-downgrade-fire-7-ford-and-austin.3899860/ - don't create any issues around this topic, ask in the forum there
+- after unlocking the bootlöoader and installing twrp it can be reached on boot when booting with the left volume button and power button pressed together for a few seconds and then releasing only the power button and keeping the volume button pressed until twrp has started
 - just uncompress the files, write the boot.img to boot via fastboot with the unlocked bootloader via twrp (a reboot into twrp and power down in it is required afterwards to patch the boot partition properly), write the device image to an sd card
 - it seems to be possible to also write the rootfs to the data partition on the emmc, but in this case the extend-rootfs.sh script should not be used as it does not support the special pmos partition setup yet as of now
 - usb keyboard and/or mouse can be connected via usb otg (maybe hub)
