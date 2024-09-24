@@ -130,7 +130,8 @@ _Note. if there is any problem with any command just add sudo before it_
 
 ## Flashing on any other system
 
-for simplicity just use [raspberry pi imager](https://www.raspberrypi.com/software/)
+for simplicity just use[raspberry pi imager](https://www.raspberrypi.com/software/)
+
 ![rpi-imager](./assets/rpi-imager.png)
 
 if you use diffrent software you are on your own, it should work but **do not create and issue about it not working**
