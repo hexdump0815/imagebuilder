@@ -1,0 +1,22 @@
+will publicly track stuff fir next pr
+
+fix-up typos + syntax errors
+dualboot
+device pages
+    trogdor
+        homestar
+        wormdingler
+        lazor
+    kukui
+        kodama
+        krane
+    corsola
+        magneton
+postinstall
+    (move) extend rootfs to normal installation
+    Customization (modify hostname)
+    Fix firefox touch
+    Install waydroid
+    Setup splash screen
+    Getting wacom tablets to work
+Rework regural installation
