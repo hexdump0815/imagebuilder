@@ -88,8 +88,7 @@ _Note. for veyron chromebooks you need to run ```cgpt repair /dev/mmcblk0``` aft
 
 4. add the rest of partitions
 
-it should look like this```
-_Note. for veyron chromebooks you need to run ```cgpt repair /dev/mmcblk0``` after each command_
+it should look like this
 
 ```
 32M ChromeOS kernel <- we already made
@@ -101,11 +100,12 @@ _Note. some newer chromebooks can boot 64mb partitions but for now let's stick t
 
 - you can edit partitions graphically using gparted(```sudo apt install gparted```)
 ![gparted](./assets/luks/gparted.png)
-- or terminal using fdisk
+- or in terminal using fdisk
 ```
 fdisk /dev/${disk}
 ```
-- or more graphically cfdisk (```sudo apt install util-linux```)
+![fdisk](./assets/luks/fdisk.png)
+- or more graphically but still in terminal with cfdisk (```sudo apt install util-linux```)
 ```
 cfdisk /dev/${disk}
 ```
@@ -113,7 +113,9 @@ cfdisk /dev/${disk}
 
 _Note. you don't need to format them or select specyfic type, just make them correct size we will format them later_
 
-5. make filesystems
+_Warning. this images are for software look showcase and to make it easier for you to chose the most comfortable one for you <3, partition your device the way described in the guide, not the way presented on the images_
+
+1. make filesystems
 
 format boot partition
 ```
@@ -162,7 +164,7 @@ cd /mnt/swap
 ```
 With newer kernels / btrfs tools the property setting command might result in a warning which can be ignored in such cases - it should still work fine.
 
-_See. https://blog.passcod.name/2020/jun/16/full-disk-encryption-with-btrfs-swap-and-hibernation_
+_See. [full disk encryption with btrfs swap and hibernation](https://blog.passcod.name/2020/jun/16/full-disk-encryption-with-btrfs-swap-and-hibernation)_
 
 we can make
 

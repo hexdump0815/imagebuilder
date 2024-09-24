@@ -85,7 +85,7 @@ find the name.img.gz (it can be skipped if you already know file location)
 ```
 find / -name *.img.gz 2> /dev/null
 ```
-_Note. 2> /dev/null is for avoiding throwing useless errors and can be removed_
+_Note. ```2> /dev/null``` is for avoiding throwing useless errors and can be removed_
 
 cd to the directory
 ```
