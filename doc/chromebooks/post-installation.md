@@ -19,4 +19,4 @@ now that you are done with installation there are some additional things you wan
 
 - Setup splash screen - feel need for my boot screen to look nice
 
-- Getting wacom tablets to work - need to draw something on my tablet
+- Getting wacom tablets to work - [need to draw something on my tablet](./post/wacom-tablet-setup.md)
