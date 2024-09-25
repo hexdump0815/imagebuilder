@@ -1,4 +1,4 @@
-# Step -1
+# The Encrypted installation
 
 - **before proceeding** with installation it is recommended to first [set gbb flags](./setting_gbb_flags.md) (especially if you install it directly onto chromebook memory)
 
