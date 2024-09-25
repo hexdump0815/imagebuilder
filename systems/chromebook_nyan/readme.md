@@ -79,14 +79,14 @@ see also https://github.com/hexdump0815/imagebuilder/issues/79 for all above
 - the write protect screw of the cb5 311 (nyan-big) is not that easy to find: there is a screw marked 'jp10' on the board, this one has to be removed und the metal sticker has to be peeled off in order to remove the hardware write protection
 - especially the acer cb5 311 chromebook (nyan-big) seems to have problems with battery calibration and quite often thinks that the battery is dead after it had not been used for a while - one possible solution might be the following:
   - unplug the power
-  - use a paperclip or a needle and push iabout 5-10 seconds into the small hole in the bottom of the device
+  - use a paperclip or a needle and push about 5-10 seconds into the small hole in the bottom of the device
   - let it sit unpowered for about 5-10 minutes
   - plug in the power
   - battery will hopefully be back afterwards, maybe charging it over night might be required to bring it back
   - see also: https://www.youtube.com/watch?v=NfhgnxUJoZo
   - if that does not help, then most probably the battery is beyond its end of life which seems to be the case for many of them in 2022+
   - in case the battery is really dead: it looks like the battery of the acer cb3 111 chromebook (intel) can also be used in the nyan chromebook (cb5 311) - that one has only 3 (vs 4) cells and thus a lower voltage and capacity, but the nyan seems to deal well with this (ifixit also lists this battery as compatible with the acer cb5 311: https://www.ifixit.com/Store/PC-Laptop/Acer-AC14B18J-Laptop-Battery/IF352-003?o=2#)
-- it looks like putting the nyan big into battery disconnect mode seems to work with the paperclip procedure described above as well, as after pushing that little button for about 5-10 seconds the chromebook will no longer power on without a power supply connected i(neither via power button nor by opening the lid) - it is recommended to do this before storing the device for a longer time to avoid battery drain ... looks like this only works with an original cb3 111 battery in the nyan and not with the original nyan one and also not with third party batteries
+- it looks like putting the nyan big into battery disconnect mode seems to work with the paperclip procedure described above as well, as after pushing that little button for about 5-10 seconds the chromebook will no longer power on without a power supply connected (neither via power button nor by opening the lid) - it is recommended to do this before storing the device for a longer time to avoid battery drain ... looks like this only works with an original cb3 111 battery in the nyan and not with the original nyan one and also not with third party batteries
 - it looks a bit like the original nyan batteries have some planned obsolescence built in as close to all of my nyan batteries died at about the same time now, always with the voltage going below the limit at which charging would still happen - otherwise the batteries were all looking well (no ballooning etc.)
 - how to use the legacy kernel instead of the mainline one:
   - dd the image to an sd card

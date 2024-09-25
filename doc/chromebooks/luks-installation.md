@@ -106,7 +106,6 @@ fdisk /dev/${disk}
 ```
 ![fdisk](./assets/luks/fdisk.png)
 - or more graphically but still in terminal with cfdisk (```sudo apt install util-linux```)
-```
 cfdisk /dev/${disk}
 ```
 ![cfdisk](./assets/luks/cfdisk.png)

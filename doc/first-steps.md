@@ -52,7 +52,7 @@ https://github.com/hexdump0815/imagebuilder/blob/main/doc/firefox-tuning.md
 - sometimes a newer precompiled kernel is available than the one used in the
   last available image. how to install it in such a case is described in
 https://github.com/hexdump0815/imagebuilder/blob/main/doc/installing-a-newer-kernel.md
-- i would like to encourage people to build their own kernels from time to time
+- I would like to encourage people to build their own kernels from time to time
   or if they want to play around with different kernel options. it is not that
 complicated and the procedure to build a new kernel on the system is described
 in
@@ -62,7 +62,7 @@ https://github.com/hexdump0815/imagebuilder/blob/main/doc/building-own-kernels.m
 https://github.com/hexdump0815/imagebuilder/blob/main/doc/test-booting-a-kernel-on-chromebooks.txt
 - for chromebooks a very interesting option is to install linux to the internal
   emmc storage in case chromeos is no longer required. this is described in
-https://github.com/hexdump0815/imagebuilder/blob/main/doc/install-to-emmc-on-arm-chromebooks.md
+https://github.com/hexdump0815/imagebuilder/blob/main/doc/chromebooks/basic-installation.md. If you want to perform an encrypted installation, check out https://github.com/hexdump0815/imagebuilder/blob/main/doc/chromebooks/luks-installation.md.
 
 another good source of information are the already existing github issues of
 this repository as quite a few topics and problems were discussed there

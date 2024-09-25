@@ -3,6 +3,14 @@
 this is a list of last minute errata and other important information around
 the images starting with the newest ones first.
 
+## 24-09-16 trogdor ubuntu images are missing wifi connectivity on some systems
+
+see
+https://github.com/hexdump0815/imagebuilder/issues/231#issuecomment-2212464410
+and
+https://github.com/hexdump0815/imagebuilder/issues/44#issuecomment-2352929478
+to hopefully get this fixed - future images will hopefully have this fixed
+
 ## 23-09-25 cgpt seems to be broken on 32bit armv7l systems in debian bookworm
 
 it was reported a few months ago already here:
