@@ -1,7 +1,7 @@
-will publicly track stuff fir next pr
+will publicly track stuff for next pr
 
-improve screenshot/image quality
-fix-up typos + syntax errors
+(in progress)improve screenshot/image quality
+(done)fix-up typos + syntax errors
 dualboot
 device pages
     trogdor
@@ -14,10 +14,10 @@ device pages
     corsola
         magneton
 postinstall
-    (move) extend rootfs to normal installation
+    (done)make rootfs to dd installation problem
     Customization (modify hostname)
     Fix firefox touch
     Install waydroid
     Setup splash screen
     Getting wacom tablets to work
-Rework regural installation
+(done)Rework regural installation

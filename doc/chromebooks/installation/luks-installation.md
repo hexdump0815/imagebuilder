@@ -1,28 +1,12 @@
 # The Encrypted installation
 
-- **before proceeding** with installation it is recommended to first [set gbb flags](./setting_gbb_flags.md) (especially if you install it directly onto chromebook memory)
-
-- if you want **diffrent username** (default is linux)
-
-login as linux (password "changeme"), open terminal and type
-
-```
-sudo passwd root
-```
-this will let you change root password
-
-logout and login as root and run script
-```
-/scripts/rename-default-user.sh mypreferredusername
-```
-
-_Note. if the user is used by some process just kill it (```kill <process id>```) and run the command again which should throw a group error but don't worry about it :3_
+**before proceeding** with installation it is recommended to first [set gbb flags](../setting_gbb_flags.md) (especially if you install it directly onto chromebook memory)
 
 # Let's just do it
 
 _Note. this installetion doesn't have to be performed on internal memory, it can also be done on another usb or sd card_
 
-_Important. it is asummed you do all this as root use ```su root``` or ```sudo -i```_
+_Important. it is asummed you do all this as root use ```su root``` or ```sudo -i``` (root password is "changeme")_
 
 1. start by listing all available disks
 
@@ -33,12 +17,18 @@ the output should look like this
 ```
 NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
 mtdblock0     31:0    0     8M  0 disk 
-mmcblk1      179:0    0 116,5G  0 disk <- this is a disk
+sda          179:0    0 116,5G  0 disk <- this is the booted drive
+├─sda1       179:1    0    64M  0 part <- this is a partition
+├─sda2       179:2    0    64M  0 part 
+├─sda3       179:3    0   512M  0 part /boot
+├─sda4       179:4    0 107,9G  0 part / <- it has current root partition
+└─sda5       179:5    0     8G  0 part 
+mmcblk1      179:0    0 116,5G  0 disk <- this is an internal disk
 ├─mmcblk1p1  179:1    0    64M  0 part <- this is a partition
 ├─mmcblk1p2  179:2    0    64M  0 part 
-├─mmcblk1p3  179:3    0   512M  0 part /boot
-├─mmcblk1p4  179:4    0 107,9G  0 part /
-└─mmcblk1p5  179:5    0     8G  0 part [SWAP]
+├─mmcblk1p3  179:3    0   512M  0 part
+├─mmcblk1p4  179:4    0 107,9G  0 part
+└─mmcblk1p5  179:5    0     8G  0 part 
 mmcblk1boot0 179:32   0     4M  1 disk 
 mmcblk1boot1 179:64   0     4M  1 disk
 ```
@@ -47,6 +37,8 @@ now in order to make it simple to just copy and paste the commands
 we will export the correct drive as a environment variable but i still encourage you to read as much as possible here
 
 _Note. remmber to do it whenever you want to repeat any of steps below_
+
+_Note. the internal memory is often (but not always) ```mmcblk1``` or ```mmcblk0``` but_
 
 - if you want to install onto ```mmcblk0``` or ```mmcblk1``` (number is diffent on diffrent chromebooks)
 ```
@@ -107,7 +99,6 @@ fdisk /dev/${disk}
 ![fdisk](./assets/luks/fdisk.png)
 - or more graphically but still in terminal with cfdisk (```sudo apt install util-linux```)
 cfdisk /dev/${disk}
-```
 ![cfdisk](./assets/luks/cfdisk.png)
 
 _Note. you don't need to format them or select specyfic type, just make them correct size we will format them later_
@@ -437,4 +428,4 @@ and hope everything went right
 
 # What now?
 
-now after the system is installed onto memory you can look into [what next](./post-installation.md) you can do on your device
+now after the system is installed onto memory you might want to [tweak it a lil bit](../post-installation.md)

@@ -88,3 +88,5 @@ root@changeme:~# losetup -d /dev/loop0
 ```
 now after a shutdown the sd card/usb can be taken out/diconnected and the
 system should boot into linux from emmc on the next boot.
+
+after booting the system you can run ```/scripts/extend-rootfs.sh``` as root to extend rootfs onto the entire disk
