@@ -160,14 +160,14 @@ or
 
 # What now?
 
-well now that you've  managed to boot the system you might want to install it directly onto the device especially if you used usb (usb for reasons has way slower read/write speed than sd card or chromebooks internall memory)
+Well now that you've  managed to boot the system you might want to install it directly onto the device especially if you used usb (usb for reasons has way slower read/write speed than sd card or chromebooks internall memory).
 
-but before doing it, we recommend you to [set gbb flags](./setting_gbb_flags.md) on your device so when battery runs dry you won't lose access to your system
+But before doing it, we recommend you to [set gbb flags](./setting_gbb_flags.md) on your device so when battery runs dry you won't lose access to your system
 
-there are a few ways you could install system
+There are a few ways you could install to system storage (eMMC/SSD)
 
-- [regular](./basic-installation.md) - the simplest one, system installed on your device will **not** be encrypted (except browser passowrds, encrypted drives passwords and everything else stored in user database as it is encrypted independently)
-- [encrypted](./luks-installation.md) - your entire system will be encrypted, you will be forced to type password everytime you boot your device (not recommended for tablets since there is no on screen keyboard)
-- [dualboot](./dualboot-instalation.md) - the system will be installed next to chromeos (in theory it can also be done agains any other linux distro or woa but why?). no encryption unless you fuse this guide with encrypted one.
+- [regular](./basic-installation.md) - The simplest one. The system installed on your device will **not** be encrypted (except browser passowrds, encrypted drives passwords and everything else stored in user database as it is encrypted independently)
+- [encrypted](./luks-installation.md) - Your entire system will be encrypted and you will be forced to type password everytime you boot your device (not recommended for tablets since there is no on screen keyboard)
+- [dualboot](./dualboot-instalation.md) - The system will be installed next to chromeos (in theory it can also be done agains any other linux distro or woa but why?). no encryption unless you fuse this guide with encrypted one.
 
 
