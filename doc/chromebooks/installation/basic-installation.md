@@ -1,12 +1,9 @@
 # The regular installation
 
-in this approach we do not dump the image file onto the emmc but instead simply sync the contents of the running system onto newly created filesystems on the emmc. the advantages are:
-- no network connection required and the running system has everything required
-- the running image can already be a bit preconfigured and all changes to it
-  will also be synced to emmc (maybe useful when installing on multiple identical systems)
-- the filesystems on the emmc will get new filesystem uuids and also the
-  labels of the filesystems can be easily adjusted, so no risk of a conflict
-with a booted rescue system from sd card/usb
+in this approach we do not dump the image file onto the emmc but instead simply sync the contents of the running system onto newly created filesystems on the emmc. the advantages over legacy dd installation are:
+- internet not required - no network connection required and the running system has everything required
+- ability to preconfigure -the running image can already be a bit preconfigured and all changes to it will also be synced to emmc (maybe useful when installing on multiple identical systems)
+- no uuid conflict - the filesystems on the emmc will get new filesystem uuids and also the labels of the filesystems can be easily adjusted, so no risk of a conflict with a booted rescue system from sd card/usb
 
 _Note. **before proceeding** with installation it is recommended to first [set gbb flags](../setting_gbb_flags.md)_
 
@@ -118,14 +115,14 @@ mount /dev/${part}3 /mnt/boot
 ```
 9. copy the kernel partition to the target emmc
 ```
-dd if=/dev/${part}1 of=/dev/${part}1 bs=1024k status=progress
+dd if=/dev/${srcPart}1 of=/dev/${part}1 bs=1024k status=progress
 ```
 _Note. the second kernel partition is by default unused initially_
 
 10. sync over the boot and root filesystems
 ```
-root@changeme:~# rsync -axADHSX --no-inc-recursive --delete /boot/ /mnt/boot
-root@changeme:~# rsync -axADHSX --no-inc-recursive --delete --exclude='/swap/*' / /mnt
+rsync -axADHSX --no-inc-recursive --delete /boot/ /mnt/boot
+rsync -axADHSX --no-inc-recursive --delete --exclude='/swap/*' / /mnt
 ```
 11. create a new 2gb swapfile (optional)
 ```
@@ -151,8 +148,7 @@ sed -i 's,rootpart,rootemmc,g' /mnt/boot/extlinux/extlinux.conf
 ```
 umount /mnt/boot /mnt
 ```
-now after a shutdown the sd card/usb can be taken out/diconnected and the
-system should boot into linux from emmc on the next boot.
+now after a shutdown the sd card/usb can be taken out/diconnected and the system should boot into linux from emmc on the next boot.
 
 # What now?
 

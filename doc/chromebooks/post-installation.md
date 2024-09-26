@@ -1,7 +1,6 @@
 # Customization time
 
-![duet5gnome](./assets/duet5gnome.jpg)
-_To-do. update the image to sth nicer, .gif of diffrent de and stuff_
+![duet5gnome](./assets/customization.gif)
 
 now that you are done with installation there are some additional things you want to setup on your device :
 
@@ -9,9 +8,9 @@ now that you are done with installation there are some additional things you wan
 
 - Modifying keyboards keys - [modify specyfic specjal key to your needs](./post/modifying-keyboard.md)
 
-- Modifying hostname - modify the hostname of your device
+- Modifying hostname - "changeme" sounds very convincing
 
-- Installing desktop environment - i want my desktop to look diffrent
+- Switching desktop environment - i want my desktop to look diffrent
 
 - Fixing firefox touch screen - the touch screen doesn't let me scroll
 
