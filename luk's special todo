@@ -1,12 +1,26 @@
 will publicly track stuff for next pr
 
-(in progress)improve screenshot/image quality
-    chromebooks/post/modifying-keyboard
+current pr
+
+(done)improve screenshot/image quality
+    (done)chromebooks/post/modifying-keyboard
     (done)chromebooks/post-installation
     (done)chromebooks/preparing-chromebook
     (done)chromebooks/post/wacom-tablet-setup
 (done)fix-up typos + syntax errors
-dualboot
+(done)postinstall
+    (done)make rootfs to dd installation problem
+    (done)Getting wacom tablets to work
+(done)Rework regural installation
+
+next pr's
+
+dualboot installations
+postinstall
+    Customization (modify hostname)
+    Fix firefox touch
+    Install waydroid
+    Setup splash screen
 device pages
     trogdor
         homestar
@@ -17,11 +31,3 @@ device pages
         krane
     corsola
         magneton
-postinstall
-    (done)make rootfs to dd installation problem
-    Customization (modify hostname)
-    Fix firefox touch
-    Install waydroid
-    Setup splash screen
-    Getting wacom tablets to work
-(done)Rework regural installation
