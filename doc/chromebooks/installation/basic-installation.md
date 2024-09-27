@@ -78,18 +78,18 @@ export srcPart=sda
 ```
 
 
-1. Wipe the partition table on the target disk
+4. Wipe the partition table on the target disk
 ```
 sgdisk -Z /dev/$disk
 partprobe /dev/$disk
 sgdisk -C -e -G /dev/$disk
 partprobe /dev/$disk
 ```
-1. Create a new partition table
+5. Create a new partition table
 ```
 cgpt create /dev/$disk
 ```
-1. Create the two kernel partitions
+6. Create the two kernel partitions
 ```
 cgpt add -i 1 -t kernel -b 8192 -s 65536 -l KernelA -S 1 -T 2 -P 10 /dev/$disk
 cgpt add -i 2 -t kernel -b 73728 -s 65536 -l KernelB -S 0 -T 2 -P 5 /dev/$disk
