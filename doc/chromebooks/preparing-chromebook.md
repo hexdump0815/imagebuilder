@@ -1,6 +1,6 @@
 # Intro ... getting stuff to boot
 
-![duet5](./assets/duet5.webp)
+![duet5](./assets/xfce-de.jpeg)
 
 in order to get these images to even boot on your device there are some steps you need to do, below you can see all the required steps
 
