@@ -10,7 +10,7 @@ now that you are done with installation there are some additional things you wan
 
 - Modifying hostname - "changeme" sounds very convincing
 
-- Switching desktop environment - i want my desktop to look diffrent
+- Switching desktop environment - [i want my desktop to look diffrent](./post/switch-de.md)
 
 - Fixing firefox touch screen - the touch screen doesn't let me scroll
 
