@@ -15,7 +15,7 @@ if [ ! -f /etc/X11/xorg.conf.d/31-monitor-no-dpms-rotate-left.conf ] && [ ! -f /
   fi
 fi
 
-# this will give a slight improvement for emmc speed by relaxig some memory protections
+# this will give a slight improvement for emmc speed by relaxing some memory protections
 # it increases emmc speed by aout 15% in some benchmarks
 # see: https://gitlab.com/postmarketOS/pmaports/-/merge_requests/4526 and threads inside
 # these lines relax iommu for some devices, relaxing memory
