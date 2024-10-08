@@ -61,8 +61,7 @@ https://github.com/hexdump0815/imagebuilder/blob/main/doc/building-own-kernels.m
   new kernel which is described in
 https://github.com/hexdump0815/imagebuilder/blob/main/doc/test-booting-a-kernel-on-chromebooks.txt
 - for chromebooks a very interesting option is to install linux to the internal
-  emmc storage in case chromeos is no longer required. this is described in
-https://github.com/hexdump0815/imagebuilder/blob/main/doc/chromebooks/basic-installation.md. If you want to perform an encrypted installation, check out https://github.com/hexdump0815/imagebuilder/blob/main/doc/chromebooks/luks-installation.md.
+  emmc storage in case chromeos is no longer required. this is described in [here](./chromebooks/installation/basic-installation.md). If you want to perform an encrypted installation, check out [this](./chromebooks/installation/luks-installation.md)
 
 another good source of information are the already existing github issues of
 this repository as quite a few topics and problems were discussed there

@@ -1,7 +1,7 @@
 # Modifying keyboard keys
 
 as we know chromebooks have special keyboard with some keys missing or being different
-![obraz](./assets/keyboard.png)
+![obraz](./assets/keyboard.jpeg)
 
 i thought i might go over a process of modifying the keyboard to make it function "properly" (it's up to preference)
 

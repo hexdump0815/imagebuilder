@@ -1,42 +1,21 @@
-# Finally done with installation
+# Customization time
 
-![duet5gnome](./assets/duet5gnome.jpg)
+![duet5gnome](./assets/customization.gif)
 
-now that you are done with installation there are some additional things you want to setup on your device
+now that you are done with installation there are some additional things you want to setup on your device :
 
-## Modifying keyboards keys
+- Change username - [the "linux" username doesn't suite my vibe](./post/change-username.md)
 
-what diffrent keys on keyboard do depends on chromebook model but you normally don't have much controll over it outside of layout
+- Modifying keyboards keys - [modify specyfic specjal key to your needs](./post/modifying-keyboard.md)
 
-but sometimes you might want to [modify specyfic specjal key to your needs](./post/modifying-keyboard.md)
+- Modifying hostname - "changeme" sounds very convincing
 
-## Expanding rootfs
+- Switching desktop environment - [i want my desktop to look diffrent](./post/switch-de.md)
 
-in order to make the root partition take up your entire drive after dd installation you can run
-```
-/scripts/extend-rootfs.sh
-```
+- Fixing firefox touch screen - the touch screen doesn't let me scroll
 
-## Modifying hostname
+- Install waydroid - i want to play use android apps
 
-_to-do_
+- Setup splash screen - feel need for my boot screen to look nice
 
-## Installing diffrent desktop environment
-
-_to-do_
-
-## Fixing firefox touch screen
-
-_to-do_
-
-## Install waydroid
-
-_to-do_
-
-## Setup splash screen
-
-_to-do_
-
-## Getting wacom tablets to work
-
-_to-do_
+- Getting wacom tablets to work - [need to draw something on my tablet](./post/wacom-tablet-setup.md)
