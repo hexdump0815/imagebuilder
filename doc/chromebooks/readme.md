@@ -1,6 +1,6 @@
 # Intro ... getting stuff to boot
 
-![duet5](./assets/duet5.webp)
+![duet5](./assets/xfce-de.jpeg)
 
 in order to get these images to even boot on your device there are some steps you need to do, below you can see all the required steps
 
@@ -85,7 +85,7 @@ find the name.img.gz (it can be skipped if you already know file location)
 ```
 find / -name *.img.gz 2> /dev/null
 ```
-_Note. 2> /dev/null is for avoiding throwing useless errors and can be removed_
+_Note. ```2> /dev/null``` is for avoiding throwing useless errors and can be removed_
 
 cd to the directory
 ```
@@ -131,6 +131,7 @@ _Note. if there is any problem with any command just add sudo before it_
 ## Flashing on any other system
 
 for simplicity just use [raspberry pi imager](https://www.raspberrypi.com/software/)
+
 ![rpi-imager](./assets/rpi-imager.png)
 
 if you use diffrent software you are on your own, it should work but **do not create and issue about it not working**
@@ -158,16 +159,31 @@ or
 
 ![dev](./assets/boot-menu/newer-chromebook/boot-menu.webp)
 
-# What now?
+### here we go
 
-Well now that you've  managed to boot the system you might want to install it directly onto the device especially if you used usb (usb for reasons has way slower read/write speed than sd card or chromebooks internall memory).
+![boot](./assets/boot.gif)
 
-But before doing it, we recommend you to [set gbb flags](./setting_gbb_flags.md) on your device so when battery runs dry you won't lose access to your system
+you should have succesfully booted into the operating system 🎉
 
-There are a few ways you could install to system storage (eMMC/SSD)
+good job ❤️
 
-- [regular](./basic-installation.md) - The simplest one. The system installed on your device will **not** be encrypted (except browser passowrds, encrypted drives passwords and everything else stored in user database as it is encrypted independently)
-- [encrypted](./luks-installation.md) - Your entire system will be encrypted and you will be forced to type password everytime you boot your device (not recommended for tablets since there is no on screen keyboard)
-- [dualboot](./dualboot-instalation.md) - The system will be installed next to chromeos (in theory it can also be done agains any other linux distro or woa but why?). no encryption unless you fuse this guide with encrypted one.
+# What now? Installation?
+
+well now that you've  managed to boot the system you might want to install it directly onto the device especially if you used usb (usb for reasons has way slower read/write speed than sd card or chromebooks internall memory)
+
+_Note. but before doing it, we recommend you to [set gbb flags](./setting_gbb_flags.md) on your device so when battery runs dry you won't lose access to your system_
+
+_Disclaimer. when you install the content of thses linux images onto the internal storage (mostly emmc, in the future maybe sometimes nvme) of an arm chromebook, everything on the internal storage will be deleted and is lost and one should backup all data from the internal storage._
+
+_Tip. for information about the restoration process post install one can have a look [here](https://support.google.com/chromebook/answer/1080595?hl=en)_
+
+### there are a few ways you could install the system
 
 
+- [regular](./installation/basic-installation.md) - the simplest one, will copy over content of medium (so the medium can be already preconfigured), system installed on your device disk will **not** be fully encrypted
+- [encrypted](./installation/luks-installation.md) - your entire system will be encrypted, you will be forced to type password everytime you boot your device (not recommended for tablets since there is no on screen keyboard)
+- [dualboot](./installation/dualboot-instalation.md) - the system will be installed next to chromeos (in theory it can also be done agains any other linux distro or woa but why?). no encryption unless you fuse this guide with encrypted one.
+
+### legacy ways (not recommended)
+
+- [dd](./installation/dd-installation.md) - this method flashes the image directly onto chromebook memory, while it's somewhat simple/fast, it introduces issues the other installations don't

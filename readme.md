@@ -4,7 +4,7 @@
 
 IMPORTANT: please do not skip to at least read https://github.com/hexdump0815/imagebuilder/blob/main/doc/first-steps.md before using the images, as it should answer a few questions which come up often from people who did not read it :)
 
-For chromebooks there has been made [a special guide](./doc/chromebooks/preparing-chromebook.md)
+For chromebooks there has been made [a special guide](./doc/chromebooks/readme.md)
 
 This is a simple framework for building bootable sd card images for various (currently mostly arm based) small computer like devices. It is supposed to run natively, i.e. if you want to build an image for a 32bit arm system you should run it on a 32bit arm system and so on. I started it when I wanted to easily and reproducibly build bootable sd card images for some arm devices for which there are no such images with recent distributions and linux kernels available or do not exist at all. I'm aware of the armbian (https://www.armbian.com/) framework, which has a similar goal and is much more advanced, but I wanted something simpler so that I can easily adjust it for prototyping and I wanted to build everything natively as I do not really have any strong intel machine for cross compiling. If anyone with armbian knowledge and a proper build environment is interested to port over the patches etc. for the few systems not yet supported by armbian to it, that would be more than welcome.
 

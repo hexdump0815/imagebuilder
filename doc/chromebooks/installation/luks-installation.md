@@ -1,28 +1,12 @@
-# Step -1
+# The Encrypted installation
 
-- **before proceeding** with installation it is recommended to first [set gbb flags](./setting_gbb_flags.md) (especially if you install it directly onto chromebook memory)
-
-- if you want **diffrent username** (default is linux)
-
-login as linux (password "changeme"), open terminal and type
-
-```
-sudo passwd root
-```
-this will let you change root password
-
-logout and login as root and run script
-```
-/scripts/rename-default-user.sh mypreferredusername
-```
-
-_Note. if the user is used by some process just kill it (```kill <process id>```) and run the command again which should throw a group error but don't worry about it :3_
+**before proceeding** with installation it is recommended to first [set gbb flags](../setting_gbb_flags.md) (especially if you install it directly onto chromebook memory)
 
 # Let's just do it
 
 _Note. this installetion doesn't have to be performed on internal memory, it can also be done on another usb or sd card_
 
-_Important. it is asummed you do all this as root use ```su root``` or ```sudo -i```_
+_Important. it is asummed you do all this as root use ```su root``` or ```sudo -i``` (root password is "changeme")_
 
 1. start by listing all available disks
 
@@ -33,12 +17,18 @@ the output should look like this
 ```
 NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
 mtdblock0     31:0    0     8M  0 disk 
-mmcblk1      179:0    0 116,5G  0 disk <- this is a disk
+sda          179:0    0 116,5G  0 disk <- this is the booted drive
+├─sda1       179:1    0    64M  0 part <- this is a partition
+├─sda2       179:2    0    64M  0 part 
+├─sda3       179:3    0   512M  0 part /boot
+├─sda4       179:4    0 107,9G  0 part / <- it has current root partition
+└─sda5       179:5    0     8G  0 part 
+mmcblk1      179:0    0 116,5G  0 disk <- this is an internal disk
 ├─mmcblk1p1  179:1    0    64M  0 part <- this is a partition
 ├─mmcblk1p2  179:2    0    64M  0 part 
-├─mmcblk1p3  179:3    0   512M  0 part /boot
-├─mmcblk1p4  179:4    0 107,9G  0 part /
-└─mmcblk1p5  179:5    0     8G  0 part [SWAP]
+├─mmcblk1p3  179:3    0   512M  0 part
+├─mmcblk1p4  179:4    0 107,9G  0 part
+└─mmcblk1p5  179:5    0     8G  0 part 
 mmcblk1boot0 179:32   0     4M  1 disk 
 mmcblk1boot1 179:64   0     4M  1 disk
 ```
@@ -47,6 +37,10 @@ now in order to make it simple to just copy and paste the commands
 we will export the correct drive as a environment variable but i still encourage you to read as much as possible here
 
 _Note. remmber to do it whenever you want to repeat any of steps below_
+
+emmc disks can usually easily identified by the fact that there are also the following two (not to be used) devices for them as well: mmcblkxboot0, mmcblkxboot1
+
+_Note. the internal memory is often (but not always) ```mmcblk1``` or ```mmcblk0``` but don't be thrown off if it's something else_
 
 - if you want to install onto ```mmcblk0``` or ```mmcblk1``` (number is diffent on diffrent chromebooks)
 ```
@@ -88,8 +82,7 @@ _Note. for veyron chromebooks you need to run ```cgpt repair /dev/mmcblk0``` aft
 
 4. add the rest of partitions
 
-it should look like this```
-_Note. for veyron chromebooks you need to run ```cgpt repair /dev/mmcblk0``` after each command_
+it should look like this
 
 ```
 32M ChromeOS kernel <- we already made
@@ -101,25 +94,26 @@ _Note. some newer chromebooks can boot 64mb partitions but for now let's stick t
 
 - you can edit partitions graphically using gparted(```sudo apt install gparted```)
 ![gparted](./assets/luks/gparted.png)
-- or terminal using fdisk
+- or in terminal using fdisk
 ```
 fdisk /dev/${disk}
 ```
-- or more graphically cfdisk (```sudo apt install util-linux```)
-```
+![fdisk](./assets/luks/fdisk.png)
+- or more graphically but still in terminal with cfdisk (```sudo apt install util-linux```)
 cfdisk /dev/${disk}
-```
 ![cfdisk](./assets/luks/cfdisk.png)
 
 _Note. you don't need to format them or select specyfic type, just make them correct size we will format them later_
 
-5. make filesystems
+_Warning. this images are for software look showcase and to make it easier for you to chose the most comfortable one for you <3, partition your device the way described in the guide, not the way presented on the images_
+
+1. make filesystems
 
 format boot partition
 ```
 mkfs -t ext4 -O ^has_journal -m 0 -L bootemmc /dev/${part}3
 ```
-_Note. -L argument specyfies the partition lable which you can change if you want_
+_Note. -L argument specyfies the partition label which you can change if you want_
 
 format encrypted root partition
 ```
@@ -162,7 +156,7 @@ cd /mnt/swap
 ```
 With newer kernels / btrfs tools the property setting command might result in a warning which can be ignored in such cases - it should still work fine.
 
-_See. https://blog.passcod.name/2020/jun/16/full-disk-encryption-with-btrfs-swap-and-hibernation_
+_See. [full disk encryption with btrfs swap and hibernation](https://blog.passcod.name/2020/jun/16/full-disk-encryption-with-btrfs-swap-and-hibernation)_
 
 we can make
 
@@ -436,4 +430,4 @@ and hope everything went right
 
 # What now?
 
-now after the system is installed onto memory you can look into [what next](./post-installation.md) you can do on your device
+now after the system is installed onto memory you might want to [tweak it a lil bit](../post/readme.md)
