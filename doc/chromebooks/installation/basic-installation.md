@@ -154,4 +154,4 @@ now after a shutdown the sd card/usb can be taken out/diconnected and the system
 
 # What now?
 
-now after the system is installed onto memory you might want to [tweak it a lil bit](../post-installation.md)
+now after the system is installed onto memory you might want to [tweak it a lil bit](../post/readme.md)
