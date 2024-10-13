@@ -38,6 +38,8 @@ mmcblk1boot1 179:64   0     4M  1 disk
 
 _Tip. the chromebook partiotion will be the one without partition with "/"_
 
+emmc disks can usually easily identified by the fact that there are also the following two (not to be used) devices for them as well: mmcblkxboot0, mmcblkxboot1
+
 _Note. the internal memory is often (but not always) ```mmcblk1``` or ```mmcblk0``` but_
 
 2. Export the target disk
