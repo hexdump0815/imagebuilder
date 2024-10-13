@@ -14,7 +14,7 @@ now that you are done with installation there are some additional things you wan
 
 - Fixing firefox touch screen - the touch screen doesn't let me scroll
 
-- Install waydroid - i want to play use android apps
+- Install waydroid - i want to play and use android apps (to be done)
 
 - Setup splash screen - feel need for my boot screen to look nice
 
