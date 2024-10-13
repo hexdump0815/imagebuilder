@@ -16,6 +16,6 @@ now that you are done with installation there are some additional things you wan
 
 - Install waydroid - i want to play and use android apps (to be done)
 
-- Setup splash screen - feel need for my boot screen to look nice
+- Setup splash screen - feel need for my boot screen to look nice (to be done)
 
 - Getting wacom tablets to work - [need to draw something on my tablet](./post/wacom-tablet-setup.md)
