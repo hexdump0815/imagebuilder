@@ -40,7 +40,7 @@ _Tip. the chromebook partition will be the one without partition with "/"_
 
 emmc disks can usually easily identified by the fact that there are also the following two (not to be used) devices for them as well: mmcblkxboot0, mmcblkxboot1
 
-_Note. the internal memory is often (but not always) ```mmcblk1``` or ```mmcblk0``` but_
+_Note. the internal memory is often (but not always) ```mmcblk1``` or ```mmcblk0``` but don't be thrown off if it's something else_
 
 2. Export the target disk
 

@@ -40,7 +40,7 @@ _Note. remmber to do it whenever you want to repeat any of steps below_
 
 emmc disks can usually easily identified by the fact that there are also the following two (not to be used) devices for them as well: mmcblkxboot0, mmcblkxboot1
 
-_Note. the internal memory is often (but not always) ```mmcblk1``` or ```mmcblk0``` but_
+_Note. the internal memory is often (but not always) ```mmcblk1``` or ```mmcblk0``` but don't be thrown off if it's something else_
 
 - if you want to install onto ```mmcblk0``` or ```mmcblk1``` (number is diffent on diffrent chromebooks)
 ```
