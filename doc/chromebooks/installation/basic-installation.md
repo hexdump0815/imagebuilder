@@ -36,7 +36,7 @@ mmcblk1boot0 179:32   0     4M  1 disk
 mmcblk1boot1 179:64   0     4M  1 disk
 ```
 
-_Tip. the chromebook partiotion will be the one without partition with "/"_
+_Tip. the chromebook partition will be the one without partition with "/"_
 
 emmc disks can usually easily identified by the fact that there are also the following two (not to be used) devices for them as well: mmcblkxboot0, mmcblkxboot1
 
