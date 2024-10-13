@@ -177,7 +177,7 @@ _Disclaimer. when you install the content of thses linux images onto the interna
 
 _Tip. for information about the restoration process post install one can have a look [here](https://support.google.com/chromebook/answer/1080595?hl=en)_
 
-### there are a few ways you could install system
+### there are a few ways you could install the system
 
 
 - [regular](./installation/basic-installation.md) - the simplest one, will copy over content of medium (so the medium can be already preconfigured), system installed on your device disk will **not** be fully encrypted
