@@ -113,7 +113,7 @@ format boot partition
 ```
 mkfs -t ext4 -O ^has_journal -m 0 -L bootemmc /dev/${part}3
 ```
-_Note. -L argument specyfies the partition lable which you can change if you want_
+_Note. -L argument specyfies the partition label which you can change if you want_
 
 format encrypted root partition
 ```
