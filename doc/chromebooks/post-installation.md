@@ -8,7 +8,7 @@ now that you are done with installation there are some additional things you wan
 
 - Modifying keyboards keys - [modify specyfic specjal key to your needs](./post/modifying-keyboard.md)
 
-- Modifying hostname - "changeme" sounds very convincing
+- Modifying hostname - "changeme" sounds very convincing (to be done)
 
 - Switching desktop environment - [i want my desktop to look diffrent](./post/switch-de.md)
 
