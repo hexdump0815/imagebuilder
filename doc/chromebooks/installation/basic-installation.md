@@ -2,7 +2,7 @@
 
 in this approach we do not dump the image file onto the emmc but instead simply sync the contents of the running system onto newly created filesystems on the emmc. the advantages over legacy dd installation are:
 - internet not required - no network connection required and the running system has everything required
-- ability to preconfigure -the running image can already be a bit preconfigured and all changes to it will also be synced to emmc (maybe useful when installing on multiple identical systems)
+- ability to preconfigure - the running image can already be a bit preconfigured and all changes to it will also be synced to emmc (maybe useful when installing on multiple identical systems)
 - no uuid conflict - the filesystems on the emmc will get new filesystem uuids and also the labels of the filesystems can be easily adjusted, so no risk of a conflict with a booted rescue system from sd card/usb
 
 _Note. **before proceeding** with installation it is recommended to first [set gbb flags](../setting_gbb_flags.md)_
