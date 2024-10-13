@@ -36,7 +36,7 @@ for good measure
 ```
 sudo dd if=/boot/vmlinux.kpart-xyz of=/dev/mmcblk1p1
 ```
-_Note. replace xyz with your kelner version + assuming your system is installed to mmcblk1_
+_Note. replace xyz with your kernel version + assuming your system is installed to mmcblk1_
 
 and reboot
 
