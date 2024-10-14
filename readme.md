@@ -1,4 +1,4 @@
-# velvet os - an introduction
+# Velvet os
 
 ![kappa and juniper with velvet](https://github.com/hexdump0815/linux-mainline-on-arm-chromebooks/raw/main/images/kappa-and-juniper-with-velvet.jpg "kappa and juniper with velvet")
 
@@ -6,9 +6,13 @@
 
 linux / changeme
 
-**IMPORTANT:** please do not skip to at least read https://github.com/hexdump0815/imagebuilder/blob/main/doc/first-steps.md before using the images, as it should answer a few questions which come up often from people who did not read it :)
+## Start here
 
-**For chromebooks** there has been made [a special guide](./doc/chromebooks/readme.md)
+in order to try out the system check out [**Getting started**](./doc/first-steps.md)
+
+# About the project
+
+_For more details and images look below_
 
 This is a simple framework for building bootable sd card images for various (currently mostly arm based) small computer like devices. It is supposed to run natively, i.e. if you want to build an image for a 32bit arm system you should run it on a 32bit arm system and so on. I started it when I wanted to easily and reproducibly build bootable sd card images for some arm devices for which there are no such images with recent distributions and linux kernels available or do not exist at all. I'm aware of the armbian (https://www.armbian.com/) framework, which has a similar goal and is much more advanced, but I wanted something simpler so that I can easily adjust it for prototyping and I wanted to build everything natively as I do not really have any strong intel machine for cross compiling. If anyone with armbian knowledge and a proper build environment is interested to port over the patches etc. for the few systems not yet supported by armbian to it, that would be more than welcome.
 
@@ -26,19 +30,15 @@ Finally some notes about the name: the framework did not have any real name so f
 
 see https://github.com/hexdump0815/imagebuilder/blob/main/doc/important-information.md
 
-# status updates and news around this project
+## Status updates and news around this project
 
 see https://github.com/hexdump0815/imagebuilder/blob/main/doc/news.md
 
-# using the images
-
-see https://github.com/hexdump0815/imagebuilder/blob/main/doc/first-steps.md
-
-# creating images
+## Creating images
 
 see https://github.com/hexdump0815/imagebuilder/blob/main/doc/using-the-imagebuilder-framework.md
 
-# system specific information
+## System specific information and images :
 
 - banana pi m1 and allwinner h3 tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/allwinner_h3/readme.md
 - allwinner h6 devices and tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/allwinner_h6/readme.md
