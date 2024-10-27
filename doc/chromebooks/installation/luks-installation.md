@@ -432,4 +432,4 @@ and hope everything went right
 
 # What now?
 
-now after the system is installed onto memory you might want to [tweak it a lil bit](../../postinst/readme.md)
+now after the system is installed onto storage you might want to [tweak it a lil bit](../../postinst/readme.md)
