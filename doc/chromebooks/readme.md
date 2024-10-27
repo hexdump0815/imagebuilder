@@ -101,6 +101,8 @@ you should have succesfully booted into the operating system 🎉
 
 good job ❤️
 
+_Note. after first boot there are [some commands you might want to run](./first-boot.md)_
+
 # What now? Installation?
 
 well now that you've  managed to boot the system you might want to install it directly onto the device especially if you used usb (usb for reasons has way slower read/write speed than sd card or chromebooks internall memory)
