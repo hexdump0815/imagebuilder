@@ -7,7 +7,7 @@ now that you are done with installation there are some additional things you wan
 
 - Change username/hostname - [neither "linux" nor "changeme" doesn't suite my vibe](./change-names.md)
 
-- Modifying keyboards keys - [modify specyfic specjal key to your needs](./modifying-keyboard.md)
+- Modifying keyboards keys - [modify specyfic special key to your needs](./modifying-keyboard.md)
 
 - Switching desktop environment - [i want my desktop to look diffrent](./switch-de.md)
 
