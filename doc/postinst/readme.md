@@ -29,3 +29,7 @@ now that you are done with installation there are some additional things you wan
 - firefox tuning - [reduce the of writes by firefox](./firefox-tuning.md)
 
 - Fixing firefox touch screen - [the touch screen doesn't let me scroll or type propertly](./firefox.md)
+
+### Device specyfic
+
+- chromebooks - [solutions to device specyfic issues can be found here](../chromebooks/systems/readme.md)

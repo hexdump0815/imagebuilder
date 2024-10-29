@@ -4,6 +4,8 @@
 
 in order to get these images to even boot on your device there are some steps you need to do, below you can see all the required steps
 
+_Note. before getting your device to boot you might be interested in looking at [device specyfic notes](./systems/readme.md)_
+
 # Enabling Developer mode
 
 _Warning. this step will WIPE ALL YOUR DATA from you chromebook so if you have anything of value there, pls copy it somewhere else_
