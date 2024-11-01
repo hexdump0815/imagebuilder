@@ -16,20 +16,24 @@
 
 luk
 
-dualboot installations
+- in progress
+
+rewrite
+    chromebook/kernel/*
 postinstall
-    Customization (modify hostname)
-    Fix firefox touch
+    retroarch as desktop environment
+    turn server
+
+- further future
+
+dualboot installations
+device spcyfic documentation
+    tv-boxes
+    amazon-tablets
+
+
+- stalled
+
+postinstall (requires velvet-tools/depthcharge-tools)
     Install waydroid
     Setup splash screen
-device pages
-    trogdor
-        homestar
-        wormdingler
-        lazor
-    kukui
-        kodama
-        krane
-    corsola
-        magneton
-    + rest of the devices
