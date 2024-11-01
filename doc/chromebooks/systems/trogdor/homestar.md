@@ -1,4 +1,4 @@
-![homestar](./assets/ipd5.jpg)
+![homestar](./assets/homestar.jpg)
 
 # Lenovo Ideapad duet 5 (homestar) ❤️
 

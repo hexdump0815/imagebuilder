@@ -1,4 +1,4 @@
-![homestar](./assets/ipd.jpg)
+![homestar](./assets/krane.jpg)
 
 # Lenovo 10e (kodama)
 

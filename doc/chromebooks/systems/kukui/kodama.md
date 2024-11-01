@@ -1,4 +1,4 @@
-![homestar](./assets/10e.jpg)
+![homestar](./assets/kodama.jpg)
 
 # Lenovo 10e (kodama)
 

@@ -1,4 +1,4 @@
-![homestar](./assets/as513.jpg)
+![homestar](./assets/lazor.jpg)
 
 # Acer Chromebook Spin 513 (lazor)
 

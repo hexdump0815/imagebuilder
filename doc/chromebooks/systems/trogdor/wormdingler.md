@@ -1,4 +1,4 @@
-![homestar](./assets/ipd3.jpg)
+![homestar](./assets/wormdingler.jpg)
 
 # Lenovo Ideapad duet 3 (wormdingler)
 

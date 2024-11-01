@@ -1,4 +1,4 @@
-![homestar](./assets/ips3.jpg)
+![homestar](./assets/magneton.jpg)
 
 # Lenovo 10e (kodama)
 
