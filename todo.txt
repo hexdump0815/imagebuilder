@@ -24,17 +24,6 @@ postinstall
     retroarch as desktop environment
     turn server
 
-device pages
-    trogdor
-        homestar
-        wormdingler
-        lazor
-    kukui
-        kodama
-        krane
-    corsola
-        magneton
-
 - further future
 
 dualboot installations

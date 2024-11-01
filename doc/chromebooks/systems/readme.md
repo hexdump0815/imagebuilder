@@ -1,7 +1,5 @@
 ## Currently supported systems
 
-
-
 **arm32**
 * [snow (Exynos 5250)](../../../systems/chromebook_snow/readme.md)
 * [peach (Exynos 5420/5800)](../../../systems/chromebook_peach/readme.md)
@@ -23,6 +21,6 @@
     * [Lenovo ideapad duet 5 (homestar)](./trogdor/homestar.md)
     * [Acer chromebook spin sp513 (lazor)](./trogdor/lazor.md)
 
-*Note. if your device isn't present here it doesn't mean it's not working but noone who owns the device added the docs yet, you can always look at device specyfic page or [add it yourself](./adding-device.md)*
+*Note. if your device isn't present here it doesn't mean it's not working but noone who owns the device added the docs yet, you 🫵 can always [add it yourself](./adding-device.md)*
 
-*Note. when it comes to camera on tablets it won't work, since it's part of soc (and not connected via usb like on laptop), there is no chance of it working untill it gets sorted out in the upstream kernel*
+*Note. camera doesn't work across all [no laptop devices](https://wiki.postmarketos.org/wiki/Google_Kukui_Chromebook_(google-kukui))*
