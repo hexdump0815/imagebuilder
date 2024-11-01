@@ -1,4 +1,4 @@
-## In order to add chromebook do doc
+## In order to add chromebook doc
 
 1. you need to add files
 

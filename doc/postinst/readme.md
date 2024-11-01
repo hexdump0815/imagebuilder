@@ -30,6 +30,6 @@ now that you are done with installation there are some additional things you wan
 
 - Fixing firefox touch screen - [the touch screen doesn't let me scroll or type propertly](./firefox.md)
 
-### Device specyfic
+### Device specific
 
-- chromebooks - [solutions to device specyfic issues can be found here](../chromebooks/systems/readme.md)
+- chromebooks - [solutions to device specific issues can be found here](../chromebooks/systems/readme.md)

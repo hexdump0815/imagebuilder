@@ -16,9 +16,9 @@ _**Remember.** the default username/password to login is: linux/changeme_
 
 _Tip. after booting there is an onscreen keyboard available via top menu on the login screen and the onboard onscreen keyboard is available in the xfce session (the four little squares in right part of the menubar)._
 
-# Device specyfic pages
+# Device specific pages
 
-- **Chromebooks** - [informations on specyfic devices](./chromebooks/systems/readme.md)
+- **Chromebooks** - [informations on specific devices](./chromebooks/systems/readme.md)
 
 # Additional documentation
 
