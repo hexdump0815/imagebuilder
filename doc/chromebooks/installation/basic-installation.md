@@ -96,8 +96,13 @@ cgpt create /dev/$disk
 cgpt add -i 1 -t kernel -b 8192 -s 65536 -l KernelA -S 1 -T 2 -P 10 /dev/$disk
 cgpt add -i 2 -t kernel -b 73728 -s 65536 -l KernelB -S 0 -T 2 -P 5 /dev/$disk
 ```
-
-_Note. on veyron you need to run ```cgpt repair /dev/$disk``` after each command_
+**For veyron ONLY** the following four lines should be used instead of the two above
+```
+cgpt add -i 1 -t kernel -b 73728 -s 32768 -l KernelA -S 1 -T 2 -P 10 /dev/$disk
+cgpt repair /dev/$disk
+cgpt add -i 2 -t kernel -b 106496 -s 32768 -l KernelB -S 0 -T 2 -P 5 /dev/$disk
+cgpt repair /dev/$disk
+```
 
 7. Create remaining partitions
 ```
