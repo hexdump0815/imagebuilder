@@ -9,7 +9,7 @@ should be no bigger than 200kb
 no stock images, this might give copyright trouble
 only self created images which will be free to be used in the doc repo
 
-1. and add entry to
+2. and add entry to
 
 readme.md
 
