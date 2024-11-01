@@ -4,11 +4,12 @@
 
 {system codename}/{device codename}.md (base it on other device doc)
 
-{system codename}/assets/{device codename}.jpg (image of device)
+- {system codename}/assets/{device codename}.jpg (image of device) (optional)
 should be no bigger than 200kb
-**can be substituted with stock image of the device**
+no stock images, this might give copyright trouble
+only self created images which will be free to be used in the doc repo
 
-2. and add entry to
+1. and add entry to
 
 readme.md
 
