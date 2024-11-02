@@ -229,7 +229,7 @@ apt-mark hold firmware-intel-sound
 seems to default to headphones initially by default
 - it might require a special kernel build to work - see
   https://github.com/hexdump0815/linux-mainline-x86-64-kernel/releases and
-https://github.com/hexdump0815/imagebuilder/blob/main/doc/installing-a-newer-kernel.md
+https://github.com/hexdump0815/imagebuilder/blob/main/doc/chromebooks/kernel/installing-a-newer-kernel.md
 
 ## switch suspend to s2idle mode
 
