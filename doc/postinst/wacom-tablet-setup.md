@@ -7,7 +7,7 @@ _ideapad duet 5 with wacom tablet and the [MASTER PICE <3](./assets/love.png)_
 
 ### Where we begin
 
-_Warning. this requires [kernel headers to be installed](https://github.com/hexdump0815/imagebuilder/blob/main/doc/installing-kernel-headers.md)_
+_Warning. this requires [kernel headers to be installed](https://github.com/hexdump0815/imagebuilder/blob/main/doc/postinst/installing-kernel-headers.md)_
 
 download deps
 ```

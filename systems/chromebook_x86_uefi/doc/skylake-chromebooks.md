@@ -55,9 +55,9 @@ most probably is best to simply use one of those small usb audio adapters.
 
 please keep in mind to build a new v5.10.x kernel from time to time to get
 the latest security updates. some notes about this can be found here:
-https://github.com/hexdump0815/imagebuilder/blob/main/doc/building-own-kernels.md
+https://github.com/hexdump0815/imagebuilder/blob/main/doc/chromebooks/kernel/building-own-kernels.md
 and here:
-https://github.com/hexdump0815/imagebuilder/blob/main/doc/installing-a-newer-kernel.md
+https://github.com/hexdump0815/imagebuilder/blob/main/doc/chromebooks/kernel/installing-a-newer-kernel.md
 
 ## suspend/resume
 
