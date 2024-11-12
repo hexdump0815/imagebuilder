@@ -12,7 +12,7 @@ _likely won't work on other devices_
 
 ## kernel build notes
 
-- not available yet
+- https://github.com/thenameisluk/linux-rk35xx-kernel/blob/main/readme.x55
 
 ## u-boot build notes
 
