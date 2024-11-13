@@ -30,7 +30,7 @@ _likely won't work on other devices_
     - all key combinations can be found [here](https://github.com/thenameisluk/joypad-x55#type)
     - examples:
         - login (linux): down-right+Y right+A down-left+X right+X down+A
-        - password (changeme) down+B up-right+B up-left+Y down-left+X up-left+Y up+X down-left+A up+X
+        - password (changeme) down+B up-right+B up-left+Y down-left+X up-right+y up+X down-left+A up+X
         - enter : B
     - you can also use right joystick and R1/L1 as mouse
 - as long as we use wifi fix patch, bluetooth won't work
