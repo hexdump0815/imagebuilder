@@ -6,7 +6,8 @@
 
 ## tested systems - working
 
-- powkiddy x55 (booted hacked together image)
+- powkiddy x55
+  - see also: https://github.com/hexdump0815/imagebuilder/issues/266
 
 _likely won't work on other devices_
 
@@ -20,8 +21,21 @@ _likely won't work on other devices_
 
 ## priority
 
-- experimantal
+- medium: will be worked on and improved from time to time
 
 ## special notes
 
-- just a draft no notes rn
+- the system comes with [joypad-x55](https://github.com/thenameisluk/joypad-x55) preinstalled, it can be remove with ```sudo apt purge joypad-x55```
+    - joypad-x55 let's you type with left joystick and 4 action buttons (X/Y/A/B)
+    - all key combinations can be found [here](https://github.com/thenameisluk/joypad-x55#type)
+    - examples:
+        - login (linux): down-right+Y right+A down-left+X right+X down+A
+        - password (changeme) down+B up-right+B up-left+Y down-left+X up-left+Y up+X down-left+A up+X
+        - enter : B
+    - you can also use right joystick and R1/L1 as mouse
+- as long as we use wifi fix patch, bluetooth won't work
+- device might take a moment after holding power button to give sign of life (green led lightning up and screen turning on)
+- if you take sd out of your device make sure the device isn't suspended
+    - if you do it anyway and device has ussues booting
+    - put your sd into another computer and run```sudo btrfs rescue super-recover -v /dev/sd?4``` on it
+    - _Note. replace ? with correct letter, this might work but might not_
