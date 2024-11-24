@@ -16,6 +16,11 @@
 - lenovo 100e gen 4 (mt8186 version) - rusty
 - lenovo 300e gen 4 (mt8186 version) - steelix
 - asus chromebook cm14 flip (cm1402f) - tentacruel
+- asus chromebook enterprise cm30 detachable (cm3001) - starmie
+- asus chromebook cz12 (cz1204c) - chinchou
+- asus chromebook cz12 flip (cz1204f) - chinchou360
+- huaqin noname (it seems to have lte) - ponyta
+- acer chromebook 311 (c723/c723t) - voltorb
 
 ## generic mainline linux on arm chromebook notes
 
