@@ -30,6 +30,12 @@ now that you are done with installation there are some additional things you wan
 
 - Fixing firefox touch screen - [the touch screen doesn't let me scroll or type propertly](./firefox.md)
 
-### Device specific
+### Troubleshooting
+
+- stylus rotation adjustment - [stylus input on my device is rotated](./troubleshooting/stylus-rotation.md)
+
+### other
 
 - chromebooks - [solutions to device specific issues can be found here](../chromebooks/systems/readme.md)
+
+_Note. it's also recommended to look through issues for similar issue (and and create one if can't find)_

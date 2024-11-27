@@ -37,8 +37,14 @@ _Note. [details on symbols](../adding-device.md)_
 camera doesn't work across all [no laptop devices](https://wiki.postmarketos.org/wiki/Google_Kukui_Chromebook_(google-kukui))
 
 **Stylus**
-the oriantation is incorrect, while it's fixable it requires someone to spend some time on it, [here is a good starting point](https://github.com/hexdump0815/imagebuilder/issues/53#issuecomment-1837517427)
+usi stylus on this device is rotated 90*
 
+putting file like this
+```
+ENV{DEVNAME}=="/dev/input/event3",ENV{LIBINPUT_CALIBRATION_MATRIX}="0 -1 1 1 0 0"
+```
+in ```/etc/udev/rules.d/99-wormdingler-stylus.rules```
+and rebooting the device should fix the issue
 
 # Other
 
