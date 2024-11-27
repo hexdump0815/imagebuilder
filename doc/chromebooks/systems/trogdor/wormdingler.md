@@ -39,7 +39,7 @@ camera doesn't work across all [no laptop devices](https://wiki.postmarketos.org
 **Stylus**
 usi stylus on this device is rotated 90*
 
-putting file like this
+putting a file like this
 ```
 ENV{DEVNAME}=="/dev/input/event3",ENV{LIBINPUT_CALIBRATION_MATRIX}="0 -1 1 1 0 0"
 ```
