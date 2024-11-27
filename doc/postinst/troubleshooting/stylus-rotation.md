@@ -18,7 +18,7 @@ we are looking for devices with stylus in the name (in case above it's 2)
 
 _Note. if you can't find one, you can use ```evtest``` to go through the events each input device sends and find the one you want_
 
-2. now let's create special file at ```/etc/udev/rules.d/99-<name>-calibration.rules
+2. now let's create a special file at ```/etc/udev/rules.d/99-<name>-calibration.rules
 
 _Note. the name can be anything but folowing above naming convention is recommended, (replace <name> with your device codename)_
 
