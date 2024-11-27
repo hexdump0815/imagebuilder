@@ -30,7 +30,7 @@ _Note. if your device is plugged in via usb then the ```DEVNAME``` won't be stat
 
 _Note. replace X with the number of the device you found in the ```lsinput``` command_
 
-_Note. the matrix above might not be correct on, below are possible variants to try_
+_Note. the matrix above might not be the correct one, below are possible variants to try_
 ```bash
 ENV{LIBINPUT_CALIBRATION_MATRIX}="1 0 0 0 1 0" # default
 ENV{LIBINPUT_CALIBRATION_MATRIX}="0 -1 1 1 0 0" # 90 degree clockwise
