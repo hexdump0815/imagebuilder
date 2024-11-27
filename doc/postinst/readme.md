@@ -38,4 +38,4 @@ now that you are done with installation there are some additional things you wan
 
 - chromebooks - [solutions to device specific issues can be found here](../chromebooks/systems/readme.md)
 
-_Note. it's also recommended to look through issues for similar issue (and and create one if can't find)_
+_Note. it's also recommended to look through issues for similar issue (and and create one if one can't find anything related)_
