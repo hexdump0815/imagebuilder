@@ -26,7 +26,7 @@ the contents of this file it should be
 ```
 ENV{DEVNAME}=="/dev/input/eventX",ENV{LIBINPUT_CALIBRATION_MATRIX}="0 -1 1 1 0 0"
 ```
-_Note. if your device is plugged in via usb you the ```DEVNAME``` won't be statice, you can use ```udevadm info /dev/input/eventX``` to check what else it can be identify with, some values might be iffy or apply to other not targeted devices_
+_Note. if your device is plugged in via usb then the ```DEVNAME``` won't be static, you can use ```udevadm info /dev/input/eventX``` to check what else it can be identified with, some values might be iffy or apply to other not targeted devices_
 
 _Note. replace X with the number of the device you found in the ```lsinput``` command_
 
