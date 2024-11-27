@@ -22,7 +22,7 @@ _Note. if you can't find one, you can use ```evtest``` to go through the events 
 
 _Note. the name can be anything but folowing above naming convention is recommended, (replace <name> with your device codename)_
 
-for the contents of the file it should be
+the contents of this file it should be
 ```
 ENV{DEVNAME}=="/dev/input/eventX",ENV{LIBINPUT_CALIBRATION_MATRIX}="0 -1 1 1 0 0"
 ```
