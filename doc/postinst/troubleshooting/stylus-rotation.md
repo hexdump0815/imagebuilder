@@ -54,4 +54,4 @@ _Note. replace X with the number of the device you found in the ```lsinput``` co
 You should see your ```LIBINPUT_CALIBRATION_MATRIX``` listed there for the device
 
 the changes usually take effect after a reboot
-so reboot it and if it works you can let us know in the issues or create pr adding it to docs
+so reboot and if it works you can let us know in the issues or create pr adding it to docs
