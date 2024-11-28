@@ -2,7 +2,7 @@
 
 # Lenovo Ideapad duet 5 (homestar) ❤️
 
-Kernel Version: 6.11-stb-cbq+
+Kernel Version: 6.12-stb-cbq+
 
 ### Features table
 ```diff
@@ -37,8 +37,9 @@ _Note. [details on symbols](../adding-device.md)_
 camera doesn't work across all [no laptop devices](https://wiki.postmarketos.org/wiki/Google_Kukui_Chromebook_(google-kukui))
 
 **Speaker**
-by default only 2 out of 4 speakers work
-4 speakers require [additional package](https://github.com/hexdump0815/imagebuilder/discussions/240#discussioncomment-10732006)
+only 2 speakers (out of 4) work by default
+
+[additional package](https://github.com/hexdump0815/imagebuilder/discussions/240#discussioncomment-10732006) is required to fix the issue
 
 **Screen**
 since the device has oled screen it's possible to make it extreamely dark
