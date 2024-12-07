@@ -57,8 +57,12 @@ sensor:modalias:*
 and then running
 ```sudo systemd-hwdb update && sudo udevadm trigger && sudo reboot```
 
-**Stylus**
-the oriantation is incorrect, while it's fixable it requires someone to spend some time on it, [here is a good starting point](https://github.com/hexdump0815/imagebuilder/issues/53#issuecomment-1837517427)
+**Stylus** (flipped)
+orientation can be fixed by putting
+```
+ENV{DEVNAME}=="/dev/input/event6",ENV{LIBINPUT_CALIBRATION_MATRIX}="0 -1 1 1 0 0"
+```
+in ```/etc/udev/rules.d/99-wormdingler-stylus.rules```
 
 # Other
 
