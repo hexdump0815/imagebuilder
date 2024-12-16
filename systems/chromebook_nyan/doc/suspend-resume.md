@@ -33,6 +33,7 @@ the events?)
     suspend is not working reliable - it most of the time comes back after the
 first suspend, but trying to suspend multiple times usually ends in it failing
 after a few times (i.e. not coming back) - tested with v5.18.1/v5.19.1/v5.19.2
+and even with v6.12.5 again
   - i tried to rule out bt, wifi and sound by blacklisting or moving away
     their modules, but it did not change anything
   - i even had deep suspend once working to the point that it even came back
