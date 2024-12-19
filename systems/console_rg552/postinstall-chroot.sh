@@ -7,3 +7,4 @@ echo "deb [arch=arm64,all] https://repo.velvet-os.org/repo stable main" | sudo t
 #package for mouse and keyboard controll with joystick ann buttons
 apt update
 apt install joypad
+
