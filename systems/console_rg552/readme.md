@@ -1,4 +1,4 @@
-# console x55
+# console rg552
 
 ## bootable sd card images
 
@@ -6,18 +6,18 @@
 
 ## tested systems - working
 
-- powkiddy rg552
-  - see also: https://github.com/hexdump0815/imagebuilder/issues/266
+- anberic rg552
+  - see also: https://github.com/hexdump0815/imagebuilder/issues/276
 
 _likely won't work on other devices_
 
 ## kernel build notes
 
-- https://github.com/thenameisluk/linux-rk35xx-kernel/blob/main/readme.x55
+- https://github.com/thenameisluk/linux-rk3xxx-kernel/blob/main/readme.rg552
 
 ## u-boot build notes
 
-- https://github.com/thenameisluk/u-boot-rk35xx-bootloader/blob/main/readme.x55
+- https://github.com/thenameisluk/u-boot-rk3xxx-bootloader/blob/main/readme.rg552
 
 ## priority
 
@@ -39,3 +39,4 @@ _likely won't work on other devices_
     - put your sd into another computer and run```sudo btrfs rescue super-recover -v /dev/sd?4``` on it
     - _Note. replace ? with correct letter, this might work but might not_
 - suspense while works for whatever reason activates vibrator, so it's better to just shutdown the device
+- built-in fan speed can be controlled with script inside ```/scripts/fan-speed```

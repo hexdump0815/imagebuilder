@@ -13,11 +13,11 @@ _likely won't work on other devices_
 
 ## kernel build notes
 
-- https://github.com/thenameisluk/linux-rk35xx-kernel/blob/main/readme.x55
+- https://github.com/thenameisluk/linux-rk3xxx-kernel/blob/main/readme.x55
 
 ## u-boot build notes
 
-- https://github.com/thenameisluk/u-boot-rk35xx-bootloader/blob/main/readme.x55
+- https://github.com/thenameisluk/u-boot-rk3xxx-bootloader/blob/main/readme.x55
 
 ## priority
 
