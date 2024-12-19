@@ -1,0 +1,30 @@
+#!/bin/bash
+
+if [ "$#" != "1" ]; then
+    cat /sys/class/hwmon/hwmon1/pwm1
+
+    exit
+fi
+
+help(){
+    echo "usage:"
+    echo "$(basename $0) <0-255> - set fan speed"
+    echo "$(basename $0) - check fan speed"
+
+    exit
+}
+
+[[ $1 =~ ^[0-9]+$ ]] || {
+    help
+}
+
+#it just doesn't work megrged together  
+if [ $1 -gt 255 ]; then
+    help    
+fi
+
+if [ $1 -lt 0 ];then
+    help
+fi
+
+echo $1 | sudo tee /sys/class/hwmon/hwmon1/pwm1

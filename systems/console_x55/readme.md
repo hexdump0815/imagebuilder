@@ -13,11 +13,11 @@ _likely won't work on other devices_
 
 ## kernel build notes
 
-- https://github.com/thenameisluk/linux-rk35xx-kernel/blob/main/readme.x55
+- https://github.com/thenameisluk/linux-rk3xxx-kernel/blob/main/readme.x55
 
 ## u-boot build notes
 
-- https://github.com/thenameisluk/u-boot-rk35xx-bootloader/blob/main/readme.x55
+- https://github.com/thenameisluk/u-boot-rk3xxx-bootloader/blob/main/readme.x55
 
 ## priority
 
@@ -25,9 +25,9 @@ _likely won't work on other devices_
 
 ## special notes
 
-- the system comes with [joypad-x55](https://github.com/thenameisluk/joypad-x55) preinstalled, it can be remove with ```sudo apt purge joypad-x55```
+- the system comes with [joypad](https://github.com/thenameisluk/joypad-for-debian) preinstalled, it can be remove with ```sudo apt purge joypad```
     - joypad-x55 let's you type with left joystick and 4 action buttons (X/Y/A/B)
-    - all key combinations can be found [here](https://github.com/thenameisluk/joypad-x55#type)
+    - all key combinations can be found [here](https://github.com/thenameisluk/joypad-for-debian#type)
     - examples:
         - login (linux): down-right+Y right+A down-left+X right+X down+A
         - password (changeme) down+B up-right+B up-left+Y down-left+X up-right+y up+X down-left+A up+X
