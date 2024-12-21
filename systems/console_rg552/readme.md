@@ -38,5 +38,4 @@ _likely won't work on other devices_
     - if you do it anyway and device has ussues booting
     - put your sd into another computer and run```sudo btrfs rescue super-recover -v /dev/sd?4``` on it
     - _Note. replace ? with correct letter, this might work but might not_
-- suspense while works for whatever reason activates vibrator, so it's better to just shutdown the device
 - built-in fan speed can be controlled with script inside ```/scripts/fan-speed```
