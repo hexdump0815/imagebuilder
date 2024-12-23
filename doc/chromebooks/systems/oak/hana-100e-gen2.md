@@ -28,7 +28,7 @@ Other
 ? Hardware decoding
 - 3D acceleration (only software rendering for now)
 ```
-_Note. [details on symbols](../adding-device.md)_
+
 ### Notes
 
 # Other

@@ -11,6 +11,7 @@ _**Remember.** the default username/password to login is: linux/changeme_
 # Installation/Booting
 
 - **Chromebooks** - check [this](./chromebooks/readme.md) out
+- **Consoles** - check [this](./console/readme.md) out
 
 - **Other devices** - you need to look at [your system notes](../readme.md) for guidance (for now)
 
@@ -19,6 +20,7 @@ _Tip. after booting there is an onscreen keyboard available via top menu on the 
 # Device specific pages
 
 - **Chromebooks** - [informations on specific devices](./chromebooks/systems/readme.md)
+- **Consoles** - [informations on specyfic console](./console/systems/readme.md)
 
 # Additional documentation
 

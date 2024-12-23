@@ -1,0 +1,2 @@
+#fix wifi
+modprobe rtl8xxxu

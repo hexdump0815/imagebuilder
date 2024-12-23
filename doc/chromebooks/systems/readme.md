@@ -9,6 +9,7 @@
 **arm64**
 * [gru (Rockchip RK3399)](../../../systems/chromebook_gru/readme.md)
 * [oak (MediaTek MT8173C)](../../../systems/chromebook_oak/readme.md)
+  * [Lenovo 100e (hana)](./oak/hana-100e-gen2.md)
 * [kukui (MediaTek MT8183)](../../../systems/chromebook_kukui/readme.md)
   * [Lenovo ideapad duet (krane)](./kukui/krane.md)
   * [Lenovo 10e (kodama)](./kukui/kodama.md)
@@ -21,6 +22,6 @@
     * [Lenovo ideapad duet 5 (homestar)](./trogdor/homestar.md)
     * [Acer chromebook spin sp513 (lazor)](./trogdor/lazor.md)
 
-*Note. if your device isn't present here it doesn't mean it's not working but noone who owns the device added the docs yet, you 🫵 can always [add it yourself](./adding-device.md)*
+*Note. if your device isn't present here it doesn't mean it's not working but noone who owns the device added the docs yet, you 🫵 can always [add it yourself](../../adding-device.md)*
 
 *Note. camera doesn't work across all [no laptop devices](https://wiki.postmarketos.org/wiki/Google_Kukui_Chromebook_(google-kukui))*
