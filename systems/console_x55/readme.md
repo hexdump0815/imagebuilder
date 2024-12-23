@@ -44,3 +44,5 @@ _likely won't work on other devices_
   - by uncommenting FDTOVERLAYS in ```/boot/extlinux/extlinux.conf```
   - there are 3 levels of undervoltating 1-3 (+1 when it's not enabled)
   - the higher level the longer battery life should be at cost of performance
+- device might sometimes get stuck running /init
+  - unless filesystem is corrupted, simply restarting the device should resolve the issue

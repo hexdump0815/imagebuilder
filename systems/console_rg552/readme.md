@@ -39,3 +39,5 @@ _likely won't work on other devices_
     - put your sd into another computer and run```sudo btrfs rescue super-recover -v /dev/sd?4``` on it
     - _Note. replace ? with correct letter, this might work but might not_
 - built-in fan speed can be controlled with script inside ```/scripts/fan-speed```
+- device might sometimes get stuck running /init
+  - unless filesystem is corrupted, simply restarting the device should resolve the issue
