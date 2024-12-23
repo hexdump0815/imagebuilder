@@ -32,7 +32,7 @@ Other
 + Hardware decoding
 + 3D acceleration (Freedreno OpenGL ES 3.2/OpenGL 4.5 Turnip Vulkan 1.3)
 ```
-_Note. [details on symbols](../adding-device.md)_
+
 ### Notes
 
 none yet

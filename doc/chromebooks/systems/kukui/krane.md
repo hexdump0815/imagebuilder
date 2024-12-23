@@ -31,7 +31,7 @@ Other
 ? Hardware decoding
 + 3D acceleration (Panfrost OpenGL ES 3.1/OpenGL 3.1)
 ```
-_Note. [details on symbols](../adding-device.md)_
+
 ### Notes
 
 **Camera**
