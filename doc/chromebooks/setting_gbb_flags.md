@@ -76,7 +76,9 @@ gsctool -a -I
 ```
 should show that ccd is open
 
-now plugin suzyqcable to you chromebook
+now plugin suzyqcable to your chromebook or diffrent pc
+
+_Note. if you do this from diffrent pc, you run commands below on that pc, also this is linux only_
 
 _Note. it will only work plugged into one of chromebooks ports and in one orientation_
 
@@ -100,7 +102,7 @@ echo "wp false" > /dev/ttyUSB0
 echo "wp false atboot" > /dev/ttyUSB0
 ```
 
-_Note. on debian devices that detect the ttyUSB0 you can use ```minicom /dev/ttyUSB0``` (```sudo apt install minicom```) to see whats going on behind the sceen and type the samec commands, if it complains about modem being missing just ```ln /dev/ttyUSB0 /dev/modem```_
+_Note. on debian devices that detect the ttyUSB0 you can use ```minicom -D /dev/ttyUSB0``` (```sudo apt install minicom```) to see whats going on behind the sceen and type the same commands as below but without "echo" and "/dev/ttyUSB0" part_
 
 after doing it enable it back just to be safe
 
