@@ -2,13 +2,10 @@
 
 ![kappa and juniper with velvet](https://github.com/hexdump0815/linux-mainline-on-arm-chromebooks/raw/main/images/kappa-and-juniper-with-velvet.jpg "kappa and juniper with velvet")
 
-### !!! Login / Password !!!
+## [Getting started](./doc/first-steps.md)
 
-linux / changeme
 
-## Start here
-
-in order to try out the system check out [**Getting started**](./doc/first-steps.md)
+#### Remember Login: linux / Password: changeme !!!
 
 # About the project
 
