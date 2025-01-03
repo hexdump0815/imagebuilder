@@ -132,6 +132,26 @@ sources :
 gbb flags set some default behaviour for a chromeook which canl result in it not forgetting being in developer mode and being able to boot from usb devices if the battery runs dry (especially for older chromebooks). as a result you won't lose access to your system in such a case
 
 in order to set gbb flags you need to [enable developermode](./preparing-chromebook.md) and disable hardware write protection
+<details>
+<summary>Note. on new chromeos you might encounter command not found error</summary>
+
+this is likely due to broken PATH variable
+to work around this you can run
+```
+find / -name <command> 2>/dev/null
+```
+your out put should be **for example**
+```
+/usr/bin/<command>
+```
+and you run
+```
+/usr/bin/<command> <arguments>
+```
+
+</details>
+
+
 
 1. start by booting chrome os and entering tty with ```[ctrl]``` ```[alt]``` ```[->]``` or ```[ctrl]``` ```[alt]``` ```[refresh]``` or ```[ctrl]``` ```[alt]``` ```[f2]```
 
@@ -142,7 +162,9 @@ in order to set gbb flags you need to [enable developermode](./preparing-chromeb
 4. check software write protection with ```flashrom --wp-status```
 it will probaly be enabled, you can disable it with ```flashrom --wp-disable``` and check it again with ```flashrom --wp-status```
 
-*Note. this will only work if the hardware write protection has been disabled beforehand*
+_Note. this will only work if the hardware write protection has been disabled beforehand_
+
+_Note. the command might throw unknown WP error, you can procees and only worry if GBB flags don't update in step 6._
 
 <details>
 <summary>Recommended step</summary>
