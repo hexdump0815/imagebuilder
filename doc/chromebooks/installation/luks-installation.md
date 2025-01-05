@@ -10,7 +10,7 @@ _Note. this installetion doesn't have to be performed on internal memory, it can
 
 _Remember. these steps have to be done from [linux booted from usb](../readme.md), not chromeos_
 
-0. gain root access
+0. gaining root access
 
 ```
 sudo -i
