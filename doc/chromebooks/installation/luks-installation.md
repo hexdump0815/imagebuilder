@@ -8,7 +8,14 @@ _**Warning.** this guide is arm64 chromebooks only_
 
 _Note. this installetion doesn't have to be performed on internal memory, it can also be done on another usb or sd card_
 
-_Important. it is asummed you do all this as root use ```su root``` or ```sudo -i``` (root password is "changeme")_
+_Remember. these steps have to be done from [linux booted from usb](../readme.md), not chromeos_
+
+0. gaining root access
+
+```
+sudo -i
+```
+_Note. password is same as for your [user account](../../../readme.md)_
 
 1. start by listing all available disks
 

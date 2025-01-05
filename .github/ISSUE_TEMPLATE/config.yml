@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: FAQ
+    url: https://github.com/hexdump0815/imagebuilder/blob/main/doc/faq.md
+    about: Read before opening any issues.

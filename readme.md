@@ -2,13 +2,13 @@
 
 ![kappa and juniper with velvet](https://github.com/hexdump0815/linux-mainline-on-arm-chromebooks/raw/main/images/kappa-and-juniper-with-velvet.jpg "kappa and juniper with velvet")
 
-### !!! Login / Password !!!
+**Remember Login: linux / Password: changeme !!!**
 
-linux / changeme
+## [Getting started](./doc/first-steps.md)
+_how to boot and install stuff_
 
-## Start here
-
-in order to try out the system check out [**Getting started**](./doc/first-steps.md)
+## [FAQ](./doc/faq.md)
+_read before opening issues_
 
 # About the project
 
@@ -66,7 +66,7 @@ see https://github.com/hexdump0815/imagebuilder/blob/main/doc/using-the-imagebui
 - rockchip rk356x (rk3566 and rk3568) devices and tv boxes: https://github.com/hexdump0815/imagebuilder/blob/main/systems/rockchip_rk356x/readme.md (wip)
 - rockchip rk3588 devices: https://github.com/hexdump0815/imagebuilder/blob/main/systems/rockchip_rk3588/readme.md (wip)
 - rockchip rk3566 console powkiddy x55 : https://github.com/hexdump0815/imagebuilder/blob/main/systems/console_x55/readme.md
-- rockchip rk3566 console powkiddy rg552 : https://github.com/hexdump0815/imagebuilder/blob/main/systems/console_rg552/readme.md
+- rockchip rk3399 console anbernic rg552 : https://github.com/hexdump0815/imagebuilder/blob/main/systems/console_rg552/readme.md
 - snapdragon sdm835 msm8998 windows on arm devices: https://github.com/hexdump0815/imagebuilder/blob/main/systems/snapdragon_835/readme.md (wip)
 - snapdragon 7c gen1 and gen2 sc7180 windows on arm devices: https://github.com/hexdump0815/imagebuilder/blob/main/systems/snapdragon_7c_woa/readme.md (wip)
 - starfive visionfive 2 risc v sbc: https://github.com/hexdump0815/imagebuilder/blob/main/systems/starfive_visionfive2/readme.md (wip)

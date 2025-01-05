@@ -7,9 +7,16 @@ in this approach we do not dump the image file onto the emmc but instead simply 
 
 _Note. **before proceeding** with installation it is recommended to first [set gbb flags](../setting_gbb_flags.md)_
 
+_Remember. these steps have to be done from [linux booted from usb](../readme.md), not chromeos_
+
 ## Time to just do it
 
-_Important. it is asummed you do all this as root use ```su root``` or ```sudo -i``` (root password is "changeme")_
+0. gaining root access
+
+```
+sudo -i
+```
+_Note. password is same as for your [user account](../../../readme.md)_
 
 1. start by listing all available disks
 
