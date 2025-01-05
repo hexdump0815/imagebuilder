@@ -8,7 +8,7 @@ _**Warning.** this guide is arm64 chromebooks only_
 
 _Note. this installetion doesn't have to be performed on internal memory, it can also be done on another usb or sd card_
 
-_Remember. this steps are done from [linux booted from usb](../readme.md), not chromeos_
+_Remember. these steps have to be done from [linux booted from usb](../readme.md), not chromeos_
 
 0. gain root access
 
