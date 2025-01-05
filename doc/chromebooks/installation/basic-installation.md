@@ -11,7 +11,7 @@ _Remember. these steps have to be done from [linux booted from usb](../readme.md
 
 ## Time to just do it
 
-0. gain root access
+0. gaining root access
 
 ```
 sudo -i
