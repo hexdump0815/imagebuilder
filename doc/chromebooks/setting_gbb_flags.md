@@ -166,7 +166,7 @@ it will probaly be enabled, you can disable it with ```flashrom --wp-disable``` 
 
 _Note. this will only work if the hardware write protection has been disabled beforehand_
 
-_Note. the command might throw unknown WP error, you can procees and only worry if GBB flags don't update in step 6._
+_Note. the command might throw unknown WP error, you can proceed and only worry if GBB flags don't update in step 6._
 
 <details>
 <summary>Recommended step</summary>
