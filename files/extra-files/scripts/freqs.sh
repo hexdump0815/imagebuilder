@@ -31,6 +31,6 @@ if [ `ls /sys/devices/system/cpu/cpu?/cpufreq/scaling_available_governors 2> /de
 fi
 
 if [ `ls /sys/devices/system/cpu/cpu?/cpufreq/scaling_governor 2> /dev/null | wc -l` -gt 0 ]; then
-    echo "governor:in use:"
+    echo "governor in use:"
     cat /sys/devices/system/cpu/cpu?/cpufreq/scaling_governor
 fi
