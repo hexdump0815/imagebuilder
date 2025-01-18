@@ -127,6 +127,7 @@ mount -o ssd,compress-force=zstd,noatime,nodiratime /dev/${part}4 /mnt
 mkdir -p /mnt/boot
 mount /dev/${part}3 /mnt/boot
 ```
+_Note: If deploying for the 3.10 kernel for the early Chromebook Snow releases, you must add `-O ^extref,^skinny-metadata,^no-holes,^zoned -R ^free-space-tree` to mkfs to disable features not supported by Linux 3.10. You also must omit `compress-force=zstd` when mounting.
 9. copy the kernel partition to the target emmc
 ```
 dd if=/dev/${srcPart}1 of=/dev/${part}1 bs=1024k status=progress
