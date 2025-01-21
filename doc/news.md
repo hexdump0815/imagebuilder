@@ -1,5 +1,47 @@
 # status updates and news around this project
 
+## january 2025
+
+it might look like there is not that much happening around velvet os, but there
+is quite a bit happening behind the scenes - here is a little overview about
+what is currently happening around this project:
+
+- sadly my time is still quite limited so that i cannot put as much
+  effort into the project as i would like to, but at least i'm able to work on
+it from time to time again now with the hope of it getting more over time
+- besides saying thanks to everyone who contributed to this project by creating
+  pull requests, investigating problems, responding in github issues etc. a
+very special thank you goes to luk for his rework and massive extension of the
+documentation (especially for chromebooks), the creation of the velvet tools
+for better bootable kernel image creation on aarch64 chromebooks, for a lot of
+testing and feedback and for his support within many github issues.
+- the final planning for the next two planned releases (one in spring and one
+  in autumn) is in progress - see:
+https://github.com/hexdump0815/imagebuilder/discussions/284 and
+https://github.com/hexdump0815/imagebuilder/discussions/285
+- kind of behind the scenes there is the v6.12 kernel testing in process since
+  v6.12 has been released and the kernels for many systems have been adjusted
+to v6.12 and tested to be working in prepararion to use them for the upcoming
+spring 2025 release of velvet os - see:
+https://github.com/hexdump0815/imagebuilder/discussions/267
+- as part of the kernel preparations for v6.12 there is now a unified kernel
+  for the different mediatek chromebooks instead of separate kernels for the
+different soc versions (tested on oak, kukui and corsola so far)
+- two new devices got added by luk to the image building framework:
+  https://github.com/hexdump0815/imagebuilder/tree/main/systems/console_x55 and
+https://github.com/hexdump0815/imagebuilder/tree/main/systems/console_rg552
+- chromebook_corsola starts to be useable with a mainline kernel (still some
+  topics open like sound and suspend, but far better than it was in the past)
+- for some devices the upcoming debian trixie and ubuntu noble images might be
+  the last round of images as there is not that much support for the hardware
+anymore upstream and it gets more and more painful to keep them working, plus
+the user base is quite small. those systems currently would be:
+chromebook_snow, chromebook_nyan, allwinner_h3, amlogic_m8 and tablet_amazon_*
+... but even with that those devices will still be useable for at least 3-4 (or
+even more) years with the option to have an up to date kernel and system
+running on them thanks to the long term support of the v6.12/v6.6/v6.1 kernels
+and of debian trixie ...
+
 ## september 2024
 
 in this new news.md file from now on there will be status updates and news regarding this project every now and then to give everyone interested informed about what is going on and planned.
