@@ -98,8 +98,12 @@ else
     echo "INFO: SWAPPART is not set in systems/${1}/partition-mapping.txt - this is ok"
     echo ""
   fi
+  # from partition-mapping it is clear if this is a chromebook or not via CROSPARTS
   if [ "$CROSPARTS" != "" ]; then
     echo "CROSPARTS=$CROSPARTS"
+  fi
+  if [ "$CROSPARTS_LEGACY" != "" ]; then
+    echo "CROSPARTS_LEGACY=$CROSPARTS_LEGACY"
   fi
   if [ "$PMOSKERNEL" != "" ]; then
     echo "PMOSKERNEL=$PMOSKERNEL"
@@ -131,22 +135,22 @@ if [ -f ${IMAGE_DIR}/${1}-${2}-${3}.img ]; then
   exit 1
 fi
 
-# we use less than the marketing capacity of the sd card as it is usually lower in reality 3.5/5.5gb
+# we use less than the marketing capacity of the sd card as it is usually lower in reality 3.8/5.8gb
 # the compressed btrfs root needs less space on disk
 if [ "$IMAGESIZE" != "" ]; then
     truncate -s ${IMAGESIZE} ${IMAGE_DIR}/${1}-${2}-${3}.img
 else
   if [ "$ROOTFS" = "btrfs" ]; then
-    truncate -s 3584M ${IMAGE_DIR}/${1}-${2}-${3}.img
+    truncate -s 3892M ${IMAGE_DIR}/${1}-${2}-${3}.img
   else
-    truncate -s 5632M ${IMAGE_DIR}/${1}-${2}-${3}.img
+    truncate -s 5940M ${IMAGE_DIR}/${1}-${2}-${3}.img
   fi
 fi
 
 losetup /dev/loop0 ${IMAGE_DIR}/${1}-${2}-${3}.img
 
 # the arm chromebooks have some special boot partition setup
-if [ "${CROSPARTS}" = "true" ]; then
+if [ "${CROSPARTS}" = "true" ] || [ "$CROSPARTS_LEGACY" = "true" ]; then
 
   # the fllowing part is based on
   # https://github.com/eballetbo/chromebooks/blob/master/chromebook-setup.sh
@@ -165,9 +169,16 @@ if [ "${CROSPARTS}" = "true" ]; then
   partprobe /dev/loop0
 
   # create two boot partitions and set them as bootable
-  # two to have a second one to play around just in case - it just costs 32m
-  cgpt add -i 1 -t kernel -b 8192 -s 65536 -l KernelA -S 1 -T 2 -P 10 /dev/loop0
-  cgpt add -i 2 -t kernel -b 73728 -s 65536 -l KernelB -S 0 -T 2 -P 5 /dev/loop0
+  # two to have a second one to play around just in case
+  # old chromebooks were limited to 32mb for them (32bit arm, gru, oak)
+  # newer ones are limited to 512mb (kukui, trogdor and anything newer), but 128mb should be plenty for now
+  if [ "${CROSPARTS_LEGACY}" = "true" ]; then
+    cgpt add -i 1 -t kernel -b 8192 -s 65536 -l KernelA -S 1 -T 2 -P 10 /dev/loop0
+    cgpt add -i 2 -t kernel -b 73728 -s 65536 -l KernelB -S 0 -T 2 -P 5 /dev/loop0
+  else
+    cgpt add -i 1 -t kernel -b 8192 -s 262144 -l KernelA -S 1 -T 2 -P 10 /dev/loop0
+    cgpt add -i 2 -t kernel -b 270336 -s 262144 -l KernelB -S 0 -T 2 -P 5 /dev/loop0
+  fi
 
 # for all others the boot block is simply written to the beginning of the disk image
 else
@@ -198,7 +209,7 @@ losetup -d /dev/loop0
 losetup --partscan /dev/loop0 ${IMAGE_DIR}/${1}-${2}-${3}.img
 
 # for chromebooks write the kernel to the first kernel partition
-if [ "${CROSPARTS}" = "true" ]; then
+if [ "${CROSPARTS}" = "true" ] || [ "$CROSPARTS_LEGACY" = "true" ]; then
   dd if=${DOWNLOAD_DIR}/boot-${1}-${2}.dd of=/dev/loop0p1 status=progress
 fi
 
