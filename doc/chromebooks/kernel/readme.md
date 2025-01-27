@@ -5,4 +5,4 @@
 complicated and the procedure to build a new kernel on the system is described
 in [here](building-own-kernels.md)
 - 64bit arm (aarch64) chromebooks have a special procedure for test booting a
-  new kernel which is described in [here](test-booting-a-kernel-on-chromebooks.txt)
+  new kernel which is described in [here](test-booting-a-kernel-on-chromebooks.md)
