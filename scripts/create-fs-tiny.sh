@@ -34,9 +34,6 @@ if [ "${1}" != "$(cat ${DOWNLOAD_DIR}/system.txt)" ] || \
   exit 1
 fi
 
-# from partition-mapping it is clear if this is a chromebook or not via CROSPARTS
-# in theory this can go now that the old chromebook-boot dir is gone, but lets keep
-# it around as a differentiator for chromebooks as it is useful still in this new role
 if [ ! -f systems/${1}/partition-mapping.txt ]; then
   echo ""
   echo "systems/${1}/partition-mapping.txt does not exist - giving up"
