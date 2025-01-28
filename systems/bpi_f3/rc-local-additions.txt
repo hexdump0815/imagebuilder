@@ -1,0 +1,5 @@
+# for some reason the wifi module does not probe automatically
+modprobe 8852bs
+
+# optionally try to overclock the cpu slightly to 1.8ghz
+#echo 1 > /sys/devices/system/cpu/cpufreq/boost
