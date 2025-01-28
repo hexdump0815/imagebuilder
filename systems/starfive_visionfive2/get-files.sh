@@ -1,7 +1,7 @@
 # this file is supposed to be sourced by the get-files shell script
 
-starfive_visionfive2_release_version="5.15.0-vf2-104%2B"
-starfive_visionfive2_boot_version="202302"
+starfive_visionfive2_release_version="6.6.74-vf2-661+"
+starfive_visionfive2_boot_version="irradium-20241227"
 
 rm -f ${DOWNLOAD_DIR}/kernel-starfive_visionfive2-${2}.tar.gz
 wget -v https://github.com/hexdump0815/linux-starfive-visionfive2-kernel/releases/download/${starfive_visionfive2_release_version}/${starfive_visionfive2_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-starfive_visionfive2-${2}.tar.gz
