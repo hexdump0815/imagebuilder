@@ -10,4 +10,5 @@ TOUCH_ID=`xinput list | grep "hid-over-i2c 0603:604A" | grep pointer | grep -v E
 # do not ask where the 0.6 is coming from, but this value scales the y axis properly
 xinput set-prop $TOUCH_ID "Coordinate Transformation Matrix" 0 -1 1 0.6 0 0 0 0 1
 
+# this is needed as sometimes an above command gives an error, but still does what it should
 exit 0

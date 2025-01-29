@@ -13,4 +13,5 @@ PEN_ID=`xinput list | grep "Stylus Pen" | grep pointer | sed 's,.*id=,,g' | awk 
 xinput set-prop $TOUCH_ID "Coordinate Transformation Matrix" 0 -1 1 0.75 0 0 0 0 1
 xinput set-prop $PEN_ID "Coordinate Transformation Matrix" 0 -1 1 0.75 0 0 0 0 1
 
+# this is needed as sometimes an above command gives an error, but still does what it should
 exit 0
