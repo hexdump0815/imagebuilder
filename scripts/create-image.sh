@@ -249,14 +249,10 @@ else
     btrfs subvolume create ${MOUNT_POINT}/swap
     chmod 755 ${MOUNT_POINT}/swap
     chattr -R +C ${MOUNT_POINT}/swap
-    btrfs property set ${MOUNT_POINT}/swap compression none
   else
     mkdir ${MOUNT_POINT}/swap
   fi
   truncate -s 0 ${MOUNT_POINT}/swap/file.0
-  if [ "$ROOTFS" = "btrfs" ]; then
-    btrfs property set ${MOUNT_POINT}/swap/file.0 compression none
-  fi
   fallocate -l 512M ${MOUNT_POINT}/swap/file.0
   chmod 600 ${MOUNT_POINT}/swap/file.0
   mkswap -L swapfile.0 ${MOUNT_POINT}/swap/file.0
