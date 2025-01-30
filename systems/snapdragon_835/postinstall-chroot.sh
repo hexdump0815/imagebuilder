@@ -11,9 +11,6 @@ dd if=/dev/zero bs=1M count=2 of=/lib/firmware/rmtfs/modem_fsc
 apt-get -y install protection-domain-mapper qrtr-tools rmtfs tqftpserv
 
 # adjust the cmdline of rmtfs to read its files from /lib/firmware/rmtfs
-# maybe this can be avoided by putting the dummy files from above to the
-# default location /boot but some early tests did not work - might be worth
-# to retest this
 sed -i 's,ExecStart=/usr/bin/rmtfs -r -P -s,ExecStart=/usr/bin/rmtfs -r -s -v -o /lib/firmware/rmtfs,g' /lib/systemd/system/rmtfs.service
 
 # avoid updates of the rmtfs package so that the above change does not get overwritten
