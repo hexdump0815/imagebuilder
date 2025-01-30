@@ -6,7 +6,6 @@ export DEBIAN_FRONTEND=noninteractive
 export LANG=C
 
 systemctl enable ssh
-systemctl disable fstrim.timer
 if [ "${1}" = "jammy" ] || [ "${1}" = "noble" ]; then
   systemctl disable fwupd.service
   systemctl disable fwupd-refresh.service
