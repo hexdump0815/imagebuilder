@@ -1,8 +1,19 @@
 # Preparing usb medium
 
-
-
 **Important. simply copying image onto an usb is not a correct way of doing it so please don't do it and then open issues about it not working**
+
+<details><summary>
+
+### If your usb/sd card was cheap please read this
+</summary>
+
+this kinds of devices tend to report fake capacity
+which might cause issues with system flashed on them
+
+please check it's real capacity with [f3 tools](https://fight-flash-fraud.readthedocs.io/en/latest/introduction.html)
+or similar
+
+</details>
 
 ## Flashing on Chromebook or Linux
 download the image
