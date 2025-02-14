@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-odroid_u3_release_version="6.6.9-stb-exy%2B"
+odroid_u3_release_version="6.12.12-stb-exy%2B"
 odroid_u3_uboot_version="200821-01"
 
 rm -f ${DOWNLOAD_DIR}/kernel-odroid_u3-armv7l.tar.gz

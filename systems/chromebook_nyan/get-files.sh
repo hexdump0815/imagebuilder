@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-chromebook_nyan_release_version="6.6.9-stb-cbt%2B"
+chromebook_nyan_release_version="6.12.12-stb-cbt%2B"
 chromebook_nyan_kernel_tree="linux-mainline-and-mali-generic-stable-kernel"
 chromebook_nyan_2g_uboot_version="v2021.10-cbt"
 chromebook_nyan_2g_noflicker_uboot_version="v2021.10-cbt"

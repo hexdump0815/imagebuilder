@@ -1,8 +1,8 @@
 # this file is supposed to be sourced by the get-files shell script
 
-bpi_f3_release_version="6.6.74-bf3-020+"
-bpi_f3_boot_version="6.6.74-bf3-020+"
-bpi_f3_firmware_version="6.6.74-bf3-020+"
+bpi_f3_release_version="6.6.74-bf3-020%2B"
+bpi_f3_boot_version="6.6.74-bf3-020%2B"
+bpi_f3_firmware_version="6.6.74-bf3-020%2B"
 
 rm -f ${DOWNLOAD_DIR}/kernel-bpi_f3-${2}.tar.gz
 wget -v https://github.com/hexdump0815/linux-spacemit-k1-kernel/releases/download/${bpi_f3_release_version}/${bpi_f3_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-bpi_f3-${2}.tar.gz

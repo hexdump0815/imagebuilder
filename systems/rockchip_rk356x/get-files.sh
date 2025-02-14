@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-rockchip_rk356x_release_version="6.1.51-stb-r56%2B"
+rockchip_rk356x_release_version="6.12.12-stb-r56%2B"
 rockchip_rk356x_u_boot_binary_version="ac8666b89e8d5787ad31c5ed22a1c51865c0f43f"
 
 rm -f ${DOWNLOAD_DIR}/kernel-rockchip_rk356x-${2}.tar.gz

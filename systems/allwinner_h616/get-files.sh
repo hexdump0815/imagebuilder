@@ -1,8 +1,7 @@
 # this file is supposed to be sourced by the get-files shell script  
 
-allwinner_h616_release_version="6.1.51-stb-616%2B"
+allwinner_h616_release_version="6.1.128-stb-616%2B"
 allwinner_h616_uboot_version="230127-01"
-mesa_release_version="22.1.1"
 
 rm -f ${DOWNLOAD_DIR}/kernel-allwinner_h616-${2}.tar.gz
 wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h6-kernel/releases/download/${allwinner_h616_release_version}/${allwinner_h616_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-allwinner_h616-${2}.tar.gz

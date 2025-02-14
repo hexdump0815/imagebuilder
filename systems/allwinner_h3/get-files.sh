@@ -1,10 +1,9 @@
 # this file is supposed to be sourced by the get-files shell script
 
-allwinner_h3_release_version="6.1.51-stb-av7%2B"
+allwinner_h3_release_version="6.12.12-stb-av7%2B"
 allwinner_a20_bpi_uboot_version="200718-01"
 allwinner_h3_r39_uboot_version="200718-01"
 allwinner_h3_tx1_uboot_version="200718-01"
-mesa_release_version="22.1.1"
 
 rm -f ${DOWNLOAD_DIR}/kernel-allwinner_h3-armv7l.tar.gz
 wget -v https://github.com/hexdump0815/linux-mainline-and-mali-generic-kernel/releases/download/${allwinner_h3_release_version}/${allwinner_h3_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-allwinner_h3-armv7l.tar.gz
