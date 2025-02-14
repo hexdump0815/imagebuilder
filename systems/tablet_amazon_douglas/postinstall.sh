@@ -12,3 +12,6 @@ elif [ -f etc/xdg/xdg-xubuntu/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manag
 fi
 
 tar xzf postinstall/tablet_amazon_douglas-firmware.tar.gz
+
+# we are not using initrd, so lets not do any fancy compression for it here
+rm -f etc/initramfs-tools/conf.d/compress

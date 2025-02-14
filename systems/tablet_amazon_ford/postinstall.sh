@@ -13,3 +13,6 @@ fi
 
 tar xzf postinstall/opt-msm-fb-refresher-${3}-armv7l.tar.gz
 tar xzf postinstall/tablet_amazon_ford-firmware.tar.gz
+
+# we are not using initrd, so lets not do any fancy compression for it here
+rm -f etc/initramfs-tools/conf.d/compress
