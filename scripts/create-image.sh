@@ -126,6 +126,13 @@ else
 fi
 
 mkdir -p ${IMAGE_DIR}
+if [ -d  ${MOUNT_POINT} ]; then
+  echo ""
+  echo "mount point ${MOUNT_POINT} already exists - giving up for safety reasons ..."
+  echo ""
+  exit 1
+fi
+
 mkdir -p ${MOUNT_POINT}
 
 if [ -f ${IMAGE_DIR}/${1}-${2}-${3}.img ]; then
@@ -208,8 +215,15 @@ partprobe /dev/loop0
 losetup -d /dev/loop0
 losetup --partscan /dev/loop0 ${IMAGE_DIR}/${1}-${2}-${3}.img
 
+# not sure if this helps, but this is the try to avoid the random cases of
+# the loop devices not being ready yet from time to time
+sync
+sleep 10
+sync
+
 # for chromebooks write the kernel to the first kernel partition
-if [ "${CROSPARTS}" = "true" ] || [ "$CROSPARTS_LEGACY" = "true" ]; then
+# replaced by a velvet-tools based approach further down below for aarch64 chromebooks
+if ([ "${CROSPARTS_LEGACY}" = "true" ] || [ "${CROSPARTS}" = "true" ]) && [ "$(cat ${DOWNLOAD_DIR}/arch.txt)" = "armv7l" ]; then
   dd if=${DOWNLOAD_DIR}/boot-${1}-${2}.dd of=/dev/loop0p1 status=progress
 fi
 
@@ -390,11 +404,20 @@ fi
 # prepare for a complete chroot env partially needed by the following steps
 mount -o bind /dev ${MOUNT_POINT}/dev
 mount -o bind /dev/pts ${MOUNT_POINT}/dev/pts
+mount -o bind /run ${MOUNT_POINT}/run
 mount -t sysfs /sys ${MOUNT_POINT}/sys
 mount -t proc /proc ${MOUNT_POINT}/proc
 
 # do this to avoid failing apt installs due to a too old fs-cache
 chroot ${MOUNT_POINT} apt-get update
+
+# preparation and installation of the kernel + initrd via velvet-tools on aarch64 chromebooks
+if ([ "${CROSPARTS_LEGACY}" = "true" ] || [ "${CROSPARTS}" = "true" ]) && [ "$(cat ${DOWNLOAD_DIR}/arch.txt)" = "aarch64" ]; then
+  chroot ${MOUNT_POINT} apt-get -y install velvet-tools
+  export KERNEL_VERSION=$( ls ${MOUNT_POINT}/boot/*Image-* | sed 's,.*Image-,,g' | sort -u )
+  chroot ${MOUNT_POINT} vtbuild ${KERNEL_VERSION}
+  chroot ${MOUNT_POINT} vtflash ${KERNEL_VERSION} yes
+fi
 
 if [ "${UEFI32}" = "true" ]; then
   chroot ${MOUNT_POINT} apt-get -yq install grub2-common grub-efi-ia32 grub-efi-ia32-bin
@@ -469,7 +492,7 @@ fi
 echo "nameserver 1.1.1.1" > ${MOUNT_POINT}/etc/resolv.conf
 
 # umount all the extra stuff mounted for chroot usage as we are done with chroots now
-umount ${MOUNT_POINT}/proc ${MOUNT_POINT}/sys ${MOUNT_POINT}/dev/pts ${MOUNT_POINT}/dev
+umount ${MOUNT_POINT}/proc ${MOUNT_POINT}/sys ${MOUNT_POINT}/run ${MOUNT_POINT}/dev/pts ${MOUNT_POINT}/dev
 
 if [ "${UEFI32}" = "true" ] || [ "${UEFI64}" = "true" ] || [ "${UEFI64ARM}" = "true" ]; then
   df -h ${MOUNT_POINT} ${MOUNT_POINT}/boot ${MOUNT_POINT}/boot/efi
