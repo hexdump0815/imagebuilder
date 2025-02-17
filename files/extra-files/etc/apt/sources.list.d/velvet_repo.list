@@ -1,0 +1,6 @@
+Types: deb
+URIs: https://repo.velvet-os.org/repo
+Suites: stable
+Components: main
+Enabled: yes
+Signed-By: /etc/apt/trusted.gpg.d/velvet_repo.asc

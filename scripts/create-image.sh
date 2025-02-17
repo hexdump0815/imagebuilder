@@ -209,7 +209,8 @@ losetup -d /dev/loop0
 losetup --partscan /dev/loop0 ${IMAGE_DIR}/${1}-${2}-${3}.img
 
 # for chromebooks write the kernel to the first kernel partition
-if [ "${CROSPARTS}" = "true" ] || [ "$CROSPARTS_LEGACY" = "true" ]; then
+# replaced by a velvet-tools based approach further down below for aarch64 chromebooks
+if [ [ "${CROSPARTS_LEGACY}" = "true" ] || [ "${CROSPARTS}" = "true" ] ] && [ "$(cat ${DOWNLOAD_DIR}/arch.txt)" = "armv7l" ]; then
   dd if=${DOWNLOAD_DIR}/boot-${1}-${2}.dd of=/dev/loop0p1 status=progress
 fi
 
@@ -395,6 +396,14 @@ mount -t proc /proc ${MOUNT_POINT}/proc
 
 # do this to avoid failing apt installs due to a too old fs-cache
 chroot ${MOUNT_POINT} apt-get update
+
+# preparation and installation of the kernel + initrd via velvet-tools on aarch64 chromebooks
+if [ [ "${CROSPARTS_LEGACY}" = "true" ] || [ "${CROSPARTS}" = "true" ] ] && [ "$(cat ${DOWNLOAD_DIR}/arch.txt)" = "aarch64" ]; then
+  chroot ${MOUNT_POINT} apt-get -y install velvet-tools
+  export KERNEL_VERSION=`ls /boot/*Image-* | sed 's,.*Image-,,g' | sort -u`
+  chroot ${MOUNT_POINT} vtbuild ${KERNEL_VERSION}
+  chroot ${MOUNT_POINT} vtflash ${KERNEL_VERSION}
+fi
 
 if [ "${UEFI32}" = "true" ]; then
   chroot ${MOUNT_POINT} apt-get -yq install grub2-common grub-efi-ia32 grub-efi-ia32-bin
