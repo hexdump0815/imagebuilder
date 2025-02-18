@@ -1,0 +1,59 @@
+#!/bin/sh
+exec tail -n +3 $0
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+menuentry 'Debian GNU/Linux KERNEL_VERSION - asus novago tp370ql' --class debian --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-simple-ROOT_UUID' {
+	load_video
+	insmod gzio
+	if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+	insmod part_gpt
+	insmod ext2
+	if [ x$feature_platform_search_hint = xy ]; then
+	  search --no-floppy --fs-uuid --set=root BOOT_UUID
+	else
+	  search --no-floppy --fs-uuid --set=root BOOT_UUID
+	fi
+	echo	'Loading Linux KERNEL_VERSION ...'
+	linux	/Image-KERNEL_VERSION root=UUID=ROOT_UUID rootwait ro console=tty0 fsck.repair=yes net.ifnames=0 ipv6.disable=1 noresume apparmor=0 module_blacklist=evbug efi=novamap clk_ignore_unused pd_ignore_unused deferred_probe_timeout=30
+	echo	'Loading device-tree' 
+	devicetree /dtb-KERNEL_VERSION/msm8998-asus-novago-tp370ql.dtb
+	echo	'Loading initial ramdisk ...'
+	initrd	/initrd.img-KERNEL_VERSION
+}
+menuentry 'Debian GNU/Linux KERNEL_VERSION - hp envy x2' --class debian --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-simple-ROOT_UUID' {
+	load_video
+	insmod gzio
+	if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+	insmod part_gpt
+	insmod ext2
+	if [ x$feature_platform_search_hint = xy ]; then
+	  search --no-floppy --fs-uuid --set=root BOOT_UUID
+	else
+	  search --no-floppy --fs-uuid --set=root BOOT_UUID
+	fi
+	echo	'Loading Linux KERNEL_VERSION ...'
+	linux	/Image-KERNEL_VERSION root=UUID=ROOT_UUID rootwait ro console=tty0 fsck.repair=yes net.ifnames=0 ipv6.disable=1 noresume apparmor=0 module_blacklist=evbug efi=novamap clk_ignore_unused pd_ignore_unused deferred_probe_timeout=30
+	echo	'Loading device-tree' 
+	devicetree /dtb-KERNEL_VERSION/msm8998-hp-envy-x2.dtb
+	echo	'Loading initial ramdisk ...'
+	initrd	/initrd.img-KERNEL_VERSION
+}
+menuentry 'Debian GNU/Linux KERNEL_VERSION - lenovo miix 630' --class debian --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-simple-ROOT_UUID' {
+	load_video
+	insmod gzio
+	if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+	insmod part_gpt
+	insmod ext2
+	if [ x$feature_platform_search_hint = xy ]; then
+	  search --no-floppy --fs-uuid --set=root BOOT_UUID
+	else
+	  search --no-floppy --fs-uuid --set=root BOOT_UUID
+	fi
+	echo	'Loading Linux KERNEL_VERSION ...'
+	linux	/Image-KERNEL_VERSION root=UUID=ROOT_UUID rootwait ro console=tty0 fsck.repair=yes net.ifnames=0 ipv6.disable=1 noresume apparmor=0 module_blacklist=evbug efi=novamap clk_ignore_unused pd_ignore_unused deferred_probe_timeout=30
+	echo	'Loading device-tree' 
+	devicetree /dtb-KERNEL_VERSION/msm8998-lenovo-miix-630.dtb
+	echo	'Loading initial ramdisk ...'
+	initrd	/initrd.img-KERNEL_VERSION
+}

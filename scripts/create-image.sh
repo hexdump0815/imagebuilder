@@ -418,29 +418,24 @@ if [ "${UEFI64}" = "true" ]; then
   fi
 fi
 
+if [ "${UEFI64ARM}" = "true" ]; then
+  chroot ${MOUNT_POINT} apt-get -yq install grub2-common grub-efi-arm64 grub-efi-arm64-bin
+  chroot ${MOUNT_POINT} grub-install --target=arm64-efi /dev/loop0p1 --efi-directory=/boot/efi/ --boot-directory=/boot/
+  # debian needs some extra steps to enable fallback boot sometimes required to boot from external media
+  if [ "$3" = "bookworm" ] || [ "${3}" = "trixie" ]; then
+    chroot ${MOUNT_POINT} mkdir -p /boot/efi/EFI/BOOT
+    chroot ${MOUNT_POINT} cp /boot/efi/EFI/debian/grubaa64.efi /boot/efi/EFI/BOOT/BOOTAA64.EFI
+    # not sure if the below two or even the one above are stricly required, but maybe they help in the
+    # case of broken bios implementations - the old grub used here until now at least had them all around
+    chroot ${MOUNT_POINT} cp /boot/efi/EFI/debian/grubaa64.efi /boot/efi/EFI/BOOT/grubaa64.efi
+    chroot ${MOUNT_POINT} cp /boot/efi/EFI/debian/fbaa64.efi /boot/efi/EFI/BOOT/fbaa64.efi
+    chroot ${MOUNT_POINT} cp /usr/share/images/desktop-base/desktop-grub.png /boot/grub
+  fi
+fi
+
 if [ "${MBR}" = "true" ]; then
   chroot ${MOUNT_POINT} apt-get -yq install grub2-common grub-pc grub-pc-bin
   chroot ${MOUNT_POINT} grub-install /dev/loop0
-fi
-
-# this currently would only be used by snapdragon_xyz systems and does not seem to work yet with
-# the native arm64 grub included in debian and ubuntu so it is made to fail currently by
-# specifying the not existing /boot/selected.dtb
-# TODO: check if this is still the case
-if [ "${UEFI64ARM}" = "true" ]; then
-  chroot ${MOUNT_POINT} apt-get -yq install grub2-common grub-efi-arm64 grub-efi-arm64-bin
-  chroot ${MOUNT_POINT} grub-install --target=arm64-efi /dev/loop0p1 --efi-directory=/boot/efi/ --boot-directory=/boot/ --no-nvram --no-bootsector --dtb=/boot/selected.dtb --removable
-  # debian needs some extra steps to enable fallback boot sometimes required to boot from external media
-  if [ "$3" = "bookworm" ] || [ "${3}" = "trixie" ]; then
-# lets not do this yet as long as that special grub version is still used via
-# the systems extra-files/boot for the aarch64 images - maybe its time to check
-# if the regular debian/ubuntu grub is meanwhile working well enough on aarch64?
-#    chroot ${MOUNT_POINT} mkdir -p /boot/efi/EFI/BOOT
-#    #chroot ${MOUNT_POINT} cp /boot/efi/EFI/debian/grubaa64.efi /boot/efi/EFI/BOOT/BOOTAA64.EFI
-#    chroot ${MOUNT_POINT} cp /boot/efi/EFI/debian/grubaa64.efi /boot/efi/EFI/BOOT/grubaa64.efi
-#    chroot ${MOUNT_POINT} cp /boot/efi/EFI/debian/fbaa64.efi /boot/efi/EFI/BOOT/fbaa64.efi
-    chroot ${MOUNT_POINT} cp /usr/share/images/desktop-base/desktop-grub.png /boot/grub
-  fi
 fi
 
 # TODO: maybe move the update-initramfs from create-fs here ...
