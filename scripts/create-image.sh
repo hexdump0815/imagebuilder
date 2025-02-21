@@ -212,14 +212,6 @@ fi
 
 # this is to make sure we really use the new partition table and have all partitions around
 partprobe /dev/loop0
-losetup -d /dev/loop0
-losetup --partscan /dev/loop0 ${IMAGE_DIR}/${1}-${2}-${3}.img
-
-# not sure if this helps, but this is the try to avoid the random cases of
-# the loop devices not being ready yet from time to time
-sync
-sleep 10
-sync
 
 # for chromebooks write the kernel to the first kernel partition
 # replaced by a velvet-tools based approach further down below for aarch64 chromebooks
