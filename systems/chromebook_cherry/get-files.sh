@@ -1,6 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-chromebook_cherry_release_version="6.12.12-stb-cbm%2B"
+chromebook_cherry_release_version="6.12.15-stb-cbm%2B"
 
 rm -f ${DOWNLOAD_DIR}/kernel-chromebook_cherry-${2}.tar.gz
 wget -v https://github.com/hexdump0815/linux-mainline-mediatek-mt81xx-kernel/releases/download/${chromebook_cherry_release_version}/${chromebook_cherry_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-chromebook_cherry-${2}.tar.gz
