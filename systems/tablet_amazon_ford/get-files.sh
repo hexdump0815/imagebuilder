@@ -1,14 +1,6 @@
 # this file is supposed to be sourced by the get-files shell script
 
-# right now i'm still using a postmarketos kernel+initrd=boot.img and will maybe later move to an own boot.img
-#
-#amazon_ford_release_version="3.10.54-amz-f27%2B"
-#
-#rm -f ${DOWNLOAD_DIR}/kernel-tablet_amazon_ford-armv7l.tar.gz
-#wget -v https://github.com/hexdump0815/linux-amazon-mt8127-kernel/releases/download/${tablet_amazon_ford_release_version}/${tablet_amazon_ford_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-tablet_amazon_ford-armv7l.tar.gz
-
 # get a kernel etc. from a special portmarketos based build
-
 amazon_ford_pmos_release_version="linux-amazon-ford-3.10.54-r3"
 
 rm -rf ${DOWNLOAD_DIR}/boot-extra-${1}

@@ -10,11 +10,6 @@ rockchip_rk33xx_uboot_tpl_spl_version="210131-01"
 rm -f ${DOWNLOAD_DIR}/kernel-rockchip_rk33xx-${2}.tar.gz
 wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/releases/download/${rockchip_rk33xx_release_version}/${rockchip_rk33xx_release_version}.tar.gz -O ${DOWNLOAD_DIR}/kernel-rockchip_rk33xx-${2}.tar.gz
 
-#rm -f ${DOWNLOAD_DIR}/kernel-mali-rockchip_rk33xx-${2}.tar.gz
-#wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/releases/download/${rockchip_rk33xx_release_version}/${rockchip_rk33xx_release_version}-mali-rk3328.tar.gz -O ${DOWNLOAD_DIR}/kernel-mali-rockchip_rk33xx-${2}.tar.gz
-#rm -f ${DOWNLOAD_DIR}/kernel-mali-b-rockchip_rk33xx-${2}.tar.gz
-#wget -v https://github.com/hexdump0815/linux-mainline-and-mali-rockchip-rk33xx-kernel/releases/download/${rockchip_rk33xx_release_version}/${rockchip_rk33xx_release_version}-mali-rk3399.tar.gz -O ${DOWNLOAD_DIR}/kernel-mali-b-alt-rockchip_rk33xx-${2}.tar.gz
-
 rm -f ${DOWNLOAD_DIR}/boot-rockchip_rk33xx-${2}.dd
 wget -v https://github.com/hexdump0815/u-boot-misc/releases/download/${rockchip_rk33xx_uboot_ddrbin_spl_version}/boot-rk3328-ddrbin-spl-aarch64.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-rockchip_rk33xx-${2}.dd
 # get different u-boot versions for different rk33xx rockchip versions to have them around
