@@ -3,7 +3,7 @@ echo s2idle > /sys/power/mem_sleep
 
 # increase the gpu frequency, only do it when nouveau is around - not done yet
 #if [ -f /sys/kernel/debug/dri/129/pstate ]; then
-#  echo 06 > /sys/kernel/debug/dri/129/pstate
+#  echo 04 > /sys/kernel/debug/dri/129/pstate
 #fi
 
 # on 32bit systems with enabled lpae to enable full 4gb memory access like this one
