@@ -50,6 +50,7 @@ see also https://github.com/hexdump0815/imagebuilder/issues/79 for all above
 ## special notes
 
 - when switching nyan chromebooks into developer mode for the first time an error might occur (something with executing some command showing an error in the top left of the screen) - just wait 10+ minutes and if nothing happens, just turn off the chromebook and on restart it will switch into developer mode again automatically and this time it should succeed
+- the nyan chromebooks seem to be able to boot from either usb devices and sd cards (if might be required to try different ones - older and smaller sd cards might work better than newer and larger ones sometimes)
 - most things seem to work more or less (suspend/resume and the gpu are the most troublesome areas)
 - there are two sets of images provided: one using a v5.x mainline kernel (with not really useable suspend/resume) and another with a v3.10 legacy cromeos kernel (with working suspend/resume but the kernel is no longer maintained)
   - if suspend/resume is urgently required the legacy kernel might be the only useable option (i had some problems with the keyboard and touchpad not working anymore in x11 after resume even with the legacy kernel with ubuntu focal - but i also saw it working in this setup)

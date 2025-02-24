@@ -71,11 +71,12 @@ see also https://github.com/hexdump0815/imagebuilder/issues/81 for all above
 
 ## special notes
 
+- the veyron chromebooks seem to not boot properly with all sd cards (and as it seems not at all from usb devices) ... if booting does not work it might be worth to try different sd cards ... older and smaller ones seem to have the higher chance to work well
 - for all images starting with 210731-01 full deep suspend/resume seems to be working, but sometimes maybe not that reliable (it might be considered to switch to s2idle for suspend in /etc/rc.local in case it should be too unreliable)
 - for some strange reason the sound output will be set to headphone by default after the first boot and needs to be switched to speakers manually once
 - sound seems to be gone after resume from suspend, if it is really required it might be considered to switch to s2idle for suspend in
 /etc/rc.local
-- by default the image will boot on veyron jaq, all other systems will require some adjustments of the file extlinux/extlinux.conf in the second partition (see the comments in the file) and writing the corresponding u-boot file from the "extra" subdir of the third partititon (/boot/extra) to the first partition
+- by default the image will boot on veyron mighty, all other systems will require some adjustments of the file extlinux/extlinux.conf in the second partition (see the comments in the file) and writing the corresponding u-boot file from the "extra" subdir of the third partititon (/boot/extra) to the first partition
 - deep suspend is a bit limited with a mainline kernel
   - see: https://irclog.whitequark.org/linux-rockchip/2018-04-03#21712549 - "for suspend/resume but at least between ChromeOS 3.14 and mainline there is a huge difference in handling of ddr self-refresh (not done in mainline at all, so you only get a light suspend)" - would need uboot or lower level support for more
   - it uses about 1.5-2% of the battery capacity per hour, so should keep the system alive for quite a while (more than a day) in suspend mode

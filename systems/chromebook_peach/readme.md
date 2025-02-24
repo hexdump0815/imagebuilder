@@ -55,8 +55,9 @@ zsmalloc/zstd seemed to be limited to around 2 (usually around 3-4 for armv7l)
 resulting in more paging to the swapfile on disk, a workaround was to increase
 the zswap percentage to 50% in /etc/rc.local which was still well useable in
 this setup and resulted in less writes to disk again
-- the peach chromebooks seem to not boot properly with all sd cards ... if
-  booting does not work it might be worth to try different sd cards ... older
-and smaller ones seem to have the higher chance to work well
+- the peach chromebooks seem to not boot properly with all sd cards (and not at
+  all from usb devices) ... if booting does not work it might be worth to try
+different sd cards ... older and smaller ones seem to have the higher chance to
+work well
 - the battery of the snow chromebook (xe303c12) seems to be interchangable with
   the battery of the peach pit chromebook (xe503c12)
