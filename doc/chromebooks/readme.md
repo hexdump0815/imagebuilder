@@ -70,15 +70,31 @@ and enable developer mode
 
 </details>
 
-after your devices finishes you will be able to enter tty from chrome os by pressing ```[ctrl]``` ```[alt]``` ```[->]``` or ```[ctrl]``` ```[alt]``` ```[refresh]``` or ```[ctrl]``` ```[alt]``` ```[f2]```
+### accessing console
 
-_Note. on the first boot screen there will be a button to enable debug mode, **don't do that** unless you know what you are doing since it's not needed to access the tty and may make doing it more difficult_
+after your devices finishes you will be able to access console from chrome os
+
+by pressing ```[ctrl]``` ```[alt]``` ```[->]``` or ```[ctrl]``` ```[alt]``` ```[refresh]``` or ```[ctrl]``` ```[alt]``` ```[f2]```
+
+**or**
+
+going into browser an opening
+```
+chrome-untrusted://crosh
+```
+
+then typing
+```
+shell
+```
+
+_Note. on the first boot screen there will be a button to enable debug mode, **don't do that** unless you know what you are doing since it's not needed to access the console and may make doing it more difficult_
 
 # Booting from usb (or sd)
 
 if you are planning to set [gbb flags](./setting_gbb_flags.md) right away you don't have to do this.
 
-after enabling developer mode enter tty
+after enabling developer mode go into console
 and type
 ```
 sudo crossystem dev_boot_usb=1 dev_boot_signed_only=0

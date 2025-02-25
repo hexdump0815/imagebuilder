@@ -55,7 +55,8 @@ in order to perform this you will need suzyqcable to, buy or make one
 - https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/HEAD/docs/ccd.md#making-your-own-suzyq
 - https://www.youtube.com/watch?v=WGsyXlgSxFk
 
-enter tty and check if CCD (Closed Case Debugging) is opened
+enter console ([details](./readme.md#accessing-console))
+and check if CCD (Closed Case Debugging) is opened
 ```
 gsctool -a -I
 ```
