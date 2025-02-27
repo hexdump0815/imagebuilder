@@ -119,7 +119,7 @@ you should have succesfully booted into the operating system 🎉
 
 good job ❤️
 
-_Note. after first boot there are [some commands you might want to run](./first-boot.md)_
+_Note. after first boot there are [some commands you might want to run](../first-boot.md)_
 
 # What now? Installation?
 
