@@ -8,7 +8,7 @@ wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h6-kern
 
 rm -f ${DOWNLOAD_DIR}/boot-allwinner_h616-${2}.dd
 # get the warpme minimyth2 based axp313a boot block used as well for many h618 boxes
-wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h6-kernel/raw/24b1d4651f39f1a690debf06f23a9e35dae775e2/misc.616/u-boot/boot-h618-axp313a.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-extra-${1}/boot-allwinner_h616-${2}.dd
+wget -v https://github.com/hexdump0815/linux-mainline-and-mali-allwinner-h6-kernel/raw/24b1d4651f39f1a690debf06f23a9e35dae775e2/misc.616/u-boot/boot-h618-axp313a.dd.gz -O - | gunzip -c > ${DOWNLOAD_DIR}/boot-allwinner_h616-${2}.dd
 
 # get different u-boot versions for different veyron versions to have them around
 rm -rf ${DOWNLOAD_DIR}/boot-extra-${1}
