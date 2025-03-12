@@ -13,7 +13,7 @@
 ## tested systems - working
 
 - acer chromebook r13 - elm
-- lenovo chromebook 100e (mt8173 version) - [hana](../../doc/chromebooks/systems/oak/hana-100e-gen2.md)
+- lenovo chromebook 100e (mt8173 version) - [hana](https://github.com/hexdump0815/imagebuilder-doc/blob/main/chromebooks/systems/oak/hana-100e-gen2.md)
 - lenovo chromebook 300e (mt8173 version) - hana
 - lenovo chromebook n23 - hana
 - asus chromebook c202xa - hana
