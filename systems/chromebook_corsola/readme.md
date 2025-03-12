@@ -7,7 +7,7 @@
 
 ## tested systems - working
 
-- lenovo ideapad slim 3 (mt8186 version) - [magenton](../../doc/chromebooks/systems/corsola/magneton.md)
+- lenovo ideapad slim 3 (mt8186 version) - [magenton](https://github.com/hexdump0815/imagebuilder-doc/blob/main/chromebooks/systems/corsola/magneton.md)
   - see also: https://github.com/hexdump0815/imagebuilder/issues/228
 - asus chromebook cm14 (cm1402c) - tentacool
 
