@@ -31,6 +31,7 @@
 - the lte models of those tablets have 2gb or ram and the wifi ones only 1.5gb
 - to install write the image to an sd card and install lk2nd-msm8916.img from https://github.com/msm8916-mainline/lk2nd/releases via the instructions in https://github.com/msm8916-mainline/lk2nd/blob/master/README.md
 - a1 rated sd cards are highly recommended as otherwise the performance will be bad due to bad random disk io
+- it looks like those devices will not run from all kinds of sd cards, so in case of a non booting device trying a different sd card might be worth a try (known to be working: sandisk ultra a1 32gb)
 - for some reason at least once the firmware loading for wifi did not work after the first boot, after rebooting it worked
 - if the tablet is connected to a computer or power supply via usb a shutdown will result in a reboot, disconnecting it will let it shutdown properly
 - sometimes there the system was hanging during shutdown, tapping onto the screen a few times seems to help (i did not see this happen anymore in recent times)
