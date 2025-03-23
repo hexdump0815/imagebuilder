@@ -1,6 +1,6 @@
 # Velvet OS
 
-**Attention.** full documentation at https://github.com/hexdump0815/imagebuilder-doc
+**Attention.** full documentation at https://github.com/velvet-os/doc
 
 ## System specific information and images :
 
