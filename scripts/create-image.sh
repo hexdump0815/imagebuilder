@@ -450,7 +450,7 @@ fi
 
 if [ "${MBR}" = "true" ]; then
   chroot ${MOUNT_POINT} apt-get -yq install grub2-common grub-pc grub-pc-bin
-  chroot ${MOUNT_POINT} grub-install /dev/loop0
+  chroot ${MOUNT_POINT} grub-install /dev/loop0 --target i386-pc
 fi
 
 # TODO: maybe move the update-initramfs from create-fs here ...
