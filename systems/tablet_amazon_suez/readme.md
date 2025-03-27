@@ -17,7 +17,7 @@
 
 ## priority
 
-- low: will be worked on and improved rarely, another try to get native wifi working or otherwise some cheap usb wifi will be included in the kernel config, otherwise not much left to be done due to legacy kernel
+- on hold: no more changes planned and it is unlikely that there will be images beyond the bookworm ones
 
 ## special notes
 

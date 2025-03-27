@@ -30,7 +30,7 @@
 
 ## priority
 
-- low: will be worked on and improved rarely
+- on hold: no more changes planned and it is unlikely that there will be images beyond the bookworm ones
 
 ## special notes
 

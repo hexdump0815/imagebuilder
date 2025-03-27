@@ -17,7 +17,7 @@
 
 ## priority
 
-- low: will be worked on and improved rarely, not much left to be done due to legacy kernel
+- on hold: no more changes planned and it is unlikely that there will be images beyond the bookworm ones
 
 ## special notes
 
