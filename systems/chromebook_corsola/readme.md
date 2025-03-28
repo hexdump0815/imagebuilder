@@ -21,6 +21,8 @@
 - asus chromebook cz12 flip (cz1204f) - chinchou360
 - huaqin noname (it seems to have lte) - ponyta
 - acer chromebook 311 (c723/c723t) - voltorb
+- acer chromebook 311 (r724t) - squirtle
+- hp chromebook g1m 11 inch - skitty
 
 ## generic mainline linux on arm chromebook notes
 
