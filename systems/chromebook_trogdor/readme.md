@@ -10,13 +10,13 @@
 
 ## tested systems - working
 
-- acer chromebook spin sp513-1h/sp513-1hl - [lazor](../../doc/chromebooks/systems/trogdor/lazor.md)
+- acer chromebook spin sp513-1h/sp513-1hl - [lazor](https://github.com/hexdump0815/imagebuilder-doc/blob/main/chromebooks/systems/trogdor/lazor.md)
   - see also: https://github.com/hexdump0815/imagebuilder/issues/47
 - hp chromebook x2 - coachz
   - see also: https://github.com/hexdump0815/imagebuilder/issues/44
-- lenovo chromeboot duet 5 - [homestar](../../doc/chromebooks/systems/trogdor/homestar.md)
+- lenovo chromeboot duet 5 - [homestar](https://github.com/hexdump0815/imagebuilder-doc/blob/main/chromebooks/systems/trogdor/homestar.md)
   - see also: https://github.com/hexdump0815/imagebuilder/issues/68
-- lenovo chromeboot duet 3 - [wormdingler](../../doc/chromebooks/systems/trogdor/wormdingler.md)
+- lenovo chromeboot duet 3 - [wormdingler](https://github.com/hexdump0815/imagebuilder-doc/blob/main/chromebooks/systems/trogdor/wormdingler.md)
   - see also: https://github.com/hexdump0815/imagebuilder/issues/182
 
 ## untested systems
