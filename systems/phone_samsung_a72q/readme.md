@@ -34,7 +34,8 @@
   - do not consider playing around with this without a deep understanding about linux, android, the android boot process and partition setup
   way
 - this is not very useable yet, still in a very early and experimental phase, but at least i got a debian bookworm system booting well using a self built and installed kernel
-  - it is required to install twrp as recovery on the device to have a last resort in case some installed kernel does not boot
+  - it is strictly required to install twrp as recovery on the device before doing anything to have a last resort in case some installed kernel does not boot
+  - in case of installing a non booting kernel/boot image it might be the case that the device cannot be powered off anymore by long pressing the power button as usually, press power+volume-down until the system reboots and immediately after power+volume-up to get into trwp at least - from there a known working boot image can be installed or the device being powered down (only possible without connected power)
   - currently only running from sd card is considered, it would also be possible to run from the internal ufs storage but this is not handled here yet as the risk to brick the device is even higher this way
   - the disk-image (please gunzip the files from the release download before using them) has to be written to an sd card, the boot-a52.img-version or boot-a72.img-version has to be written to the boot partition of the device via twrp and the emptyDTBO.img has to be written to the dtbo partition via twrp
   - usb has been switched to host mode (compared to the peripheral mode of pmos for its usb ethernet) so that it is possible to connect usb devices like ethernet, keyboard, mouse etc. - there is no host power provided by the port, i.e. a powered usb-c hub is required to connect anything (it looks like the device is powered properly this way too)
