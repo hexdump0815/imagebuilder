@@ -12,7 +12,7 @@
 
 ## tested systems - working
 
-- lenovo ideapad duet 10.1 chromebook - [krane](../../doc/chromebooks/systems/kukui/krane.md)
+- lenovo ideapad duet 10.1 chromebook - [krane](https://github.com/hexdump0815/imagebuilder-doc/blob/main/chromebooks/systems/kukui/krane.md)
   - see also: https://github.com/hexdump0815/imagebuilder/issues/53
 - acer chromebook spin cp311-3h - juniper
   - see also: https://github.com/hexdump0815/imagebuilder/issues/52
@@ -30,7 +30,7 @@
   - see also: https://github.com/hexdump0815/imagebuilder/issues/75
 - acer chromebook 311 - kenzo
   - see https://github.com/hexdump0815/imagebuilder/issues/141#issuecomment-1663779043
-- lenovo 10e chromebook tablet - [kodama](../../doc/chromebooks/systems/kukui/kodama.md)
+- lenovo 10e chromebook tablet - [kodama](https://github.com/hexdump0815/imagebuilder-doc/blob/main/chromebooks/systems/kukui/kodama.md)
   - see https://github.com/hexdump0815/imagebuilder/issues/202
 - asus chromebook detachable cz1 - katsu
 - hp chromebook 11mk g9 ee - burnet/esche
