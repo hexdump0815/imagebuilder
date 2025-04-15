@@ -1,6 +1,6 @@
 # Velvet OS
 
-**Attention.** full documentation at https://github.com/velvet-os/doc
+**Attention.** full documentation at https://github.com/velvet-os/velvet-os.github.io or https://velvet-os.github.io/
 
 ## System specific information and images :
 
