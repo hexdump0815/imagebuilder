@@ -1,5 +1,7 @@
 # Velvet OS
 
+## Remember. Login: linux / Password: changeme !!!
+
 **Attention.** full documentation at https://github.com/velvet-os/velvet-os.github.io or https://velvet-os.github.io/
 
 ## System specific information and images :
