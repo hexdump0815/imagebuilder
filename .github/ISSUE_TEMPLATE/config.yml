@@ -1,5 +1,8 @@
 blank_issues_enabled: true
 contact_links:
+  - name: Known Issue
+    url: https://velvet-os.github.io/important-information.html
+    about: Check if your issue is known.
   - name: FAQ
     url: https://velvet-os.github.io/faq
     about: Read before opening any issues.
