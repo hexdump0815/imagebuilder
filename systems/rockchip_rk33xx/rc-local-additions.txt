@@ -10,3 +10,13 @@
 #  # for possible values see /sys/devices/system/cpu/cpufreq/policy0/scaling_available_frequencies
 #  echo 1200000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 #fi
+
+# here it is possible to set a higher max cpu frequency before enabling
+# the boost frequencies to step by step try out until which frequency
+# the system still remains stable - for possible values
+# see: cat /sys/devices/system/cpu/cpufreq/policy0/scaling_available_frequencies
+# and: cat /sys/devices/system/cpu/cpufreq/policy0/scaling_boost_frequencies
+#if [ -f /sys/devices/system/cpu/cpufreq/boost ]; then
+#  echo 1 > /sys/devices/system/cpu/cpufreq/boost
+#  echo 1200000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+#fi
