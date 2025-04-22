@@ -20,3 +20,12 @@ esac
 
 mkdir -p ${DESTDIR}/lib/firmware/qcom
 cp -a /lib/firmware/qcom/sm7125 ${DESTDIR}/lib/firmware/qcom
+# we need to remove some large files as otherwise the initramfs
+# will get too big to be bootable - kernel and initrd combined
+# in the boot.img are limited to a bit more than 90mb on those
+# devices
+rm -rf ${DESTDIR}/lib/firmware/qcom/sm7125/a72q/modem*
+rm -rf ${DESTDIR}/lib/firmware/qcom/sm7125/a52q/modem*
+# the below lines can be used for debugging sizes
+#find ${DESTDIR}/lib/firmware/qcom
+#du -sh ${DESTDIR}/lib/firmware/qcom
