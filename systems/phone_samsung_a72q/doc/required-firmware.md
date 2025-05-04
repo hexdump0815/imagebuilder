@@ -54,6 +54,39 @@ cp -v /lib/firmware/qcom/sm7125/a52q/wlanmdsp.mbn /lib/firmware/ath10k/WCN3990/h
 cp -v /lib/firmware/qcom/sm7125/a52q/a615_zap.* /lib/firmware/qcom
 ```
 
+## extra steps required to prepare the firmware files for the v6.10 kernel
+
+the v6.10 a52/a72 kernel does no longer use the firmware files as they are
+copied from the firmware partiitons of the phone (i.e. in multiple parts) but
+instead as combined firmware files. to combine the firmware files the following
+commands have to be run as root (or better via sudo):
+
+```
+cd somewhere
+git clone https://github.com/linux-msm/pil-squasher
+make
+# now copy all the above collected *.mdt and *.b?? files here
+# and run the following commands to combine them into .mbn files
+./pil-squasher a615_zap.mbn a615_zap.mdt
+./pil-squasher ipa_fws.mbn ipa_fws.mdt
+./pil-squasher adsp.mbn adsp.mdt
+./pil-squasher cdsp.mbn cdsp.mdt
+./pil-squasher modem.mbn modem.mdt
+./pil-squasher venus.mbn venus.mdt
+rm *.mdt
+rm *.b??
+# now copy the combined firmware files to the firmware dir
+# and remove the no longer required *.mdt and *.b?? files there
+# a72 case
+cp a615_zap.mbn ipa_fws.mbn adsp.mbn cdsp.mbn modem.mbn venus.mbn /lib/firmware/qcom/sm7125/a72q
+rm -i /lib/firmware/qcom/sm7125/a72q/*.mdt
+rm -i /lib/firmware/qcom/sm7125/a72q/*.b??
+# or alternatively a52 case
+cp a615_zap.mbn ipa_fws.mbn adsp.mbn cdsp.mbn modem.mbn venus.mbn /lib/firmware/qcom/sm7125/a52q
+rm -i /lib/firmware/qcom/sm7125/a52q/*.mdt
+rm -i /lib/firmware/qcom/sm7125/a52q/*.b??
+```
+
 ## steps required to enable gpu support with the firmware files in place
 
 nothing special is required - as soon as the firmware files are in place the
