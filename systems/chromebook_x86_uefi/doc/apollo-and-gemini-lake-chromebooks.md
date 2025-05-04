@@ -207,6 +207,8 @@ should at least be aware of that risk.
 
 ## make audio work
 
+### bookworm images from 2024 or earlier
+
 to make audio work on apollo and gemini lake chromebooks the following steps
 are required:
 
@@ -230,6 +232,52 @@ seems to default to headphones initially by default
 - it might require a special kernel build to work - see
   https://github.com/hexdump0815/linux-mainline-x86-64-kernel/releases and
 https://github.com/hexdump0815/imagebuilder/blob/main/doc/chromebooks/kernel/installing-a-newer-kernel.md
+
+### trixie images from may 2025 or later
+
+these images do not ship with any special sound preparation for those devices
+anymore and instead the chromebook audio setup script from
+https://github.com/WeirdTreeThing/chromebook-linux-audio is used as it is
+focussed on getting audio working on various x86 chromebooks and it is very
+actively maintained. to get audio working
+the following steps should be done as root user (or better via sudo):
+
+```
+cd somewhere
+git clone https://github.com/WeirdTreeThing/chromebook-linux-audio
+cd chromebook-linux-audio
+./setup-audio
+```
+
+this will prepare the firmware and config files for the current device the
+script is being run on. afterwards on gemini lake chromebooks the following has
+to be done (see above for details regarding the firmware symlinking):
+
+```
+cp conf/sof/mtl-sof.conf /etc/modprobe.d
+cd /lib/firmware/intel/sof
+mv sof-glk.ri sof-glk.ri.org
+ln -s community/sof-glk.ri sof-glk.ri
+apt-mark hold firmware-intel-sound
+```
+
+here the mtl-sof.conf file from the chromebook-linux-audio repo changes the dsp
+mode to sof (dsp_driver=3) required for gemini lake devices - see "modinfo
+snd-intel-dspcfg" for available options. for comet-, tiger-, jasper-, alder-
+and meteor-lake devices a similar and maybe slightly adjusted approach should
+work (still to be verified). for apollo lake plus kaby- and skylake devices the
+conf/avs/snd-avs.conf file from the chromebook-linux-audio repo should be
+copied to /etc/modprobe.d (still to be verified). for baytrail, cherrytrail,
+broadwell and braswell devices the conf/sof/hifi2-sof.conf file from the
+chromebook-linux-audio repo should be copied to /etc/modprobe.d (still to be
+verified as well).
+
+note: gemini lake devices might potentially also use the avs firmware approach
+but at the risk of burning the speakers in the worst case due to missing speaker
+protection in some cases - due to this this is just mentioned here, but not
+recommended.
+
+this section will be updated once more details for different devices were tested.
 
 ## switch suspend to s2idle mode
 
