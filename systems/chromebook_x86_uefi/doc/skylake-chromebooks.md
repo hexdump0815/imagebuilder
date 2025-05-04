@@ -16,6 +16,8 @@ information about anyone who got it working with newer kernels).
 
 ## getting audio to work
 
+### bookworm images from 2024 or earlier
+
 first one needs to install a kernel with working audio for those devices - a
 precompiled v5.10 kernel (latest lts version with working audio on those
 devices which will be supported until at least end of 2026) can be downloaded
@@ -58,6 +60,31 @@ the latest security updates. some notes about this can be found here:
 https://github.com/hexdump0815/imagebuilder/blob/main/doc/chromebooks/kernel/building-own-kernels.md
 and here:
 https://github.com/hexdump0815/imagebuilder/blob/main/doc/chromebooks/kernel/installing-a-newer-kernel.md
+
+### trixie images from may 2025 or later
+
+a special and older kernel is no longer required for those devices
+anymore and instead the chromebook audio setup script from
+https://github.com/WeirdTreeThing/chromebook-linux-audio is used as it is
+focussed on getting audio working on various x86 chromebooks and it is very
+actively maintained. to get audio working
+the following steps should be done as root user (or better via sudo):
+
+```
+cd somewhere
+git clone https://github.com/WeirdTreeThing/chromebook-linux-audio
+cd chromebook-linux-audio
+./setup-audio
+```
+
+this will prepare the firmware and config files for the current device the
+script is being run on. afterwards on skylake chromebooks the following has
+to be done (still to be verified):
+
+```
+cp conf/avs/snd-avs.conf /etc/modprobe.d
+```
+this section will be updated once more details for different devices were tested.
 
 ## suspend/resume
 
