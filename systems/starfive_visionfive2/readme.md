@@ -2,9 +2,9 @@
 
 ## bootable sd card images
 
-- https://github.com/hexdump0815/imagebuilder/releases/tag/240519-01
-- https://github.com/hexdump0815/imagebuilder/releases/tag/230321-02
-- https://github.com/hexdump0815/imagebuilder/releases/tag/230115-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/240519-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/230321-02
+- https://github.com/velvet-os/imagebuilder/releases/tag/230115-01
 
 ## tested systems - working
 

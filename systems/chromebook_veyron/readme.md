@@ -2,14 +2,14 @@
 
 ## bootable sd card images
 
-- https://github.com/hexdump0815/imagebuilder/releases/tag/231001-02
-- https://github.com/hexdump0815/imagebuilder/releases/tag/230218-05
-- https://github.com/hexdump0815/imagebuilder/releases/tag/220820-01
-- https://github.com/hexdump0815/imagebuilder/releases/tag/220611-02
-- https://github.com/hexdump0815/imagebuilder/releases/tag/210731-01
-- https://github.com/hexdump0815/imagebuilder/releases/tag/210613-03
-- https://github.com/hexdump0815/imagebuilder/releases/tag/210321-01
-- https://github.com/hexdump0815/imagebuilder/releases/tag/200526-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/231001-02
+- https://github.com/velvet-os/imagebuilder/releases/tag/230218-05
+- https://github.com/velvet-os/imagebuilder/releases/tag/220820-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/220611-02
+- https://github.com/velvet-os/imagebuilder/releases/tag/210731-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/210613-03
+- https://github.com/velvet-os/imagebuilder/releases/tag/210321-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/200526-01
 
 ## tested systems - working
 
@@ -17,14 +17,14 @@
 - medion chromebook s2015 - mighty
 - asus chromebook c201 - speedy
 - asus chromebook c100 - minnie
-  - see also: https://github.com/hexdump0815/imagebuilder/issues/16
+  - see also: https://github.com/velvet-os/imagebuilder/issues/16
 - hisense chromebook 11 - jerry
 - edugear chromebook m series - mighty
-  - see also: https://github.com/hexdump0815/imagebuilder/issues/110
+  - see also: https://github.com/velvet-os/imagebuilder/issues/110
 - asus chromebit cs10 - mickey
-  - u-boot not working yet: https://github.com/hexdump0815/imagebuilder/issues/130#issuecomment-1454334195
+  - u-boot not working yet: https://github.com/velvet-os/imagebuilder/issues/130#issuecomment-1454334195
 
-see also https://github.com/hexdump0815/imagebuilder/issues/81 for all above
+see also https://github.com/velvet-os/imagebuilder/issues/81 for all above
 
 ## untested systems
 

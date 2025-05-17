@@ -18,4 +18,4 @@ wget -v https://github.com/hexdump0815/pmaports-amazon/releases/download/${amazo
 # get the firmware and related files to get wifi working
 rm -rf ${DOWNLOAD_DIR}/postinstall-${1}
 mkdir -p ${DOWNLOAD_DIR}/postinstall-${1}
-wget -v https://github.com/hexdump0815/imagebuilder-firmware/raw/main/tablet_amazon_douglas-firmware.tar.gz -O ${DOWNLOAD_DIR}/postinstall-${1}/tablet_amazon_douglas-firmware.tar.gz
+wget -v https://github.com/velvet-os/imagebuilder-firmware/raw/main/tablet_amazon_douglas-firmware.tar.gz -O ${DOWNLOAD_DIR}/postinstall-${1}/tablet_amazon_douglas-firmware.tar.gz

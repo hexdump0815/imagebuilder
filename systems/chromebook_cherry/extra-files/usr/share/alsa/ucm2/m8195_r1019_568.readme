@@ -6,4 +6,4 @@ alsaucm  -c m8195_r1019_5682s set _verb HiFi set _enadev Speaker
 alsaucm  -c m8195_r1019_5682s set _verb HiFi set _enadev "Internal Mic"
 ```
 
-More info on https://github.com/hexdump0815/imagebuilder/issues/61
+More info on https://github.com/velvet-os/imagebuilder/issues/61

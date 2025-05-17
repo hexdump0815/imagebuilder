@@ -2,12 +2,12 @@
 
 ## bootable sd card images
 
-- https://github.com/hexdump0815/imagebuilder/releases/tag/230915-01
-- https://github.com/hexdump0815/imagebuilder/releases/tag/230224-05
-- https://github.com/hexdump0815/imagebuilder/releases/tag/220824-01
-- https://github.com/hexdump0815/imagebuilder/releases/tag/220612-02
-- https://github.com/hexdump0815/imagebuilder/releases/tag/210803-01
-- https://github.com/hexdump0815/imagebuilder/releases/tag/210508-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/230915-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/230224-05
+- https://github.com/velvet-os/imagebuilder/releases/tag/220824-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/220612-02
+- https://github.com/velvet-os/imagebuilder/releases/tag/210803-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/210508-01
 
 ## tested systems - working
 
@@ -50,5 +50,5 @@
 - for a working edid file for a 1280x720 screen resolution see https://forum.odroid.com/viewtopic.php?p=329241&sid=7a49d9e1a9c91ee32c46bf6dc64c5b47#p329241
 - for a patched libc to make widevine working see https://forum.odroid.com/viewtopic.php?p=329192&sid=7a49d9e1a9c91ee32c46bf6dc64c5b47#p329192
 - for a precompiled kodi with hw accel to use with this image please see https://forum.odroid.com/viewtopic.php?p=329945&sid=7a49d9e1a9c91ee32c46bf6dc64c5b47#p329945
-- some notes on running the image on the odroid u: https://github.com/hexdump0815/imagebuilder/issues/39
-- some infos about booting these images from emmc can be found here: https://github.com/hexdump0815/imagebuilder/issues/1 and here: https://github.com/hexdump0815/u-boot-misc/blob/master/readme.exy#L35-L49
+- some notes on running the image on the odroid u: https://github.com/velvet-os/imagebuilder/issues/39
+- some infos about booting these images from emmc can be found here: https://github.com/velvet-os/imagebuilder/issues/1 and here: https://github.com/hexdump0815/u-boot-misc/blob/master/readme.exy#L35-L49

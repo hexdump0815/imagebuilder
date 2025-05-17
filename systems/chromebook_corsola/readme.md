@@ -2,13 +2,13 @@
 
 ## bootable sd card images
 
-- https://github.com/hexdump0815/imagebuilder/releases/tag/240112-01
-- https://github.com/hexdump0815/imagebuilder/releases/tag/230626-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/240112-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/230626-01
 
 ## tested systems - working
 
-- lenovo ideapad slim 3 (mt8186 version) - [magenton](https://github.com/hexdump0815/imagebuilder-doc/blob/main/chromebooks/systems/corsola/magneton.md)
-  - see also: https://github.com/hexdump0815/imagebuilder/issues/228
+- lenovo ideapad slim 3 (mt8186 version) - [magenton](https://github.com/velvet-os/velvet-os.github.io/blob/main/chromebooks/systems/corsola/magneton.md)
+  - see also: https://github.com/velvet-os/imagebuilder/issues/228
 - asus chromebook cm14 (cm1402c) - tentacool
 
 ## untested systems

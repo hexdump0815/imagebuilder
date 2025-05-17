@@ -7,7 +7,7 @@
 ## tested systems - working
 
 - anberic rg552
-  - see also: https://github.com/hexdump0815/imagebuilder/issues/276
+  - see also: https://github.com/velvet-os/imagebuilder/issues/276
 
 _likely won't work on other devices_
 
