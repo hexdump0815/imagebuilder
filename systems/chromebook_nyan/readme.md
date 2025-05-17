@@ -2,14 +2,14 @@
 
 ## bootable sd card images
 
-- https://github.com/hexdump0815/imagebuilder/releases/tag/230915-02
-- https://github.com/hexdump0815/imagebuilder/releases/tag/230218-04
-- https://github.com/hexdump0815/imagebuilder/releases/tag/220611-01
-- https://github.com/hexdump0815/imagebuilder/releases/tag/211114-01
-- https://github.com/hexdump0815/imagebuilder/releases/tag/210724-01 (with legacy images)
-- https://github.com/hexdump0815/imagebuilder/releases/tag/210613-02
-- https://github.com/hexdump0815/imagebuilder/releases/tag/210321-01
-- https://github.com/hexdump0815/imagebuilder/releases/tag/200526-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/230915-02
+- https://github.com/velvet-os/imagebuilder/releases/tag/230218-04
+- https://github.com/velvet-os/imagebuilder/releases/tag/220611-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/211114-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/210724-01 (with legacy images)
+- https://github.com/velvet-os/imagebuilder/releases/tag/210613-02
+- https://github.com/velvet-os/imagebuilder/releases/tag/210321-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/200526-01
 
 ## tested systems - working
 
@@ -17,7 +17,7 @@
 - acer chromebook 13 c810 - nyan big
 - hp chromebook 14 g3 - nyan blaze
 
-see also https://github.com/hexdump0815/imagebuilder/issues/79 for all above
+see also https://github.com/velvet-os/imagebuilder/issues/79 for all above
 
 ## untested systems
 
@@ -57,7 +57,7 @@ see also https://github.com/hexdump0815/imagebuilder/issues/79 for all above
   - if not the mainline kernel version should be used
   - both image types contain both kernels (the other kernel tar.gz file is located in /boot/extra) and can be converted into each other with a hand full of commands (will add them here soon)
   - to make it useable with both kernels the root filesystems uses ext4 and not btrfs like those images here usually as the btrfs support in the legacy kernel is too old to be really useable
-  - for information about using the legacy kernel with legacy gpu drivers please have a look at https://github.com/hexdump0815/imagebuilder/issues/174
+  - for information about using the legacy kernel with legacy gpu drivers please have a look at https://github.com/velvet-os/imagebuilder/issues/174
 - there are several versions of the nyan big available: 2g/4g ram and hd/full hd display
   - the 4gb/full hd i have is working well
   - the 2gb/hd i have is working well, but the u-boot output is not visible as u-boot does not seem to be able to initialize the display properly (a lot of screen flickering or a black screen) - as a result one has to type the number at the boot prompt blindly at the right time for now :)
@@ -72,7 +72,7 @@ see also https://github.com/hexdump0815/imagebuilder/issues/79 for all above
   - 2: linux-big-fhd - nyan big with the full hd 1920x1080 screen
   - 3: linux-blaze - nyan blaze with the 1366x768 screen (not sure if there is maybe a full hd version of the blaze as well?)
 - the default boot blocks installed for the image are for the 4gb model and the default dtb selected is the lower res nyan-big model - not sure if this combination really exists, but one can easily choose the second option (linux-big-fhd) in the u-boot menu to boot for the full hd model and for all other combinations new bootblocks will have to be written and the extlinux.conf file has to be adjusted anyway
-- some nyan big related issue with some info: https://github.com/hexdump0815/imagebuilder/issues/6
+- some nyan big related issue with some info: https://github.com/velvet-os/imagebuilder/issues/6
 - for more info about xorg gpu support see doc/xorg-and-nouveau.md
 - for more info about the suspend/resume topic see doc/suspend-resume.md
 - the thermal cpu throttling was not working with older kernels and the cpu frequency was limited to 1.7 ghz in /etc/rc.local to avoid automatic shutdown due to overheating in case of constant full load (fixed for v5.18+ kernels)

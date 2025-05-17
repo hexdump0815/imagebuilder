@@ -15,6 +15,6 @@
   - i tried to improve the ucm setup, but was not able to get anything reliably better - best was working speaker and headphones, but after once switching to headphones and back some ugly distortion came along every few seconds - so i kept the hacked simple setup with only speaker output for now
   - there is a hack in place so that there is at least some working pulseaudio output
   - mic input not working - the problem seems to be that the kernel cannot open the capture channels (maybe full duplex is not working)
-- maybe give the open source panfrost gpu driver a try - see: https://github.com/hexdump0815/imagebuilder/issues/27#issuecomment-1179535653
+- maybe give the open source panfrost gpu driver a try - see: https://github.com/velvet-os/imagebuilder/issues/27#issuecomment-1179535653
   - see also:
     - https://gitlab.com/postmarketOS/pmaports/-/blob/master/device/testing/linux-postmarketos-exynos5/0037-soc-samsung-pm_domains-Bring-back-old-driver-impleme.patch

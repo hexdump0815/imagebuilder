@@ -2,39 +2,39 @@
 
 ## bootable sd card images
 
-- https://github.com/hexdump0815/imagebuilder/releases/tag/230917-01
-- https://github.com/hexdump0815/imagebuilder/releases/tag/230218-01
-- https://github.com/hexdump0815/imagebuilder/releases/tag/220818-01
-- https://github.com/hexdump0815/imagebuilder/releases/tag/220606-01
-- https://github.com/hexdump0815/imagebuilder/releases/tag/220528-01
-- https://github.com/hexdump0815/imagebuilder/releases/tag/210724-03
-- https://github.com/hexdump0815/imagebuilder/releases/tag/210321-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/230917-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/230218-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/220818-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/220606-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/220528-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/210724-03
+- https://github.com/velvet-os/imagebuilder/releases/tag/210321-01
 
 ## tested systems - working
 
-- lenovo ideapad duet 10.1 chromebook - [krane](https://github.com/hexdump0815/imagebuilder-doc/blob/main/chromebooks/systems/kukui/krane.md)
-  - see also: https://github.com/hexdump0815/imagebuilder/issues/53
+- lenovo ideapad duet 10.1 chromebook - [krane](https://github.com/velvet-os/velvet-os.github.io/blob/main/chromebooks/systems/kukui/krane.md)
+  - see also: https://github.com/velvet-os/imagebuilder/issues/53
 - acer chromebook spin cp311-3h - juniper
-  - see also: https://github.com/hexdump0815/imagebuilder/issues/52
+  - see also: https://github.com/velvet-os/imagebuilder/issues/52
 - hp chromebook 11a - kappa
-  - see also: https://github.com/hexdump0815/imagebuilder/issues/52
+  - see also: https://github.com/velvet-os/imagebuilder/issues/52
 - lenovo ideapad 3 chromebook 14 inch (mt8183 version) - fennel14
-  - see also: https://github.com/hexdump0815/imagebuilder/issues/49
+  - see also: https://github.com/velvet-os/imagebuilder/issues/49
 - lenovo ideapad flex 3 chromebook (mt8183 version) - fennel
-  - see also: https://github.com/hexdump0815/imagebuilder/issues/58
+  - see also: https://github.com/velvet-os/imagebuilder/issues/58
 - asus chromebook flip cm3 (mt8183 version) - damu
-  - see also: https://github.com/hexdump0815/imagebuilder/issues/62
+  - see also: https://github.com/velvet-os/imagebuilder/issues/62
 - asus chromebook cm3 - kakadu
-  - see also: https://github.com/hexdump0815/imagebuilder/issues/71
+  - see also: https://github.com/velvet-os/imagebuilder/issues/71
 - acer chromebook 314 (cb314-2h/cb314-2ht) - cozmo
-  - see also: https://github.com/hexdump0815/imagebuilder/issues/75
+  - see also: https://github.com/velvet-os/imagebuilder/issues/75
 - acer chromebook 311 - kenzo
-  - see https://github.com/hexdump0815/imagebuilder/issues/141#issuecomment-1663779043
-- lenovo 10e chromebook tablet - [kodama](https://github.com/hexdump0815/imagebuilder-doc/blob/main/chromebooks/systems/kukui/kodama.md)
-  - see https://github.com/hexdump0815/imagebuilder/issues/202
+  - see https://github.com/velvet-os/imagebuilder/issues/141#issuecomment-1663779043
+- lenovo 10e chromebook tablet - [kodama](https://github.com/velvet-os/velvet-os.github.io/blob/main/chromebooks/systems/kukui/kodama.md)
+  - see https://github.com/velvet-os/imagebuilder/issues/202
 - asus chromebook detachable cz1 - katsu
 - hp chromebook 11mk g9 ee - burnet/esche
-  - reported via https://github.com/hexdump0815/imagebuilder/issues/187
+  - reported via https://github.com/velvet-os/imagebuilder/issues/187
 
 ## untested systems
 
@@ -63,7 +63,7 @@
 ## special notes
 
 - most things seem to work more or less (mostly thanks to the kernel patches partially taken from https://github.com/Maccraft123/Cadmium/tree/master/baseboard/kukui/patches)
-- it seems that sometimes kukui devices give a high pitch noise after resuming from suspend (seen with kappa and juniper so far) - a useable workaround is to put the device into suspend and wake it up again, then the noise should be gone - see also: https://github.com/hexdump0815/imagebuilder/issues/65
+- it seems that sometimes kukui devices give a high pitch noise after resuming from suspend (seen with kappa and juniper so far) - a useable workaround is to put the device into suspend and wake it up again, then the noise should be gone - see also: https://github.com/velvet-os/imagebuilder/issues/65
 - juniper: sometimes the touchpad does not seem to work after booting, rebooting usually helps
 - krane, kakadu and katsu: the display rotation will be set properly during the first boot, afterwards it will reboot once automatically and should come up with the display correctly set to landscape mode - so please don't be surprised about the first automatic reboot and be ready with ctrl-u for the second boot :)
 - some log spamming kernel messages have been silenced:

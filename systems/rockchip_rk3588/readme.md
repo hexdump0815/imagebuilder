@@ -2,8 +2,8 @@
 
 ## bootable sd card images
 
-- https://github.com/hexdump0815/imagebuilder/releases/tag/230321-01 (radxa rock 5b)
-- https://github.com/hexdump0815/imagebuilder/releases/tag/230122-02 (orange pi 5)
+- https://github.com/velvet-os/imagebuilder/releases/tag/230321-01 (radxa rock 5b)
+- https://github.com/velvet-os/imagebuilder/releases/tag/230122-02 (orange pi 5)
 
 ## tested systems - working
 
