@@ -21,4 +21,4 @@ mkdir -p ${DOWNLOAD_DIR}/postinstall-${1}
 wget -v https://github.com/hexdump0815/msm-fb-refresher/releases/download/${fb_refresher_version}/opt-msm-fb-refresher-${3}-armv7l.tar.gz -O ${DOWNLOAD_DIR}/postinstall-${1}/opt-msm-fb-refresher-${3}-armv7l.tar.gz
 
 # get the firmware and related files to get wifi working
-wget -v https://github.com/hexdump0815/imagebuilder-firmware/raw/main/tablet_amazon_ford-firmware.tar.gz -O ${DOWNLOAD_DIR}/postinstall-${1}/tablet_amazon_ford-firmware.tar.gz
+wget -v https://github.com/velvet-os/imagebuilder-firmware/raw/main/tablet_amazon_ford-firmware.tar.gz -O ${DOWNLOAD_DIR}/postinstall-${1}/tablet_amazon_ford-firmware.tar.gz

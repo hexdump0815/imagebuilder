@@ -2,18 +2,18 @@
 
 ## bootable sd card images
 
-- https://github.com/hexdump0815/imagebuilder/releases/tag/230924-02
-- https://github.com/hexdump0815/imagebuilder/releases/tag/230220-02
-- https://github.com/hexdump0815/imagebuilder/releases/tag/220619-02
-- https://github.com/hexdump0815/imagebuilder/releases/tag/210725-01
-- https://github.com/hexdump0815/imagebuilder/releases/tag/210613-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/230924-02
+- https://github.com/velvet-os/imagebuilder/releases/tag/230220-02
+- https://github.com/velvet-os/imagebuilder/releases/tag/220619-02
+- https://github.com/velvet-os/imagebuilder/releases/tag/210725-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/210613-01
 
 ## tested systems - working
 
 - samsung chromebook xe503c12 - peach pit
 - samsung chromebook xe503c32 - peach pi
 
-see also https://github.com/hexdump0815/imagebuilder/issues/80 for all above
+see also https://github.com/velvet-os/imagebuilder/issues/80 for all above
 
 ## untested systems
 

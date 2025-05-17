@@ -33,7 +33,7 @@ update-grub
 ```
 some firmware and audio configuration files have to be installed which can be
 obtained from here:
-https://github.com/hexdump0815/imagebuilder-firmware/raw/main/chell-audio.tar.gz
+https://github.com/velvet-os/imagebuilder-firmware/raw/main/chell-audio.tar.gz
 via:
 ```
 cd /
@@ -57,9 +57,9 @@ most probably is best to simply use one of those small usb audio adapters.
 
 please keep in mind to build a new v5.10.x kernel from time to time to get
 the latest security updates. some notes about this can be found here:
-https://github.com/hexdump0815/imagebuilder/blob/main/doc/chromebooks/kernel/building-own-kernels.md
+https://github.com/velvet-os/imagebuilder/blob/main/doc/chromebooks/kernel/building-own-kernels.md
 and here:
-https://github.com/hexdump0815/imagebuilder/blob/main/doc/chromebooks/kernel/installing-a-newer-kernel.md
+https://github.com/velvet-os/imagebuilder/blob/main/doc/chromebooks/kernel/installing-a-newer-kernel.md
 
 ### trixie images from may 2025 or later
 

@@ -2,13 +2,13 @@
 
 ## bootable sd card images
 
-- https://github.com/hexdump0815/imagebuilder/releases/tag/230109-01 (experimental)
-- https://github.com/hexdump0815/imagebuilder/releases/tag/220710-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/230109-01 (experimental)
+- https://github.com/velvet-os/imagebuilder/releases/tag/220710-01
 
 ## tested systems - working
 
 - acer chromebook cb514-2h/cb514-2ht - spherion
-  - see also: https://github.com/hexdump0815/imagebuilder/issues/60
+  - see also: https://github.com/velvet-os/imagebuilder/issues/60
 
 ## untested systems
 

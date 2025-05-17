@@ -2,17 +2,17 @@
 
 ## bootable sd card images
 
-- https://github.com/hexdump0815/imagebuilder/releases/tag/240107-01
-- https://github.com/hexdump0815/imagebuilder/releases/tag/230308-01
-- https://github.com/hexdump0815/imagebuilder/releases/tag/230305-01
-- https://github.com/hexdump0815/imagebuilder/releases/tag/221101-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/240107-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/230308-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/230305-01
+- https://github.com/velvet-os/imagebuilder/releases/tag/221101-01
 
 ## tested systems - working
 
 - samsung galaxy book go (snapdragon 7c gen2)
 - acer aspire 1 a114-61 (snapdragon 7c)
 
-see also https://github.com/hexdump0815/imagebuilder/issues/136 for all above
+see also https://github.com/velvet-os/imagebuilder/issues/136 for all above
 
 ## untested systems
 

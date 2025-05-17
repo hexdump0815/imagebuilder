@@ -7,7 +7,7 @@
 ## tested systems - working
 
 - powkiddy x55
-  - see also: https://github.com/hexdump0815/imagebuilder/issues/266
+  - see also: https://github.com/velvet-os/imagebuilder/issues/266
 
 _likely won't work on other devices_
 
