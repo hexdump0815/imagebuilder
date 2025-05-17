@@ -14,3 +14,7 @@ if [ -f etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml-enabled
 elif [ -f etc/xdg/xdg-xubuntu/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml-enabled ]; then
   cp -v etc/xdg/xdg-xubuntu/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml-enabled etc/xdg/xdg-xubuntu/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml
 fi
+
+# disable afbc in mesa until it is fixed from the kernel side
+# see: https://github.com/velvet-os/imagebuilder/issues/314
+echo 'PAN_MESA_DEBUG=”noafbc”' >> etc/environment
