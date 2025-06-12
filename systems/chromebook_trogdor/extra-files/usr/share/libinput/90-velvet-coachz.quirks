@@ -1,0 +1,7 @@
+[HP Chromebook X2 11"]
+MatchUdevType=touchpad
+MatchName=Google Inc. Hammer
+MatchDeviceTree=*coachz*
+ModelChromebook=1
+AttrPressureRange=25:10
+AttrPalmPressureThreshold=180
