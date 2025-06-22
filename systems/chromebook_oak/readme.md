@@ -14,7 +14,7 @@
 
 - acer chromebook r13 - elm
 - lenovo chromebook 100e (mt8173 version) - [hana](https://github.com/velvet-os/velvet-os.github.io/blob/main/chromebooks/systems/oak/hana-100e-gen2.md)
-- lenovo chromebook 300e (mt8173 version) - hana
+- lenovo chromebook 300e (mt8173 version) - [hana](https://github.com/velvet-os/velvet-os.github.io/blob/main/chromebooks/systems/oak/hana-300e-gen2-mtk.md)
 - lenovo chromebook n23 - hana
 - asus chromebook c202xa - hana
 
