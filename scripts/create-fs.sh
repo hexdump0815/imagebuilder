@@ -110,9 +110,12 @@ if [ "$3" = "jammy" ] || [ "$3" = "noble" ]; then
 elif [ "$3" = "bookworm" ] || [ "$3" = "trixie" ]; then
   if [ "$2" = "i686" ] && [ "${OWN_KERNEL}" != "true" ]; then
     chroot ${BUILD_ROOT} apt-get -yq install linux-image-686
-  # in the chromebook octopus case there is an own special cros kernel
   elif [ "$2" = "x86_64" ] && [ "${OWN_KERNEL}" != "true" ]; then
     chroot ${BUILD_ROOT} apt-get -yq install linux-image-amd64
+  elif [ "$2" = "armhf" ] && [ "${OWN_KERNEL}" != "true" ]; then
+    chroot ${BUILD_ROOT} apt-get -yq install linux-image-armmp
+  elif [ "$2" = "aarch64" ] && [ "${OWN_KERNEL}" != "true" ]; then
+    chroot ${BUILD_ROOT} apt-get -yq install linux-image-arm64
   fi
 fi
 
